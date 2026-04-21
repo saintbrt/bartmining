@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Bart Mining Consultancy — Resource development done responsibly</title>
+<title>Bart Mining Consultancy | Resource development done responsibly</title>
 <meta name="description" content="Bart Mining Consultancy provides geological survey, exploration, mine planning, machinery supply and safety equipment. Environmentally conscious, community-driven." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
     --ink-2: #2a2a2a;
     --muted: #6b6b66;
     --line: #e5e1d7;
-    --accent: #8a4b1b;    /* deep ochre — one accent, used sparingly */
+    --accent: #8a4b1b;    /* deep ochre. one accent, used sparingly */
     --accent-soft: #c9a27a;
     --green: #2f5d3a;     /* for sustainability only */
     --ease: cubic-bezier(.2,.7,.2,1);
@@ -334,11 +334,12 @@
     padding: 140px 0 120px;
     border-bottom: 1px solid var(--line);
   }
-  .about-grid{
+  .about-head{
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: start;
+    align-items: end;
+    margin-bottom: 80px;
   }
   .section-eyebrow{
     font-size: 13px;
@@ -361,22 +362,94 @@
     font-style: italic;
     font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
   }
-  .about-body p + p{ margin-top: 18px; }
-  .about-body p{
+  .about-intro{
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 46ch;
+  }
+
+  /* Founder */
+  .founder{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  .founder-image{
+    position: relative;
+    aspect-ratio: 5/6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .founder-image img{
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 1.4s var(--ease);
+  }
+  .founder-image:hover img{ transform: scale(1.04); }
+  .founder-image-label{
+    position: absolute; bottom: 16px; left: 16px;
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .founder-image::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 65%, rgba(0,0,0,.5));
+    pointer-events:none;
+  }
+  .founder-kicker{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .founder-text h3{
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .founder-role{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .founder-bio{
     font-size: 17px;
     color: var(--ink-2);
+    margin-bottom: 14px;
+    max-width: 38ch;
   }
-  .about-signature{
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-    display: flex; gap: 60px;
+  .founder-bio:last-child{ color: var(--ink); font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 20px; }
+
+  /* Credentials strip */
+  .creds{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid var(--ink);
+  }
+  .cred-num{
+    font-size: clamp(44px, 5.5vw, 84px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 300;
+    display: flex; align-items: baseline; gap: 4px;
+  }
+  .cred-num span{ font-size: 0.5em; color: var(--accent); }
+  .cred-label{
+    margin-top: 14px;
     font-size: 13px;
-  }
-  .about-signature div span{
-    display:block; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 0.14em;
-    font-size: 11px; margin-bottom: 4px;
+    color: var(--muted);
+    line-height: 1.4;
   }
 
   /* --- SERVICES ------------------------------------------ */
@@ -465,27 +538,7 @@
   }
   .service-arrow svg{ width: 14px; height: 14px; }
 
-  /* preview image that appears on hover (desktop) */
-  .service-preview{
-    position: fixed;
-    pointer-events: none;
-    width: 280px;
-    height: 360px;
-    border-radius: 4px;
-    overflow: hidden;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.92);
-    transition: opacity .3s var(--ease), transform .3s var(--ease);
-    z-index: 30;
-  }
-  .service-preview.visible{
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  .service-preview img{
-    width: 100%; height: 100%; object-fit: cover;
-    display:block;
-  }
+  /* preview image on hover. removed per request */
 
   /* --- SUSTAINABILITY ------------------------------------ */
   .sustain{
@@ -902,9 +955,12 @@
     .trust-intro{ margin-bottom: 32px; font-size: 12px; }
 
     .about, .services, .sustain, .process, .contact{ padding: 80px 0; }
-    .about-grid, .services-head, .sustain-grid, .contact-grid{
+    .about-grid, .about-head, .services-head, .sustain-grid, .contact-grid{
       grid-template-columns: 1fr; gap: 40px;
     }
+    .founder{ grid-template-columns: 1fr; gap: 30px; margin-bottom: 70px; }
+    .founder-image{ aspect-ratio: 4/5; }
+    .creds{ grid-template-columns: repeat(2, 1fr); gap: 30px 20px; padding-top: 32px; }
 
     .service-row{
       grid-template-columns: 32px 1fr 36px;
@@ -966,18 +1022,31 @@
     .trust{ padding: 50px 0 60px; }
 
     .about, .services, .sustain, .process, .contact{ padding: 60px 0; }
-    .about-grid, .services-head, .sustain-grid, .contact-grid{ gap: 32px; }
+    .about-grid, .about-head, .services-head, .sustain-grid, .contact-grid{ gap: 32px; }
     .about h2, .services h2, .sustain h2, .process h2{
       font-size: clamp(32px, 8.5vw, 48px);
     }
     .contact h2{ font-size: clamp(38px, 11vw, 60px); }
-    .about-body p{ font-size: 15px; }
-    .about-signature{ flex-direction: column; gap: 16px; }
+    .about-intro{ font-size: 16px; }
+    .about-head{ margin-bottom: 50px; }
+
+    /* Founder mobile */
+    .founder{ margin-bottom: 60px; gap: 24px; }
+    .founder-image{ aspect-ratio: 3/4; }
+    .founder-text h3{ font-size: clamp(32px, 9vw, 44px); }
+    .founder-role{ font-size: 16px; margin-bottom: 18px; }
+    .founder-bio{ font-size: 15px; }
+    .founder-bio:last-child{ font-size: 17px; }
+
+    /* Credentials mobile */
+    .creds{ grid-template-columns: 1fr 1fr; gap: 28px 16px; padding-top: 28px; }
+    .cred-num{ font-size: clamp(36px, 12vw, 56px); }
+    .cred-label{ font-size: 12px; margin-top: 10px; }
 
     .section-eyebrow{ margin-bottom: 24px; font-size: 12px; }
     .services-head p, .sustain-lede, .process-lede{ font-size: 15px; }
 
-    /* Services — cleaner stacked layout on phones */
+    /* Services. cleaner stacked layout on phones */
     .service-row{
       grid-template-columns: 28px 1fr 32px;
       gap: 12px;
@@ -1117,7 +1186,7 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-eyebrow">Established 1998 &middot; 14 countries</div>
+        <div class="hero-eyebrow">Dar es Salaam, Tanzania &middot; Global experience</div>
         <h1 class="display hero-title">
           <span class="line"><span>Responsible</span></span>
           <span class="line"><span>resource</span></span>
@@ -1125,7 +1194,7 @@
         </h1>
         <p class="hero-lede">
           We advise mining companies, governments and investors on how to find,
-          plan, build and operate mines — with the environment and host communities
+          plan, build and operate mines, with the environment and host communities
           treated as partners, not footnotes.
         </p>
         <div class="hero-ctas">
@@ -1151,20 +1220,20 @@
     <div class="trust-intro reveal">A record measured in decades, not quarters</div>
     <div class="stats">
       <div class="stat reveal">
-        <div class="stat-num"><span class="count" data-target="27">0</span><span class="suffix">+</span></div>
-        <div class="stat-label">Years advising the resources sector</div>
+        <div class="stat-num"><span class="count" data-target="25">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Years of hands-on mining experience</div>
       </div>
       <div class="stat reveal reveal-delay-1">
-        <div class="stat-num"><span class="count" data-target="14">0</span></div>
-        <div class="stat-label">Countries with active projects</div>
+        <div class="stat-num"><span class="count" data-target="12">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Countries delivered in</div>
       </div>
       <div class="stat reveal reveal-delay-2">
-        <div class="stat-num"><span class="count" data-target="180">0</span><span class="suffix">+</span></div>
-        <div class="stat-label">Mining engineers, geologists and technicians</div>
+        <div class="stat-num"><span class="count" data-target="6">0</span></div>
+        <div class="stat-label">Continents on the ground</div>
       </div>
       <div class="stat reveal reveal-delay-3">
         <div class="stat-num"><span class="count" data-target="0" data-final="zero">0</span></div>
-        <div class="stat-label">Lost-time injuries across sites in 2025</div>
+        <div class="stat-label">Corners cut on safety or community</div>
       </div>
     </div>
   </div>
@@ -1173,36 +1242,61 @@
 <!-- ============================ ABOUT ============================ -->
 <section class="about" id="about">
   <div class="container">
-    <div class="about-grid">
+
+    <!-- Section header -->
+    <div class="about-head">
       <div>
         <div class="section-eyebrow reveal"><span class="num">02</span>About</div>
-        <h2 class="display reveal">A consultancy<br>for the <em>honest</em><br>work of mining.</h2>
+        <h2 class="display reveal">Mining is the<br>work. <em>It's also<br>the passion.</em></h2>
       </div>
-      <div class="about-body reveal reveal-delay-1">
-        <p>
-          Bart Mining Consultancy is an independent advisory and supply firm
-          working at every stage of the mine lifecycle &mdash; from the first
-          geological walk-over to the long close-out after the last truck leaves.
+      <p class="about-intro reveal reveal-delay-1">
+        Bart Mining Consultancy was founded in Dar es Salaam by people
+        who've spent decades inside mines, not just writing about them.
+      </p>
+    </div>
+
+    <!-- Founder block -->
+    <div class="founder">
+      <div class="founder-image reveal">
+        <img src="https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1200"
+             alt="Exploration site in the field" />
+        <div class="founder-image-label">In the field &middot; Exploration</div>
+      </div>
+      <div class="founder-text reveal reveal-delay-1">
+        <div class="founder-kicker">Founder</div>
+        <h3 class="display">Bartholomew Ambrose</h3>
+        <p class="founder-role">Exploration Manager &middot; General Manager &middot; Operator</p>
+        <p class="founder-bio">
+          Decades leading exploration and operations for Resolute, Barrick
+          and other major mining companies across Brazil, Liberia, DRC,
+          Australia, Canada and beyond.
         </p>
-        <p>
-          We are engineers, geologists, safety specialists and community
-          relations leads, and we partner with clients who accept that extraction
-          carries obligations: to workers, to land, to the people living next to it.
-          That belief runs through every piece of advice we give and every
-          kilogram of equipment we supply.
+        <p class="founder-bio">
+          Hands in the rock, not just theory on a slide deck.
         </p>
-        <div class="about-signature">
-          <div>
-            <span>Founded</span>
-            1998, Perth &amp; Nairobi
-          </div>
-          <div>
-            <span>Registered</span>
-            ICMM member &middot; ISO 14001 &middot; ISO 45001
-          </div>
-        </div>
       </div>
     </div>
+
+    <!-- Credentials strip -->
+    <div class="creds reveal">
+      <div class="cred">
+        <div class="cred-num display">6</div>
+        <div class="cred-label">Continents<br>worked</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num display">25<span>+</span></div>
+        <div class="cred-label">Years<br>on the ground</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num display">12<span>+</span></div>
+        <div class="cred-label">Countries<br>delivered in</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num display">∞</div>
+        <div class="cred-label">Respect<br>for the ground</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1215,8 +1309,7 @@
         <h2 class="display reveal">Five disciplines,<br>one accountable team.</h2>
       </div>
       <p class="reveal reveal-delay-1">
-        We're assembled so that a client can pick up a single phone, brief
-        one principal, and have a coherent programme run end to end &mdash;
+        Brief one principal. Have a coherent programme run end to end,
         or call us for any single link in the chain.
       </p>
     </div>
@@ -1224,7 +1317,7 @@
     <div class="services-list">
       <!-- 01 -->
       <a class="service-row" href="#contact"
-         data-preview="https://images.pexels.com/photos/15138925/pexels-photo-15138925.jpeg?auto=compress&cs=tinysrgb&w=600">
+>
         <div class="service-num">01</div>
         <div class="service-title">Geological Survey</div>
         <div class="service-desc">Site assessment, core sampling, resource
@@ -1242,7 +1335,7 @@
       </a>
       <!-- 02 -->
       <a class="service-row" href="#contact"
-         data-preview="https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=600">
+>
         <div class="service-num">02</div>
         <div class="service-title">Exploration</div>
         <div class="service-desc">Prospecting programmes, target identification,
@@ -1260,7 +1353,7 @@
       </a>
       <!-- 03 -->
       <a class="service-row" href="#contact"
-         data-preview="https://images.pexels.com/photos/5505961/pexels-photo-5505961.jpeg?auto=compress&cs=tinysrgb&w=600">
+>
         <div class="service-num">03</div>
         <div class="service-title">Mine Planning &amp; Design</div>
         <div class="service-desc">Feasibility studies, pit and underground design,
@@ -1278,11 +1371,11 @@
       </a>
       <!-- 04 -->
       <a class="service-row" href="#contact"
-         data-preview="https://images.pexels.com/photos/33192/pexels-photo-33192.jpg?auto=compress&cs=tinysrgb&w=600">
+>
         <div class="service-num">04</div>
         <div class="service-title">Mining Machinery Supply</div>
         <div class="service-desc">Excavators, haul trucks, drill rigs, crushers and
-          conveyors &mdash; specified, procured, commissioned.</div>
+          conveyors. Specified, procured, commissioned.</div>
         <div class="service-tags">
           <span class="service-tag">Haulage</span>
           <span class="service-tag">Drilling rigs</span>
@@ -1296,7 +1389,7 @@
       </a>
       <!-- 05 -->
       <a class="service-row" href="#contact"
-         data-preview="https://images.pexels.com/photos/8961034/pexels-photo-8961034.jpeg?auto=compress&cs=tinysrgb&w=600">
+>
         <div class="service-num">05</div>
         <div class="service-title">Safety Equipment &amp; Gear</div>
         <div class="service-desc">PPE, gas detection, self-rescuers, fall arrest
@@ -1314,7 +1407,6 @@
       </a>
     </div>
   </div>
-  <div class="service-preview" id="servicePreview"><img id="servicePreviewImg" alt=""></div>
 </section>
 
 <!-- ============================ SUSTAINABILITY ============================ -->
@@ -1349,7 +1441,7 @@
             </div>
             <div>
               <h4>Supporting local schools</h4>
-              <p>We fund classroom construction, teacher salaries and scholarship programmes in 42 communities across our project regions, focused on STEM and vocational training for local youth.</p>
+              <p>We fund classroom construction, teacher support and scholarships in the communities around the projects we work on. Focus on STEM and vocational training for local youth.</p>
             </div>
           </div>
           <div class="pillar reveal reveal-delay-2">
@@ -1360,7 +1452,7 @@
             </div>
             <div>
               <h4>Local hiring &amp; procurement</h4>
-              <p>78% of site roles filled locally on projects we operate. We advise clients on supplier development programmes so the supply chain benefits the region, not just the shareholders.</p>
+              <p>Local roles filled locally wherever possible. We advise clients on supplier development so the supply chain benefits the region, not just the shareholders.</p>
             </div>
           </div>
           <div class="pillar reveal reveal-delay-3">
@@ -1388,21 +1480,21 @@
         <img src="https://images.pexels.com/photos/28593055/pexels-photo-28593055.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Schoolchildren in classroom">
         <div class="community-card-content">
           <div class="kicker">Community &middot; Schools</div>
-          <h5>14 schools funded across three project regions since 2019</h5>
+          <h5>Classrooms and scholarships in the communities we work in</h5>
         </div>
       </div>
       <div class="community-card reveal reveal-delay-1">
         <img src="https://images.pexels.com/photos/6572780/pexels-photo-6572780.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Schoolchildren at community sports day">
         <div class="community-card-content">
           <div class="kicker">Community &middot; Youth</div>
-          <h5>Vocational training pipelines in every operating region</h5>
+          <h5>Vocational training pipelines in every region we operate</h5>
         </div>
       </div>
       <div class="community-card reveal reveal-delay-2">
         <img src="https://images.pexels.com/photos/5487075/pexels-photo-5487075.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Community tree planting">
         <div class="community-card-content">
           <div class="kicker">Environment &middot; Rehab</div>
-          <h5>280,000 trees planted on rehabilitated mine sites</h5>
+          <h5>Progressive rehabilitation built into every mine we advise</h5>
         </div>
       </div>
     </div>
@@ -1413,7 +1505,7 @@
 <section class="process" id="process">
   <div class="container">
     <div class="section-eyebrow reveal"><span class="num">05</span>How we work</div>
-    <h2 class="display reveal">From first boulder<br>to final rehabilitation &mdash;<br><em>we walk it with you.</em></h2>
+    <h2 class="display reveal">From first boulder<br>to final rehabilitation,<br><em>we walk it with you.</em></h2>
     <p class="process-lede reveal reveal-delay-1">
       Four phases, one principal-led team. Click a phase to see what's
       actually involved.
@@ -1487,17 +1579,13 @@
             <a class="value" href="mailto:hello@aspirescapital.com">hello@aspirescapital.com</a>
           </div>
           <div class="block reveal reveal-delay-1">
-            <div class="label">Perth &middot; HQ</div>
-            <div class="value">Level 14, 181 St Georges Terrace<br>Perth WA 6000</div>
-          </div>
-          <div class="block reveal reveal-delay-2">
-            <div class="label">Nairobi</div>
-            <div class="value">Westlands Square, Parklands Rd<br>Nairobi 00100</div>
+            <div class="label">Headquarters</div>
+            <div class="value">Dar es Salaam<br>Tanzania</div>
           </div>
         </div>
       </div>
 
-      <form class="enquiry reveal reveal-delay-1" onsubmit="event.preventDefault(); this.querySelector('.submit-row small').textContent='Thanks — we\'ll be in touch within two working days.'; this.reset();">
+      <form class="enquiry reveal reveal-delay-1" onsubmit="event.preventDefault(); this.querySelector('.submit-row small').textContent='Thanks, we\'ll be in touch within two working days.'; this.reset();">
         <label>
           <span class="label-text"><span>Your name</span><span>Required</span></span>
           <input type="text" name="name" placeholder="Jane Sinclair" required>
@@ -1540,7 +1628,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-big">
-        Resource development<br>done <em>responsibly</em> &mdash;<br>since 1998.
+        Resource development<br>done <em>responsibly.</em><br>Built on experience.
       </div>
       <div>
         <h5>Services</h5>
@@ -1563,18 +1651,16 @@
         </ul>
       </div>
       <div>
-        <h5>Offices</h5>
+        <h5>Contact</h5>
         <ul>
-          <li><a href="#">Perth, Australia</a></li>
-          <li><a href="#">Nairobi, Kenya</a></li>
-          <li><a href="#">Johannesburg, SA</a></li>
-          <li><a href="#">Toronto, Canada</a></li>
-          <li><a href="#">Lima, Peru</a></li>
+          <li><a href="mailto:hello@aspirescapital.com">hello@aspirescapital.com</a></li>
+          <li><a href="#contact">Dar es Salaam, Tanzania</a></li>
+          <li><a href="#contact">Enquiries</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>&copy; 2026 Bart Mining Consultancy Pty Ltd &middot; ABN 42 119 300 004</div>
+      <div>&copy; 2026 Bart Mining Consultancy &middot; Dar es Salaam, Tanzania</div>
       <div>Privacy &middot; Terms &middot; Modern Slavery Statement</div>
     </div>
   </div>
@@ -1647,29 +1733,7 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // ---- Service preview (desktop only) ----
-  const preview = document.getElementById('servicePreview');
-  const previewImg = document.getElementById('servicePreviewImg');
-  const rows = document.querySelectorAll('.service-row');
-  let mouseX = 0, mouseY = 0;
-
-  if (window.matchMedia('(pointer: fine)').matches){
-    rows.forEach(row => {
-      row.addEventListener('mouseenter', () => {
-        const src = row.dataset.preview;
-        if (src){
-          previewImg.src = src;
-          preview.classList.add('visible');
-        }
-      });
-      row.addEventListener('mouseleave', () => preview.classList.remove('visible'));
-    });
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      preview.style.left = mouseX + 'px';
-      preview.style.top = mouseY + 'px';
-    });
-  }
+  // ---- Service preview removed per request ----
 
   // ---- Process timeline (interactive) ----
   const stepData = {
@@ -1690,7 +1754,7 @@
     },
     4: {
       label: 'Phase 04 · Operate & Close',
-      body: "Continuous advisory on production, safety and environmental performance — then, when the time comes, the rehabilitation plan we wrote in phase two, executed and monitored for decades after the last truck leaves.",
+      body: "Continuous advisory on production, safety and environmental performance, then, when the time comes, the rehabilitation plan we wrote in phase two, executed and monitored for decades after the last truck leaves.",
       tags: ['Operations audit','Rehab','Water monitoring','Community transition','Post-closure']
     }
   };
