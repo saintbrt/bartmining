@@ -1,1782 +1,215 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Bart Mining Consultancy | Resource development done responsibly</title>
-<meta name="description" content="Bart Mining Consultancy provides geological survey, exploration, mine planning, machinery supply and safety equipment. Environmentally conscious, community-driven." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
-
-<style>
-  /* -----------------------------------------------------------
-     Bart Mining Consultancy
-     Aesthetic: refined minimalism, editorial, white canvas,
-     precise typography, single accent (deep ochre), generous
-     negative space. Inspired by Rio Tinto / Fortescue editorial
-     restraint crossed with an architectural magazine.
-  ----------------------------------------------------------- */
-
-  :root{
-    --bg: #fbfaf7;        /* warm off-white, not clinical */
-    --bg-2: #f2efe8;      /* subtle paper */
-    --ink: #121212;       /* near-black */
-    --ink-2: #2a2a2a;
-    --muted: #6b6b66;
-    --line: #e5e1d7;
-    --accent: #8a4b1b;    /* deep ochre. one accent, used sparingly */
-    --accent-soft: #c9a27a;
-    --green: #2f5d3a;     /* for sustainability only */
-    --ease: cubic-bezier(.2,.7,.2,1);
-  }
-
-  *{box-sizing:border-box; margin:0; padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  .display{
-    font-family: 'Fraunces', serif;
-    font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    line-height: 0.98;
-  }
-  .display-italic{
-    font-style: italic;
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-  }
-
-  .container{
-    width: min(1280px, 92vw);
-    margin-inline: auto;
-  }
-  .container-wide{
-    width: min(1440px, 96vw);
-    margin-inline: auto;
-  }
-
-  /* --- NAVIGATION ---------------------------------------- */
-  header.nav{
-    position: fixed;
-    inset: 0 0 auto 0;
-    z-index: 50;
-    padding: 18px 0;
-    backdrop-filter: blur(12px);
-    background: rgba(251, 250, 247, 0.72);
-    border-bottom: 1px solid transparent;
-    transition: border-color .4s var(--ease), padding .4s var(--ease);
-  }
-  header.nav.scrolled{
-    border-bottom-color: var(--line);
-    padding: 12px 0;
-  }
-  header.nav .row{
-    display:flex; align-items:center; justify-content:space-between;
-    gap: 24px;
-  }
-  .brand{
-    display:flex; align-items:center; gap:10px;
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 18px;
-    letter-spacing: -0.01em;
-    text-decoration: none;
-    color: var(--ink);
-  }
-  .brand-mark{
-    width: 28px; height: 28px;
-    position:relative;
-  }
-  .brand-mark svg{ display:block; width:100%; height:100%; }
-  nav.primary{
-    display:flex; gap: 4px;
-    font-size: 14px;
-  }
-  nav.primary a{
-    position: relative;
-    padding: 8px 14px;
-    color: var(--ink-2);
-    text-decoration: none;
-    border-radius: 999px;
-    transition: color .3s var(--ease), background .3s var(--ease);
-  }
-  nav.primary a:hover{ color: var(--ink); }
-  nav.primary a.active{
-    background: var(--ink);
-    color: var(--bg);
-  }
-  .cta-top{
-    display: inline-flex; align-items:center; gap: 8px;
-    padding: 10px 18px;
-    background: var(--ink);
-    color: var(--bg);
-    text-decoration: none;
-    border-radius: 999px;
-    font-size: 14px;
-    transition: background .3s var(--ease);
-  }
-  .cta-top:hover{ background: var(--accent); }
-  .cta-top .arrow{
-    transition: transform .3s var(--ease);
-  }
-  .cta-top:hover .arrow{ transform: translateX(3px); }
-
-  .menu-toggle{
-    display:none;
-    background:none; border:none; cursor:pointer;
-    width: 40px; height: 40px;
-    padding: 0;
-  }
-  .menu-toggle span{
-    display:block; width: 20px; height: 1.5px;
-    background: var(--ink); margin: 5px auto;
-    transition: transform .3s var(--ease);
-  }
-
-  /* --- HERO ---------------------------------------------- */
-  .hero{
-    position: relative;
-    min-height: 100vh;
-    padding: 160px 0 80px;
-    overflow: hidden;
-  }
-  .hero-grid{
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 60px;
-    align-items: end;
-  }
-  .hero-eyebrow{
-    display: inline-flex; align-items: center; gap: 10px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--muted);
-    margin-bottom: 28px;
-  }
-  .hero-eyebrow::before{
-    content:""; width: 28px; height: 1px; background: var(--accent);
-  }
-  h1.hero-title{
-    font-size: clamp(52px, 9vw, 148px);
-    margin-bottom: 36px;
-  }
-  h1.hero-title .line{
-    display:block; overflow:hidden;
-  }
-  h1.hero-title .line > span{
-    display:inline-block;
-    transform: translateY(110%);
-    animation: heroRise 1.1s var(--ease) forwards;
-  }
-  h1.hero-title .line:nth-child(2) > span{ animation-delay: .08s }
-  h1.hero-title .line:nth-child(3) > span{ animation-delay: .16s }
-  @keyframes heroRise{ to{ transform: translateY(0) } }
-  .hero-lede{
-    font-size: 18px;
-    color: var(--ink-2);
-    max-width: 54ch;
-    opacity: 0;
-    animation: fadeUp .9s var(--ease) .4s forwards;
-  }
-  .hero-ctas{
-    display: flex; flex-wrap: wrap; gap: 14px;
-    margin-top: 36px;
-    opacity: 0;
-    animation: fadeUp .9s var(--ease) .55s forwards;
-  }
-  @keyframes fadeUp{
-    from{ opacity:0; transform: translateY(14px) }
-    to{ opacity:1; transform: translateY(0) }
-  }
-  .btn{
-    display: inline-flex; align-items:center; gap: 10px;
-    padding: 14px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 0.01em;
-    transition: all .3s var(--ease);
-    cursor: pointer;
-    border: none;
-    font-family: inherit;
-  }
-  .btn-primary{ background: var(--ink); color: var(--bg); }
-  .btn-primary:hover{ background: var(--accent); transform: translateY(-1px); }
-  .btn-ghost{
-    background: transparent; color: var(--ink);
-    border: 1px solid var(--line);
-  }
-  .btn-ghost:hover{ border-color: var(--ink); }
-
-  /* Hero image with parallax */
-  .hero-visual{
-    position: relative;
-    aspect-ratio: 4/5;
-    border-radius: 4px;
-    overflow: hidden;
-    opacity: 0;
-    animation: fadeUp 1s var(--ease) .3s forwards;
-  }
-  .hero-visual .ph-img{
-    position: absolute;
-    inset: -10% -5% -5% -5%;
-    background-image: url("https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg?auto=compress&cs=tinysrgb&w=1600");
-    background-size: cover;
-    background-position: center;
-    will-change: transform;
-    transition: transform .1s linear;
-  }
-  .hero-visual::after{
-    content:"";
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.25));
-    pointer-events:none;
-  }
-  .hero-meta{
-    position: absolute; left: 20px; bottom: 20px;
-    color: #fff;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    display: flex; align-items:center; gap: 10px;
-  }
-  .hero-meta::before{
-    content:""; width: 6px; height: 6px; border-radius: 50%;
-    background: #fff; animation: pulse 2s infinite;
-  }
-  @keyframes pulse{
-    0%,100%{ opacity: 1; transform: scale(1) }
-    50%{ opacity: .4; transform: scale(.7) }
-  }
-
-  /* Scroll indicator */
-  .scroll-hint{
-    position: absolute; bottom: 30px; left: 50%;
-    transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items:center; gap: 12px;
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em;
-    color: var(--muted);
-    opacity: 0;
-    animation: fadeUp .9s var(--ease) 1s forwards;
-  }
-  .scroll-hint .line{
-    width: 1px; height: 40px; background: var(--ink);
-    animation: scrollLine 2s infinite;
-    transform-origin: top;
-  }
-  @keyframes scrollLine{
-    0%{ transform: scaleY(0); transform-origin: top; }
-    50%{ transform: scaleY(1); transform-origin: top; }
-    50.01%{ transform-origin: bottom; }
-    100%{ transform: scaleY(0); transform-origin: bottom; }
-  }
-
-  /* --- TRUST BAR / STATS --------------------------------- */
-  .trust{
-    padding: 80px 0 120px;
-    border-bottom: 1px solid var(--line);
-  }
-  .trust-intro{
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--muted);
-    margin-bottom: 40px;
-    display:flex; align-items:center; gap: 14px;
-  }
-  .trust-intro::before{
-    content:"01"; font-family: 'Fraunces', serif; font-weight: 400;
-    font-style: italic; color: var(--accent); letter-spacing: 0;
-    font-size: 15px;
-  }
-  .stats{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-  .stat{
-    padding-top: 28px;
-    border-top: 1px solid var(--ink);
-  }
-  .stat-num{
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: clamp(44px, 5.5vw, 84px);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    display: flex; align-items: baseline; gap: 4px;
-  }
-  .stat-num .suffix{
-    font-size: 0.5em;
-    color: var(--accent);
-  }
-  .stat-label{
-    margin-top: 14px;
-    font-size: 14px;
-    color: var(--muted);
-    max-width: 20ch;
-  }
-
-  /* --- ABOUT --------------------------------------------- */
-  .about{
-    padding: 140px 0 120px;
-    border-bottom: 1px solid var(--line);
-  }
-  .about-head{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: end;
-    margin-bottom: 80px;
-  }
-  .section-eyebrow{
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--muted);
-    display: flex; align-items: center; gap: 14px;
-    margin-bottom: 32px;
-  }
-  .section-eyebrow .num{
-    font-family: 'Fraunces', serif; font-weight: 400;
-    font-style: italic; color: var(--accent); letter-spacing: 0;
-    font-size: 15px;
-  }
-  .about h2{
-    font-size: clamp(40px, 5vw, 76px);
-  }
-  .about h2 em{
-    color: var(--accent);
-    font-style: italic;
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-  }
-  .about-intro{
-    font-size: 18px;
-    color: var(--ink-2);
-    max-width: 46ch;
-  }
-
-  /* Founder */
-  .founder{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  .founder-image{
-    position: relative;
-    aspect-ratio: 5/4;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .founder-image img{
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 1.4s var(--ease);
-  }
-  .founder-image:hover img{ transform: scale(1.04); }
-  .founder-image-label{
-    position: absolute; bottom: 16px; left: 16px;
-    color: #fff;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-  .founder-image::after{
-    content:"";
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, transparent 65%, rgba(0,0,0,.5));
-    pointer-events:none;
-  }
-  .founder-kicker{
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-  .founder-text h3{
-    font-size: clamp(36px, 4.5vw, 64px);
-    font-weight: 300;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-  .founder-role{
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 18px;
-    color: var(--muted);
-    margin-bottom: 24px;
-  }
-  .founder-bio{
-    font-size: 17px;
-    color: var(--ink-2);
-    margin-bottom: 14px;
-    max-width: 38ch;
-  }
-  .founder-bio:last-child{ color: var(--ink); font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 20px; }
-
-  /* Credentials strip */
-  .creds{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    padding-top: 40px;
-    border-top: 1px solid var(--ink);
-  }
-  .cred-num{
-    font-size: clamp(44px, 5.5vw, 84px);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    font-weight: 300;
-    display: flex; align-items: baseline; gap: 4px;
-  }
-  .cred-num span{ font-size: 0.5em; color: var(--accent); }
-  .cred-label{
-    margin-top: 14px;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-
-  /* --- SERVICES ------------------------------------------ */
-  .services{
-    padding: 140px 0 140px;
-    border-bottom: 1px solid var(--line);
-  }
-  .services-head{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-bottom: 80px;
-    align-items: end;
-  }
-  .services h2{
-    font-size: clamp(40px, 5vw, 76px);
-  }
-  .services-head p{
-    font-size: 17px;
-    color: var(--muted);
-    max-width: 46ch;
-  }
-  .services-list{
-    border-top: 1px solid var(--ink);
-  }
-  .service-row{
-    display: grid;
-    grid-template-columns: 80px 1.2fr 1.4fr 1fr 40px;
-    align-items: center;
-    gap: 40px;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--line);
-    position: relative;
-    cursor: pointer;
-    transition: padding .4s var(--ease);
-    text-decoration: none;
-    color: inherit;
-  }
-  .service-row *{ text-decoration: none; }
-  .service-row:hover{
-    padding-left: 16px;
-  }
-  .service-num{
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 20px;
-    color: var(--accent);
-  }
-  .service-title{
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(24px, 2.6vw, 36px);
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-  }
-  .service-desc{
-    font-size: 15px;
-    color: var(--muted);
-    max-width: 42ch;
-  }
-  .service-tags{
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
-  .service-tag{
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    padding: 4px 10px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--ink-2);
-  }
-  .service-arrow{
-    width: 40px; height: 40px;
-    display: grid; place-items: center;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    transition: all .3s var(--ease);
-  }
-  .service-row:hover .service-arrow{
-    background: var(--ink);
-    border-color: var(--ink);
-    color: var(--bg);
-    transform: rotate(-45deg);
-  }
-  .service-arrow svg{ width: 14px; height: 14px; }
-
-  /* preview image on hover. removed per request */
-
-  /* --- SUSTAINABILITY ------------------------------------ */
-  .sustain{
-    padding: 140px 0 140px;
-    background: var(--bg-2);
-    border-bottom: 1px solid var(--line);
-  }
-  .sustain .section-eyebrow .num{ color: var(--green); }
-  .sustain-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .sustain h2{
-    font-size: clamp(40px, 5vw, 76px);
-    margin-bottom: 28px;
-  }
-  .sustain h2 em{
-    color: var(--green);
-    font-style: italic;
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-  }
-  .sustain-lede{
-    font-size: 18px;
-    color: var(--ink-2);
-    margin-bottom: 40px;
-    max-width: 52ch;
-  }
-  .sustain-image{
-    position: relative;
-    aspect-ratio: 4/5;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .sustain-image img{
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 1.4s var(--ease);
-  }
-  .sustain-image:hover img{ transform: scale(1.04); }
-  .sustain-image-label{
-    position: absolute; bottom: 16px; left: 16px;
-    color: #fff;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-  }
-  .pillars{
-    margin-top: 24px;
-    display: grid; gap: 2px;
-  }
-  .pillar{
-    padding: 24px 0;
-    border-top: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 20px;
-  }
-  .pillar:last-child{ border-bottom: 1px solid var(--line); }
-  .pillar-icon{
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    border: 1px solid var(--green);
-    display: grid; place-items: center;
-    color: var(--green);
-  }
-  .pillar h4{
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 20px;
-    margin-bottom: 6px;
-  }
-  .pillar p{
-    color: var(--muted);
-    font-size: 15px;
-  }
-
-  /* Community strip below */
-  .community-strip{
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-  .community-card{
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-    aspect-ratio: 4/5;
-  }
-  .community-card img{
-    width:100%; height:100%; object-fit:cover;
-    transition: transform 1s var(--ease);
-  }
-  .community-card:hover img{ transform: scale(1.05); }
-  .community-card::after{
-    content:"";
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.7));
-  }
-  .community-card-content{
-    position: absolute; inset: auto 0 0 0;
-    padding: 24px; color: #fff; z-index: 2;
-  }
-  .community-card-content .kicker{
-    font-size: 11px; text-transform: uppercase;
-    letter-spacing: 0.18em; opacity: .8; margin-bottom: 6px;
-  }
-  .community-card-content h5{
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 1.15;
-  }
-
-  /* --- PROCESS TIMELINE ---------------------------------- */
-  .process{
-    padding: 140px 0 160px;
-    background: var(--ink);
-    color: var(--bg);
-    border-bottom: 1px solid var(--ink);
-  }
-  .process .section-eyebrow{ color: rgba(255,255,255,.5); }
-  .process .section-eyebrow .num{ color: var(--accent-soft); }
-  .process h2{
-    font-size: clamp(40px, 5vw, 76px);
-    margin-bottom: 18px;
-  }
-  .process h2 em{
-    color: var(--accent-soft); font-style: italic;
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-  }
-  .process-lede{
-    color: rgba(255,255,255,.6);
-    font-size: 17px;
-    max-width: 52ch;
-    margin-bottom: 70px;
-  }
-
-  .timeline{
-    position: relative;
-  }
-  .timeline-progress{
-    position: absolute;
-    left: 0; right: 0; top: 38px;
-    height: 1px;
-    background: rgba(255,255,255,.15);
-  }
-  .timeline-progress-fill{
-    position: absolute; left: 0; top: 0;
-    height: 100%;
-    background: var(--accent-soft);
-    width: 0%;
-    transition: width .4s var(--ease);
-  }
-  .timeline-steps{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    position: relative;
-  }
-  .step{
-    cursor: pointer;
-  }
-  .step-dot{
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--ink);
-    border: 1px solid rgba(255,255,255,.3);
-    position: relative;
-    margin: 30px 0 36px;
-    transition: all .4s var(--ease);
-  }
-  .step.active .step-dot,
-  .step:hover .step-dot{
-    background: var(--accent-soft);
-    border-color: var(--accent-soft);
-    box-shadow: 0 0 0 6px rgba(201, 162, 122, 0.15);
-  }
-  .step-num{
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 14px;
-    color: var(--accent-soft);
-    margin-bottom: 8px;
-  }
-  .step h4{
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 26px;
-    margin-bottom: 12px;
-    line-height: 1.15;
-  }
-  .step p{
-    color: rgba(255,255,255,.55);
-    font-size: 14px;
-    transition: color .3s var(--ease);
-  }
-  .step.active p,
-  .step:hover p{ color: rgba(255,255,255,.85); }
-
-  .step-detail{
-    margin-top: 60px;
-    padding: 40px;
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 6px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    align-items: start;
-    min-height: 180px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all .5s var(--ease);
-  }
-  .step-detail.visible{ opacity: 1; transform: translateY(0); }
-  .step-detail .label{
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--accent-soft);
-  }
-  .step-detail .body{
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 22px;
-    line-height: 1.35;
-    letter-spacing: -0.01em;
-  }
-  .step-detail ul{
-    margin-top: 20px;
-    display: flex; flex-wrap: wrap; gap: 8px;
-    list-style: none;
-  }
-  .step-detail ul li{
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    padding: 6px 12px;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 999px;
-    color: rgba(255,255,255,.75);
-  }
-
-  /* --- CONTACT ------------------------------------------- */
-  .contact{
-    padding: 140px 0 120px;
-  }
-  .contact-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-  }
-  .contact h2{
-    font-size: clamp(48px, 6vw, 96px);
-    margin-bottom: 30px;
-  }
-  .contact h2 em{
-    color: var(--accent); font-style: italic;
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-  }
-  .contact-info{
-    margin-top: 40px;
-    display: grid; gap: 28px;
-  }
-  .contact-info .block{
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-  }
-  .contact-info .label{
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-  .contact-info .value{
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 22px;
-    letter-spacing: -0.01em;
-  }
-  .contact-info a.value{
-    text-decoration: none;
-    color: var(--ink);
-    transition: color .3s var(--ease);
-  }
-  .contact-info a.value:hover{ color: var(--accent); }
-
-  form.enquiry{
-    display: grid; gap: 2px;
-  }
-  form.enquiry label{
-    display: block;
-    border-top: 1px solid var(--line);
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-  form.enquiry label:last-of-type{ border-bottom: 1px solid var(--line); }
-  form.enquiry label .label-text{
-    font-size: 11px; text-transform: uppercase;
-    letter-spacing: 0.2em; color: var(--muted);
-    display: flex; justify-content: space-between;
-  }
-  form.enquiry input, form.enquiry textarea, form.enquiry select{
-    width: 100%;
-    background: transparent;
-    border: none;
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 22px;
-    color: var(--ink);
-    padding: 8px 0 0;
-    letter-spacing: -0.01em;
-    resize: none;
-  }
-  form.enquiry input:focus, form.enquiry textarea:focus, form.enquiry select:focus{
-    outline: none;
-  }
-  form.enquiry textarea{ min-height: 80px; }
-  form.enquiry select{ appearance: none; cursor: pointer; }
-  form.enquiry .submit-row{
-    margin-top: 32px;
-    display: flex; justify-content: space-between;
-    align-items: center;
-  }
-  form.enquiry .submit-row small{
-    color: var(--muted); font-size: 12px;
-  }
-
-  /* --- FOOTER -------------------------------------------- */
-  footer{
-    padding: 80px 0 40px;
-    background: var(--ink);
-    color: var(--bg);
-  }
-  .footer-top{
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr;
-    gap: 60px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,.12);
-  }
-  .footer-big{
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: clamp(32px, 3.6vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-  }
-  .footer-big em{
-    color: var(--accent-soft); font-style: italic;
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
-  }
-  footer h5{
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,.5);
-    margin-bottom: 20px;
-    font-weight: 500;
-  }
-  footer ul{ list-style: none; display: grid; gap: 10px; }
-  footer a{
-    color: var(--bg);
-    text-decoration: none;
-    font-size: 15px;
-    transition: color .3s var(--ease);
-  }
-  footer a:hover{ color: var(--accent-soft); }
-  .footer-bottom{
-    margin-top: 40px;
-    display: flex; justify-content: space-between;
-    color: rgba(255,255,255,.45);
-    font-size: 13px;
-    align-items: center;
-  }
-
-  /* --- SCROLL REVEAL ------------------------------------ */
-  .reveal{
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .9s var(--ease), transform .9s var(--ease);
-  }
-  .reveal.in{
-    opacity: 1; transform: translateY(0);
-  }
-  .reveal-delay-1{ transition-delay: .08s; }
-  .reveal-delay-2{ transition-delay: .16s; }
-  .reveal-delay-3{ transition-delay: .24s; }
-
-  /* --- RESPONSIVE ---------------------------------------- */
-
-  /* Tablets and small laptops */
-  @media (max-width: 960px){
-    nav.primary{ display: none; }
-    .menu-toggle{ display: block; }
-    .cta-top{ display:none; }
-
-    header.nav{ padding: 14px 0; }
-    header.nav.scrolled{ padding: 10px 0; }
-
-    .hero{ padding: 110px 0 60px; min-height: auto; }
-    .hero-grid{ grid-template-columns: 1fr; gap: 36px; }
-    .hero-visual{ aspect-ratio: 4/5; order: -1; }
-    .hero-eyebrow{ margin-bottom: 20px; }
-    h1.hero-title{ font-size: clamp(44px, 11vw, 80px); margin-bottom: 24px; }
-    .hero-lede{ font-size: 16px; }
-    .hero-ctas{ margin-top: 28px; }
-    .scroll-hint{ display: none; }
-
-    .stats{ grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
-    .trust{ padding: 40px 0 70px; }
-    .trust-intro{ margin-bottom: 32px; font-size: 12px; }
-
-    .about, .services, .sustain, .process, .contact{ padding: 60px 0; }
-    .about-grid, .about-head, .services-head, .sustain-grid, .contact-grid{
-      grid-template-columns: 1fr; gap: 40px;
-    }
-    .founder{ grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
-    .founder-image{ aspect-ratio: 4/5; }
-    .creds{ grid-template-columns: repeat(2, 1fr); gap: 30px 20px; padding-top: 32px; }
-
-    .service-row{
-      grid-template-columns: 32px 1fr 36px;
-      gap: 14px;
-      padding: 24px 0;
-      align-items: start;
-    }
-    .service-row:hover{ padding-left: 0; }
-    .service-num{ padding-top: 8px; }
-    .service-title{ padding-top: 2px; }
-    .service-desc, .service-tags{
-      grid-column: 2 / 3;
-      margin-top: 10px;
-    }
-    .service-arrow{ align-self: start; margin-top: 6px; }
-
-    .timeline-steps{ grid-template-columns: 1fr; gap: 0; }
-    .timeline-progress{ display:none; }
-    .step{
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-    }
-    .step-dot{ margin: 0 0 12px; }
-    .step-detail{ grid-template-columns: 1fr; padding: 24px; gap: 16px; margin-top: 40px; }
-
-    .community-strip{ grid-template-columns: 1fr; gap: 16px; margin-top: 50px; }
-    .community-card{ aspect-ratio: 16/10; }
-
-    .footer-top{ grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: 40px; }
-    .footer-big{ grid-column: 1 / -1; font-size: clamp(28px, 6vw, 44px); }
-    .footer-bottom{ flex-direction: column; gap: 12px; align-items:flex-start; }
-
-    .service-preview{ display: none; }
-
-    form.enquiry input,
-    form.enquiry textarea,
-    form.enquiry select{ font-size: 18px; }
-  }
-
-  /* Phones */
-  @media (max-width: 600px){
-    :root{ font-size: 15px; }
-    .container, .container-wide{ width: 90vw; }
-
-    .brand{ font-size: 16px; }
-    .brand-mark{ width: 24px; height: 24px; }
-
-    .hero{ padding: 40px 0 50px; }
-    .hero-grid{ gap: 28px; }
-    h1.hero-title{ font-size: clamp(40px, 11.5vw, 56px); }
-    .hero-lede{ font-size: 15px; }
-    .hero-ctas{ gap: 10px; margin-top: 24px; }
-    .btn{ padding: 12px 18px; font-size: 13px; }
-
-    .stats{ grid-template-columns: 1fr 1fr; gap: 24px 16px; }
-    .stat{ padding-top: 20px; }
-    .stat-num{ font-size: clamp(36px, 12vw, 56px); }
-    .stat-label{ font-size: 13px; margin-top: 10px; }
-    .trust{ padding: 50px 0 60px; }
-
-    .about, .services, .sustain, .process, .contact{ padding: 60px 0; }
-    .about-grid, .about-head, .services-head, .sustain-grid, .contact-grid{ gap: 32px; }
-    .about h2, .services h2, .sustain h2, .process h2{
-      font-size: clamp(32px, 8.5vw, 48px);
-    }
-    .contact h2{ font-size: clamp(38px, 11vw, 60px); }
-    .about-intro{ font-size: 16px; }
-    .about-head{ margin-bottom: 50px; }
-
-    /* Founder mobile */
-    .founder{ margin-bottom: 60px; gap: 24px; }
-    .founder-image{ aspect-ratio: 3/4; }
-    .founder-text h3{ font-size: clamp(32px, 9vw, 44px); }
-    .founder-role{ font-size: 16px; margin-bottom: 18px; }
-    .founder-bio{ font-size: 15px; }
-    .founder-bio:last-child{ font-size: 17px; }
-
-    /* Credentials mobile */
-    .creds{ grid-template-columns: 1fr 1fr; gap: 28px 16px; padding-top: 28px; }
-    .cred-num{ font-size: clamp(36px, 12vw, 56px); }
-    .cred-label{ font-size: 12px; margin-top: 10px; }
-
-    .section-eyebrow{ margin-bottom: 24px; font-size: 12px; }
-    .services-head p, .sustain-lede, .process-lede{ font-size: 15px; }
-
-    /* Services. cleaner stacked layout on phones */
-    .service-row{
-      grid-template-columns: 28px 1fr 32px;
-      gap: 12px;
-      padding: 22px 0;
-    }
-    .service-num{ font-size: 16px; padding-top: 6px; }
-    .service-title{ font-size: 22px; }
-    .service-desc{ font-size: 14px; margin-top: 8px; }
-    .service-tags{ margin-top: 8px; }
-    .service-tag{ font-size: 10px; padding: 3px 8px; }
-    .service-arrow{ width: 32px; height: 32px; }
-    .service-arrow svg{ width: 12px; height: 12px; }
-
-    /* Sustainability */
-    .sustain-image{ aspect-ratio: 4/3; }
-    .pillar{ grid-template-columns: 32px 1fr; gap: 16px; padding: 20px 0; }
-    .pillar-icon{ width: 28px; height: 28px; }
-    .pillar-icon svg{ width: 14px; height: 14px; }
-    .pillar h4{ font-size: 18px; }
-    .pillar p{ font-size: 14px; }
-
-    .community-strip{ margin-top: 40px; }
-    .community-card{ aspect-ratio: 4/3; }
-    .community-card-content{ padding: 18px; }
-    .community-card-content h5{ font-size: 18px; }
-
-    /* Process */
-    .process{ padding: 70px 0 80px; }
-    .step h4{ font-size: 22px; }
-    .step p{ font-size: 13px; }
-    .step-detail{ padding: 20px; margin-top: 30px; }
-    .step-detail .body{ font-size: 17px; }
-    .step-detail ul li{ font-size: 11px; padding: 5px 10px; }
-
-    /* Contact */
-    .contact-info .value{ font-size: 18px; }
-    form.enquiry input,
-    form.enquiry textarea,
-    form.enquiry select{ font-size: 17px; padding-top: 6px; }
-    form.enquiry .submit-row{
-      flex-direction: column;
-      align-items: stretch;
-      gap: 14px;
-      margin-top: 24px;
-    }
-    form.enquiry .submit-row small{ order: 2; text-align: center; }
-    form.enquiry .submit-row .btn{ justify-content: center; }
-
-    /* Footer */
-    footer{ padding: 60px 0 30px; }
-    .footer-top{ grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
-    .footer-big{ font-size: clamp(26px, 7.5vw, 36px); }
-    footer h5{ margin-bottom: 14px; }
-    footer a{ font-size: 14px; }
-    .footer-bottom{ font-size: 12px; margin-top: 28px; }
-
-    /* Mobile menu */
-    .mobile-menu{ padding: 90px 8vw 40px; gap: 12px; }
-    .mobile-menu a{ font-size: 30px; padding: 10px 0; }
-  }
-
-  /* Mobile menu */
-  .mobile-menu{
-    position: fixed;
-    inset: 0;
-    background: var(--bg);
-    z-index: 40;
-    padding: 40px 5vw 40px;
-    transform: translateY(-100%);
-    transition: transform .5s var(--ease);
-    display: flex; flex-direction: column;
-    gap: 20px;
-  }
-  .mobile-menu.open{ transform: translateY(0); }
-  .mobile-menu a{
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 36px;
-    color: var(--ink);
-    text-decoration: none;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    *, *::before, *::after{
-      animation-duration: .01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: .01ms !important;
-    }
-  }
-</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bart Mining - Mining Consultancy &amp; Gold Processing Plants | Tanzania &amp; Africa</title>
+<meta name="description" content="Bart Mining is a principal-led mining consultancy and equipment supplier in Dar es Salaam, Tanzania. Mineral exploration, geological survey, mine planning, gold processing plants and safety equipment across East &amp; Southern Africa." />
+<meta name="keywords" content="mining consultancy Tanzania, mining services Tanzania, mineral exploration services, gold processing plants Dar es Salaam, mining equipment Tanzania, mine planning Africa, geological survey East Africa" />
+<link rel="canonical" href="https://www.bartmining.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.bartmining.com/" />
+<meta property="og:title" content="Bart Mining - Mining Consultancy &amp; Gold Processing Plants" />
+<meta property="og:description" content="Principal-led mining consultancy and equipment supply across East &amp; Southern Africa. Resource development done responsibly." />
+<meta property="og:image" content="https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="robots" content="index, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
 </head>
-<body>
+<body id="top">
 
-<!-- ============================ NAV ============================ -->
-<header class="nav" id="nav">
-  <div class="container row">
-    <a href="#top" class="brand">
-      <div class="brand-mark">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 34 L20 6 L36 34 Z" stroke="currentColor" stroke-width="1.5" />
-          <path d="M12 34 L20 20 L28 34" stroke="currentColor" stroke-width="1.5" />
-          <circle cx="20" cy="14" r="1.6" fill="currentColor"/>
-        </svg>
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" data-screen-label="Hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal">Resource development, done responsibly</span>
+      <h1 class="reveal" data-delay="1">Responsible <span class="grad">resource<br />development.</span></h1>
+      <p class="hero-lead reveal" data-delay="2">End-to-end mining consultancy and equipment supply - principal-led from first outcrop to final rehabilitation. Hands in the rock, not just theory on a slide deck.</p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a href="services.html" class="btn btn-gold">Explore our services
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#method" class="btn btn-ghost">How we work</a>
       </div>
-      <span>Bart Mining</span>
-    </a>
-    <nav class="primary">
-      <a href="#about" data-section="about">About</a>
-      <a href="#services" data-section="services">Services</a>
-      <a href="#sustain" data-section="sustain">Sustainability</a>
-      <a href="#process" data-section="process">Process</a>
-      <a href="#contact" data-section="contact">Contact</a>
-    </nav>
-    <a href="#contact" class="cta-top">
-      Start a project
-      <span class="arrow">→</span>
-    </a>
-    <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
-      <span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#sustain">Sustainability</a>
-  <a href="#process">Process</a>
-  <a href="#contact">Contact</a>
-</div>
-
-<!-- ============================ HERO ============================ -->
-<section class="hero" id="top">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <h1 class="display hero-title">
-          <span class="line"><span>Responsible</span></span>
-          <span class="line"><span>resource</span></span>
-          <span class="line"><span><em class="display-italic">development.</em></span></span>
-        </h1>
-        <p class="hero-lede">
-          We advise mining companies, governments and investors on how to find,
-          plan, build and operate mines, with the environment and host communities
-          treated as partners, not footnotes.
-        </p>
-        <div class="hero-ctas">
-          <a href="#services" class="btn btn-primary">Our services <span>→</span></a>
-          <a href="#sustain" class="btn btn-ghost">Our approach</a>
-        </div>
-      </div>
-      <div class="hero-visual" id="heroVisual">
-        <div class="ph-img" id="heroImg"></div>
-        <div class="hero-meta">Active projects &nbsp;&middot;&nbsp; 23</div>
+      <div class="hero-meta reveal" data-delay="4">
+        <div class="hm"><div class="num" data-count="25" data-suffix="+">0</div><div class="lbl">Years in the field</div></div>
+        <div class="div"></div>
+        <div class="hm"><div class="num" data-count="12" data-suffix="+">0</div><div class="lbl">Countries worked</div></div>
+        <div class="div"></div>
+        <div class="hm"><div class="num" data-count="6">0</div><div class="lbl">Continents</div></div>
       </div>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <span class="line"></span>
-  </div>
-</section>
-
-<!-- ============================ STATS ============================ -->
-<section class="trust">
-  <div class="container">
-    <div class="trust-intro reveal">A record measured in decades, not quarters</div>
-    <div class="stats">
-      <div class="stat reveal">
-        <div class="stat-num"><span class="count" data-target="25">0</span><span class="suffix">+</span></div>
-        <div class="stat-label">Years of hands-on mining experience</div>
-      </div>
-      <div class="stat reveal reveal-delay-1">
-        <div class="stat-num"><span class="count" data-target="12">0</span><span class="suffix">+</span></div>
-        <div class="stat-label">Countries delivered in</div>
-      </div>
-      <div class="stat reveal reveal-delay-2">
-        <div class="stat-num"><span class="count" data-target="6">0</span></div>
-        <div class="stat-label">Continents on the ground</div>
-      </div>
-      <div class="stat reveal reveal-delay-3">
-        <div class="stat-num"><span class="count" data-target="0" data-final="zero">0</span></div>
-        <div class="stat-label">Corners cut on safety or community</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ ABOUT ============================ -->
-<section class="about" id="about">
-  <div class="container">
-
-    <!-- Section header -->
-    <!-- Founder block -->
-    <div class="founder">
-      <div class="founder-image reveal">
-        <img src="https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1200"
-             alt="Exploration site in the field" />
-        <div class="founder-image-label">In the field &middot; Exploration</div>
-      </div>
-      <div class="founder-text reveal reveal-delay-1">
-        <div class="founder-kicker">Founder</div>
-        <h3 class="display">Bartholomew Ambrose</h3>
-        <p class="founder-role">Exploration Manager &middot; General Manager &middot; Operator</p>
-        <p class="founder-bio">
-          Bart Mining Consultancy was founded by Mr Bartholomew who spent
-          decades working with some of the biggest mining projects around
-          the world, not just writing about them.
-        </p>
-        <p class="founder-bio">
-          He also has Decades leading exploration and operations for Resolute, Barrick
-          and other major mining companies across Brazil, Liberia, DRC,
-          Australia, Canada and beyond.
-        </p>
-        <p class="founder-bio">
-          Hands in the rock, not just theory on a slide deck.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================ SERVICES ============================ -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="services-head">
-      <div>
-        <div class="section-eyebrow reveal"><span class="num">03</span>Services</div>
-        <h2 class="display reveal">Five disciplines,<br>one accountable team.</h2>
-      </div>
-      <p class="reveal reveal-delay-1">
-        Brief one principal. Have a coherent programme run end to end,
-        or call us for any single link in the chain.
-      </p>
-    </div>
-
-    <div class="services-list">
-      <!-- 01 -->
-      <a class="service-row" href="#contact"
->
-        <div class="service-num">01</div>
-        <div class="service-title">Geological Survey</div>
-        <div class="service-desc">Site assessment, core sampling, resource
-          estimation and JORC-compliant reporting.</div>
-        <div class="service-tags">
-          <span class="service-tag">Mapping</span>
-          <span class="service-tag">Sampling</span>
-          <span class="service-tag">Reporting</span>
-        </div>
-        <div class="service-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M7 17L17 7M17 7H8M17 7V16"/>
-          </svg>
-        </div>
-      </a>
-      <!-- 02 -->
-      <a class="service-row" href="#contact"
->
-        <div class="service-num">02</div>
-        <div class="service-title">Exploration</div>
-        <div class="service-desc">Prospecting programmes, target identification,
-          drilling campaigns and resource definition.</div>
-        <div class="service-tags">
-          <span class="service-tag">Prospecting</span>
-          <span class="service-tag">Drilling</span>
-          <span class="service-tag">Modelling</span>
-        </div>
-        <div class="service-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M7 17L17 7M17 7H8M17 7V16"/>
-          </svg>
-        </div>
-      </a>
-      <!-- 03 -->
-      <a class="service-row" href="#contact"
->
-        <div class="service-num">03</div>
-        <div class="service-title">Mine Planning &amp; Design</div>
-        <div class="service-desc">Feasibility studies, pit and underground design,
-          development roadmaps and closure planning.</div>
-        <div class="service-tags">
-          <span class="service-tag">Feasibility</span>
-          <span class="service-tag">Scheduling</span>
-          <span class="service-tag">Closure</span>
-        </div>
-        <div class="service-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M7 17L17 7M17 7H8M17 7V16"/>
-          </svg>
-        </div>
-      </a>
-      <!-- 04 -->
-      <a class="service-row" href="#contact"
->
-        <div class="service-num">04</div>
-        <div class="service-title">Mining Machinery Supply</div>
-        <div class="service-desc">Excavators, haul trucks, drill rigs, crushers and
-          conveyors. Specified, procured, commissioned.</div>
-        <div class="service-tags">
-          <span class="service-tag">Haulage</span>
-          <span class="service-tag">Drilling rigs</span>
-          <span class="service-tag">Crushing</span>
-        </div>
-        <div class="service-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M7 17L17 7M17 7H8M17 7V16"/>
-          </svg>
-        </div>
-      </a>
-      <!-- 05 -->
-      <a class="service-row" href="#contact"
->
-        <div class="service-num">05</div>
-        <div class="service-title">Safety Equipment &amp; Gear</div>
-        <div class="service-desc">PPE, gas detection, self-rescuers, fall arrest
-          systems and underground refuge chambers.</div>
-        <div class="service-tags">
-          <span class="service-tag">PPE</span>
-          <span class="service-tag">Gas detection</span>
-          <span class="service-tag">Rescue</span>
-        </div>
-        <div class="service-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M7 17L17 7M17 7H8M17 7V16"/>
-          </svg>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ SUSTAINABILITY ============================ -->
-<section class="sustain" id="sustain">
-  <div class="container">
-    <div class="sustain-grid">
-      <div>
-        <div class="section-eyebrow reveal"><span class="num">04</span>Environment &amp; Community</div>
-        <h2 class="display reveal">The ground you<br>mine belongs to<br>someone. <em>We remember that.</em></h2>
-        <p class="sustain-lede reveal reveal-delay-1">
-          Responsible mining isn't a marketing line, it's a ledger that has to
-          balance at the end of the project. Land rehabilitated, water
-          returned clean, schools still running, workers still healthy.
-        </p>
-        <div class="pillars">
-          <div class="pillar reveal">
-            <div class="pillar-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 2v20M5 8c0-3 3-5 7-5s7 2 7 5c0 2-1 3-3 3H8c-2 0-3-1-3-3z"/>
-              </svg>
-            </div>
-            <div>
-              <h4>Land &amp; water stewardship</h4>
-              <p>Progressive rehabilitation plans written into every mine design, not bolted on at closure. Acid drainage management, water balance modelling, tailings designed to international standards.</p>
-            </div>
-          </div>
-          <div class="pillar reveal reveal-delay-1">
-            <div class="pillar-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 21v-7a4 4 0 014-4h10a4 4 0 014 4v7M12 3v7M8 6h8"/>
-              </svg>
-            </div>
-            <div>
-              <h4>Supporting local schools</h4>
-              <p>We fund classroom construction, teacher support and scholarships in the communities around the projects we work on. Focus on STEM and vocational training for local youth.</p>
-            </div>
-          </div>
-          <div class="pillar reveal reveal-delay-2">
-            <div class="pillar-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>
-              </svg>
-            </div>
-            <div>
-              <h4>Local hiring &amp; procurement</h4>
-              <p>Local roles filled locally wherever possible. We advise clients on supplier development so the supply chain benefits the region, not just the shareholders.</p>
-            </div>
-          </div>
-          <div class="pillar reveal reveal-delay-3">
-            <div class="pillar-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M4 20l6-6M20 4l-6 6M14 4h6v6M10 20H4v-6"/>
-              </svg>
-            </div>
-            <div>
-              <h4>Free, prior and informed consent</h4>
-              <p>We will not advise projects that proceed without genuine community consent. We help clients design consultation processes that meet ICMM Performance Expectation 09.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sustain-image reveal reveal-delay-1">
-        <img src="https://images.pexels.com/photos/5487075/pexels-photo-5487075.jpeg?auto=compress&cs=tinysrgb&w=1200"
-             alt="Volunteers planting trees as part of a reforestation initiative" />
-        <div class="sustain-image-label">Reforestation programme &middot; Tanzania</div>
-      </div>
-    </div>
-
-    <div class="community-strip">
-      <div class="community-card reveal">
-        <img src="https://images.pexels.com/photos/28593055/pexels-photo-28593055.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Schoolchildren in classroom">
-        <div class="community-card-content">
-          <div class="kicker">Community &middot; Schools</div>
-          <h5>Classrooms and scholarships in the communities we work in</h5>
-        </div>
-      </div>
-      <div class="community-card reveal reveal-delay-1">
-        <img src="https://images.pexels.com/photos/6572780/pexels-photo-6572780.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Schoolchildren at community sports day">
-        <div class="community-card-content">
-          <div class="kicker">Community &middot; Youth</div>
-          <h5>Vocational training pipelines in every region we operate</h5>
-        </div>
-      </div>
-      <div class="community-card reveal reveal-delay-2">
-        <img src="https://images.pexels.com/photos/5487075/pexels-photo-5487075.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Community tree planting">
-        <div class="community-card-content">
-          <div class="kicker">Environment &middot; Rehab</div>
-          <h5>Progressive rehabilitation built into every mine we advise</h5>
+    <div class="hero-visual reveal" data-delay="2">
+      <div class="hero-frame" id="heroFrame" data-tilt>
+        <img src="https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Mining operation" />
+        <div class="hero-badge b2">
+          <div class="bt">Now advising</div>
+          <div class="bv"><span class="dot green"></span>3 live projects</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ PROCESS ============================ -->
-<section class="process" id="process">
-  <div class="container">
-    <div class="section-eyebrow reveal"><span class="num">05</span>How we work</div>
-    <h2 class="display reveal">From first boulder<br>to final rehabilitation,<br><em>we walk it with you.</em></h2>
-    <p class="process-lede reveal reveal-delay-1">
-      Four phases, one principal-led team. Click a phase to see what's
-      actually involved.
-    </p>
-
-    <div class="timeline">
-      <div class="timeline-progress">
-        <div class="timeline-progress-fill" id="progressFill"></div>
+<!-- ===== MARQUEE ===== -->
+<section class="marquee-sec">
+  <div class="wrap">
+    <p class="marquee-label">Leadership experience across the world's major operators</p>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Resolute Mining</span><span>•</span><span>Barrick Gold</span><span>•</span><span>Brazil</span><span>•</span><span>Liberia</span><span>•</span><span>DRC</span><span>•</span><span>Australia</span><span>•</span><span>Canada</span><span>•</span><span>Tanzania</span><span>•</span>
+        <span>Resolute Mining</span><span>•</span><span>Barrick Gold</span><span>•</span><span>Brazil</span><span>•</span><span>Liberia</span><span>•</span><span>DRC</span><span>•</span><span>Australia</span><span>•</span><span>Canada</span><span>•</span><span>Tanzania</span><span>•</span>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="timeline-steps">
-        <div class="step active" data-step="1">
-          <div class="step-dot"></div>
-          <div class="step-num">Phase 01</div>
-          <h4>Discover</h4>
-          <p>Geological survey, target identification, initial resource estimation.</p>
-        </div>
-        <div class="step" data-step="2">
-          <div class="step-dot"></div>
-          <div class="step-num">Phase 02</div>
-          <h4>Define</h4>
-          <p>Feasibility studies, mine plan, environmental and social baselines.</p>
-        </div>
-        <div class="step" data-step="3">
-          <div class="step-dot"></div>
-          <div class="step-num">Phase 03</div>
-          <h4>Build</h4>
-          <p>Equipment supply, safety systems, workforce &amp; community setup.</p>
-        </div>
-        <div class="step" data-step="4">
-          <div class="step-dot"></div>
-          <div class="step-num">Phase 04</div>
-          <h4>Operate &amp; Close</h4>
-          <p>Ongoing advisory, progressive rehabilitation, post-closure monitoring.</p>
-        </div>
+<!-- ===== SERVICES ===== -->
+<section class="sec" id="services" data-screen-label="Services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Full-lifecycle mining expertise, under one principal.</h2>
+      <p>Five integrated capabilities that carry a deposit from the first geological hunch through to a responsibly closed mine.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+    <div style="margin-top:34px" class="reveal"><a href="services.html" class="btn btn-ink">All services in detail
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ===== EQUIPMENT ===== -->
+<section class="sec equip" id="equipment" data-screen-label="Equipment">
+  <div class="orb" style="width:520px;height:520px;background:radial-gradient(circle,rgba(207,160,85,.22),transparent 65%);top:-200px;right:-160px;"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Mining Machinery &amp; Processing Plants</span>
+      <h2>From exploration kit to complete gold-recovery systems.</h2>
+      <p>We source, specify, supply and commission specialised mineral-processing machinery tailored to site conditions and production targets.</p>
+    </div>
+    <div class="equip-grid" id="equipGrid"></div>
+    <div style="margin-top:34px" class="reveal"><a href="products.html" class="btn btn-gold">Browse the full product range
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ===== METHOD ===== -->
+<section class="sec" id="method" data-screen-label="Method">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Operating methodology</span>
+      <h2>Four phases. One principal accountable end to end.</h2>
+      <p>A disciplined path from discovery to closure - every phase shipping concrete deliverables, not just reports.</p>
+    </div>
+    <div class="phases" id="phases"></div>
+  </div>
+</section>
+
+<!-- ===== FOUNDER ===== -->
+<section class="sec founder" id="founder" data-screen-label="Founder">
+  <div class="wrap founder-grid">
+    <div class="founder-img reveal">
+      <img src="https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Exploration site in the field" />
+      <div class="tagchip"><div class="q">“Hands in the rock, not just theory on a slide deck.”</div></div>
+    </div>
+    <div class="reveal" data-delay="1">
+      <span class="eyebrow">The founder</span>
+      <blockquote>Decades on the ground across <span class="grad">six continents</span> - exploration, operations and the hard calls between them.</blockquote>
+      <p style="color:var(--ink-2);font-size:17px;">Bartholomew Ambrose has led exploration and operated mines for major producers, working deposits from Brazilian rainforest to Canadian shield. He brings that operator's judgement to every client engagement - principal-led, never delegated to a junior.</p>
+      <div class="career">
+        <span class="c">Resolute Mining</span>
+        <span class="c">Barrick Gold</span>
+        <span class="c">Brazil</span>
+        <span class="c">Liberia</span>
+        <span class="c">DRC</span>
+        <span class="c">Australia</span>
+        <span class="c">Canada</span>
       </div>
+      <div style="margin-top:28px"><a href="about.html" class="btn btn-ghost">More about Bart
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
 
-      <div class="step-detail visible" id="stepDetail">
-        <div>
-          <div class="label">Phase 01 &middot; Discover</div>
-        </div>
-        <div>
-          <div class="body" id="stepBody">
-            Walk-over surveys, geochemical and geophysical sampling, structural
-            mapping. We build a defensible geological model before a single
-            rig is moved to site.
-          </div>
-          <ul id="stepTags">
-            <li>Desktop study</li>
-            <li>Field mapping</li>
-            <li>Sampling</li>
-            <li>Resource estimate</li>
-            <li>JORC report</li>
-          </ul>
+<!-- ===== STATS ===== -->
+<section class="sec stats" data-screen-label="Stats">
+  <div class="ring"></div>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="n" data-count="25" data-suffix="+">0</div><div class="l">Years mining experience</div></div>
+      <div class="stat reveal" data-delay="1"><div class="n" data-count="12" data-suffix="+">0</div><div class="l">Countries worked in</div></div>
+      <div class="stat reveal" data-delay="2"><div class="n" data-count="6">0</div><div class="l">Continents worked on</div></div>
+      <div class="stat reveal" data-delay="3"><div class="n" data-count="0">0</div><div class="l gold">Safety corners cut</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUSTAINABILITY ===== -->
+<section class="sec" id="sustainability" data-screen-label="Sustainability">
+  <div class="wrap">
+    <div class="sus-hero">
+      <div class="reveal">
+        <span class="eyebrow">Sustainability &amp; ESG</span>
+        <p class="sus-quote">The ground you mine <span class="grad">belongs to someone.</span> We remember that.</p>
+        <p style="color:var(--ink-2);font-size:17px;margin-top:22px;">Responsible mining means land that recovers, water that stays clean, workers who go home healthy, and communities that are better off long after the last truck leaves.</p>
+        <div style="margin-top:26px"><a href="sustainability.html" class="btn btn-ink">Our ESG approach
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+      <div class="sus-img reveal" data-delay="1">
+        <img src="https://images.pexels.com/photos/5487075/pexels-photo-5487075.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Volunteers planting trees as part of a reforestation initiative" />
+      </div>
+    </div>
+    <div class="pillars" id="pillars"></div>
+  </div>
+</section>
+
+<!-- ===== COVERAGE / REGIONS ===== -->
+<section class="sec regions" id="regionsMount" data-screen-label="Coverage"></section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="sec testi" data-screen-label="Testimonials">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">Trusted by</span>
+      <h2>Mining companies, governments and investors.</h2>
+    </div>
+    <div class="testi-stage reveal" data-delay="1">
+      <div id="testiCards"></div>
+      <div class="testi-nav" id="testiNav"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-sec" id="contact" data-screen-label="CTA">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="orb-cta oc1"></div>
+      <div class="orb-cta oc2"></div>
+      <div class="cta-inner">
+        <span class="eyebrow center" style="color:var(--gold-2);justify-content:center;">Let's talk</span>
+        <h2 style="margin-top:18px;">Let's build something <span class="grad">worth leaving behind.</span></h2>
+        <p>Whether you're proving a deposit, planning a mine, sourcing a processing plant or evaluating a project - start with a conversation with the principal.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-gold">Start a project
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="services.html" class="btn btn-ghost">View services</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ CONTACT ============================ -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        <div class="section-eyebrow reveal"><span class="num">06</span>Get in touch</div>
-        <h2 class="display reveal">Let's build<br>something <em>worth</em><br>leaving behind.</h2>
-        <div class="contact-info">
-          <div class="block reveal">
-            <div class="label">General enquiries</div>
-            <a class="value" href="mailto:hello@aspirescapital.com">hello@aspirescapital.com</a>
-          </div>
-          <div class="block reveal reveal-delay-1">
-            <div class="label">Headquarters</div>
-            <div class="value">Dar es Salaam<br>Tanzania</div>
-          </div>
-        </div>
-      </div>
+</main>
 
-      <form class="enquiry reveal reveal-delay-1" onsubmit="event.preventDefault(); this.querySelector('.submit-row small').textContent='Thanks, we\'ll be in touch within two working days.'; this.reset();">
-        <label>
-          <span class="label-text"><span>Your name</span><span>Required</span></span>
-          <input type="text" name="name" placeholder="Jane Sinclair" required>
-        </label>
-        <label>
-          <span class="label-text"><span>Email</span><span>Required</span></span>
-          <input type="email" name="email" placeholder="jane@company.com" required>
-        </label>
-        <label>
-          <span class="label-text"><span>Organisation</span><span>Optional</span></span>
-          <input type="text" name="org" placeholder="Company or institution">
-        </label>
-        <label>
-          <span class="label-text"><span>How can we help?</span><span>Select one</span></span>
-          <select name="service" required>
-            <option value="">Choose a service…</option>
-            <option>Geological survey</option>
-            <option>Exploration programme</option>
-            <option>Mine planning &amp; design</option>
-            <option>Machinery supply</option>
-            <option>Safety equipment</option>
-            <option>Something else</option>
-          </select>
-        </label>
-        <label>
-          <span class="label-text"><span>Tell us about the project</span><span>Brief is fine</span></span>
-          <textarea name="message" placeholder="A few lines about what you're working on, where, and when you'd like to start." required></textarea>
-        </label>
-        <div class="submit-row">
-          <small>We reply within two working days.</small>
-          <button type="submit" class="btn btn-primary">Send enquiry <span>→</span></button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ FOOTER ============================ -->
-<footer>
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-big">
-        Resource development<br>done <em>responsibly.</em><br>Built on experience.
-      </div>
-      <div>
-        <h5>Services</h5>
-        <ul>
-          <li><a href="#services">Geological survey</a></li>
-          <li><a href="#services">Exploration</a></li>
-          <li><a href="#services">Mine planning</a></li>
-          <li><a href="#services">Machinery supply</a></li>
-          <li><a href="#services">Safety &amp; PPE</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#sustain">Sustainability</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:hello@aspirescapital.com">hello@aspirescapital.com</a></li>
-          <li><a href="#contact">Dar es Salaam, Tanzania</a></li>
-          <li><a href="#contact">Enquiries</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>&copy; 2026 Bart Mining Consultancy &middot; Dar es Salaam, Tanzania</div>
-      <div>Privacy &middot; Terms &middot; Modern Slavery Statement</div>
-    </div>
-  </div>
-</footer>
-
-<!-- ============================ SCRIPT ============================ -->
-<script>
-(function(){
-  // ---- Sticky nav ----
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  // ---- Mobile menu ----
-  const mt = document.getElementById('menuToggle');
-  const mm = document.getElementById('mobileMenu');
-  mt && mt.addEventListener('click', () => mm.classList.toggle('open'));
-  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mm.classList.remove('open')));
-
-  // ---- Scroll reveal ----
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(r => io.observe(r));
-
-  // ---- Count-up stats ----
-  const counts = document.querySelectorAll('.count');
-  const countIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = parseInt(el.dataset.target, 10);
-      const final = el.dataset.final;
-      if (final === 'zero'){ el.textContent = '0'; countIO.unobserve(el); return; }
-      const duration = 1400;
-      const start = performance.now();
-      function tick(now){
-        const p = Math.min(1, (now - start) / duration);
-        // ease-out-cubic
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.floor(eased * target).toString();
-        if (p < 1) requestAnimationFrame(tick);
-        else el.textContent = target.toString();
-      }
-      requestAnimationFrame(tick);
-      countIO.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  counts.forEach(c => countIO.observe(c));
-
-  // ---- Hero parallax ----
-  const heroImg = document.getElementById('heroImg');
-  let latestY = 0, ticking = false;
-  function onScroll(){
-    latestY = window.scrollY;
-    if (!ticking){
-      requestAnimationFrame(() => {
-        // only apply when hero is on-screen
-        if (latestY < window.innerHeight * 1.2){
-          heroImg.style.transform = `translateY(${latestY * 0.22}px) scale(1.08)`;
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // ---- Service preview removed per request ----
-
-  // ---- Process timeline (interactive) ----
-  const stepData = {
-    1: {
-      label: 'Phase 01 · Discover',
-      body: "Walk-over surveys, geochemical and geophysical sampling, structural mapping. We build a defensible geological model before a single rig is moved to site.",
-      tags: ['Desktop study','Field mapping','Sampling','Resource estimate','JORC report']
-    },
-    2: {
-      label: 'Phase 02 · Define',
-      body: "Pre-feasibility and feasibility studies, detailed mine design, and environmental and social baselines. The phase where a deposit becomes a plan that banks, regulators and host communities can all sign off on.",
-      tags: ['Feasibility','Mine design','ESIA','Community baseline','Financial model']
-    },
-    3: {
-      label: 'Phase 03 · Build',
-      body: "Equipment specification and procurement, safety systems commissioning, workforce recruitment and training, and the community programmes that will run alongside the operation for its entire life.",
-      tags: ['Procurement','Commissioning','Workforce','PPE rollout','Community programmes']
-    },
-    4: {
-      label: 'Phase 04 · Operate & Close',
-      body: "Continuous advisory on production, safety and environmental performance, then, when the time comes, the rehabilitation plan we wrote in phase two, executed and monitored for decades after the last truck leaves.",
-      tags: ['Operations audit','Rehab','Water monitoring','Community transition','Post-closure']
-    }
-  };
-
-  const steps = document.querySelectorAll('.step');
-  const progressFill = document.getElementById('progressFill');
-  const stepDetail = document.getElementById('stepDetail');
-  const stepLabel = stepDetail.querySelector('.label');
-  const stepBody = document.getElementById('stepBody');
-  const stepTags = document.getElementById('stepTags');
-
-  function activateStep(n){
-    steps.forEach(s => s.classList.toggle('active', s.dataset.step == n));
-    const data = stepData[n];
-    // progress bar: 25/50/75/100
-    progressFill.style.width = (n * 25) + '%';
-    // fade detail
-    stepDetail.classList.remove('visible');
-    setTimeout(() => {
-      stepLabel.textContent = data.label;
-      stepBody.textContent = data.body;
-      stepTags.innerHTML = data.tags.map(t => `<li>${t}</li>`).join('');
-      stepDetail.classList.add('visible');
-    }, 250);
-  }
-  steps.forEach(s => {
-    s.addEventListener('click', () => activateStep(s.dataset.step));
-    s.addEventListener('mouseenter', () => activateStep(s.dataset.step));
-  });
-  // initialize to step 1
-  activateStep(1);
-
-  // ---- Active section highlight in nav ----
-  const navLinks = document.querySelectorAll('nav.primary a[data-section]');
-  const sections = ['about','services','sustain','process','contact']
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-  const navIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        const id = e.target.id;
-        navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
-      }
-    });
-  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
-  sections.forEach(s => navIO.observe(s));
-})();
-</script>
-
+<script src="assets/app.js"></script>
 </body>
 </html>
