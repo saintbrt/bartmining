@@ -8,7 +8,7 @@
 
   var EMAIL = "hello@bartmining.com";
   var SITE = "https://www.bartmining.com";
-  var HOME = "index.html";
+  var HOME = "/";
 
   function ico(d) {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + d + "</svg>";
@@ -119,12 +119,12 @@
      SHARED CHROME (nav + footer) - no "Consultancy" sub
      =================================================== */
   var PAGES = [
-    { label: "Services", href: "services.html" },
-    { label: "Products", href: "products.html" },
-    { label: "Insights", href: "insights/" },
-    { label: "About", href: "about.html" },
-    { label: "Sustainability", href: "sustainability.html" },
-    { label: "Contact", href: "contact.html" }
+    { label: "Services", href: "/services.html" },
+    { label: "Products", href: "/products.html" },
+    { label: "Insights", href: "/insights/" },
+    { label: "About", href: "/about.html" },
+    { label: "Sustainability", href: "/sustainability.html" },
+    { label: "Contact", href: "/contact.html" }
   ];
   var here = decodeURIComponent((location.pathname.split("/").pop() || "").toLowerCase());
   function isActive(href) { return decodeURIComponent(href.toLowerCase()) === here; }
@@ -142,8 +142,8 @@
       '<header class="nav" id="nav"><div class="wrap nav-inner">' + brandLockup() +
         '<nav class="nav-links" id="navLinks">' + links + "</nav>" +
         '<div class="nav-cta">' +
-          '<a href="contact.html" class="btn btn-ghost">Talk to us</a>' +
-          '<a href="contact.html" class="btn btn-gold">Start a project ' + arrow() + "</a>" +
+          '<a href="/contact.html" class="btn btn-ghost">Talk to us</a>' +
+          '<a href="/contact.html" class="btn btn-gold">Start a project ' + arrow() + "</a>" +
           '<button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>' +
         "</div></div></header>"
     );
@@ -152,27 +152,27 @@
 
   function buildFooter() {
     var regionLinks = ["Tanzania", "Kenya", "Zambia", "Zimbabwe", "South Africa", "Mozambique", "DR Congo"]
-      .map(function (c) { return '<li><a href="contact.html">Mining services in ' + c + "</a></li>"; }).join("");
+      .map(function (c) { return '<li><a href="/contact.html">Mining services in ' + c + "</a></li>"; }).join("");
     var f = el(
       '<footer class="footer"><div class="wrap"><div class="footer-grid">' +
         "<div>" + brandLockup() +
           '<p class="footer-blurb">Resource development done responsibly. Bart Mining advises mining companies, governments and investors across the full mine lifecycle - exploration, mine planning, processing plants and safety, throughout East & Southern Africa.</p></div>' +
         '<div><h5>Services</h5><ul>' +
-          '<li><a href="services.html">Geological Survey</a></li>' +
-          '<li><a href="services.html">Mineral Exploration</a></li>' +
-          '<li><a href="services.html">Mine Planning &amp; Design</a></li>' +
-          '<li><a href="products.html">Machinery &amp; Plants</a></li>' +
-          '<li><a href="services.html">Safety Equipment</a></li></ul></div>' +
+          '<li><a href="/services.html">Geological Survey</a></li>' +
+          '<li><a href="/services.html">Mineral Exploration</a></li>' +
+          '<li><a href="/services.html">Mine Planning &amp; Design</a></li>' +
+          '<li><a href="/products.html">Machinery &amp; Plants</a></li>' +
+          '<li><a href="/services.html">Safety Equipment</a></li></ul></div>' +
         '<div><h5>Knowledge Center</h5><ul>' +
-          '<li><a href="insights/">All Articles</a></li>' +
-          '<li><a href="insights/gold-exploration-tanzania.html">Gold Exploration Tanzania</a></li>' +
-          '<li><a href="insights/future-mining-east-africa.html">Future of Mining 2025–2030</a></li>' +
-          '<li><a href="insights/tags/east-africa.html">East Africa Hub</a></li>' +
+          '<li><a href="/insights/">All Articles</a></li>' +
+          '<li><a href="/insights/gold-exploration-tanzania.html">Gold Exploration Tanzania</a></li>' +
+          '<li><a href="/insights/future-mining-east-africa.html">Future of Mining 2025–2030</a></li>' +
+          '<li><a href="/insights/tags/east-africa.html">East Africa Hub</a></li>' +
         '</ul></div>' +
         '<div><h5>Regions</h5><ul>' + regionLinks + "</ul></div>" +
         '<div><h5>Headquarters</h5><address class="addr">Mwanza<br/>Tanzania<br/><br/>' +
           '<a href="mailto:' + EMAIL + '">' + EMAIL + "</a></address>" +
-          '<p style="margin-top:14px"><a href="about.html" style="color:var(--ink-2);font-size:14px">About &amp; Founder</a> · <a href="sustainability.html" style="color:var(--ink-2);font-size:14px">Sustainability</a></p></div>' +
+          '<p style="margin-top:14px"><a href="/about.html" style="color:var(--ink-2);font-size:14px">About &amp; Founder</a> · <a href="/sustainability.html" style="color:var(--ink-2);font-size:14px">Sustainability</a></p></div>' +
       '</div><div class="footer-bottom">' +
         '<p>© <span id="year"></span> Bart Mining. Resource development done responsibly.</p>' +
         '<p class="mono">Mwanza · 2° 31′ S</p>' +
@@ -208,7 +208,7 @@
           "slogan": "Resource development done responsibly.",
           "description": "Mining consultancy and equipment supply across East & Southern Africa - mineral exploration, geological survey, mine planning, gold processing plants and safety equipment. Principal-led by Bartholomew Ambrose.",
           "founder": { "@type": "Person", "name": "Bartholomew Ambrose", "jobTitle": "Founder, Exploration Manager & Mining Operator" },
-          "address": { "@type": "PostalAddress", "addressLocality": "Dar es Salaam", "addressCountry": "Tanzania" },
+          "address": { "@type": "PostalAddress", "addressLocality": "Mwanza", "addressCountry": "Tanzania" },
           "areaServed": areaServed,
           "knowsAbout": allServices,
           "makesOffer": SERVICES.map(function (s) {
@@ -328,7 +328,7 @@
         '<span class="pc-tag">Supply · Commission</span></div>' +
         '<h3>' + e.t + '</h3><p>' + e.d + '</p>' +
         '<div class="pc-apps"><span class="sd-label">Applications</span><ul>' + apps + '</ul></div>' +
-        '<a href="contact.html" class="pc-link">Enquire about this ' + arrow() + '</a></article>'));
+        '<a href="/contact.html" class="pc-link">Enquire about this ' + arrow() + '</a></article>'));
     });
   }
 
