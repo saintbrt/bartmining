@@ -31,31 +31,68 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 100px; }
   
-  header { padding: 60px 40px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
-  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
-  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .header-desc { font-size: 15px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+  /* Responsive Viewport Padding Optimization */
+  header { padding: 40px 20px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  @media (min-width: 768px) {
+    header { padding: 60px 40px; }
+  }
 
-  .section-nav { display: flex; gap: 10px; margin-top: 24px; }
-  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; }
+  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+  
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; }
+  @media (min-width: 768px) {
+    h1 { font-size: 36px; }
+  }
+
+  .header-desc { font-size: 14px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+  @media (min-width: 768px) {
+    .header-desc { font-size: 15px; }
+  }
+
+  /* Wrapped Pill Ribbon layout for Mobile & Tablet screens */
+  .section-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 12px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; white-space: nowrap; }
   .nav-pill.active { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-  .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+  /* Fluid Workspace Margins */
+  .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+  @media (min-width: 768px) {
+    .container { margin: 40px auto; padding: 0 20px; }
+  }
   
-  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 60px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-  .fn-header { padding: 20px 24px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .fn-title-wrap { display: flex; align-items: center; gap: 12px; }
-  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; }
-  .fn-title { font-size: 20px; font-weight: 600; color: var(--ink); }
-  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; }
+  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 40px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  @media (min-width: 768px) {
+    .fn-block { margin-bottom: 60px; }
+  }
 
-  .fn-body { padding: 24px; }
+  /* Mobile Stacked-to-Horizontal Header Strategy */
+  .fn-header { padding: 16px 20px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+  @media (min-width: 768px) {
+    .fn-header { padding: 20px 24px; flex-direction: row; align-items: center; justify-content: space-between; gap: 20px; }
+  }
+
+  .fn-title-wrap { display: flex; align-items: center; gap: 12px; width: 100%; }
+  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; flex-shrink: 0; }
+  
+  .fn-title { font-size: 18px; font-weight: 600; color: var(--ink); }
+  @media (min-width: 768px) {
+    .fn-title { font-size: 20px; }
+  }
+
+  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; display: inline-block; }
+
+  .fn-body { padding: 16px; }
+  @media (min-width: 768px) {
+    .fn-body { padding: 24px; }
+  }
+
   .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 24px; line-height: 1.7; }
 
-  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
+  /* Fluid Responsive Component Layout System */
+  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; gap: 24px; } .full-width { grid-column: span 2; } }
 
-  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
   .panel-header { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
   .panel-header.input { background: var(--bg-2); color: var(--ink-2); }
   .panel-header.logic { background: var(--gold-pale); color: var(--gold); }
@@ -63,9 +100,12 @@
   .panel-header.success { background: var(--teal-bg); color: var(--teal); }
   .panel-header.error { background: var(--red-bg); color: var(--red); }
 
-  .panel-body { padding: 16px; }
+  .panel-body { padding: 16px; flex-grow: 1; }
 
-  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; }
+  /* Horizontal Data-Table Overflow Control */
+  .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; min-width: 550px; /* Protects data structure width limits safely */ }
   th { padding: 8px 12px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; }
   td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); }
   tr:last-child td { border-bottom: none; }
@@ -73,6 +113,7 @@
   .mod-row { background: var(--purple-bg); color: var(--purple); }
   .mod-cell { color: var(--purple); font-weight: 600; background: #EAE1FA; border-radius: 2px; padding: 1px 4px; }
   .err-row { background: var(--red-bg); color: var(--red); }
+  .err-cell { color: var(--red); font-weight: 600; background: #FCECE9; border-radius: 2px; padding: 1px 4px; }
   .success-row { background: var(--teal-bg); color: var(--teal); }
 
   .logic-list { list-style: none; }
@@ -115,9 +156,9 @@
           <div class="panel-header input">Files Selected For Relational Audit</div>
           <div class="panel-body">
             <p style="font-size:12px; margin-bottom:8px; font-weight:500;">File A: Collar_v1.csv (5 columns, 120 rows)</p>
-            <p style="font-size:11px; font-family:monospace; color:var(--ink-3); margin-bottom:12px;">Headers: [hole_id, easting, northing, elevation, total_depth]</p>
+            <p style="font-size:11px; font-family:monospace; color:var(--ink-3); margin-bottom:12px; word-break: break-all;">Headers: [hole_id, easting, northing, elevation, total_depth]</p>
             <p style="font-size:12px; margin-bottom:8px; font-weight:500;">File B: Assay_v1.csv (4 columns, 2450 rows)</p>
-            <p style="font-size:11px; font-family:monospace; color:var(--ink-3);">Headers: [HoleID, from_depth, to_depth, au_ppm]</p>
+            <p style="font-size:11px; font-family:monospace; color:var(--ink-3); word-break: break-all;">Headers: [HoleID, from_depth, to_depth, au_ppm]</p>
           </div>
         </div>
         <div class="panel">
@@ -134,18 +175,20 @@
         <div class="panel full-width">
           <div class="panel-header relation">Output Compatibility Audit Blueprint</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Evaluated System Property</th><th>File A Metric Summary</th><th>File B Metric Summary</th><th>Discovered Structural State / Recommendation</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Primary Key Integrity</td><td>120 unique hole IDs</td><td>118 unique hole IDs linked</td><td><span style="color:var(--teal); font-weight:600;">98.3% Key Matching Status</span></td></tr>
-                <tr class="err-row"><td>Column Syntax Alignment</td><td>Column: 'hole_id' (lower)</td><td>Column: 'HoleID' (Pascal)</td><td><span class="err-cell">Schema conflict: Mapping override required</span></td></tr>
-                <tr><td>Physical Data Types</td><td>Numeric coordinates</td><td>Numeric depths & grades</td><td>Data type compliance verified successfully</td></tr>
-                <tr><td>File Dimension Ratio</td><td>120 horizontal records</td><td>2,450 downhole records</td><td>Expected 1:N relational layout confirmed</td></tr>
-                <tr class="success-row"><td>System Action Verdict</td><td colspan="3"><strong>PROCEED WITH WARNINGS:</strong> Standardize file keys via <code>standardiseHoleIDs</code> before merging.</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Evaluated System Property</th><th>File A Metric Summary</th><th>File B Metric Summary</th><th>Discovered Structural State / Recommendation</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Primary Key Integrity</td><td>120 unique hole IDs</td><td>118 unique hole IDs linked</td><td><span style="color:var(--teal); font-weight:600;">98.3% Key Matching Status</span></td></tr>
+                  <tr class="err-row"><td>Column Syntax Alignment</td><td>Column: 'hole_id' (lower)</td><td>Column: 'HoleID' (Pascal)</td><td><span class="err-cell">Schema conflict: Mapping override required</span></td></tr>
+                  <tr><td>Physical Data Types</td><td>Numeric coordinates</td><td>Numeric depths & grades</td><td>Data type compliance verified successfully</td></tr>
+                  <tr><td>File Dimension Ratio</td><td>120 horizontal records</td><td>2,450 downhole records</td><td>Expected 1:N relational layout confirmed</td></tr>
+                  <tr class="success-row"><td>System Action Verdict</td><td colspan="3"><strong>PROCEED WITH WARNINGS:</strong> Standardize file keys via <code>standardiseHoleIDs</code> before merging.</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -167,21 +210,25 @@
           <div class="panel-header input">Data Inputs (Two Isolated Geochem Data Streams)</div>
           <div class="panel-body">
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Stream A (In-House Field Database Ledger):</p>
-            <table style="margin-bottom:12px; font-size:11px;">
-              <thead><tr><th>sample_id</th><th>hole_id</th><th>from_m</th><th>to_m</th></tr></thead>
-              <tbody>
-                <tr><td>S009401</td><td>KS26_601</td><td>0.00</td><td>1.00</td></tr>
-                <tr class="mod-row"><td>S009402</td><td>KS26_601</td><td>1.00</td><td>2.00</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table style="margin-bottom:12px; font-size:11px;">
+                <thead><tr><th>sample_id</th><th>hole_id</th><th>from_m</th><th>to_m</th></tr></thead>
+                <tbody>
+                  <tr><td>S009401</td><td>KS26_601</td><td>0.00</td><td>1.00</td></tr>
+                  <tr class="mod-row"><td>S009402</td><td>KS26_601</td><td>1.00</td><td>2.00</td></tr>
+                </tbody>
+              </table>
+            </div>
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Stream B (Laboratory Final Re-Issue Sheet):</p>
-            <table style="font-size:11px;">
-              <thead><tr><th>sample_id</th><th>hole_id</th><th>from_m</th><th>to_m</th></tr></thead>
-              <tbody>
-                <tr class="mod-row"><td>S009402</td><td>KS26_601</td><td>1.00</td><td>2.00</td></tr>
-                <tr><td>S009403</td><td>KS26_601</td><td>2.00</td><td>3.00</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table style="font-size:11px;">
+                <thead><tr><th>sample_id</th><th>hole_id</th><th>from_m</th><th>to_m</th></tr></thead>
+                <tbody>
+                  <tr class="mod-row"><td>S009402</td><td>KS26_601</td><td>1.00</td><td>2.00</td></tr>
+                  <tr><td>S009403</td><td>KS26_601</td><td>2.00</td><td>3.00</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -198,14 +245,16 @@
         <div class="panel full-width">
           <div class="panel-header error">Output Cross-File Duplicate Alert Registry</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Conflicting Signature Key</th><th>Source Stream A Origin</th><th>Source Stream B Origin</th><th>Matching Attributes</th><th>System Action Recommendation</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>S009402 • KS26_601</td><td>Line Position Index 2</td><td>Line Position Index 1</td><td>Sample ID, Hole ID, From/To Depths</td><td>Retain Stream B (Contains verified lab grade entries)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Conflicting Signature Key</th><th>Source Stream A Origin</th><th>Source Stream B Origin</th><th>Matching Attributes</th><th>System Action Recommendation</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>S009402 • KS26_601</td><td>Line Position Index 2</td><td>Line Position Index 1</td><td>Sample ID, Hole ID, From/To Depths</td><td>Retain Stream B (Contains verified lab grade entries)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -227,11 +276,11 @@
           <div class="panel-header input">Input Datasets (Collar Index vs. Lithology Log)</div>
           <div class="panel-body">
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Master Collar ID Index:</p>
-            <div style="background:#f9f9f9; padding:4px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px;">
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px; word-break: break-all;">
               [KS26_701, KS26_702, KS26_703, KS26_704, KS26_705]
             </div>
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Active Lithology Table Keys:</p>
-            <div style="background:#f9f9f9; padding:4px; font-family:monospace; font-size:11px; border:1px solid var(--border);">
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); word-break: break-all;">
               [KS26_701, KS26_702, KS26_704]
             </div>
           </div>
@@ -250,15 +299,17 @@
         <div class="panel full-width">
           <div class="panel-header error">Output Missing Record Delta Sheet</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Omitted Identifier Key</th><th>Expected Target Context</th><th>Discovered System Fault Status</th><th>Geological Impact Profile</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_703</td><td>Lithology Logs File</td><td>Key absent from target spreadsheet</td><td>Hole cannot plot in 3D cross-sections (missing rock types)</td></tr>
-                <tr class="err-row"><td>KS26_705</td><td>Lithology Logs File</td><td>Key absent from target spreadsheet</td><td>Hole cannot plot in 3D cross-sections (missing rock types)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Omitted Identifier Key</th><th>Expected Target Context</th><th>Discovered System Fault Status</th><th>Geological Impact Profile</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_703</td><td>Lithology Logs File</td><td>Key absent from target spreadsheet</td><td>Hole cannot plot in 3D cross-sections (missing rock types)</td></tr>
+                  <tr class="err-row"><td>KS26_705</td><td>Lithology Logs File</td><td>Key absent from target spreadsheet</td><td>Hole cannot plot in 3D cross-sections (missing rock types)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -281,8 +332,8 @@
           <div class="panel-body">
             <p style="font-size:11px; margin-bottom:6px; font-weight:500; color:var(--ink-2)">Spreadsheet Upload Field Samples:</p>
             <ul style="font-family:'DM Mono', monospace; font-size:11px; padding-left:16px; color:var(--ink-2);">
-              <li>File 1: [hole, east, north, elev_m]</li>
-              <li>File 2: [HoleID, Easting, Northing, RL]</li>
+              <li style="margin-bottom: 4px;">File 1: [hole, east, north, elev_m]</li>
+              <li style="margin-bottom: 4px;">File 2: [HoleID, Easting, Northing, RL]</li>
               <li>File 3: [HOLE_ID, X_UTM, Y_UTM, Z_ELEV]</li>
             </ul>
           </div>
@@ -301,17 +352,19 @@
         <div class="panel full-width">
           <div class="panel-header relation">Output Canonical Schema Mapping Blueprint</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Target System Column</th><th>Detected Mapping Candidate</th><th>Source File Provenance</th><th>Confidence Level Metric</th><th>Structural Action Code</th></tr>
-              </thead>
-              <tbody>
-                <tr class="success-row"><td><strong>hole_id</strong></td><td>HOLE_ID / HoleID / hole</td><td>File 1, File 2, File 3</td><td>100% Match Ratio</td><td>Auto-linked to target schema</td></tr>
-                <tr class="success-row"><td><strong>easting</strong></td><td>X_UTM / Easting / east</td><td>File 1, File 2, File 3</td><td>94% Similarity Score</td><td>Auto-linked to target schema</td></tr>
-                <tr class="success-row"><td><strong>northing</strong></td><td>Y_UTM / Northing / north</td><td>File 1, File 2, File 3</td><td>94% Similarity Score</td><td>Auto-linked to target schema</td></tr>
-                <tr class="success-row"><td><strong>elevation</strong></td><td>RL / elev_m / Z_ELEV</td><td>File 1, File 2, File 3</td><td>88% System Association</td><td>Auto-linked to target schema</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Target System Column</th><th>Detected Mapping Candidate</th><th>Source File Provenance</th><th>Confidence Level Metric</th><th>Structural Action Code</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="success-row"><td><strong>hole_id</strong></td><td>HOLE_ID / HoleID / hole</td><td>File 1, File 2, File 3</td><td>100% Match Ratio</td><td>Auto-linked to target schema</td></tr>
+                  <tr class="success-row"><td><strong>easting</strong></td><td>X_UTM / Easting / east</td><td>File 1, File 2, File 3</td><td>94% Similarity Score</td><td>Auto-linked to target schema</td></tr>
+                  <tr class="success-row"><td><strong>northing</strong></td><td>Y_UTM / Northing / north</td><td>File 1, File 2, File 3</td><td>94% Similarity Score</td><td>Auto-linked to target schema</td></tr>
+                  <tr class="success-row"><td><strong>elevation</strong></td><td>RL / elev_m / Z_ELEV</td><td>File 1, File 2, File 3</td><td>88% System Association</td><td>Auto-linked to target schema</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -333,15 +386,19 @@
           <div class="panel-header input">Source Data Packages Selected For Integration</div>
           <div class="panel-body">
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Collar Coordinate Dataset:</p>
-            <table style="margin-bottom:12px; font-size:10px;">
-              <thead><tr><th>hole_id</th><th>easting</th><th>northing</th></tr></thead>
-              <tbody><tr><td>KS26_801</td><td>642100.00</td><td>8142500.00</td></tr></tbody>
-            </table>
+            <div class="table-responsive text-table-wrap">
+              <table style="margin-bottom:12px; font-size:10px;">
+                <thead><tr><th>hole_id</th><th>easting</th><th>northing</th></tr></thead>
+                <tbody><tr><td>KS26_801</td><td>642100.00</td><td>8142500.00</td></tr></tbody>
+              </table>
+            </div>
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Downhole Survey Dataset Orientation:</p>
-            <table style="font-size:10px;">
-              <thead><tr><th>hole_id</th><th>dip</th><th>azimuth</th></tr></thead>
-              <tbody><tr><td>KS26_801</td><td>-60.00</td><td>180.00</td></tr></tbody>
-            </table>
+            <div class="table-responsive text-table-wrap">
+              <table style="font-size:10px;">
+                <thead><tr><th>hole_id</th><th>dip</th><th>azimuth</th></tr></thead>
+                <tbody><tr><td>KS26_801</td><td>-60.00</td><td>180.00</td></tr></tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -358,18 +415,20 @@
         <div class="panel full-width">
           <div class="panel-header success">Output Unified Joined Dataset Collection</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>easting</th><th>northing</th><th>dip</th><th>azimuth</th><th>Lineage Integration Metadata Tracker</th></tr>
-              </thead>
-              <tbody>
-                <tr class="success-row"><td>KS26_801</td><td>642100.00</td><td>8142500.00</td><td>-60.00</td><td>180.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
-                <tr class="success-row"><td>KS26_802</td><td>642150.00</td><td>8142550.00</td><td>-90.00</td><td>0.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
-                <tr class="success-row"><td>KS26_803</td><td>642200.00</td><td>8142600.00</td><td>-55.00</td><td>135.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
-                <tr class="success-row"><td>KS26_804</td><td>642250.00</td><td>8142650.00</td><td>-60.00</td><td>180.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
-                <tr class="success-row"><td>KS26_805</td><td>642300.00</td><td>8142700.00</td><td>-70.00</td><td>270.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>easting</th><th>northing</th><th>dip</th><th>azimuth</th><th>Lineage Integration Metadata Tracker</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="success-row"><td>KS26_801</td><td>642100.00</td><td>8142500.00</td><td>-60.00</td><td>180.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
+                  <tr class="success-row"><td>KS26_802</td><td>642150.00</td><td>8142550.00</td><td>-90.00</td><td>0.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
+                  <tr class="success-row"><td>KS26_803</td><td>642200.00</td><td>8142600.00</td><td>-55.00</td><td>135.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
+                  <tr class="success-row"><td>KS26_804</td><td>642250.00</td><td>8142650.00</td><td>-60.00</td><td>180.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
+                  <tr class="success-row"><td>KS26_805</td><td>642300.00</td><td>8142700.00</td><td>-70.00</td><td>270.00</td><td>Merged [Collar_v1.csv + Survey_v1.csv] Key Linkage Complete</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -391,11 +450,11 @@
           <div class="panel-header input">File Multi-Version Input (Base Layer vs. Updated Sheet)</div>
           <div class="panel-body">
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Base Master Version Ledger (v1):</p>
-            <div style="background:#f9f9f9; padding:4px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px;">
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px; word-break: break-all;">
               [KS26_901: 150m, KS26_902: 200m, KS26_903: 85m]
             </div>
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Incoming Candidate Version Sheet (v2):</p>
-            <div style="background:#f9f9f9; padding:4px; font-family:monospace; font-size:11px; border:1px solid var(--border);">
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); word-break: break-all;">
               [KS26_901: 150m, KS26_902: <span style="color:var(--purple); font-weight:bold;">225m</span>, KS26_904: <span style="color:var(--teal); font-weight:bold;">110m</span>]
             </div>
           </div>
@@ -414,17 +473,19 @@
         <div class="panel full-width">
           <div class="panel-header relation">Output Full Versioned Audit Delta File</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID Key</th><th>Baseline Value (v1)</th><th>Candidate Value (v2)</th><th>Calculated Change Status Tag</th><th>System Impact Assessment Summary</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_901</td><td>Total Depth: 150.00m</td><td>Total Depth: 150.00m</td><td><span style="color:var(--ink-3)">UNCHANGED</span></td><td>Values match; no action required</td></tr>
-                <tr class="mod-row"><td>KS26_902</td><td>Total Depth: 200.00m</td><td>Total Depth: 225.00m</td><td><span class="mod-cell">MODIFIED</span></td><td>Borehole depth extended by 25.00 meters downhole</td></tr>
-                <tr class="err-row"><td>KS26_903</td><td>Total Depth: 85.00m</td><td>[Absent from file]</td><td><span class="err-cell">REMOVED</span></td><td>Record omitted from source collection; verify file complete status</td></tr>
-                <tr class="success-row"><td>KS26_904</td><td>[Absent from file]</td><td>Total Depth: 110.00m</td><td><strong>ADDED</strong></td><td>New drillhole record successfully registered into database layout</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID Key</th><th>Baseline Value (v1)</th><th>Candidate Value (v2)</th><th>Calculated Change Status Tag</th><th>System Impact Assessment Summary</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_901</td><td>Total Depth: 150.00m</td><td>Total Depth: 150.00m</td><td><span style="color:var(--ink-3)">UNCHANGED</span></td><td>Values match; no action required</td></tr>
+                  <tr class="mod-row"><td>KS26_902</td><td>Total Depth: 200.00m</td><td>Total Depth: 225.00m</td><td><span class="mod-cell">MODIFIED</span></td><td>Borehole depth extended by 25.00 meters downhole</td></tr>
+                  <tr class="err-row"><td>KS26_903</td><td>Total Depth: 85.00m</td><td>[Absent from file]</td><td><span class="err-cell">REMOVED</span></td><td>Record omitted from source collection; verify file complete status</td></tr>
+                  <tr class="success-row"><td>KS26_904</td><td>[Absent from file]</td><td>Total Depth: 110.00m</td><td><strong>ADDED</strong></td><td>New drillhole record successfully registered into database layout</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
