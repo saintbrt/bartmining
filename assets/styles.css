@@ -141,6 +141,14 @@ img { display: block; max-width: 100%; }
   padding: 22px 0;
   border-bottom: 1px solid transparent;
 }
+/* Dark-hero pages: white nav until scrolled */
+[data-navdark] .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,.82); }
+[data-navdark] .nav:not(.scrolled) .nav-links a:hover { color: #fff; background: rgba(255,255,255,.10); }
+[data-navdark] .nav:not(.scrolled) .brand-name { color: #fff; }
+[data-navdark] .nav:not(.scrolled) .btn-ghost { color: rgba(255,255,255,.75); }
+[data-navdark] .nav:not(.scrolled) .btn-ghost:hover { color: #fff; background: rgba(255,255,255,.10); }
+[data-navdark] .nav:not(.scrolled) .brand-mark { filter: brightness(1.3); }
+
 .nav.scrolled {
   background: rgba(246,244,239,.72);
   backdrop-filter: blur(18px) saturate(1.4);
