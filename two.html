@@ -31,40 +31,80 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 100px; }
   
-  header { padding: 60px 40px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
-  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
-  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .header-desc { font-size: 15px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+  /* Responsive Viewport Padding Optimization */
+  header { padding: 40px 20px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  @media (min-width: 768px) {
+    header { padding: 60px 40px; }
+  }
 
-  .section-nav { display: flex; gap: 10px; margin-top: 24px; }
-  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; }
+  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+  
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; }
+  @media (min-width: 768px) {
+    h1 { font-size: 36px; }
+  }
+
+  .header-desc { font-size: 14px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+  @media (min-width: 768px) {
+    .header-desc { font-size: 15px; }
+  }
+
+  /* Wrapped Pill Ribbon layout for Mobile & Tablet screens */
+  .section-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 12px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; white-space: nowrap; }
   .nav-pill.active { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-  .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+  /* Fluid Workspace Margins */
+  .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+  @media (min-width: 768px) {
+    .container { margin: 40px auto; padding: 0 20px; }
+  }
   
-  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 60px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-  .fn-header { padding: 20px 24px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .fn-title-wrap { display: flex; align-items: center; gap: 12px; }
-  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; }
-  .fn-title { font-size: 20px; font-weight: 600; color: var(--ink); }
-  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; }
+  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 40px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  @media (min-width: 768px) {
+    .fn-block { margin-bottom: 60px; }
+  }
 
-  .fn-body { padding: 24px; }
+  /* Mobile Stacked-to-Horizontal Header Strategy */
+  .fn-header { padding: 16px 20px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+  @media (min-width: 768px) {
+    .fn-header { padding: 20px 24px; flex-direction: row; align-items: center; justify-content: space-between; gap: 20px; }
+  }
+
+  .fn-title-wrap { display: flex; align-items: center; gap: 12px; width: 100%; }
+  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; flex-shrink: 0; }
+  
+  .fn-title { font-size: 18px; font-weight: 600; color: var(--ink); }
+  @media (min-width: 768px) {
+    .fn-title { font-size: 20px; }
+  }
+
+  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; display: inline-block; }
+
+  .fn-body { padding: 16px; }
+  @media (min-width: 768px) {
+    .fn-body { padding: 24px; }
+  }
+
   .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 24px; line-height: 1.7; }
 
-  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
+  /* Fluid Responsive Component Layout System */
+  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; gap: 24px; } .full-width { grid-column: span 2; } }
 
-  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
   .panel-header { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
   .panel-header.input { background: var(--bg-2); color: var(--ink-2); }
   .panel-header.logic { background: var(--gold-pale); color: var(--gold); }
   .panel-header.transform { background: var(--blue-bg); color: var(--blue); }
   .panel-header.success { background: var(--teal-bg); color: var(--teal); }
 
-  .panel-body { padding: 16px; }
+  .panel-body { padding: 16px; flex-grow: 1; }
 
-  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; }
+  /* Horizontal Data-Table Overflow Control */
+  .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; min-width: 500px; /* Maintains tabular logic and padding rules */ }
   th { padding: 8px 12px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; }
   td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); }
   tr:last-child td { border-bottom: none; }
@@ -112,18 +152,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Mixed Formats)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Original Index</th><th>raw_hole_id</th><th>easting</th><th>northing</th><th>Data Variant Issue</th></tr>
-              </thead>
-              <tbody>
-                <tr class="mod-row"><td>1</td><td><span class="mod-cell">ks26_001</span></td><td>642100.20</td><td>8142500.50</td><td>Lowercase characters</td></tr>
-                <tr class="mod-row"><td>2</td><td><span class="mod-cell">KS26-002  </span></td><td>642150.80</td><td>8142550.10</td><td>Hyphen delimiter & trailing space</td></tr>
-                <tr><td>3</td><td>KS26_003</td><td>642200.50</td><td>8142600.90</td><td>Perfect baseline entry</td></tr>
-                <tr class="mod-row"><td>4</td><td><span class="mod-cell">KS26/004</span></td><td>642250.10</td><td>8142650.40</td><td>Forward slash delimiter</td></tr>
-                <tr class="mod-row"><td>5</td><td><span class="mod-cell">KS26005</span></td><td>642300.70</td><td>8142700.00</td><td>Missing separator completely</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Original Index</th><th>raw_hole_id</th><th>easting</th><th>northing</th><th>Data Variant Issue</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="mod-row"><td>1</td><td><span class="mod-cell">ks26_001</span></td><td>642100.20</td><td>8142500.50</td><td>Lowercase characters</td></tr>
+                  <tr class="mod-row"><td>2</td><td><span class="mod-cell">KS26-002  </span></td><td>642150.80</td><td>8142550.10</td><td>Hyphen delimiter & trailing space</td></tr>
+                  <tr><td>3</td><td>KS26_003</td><td>642200.50</td><td>8142600.90</td><td>Perfect baseline entry</td></tr>
+                  <tr class="mod-row"><td>4</td><td><span class="mod-cell">KS26/004</span></td><td>642250.10</td><td>8142650.40</td><td>Forward slash delimiter</td></tr>
+                  <tr class="mod-row"><td>5</td><td><span class="mod-cell">KS26005</span></td><td>642300.70</td><td>8142700.00</td><td>Missing separator completely</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -140,18 +182,20 @@
         <div class="panel full-width">
           <div class="panel-header transform">Output Transformed Dataset (Standardized Canonical Keys)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Original Row Index</th><th>Standardised hole_id</th><th>Easting Context</th><th>Northing Context</th><th>Applied System Modification</th></tr>
-              </thead>
-              <tbody>
-                <tr class="success-row"><td>1</td><td><strong>KS26_001</strong></td><td>642100.20</td><td>8142500.50</td><td>Forced casing to upper bounds</td></tr>
-                <tr class="success-row"><td>2</td><td><strong>KS26_002</strong></td><td>642150.80</td><td>8142550.10</td><td>Substituted hyphen & stripped white space</td></tr>
-                <tr><td>3</td><td><strong>KS26_003</strong></td><td>642200.50</td><td>8142600.90</td><td>No change required (passed verification)</td></tr>
-                <tr class="success-row"><td>4</td><td><strong>KS26_004</strong></td><td>642250.10</td><td>8142650.40</td><td>Substituted slash delimiter with underscore</td></tr>
-                <tr class="success-row"><td>5</td><td><strong>KS26_005</strong></td><td>642300.70</td><td>8142700.00</td><td>Injected standard underscore at alphanumeric boundary</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Original Row Index</th><th>Standardised hole_id</th><th>Easting Context</th><th>Northing Context</th><th>Applied System Modification</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="success-row"><td>1</td><td><strong>KS26_001</strong></td><td>642100.20</td><td>8142500.50</td><td>Forced casing to upper bounds</td></tr>
+                  <tr class="success-row"><td>2</td><td><strong>KS26_002</strong></td><td>642150.80</td><td>8142550.10</td><td>Substituted hyphen & stripped white space</td></tr>
+                  <tr><td>3</td><td><strong>KS26_003</strong></td><td>642200.50</td><td>8142600.90</td><td>No change required (passed verification)</td></tr>
+                  <tr class="success-row"><td>4</td><td><strong>KS26_004</strong></td><td>642250.10</td><td>8142650.40</td><td>Substituted slash delimiter with underscore</td></tr>
+                  <tr class="success-row"><td>5</td><td><strong>KS26_005</strong></td><td>642300.70</td><td>8142700.00</td><td>Injected standard underscore at alphanumeric boundary</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -172,18 +216,20 @@
         <div class="panel">
           <div class="panel-header input">Working Collar Dataset (Pre-Filter)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>total_depth</th><th>survey_logs_count</th><th>assay_rows_linked</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_201</td><td>150.00m</td><td>5 records</td><td>75 samples</td></tr>
-                <tr><td>KS26_202</td><td>210.50m</td><td>7 records</td><td>105 samples</td></tr>
-                <tr class="mod-row"><td><span class="mod-cell">KS26_203</span></td><td><span class="mod-cell">0.00m</span></td><td><span class="mod-cell">0 records</span></td><td><span class="mod-cell">0 samples</span></td></tr>
-                <tr><td>KS26_204</td><td>85.00m</td><td>3 records</td><td>42 samples</td></tr>
-                <tr class="mod-row"><td><span class="mod-cell">KS26_205</span></td><td><span class="mod-cell">0.00m</span></td><td><span class="mod-cell">0 records</span></td><td><span class="mod-cell">0 samples</span></td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>total_depth</th><th>survey_logs_count</th><th>assay_rows_linked</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_201</td><td>150.00m</td><td>5 records</td><td>75 samples</td></tr>
+                  <tr><td>KS26_202</td><td>210.50m</td><td>7 records</td><td>105 samples</td></tr>
+                  <tr class="mod-row"><td><span class="mod-cell">KS26_203</span></td><td><span class="mod-cell">0.00m</span></td><td><span class="mod-cell">0 records</span></td><td><span class="mod-cell">0 samples</span></td></tr>
+                  <tr><td>KS26_204</td><td>85.00m</td><td>3 records</td><td>42 samples</td></tr>
+                  <tr class="mod-row"><td><span class="mod-cell">KS26_205</span></td><td><span class="mod-cell">0.00m</span></td><td><span class="mod-cell">0 records</span></td><td><span class="mod-cell">0 samples</span></td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -200,16 +246,18 @@
         <div class="panel full-width">
           <div class="panel-header success">Output Filtered Dataset (Active Boreholes Only)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>Verified Total Depth</th><th>Assay Record Status</th><th>Audit Action Taken</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_201</td><td>150.00m</td><td>75 active samples verified</td><td>Retained in production database layer</td></tr>
-                <tr><td>KS26_202</td><td>210.50m</td><td>105 active samples verified</td><td>Retained in production database layer</td></tr>
-                <tr><td>KS26_204</td><td>85.00m</td><td>42 active samples verified</td><td>Retained in production database layer</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>Verified Total Depth</th><th>Assay Record Status</th><th>Audit Action Taken</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_201</td><td>150.00m</td><td>75 active samples verified</td><td>Retained in production database layer</td></tr>
+                  <tr><td>KS26_202</td><td>210.50m</td><td>105 active samples verified</td><td>Retained in production database layer</td></tr>
+                  <tr><td>KS26_204</td><td>85.00m</td><td>42 active samples verified</td><td>Retained in production database layer</td></tr>
+                </tbody>
+              </table>
+            </div>
             <p style="font-size:11px; color:var(--red); margin-top:12px; font-family:'DM Mono', monospace;">
               ⚠️ AUDIT LOG ACTION: Records [KS26_203, KS26_205] purged from production view. Saved securely to archive file 'undrilled_purged_log_v2.json'.
             </p>
@@ -233,18 +281,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Assay Input (Mixed Unit Layout)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>sample_id</th><th>hole_id</th><th>raw_gold_val</th><th>declared_unit</th><th>True Geologic Value context</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>A009101</td><td>KS26_301</td><td>0.45</td><td>ppm</td><td>0.45 g/t (Low Grade Zone)</td></tr>
-                <tr class="mod-row"><td>A009102</td><td>KS26_301</td><td><span class="mod-cell">1200.00</span></td><td><span class="mod-cell">ppb</span></td><td>1.20 g/t (Medium Grade Zone)</td></tr>
-                <tr><td>A009103</td><td>KS26_301</td><td>2.31</td><td>ppm</td><td>2.31 g/t (High Grade Ore)</td></tr>
-                <tr class="mod-row"><td>A009104</td><td>KS26_301</td><td><span class="mod-cell">450.00</span></td><td><span class="mod-cell">ppb</span></td><td>0.45 g/t (Low Grade Zone)</td></tr>
-                <tr><td>A009105</td><td>KS26_301</td><td>0.08</td><td>ppm</td><td>0.08 g/t (Barren Waste Country Rock)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>sample_id</th><th>hole_id</th><th>raw_gold_val</th><th>declared_unit</th><th>True Geologic Value context</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>A009101</td><td>KS26_301</td><td>0.45</td><td>ppm</td><td>0.45 g/t (Low Grade Zone)</td></tr>
+                  <tr class="mod-row"><td>A009102</td><td>KS26_301</td><td><span class="mod-cell">1200.00</span></td><td><span class="mod-cell">ppb</span></td><td>1.20 g/t (Medium Grade Zone)</td></tr>
+                  <tr><td>A009103</td><td>KS26_301</td><td>2.31</td><td>ppm</td><td>2.31 g/t (High Grade Ore)</td></tr>
+                  <tr class="mod-row"><td>A009104</td><td>KS26_301</td><td><span class="mod-cell">450.00</span></td><td><span class="mod-cell">ppb</span></td><td>0.45 g/t (Low Grade Zone)</td></tr>
+                  <tr><td>A009105</td><td>KS26_301</td><td>0.08</td><td>ppm</td><td>0.08 g/t (Barren Waste Country Rock)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -261,18 +311,20 @@
         <div class="panel full-width">
           <div class="panel-header transform">Output Standardised Dataset (Unified Canonical PPM)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Sample Identifier</th><th>Hole ID</th><th>Raw Input Reference</th><th>Unified au_ppm</th><th>Standardised Target Unit</th><th>Applied Transformation Scaling</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>A009101</td><td>KS26_301</td><td>0.45 ppm</td><td><strong>0.450</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
-                <tr class="success-row"><td>A009102</td><td>KS26_301</td><td>1200.00 ppb</td><td><strong>1.200</strong></td><td>ppm (grams per tonne)</td><td>Scaled downward mathematically (/ 1000)</td></tr>
-                <tr><td>A009103</td><td>KS26_301</td><td>2.31 ppm</td><td><strong>2.310</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
-                <tr class="success-row"><td>A009104</td><td>KS26_301</td><td>450.00 ppb</td><td><strong>0.450</strong></td><td>ppm (grams per tonne)</td><td>Scaled downward mathematically (/ 1000)</td></tr>
-                <tr><td>A009105</td><td>KS26_301</td><td>0.08 ppm</td><td><strong>0.080</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Sample Identifier</th><th>Hole ID</th><th>Raw Input Reference</th><th>Unified au_ppm</th><th>Standardised Target Unit</th><th>Applied Transformation Scaling</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>A009101</td><td>KS26_301</td><td>0.45 ppm</td><td><strong>0.450</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
+                  <tr class="success-row"><td>A009102</td><td>KS26_301</td><td>1200.00 ppb</td><td><strong>1.200</strong></td><td>ppm (grams per tonne)</td><td>Scaled downward mathematically (/ 1000)</td></tr>
+                  <tr><td>A009103</td><td>KS26_301</td><td>2.31 ppm</td><td><strong>2.310</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
+                  <tr class="success-row"><td>A009104</td><td>KS26_301</td><td>450.00 ppb</td><td><strong>0.450</strong></td><td>ppm (grams per tonne)</td><td>Scaled downward mathematically (/ 1000)</td></tr>
+                  <tr><td>A009105</td><td>KS26_301</td><td>0.08 ppm</td><td><strong>0.080</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
