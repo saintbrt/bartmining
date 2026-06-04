@@ -121,6 +121,7 @@
   var PAGES = [
     { label: "Services", href: "services.html" },
     { label: "Products", href: "products.html" },
+    { label: "Insights", href: "insights/" },
     { label: "About", href: "about.html" },
     { label: "Sustainability", href: "sustainability.html" },
     { label: "Contact", href: "contact.html" }
@@ -162,6 +163,12 @@
           '<li><a href="services.html">Mine Planning &amp; Design</a></li>' +
           '<li><a href="products.html">Machinery &amp; Plants</a></li>' +
           '<li><a href="services.html">Safety Equipment</a></li></ul></div>' +
+        '<div><h5>Knowledge Center</h5><ul>' +
+          '<li><a href="insights/">All Articles</a></li>' +
+          '<li><a href="insights/gold-exploration-tanzania.html">Gold Exploration Tanzania</a></li>' +
+          '<li><a href="insights/future-mining-east-africa.html">Future of Mining 2025–2030</a></li>' +
+          '<li><a href="insights/tags/east-africa.html">East Africa Hub</a></li>' +
+        '</ul></div>' +
         '<div><h5>Regions</h5><ul>' + regionLinks + "</ul></div>" +
         '<div><h5>Headquarters</h5><address class="addr">Dar es Salaam<br/>Tanzania<br/><br/>' +
           '<a href="mailto:' + EMAIL + '">' + EMAIL + "</a></address>" +

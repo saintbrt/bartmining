@@ -1,0 +1,124 @@
+{
+  "articles": [
+    {
+      "title": "Gold Exploration Services in Tanzania",
+      "slug": "gold-exploration-tanzania",
+      "tags": "gold exploration tanzania east-africa",
+      "summary": "Tanzania's gold industry, Lake Victoria Goldfields geology, drilling methods, regulations and services across Dar es Salaam, Geita, Mwanza, Shinyanga."
+    },
+    {
+      "title": "Diamond Mining Services in Botswana",
+      "slug": "diamond-mining-botswana",
+      "tags": "diamond exploration southern-africa botswana",
+      "summary": "Kimberlite pipe exploration, bulk sampling and ore characterisation across Botswana — Gaborone, Jwaneng, Orapa."
+    },
+    {
+      "title": "Copper Mining Exploration in Zambia",
+      "slug": "copper-mining-zambia",
+      "tags": "copper cobalt exploration southern-africa zambia",
+      "summary": "Zambia's Copperbelt geology, exploration methodology and services for Lusaka, Kitwe, Ndola, Chingola."
+    },
+    {
+      "title": "Platinum Group Metals Exploration in Zimbabwe",
+      "slug": "platinum-zimbabwe",
+      "tags": "platinum pgm exploration southern-africa zimbabwe",
+      "summary": "PGM deposit geology, exploration methodology and services across Zimbabwe's Great Dyke — Harare, Bulawayo."
+    },
+    {
+      "title": "Coal Mining Services in Mozambique",
+      "slug": "coal-mining-mozambique",
+      "tags": "coal exploration southern-africa mozambique",
+      "summary": "Karoo coal exploration in Mozambique's Tete Province and Moatize Basin — Maputo, Tete, Beira."
+    },
+    {
+      "title": "Mineral Survey & Exploration Services in Kenya",
+      "slug": "mineral-survey-kenya",
+      "tags": "surveying exploration east-africa kenya",
+      "summary": "Titanium, gold, fluorspar and soda ash exploration across Kenya — Nairobi, Mombasa, Kwale, Migori."
+    },
+    {
+      "title": "Geophysical Survey Services in East Africa",
+      "slug": "geophysical-surveys-east-africa",
+      "tags": "geophysics exploration east-africa",
+      "summary": "Airborne magnetics, IP, gravity and EM surveys for mineral exploration across Tanzania, Kenya, Uganda, Ethiopia."
+    },
+    {
+      "title": "Diamond & RC Drilling Services in Tanzania",
+      "slug": "drilling-services-tanzania",
+      "tags": "drilling exploration tanzania east-africa",
+      "summary": "Core and RC drilling programmes, QA/QC protocols and sample management across Tanzania — Dar es Salaam, Arusha, Mwanza."
+    },
+    {
+      "title": "Environmental Compliance for Mining in East & Southern Africa",
+      "slug": "environmental-compliance-mining",
+      "tags": "environment consulting east-africa southern-africa",
+      "summary": "EIA, ESMP and monitoring for mining in Tanzania (NEMC), Kenya (NEMA), Zambia (ZEMA) and South Africa (DEAT)."
+    },
+    {
+      "title": "Mining Equipment & Technology in Sub-Saharan Africa",
+      "slug": "mining-equipment-africa",
+      "tags": "equipment drilling geophysics africa",
+      "summary": "Drill rigs, geophysical instruments, lab equipment and mine planning software for East and Southern African conditions."
+    },
+    {
+      "title": "Mineral Exploration Services in the DRC",
+      "slug": "mineral-exploration-drc",
+      "tags": "exploration cobalt copper east-africa drc",
+      "summary": "Copper-cobalt, gold and coltan exploration across the DRC — Kinshasa, Lubumbashi, Kolwezi, Goma."
+    },
+    {
+      "title": "Mining Services in South Africa",
+      "slug": "mining-services-south-africa",
+      "tags": "exploration gold platinum southern-africa south-africa",
+      "summary": "Gold, PGM and coal exploration across South Africa — Johannesburg, Cape Town, Pretoria, Bushveld Complex."
+    },
+    {
+      "title": "Mining Exploration Services in Namibia",
+      "slug": "mining-exploration-namibia",
+      "tags": "exploration uranium diamond southern-africa namibia",
+      "summary": "Diamonds, uranium, copper and gold exploration across Namibia — Windhoek, Walvis Bay, Swakopmund."
+    },
+    {
+      "title": "Geological Mapping & Structural Analysis Services",
+      "slug": "geological-mapping",
+      "tags": "exploration geophysics consulting southern-africa east-africa",
+      "summary": "Remote sensing, field mapping, 3D modelling and geotechnical characterisation for mineral exploration."
+    },
+    {
+      "title": "Mine Planning & Feasibility Studies in East Africa",
+      "slug": "mine-planning-feasibility",
+      "tags": "consulting exploration east-africa southern-africa",
+      "summary": "Scoping to bankable feasibility studies, JORC resource estimation, mine design and financial modelling."
+    },
+    {
+      "title": "Assay & Laboratory Services in Tanzania",
+      "slug": "assay-laboratory-tanzania",
+      "tags": "drilling exploration tanzania east-africa assay",
+      "summary": "Fire assay, ICP-MS, QA/QC design and sample management for gold and base metal projects in Tanzania."
+    },
+    {
+      "title": "Mining Consulting Services Across Africa",
+      "slug": "mining-consulting-africa",
+      "tags": "consulting exploration east-africa southern-africa",
+      "summary": "Project generation, technical due diligence, resource estimation and programme management across Africa."
+    },
+    {
+      "title": "Community Relations & CSR in African Mining",
+      "slug": "community-csr-mining",
+      "tags": "environment consulting east-africa southern-africa",
+      "summary": "FPIC, community development agreements, grievance mechanisms and social impact management across Africa."
+    },
+    {
+      "title": "Services for Junior Mining Companies in Africa",
+      "slug": "junior-mining-company",
+      "tags": "consulting exploration east-africa southern-africa",
+      "summary": "Cost-efficient exploration outsourcing, JORC reporting, investor communication support for junior miners in Africa."
+    },
+    {
+      "title": "The Future of Mining in East Africa 2025–2030",
+      "slug": "future-mining-east-africa",
+      "tags": "consulting east-africa southern-africa critical-minerals",
+      "summary": "Critical minerals boom: lithium, cobalt, nickel, graphite, green mining technology and investment trends to 2030."
+    }
+  ]
+}
