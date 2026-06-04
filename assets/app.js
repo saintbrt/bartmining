@@ -8,7 +8,7 @@
 
   var EMAIL = "hello@bartmining.com";
   var SITE = "https://www.bartmining.com";
-  var HOME = "/index.html";
+  var HOME = SITE + "/";
 
   function ico(d) {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + d + "</svg>";
