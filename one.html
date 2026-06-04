@@ -27,42 +27,84 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 100px; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 60px; }
   
-  header { padding: 60px 40px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
-  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
-  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .header-desc { font-size: 15px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+  /* Responsive Header Padding */
+  header { padding: 40px 20px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  @media (min-width: 768px) {
+    header { padding: 60px 40px; }
+  }
 
-  .section-nav { display: flex; gap: 10px; margin-top: 24px; }
-  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; }
+  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+  
+  /* Responsive Typography */
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; }
+  @media (min-width: 768px) {
+    h1 { font-size: 36px; }
+  }
+
+  .header-desc { font-size: 14px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+  @media (min-width: 768px) {
+    .header-desc { font-size: 15px; }
+  }
+
+  /* Wrapped Navigation Pill Grid for Mobile/Tablet */
+  .section-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 12px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; white-space: nowrap; }
   .nav-pill.active { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-  .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+  /* Responsive Container Margins */
+  .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+  @media (min-width: 768px) {
+    .container { margin: 40px auto; padding: 0 20px; }
+  }
   
-  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 60px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-  .fn-header { padding: 20px 24px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .fn-title-wrap { display: flex; align-items: center; gap: 12px; }
-  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; }
-  .fn-title { font-size: 20px; font-weight: 600; color: var(--ink); }
-  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; }
+  /* Blocks and Card Layout */
+  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 40px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  @media (min-width: 768px) {
+    .fn-block { margin-bottom: 60px; }
+  }
 
-  .fn-body { padding: 24px; }
+  /* Header Stacking Strategy for Mobile */
+  .fn-header { padding: 16px 20px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+  @media (min-width: 768px) {
+    .fn-header { padding: 20px 24px; flex-direction: row; align-items: center; justify-content: space-between; }
+  }
+
+  .fn-title-wrap { display: flex; align-items: center; gap: 12px; width: 100%; }
+  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; flex-shrink: 0; }
+  
+  .fn-title { font-size: 18px; font-weight: 600; color: var(--ink); }
+  @media (min-width: 768px) {
+    .fn-title { font-size: 20px; }
+  }
+
+  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; display: inline-block; }
+
+  .fn-body { padding: 16px; }
+  @media (min-width: 768px) {
+    .fn-body { padding: 24px; }
+  }
+
   .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 24px; line-height: 1.7; }
 
-  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
+  /* Fluid Grid Flow */
+  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; gap: 24px; } .full-width { grid-column: span 2; } }
 
-  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
   .panel-header { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
   .panel-header.input { background: var(--bg-2); color: var(--ink-2); }
   .panel-header.logic { background: var(--gold-pale); color: var(--gold); }
   .panel-header.output { background: var(--red-bg); color: var(--red); }
   .panel-header.success { background: var(--teal-bg); color: var(--teal); }
 
-  .panel-body { padding: 16px; }
+  .panel-body { padding: 16px; flex-grow: 1; }
 
-  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; }
+  /* Responsive Overflow for Tables */
+  .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 4px; }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; min-width: 450px; /* Forces tables to keep clean structure when scrolled */ }
   th { padding: 8px 12px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; }
   td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); }
   tr:last-child td { border-bottom: none; }
@@ -74,6 +116,9 @@
   .logic-list li { font-size: 13px; color: var(--ink-2); position: relative; padding-left: 24px; margin-bottom: 12px; line-height: 1.6; }
   .logic-list li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
   .logic-list li strong { color: var(--ink); font-weight: 500; }
+
+  /* Utility helper styling for raw snippets inside panel-bodies */
+  .snippet-wrapper { max-width: 100%; overflow-x: auto; }
 </style>
 </head>
 <body>
@@ -95,6 +140,7 @@
 
 <div class="container">
 
+  <!-- FUNCTION 01 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -109,18 +155,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Collar Table)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Row</th><th>hole_id</th><th>easting</th><th>northing</th><th>elevation</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>1</td><td>KS26_001</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td></tr>
-                <tr class="err-row"><td>2</td><td><span class="err-cell">[NULL]</span></td><td>642150.80</td><td>8142550.10</td><td>1122.10</td></tr>
-                <tr><td>3</td><td>KS26_002</td><td>642200.50</td><td>8142600.90</td><td>1118.90</td></tr>
-                <tr class="err-row"><td>4</td><td>"" (Empty)</td><td>642250.10</td><td>8142650.40</td><td>1115.30</td></tr>
-                <tr><td>5</td><td>KS26_003</td><td>642300.70</td><td>8142700.00</td><td>1112.80</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Row</th><th>hole_id</th><th>easting</th><th>northing</th><th>elevation</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>KS26_001</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td></tr>
+                  <tr class="err-row"><td>2</td><td><span class="err-cell">[NULL]</span></td><td>642150.80</td><td>8142550.10</td><td>1122.10</td></tr>
+                  <tr><td>3</td><td>KS26_002</td><td>642200.50</td><td>8142600.90</td><td>1118.90</td></tr>
+                  <tr class="err-row"><td>4</td><td>"" (Empty)</td><td>642250.10</td><td>8142650.40</td><td>1115.30</td></tr>
+                  <tr><td>5</td><td>KS26_003</td><td>642300.70</td><td>8142700.00</td><td>1112.80</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -137,21 +185,24 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Original Row Index</th><th>Detected Fault Profile</th><th>Easting Context</th><th>Northing Context</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>2</td><td>Structural NULL value in primary key location</td><td>642150.80</td><td>8142550.10</td></tr>
-                <tr class="err-row"><td>4</td><td>Blank character sequence / empty string value</td><td>642250.10</td><td>8142650.40</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Original Row Index</th><th>Detected Fault Profile</th><th>Easting Context</th><th>Northing Context</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>2</td><td>Structural NULL value in primary key location</td><td>642150.80</td><td>8142550.10</td></tr>
+                  <tr class="err-row"><td>4</td><td>Blank character sequence / empty string value</td><td>642250.10</td><td>8142650.40</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 02 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -166,18 +217,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Assay Table)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>au_ppm</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_001</td><td>0.00</td><td>2.00</td><td>0.12</td></tr>
-                <tr class="err-row"><td>KS26_001</td><td><span class="err-cell">4.00</span></td><td><span class="err-cell">2.00</span></td><td>1.45</td></tr>
-                <tr><td>KS26_001</td><td>4.00</td><td>6.00</td><td>2.11</td></tr>
-                <tr class="err-row"><td>KS26_001</td><td><span class="err-cell">8.00</span></td><td><span class="err-cell">8.00</span></td><td>0.05</td></tr>
-                <tr><td>KS26_001</td><td>8.00</td><td>10.00</td><td>0.98</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>au_ppm</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_001</td><td>0.00</td><td>2.00</td><td>0.12</td></tr>
+                  <tr class="err-row"><td>KS26_001</td><td><span class="err-cell">4.00</span></td><td><span class="err-cell">2.00</span></td><td>1.45</td></tr>
+                  <tr><td>KS26_001</td><td>4.00</td><td>6.00</td><td>2.11</td></tr>
+                  <tr class="err-row"><td>KS26_001</td><td><span class="err-cell">8.00</span></td><td><span class="err-cell">8.00</span></td><td>0.05</td></tr>
+                  <tr><td>KS26_001</td><td>8.00</td><td>10.00</td><td>0.98</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -194,21 +247,24 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID</th><th>Violating From Depth</th><th>Violating To Depth</th><th>Identified Discrepancy Type</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_001</td><td>4.00</td><td>2.00</td><td>Inverted Profile (From depth exceeds To depth)</td></tr>
-                <tr class="err-row"><td>KS26_001</td><td>8.00</td><td>8.00</td><td>Zero-Thickness Boundary (From and To depths match)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID</th><th>Violating From Depth</th><th>Violating To Depth</th><th>Identified Discrepancy Type</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_001</td><td>4.00</td><td>2.00</td><td>Inverted Profile (From depth exceeds To depth)</td></tr>
+                  <tr class="err-row"><td>KS26_001</td><td>8.00</td><td>8.00</td><td>Zero-Thickness Boundary (From and To depths match)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 03 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -223,18 +279,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Assay Sequence)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>sample_id</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_004</td><td>0.00</td><td>1.00</td><td>A008401</td></tr>
-                <tr class="err-row"><td>KS26_004</td><td><span class="err-cell">1.00</span></td><td><span class="err-cell">3.00</span></td><td>A008402</td></tr>
-                <tr class="err-row"><td>KS26_004</td><td><span class="err-cell">2.00</span></td><td><span class="err-cell">4.00</span></td><td>A008403</td></tr>
-                <tr><td>KS26_004</td><td>4.00</td><td>5.00</td><td>A008404</td></tr>
-                <tr><td>KS26_004</td><td>5.00</td><td>6.00</td><td>A008405</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>sample_id</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_004</td><td>0.00</td><td>1.00</td><td>A008401</td></tr>
+                  <tr class="err-row"><td>KS26_004</td><td><span class="err-cell">1.00</span></td><td><span class="err-cell">3.00</span></td><td>A008402</td></tr>
+                  <tr class="err-row"><td>KS26_004</td><td><span class="err-cell">2.00</span></td><td><span class="err-cell">4.00</span></td><td>A008403</td></tr>
+                  <tr><td>KS26_004</td><td>4.00</td><td>5.00</td><td>A008404</td></tr>
+                  <tr><td>KS26_004</td><td>5.00</td><td>6.00</td><td>A008405</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -251,20 +309,23 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID</th><th>Interval Segment A</th><th>Interval Segment B</th><th>Physical Overlap Span</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_004</td><td>1.00m to 3.00m (A008402)</td><td>2.00m to 4.00m (A008403)</td><td>1.00 meter overlap intersection</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID</th><th>Interval Segment A</th><th>Interval Segment B</th><th>Physical Overlap Span</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_004</td><td>1.00m to 3.00m (A008402)</td><td>2.00m to 4.00m (A008403)</td><td>1.00 meter overlap intersection</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 04 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -279,18 +340,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Lithology Data)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>rock_code</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_005</td><td>0.00</td><td>12.50</td><td>OVB</td></tr>
-                <tr><td>KS26_005</td><td>12.50</td><td>24.00</td><td>SST</td></tr>
-                <tr class="err-row"><td>KS26_005</td><td><span class="err-cell">24.00</span></td><td><span class="err-cell">[GAP]</span></td><td>-</td></tr>
-                <tr><td>KS26_005</td><td>26.50</td><td>38.00</td><td>GRN</td></tr>
-                <tr><td>KS26_005</td><td>38.00</td><td>50.00</td><td>PST</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>rock_code</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_005</td><td>0.00</td><td>12.50</td><td>OVB</td></tr>
+                  <tr><td>KS26_005</td><td>12.50</td><td>24.00</td><td>SST</td></tr>
+                  <tr class="err-row"><td>KS26_005</td><td><span class="err-cell">24.00</span></td><td><span class="err-cell">[GAP]</span></td><td>-</td></tr>
+                  <tr><td>KS26_005</td><td>26.50</td><td>38.00</td><td>GRN</td></tr>
+                  <tr><td>KS26_005</td><td>38.00</td><td>50.00</td><td>PST</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -307,20 +370,23 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID</th><th>Preceding Interval Boundary</th><th>Succeeding Interval Boundary</th><th>Identified Gap Length</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_005</td><td>24.00 meters</td><td>26.50 meters</td><td>2.50 meters of unlogged segment</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID</th><th>Preceding Interval Boundary</th><th>Succeeding Interval Boundary</th><th>Identified Gap Length</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_005</td><td>24.00 meters</td><td>26.50 meters</td><td>2.50 meters of unlogged segment</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 05 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -335,18 +401,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Geotechnical Log)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>rqd_pct</th><th>rqd_grade</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_008</td><td>0.00</td><td>3.00</td><td>78.00</td><td>Good</td></tr>
-                <tr class="err-row"><td>KS26_008</td><td><span class="err-cell">3.00</span></td><td><span class="err-cell">6.00</span></td><td>45.00</td><td>Fair</td></tr>
-                <tr class="err-row"><td>KS26_008</td><td><span class="err-cell">3.00</span></td><td><span class="err-cell">6.00</span></td><td>45.00</td><td>Fair</td></tr>
-                <tr><td>KS26_008</td><td>6.00</td><td>9.00</td><td>82.00</td><td>Good</td></tr>
-                <tr><td>KS26_008</td><td>9.00</td><td>12.00</td><td>91.00</td><td>Excellent</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>rqd_pct</th><th>rqd_grade</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_008</td><td>0.00</td><td>3.00</td><td>78.00</td><td>Good</td></tr>
+                  <tr class="err-row"><td>KS26_008</td><td><span class="err-cell">3.00</span></td><td><span class="err-cell">6.00</span></td><td>45.00</td><td>Fair</td></tr>
+                  <tr class="err-row"><td>KS26_008</td><td><span class="err-cell">3.00</span></td><td><span class="err-cell">6.00</span></td><td>45.00</td><td>Fair</td></tr>
+                  <tr><td>KS26_008</td><td>6.00</td><td>9.00</td><td>82.00</td><td>Good</td></tr>
+                  <tr><td>KS26_008</td><td>9.00</td><td>12.00</td><td>91.00</td><td>Excellent</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -363,20 +431,23 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Target Hole ID</th><th>From Depth Coordinate</th><th>To Depth Coordinate</th><th>Duplicate Row Match Status</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_008</td><td>3.00</td><td>6.00</td><td>Identical record clone detected across multiple indices</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Target Hole ID</th><th>From Depth Coordinate</th><th>To Depth Coordinate</th><th>Duplicate Row Match Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_008</td><td>3.00</td><td>6.00</td><td>Identical record clone detected across multiple indices</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 06 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -391,18 +462,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Lab Assay Table)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>sample_id</th><th>au_ppm</th><th>cu_pct</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_012</td><td>X009201</td><td>0.54</td><td>0.12</td></tr>
-                <tr class="err-row"><td>KS26_012</td><td>X009202</td><td><span class="err-cell">-0.005</span></td><td>0.08</td></tr>
-                <tr><td>KS26_012</td><td>X009203</td><td>12.40</td><td>1.45</td></tr>
-                <tr class="err-row"><td>KS26_012</td><td>X009204</td><td>0.02</td><td><span class="err-cell">-9.000</span></td></tr>
-                <tr><td>KS26_012</td><td>X009205</td><td>0.88</td><td>0.22</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>sample_id</th><th>au_ppm</th><th>cu_pct</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_012</td><td>X009201</td><td>0.54</td><td>0.12</td></tr>
+                  <tr class="err-row"><td>KS26_012</td><td>X009202</td><td><span class="err-cell">-0.005</span></td><td>0.08</td></tr>
+                  <tr><td>KS26_012</td><td>X009203</td><td>12.40</td><td>1.45</td></tr>
+                  <tr class="err-row"><td>KS26_012</td><td>X009204</td><td>0.02</td><td><span class="err-cell">-9.000</span></td></tr>
+                  <tr><td>KS26_012</td><td>X009205</td><td>0.88</td><td>0.22</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -419,21 +492,24 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID</th><th>Sample Identifier</th><th>Violating Metric Column</th><th>Discovered Value</th><th>Geological Meaning</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_012</td><td>X009202</td><td>au_ppm</td><td>-0.005</td><td>Likely Below Detection Limit indicator</td></tr>
-                <tr class="err-row"><td>KS26_012</td><td>X009204</td><td>cu_pct</td><td>-9.000</td><td>Likely Database Null Placeholder assignment</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID</th><th>Sample Identifier</th><th>Violating Metric Column</th><th>Discovered Value</th><th>Geological Meaning</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_012</td><td>X009202</td><td>au_ppm</td><td>-0.005</td><td>Likely Below Detection Limit indicator</td></tr>
+                  <tr class="err-row"><td>KS26_012</td><td>X009204</td><td>cu_pct</td><td>-9.000</td><td>Likely Database Null Placeholder assignment</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 07 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -448,18 +524,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Collar Coordinates)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>easting_x</th><th>northing_y</th><th>elev_z</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_101</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td></tr>
-                <tr><td>KS26_102</td><td>642150.80</td><td>8142550.10</td><td>1122.10</td></tr>
-                <tr class="err-row"><td>KS26_103</td><td><span class="err-cell">64215.00</span></td><td>8142580.30</td><td>1119.50</td></tr>
-                <tr><td>KS26_104</td><td>642250.10</td><td>8142650.40</td><td>1115.30</td></tr>
-                <tr class="err-row"><td>KS26_105</td><td>642300.70</td><td><span class="err-cell">81425.00</span></td><td>1112.80</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>easting_x</th><th>northing_y</th><th>elev_z</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_101</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td></tr>
+                  <tr><td>KS26_102</td><td>642150.80</td><td>8142550.10</td><td>1122.10</td></tr>
+                  <tr class="err-row"><td>KS26_103</td><td><span class="err-cell">64215.00</span></td><td>8142580.30</td><td>1119.50</td></tr>
+                  <tr><td>KS26_104</td><td>642250.10</td><td>8142650.40</td><td>1115.30</td></tr>
+                  <tr class="err-row"><td>KS26_105</td><td>642300.70</td><td><span class="err-cell">81425.00</span></td><td>1112.80</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -476,21 +554,24 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID</th><th>Easting Measured</th><th>Northing Measured</th><th>Identified Boundary Defect</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_103</td><td>64215.00</td><td>8142580.30</td><td>Easting outlier: Shifted west by ~578km (likely missing trailing digit)</td></tr>
-                <tr class="err-row"><td>KS26_105</td><td>642300.70</td><td>81425.00</td><td>Northing outlier: Shifted south by ~8060km (severe typo or truncation)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID</th><th>Easting Measured</th><th>Northing Measured</th><th>Identified Boundary Defect</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_103</td><td>64215.00</td><td>8142580.30</td><td>Easting outlier: Shifted west by ~578km (likely missing trailing digit)</td></tr>
+                  <tr class="err-row"><td>KS26_105</td><td>642300.70</td><td>81425.00</td><td>Northing outlier: Shifted south by ~8060km (severe typo or truncation)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 08 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -506,12 +587,16 @@
           <div class="panel-header input">Uploaded Master Files Relation</div>
           <div class="panel-body">
             <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Collar Source Rows:</strong></p>
-            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px;">
-              [KS26_201, KS26_202, KS26_203, KS26_204, KS26_205]
+            <div class="snippet-wrapper">
+              <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px; white-space: nowrap;">
+                [KS26_201, KS26_202, KS26_203, KS26_204, KS26_205]
+              </div>
             </div>
             <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Assay Source Distinct Keys:</strong></p>
-            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border);">
-              [KS26_201, KS26_202, KS26_204]
+            <div class="snippet-wrapper">
+              <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); white-space: nowrap;">
+                [KS26_201, KS26_202, KS26_204]
+              </div>
             </div>
           </div>
         </div>
@@ -529,21 +614,24 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID</th><th>Collar Metadata Context</th><th>Status Flag Recommendation</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_203</td><td>Easting: 642200 | Northing: 8142600</td><td>Flag as Planned / Undrilled (No assay logs exist)</td></tr>
-                <tr class="err-row"><td>KS26_205</td><td>Easting: 642300 | Northing: 8142700</td><td>Flag as Planned / Undrilled (No assay logs exist)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID</th><th>Collar Metadata Context</th><th>Status Flag Recommendation</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_203</td><td>Easting: 642200 | Northing: 8142600</td><td>Flag as Planned / Undrilled (No assay logs exist)</td></tr>
+                  <tr class="err-row"><td>KS26_205</td><td>Easting: 642300 | Northing: 8142700</td><td>Flag as Planned / Undrilled (No assay logs exist)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 09 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -559,12 +647,16 @@
           <div class="panel-header input">Cross-Table Relationship Matrix</div>
           <div class="panel-body">
             <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Collar Master Database IDs:</strong></p>
-            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px;">
-              [KS26_301, KS26_302, KS26_303]
+            <div class="snippet-wrapper">
+              <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px; white-space: nowrap;">
+                [KS26_301, KS26_302, KS26_303]
+              </div>
             </div>
             <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Assay File Rows Parsed:</strong></p>
-            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border);">
-              1. KS26_301 (Valid) | 2. <span style="color:var(--red); font-weight:bold;">KS26_999</span> (Orphan) | 3. KS26_302 (Valid) | 4. <span style="color:var(--red); font-weight:bold;">KS26_XYZ</span> (Orphan)
+            <div class="snippet-wrapper">
+              <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); white-space: nowrap;">
+                1. KS26_301 (Valid) | 2. <span style="color:var(--red); font-weight:bold;">KS26_999</span> (Orphan) | 3. KS26_302 (Valid) | 4. <span style="color:var(--red); font-weight:bold;">KS26_XYZ</span> (Orphan)
+              </div>
             </div>
           </div>
         </div>
@@ -582,21 +674,24 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Orphan Hole ID Row</th><th>Assay From Depth</th><th>Assay To Depth</th><th>Calculated Source of Error</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_999</td><td>14.00</td><td>15.00</td><td>Hole ID absent from Collar coordinates index (Typo check required)</td></tr>
-                <tr class="err-row"><td>KS26_XYZ</td><td>0.00</td><td>2.00</td><td>Hole ID absent from Collar coordinates index (Invalid syntax string)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Orphan Hole ID Row</th><th>Assay From Depth</th><th>Assay To Depth</th><th>Calculated Source of Error</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_999</td><td>14.00</td><td>15.00</td><td>Hole ID absent from Collar coordinates index (Typo check required)</td></tr>
+                  <tr class="err-row"><td>KS26_XYZ</td><td>0.00</td><td>2.00</td><td>Hole ID absent from Collar coordinates index (Invalid syntax string)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 10 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -611,18 +706,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Assay & Survey Rows)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>depth_point</th><th>dip_value</th><th>litho_str</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_401</td><td>0.00</td><td>-60.00</td><td>SST</td></tr>
-                <tr class="err-row"><td>KS26_401</td><td>30.00</td><td><span class="err-cell">-999.00</span></td><td>QTV</td></tr>
-                <tr><td>KS26_401</td><td>60.00</td><td>-59.50</td><td>GRN</td></tr>
-                <tr class="err-row"><td>KS26_401</td><td>90.00</td><td>-59.20</td><td><span class="err-cell">"N/A"</span></td></tr>
-                <tr><td>KS26_401</td><td>120.00</td><td>-59.00</td><td>GRN</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>depth_point</th><th>dip_value</th><th>litho_str</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_401</td><td>0.00</td><td>-60.00</td><td>SST</td></tr>
+                  <tr class="err-row"><td>KS26_401</td><td>30.00</td><td><span class="err-cell">-999.00</span></td><td>QTV</td></tr>
+                  <tr><td>KS26_401</td><td>60.00</td><td>-59.50</td><td>GRN</td></tr>
+                  <tr class="err-row"><td>KS26_401</td><td>90.00</td><td>-59.20</td><td><span class="err-cell">"N/A"</span></td></tr>
+                  <tr><td>KS26_401</td><td>120.00</td><td>-59.00</td><td>GRN</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -639,21 +736,24 @@
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Hole ID</th><th>Depth Mark</th><th>Identified Field Target</th><th>Discovered Placeholder Value</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_401</td><td>30.00</td><td>dip_value</td><td>-999.00 (Numeric Null Placeholder)</td></tr>
-                <tr class="err-row"><td>KS26_401</td><td>90.00</td><td>litho_str</td><td>"N/A" (String Null Placeholder Value)</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Hole ID</th><th>Depth Mark</th><th>Identified Field Target</th><th>Discovered Placeholder Value</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_401</td><td>30.00</td><td>dip_value</td><td>-999.00 (Numeric Null Placeholder)</td></tr>
+                  <tr class="err-row"><td>KS26_401</td><td>90.00</td><td>litho_str</td><td>"N/A" (String Null Placeholder Value)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- FUNCTION 11 -->
   <div class="fn-block">
     <div class="fn-header">
       <div class="fn-title-wrap">
@@ -668,18 +768,20 @@
         <div class="panel">
           <div class="panel-header input">Raw Input Dataset (Collar File Profile)</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>easting_x</th><th>northing_y</th><th>elev_z</th><th>total_depth</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>KS26_501</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td><td>150.00</td></tr>
-                <tr class="err-row"><td>KS26_502</td><td>642150.80</td><td>8142550.10</td><td>1122.10</td><td><span class="err-cell">[NULL]</span></td></tr>
-                <tr><td>KS26_503</td><td>642200.50</td><td>8142600.90</td><td>1118.90</td><td>210.50</td></tr>
-                <tr class="err-row"><td>KS26_504</td><td><span class="err-cell">[NULL]</span></td><td>8142650.40</td><td>1115.30</td><td>85.00</td></tr>
-                <tr><td>KS26_505</td><td>642300.70</td><td>8142700.00</td><td>1112.80</td><td>300.00</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>easting_x</th><th>northing_y</th><th>elev_z</th><th>total_depth</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>KS26_501</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td><td>150.00</td></tr>
+                  <tr class="err-row"><td>KS26_502</td><td>642150.80</td><td>8142550.10</td><td>1122.10</td><td><span class="err-cell">[NULL]</span></td></tr>
+                  <tr><td>KS26_503</td><td>642200.50</td><td>8142600.90</td><td>1118.90</td><td>210.50</td></tr>
+                  <tr class="err-row"><td>KS26_504</td><td><span class="err-cell">[NULL]</span></td><td>8142650.40</td><td>1115.30</td><td>85.00</td></tr>
+                  <tr><td>KS26_505</td><td>642300.70</td><td>8142700.00</td><td>1112.80</td><td>300.00</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -689,22 +791,24 @@
               <li>Enforces structural checks on critical spatial coordinate columns (<code>X</code>, <code>Y</code>, <code>Z</code>, <code>Total Depth</code>).</li>
               <li>Flags rows missing any of these core values, even if the Hole ID itself is valid.</li>
               <li>Flags anomalies like a <code>total_depth</code> of zero or negative numbers, which are geologically impossible.</li>
-              <li>Prevents corrupted drill paths from waping downstream calculations or causing system integration breaks.</li>
+              <li>Prevents corrupted drill paths from warping downstream calculations or causing system integration breaks.</li>
             </ul>
           </div>
         </div>
         <div class="panel full-width">
           <div class="panel-header output">Output Error Flag Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Target Hole ID Reference</th><th>Detected Structural Deficiency</th><th>Validation Status Action Required</th></tr>
-              </thead>
-              <tbody>
-                <tr class="err-row"><td>KS26_502</td><td>Missing data parameter: total_depth is Null</td><td>Reject row until a valid final depth value is provided</td></tr>
-                <tr class="err-row"><td>[Row 4 Baseline Fault]</td><td>Missing core coordinates: easting_x value is Null</td><td>Reject row due to completely missing spatial location parameters</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Target Hole ID Reference</th><th>Detected Structural Deficiency</th><th>Validation Status Action Required</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="err-row"><td>KS26_502</td><td>Missing data parameter: total_depth is Null</td><td>Reject row until a valid final depth value is provided</td></tr>
+                  <tr class="err-row"><td>[Row 4 Baseline Fault]</td><td>Missing core coordinates: easting_x value is Null</td><td>Reject row due to completely missing spatial location parameters</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
