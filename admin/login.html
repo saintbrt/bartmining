@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GoldPass — Sign in</title>
+<meta name="robots" content="noindex,nofollow"/>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0B0C0E;color:#E8ECF4;
+    min-height:100vh;display:grid;place-items:center;
+    background-image:radial-gradient(circle at 70% 12%,rgba(231,192,103,.06),transparent 45%),radial-gradient(circle at 20% 85%,rgba(60,90,130,.06),transparent 45%);}
+  .card{width:380px;max-width:92vw;background:rgba(20,22,26,.85);border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;padding:34px 30px;backdrop-filter:blur(16px);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .logo{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .diamond{width:22px;height:22px;background:linear-gradient(135deg,#5AC8FA,#007AFF);transform:rotate(45deg);border-radius:5px;box-shadow:0 0 14px rgba(0,122,255,.5)}
+  .name{font-size:21px;font-weight:700;letter-spacing:-.01em}
+  .tag{font-size:12.5px;color:#9BA6BC;margin-bottom:24px}
+  label{display:block;font-size:11px;font-weight:600;color:#9BA6BC;letter-spacing:.02em;margin:14px 0 6px}
+  input{width:100%;padding:11px 13px;font-size:14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);
+    background:#16181B;color:#E8ECF4;outline:none;transition:border-color .15s}
+  input:focus{border-color:#007AFF}
+  button{width:100%;margin-top:22px;padding:12px;font-size:14px;font-weight:600;border:none;border-radius:10px;
+    background:#007AFF;color:#fff;cursor:pointer;transition:background .15s}
+  button:hover{background:#0a6fe0}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .err{margin-top:14px;font-size:12.5px;color:#FF7A7A;background:rgba(220,40,70,.1);border:1px solid rgba(220,40,70,.3);
+    border-radius:8px;padding:9px 12px;display:none}
+  .err.show{display:block}
+  .foot{text-align:center;font-size:11px;color:#5E6678;margin-top:20px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+  <form class="card" id="loginForm">
+    <div class="logo"><span class="diamond"></span><span class="name">GoldPass</span></div>
+    <div class="tag">Bart Mining — internal exploration data workbench</div>
+    <div class="err" id="err"></div>
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="username" required value="admin@bartmining.com"/>
+    <label for="pass">Password</label>
+    <input id="pass" type="password" autocomplete="current-password" required/>
+    <button type="submit" id="btn">Sign in</button>
+    <div class="foot">Authorised personnel only</div>
+  </form>
+
+<script>
+  /* ── Supabase config — must match admin/index.html ───────────── */
+  const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
+  const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
+
+  const ready = SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.includes("YOUR-PROJECT");
+  const sb = ready ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession: true, autoRefreshToken: true }
+  }) : null;
+
+  const form = document.getElementById("loginForm");
+  const errEl = document.getElementById("err");
+  const btn = document.getElementById("btn");
+
+  function showErr(m){ errEl.textContent = m; errEl.classList.add("show"); }
+
+  /* set the gate cookie (verified by middleware) */
+  function setAuthCookie(token, expiresInSec){
+    const maxAge = Math.max(60, Math.min(expiresInSec || 3600, 3600));
+    document.cookie = "gp-auth=" + token + "; Path=/admin; Max-Age=" + maxAge + "; SameSite=Lax; Secure";
+  }
+
+  /* if already signed in, go straight in */
+  (async () => {
+    if (!ready) return;
+    const { data } = await sb.auth.getSession();
+    if (data?.session?.access_token) {
+      setAuthCookie(data.session.access_token, data.session.expires_in);
+      location.replace("/admin/");
+    }
+  })();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errEl.classList.remove("show");
+    if (!ready){ showErr("Backend not configured. Set SUPABASE_URL and SUPABASE_ANON_KEY."); return; }
+    btn.disabled = true; btn.textContent = "Signing in…";
+    try {
+      const { data, error } = await sb.auth.signInWithPassword({
+        email: document.getElementById("email").value.trim(),
+        password: document.getElementById("pass").value
+      });
+      if (error){ showErr(error.message); btn.disabled = false; btn.textContent = "Sign in"; return; }
+      setAuthCookie(data.session.access_token, data.session.expires_in);
+      location.replace("/admin/");
+    } catch (ex) {
+      showErr(ex?.message || "Sign in failed.");
+      btn.disabled = false; btn.textContent = "Sign in";
+    }
+  });
+</script>
+</body>
+</html>
