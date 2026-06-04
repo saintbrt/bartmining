@@ -29,44 +29,84 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 100px; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 60px; }
   
-  header { padding: 60px 40px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  /* Responsive Header */
+  header { padding: 40px 20px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  @media (min-width: 768px) {
+    header { padding: 60px 40px; }
+  }
   .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
-  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .header-desc { font-size: 15px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; }
+  @media (min-width: 768px) {
+    h1 { font-size: 36px; }
+  }
+  .header-desc { font-size: 14px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
 
-  .section-nav { display: flex; gap: 10px; margin-top: 24px; }
-  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; }
+  /* Responsive Navigation Pills */
+  .section-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 12px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; transition: all 0.2s ease; }
+  .nav-pill:hover { border-color: var(--gold); }
   .nav-pill.active { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-  .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+  /* Main Layout Container */
+  .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+  @media (min-width: 768px) {
+    .container { margin: 40px auto; padding: 0 20px; }
+  }
   
-  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 60px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-  .fn-header { padding: 20px 24px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .fn-title-wrap { display: flex; align-items: center; gap: 12px; }
-  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; }
-  .fn-title { font-size: 20px; font-weight: 600; color: var(--ink); }
-  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; }
+  /* Function Block Panel Layout */
+  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 40px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  @media (min-width: 768px) {
+    .fn-block { margin-bottom: 60px; }
+  }
+  .fn-header { padding: 16px 20px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  @media (min-width: 576px) {
+    .fn-header { flex-direction: row; align-items: center; justify-content: space-between; }
+  }
+  .fn-title-wrap { display: flex; align-items: center; gap: 12px; width: 100%; }
+  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; flex-shrink: 0; }
+  .fn-title { font-size: 18px; font-weight: 600; color: var(--ink); }
+  @media (min-width: 768px) {
+    .fn-title { font-size: 20px; }
+  }
+  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; white-space: nowrap; }
 
-  .fn-body { padding: 24px; }
-  .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 24px; line-height: 1.7; }
+  .fn-body { padding: 16px; }
+  @media (min-width: 768px) {
+    .fn-body { padding: 24px; }
+  }
+  .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 20px; line-height: 1.6; }
 
-  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
+  /* Fully Responsive CSS Grid */
+  .flow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  @media (min-width: 900px) { 
+    .flow-grid { grid-template-columns: 1fr 1fr; gap: 24px; } 
+    .full-width { grid-column: span 2; } 
+  }
 
-  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
   .panel-header { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
   .panel-header.input { background: var(--bg-2); color: var(--ink-2); }
   .panel-header.logic { background: var(--gold-pale); color: var(--gold); }
   .panel-header.analysis { background: var(--orange-bg); color: var(--orange); }
   .panel-header.success { background: var(--teal-bg); color: var(--teal); }
 
-  .panel-body { padding: 16px; }
+  .panel-body { padding: 14px; flex-grow: 1; }
+  @media (min-width: 768px) {
+    .panel-body { padding: 16px; }
+  }
 
-  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; }
+  /* Responsive Table Container Strategy */
+  .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 4px; border: 1px solid var(--bg-3); border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 11px; text-align: left; min-width: 500px; } /* Ensures readability via horizontal scroll on mobile */
+  @media (min-width: 768px) {
+    table { font-size: 12px; min-width: 100%; }
+    .table-responsive { border: none; border-radius: 0; }
+  }
   th { padding: 8px 12px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; }
-  td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); white-space: nowrap; } /* Prevents awkward line-breaks inside data arrays */
+  .wrap-cell { white-space: normal; min-width: 180px; } /* Allows descriptions to wrap elegantly */
   tr:last-child td { border-bottom: none; }
   
   .mod-row { background: var(--orange-bg); color: var(--orange); }
@@ -74,7 +114,7 @@
   .success-row { background: var(--teal-bg); color: var(--teal); }
 
   .logic-list { list-style: none; }
-  .logic-list li { font-size: 13px; color: var(--ink-2); position: relative; padding-left: 24px; margin-bottom: 12px; line-height: 1.6; }
+  .logic-list li { font-size: 13px; color: var(--ink-2); position: relative; padding-left: 20px; margin-bottom: 12px; line-height: 1.5; }
   .logic-list li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
   .logic-list li strong { color: var(--ink); font-weight: 500; }
 </style>
@@ -111,16 +151,18 @@
         <div class="panel">
           <div class="panel-header input">Downhole Assay & Collar Inputs</div>
           <div class="panel-body">
-            <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Raw Assay Record Segments (Borehole: KS26_011):</p>
-            <table style="font-size:11px;">
-              <thead><tr><th>hole_id</th><th>from_m</th><th>to_m</th><th>au_ppm</th></tr></thead>
-              <tbody>
-                <tr><td>KS26_011</td><td>12.00</td><td>13.00</td><td>0.34</td></tr>
-                <tr class="mod-row"><td>KS26_011</td><td>13.00</td><td>14.00</td><td><span class="mod-cell">14.65</span></td></tr>
-                <tr><td>KS26_011</td><td>14.00</td><td>15.00</td><td>2.11</td></tr>
-                <tr><td>KS26_011</td><td>15.00</td><td>16.00</td><td>0.05</td></tr>
-              </tbody>
-            </table>
+            <p style="font-size:11px; margin-bottom:6px; font-weight:500; color:var(--ink-2)">Raw Assay Record Segments (Borehole: KS26_011):</p>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>hole_id</th><th>from_m</th><th>to_m</th><th>au_ppm</th></tr></thead>
+                <tbody>
+                  <tr><td>KS26_011</td><td>12.00</td><td>13.00</td><td>0.34</td></tr>
+                  <tr class="mod-row"><td>KS26_011</td><td>13.00</td><td>14.00</td><td><span class="mod-cell">14.65</span></td></tr>
+                  <tr><td>KS26_011</td><td>14.00</td><td>15.00</td><td>2.11</td></tr>
+                  <tr><td>KS26_011</td><td>15.00</td><td>16.00</td><td>0.05</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -137,18 +179,20 @@
         <div class="panel full-width">
           <div class="panel-header analysis">Output Aggregated Spatial Summary Sheet</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>easting</th><th>northing</th><th>elevation</th><th>max_au_ppm</th><th>peak_from</th><th>peak_to</th></tr>
-              </thead>
-              <tbody>
-                <tr class="success-row"><td>KS26_011</td><td>642105.40</td><td>8142510.20</td><td>1120.50</td><td><strong>14.65</strong></td><td>13.00</td><td>14.00</td></tr>
-                <tr><td>KS26_012</td><td>642160.10</td><td>8142562.80</td><td>1121.10</td><td><strong>0.88</strong></td><td>45.00</td><td>46.00</td></tr>
-                <tr><td>KS26_013</td><td>642212.90</td><td>8142615.00</td><td>1119.80</td><td><strong>3.42</strong></td><td>88.50</td><td>89.50</td></tr>
-                <tr><td>KS26_014</td><td>642270.30</td><td>8142668.30</td><td>1122.40</td><td><strong>0.04</strong></td><td>11.00</td><td>12.00</td></tr>
-                <tr><td>KS26_015</td><td>642315.80</td><td>8142722.10</td><td>1125.00</td><td><strong>22.10</strong></td><td>104.00</td><td>105.00</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>easting</th><th>northing</th><th>elevation</th><th>max_au_ppm</th><th>peak_from</th><th>peak_to</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="success-row"><td>KS26_011</td><td>642105.40</td><td>8142510.20</td><td>1120.50</td><td><strong>14.65</strong></td><td>13.00</td><td>14.00</td></tr>
+                  <tr><td>KS26_012</td><td>642160.10</td><td>8142562.80</td><td>1121.10</td><td><strong>0.88</strong></td><td>45.00</td><td>46.00</td></tr>
+                  <tr><td>KS26_013</td><td>642212.90</td><td>8142615.00</td><td>1119.80</td><td><strong>3.42</strong></td><td>88.50</td><td>89.50</td></tr>
+                  <tr><td>KS26_014</td><td>642270.30</td><td>8142668.30</td><td>1122.40</td><td><strong>0.04</strong></td><td>11.00</td><td>12.00</td></tr>
+                  <tr><td>KS26_015</td><td>642315.80</td><td>8142722.10</td><td>1125.00</td><td><strong>22.10</strong></td><td>104.00</td><td>105.00</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -169,16 +213,18 @@
         <div class="panel">
           <div class="panel-header input">Continuous Downhole Sample Run (Cutoff: 0.50 ppm)</div>
           <div class="panel-body">
-            <table style="font-size:11px;">
-              <thead><tr><th>Interval Bounds</th><th>Sample Length</th><th>Assayed Grade</th><th>Calculated Accumulation (g*m)</th></tr></thead>
-              <tbody>
-                <tr><td>41.00m - 42.00m</td><td>1.00m</td><td>1.20 ppm</td><td>1.20</td></tr>
-                <tr><td>42.00m - 43.00m</td><td>1.00m</td><td>3.50 ppm</td><td>3.50</td></tr>
-                <tr class="mod-row"><td>43.00m - 44.00m</td><td>1.00m</td><td><span class="mod-cell">0.15 ppm</span></td><td>0.15 (Internal Waste Inclusion)</td></tr>
-                <tr><td>44.00m - 45.00m</td><td>1.00m</td><td>2.80 ppm</td><td>2.80</td></tr>
-                <tr><td>45.00m - 46.00m</td><td>1.00m</td><td>1.65 ppm</td><td>1.65</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead><tr><th>Interval Bounds</th><th>Sample Length</th><th>Assayed Grade</th><th>Calculated Accumulation (g*m)</th></tr></thead>
+                <tbody>
+                  <tr><td>41.00m - 42.00m</td><td>1.00m</td><td>1.20 ppm</td><td>1.20</td></tr>
+                  <tr><td>42.00m - 43.00m</td><td>1.00m</td><td>3.50 ppm</td><td>3.50</td></tr>
+                  <tr class="mod-row"><td>43.00m - 44.00m</td><td>1.00m</td><td><span class="mod-cell">0.15 ppm</span></td><td class="wrap-cell">0.15 (Internal Waste Inclusion)</td></tr>
+                  <tr><td>44.00m - 45.00m</td><td>1.00m</td><td>2.80 ppm</td><td>2.80</td></tr>
+                  <tr><td>45.00m - 46.00m</td><td>1.00m</td><td>1.65 ppm</td><td>1.65</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="panel">
@@ -195,14 +241,16 @@
         <div class="panel full-width">
           <div class="panel-header analysis">Output Length-Weighted Composite Summary</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>hole_id</th><th>Composite From</th><th>Composite To</th><th>Total Intercept Width</th><th>Length-Weighted Avg Grade</th><th>Waste Included</th></tr>
-              </thead>
-              <tbody>
-                <tr class="success-row"><td>KS26_011</td><td>41.00m</td><td>46.00m</td><td><strong>5.00m</strong></td><td><strong>1.86 g/t Au</strong></td><td>1.00m internal waste segment absorbed</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>hole_id</th><th>Composite From</th><th>Composite To</th><th>Total Intercept Width</th><th>Length-Weighted Avg Grade</th><th>Waste Included</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="success-row"><td>KS26_011</td><td>41.00m</td><td>46.00m</td><td><strong>5.00m</strong></td><td><strong>1.86 g/t Au</strong></td><td class="wrap-cell">1.00m internal waste segment absorbed</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -224,9 +272,9 @@
           <div class="panel-header input">Overlapping Interval Mappings</div>
           <div class="panel-body">
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Lithology Table Logs:</p>
-            <p style="font-size:11px; font-family:monospace; margin-bottom:8px; color:var(--ink-3)">[0.0 - 12.5m: Saprolite] • [12.5 - 50.0m: Quartz Porphyry]</p>
+            <p style="font-size:11px; font-family:monospace; margin-bottom:12px; color:var(--ink-3)">[0.0 - 12.5m: Saprolite] • [12.5 - 50.0m: Quartz Porphyry]</p>
             <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Assay Table Logs:</p>
-            <p style="font-size:11px; font-family:monospace; color:var(--ink-3)">[12.0 - 13.0m: 14.65 ppm] $\rightarrow$ 0.5m in Saprolite, 0.5m in Quartz Porphyry</p>
+            <p style="font-size:11px; font-family:monospace; color:var(--ink-3)">[12.0 - 13.0m: 14.65 ppm] &rarr; 0.5m in Saprolite, 0.5m in Quartz Porphyry</p>
           </div>
         </div>
         <div class="panel">
@@ -234,7 +282,7 @@
           <div class="panel-body">
             <ul class="logic-list">
               <li>Calculates intersection boundaries where assay intervals overlap with lithological entries.</li>
-              <li>Apportions composite gold grades down to sub-units based on exact overlap distances.</li>
+              <li>Apportion composite gold grades down to sub-units based on exact overlap distances.</li>
               <li>Groups values by rock code to aggregate structural grade properties across the project area.</li>
               <li>Calculates descriptive statistics (mean, median, peak grade) for each distinct geological host unit.</li>
             </ul>
@@ -243,18 +291,20 @@
         <div class="panel full-width">
           <div class="panel-header analysis">Output Cross-Tabulated Correlation Insights</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Geological Rock Code Unit</th><th>Total Samples Associated</th><th>Aggregated Drilled Metres</th><th>Mean Grade (au_ppm)</th><th>Max Intercept Found</th></tr>
-              </thead>
-              <tbody>
-                <tr class="success-row"><td><strong>QP (Quartz Porphyry)</strong></td><td>450 units</td><td>620.50m</td><td><strong>2.45 ppm</strong></td><td>22.10 ppm downhole</td></tr>
-                <tr><td>BXX (Breccia Complex)</td><td>120 units</td><td>185.00m</td><td><strong>1.12 ppm</strong></td><td>5.40 ppm downhole</td></tr>
-                <tr><td>SAP (Saprolite Overburden)</td><td>310 units</td><td>450.00m</td><td><strong>0.32 ppm</strong></td><td>1.45 ppm downhole</td></tr>
-                <tr><td>SH (Foliated Black Shale)</td><td>185 units</td><td>290.00m</td><td><strong>0.08 ppm</strong></td><td>0.31 ppm downhole</td></tr>
-                <tr><td>BAS (Basalt Country Rock)</td><td>540 units</td><td>890.00m</td><td><strong>0.02 ppm</strong></td><td>0.12 ppm downhole</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Geological Rock Code Unit</th><th>Total Samples Associated</th><th>Aggregated Drilled Metres</th><th>Mean Grade (au_ppm)</th><th>Max Intercept Found</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="success-row"><td><strong>QP (Quartz Porphyry)</strong></td><td>450 units</td><td>620.50m</td><td><strong>2.45 ppm</strong></td><td>22.10 ppm downhole</td></tr>
+                  <tr><td>BXX (Breccia Complex)</td><td>120 units</td><td>185.00m</td><td><strong>1.12 ppm</strong></td><td>5.40 ppm downhole</td></tr>
+                  <tr><td>SAP (Saprolite Overburden)</td><td>310 units</td><td>450.00m</td><td><strong>0.32 ppm</strong></td><td>1.45 ppm downhole</td></tr>
+                  <tr><td>SH (Foliated Black Shale)</td><td>185 units</td><td>290.00m</td><td><strong>0.08 ppm</strong></td><td>0.31 ppm downhole</td></tr>
+                  <tr><td>BAS (Basalt Country Rock)</td><td>540 units</td><td>890.00m</td><td><strong>0.02 ppm</strong></td><td>0.12 ppm downhole</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -275,7 +325,7 @@
         <div class="panel">
           <div class="panel-header input">Unsorted Source Database Collection</div>
           <div class="panel-body">
-            <p style="font-size:12px; font-family:monospace; color:var(--ink-2)">
+            <p style="font-size:12px; font-family:monospace; color:var(--ink-2); line-height: 1.7;">
               KS26_011: 14.65 ppm<br>
               KS26_012: 0.88 ppm<br>
               KS26_013: 3.42 ppm<br>
@@ -298,24 +348,25 @@
         <div class="panel full-width">
           <div class="panel-header analysis">Output Ordered Ranking Table</div>
           <div class="panel-body">
-            <table>
-              <thead>
-                <tr><th>Assigned Target Rank</th><th>hole_id</th><th>Peak Grade Value</th><th>Depth of Intercept Boundary</th><th>Easting Metric</th><th>Northing Metric</th></tr>
-              </thead>
-              <tbody>
-                <tr class="success-row"><td><strong>#1 Priority Target</strong></td><td>KS26_015</td><td><strong>22.10 ppm</strong></td><td>104.00m - 105.00m</td><td>642315.80</td><td>8142722.10</td></tr>
-                <tr class="success-row"><td><strong>#2 Priority Target</strong></td><td>KS26_011</td><td><strong>14.65 ppm</strong></td><td>13.00m - 14.00m</td><td>642105.40</td><td>8142510.20</td></tr>
-                <tr><td><strong>#3 Priority Target</strong></td><td>KS26_013</td><td><strong>3.42 ppm</strong></td><td>88.50m - 89.50m</td><td>642212.90</td><td>8142615.00</td></tr>
-                <tr><td><strong>#4 Rank Prospect</strong></td><td>KS26_012</td><td><strong>0.88 ppm</strong></td><td>45.00m - 46.00m</td><td>642160.10</td><td>8142562.80</td></tr>
-                <tr><td><strong>#5 Rank Prospect</strong></td><td>KS26_014</td><td><strong>0.04 ppm</strong></td><td>11.00m - 12.00m</td><td>642270.30</td><td>8142668.30</td></tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Assigned Target Rank</th><th>hole_id</th><th>Peak Grade Value</th><th>Depth of Intercept Boundary</th><th>Easting Metric</th><th>Northing Metric</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="success-row"><td><strong>#1 Priority Target</strong></td><td>KS26_015</td><td><strong>22.10 ppm</strong></td><td>104.00m - 105.00m</td><td>642315.80</td><td>8142722.10</td></tr>
+                  <tr class="success-row"><td><strong>#2 Priority Target</strong></td><td>KS26_011</td><td><strong>14.65 ppm</strong></td><td>13.00m - 14.00m</td><td>642105.40</td><td>8142510.20</td></tr>
+                  <tr><td><strong>#3 Priority Target</strong></td><td>KS26_013</td><td><strong>3.42 ppm</strong></td><td>88.50m - 89.50m</td><td>642212.90</td><td>8142615.00</td></tr>
+                  <tr><td><strong>#4 Rank Prospect</strong></td><td>KS26_012</td><td><strong>0.88 ppm</strong></td><td>45.00m - 46.00m</td><td>642160.10</td><td>8142562.80</td></tr>
+                  <tr><td><strong>#5 Rank Prospect</strong></td><td>KS26_014</td><td><strong>0.04 ppm</strong></td><td>11.00m - 12.00m</td><td>642270.30</td><td>8142668.30</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <div class="fn-block">
     <div class="fn-header">
@@ -332,7 +383,7 @@
           <div class="panel-header input">Final Processing Memory Stack Layer</div>
           <div class="panel-body">
             <p style="font-size:12px; font-weight:500; margin-bottom:6px;">Internal Data State:</p>
-            <p style="font-size:11px; font-family:monospace; color:var(--ink-3); line-height:1.5;">
+            <p style="font-size:11px; font-family:monospace; color:var(--ink-3); line-height:1.6;">
               Row 1: [KS26_015, 642315.8, 8142722.1, 22.10, 104, 105]<br>
               Row 2: [KS26_011, 642105.4, 8142510.2, 14.65, 13, 14]
             </p>
@@ -355,17 +406,19 @@
             <div style="border: 1px dashed var(--teal); background: var(--teal-bg); padding: 16px; border-radius: 4px; font-family: 'DM Mono', monospace;">
               <p style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:6px;">✓ SYSTEM DATA EXPORT PACKAGING COMPLETE</p>
               <p style="font-size:12px; color:var(--ink-2); margin-bottom:12px;">Generated Export Layer Name: <strong style="color:var(--ink);">Kasubuya_CollarOutput_v3_Final.csv</strong></p>
-              <table style="font-size:11px; background:#fff; border:1px solid var(--border)">
-                <thead>
-                  <tr><th>Exported File Header</th><th>Target Mapping Destination (QGIS / Leapfrog)</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>hole_id</td><td>Primary Identifier String Mapping Key</td></tr>
-                  <tr><td>easting</td><td>X Coordinate Field Component (WGS84 UTM Zone 36S)</td></tr>
-                  <tr><td>northing</td><td>Y Coordinate Field Component (WGS84 UTM Zone 36S)</td></tr>
-                  <tr><td>max_au_ppm</td><td>Point Attribute Styling Grade Variable Color Value</td></tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table style="background:#fff; border:1px solid var(--border)">
+                  <thead>
+                    <tr><th>Exported File Header</th><th>Target Mapping Destination (QGIS / Leapfrog)</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>hole_id</td><td class="wrap-cell">Primary Identifier String Mapping Key</td></tr>
+                    <tr><td>easting</td><td class="wrap-cell">X Coordinate Field Component (WGS84 UTM Zone 36S)</td></tr>
+                    <tr><td>northing</td><td class="wrap-cell">Y Coordinate Field Component (WGS84 UTM Zone 36S)</td></tr>
+                    <tr><td>max_au_ppm</td><td class="wrap-cell">Point Attribute Styling Grade Variable Color Value</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
