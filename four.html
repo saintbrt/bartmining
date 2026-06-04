@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoldPass • Function Logic Guide (Sections 4 & 5: Analysis & Output)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #A07830;
+    --gold-mid: #C8A96E;
+    --gold-light: #E8D5A8;
+    --gold-pale: #FAF5EC;
+    --bg: #ffffff;
+    --bg-2: #f7f7f7;
+    --bg-3: #f0f0f0;
+    --ink: #1A1714;
+    --ink-2: #3D3830;
+    --ink-3: #6B6358;
+    --border: #E0D8CC;
+    --red: #B83A2A;
+    --red-bg: #FDF0EE;
+    --teal: #2A8A62;
+    --teal-bg: #EEF8F4;
+    --orange: #D97706;
+    --orange-bg: #FEF3C7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 100px; }
+  
+  header { padding: 60px 40px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .header-desc { font-size: 15px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+
+  .section-nav { display: flex; gap: 10px; margin-top: 24px; }
+  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; }
+  .nav-pill.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+  
+  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 60px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  .fn-header { padding: 20px 24px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .fn-title-wrap { display: flex; align-items: center; gap: 12px; }
+  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; }
+  .fn-title { font-size: 20px; font-weight: 600; color: var(--ink); }
+  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; }
+
+  .fn-body { padding: 24px; }
+  .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 24px; line-height: 1.7; }
+
+  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
+
+  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+  .panel-header { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+  .panel-header.input { background: var(--bg-2); color: var(--ink-2); }
+  .panel-header.logic { background: var(--gold-pale); color: var(--gold); }
+  .panel-header.analysis { background: var(--orange-bg); color: var(--orange); }
+  .panel-header.success { background: var(--teal-bg); color: var(--teal); }
+
+  .panel-body { padding: 16px; }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; }
+  th { padding: 8px 12px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
+  
+  .mod-row { background: var(--orange-bg); color: var(--orange); }
+  .mod-cell { color: var(--orange); font-weight: 600; background: #FDE68A; border-radius: 2px; padding: 1px 4px; }
+  .success-row { background: var(--teal-bg); color: var(--teal); }
+
+  .logic-list { list-style: none; }
+  .logic-list li { font-size: 13px; color: var(--ink-2); position: relative; padding-left: 24px; margin-bottom: 12px; line-height: 1.6; }
+  .logic-list li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+  .logic-list li strong { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-kicker">GoldPass Technical Architecture</div>
+  <h1>Function Logic & Data Flow Guide</h1>
+  <p class="header-desc">
+    This comprehensive specification models exactly how exploration data is evaluated, transformed, and cross-referenced. Each section displays actual data transformations to verify transparency between core developers and project geologists.
+  </p>
+  <div class="section-nav">
+    <a href="#" class="nav-pill">1. Validation & QC (1-11)</a>
+    <a href="#" class="nav-pill">2. Cleaning & Transform (12-14)</a>
+    <a href="#" class="nav-pill">3. Comparison (15-20)</a>
+    <a href="#" class="nav-pill active">4 & 5. Analysis & Export (21-25)</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">21</span>
+        <h2 class="fn-title">Build Collar Output</h2>
+      </div>
+      <span class="fn-tech-name">buildCollarOutput</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">GoldPass’s core deliverable—aggregates the maximum gold grade (<code>MAX(au_ppm)</code>) and its corresponding peak interval for every single hole, mapping it back to coordinates for GIS programs.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Downhole Assay & Collar Inputs</div>
+          <div class="panel-body">
+            <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Raw Assay Record Segments (Borehole: KS26_011):</p>
+            <table style="font-size:11px;">
+              <thead><tr><th>hole_id</th><th>from_m</th><th>to_m</th><th>au_ppm</th></tr></thead>
+              <tbody>
+                <tr><td>KS26_011</td><td>12.00</td><td>13.00</td><td>0.34</td></tr>
+                <tr class="mod-row"><td>KS26_011</td><td>13.00</td><td>14.00</td><td><span class="mod-cell">14.65</span></td></tr>
+                <tr><td>KS26_011</td><td>14.00</td><td>15.00</td><td>2.11</td></tr>
+                <tr><td>KS26_011</td><td>15.00</td><td>16.00</td><td>0.05</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Groups downhole tables by unique canonical <code>hole_id</code> keys.</li>
+              <li>Scans across intervals to identify the absolute maximum grade value within each group.</li>
+              <li>Extracts the specific <code>from_depth</code> and <code>to_depth</code> tags linked directly to that peak interval.</li>
+              <li>Executes an internal left join to link these calculated peak attributes back to collar coordinates.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header analysis">Output Aggregated Spatial Summary Sheet</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>easting</th><th>northing</th><th>elevation</th><th>max_au_ppm</th><th>peak_from</th><th>peak_to</th></tr>
+              </thead>
+              <tbody>
+                <tr class="success-row"><td>KS26_011</td><td>642105.40</td><td>8142510.20</td><td>1120.50</td><td><strong>14.65</strong></td><td>13.00</td><td>14.00</td></tr>
+                <tr><td>KS26_012</td><td>642160.10</td><td>8142562.80</td><td>1121.10</td><td><strong>0.88</strong></td><td>45.00</td><td>46.00</td></tr>
+                <tr><td>KS26_013</td><td>642212.90</td><td>8142615.00</td><td>1119.80</td><td><strong>3.42</strong></td><td>88.50</td><td>89.50</td></tr>
+                <tr><td>KS26_014</td><td>642270.30</td><td>8142668.30</td><td>1122.40</td><td><strong>0.04</strong></td><td>11.00</td><td>12.00</td></tr>
+                <tr><td>KS26_015</td><td>642315.80</td><td>8142722.10</td><td>1125.00</td><td><strong>22.10</strong></td><td>104.00</td><td>105.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">22</span>
+        <h2 class="fn-title">Find Best Intercept</h2>
+      </div>
+      <span class="fn-tech-name">findBestIntercept</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Computes a continuous, length-weighted average mineralized interval above a specified cutoff grade, accommodating localized internal waste blocks without breaking data continuity constraints.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Continuous Downhole Sample Run (Cutoff: 0.50 ppm)</div>
+          <div class="panel-body">
+            <table style="font-size:11px;">
+              <thead><tr><th>Interval Bounds</th><th>Sample Length</th><th>Assayed Grade</th><th>Calculated Accumulation (g*m)</th></tr></thead>
+              <tbody>
+                <tr><td>41.00m - 42.00m</td><td>1.00m</td><td>1.20 ppm</td><td>1.20</td></tr>
+                <tr><td>42.00m - 43.00m</td><td>1.00m</td><td>3.50 ppm</td><td>3.50</td></tr>
+                <tr class="mod-row"><td>43.00m - 44.00m</td><td>1.00m</td><td><span class="mod-cell">0.15 ppm</span></td><td>0.15 (Internal Waste Inclusion)</td></tr>
+                <tr><td>44.00m - 45.00m</td><td>1.00m</td><td>2.80 ppm</td><td>2.80</td></tr>
+                <tr><td>45.00m - 46.00m</td><td>1.00m</td><td>1.65 ppm</td><td>1.65</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Applies a length-weighting equation: <code>SUM(Interval Length * Grade) / SUM(Interval Length)</code>.</li>
+              <li>Triggers calculation windows when values cross user-defined cutoff boundaries.</li>
+              <li>Permits low-grade internal waste zones if nearby higher-grade intervals maintain the overall average above cutoff rules.</li>
+              <li>Saves and outputs total composite width, length-weighted grade, and upper/lower depth tags.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header analysis">Output Length-Weighted Composite Summary</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>Composite From</th><th>Composite To</th><th>Total Intercept Width</th><th>Length-Weighted Avg Grade</th><th>Waste Included</th></tr>
+              </thead>
+              <tbody>
+                <tr class="success-row"><td>KS26_011</td><td>41.00m</td><td>46.00m</td><td><strong>5.00m</strong></td><td><strong>1.86 g/t Au</strong></td><td>1.00m internal waste segment absorbed</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">23</span>
+        <h2 class="fn-title">Find Correlation (Litho vs Grade)</h2>
+      </div>
+      <span class="fn-tech-name">findCorrelation</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Uses true depth-interval overlap logic to correlate assay grades against rock types or alteration styles, showing which host environments hold the highest gold concentrations.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Overlapping Interval Mappings</div>
+          <div class="panel-body">
+            <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Lithology Table Logs:</p>
+            <p style="font-size:11px; font-family:monospace; margin-bottom:8px; color:var(--ink-3)">[0.0 - 12.5m: Saprolite] • [12.5 - 50.0m: Quartz Porphyry]</p>
+            <p style="font-size:11px; margin-bottom:4px; font-weight:500; color:var(--ink-2)">Assay Table Logs:</p>
+            <p style="font-size:11px; font-family:monospace; color:var(--ink-3)">[12.0 - 13.0m: 14.65 ppm] $\rightarrow$ 0.5m in Saprolite, 0.5m in Quartz Porphyry</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Calculates intersection boundaries where assay intervals overlap with lithological entries.</li>
+              <li>Apportions composite gold grades down to sub-units based on exact overlap distances.</li>
+              <li>Groups values by rock code to aggregate structural grade properties across the project area.</li>
+              <li>Calculates descriptive statistics (mean, median, peak grade) for each distinct geological host unit.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header analysis">Output Cross-Tabulated Correlation Insights</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Geological Rock Code Unit</th><th>Total Samples Associated</th><th>Aggregated Drilled Metres</th><th>Mean Grade (au_ppm)</th><th>Max Intercept Found</th></tr>
+              </thead>
+              <tbody>
+                <tr class="success-row"><td><strong>QP (Quartz Porphyry)</strong></td><td>450 units</td><td>620.50m</td><td><strong>2.45 ppm</strong></td><td>22.10 ppm downhole</td></tr>
+                <tr><td>BXX (Breccia Complex)</td><td>120 units</td><td>185.00m</td><td><strong>1.12 ppm</strong></td><td>5.40 ppm downhole</td></tr>
+                <tr><td>SAP (Saprolite Overburden)</td><td>310 units</td><td>450.00m</td><td><strong>0.32 ppm</strong></td><td>1.45 ppm downhole</td></tr>
+                <tr><td>SH (Foliated Black Shale)</td><td>185 units</td><td>290.00m</td><td><strong>0.08 ppm</strong></td><td>0.31 ppm downhole</td></tr>
+                <tr><td>BAS (Basalt Country Rock)</td><td>540 units</td><td>890.00m</td><td><strong>0.02 ppm</strong></td><td>0.12 ppm downhole</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">24</span>
+        <h2 class="fn-title">Rank by Grade</h2>
+      </div>
+      <span class="fn-tech-name">rankByGrade</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Orders drillholes descending by peak grade, helping exploration teams quickly prioritize targets and identify high-grade operational trends.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Unsorted Source Database Collection</div>
+          <div class="panel-body">
+            <p style="font-size:12px; font-family:monospace; color:var(--ink-2)">
+              KS26_011: 14.65 ppm<br>
+              KS26_012: 0.88 ppm<br>
+              KS26_013: 3.42 ppm<br>
+              KS26_014: 0.04 ppm<br>
+              KS26_015: 22.10 ppm
+            </p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Reads the compiled summary outputs generated by active data operations.</li>
+              <li>Applies descending sort logic using max grade values as the target ranking index.</li>
+              <li>Generates sequential ranking index numbers to categorize target significance.</li>
+              <li>Appends spatial coordinate data to help plan follow-up fieldwork and target reviews.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header analysis">Output Ordered Ranking Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Assigned Target Rank</th><th>hole_id</th><th>Peak Grade Value</th><th>Depth of Intercept Boundary</th><th>Easting Metric</th><th>Northing Metric</th></tr>
+              </thead>
+              <tbody>
+                <tr class="success-row"><td><strong>#1 Priority Target</strong></td><td>KS26_015</td><td><strong>22.10 ppm</strong></td><td>104.00m - 105.00m</td><td>642315.80</td><td>8142722.10</td></tr>
+                <tr class="success-row"><td><strong>#2 Priority Target</strong></td><td>KS26_011</td><td><strong>14.65 ppm</strong></td><td>13.00m - 14.00m</td><td>642105.40</td><td>8142510.20</td></tr>
+                <tr><td><strong>#3 Priority Target</strong></td><td>KS26_013</td><td><strong>3.42 ppm</strong></td><td>88.50m - 89.50m</td><td>642212.90</td><td>8142615.00</td></tr>
+                <tr><td><strong>#4 Rank Prospect</strong></td><td>KS26_012</td><td><strong>0.88 ppm</strong></td><td>45.00m - 46.00m</td><td>642160.10</td><td>8142562.80</td></tr>
+                <tr><td><strong>#5 Rank Prospect</strong></td><td>KS26_014</td><td><strong>0.04 ppm</strong></td><td>11.00m - 12.00m</td><td>642270.30</td><td>8142668.30</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">25</span>
+        <h2 class="fn-title">Export Collar Output</h2>
+      </div>
+      <span class="fn-tech-name">exportCollarOutput</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Converts processed data tables into clean CSV, Excel, or Shapefile (SHP) files, formatted properly for direct import as GIS map layers.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Final Processing Memory Stack Layer</div>
+          <div class="panel-body">
+            <p style="font-size:12px; font-weight:500; margin-bottom:6px;">Internal Data State:</p>
+            <p style="font-size:11px; font-family:monospace; color:var(--ink-3); line-height:1.5;">
+              Row 1: [KS26_015, 642315.8, 8142722.1, 22.10, 104, 105]<br>
+              Row 2: [KS26_011, 642105.4, 8142510.2, 14.65, 13, 14]
+            </p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Applies standard schema naming formats to clean up column headers.</li>
+              <li>Converts inner database structures into selected format types (such as CSV text blocks or binary files).</li>
+              <li>Appends structured timestamp and version tracking tags directly to the generated filenames.</li>
+              <li>Writes the data to output streams, creating safe download endpoints for external mapping platforms.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header success">Output System File Export Package Confirmation</div>
+          <div class="panel-body">
+            <div style="border: 1px dashed var(--teal); background: var(--teal-bg); padding: 16px; border-radius: 4px; font-family: 'DM Mono', monospace;">
+              <p style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:6px;">✓ SYSTEM DATA EXPORT PACKAGING COMPLETE</p>
+              <p style="font-size:12px; color:var(--ink-2); margin-bottom:12px;">Generated Export Layer Name: <strong style="color:var(--ink);">Kasubuya_CollarOutput_v3_Final.csv</strong></p>
+              <table style="font-size:11px; background:#fff; border:1px solid var(--border)">
+                <thead>
+                  <tr><th>Exported File Header</th><th>Target Mapping Destination (QGIS / Leapfrog)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>hole_id</td><td>Primary Identifier String Mapping Key</td></tr>
+                  <tr><td>easting</td><td>X Coordinate Field Component (WGS84 UTM Zone 36S)</td></tr>
+                  <tr><td>northing</td><td>Y Coordinate Field Component (WGS84 UTM Zone 36S)</td></tr>
+                  <tr><td>max_au_ppm</td><td>Point Attribute Styling Grade Variable Color Value</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

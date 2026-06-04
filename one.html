@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoldPass • Function Logic Guide (Section 1: Validation & QC)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #A07830;
+    --gold-mid: #C8A96E;
+    --gold-light: #E8D5A8;
+    --gold-pale: #FAF5EC;
+    --bg: #ffffff;
+    --bg-2: #f7f7f7;
+    --bg-3: #f0f0f0;
+    --ink: #1A1714;
+    --ink-2: #3D3830;
+    --ink-3: #6B6358;
+    --border: #E0D8CC;
+    --red: #B83A2A;
+    --red-bg: #FDF0EE;
+    --teal: #2A8A62;
+    --teal-bg: #EEF8F4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 100px; }
+  
+  header { padding: 60px 40px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .header-desc { font-size: 15px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+
+  .section-nav { display: flex; gap: 10px; margin-top: 24px; }
+  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; }
+  .nav-pill.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+  
+  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 60px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  .fn-header { padding: 20px 24px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .fn-title-wrap { display: flex; align-items: center; gap: 12px; }
+  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; }
+  .fn-title { font-size: 20px; font-weight: 600; color: var(--ink); }
+  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; }
+
+  .fn-body { padding: 24px; }
+  .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 24px; line-height: 1.7; }
+
+  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
+
+  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+  .panel-header { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+  .panel-header.input { background: var(--bg-2); color: var(--ink-2); }
+  .panel-header.logic { background: var(--gold-pale); color: var(--gold); }
+  .panel-header.output { background: var(--red-bg); color: var(--red); }
+  .panel-header.success { background: var(--teal-bg); color: var(--teal); }
+
+  .panel-body { padding: 16px; }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; }
+  th { padding: 8px 12px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
+  
+  .err-row { background: var(--red-bg); color: var(--red); }
+  .err-cell { color: var(--red); font-weight: 600; background: #FFEBE8; border-radius: 2px; padding: 1px 4px; }
+
+  .logic-list { list-style: none; }
+  .logic-list li { font-size: 13px; color: var(--ink-2); position: relative; padding-left: 24px; margin-bottom: 12px; line-height: 1.6; }
+  .logic-list li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+  .logic-list li strong { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-kicker">GoldPass Technical Architecture</div>
+  <h1>Function Logic & Data Flow Guide</h1>
+  <p class="header-desc">
+    This comprehensive specification models exactly how exploration data is evaluated, transformed, and cross-referenced. Each section displays actual data transformations to verify transparency between core developers and project geologists.
+  </p>
+  <div class="section-nav">
+    <a href="#" class="nav-pill active">1. Validation & QC (1-11)</a>
+    <a href="#" class="nav-pill">2. Cleaning & Transform (12-14)</a>
+    <a href="#" class="nav-pill">3. Comparison (15-20)</a>
+    <a href="#" class="nav-pill">4. Analysis (21-24)</a>
+    <a href="#" class="nav-pill">5. Export (25)</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">01</span>
+        <h2 class="fn-title">Missing Hole IDs</h2>
+      </div>
+      <span class="fn-tech-name">findMissingHoleIDs</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Identifies any rows within a dataset that lack a designated identifier. Without a valid Hole ID, database records cannot map to coordinates or downhole measurements, rendering rows useless until resolved.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Collar Table)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Row</th><th>hole_id</th><th>easting</th><th>northing</th><th>elevation</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>KS26_001</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td></tr>
+                <tr class="err-row"><td>2</td><td><span class="err-cell">[NULL]</span></td><td>642150.80</td><td>8142550.10</td><td>1122.10</td></tr>
+                <tr><td>3</td><td>KS26_002</td><td>642200.50</td><td>8142600.90</td><td>1118.90</td></tr>
+                <tr class="err-row"><td>4</td><td>"" (Empty)</td><td>642250.10</td><td>8142650.40</td><td>1115.30</td></tr>
+                <tr><td>5</td><td>KS26_003</td><td>642300.70</td><td>8142700.00</td><td>1112.80</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Scans the chosen column identifier (typically <code>hole_id</code>) across every uploaded row.</li>
+              <li>Applies filters to identify fields containing an explicit <code>NULL</code> structural marker.</li>
+              <li>Applies fallback checks for text fields containing empty strings (<code>""</code>) or whitespace-only records.</li>
+              <li>Isolates violating rows into an error collection table containing original index positions for tracing.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Original Row Index</th><th>Detected Fault Profile</th><th>Easting Context</th><th>Northing Context</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>2</td><td>Structural NULL value in primary key location</td><td>642150.80</td><td>8142550.10</td></tr>
+                <tr class="err-row"><td>4</td><td>Blank character sequence / empty string value</td><td>642250.10</td><td>8142650.40</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">02</span>
+        <h2 class="fn-title">From &gt;= To Errors</h2>
+      </div>
+      <span class="fn-tech-name">checkFromToErrors</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Verifies downhole physical mechanics within interval tables (such as assays or lithology log files). Downhole depth segments must read chronologically downward, meaning an interval's start point must strictly precede its end point.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Assay Table)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>au_ppm</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_001</td><td>0.00</td><td>2.00</td><td>0.12</td></tr>
+                <tr class="err-row"><td>KS26_001</td><td><span class="err-cell">4.00</span></td><td><span class="err-cell">2.00</span></td><td>1.45</td></tr>
+                <tr><td>KS26_001</td><td>4.00</td><td>6.00</td><td>2.11</td></tr>
+                <tr class="err-row"><td>KS26_001</td><td><span class="err-cell">8.00</span></td><td><span class="err-cell">8.00</span></td><td>0.05</td></tr>
+                <tr><td>KS26_001</td><td>8.00</td><td>10.00</td><td>0.98</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Inspects records where both interval parameters (<code>from_depth</code> and <code>to_depth</code>) are numeric.</li>
+              <li>Flags records where <code>from_depth &gt; to_depth</code>, indicating an impossible physical inversion.</li>
+              <li>Flags records where <code>from_depth = to_depth</code>, representing an unmeasurable zero-thickness slice.</li>
+              <li>Extracts the precise Hole ID and inverted measurements to isolate them for physical depth reassignment.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Hole ID</th><th>Violating From Depth</th><th>Violating To Depth</th><th>Identified Discrepancy Type</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_001</td><td>4.00</td><td>2.00</td><td>Inverted Profile (From depth exceeds To depth)</td></tr>
+                <tr class="err-row"><td>KS26_001</td><td>8.00</td><td>8.00</td><td>Zero-Thickness Boundary (From and To depths match)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">03</span>
+        <h2 class="fn-title">Interval Overlaps</h2>
+      </div>
+      <span class="fn-tech-name">findIntervalOverlaps</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Identifies overlapping downhole depth designations within the same core trajectory. Physical drill core samples cannot exist in two places simultaneously; overlapping intervals point to structural logging or entry errors.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Assay Sequence)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>sample_id</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_004</td><td>0.00</td><td>1.00</td><td>A008401</td></tr>
+                <tr class="err-row"><td>KS26_004</td><td><span class="err-cell">1.00</span></td><td><span class="err-cell">3.00</span></td><td>A008402</td></tr>
+                <tr class="err-row"><td>KS26_004</td><td><span class="err-cell">2.00</span></td><td><span class="err-cell">4.00</span></td><td>A008403</td></tr>
+                <tr><td>KS26_004</td><td>4.00</td><td>5.00</td><td>A008404</td></tr>
+                <tr><td>KS26_004</td><td>5.00</td><td>6.00</td><td>A008405</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Groups downhole records systematically by their distinct parent <code>hole_id</code>.</li>
+              <li>Compares each interval (A) against every other interval (B) logged inside that distinct borehole.</li>
+              <li>Evaluates overlapping states via intersection math: <code>from_A &lt; to_B</code> AND <code>to_A &gt; from_B</code>.</li>
+              <li>Ignores natural adjoining edges where <code>to_A = from_B</code>, isolating actual internal intersections.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Hole ID</th><th>Interval Segment A</th><th>Interval Segment B</th><th>Physical Overlap Span</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_004</td><td>1.00m to 3.00m (A008402)</td><td>2.00m to 4.00m (A008403)</td><td>1.00 meter overlap intersection</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">04</span>
+        <h2 class="fn-title">Interval Gaps</h2>
+      </div>
+      <span class="fn-tech-name">findIntervalGaps</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Scans continuous downhole series layouts to uncover undocumented depth gaps. Gaps are common in selective sampling but must be identified to ensure unassayed core segments aren't accidentally treated as continuous or zero-grade zones.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Lithology Data)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>rock_code</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_005</td><td>0.00</td><td>12.50</td><td>OVB</td></tr>
+                <tr><td>KS26_005</td><td>12.50</td><td>24.00</td><td>SST</td></tr>
+                <tr class="err-row"><td>KS26_005</td><td><span class="err-cell">24.00</span></td><td><span class="err-cell">[GAP]</span></td><td>-</td></tr>
+                <tr><td>KS26_005</td><td>26.50</td><td>38.00</td><td>GRN</td></tr>
+                <tr><td>KS26_005</td><td>38.00</td><td>50.00</td><td>PST</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Orders logging intervals sequentially by <code>from_depth</code> nested under parent boreholes.</li>
+              <li>Iterates forward, comparing the <code>to_depth</code> of row N against the subsequent <code>from_depth</code> of row N+1.</li>
+              <li>Detects structural gaps whenever a subsequent <code>from_depth</code> value exceeds the preceding <code>to_depth</code>.</li>
+              <li>Excludes deliberate non-sampled zones if specified by project parameters, flagging unexpected breaks.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Hole ID</th><th>Preceding Interval Boundary</th><th>Succeeding Interval Boundary</th><th>Identified Gap Length</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_005</td><td>24.00 meters</td><td>26.50 meters</td><td>2.50 meters of unlogged segment</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">05</span>
+        <h2 class="fn-title">Duplicate Intervals</h2>
+      </div>
+      <span class="fn-tech-name">findDuplicateIntervals</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Flags rows matching a previously defined spatial path in the database. Unlike general overlaps, duplicates share identical <code>from_depth</code> and <code>to_depth</code> parameters for the same hole, pointing to duplicate row exports.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Geotechnical Log)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>from_depth</th><th>to_depth</th><th>rqd_pct</th><th>rqd_grade</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_008</td><td>0.00</td><td>3.00</td><td>78.00</td><td>Good</td></tr>
+                <tr class="err-row"><td>KS26_008</td><td><span class="err-cell">3.00</span></td><td><span class="err-cell">6.00</span></td><td>45.00</td><td>Fair</td></tr>
+                <tr class="err-row"><td>KS26_008</td><td><span class="err-cell">3.00</span></td><td><span class="err-cell">6.00</span></td><td>45.00</td><td>Fair</td></tr>
+                <tr><td>KS26_008</td><td>6.00</td><td>9.00</td><td>82.00</td><td>Good</td></tr>
+                <tr><td>KS26_008</td><td>9.00</td><td>12.00</td><td>91.00</td><td>Excellent</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Evaluates combined row signatures using an exact multi-column lookup matrix.</li>
+              <li>Groups rows sharing matching allocations for <code>hole_id</code>, <code>from_depth</code>, and <code>to_depth</code>.</li>
+              <li>Excludes the first baseline record entry while passing any subsequent instances down the error lane.</li>
+              <li>Retains independent data attributes to reveal if the rows are identical clones or conflicting statements.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Target Hole ID</th><th>From Depth Coordinate</th><th>To Depth Coordinate</th><th>Duplicate Row Match Status</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_008</td><td>3.00</td><td>6.00</td><td>Identical record clone detected across multiple indices</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">06</span>
+        <h2 class="fn-title">Negative Grade Values</h2>
+      </div>
+      <span class="fn-tech-name">findNegativeGrades</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Flags structural numeric values less than zero inside geochemical analytical fields. Laboratory database exports often use negative values to denote special criteria (like lower limits of detection), which distort resource estimations if processed as real values.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Lab Assay Table)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>sample_id</th><th>au_ppm</th><th>cu_pct</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_012</td><td>X009201</td><td>0.54</td><td>0.12</td></tr>
+                <tr class="err-row"><td>KS26_012</td><td>X009202</td><td><span class="err-cell">-0.005</span></td><td>0.08</td></tr>
+                <tr><td>KS26_012</td><td>X009203</td><td>12.40</td><td>1.45</td></tr>
+                <tr class="err-row"><td>KS26_012</td><td>X009204</td><td>0.02</td><td><span class="err-cell">-9.000</span></td></tr>
+                <tr><td>KS26_012</td><td>X009205</td><td>0.88</td><td>0.22</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Scans all designated numeric geological metrics (such as <code>au_ppm</code> or <code>cu_pct</code>).</li>
+              <li>Flags values falling strictly below zero (<code>value &lt; 0</code>).</li>
+              <li>Categorizes detected negative grades to separate detection limits (e.g., -0.005) from old null placeholders (e.g., -999).</li>
+              <li>Prevents these raw values from entering averaging equations, protecting resource calculations from skewed statistics.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Hole ID</th><th>Sample Identifier</th><th>Violating Metric Column</th><th>Discovered Value</th><th>Geological Meaning</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_012</td><td>X009202</td><td>au_ppm</td><td>-0.005</td><td>Likely Below Detection Limit indicator</td></tr>
+                <tr class="err-row"><td>KS26_012</td><td>X009204</td><td>cu_pct</td><td>-9.000</td><td>Likely Database Null Placeholder assignment</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">07</span>
+        <h2 class="fn-title">Coordinate Outliers</h2>
+      </div>
+      <span class="fn-tech-name">findCoordinateOutliers</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Flags collar coordinates that fall far outside the expected spatial boundaries of the project area. This flags severe typo entries or local vs. global projection system mismatches (e.g., plotting in the ocean).</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Collar Coordinates)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>easting_x</th><th>northing_y</th><th>elev_z</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_101</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td></tr>
+                <tr><td>KS26_102</td><td>642150.80</td><td>8142550.10</td><td>1122.10</td></tr>
+                <tr class="err-row"><td>KS26_103</td><td><span class="err-cell">64215.00</span></td><td>8142580.30</td><td>1119.50</td></tr>
+                <tr><td>KS26_104</td><td>642250.10</td><td>8142650.40</td><td>1115.30</td></tr>
+                <tr class="err-row"><td>KS26_105</td><td>642300.70</td><td><span class="err-cell">81425.00</span></td><td>1112.80</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Calculates spatial clusters using median coordinates and bounding thresholds, or relies on user-defined coordinate ranges.</li>
+              <li>Flags individual row coordinates that deviate drastically from project limits.</li>
+              <li>Flags missing digits (e.g., dropping a digit from an Easting entry, shifting its location by tens of kilometers).</li>
+              <li>Prevents mapping errors where invalid locations warp GIS maps and visualization models.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Hole ID</th><th>Easting Measured</th><th>Northing Measured</th><th>Identified Boundary Defect</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_103</td><td>64215.00</td><td>8142580.30</td><td>Easting outlier: Shifted west by ~578km (likely missing trailing digit)</td></tr>
+                <tr class="err-row"><td>KS26_105</td><td>642300.70</td><td>81425.00</td><td>Northing outlier: Shifted south by ~8060km (severe typo or truncation)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">08</span>
+        <h2 class="fn-title">Find Undrilled Holes</h2>
+      </div>
+      <span class="fn-tech-name">findUndrilled</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Identifies planned hole positions listed in the Collar table that lack corresponding records in downhole tables. This isolates uncompleted, postponed, or abandoned drill setups from active sample series.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Uploaded Master Files Relation</div>
+          <div class="panel-body">
+            <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Collar Source Rows:</strong></p>
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px;">
+              [KS26_201, KS26_202, KS26_203, KS26_204, KS26_205]
+            </div>
+            <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Assay Source Distinct Keys:</strong></p>
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border);">
+              [KS26_201, KS26_202, KS26_204]
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Extracts the unique list of <code>hole_id</code> keys declared in the project's master Collar table.</li>
+              <li>Performs a LEFT JOIN against downhole child tables like Assay, Lithology, or Downhole Survey.</li>
+              <li>Flags collar IDs that return zero matching records across all downstream child tables.</li>
+              <li>Isolates these entries as planned or undrilled holes, excluding them from downstream data calculations.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Hole ID</th><th>Collar Metadata Context</th><th>Status Flag Recommendation</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_203</td><td>Easting: 642200 | Northing: 8142600</td><td>Flag as Planned / Undrilled (No assay logs exist)</td></tr>
+                <tr class="err-row"><td>KS26_205</td><td>Easting: 642300 | Northing: 8142700</td><td>Flag as Planned / Undrilled (No assay logs exist)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">09</span>
+        <h2 class="fn-title">Find Orphan Assays</h2>
+      </div>
+      <span class="fn-tech-name">findOrphanAssays</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Flags child downhole data rows containing a hole identifier that does not exist in the master Collar coordinate index. These orphan rows are unmappable because they lack spatial coordinates.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Cross-Table Relationship Matrix</div>
+          <div class="panel-body">
+            <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Collar Master Database IDs:</strong></p>
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border); margin-bottom:12px;">
+              [KS26_301, KS26_302, KS26_303]
+            </div>
+            <p style="font-size:11px; color:var(--ink-3); margin-bottom:6px;"><strong>Assay File Rows Parsed:</strong></p>
+            <div style="background:#f9f9f9; padding:6px; font-family:monospace; font-size:11px; border:1px solid var(--border);">
+              1. KS26_301 (Valid) | 2. <span style="color:var(--red); font-weight:bold;">KS26_999</span> (Orphan) | 3. KS26_302 (Valid) | 4. <span style="color:var(--red); font-weight:bold;">KS26_XYZ</span> (Orphan)
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Scans all rows within downstream files like the Assay table.</li>
+              <li>Performs a cross-reference validation query against the validated collar database index.</li>
+              <li>Flags downhole records containing a <code>hole_id</code> with no matching entry in the Collar coordinates table.</li>
+              <li>Detects severe typos or naming mismatches (e.g., <code>KS-01</code> vs. <code>KS01</code>) that break data joins.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Orphan Hole ID Row</th><th>Assay From Depth</th><th>Assay To Depth</th><th>Calculated Source of Error</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_999</td><td>14.00</td><td>15.00</td><td>Hole ID absent from Collar coordinates index (Typo check required)</td></tr>
+                <tr class="err-row"><td>KS26_XYZ</td><td>0.00</td><td>2.00</td><td>Hole ID absent from Collar coordinates index (Invalid syntax string)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">10</span>
+        <h2 class="fn-title">Find Null Placeholders</h2>
+      </div>
+      <span class="fn-tech-name">findNullPlaceholders</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Flags structural text or magic numbers that database systems use to denote missing or empty data entries. Values like <code>-999</code> or text strings like <code>"NULL"</code> must be neutralized before performing database calculations.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Assay & Survey Rows)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>depth_point</th><th>dip_value</th><th>litho_str</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_401</td><td>0.00</td><td>-60.00</td><td>SST</td></tr>
+                <tr class="err-row"><td>KS26_401</td><td>30.00</td><td><span class="err-cell">-999.00</span></td><td>QTV</td></tr>
+                <tr><td>KS26_401</td><td>60.00</td><td>-59.50</td><td>GRN</td></tr>
+                <tr class="err-row"><td>KS26_401</td><td>90.00</td><td>-59.20</td><td><span class="err-cell">"N/A"</span></td></tr>
+                <tr><td>KS26_401</td><td>120.00</td><td>-59.00</td><td>GRN</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Applies pattern matching filters to search for common placeholder strings like <code>"N/A"</code>, <code>"null"</code>, <code>"UNKNOWN"</code>, or <code>"-"</code>.</li>
+              <li>Scans numeric attributes for extreme out-of-range flag values, specifically <code>-999</code>, <code>-9999</code>, or <code>999</code>.</li>
+              <li>Isolates the row context to convert these entries into true database null elements.</li>
+              <li>Prevents calculations from processing <code>-999</code> as a valid geologic dip measurement or coordinate.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Hole ID</th><th>Depth Mark</th><th>Identified Field Target</th><th>Discovered Placeholder Value</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_401</td><td>30.00</td><td>dip_value</td><td>-999.00 (Numeric Null Placeholder)</td></tr>
+                <tr class="err-row"><td>KS26_401</td><td>90.00</td><td>litho_str</td><td>"N/A" (String Null Placeholder Value)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">11</span>
+        <h2 class="fn-title">Check Collar Completeness</h2>
+      </div>
+      <span class="fn-tech-name">checkCollarCompleteness</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Ensures every row in the master Collar table contains all mandatory spatial parameters required for 3D coordinate processing. A collar record requires a Hole ID, X (Easting), Y (Northing), Z (Elevation), and Total Depth to be usable.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Collar File Profile)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>easting_x</th><th>northing_y</th><th>elev_z</th><th>total_depth</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_501</td><td>642100.20</td><td>8142500.50</td><td>1120.40</td><td>150.00</td></tr>
+                <tr class="err-row"><td>KS26_502</td><td>642150.80</td><td>8142550.10</td><td>1122.10</td><td><span class="err-cell">[NULL]</span></td></tr>
+                <tr><td>KS26_503</td><td>642200.50</td><td>8142600.90</td><td>1118.90</td><td>210.50</td></tr>
+                <tr class="err-row"><td>KS26_504</td><td><span class="err-cell">[NULL]</span></td><td>8142650.40</td><td>1115.30</td><td>85.00</td></tr>
+                <tr><td>KS26_505</td><td>642300.70</td><td>8142700.00</td><td>1112.80</td><td>300.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Enforces structural checks on critical spatial coordinate columns (<code>X</code>, <code>Y</code>, <code>Z</code>, <code>Total Depth</code>).</li>
+              <li>Flags rows missing any of these core values, even if the Hole ID itself is valid.</li>
+              <li>Flags anomalies like a <code>total_depth</code> of zero or negative numbers, which are geologically impossible.</li>
+              <li>Prevents corrupted drill paths from waping downstream calculations or causing system integration breaks.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header output">Output Error Flag Table</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Target Hole ID Reference</th><th>Detected Structural Deficiency</th><th>Validation Status Action Required</th></tr>
+              </thead>
+              <tbody>
+                <tr class="err-row"><td>KS26_502</td><td>Missing data parameter: total_depth is Null</td><td>Reject row until a valid final depth value is provided</td></tr>
+                <tr class="err-row"><td>[Row 4 Baseline Fault]</td><td>Missing core coordinates: easting_x value is Null</td><td>Reject row due to completely missing spatial location parameters</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

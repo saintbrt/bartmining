@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoldPass • Function Logic Guide (Section 2: Cleaning & Transform)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #A07830;
+    --gold-mid: #C8A96E;
+    --gold-light: #E8D5A8;
+    --gold-pale: #FAF5EC;
+    --bg: #ffffff;
+    --bg-2: #f7f7f7;
+    --bg-3: #f0f0f0;
+    --ink: #1A1714;
+    --ink-2: #3D3830;
+    --ink-3: #6B6358;
+    --border: #E0D8CC;
+    --red: #B83A2A;
+    --red-bg: #FDF0EE;
+    --teal: #2A8A62;
+    --teal-bg: #EEF8F4;
+    --blue: #2A5EA8;
+    --blue-bg: #EEF3FA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.6; padding-bottom: 100px; }
+  
+  header { padding: 60px 40px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+  .header-kicker { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .header-desc { font-size: 15px; color: var(--ink-3); max-width: 700px; margin-top: 12px; }
+
+  .section-nav { display: flex; gap: 10px; margin-top: 24px; }
+  .nav-pill { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border: 1px solid var(--border); text-decoration: none; color: var(--ink-2); background: #fff; border-radius: 4px; }
+  .nav-pill.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+  
+  .fn-block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 60px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  .fn-header { padding: 20px 24px; background: var(--gold-pale); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .fn-title-wrap { display: flex; align-items: center; gap: 12px; }
+  .fn-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; background: var(--gold-light); color: var(--ink); padding: 2px 8px; border-radius: 3px; }
+  .fn-title { font-size: 20px; font-weight: 600; color: var(--ink); }
+  .fn-tech-name { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid var(--gold-mid); padding: 2px 8px; background: #fff; border-radius: 4px; }
+
+  .fn-body { padding: 24px; }
+  .fn-desc { font-size: 14px; color: var(--ink-2); margin-bottom: 24px; line-height: 1.7; }
+
+  .flow-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
+
+  .panel { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+  .panel-header { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+  .panel-header.input { background: var(--bg-2); color: var(--ink-2); }
+  .panel-header.logic { background: var(--gold-pale); color: var(--gold); }
+  .panel-header.transform { background: var(--blue-bg); color: var(--blue); }
+  .panel-header.success { background: var(--teal-bg); color: var(--teal); }
+
+  .panel-body { padding: 16px; }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; text-align: left; }
+  th { padding: 8px 12px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--bg-3); color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
+  
+  .mod-row { background: var(--blue-bg); color: var(--blue); }
+  .mod-cell { color: var(--blue); font-weight: 600; background: #E1ECFA; border-radius: 2px; padding: 1px 4px; }
+  .success-row { background: var(--teal-bg); color: var(--teal); }
+
+  .logic-list { list-style: none; }
+  .logic-list li { font-size: 13px; color: var(--ink-2); position: relative; padding-left: 24px; margin-bottom: 12px; line-height: 1.6; }
+  .logic-list li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+  .logic-list li strong { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-kicker">GoldPass Technical Architecture</div>
+  <h1>Function Logic & Data Flow Guide</h1>
+  <p class="header-desc">
+    This comprehensive specification models exactly how exploration data is evaluated, transformed, and cross-referenced. Each section displays actual data transformations to verify transparency between core developers and project geologists.
+  </p>
+  <div class="section-nav">
+    <a href="#" class="nav-pill">1. Validation & QC (1-11)</a>
+    <a href="#" class="nav-pill active">2. Cleaning & Transform (12-14)</a>
+    <a href="#" class="nav-pill">3. Comparison (15-20)</a>
+    <a href="#" class="nav-pill">4. Analysis (21-24)</a>
+    <a href="#" class="nav-pill">5. Export (25)</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">12</span>
+        <h2 class="fn-title">Standardise Hole IDs</h2>
+      </div>
+      <span class="fn-tech-name">standardiseHoleIDs</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Resolves manual data entry differences across datasets by fixing casing, whitespace, and delimiter variations. Standardizing these formats establishes a clean canonical layout, allowing relational tables to link cleanly using identical keys.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Input Dataset (Mixed Formats)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Original Index</th><th>raw_hole_id</th><th>easting</th><th>northing</th><th>Data Variant Issue</th></tr>
+              </thead>
+              <tbody>
+                <tr class="mod-row"><td>1</td><td><span class="mod-cell">ks26_001</span></td><td>642100.20</td><td>8142500.50</td><td>Lowercase characters</td></tr>
+                <tr class="mod-row"><td>2</td><td><span class="mod-cell">KS26-002  </span></td><td>642150.80</td><td>8142550.10</td><td>Hyphen delimiter & trailing space</td></tr>
+                <tr><td>3</td><td>KS26_003</td><td>642200.50</td><td>8142600.90</td><td>Perfect baseline entry</td></tr>
+                <tr class="mod-row"><td>4</td><td><span class="mod-cell">KS26/004</span></td><td>642250.10</td><td>8142650.40</td><td>Forward slash delimiter</td></tr>
+                <tr class="mod-row"><td>5</td><td><span class="mod-cell">KS26005</span></td><td>642300.70</td><td>8142700.00</td><td>Missing separator completely</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Applies string trimming logic to strip all leading and trailing whitespace characters.</li>
+              <li>Forces all alphabetical characters to absolute uppercase (e.g., <code>ks26</code> becomes <code>KS26</code>).</li>
+              <li>Runs regex replacement logic to substitute common alternate delimiters (hyphens, slashes, periods) with standard underscores.</li>
+              <li>Detects missing delimiters using prefix-matching patterns and inserts the standard underscore separator safely.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header transform">Output Transformed Dataset (Standardized Canonical Keys)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Original Row Index</th><th>Standardised hole_id</th><th>Easting Context</th><th>Northing Context</th><th>Applied System Modification</th></tr>
+              </thead>
+              <tbody>
+                <tr class="success-row"><td>1</td><td><strong>KS26_001</strong></td><td>642100.20</td><td>8142500.50</td><td>Forced casing to upper bounds</td></tr>
+                <tr class="success-row"><td>2</td><td><strong>KS26_002</strong></td><td>642150.80</td><td>8142550.10</td><td>Substituted hyphen & stripped white space</td></tr>
+                <tr><td>3</td><td><strong>KS26_003</strong></td><td>642200.50</td><td>8142600.90</td><td>No change required (passed verification)</td></tr>
+                <tr class="success-row"><td>4</td><td><strong>KS26_004</strong></td><td>642250.10</td><td>8142650.40</td><td>Substituted slash delimiter with underscore</td></tr>
+                <tr class="success-row"><td>5</td><td><strong>KS26_005</strong></td><td>642300.70</td><td>8142700.00</td><td>Injected standard underscore at alphanumeric boundary</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">13</span>
+        <h2 class="fn-title">Remove Undrilled Holes</h2>
+      </div>
+      <span class="fn-tech-name">removeUndrilled</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Purges planned or uncompleted drilling setups from the working database once an active field campaign concludes. Removing these entries prevents un-drilled locations from skewing downhole database joins or creating blank gaps in 3D modeling packages.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Working Collar Dataset (Pre-Filter)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>total_depth</th><th>survey_logs_count</th><th>assay_rows_linked</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_201</td><td>150.00m</td><td>5 records</td><td>75 samples</td></tr>
+                <tr><td>KS26_202</td><td>210.50m</td><td>7 records</td><td>105 samples</td></tr>
+                <tr class="mod-row"><td><span class="mod-cell">KS26_203</span></td><td><span class="mod-cell">0.00m</span></td><td><span class="mod-cell">0 records</span></td><td><span class="mod-cell">0 samples</span></td></tr>
+                <tr><td>KS26_204</td><td>85.00m</td><td>3 records</td><td>42 samples</td></tr>
+                <tr class="mod-row"><td><span class="mod-cell">KS26_205</span></td><td><span class="mod-cell">0.00m</span></td><td><span class="mod-cell">0 records</span></td><td><span class="mod-cell">0 samples</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Cross-references target hole records against downstream <code>Assay</code> and <code>Survey</code> data logs.</li>
+              <li>Identifies uncompleted entries where total depth fields equal zero or contain structural null parameters.</li>
+              <li>Drops these planned-but-undrilled locations, safely separating them from verified physical infrastructure rows.</li>
+              <li>Saves the dropped records to a standalone audit log table, ensuring field updates remain fully traceable.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header success">Output Filtered Dataset (Active Boreholes Only)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>hole_id</th><th>Verified Total Depth</th><th>Assay Record Status</th><th>Audit Action Taken</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>KS26_201</td><td>150.00m</td><td>75 active samples verified</td><td>Retained in production database layer</td></tr>
+                <tr><td>KS26_202</td><td>210.50m</td><td>105 active samples verified</td><td>Retained in production database layer</td></tr>
+                <tr><td>KS26_204</td><td>85.00m</td><td>42 active samples verified</td><td>Retained in production database layer</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size:11px; color:var(--red); margin-top:12px; font-family:'DM Mono', monospace;">
+              ⚠️ AUDIT LOG ACTION: Records [KS26_203, KS26_205] purged from production view. Saved securely to archive file 'undrilled_purged_log_v2.json'.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-block">
+    <div class="fn-header">
+      <div class="fn-title-wrap">
+        <span class="fn-num">14</span>
+        <h2 class="fn-title">Resolve Unit Conflicts (ppm vs ppb)</h2>
+      </div>
+      <span class="fn-tech-name">resolveUnitConflicts</span>
+    </div>
+    <div class="fn-body">
+      <p class="fn-desc">Detects and fixes mixed measurement units within geochemical grade datasets (such as blending parts per million with parts per billion). Standardizing these variations prevents serious 1,000× mathematical scaling distortions that can compromise resource estimations.</p>
+      <div class="flow-grid">
+        <div class="panel">
+          <div class="panel-header input">Raw Assay Input (Mixed Unit Layout)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>sample_id</th><th>hole_id</th><th>raw_gold_val</th><th>declared_unit</th><th>True Geologic Value context</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A009101</td><td>KS26_301</td><td>0.45</td><td>ppm</td><td>0.45 g/t (Low Grade Zone)</td></tr>
+                <tr class="mod-row"><td>A009102</td><td>KS26_301</td><td><span class="mod-cell">1200.00</span></td><td><span class="mod-cell">ppb</span></td><td>1.20 g/t (Medium Grade Zone)</td></tr>
+                <tr><td>A009103</td><td>KS26_301</td><td>2.31</td><td>ppm</td><td>2.31 g/t (High Grade Ore)</td></tr>
+                <tr class="mod-row"><td>A009104</td><td>KS26_301</td><td><span class="mod-cell">450.00</span></td><td><span class="mod-cell">ppb</span></td><td>0.45 g/t (Low Grade Zone)</td></tr>
+                <tr><td>A009105</td><td>KS26_301</td><td>0.08</td><td>ppm</td><td>0.08 g/t (Barren Waste Country Rock)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header logic">Processing Logic</div>
+          <div class="panel-body">
+            <ul class="logic-list">
+              <li>Inspects unit indicators across every row or applies automatic variance checks to find 1,000× value jumps.</li>
+              <li>Identifies records marked explicitly as <code>ppb</code> or fields containing values exceeding logical thresholds.</li>
+              <li>Applies scaling math (<code>ppb_value / 1000.0</code>) to convert measurements to standard <code>ppm</code> units.</li>
+              <li>Saves the standardized figures into a unified canonical column, ensuring consistent calculations.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel full-width">
+          <div class="panel-header transform">Output Standardised Dataset (Unified Canonical PPM)</div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>Sample Identifier</th><th>Hole ID</th><th>Raw Input Reference</th><th>Unified au_ppm</th><th>Standardised Target Unit</th><th>Applied Transformation Scaling</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A009101</td><td>KS26_301</td><td>0.45 ppm</td><td><strong>0.450</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
+                <tr class="success-row"><td>A009102</td><td>KS26_301</td><td>1200.00 ppb</td><td><strong>1.200</strong></td><td>ppm (grams per tonne)</td><td>Scaled downward mathematically (/ 1000)</td></tr>
+                <tr><td>A009103</td><td>KS26_301</td><td>2.31 ppm</td><td><strong>2.310</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
+                <tr class="success-row"><td>A009104</td><td>KS26_301</td><td>450.00 ppb</td><td><strong>0.450</strong></td><td>ppm (grams per tonne)</td><td>Scaled downward mathematically (/ 1000)</td></tr>
+                <tr><td>A009105</td><td>KS26_301</td><td>0.08 ppm</td><td><strong>0.080</strong></td><td>ppm (grams per tonne)</td><td>No adjustment needed (1:1 pass)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
