@@ -170,12 +170,12 @@
           '<li><a href="insights/tags/east-africa.html">East Africa Hub</a></li>' +
         '</ul></div>' +
         '<div><h5>Regions</h5><ul>' + regionLinks + "</ul></div>" +
-        '<div><h5>Headquarters</h5><address class="addr">Dar es Salaam<br/>Tanzania<br/><br/>' +
+        '<div><h5>Headquarters</h5><address class="addr">Mwanza<br/>Tanzania<br/><br/>' +
           '<a href="mailto:' + EMAIL + '">' + EMAIL + "</a></address>" +
           '<p style="margin-top:14px"><a href="about.html" style="color:var(--ink-2);font-size:14px">About &amp; Founder</a> · <a href="sustainability.html" style="color:var(--ink-2);font-size:14px">Sustainability</a></p></div>' +
       '</div><div class="footer-bottom">' +
         '<p>© <span id="year"></span> Bart Mining. Resource development done responsibly.</p>' +
-        '<p class="mono">Dar es Salaam · 6° 47′ S</p>' +
+        '<p class="mono">Mwanza · 2° 31′ S</p>' +
       "</div></div></footer>"
     );
     document.body.appendChild(f);
