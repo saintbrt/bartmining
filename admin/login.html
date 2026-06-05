@@ -65,7 +65,6 @@
   </div>
 
 <script>
-  /* ── Supabase config — injected from Vercel env vars via env.js ── */
   const SUPABASE_URL = window.SUPABASE_URL || "";
   const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
 
@@ -80,28 +79,21 @@
 
   function showErr(m){ errEl.textContent = m; errEl.classList.add("show"); }
 
-  /* set the gate cookie (verified by middleware) */
   function setAuthCookie(token, expiresInSec){
     const maxAge = Math.max(60, Math.min(expiresInSec || 3600, 3600));
     document.cookie = "gp-auth=" + token + "; Path=/admin; Max-Age=" + maxAge + "; SameSite=Lax; Secure";
   }
 
-  /* if already signed in, go straight in — with loop protection.
-     If we redirect to /admin/ and the middleware bounces us back here
-     (e.g. token can't be verified), we must NOT redirect again or the
-     page ping-pongs forever. Track attempts in sessionStorage. */
   (async () => {
     if (!ready) return;
     const { data } = await sb.auth.getSession();
     if (!data?.session?.access_token) {
-      sessionStorage.removeItem("gp_redir");   // clean slate, show form
+      sessionStorage.removeItem("gp_redir");
       return;
     }
     const last = parseInt(sessionStorage.getItem("gp_redir") || "0", 10);
     const now = Date.now();
     if (now - last < 4000) {
-      // We were just bounced back within 4s → the session can't pass the
-      // gate. Break the loop: sign out, clear cookie, show the form.
       sessionStorage.removeItem("gp_redir");
       try { await sb.auth.signOut(); } catch (e) {}
       document.cookie = "gp-auth=; Path=/admin; Max-Age=0; SameSite=Lax; Secure";
