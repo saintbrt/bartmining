@@ -101,8 +101,6 @@ function PitHero(){
       {name:"South Slope",  x:4.2,z:2.2,y:0.35,rx:1.10,rz:1.10},
       {name:"West Knoll",   x:-1.3,z:6.8,y:1.30,rx:1.25,rz:1.45,warp:true},
       {name:"West Rise",    x:-1.6,z:5.0,y:1.60,rx:1.55,rz:1.30,warp:true},
-      {x:-2.0,z:0.0, y:0.60,rx:1.05,rz:1.05,warp:true},
-      {x:-2.0,z:10.0,y:0.60,rx:1.05,rz:1.05,warp:true},
     ];
 
     /* ── build field ── */
