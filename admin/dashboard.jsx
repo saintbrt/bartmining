@@ -166,7 +166,7 @@ function PitHero(){
       const cyaw=Math.cos(yaw),syaw=Math.sin(yaw),cpit=Math.cos(pitch),spit=Math.sin(pitch);
       const cr=Math.cos(ROT),sr=Math.sin(ROT);
       const U=Math.min(W*0.058,H*0.112);
-      const ox=W*0.515,oy=H*0.455;
+      const ox=W*0.515,oy=H*0.72;
       function project(X,Z,Hu){
         const cx=X-XC,cz=Z-ZC;
         const x1=cx*cyaw-cz*syaw,z1=cx*syaw+cz*cyaw,y1=Hu*vExag;
@@ -203,18 +203,6 @@ function PitHero(){
       xG.setTransform(DPR,0,0,DPR,0,0); xC.setTransform(DPR,0,0,DPR,0,0);
       xG.clearRect(0,0,W,H); xC.clearRect(0,0,W,H);
       if(!VIEW) return;
-      /* ground grid */
-      xC.globalCompositeOperation="source-over";
-      xC.lineWidth=1; xC.strokeStyle="rgba(231,163,90,0.08)";
-      xC.beginPath();
-      for(let X=X_MIN;X<=X_MAX;X+=2.5){const p=VIEW.project(X,Z_MIN,0),q=VIEW.project(X,Z_MAX,0);xC.moveTo(p[0],p[1]);xC.lineTo(q[0],q[1]);}
-      for(let Z=Z_MIN;Z<=Z_MAX;Z+=2.5){const p=VIEW.project(X_MIN,Z,0),q=VIEW.project(X_MAX,Z,0);xC.moveTo(p[0],p[1]);xC.lineTo(q[0],q[1]);}
-      xC.stroke();
-      const corners=[VIEW.project(X_MIN,Z_MIN,0),VIEW.project(X_MAX,Z_MIN,0),VIEW.project(X_MAX,Z_MAX,0),VIEW.project(X_MIN,Z_MAX,0)];
-      xC.strokeStyle="rgba(231,163,90,0.22)"; xC.lineWidth=1.3;
-      xC.beginPath(); xC.moveTo(corners[0][0],corners[0][1]);
-      for(let i=1;i<4;i++) xC.lineTo(corners[i][0],corners[i][1]);
-      xC.closePath(); xC.stroke();
       /* contours */
       xG.globalCompositeOperation=xC.globalCompositeOperation="lighter";
       xG.lineJoin=xC.lineJoin=xG.lineCap=xC.lineCap="round";
