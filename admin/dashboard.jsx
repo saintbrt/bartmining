@@ -56,7 +56,7 @@ function KpiCard({label,value,display,sub,trend,accent}){
   );
 }
 
-/* ── Topographic contour hero — coordinate field with ridges + ditch ── */
+/* ── Topographic contour hero — extended coordinate field v3 ── */
 function PitHero(){
   const glowRef=useRef(), coreRef=useRef(), overlayRef=useRef();
   const stateRef=useRef({amp:0,hovering:false,t0:0,running:false,curX:-1e4,curY:-1e4});
@@ -84,28 +84,36 @@ function PitHero(){
     }
     function fbm(n,x,y,o){let a=0.5,f=1,s=0,nm=0;for(let i=0;i<o;i++){s+=a*n(x*f,y*f);nm+=a;a*=0.5;f*=2;}return s/nm;}
 
-    /* ── field definition ── */
-    const FIELD=10, N=180, STEP=0.25;
-    const field=new Float32Array(N*N), ditchField=new Float32Array(N*N);
-    let maxH=1;
+    /* ── extended coordinate system ── */
+    const X_MIN=-5,X_MAX=12,Z_MIN=0,Z_MAX=10;
+    const XSPAN=X_MAX-X_MIN,ZSPAN=Z_MAX-Z_MIN;
+    const XC=(X_MIN+X_MAX)/2,ZC=(Z_MIN+Z_MAX)/2;
+    const STEP=0.25;
+    const NZ=150,NX=Math.round(NZ*XSPAN/ZSPAN);
+    function gX(gx){return X_MIN+gx/(NX-1)*XSPAN;}
+    function gZ(gz){return Z_MIN+gz/(NZ-1)*ZSPAN;}
+
+    /* ── features ── */
     const FEATURES=[
       {name:"West Ridge",   x:2.0,z:5.0,y:1.25,rx:1.05,rz:1.15},
       {name:"North Ridge",  x:5.5,z:7.0,y:1.50,rx:4.65,rz:3.05,warp:true},
       {name:"East Ridge",   x:7.0,z:4.0,y:1.10,rx:1.05,rz:1.05},
       {name:"Central Hill", x:6.0,z:3.5,y:1.00,rx:1.15,rz:1.55},
       {name:"South Slope",  x:4.2,z:2.2,y:0.35,rx:1.10,rz:1.10},
+      {name:"West Knoll",   x:-1.3,z:6.8,y:1.30,rx:1.25,rz:1.45,warp:true},
+      {name:"West Rise",    x:-1.6,z:5.0,y:1.60,rx:1.55,rz:1.30,warp:true},
+      {x:-2.0,z:0.0, y:0.60,rx:1.05,rz:1.05,warp:true},
+      {x:-2.0,z:10.0,y:0.60,rx:1.05,rz:1.05,warp:true},
     ];
-    const DITCH={x:2.5,z:2.5,depth:2.0,rx:1.5,rz:1.5};
 
-    let LEVELS=[],levelColors=[],levelSegs=[];
-    let ditchSegs=[],ditchLevels=[],ditchColors=[];
-
-    function buildField(seed){
-      const nC=makeNoise(seed^0x9e37), nD=makeNoise(seed^0xd34db);
-      maxH=0;
-      for(let gz=0;gz<N;gz++) for(let gx=0;gx<N;gx++){
-        const X=gx/(N-1)*FIELD, Z=gz/(N-1)*FIELD;
-        let h=0.10+0.22*fbm(nC,X*0.28+3,Z*0.28+3,3);
+    /* ── build field ── */
+    const field=new Float32Array(NX*NZ);
+    let maxH=1;
+    function buildMainField(seed){
+      const nC=makeNoise(seed^0x9e37); maxH=0;
+      for(let gz=0;gz<NZ;gz++) for(let gx=0;gx<NX;gx++){
+        const X=gX(gx),Z=gZ(gz);
+        let h=0.10+0.20*fbm(nC,X*0.28+3,Z*0.28+3,3);
         for(const f of FEATURES){
           let wx=X,wz=Z;
           if(f.warp){wx+=0.72*(fbm(nC,X*0.65+20,Z*0.65+20,3)-0.5);wz+=0.72*(fbm(nC,X*0.65+40,Z*0.65+40,3)-0.5);}
@@ -114,71 +122,58 @@ function PitHero(){
         }
         const crinkle=0.12*(fbm(nC,X*1.8+11,Z*1.8+11,4)-0.5);
         h+=crinkle*clamp((h-0.15)/0.5,0,1);
-        const dWx=X+0.55*(fbm(nD,X*1.1+7,Z*1.1+7,3)-0.5);
-        const dWz=Z+0.55*(fbm(nD,X*1.1+17,Z*1.1+17,3)-0.5);
-        const ddx=(dWx-DITCH.x)/DITCH.rx,ddz=(dWz-DITCH.z)/DITCH.rz;
-        const dip=DITCH.depth*Math.exp(-(ddx*ddx+ddz*ddz));
-        ditchField[gz*N+gx]=dip;
-        h=Math.max(0,h-dip);
-        field[gz*N+gx]=h; if(h>maxH) maxH=h;
+        if(h<0) h=0;
+        field[gz*NX+gx]=h; if(h>maxH) maxH=h;
       }
-      buildLevels(); computeContours(); computeDitchContours();
     }
-
     function sampleHeight(X,Z){
-      const fx=clamp(X/FIELD,0,1)*(N-1),fz=clamp(Z/FIELD,0,1)*(N-1);
-      const x0=Math.floor(fx),z0=Math.floor(fz),x1=Math.min(N-1,x0+1),z1=Math.min(N-1,z0+1);
+      const fx=clamp((X-X_MIN)/XSPAN,0,1)*(NX-1),fz=clamp((Z-Z_MIN)/ZSPAN,0,1)*(NZ-1);
+      const x0=Math.floor(fx),z0=Math.floor(fz),x1=Math.min(NX-1,x0+1),z1=Math.min(NZ-1,z0+1);
       const tx=fx-x0,tz=fz-z0;
-      return lerp(lerp(field[z0*N+x0],field[z0*N+x1],tx),lerp(field[z1*N+x0],field[z1*N+x1],tx),tz);
+      return lerp(lerp(field[z0*NX+x0],field[z0*NX+x1],tx),lerp(field[z1*NX+x0],field[z1*NX+x1],tx),tz);
     }
 
-    function buildLevels(){
-      LEVELS=[]; levelColors=[];
+    /* ── marching squares ── */
+    function march(f,lev){
+      const out=[];
+      for(let y=0;y<NZ-1;y++) for(let x=0;x<NX-1;x++){
+        const tl=f[y*NX+x],tr=f[y*NX+x+1],br=f[(y+1)*NX+x+1],bl=f[(y+1)*NX+x];
+        let idx=0;if(tl>lev)idx|=8;if(tr>lev)idx|=4;if(br>lev)idx|=2;if(bl>lev)idx|=1;
+        if(idx===0||idx===15) continue;
+        const top=()=>[x+(lev-tl)/(tr-tl),y],right=()=>[x+1,y+(lev-tr)/(br-tr)];
+        const bot=()=>[x+(lev-bl)/(br-bl),y+1],left=()=>[x,y+(lev-tl)/(bl-tl)];
+        const push=(a,b)=>{out.push(a[0],a[1],b[0],b[1]);};
+        switch(idx){case 1:push(left(),bot());break;case 2:push(bot(),right());break;case 3:push(left(),right());break;case 4:push(top(),right());break;case 5:push(left(),top());push(bot(),right());break;case 6:push(top(),bot());break;case 7:push(left(),top());break;case 8:push(left(),top());break;case 9:push(top(),bot());break;case 10:push(top(),right());push(left(),bot());break;case 11:push(top(),right());break;case 12:push(left(),right());break;case 13:push(bot(),right());break;case 14:push(left(),bot());break;}
+      }
+      return out;
+    }
+    function segToUnit(gx,gz){return[gX(gx),gZ(gz)];}
+
+    let LEVELS=[],levelColors=[],levelSegs=[];
+    function buildContours(){
+      LEVELS=[]; levelColors=[]; levelSegs=[];
       for(let lev=STEP;lev<maxH+0.01;lev+=STEP){
-        LEVELS.push(lev);
         const t=clamp(lev/maxH,0,1);
+        LEVELS.push(lev);
         levelColors.push(`oklch(${0.50+0.37*t} 0.155 ${30+34*t})`);
+        levelSegs.push(march(field,lev));
       }
     }
 
-    function msSquares(f,levels,outSegs){
-      for(let li=0;li<levels.length;li++){
-        const lev=levels[li],out=outSegs[li];
-        for(let y=0;y<N-1;y++) for(let x=0;x<N-1;x++){
-          const tl=f[y*N+x],tr=f[y*N+x+1],br=f[(y+1)*N+x+1],bl=f[(y+1)*N+x];
-          let idx=0;if(tl>lev)idx|=8;if(tr>lev)idx|=4;if(br>lev)idx|=2;if(bl>lev)idx|=1;
-          if(idx===0||idx===15) continue;
-          const top=()=>[x+(lev-tl)/(tr-tl),y],right=()=>[x+1,y+(lev-tr)/(br-tr)];
-          const bot=()=>[x+(lev-bl)/(br-bl),y+1],left=()=>[x,y+(lev-tl)/(bl-tl)];
-          const push=(a,b)=>{out.push(a[0],a[1],b[0],b[1]);};
-          switch(idx){case 1:push(left(),bot());break;case 2:push(bot(),right());break;case 3:push(left(),right());break;case 4:push(top(),right());break;case 5:push(left(),top());push(bot(),right());break;case 6:push(top(),bot());break;case 7:push(left(),top());break;case 8:push(left(),top());break;case 9:push(top(),bot());break;case 10:push(top(),right());push(left(),bot());break;case 11:push(top(),right());break;case 12:push(left(),right());break;case 13:push(bot(),right());break;case 14:push(left(),bot());break;}
-        }
-      }
-    }
-    function computeContours(){levelSegs=LEVELS.map(()=>[]); msSquares(field,LEVELS,levelSegs);}
-    function computeDitchContours(){
-      const steps=[0.20,0.45,0.75,1.10,1.50,1.85];
-      ditchLevels=steps; ditchSegs=steps.map(()=>[]);
-      ditchColors=steps.map((lev,i)=>{const t=i/(steps.length-1);return `oklch(${0.60+0.28*t} ${0.14-0.04*t} ${188+10*t})`;});
-      msSquares(ditchField,steps,ditchSegs);
-    }
-    function gridToUnit(gx,gz){return[gx/(N-1)*FIELD,gz/(N-1)*FIELD];}
-
-    /* ── projection ── */
-    const yaw=-0.62,pitch=1.06,vExag=1.5;
+    /* ── projection — iso + 8° clockwise screen rotation ── */
+    const yaw=-0.62,pitch=1.06,vExag=1.5,ROT=8*Math.PI/180;
     function makeView(W,H){
       const cyaw=Math.cos(yaw),syaw=Math.sin(yaw),cpit=Math.cos(pitch),spit=Math.sin(pitch);
-      const scale=Math.min(W,H)*0.90, ox=W*0.5, oy=H*0.54;
+      const cr=Math.cos(ROT),sr=Math.sin(ROT);
+      const U=Math.min(W*0.058,H*0.112);
+      const ox=W*0.515,oy=H*0.455;
       function project(X,Z,Hu){
-        const px=X/FIELD-0.5,pz=0.5-Z/FIELD;
-        const x1=px*cyaw-pz*syaw,z1=px*syaw+pz*cyaw,y1=(Hu/FIELD)*vExag;
-        return[ox+x1*scale, oy+(z1*cpit-y1*spit)*scale];
+        const cx=X-XC,cz=Z-ZC;
+        const x1=cx*cyaw-cz*syaw,z1=cx*syaw+cz*cyaw,y1=Hu*vExag;
+        const px=x1*U,py=(z1*cpit-y1*spit)*U;
+        return[ox+px*cr-py*sr, oy+px*sr+py*cr];
       }
-      function invGround(sx,sy){
-        const A=(sx-ox)/scale,B=((sy-oy)/scale)/cpit;
-        return[(A*cyaw+B*syaw+0.5)*FIELD,(0.5-(-A*syaw+B*cyaw))*FIELD];
-      }
-      return{project,invGround};
+      return{project};
     }
 
     /* ── ripple ── */
@@ -190,6 +185,19 @@ function PitHero(){
       return[x+dx/nd*7*w*k,y+dy/nd*7*w*k-7*inf*k];
     }
 
+    /* ── stroke helper ── */
+    function strokeSet(segs,level,color,glowW,coreW,coreA){
+      const p=new Path2D();
+      for(let i=0;i<segs.length;i+=4){
+        const ua=segToUnit(segs[i],segs[i+1]),ub=segToUnit(segs[i+2],segs[i+3]);
+        const a=ripple(...VIEW.project(ua[0],ua[1],level));
+        const b=ripple(...VIEW.project(ub[0],ub[1],level));
+        p.moveTo(a[0],a[1]); p.lineTo(b[0],b[1]);
+      }
+      xG.strokeStyle=color;xG.lineWidth=glowW;xG.globalAlpha=0.68;xG.stroke(p);
+      xC.strokeStyle=color;xC.lineWidth=coreW;xC.globalAlpha=coreA;xC.stroke(p);
+    }
+
     /* ── draw ── */
     function draw(){
       xG.setTransform(DPR,0,0,DPR,0,0); xC.setTransform(DPR,0,0,DPR,0,0);
@@ -197,15 +205,13 @@ function PitHero(){
       if(!VIEW) return;
       /* ground grid */
       xC.globalCompositeOperation="source-over";
-      xC.lineWidth=1; xC.strokeStyle="rgba(231,163,90,0.10)";
+      xC.lineWidth=1; xC.strokeStyle="rgba(231,163,90,0.08)";
       xC.beginPath();
-      for(let i=0;i<=FIELD;i++){
-        let p=VIEW.project(i,0,0),q=VIEW.project(i,FIELD,0); xC.moveTo(p[0],p[1]); xC.lineTo(q[0],q[1]);
-        p=VIEW.project(0,i,0); q=VIEW.project(FIELD,i,0); xC.moveTo(p[0],p[1]); xC.lineTo(q[0],q[1]);
-      }
+      for(let X=X_MIN;X<=X_MAX;X+=2.5){const p=VIEW.project(X,Z_MIN,0),q=VIEW.project(X,Z_MAX,0);xC.moveTo(p[0],p[1]);xC.lineTo(q[0],q[1]);}
+      for(let Z=Z_MIN;Z<=Z_MAX;Z+=2.5){const p=VIEW.project(X_MIN,Z,0),q=VIEW.project(X_MAX,Z,0);xC.moveTo(p[0],p[1]);xC.lineTo(q[0],q[1]);}
       xC.stroke();
-      const corners=[VIEW.project(0,0,0),VIEW.project(FIELD,0,0),VIEW.project(FIELD,FIELD,0),VIEW.project(0,FIELD,0)];
-      xC.strokeStyle="rgba(231,163,90,0.28)"; xC.lineWidth=1.4;
+      const corners=[VIEW.project(X_MIN,Z_MIN,0),VIEW.project(X_MAX,Z_MIN,0),VIEW.project(X_MAX,Z_MAX,0),VIEW.project(X_MIN,Z_MAX,0)];
+      xC.strokeStyle="rgba(231,163,90,0.22)"; xC.lineWidth=1.3;
       xC.beginPath(); xC.moveTo(corners[0][0],corners[0][1]);
       for(let i=1;i<4;i++) xC.lineTo(corners[i][0],corners[i][1]);
       xC.closePath(); xC.stroke();
@@ -213,31 +219,9 @@ function PitHero(){
       xG.globalCompositeOperation=xC.globalCompositeOperation="lighter";
       xG.lineJoin=xC.lineJoin=xG.lineCap=xC.lineCap="round";
       for(let li=0;li<levelSegs.length;li++){
-        const segs=levelSegs[li]; if(!segs.length) continue;
-        const lev=LEVELS[li],col=levelColors[li];
-        const idx=Math.abs(lev-Math.round(lev))<1e-6;
-        const p=new Path2D();
-        for(let i=0;i<segs.length;i+=4){
-          const ua=gridToUnit(segs[i],segs[i+1]),ub=gridToUnit(segs[i+2],segs[i+3]);
-          const a=ripple(...VIEW.project(ua[0],ua[1],lev));
-          const b=ripple(...VIEW.project(ub[0],ub[1],lev));
-          p.moveTo(a[0],a[1]); p.lineTo(b[0],b[1]);
-        }
-        xG.strokeStyle=col;xG.lineWidth=idx?2.4:1.8;xG.globalAlpha=0.7;xG.stroke(p);
-        xC.strokeStyle=col;xC.lineWidth=idx?1.3:0.85;xC.globalAlpha=idx?1:0.92;xC.stroke(p);
-      }
-      /* aqua ditch contours */
-      for(let li=0;li<ditchSegs.length;li++){
-        const segs=ditchSegs[li]; if(!segs.length) continue;
-        const lev=ditchLevels[li],col=ditchColors[li],p=new Path2D();
-        for(let i=0;i<segs.length;i+=4){
-          const ua=gridToUnit(segs[i],segs[i+1]),ub=gridToUnit(segs[i+2],segs[i+3]);
-          const a=ripple(...VIEW.project(ua[0],ua[1],-lev*0.55));
-          const b=ripple(...VIEW.project(ub[0],ub[1],-lev*0.55));
-          p.moveTo(a[0],a[1]); p.lineTo(b[0],b[1]);
-        }
-        xG.strokeStyle=col;xG.lineWidth=2.0;xG.globalAlpha=0.65;xG.stroke(p);
-        xC.strokeStyle=col;xC.lineWidth=0.9;xC.globalAlpha=0.92;xC.stroke(p);
+        if(!levelSegs[li].length) continue;
+        const idx=Math.abs(LEVELS[li]-Math.round(LEVELS[li]))<1e-6;
+        strokeSet(levelSegs[li],LEVELS[li],levelColors[li],idx?2.4:1.8,idx?1.3:0.85,idx?1:0.9);
       }
       xG.globalAlpha=xC.globalAlpha=1;
       xG.globalCompositeOperation=xC.globalCompositeOperation="source-over";
@@ -245,9 +229,8 @@ function PitHero(){
 
     /* ── summit overlay ── */
     function buildOverlay(){
-      overlay.innerHTML="";
-      if(!VIEW) return;
-      FEATURES.forEach(f=>{
+      overlay.innerHTML=""; if(!VIEW) return;
+      FEATURES.filter(f=>f.name).forEach(f=>{
         const h=sampleHeight(f.x,f.z);
         const [sx,sy]=VIEW.project(f.x,f.z,h);
         const el=document.createElement("div");
@@ -283,29 +266,26 @@ function PitHero(){
     const ro=new ResizeObserver(()=>{resize();draw();buildOverlay();});
     ro.observe(cGlow.parentElement);
     resize();
-    buildField(42);
+    buildMainField(42);
+    buildContours();
     draw(); buildOverlay();
 
     /* ── pointer ── */
     const el=cGlow.parentElement;
-    function onMove(e){
-      const r=el.getBoundingClientRect();
-      st.curX=e.clientX-r.left; st.curY=e.clientY-r.top;
-      st.hovering=true; startLoop();
-    }
+    function onMove(e){const r=el.getBoundingClientRect();st.curX=e.clientX-r.left;st.curY=e.clientY-r.top;st.hovering=true;startLoop();}
     function onLeave(){st.hovering=false;}
     el.addEventListener("pointermove",onMove);
     el.addEventListener("pointerleave",onLeave);
     return()=>{ro.disconnect();el.removeEventListener("pointermove",onMove);el.removeEventListener("pointerleave",onLeave);};
   },[]);
 
-  const canvasStyle={position:"absolute",inset:0,width:"100%",height:"100%"};
-  const maskStyle="radial-gradient(135% 125% at 50% 48%, #000 52%, rgba(0,0,0,0) 86%)";
+  const cs={position:"absolute",inset:0,width:"100%",height:"100%"};
+  const mask="radial-gradient(145% 122% at 50% 50%, #000 44%, rgba(0,0,0,0) 84%)";
   return(
     <div className="dk-hero" style={{position:"relative",overflow:"hidden",cursor:"crosshair"}}>
-      <div style={{position:"absolute",inset:0,WebkitMask:maskStyle,mask:maskStyle}}>
-        <canvas ref={glowRef} style={{...canvasStyle,filter:"blur(7px) saturate(1.45) brightness(1.2)",opacity:.85}}/>
-        <canvas ref={coreRef} style={{...canvasStyle,filter:"saturate(1.05)"}}/>
+      <div style={{position:"absolute",inset:0,WebkitMask:mask,mask}}>
+        <canvas ref={glowRef} style={{...cs,filter:"blur(7px) saturate(1.45) brightness(1.2)",opacity:.85}}/>
+        <canvas ref={coreRef} style={{...cs,filter:"saturate(1.05)"}}/>
       </div>
       <div ref={overlayRef} style={{position:"absolute",inset:0,pointerEvents:"none"}}/>
       <div className="dk-hero-overlay">
@@ -315,7 +295,7 @@ function PitHero(){
       </div>
       <div className="dk-hero-legend">
         <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.87 0.155 64)"}}/>Elevation</div>
-        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.74 0.12 195)"}}/>Depression</div>
+        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.50 0.155 30)"}}/>Base</div>
       </div>
     </div>
   );
