@@ -56,141 +56,198 @@ function KpiCard({label,value,display,sub,trend,accent}){
   );
 }
 
-/* ── Spatial terrain hero (green wireframe heightmap) ── */
+/* ── Topographic contour hero (marching-squares, hover ripple) ── */
 function PitHero(){
-  const canvasRef=useRef();
-  const stateRef=useRef({t:0,rotY:0.0,drag:false,lx:0,auto:true});
+  const glowRef=useRef(); const coreRef=useRef();
+  const stateRef=useRef({amp:0,hovering:false,t0:0,running:false,curX:-1e4,curY:-1e4});
+  const terrainRef=useRef({field:null,levels:[],levelSegs:[],levelColors:[]});
 
   useEffect(()=>{
-    const canvas=canvasRef.current; if(!canvas) return;
-    const ctx=canvas.getContext("2d");
-    let raf;
-    function resize(){ const r=canvas.getBoundingClientRect(); canvas.width=r.width*2; canvas.height=r.height*2; ctx.setTransform(2,0,0,2,0,0); }
-    resize();
-    const ro=new ResizeObserver(resize); ro.observe(canvas);
+    const cGlow=glowRef.current, cCore=coreRef.current;
+    if(!cGlow||!cCore) return;
+    const xG=cGlow.getContext("2d"), xC=cCore.getContext("2d");
+    let W=0,H=0,DPR=1;
+    const N=132;
+    const st=stateRef.current, tr=terrainRef.current;
 
-    // heightmap grid
-    const COLS=64, ROWS=40;
-    // deterministic pseudo-random height field (ridged mountains)
-    function noise(x,y){
-      return Math.sin(x*0.9)*Math.cos(y*0.7)*0.5
-           + Math.sin(x*0.35+1.7)*Math.cos(y*0.5+0.4)*0.9
-           + Math.sin(x*0.18+3.1)*0.6;
+    /* ── PRNG + noise ── */
+    function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+    function smth(t){return t*t*(3-2*t);}
+    function lerp(a,b,t){return a+(b-a)*t;}
+    function makeNoise(seed){
+      const S=256,M=S-1,r=mulberry32(seed),g=new Float32Array(S*S);
+      for(let i=0;i<g.length;i++) g[i]=r();
+      return(x,y)=>{
+        const x0=Math.floor(x),y0=Math.floor(y),xf=x-x0,yf=y-y0;
+        const sx=smth(xf),sy=smth(yf);
+        const at=(i,j)=>g[((j&M)*S)+(i&M)];
+        return lerp(lerp(at(x0,y0),at(x0+1,y0),sx),lerp(at(x0,y0+1),at(x0+1,y0+1),sx),sy);
+      };
     }
-    function heightAt(i,j){
-      const nx=(i/COLS)*7, ny=(j/ROWS)*5;
-      let h=noise(nx,ny);
-      // ridge toward center-right, fade at edges
-      const cx=i/COLS, cy=j/ROWS;
-      const edge=Math.max(0,1-Math.pow((cx-0.55)*2.0,2)-Math.pow((cy-0.6)*1.8,2));
-      h=Math.max(0,(h+1.2))*edge;
-      return h;
-    }
-    // pin markers placed on high points
-    const pins=[
-      {i:22,j:18},{i:34,j:14},{i:30,j:24},{i:46,j:22}
-    ];
+    function fbm(n,x,y,oct){let amp=0.5,freq=1,sum=0,norm=0;for(let o=0;o<oct;o++){sum+=amp*n(x*freq,y*freq);norm+=amp;amp*=0.5;freq*=2;}return sum/norm;}
 
-    function project(i,j,h,W,H,rotY){
-      // grid to centered coords
-      let gx=(i/COLS-0.5)*2.0;
-      let gz=(j/ROWS-0.5)*2.0;
-      // rotate around Y
-      const c=Math.cos(rotY), s=Math.sin(rotY);
-      const rx=gx*c - gz*s;
-      const rz=gx*s + gz*c;
-      // isometric-ish tilt
-      const tilt=0.55;
-      const sx=W/2 + rx*W*0.62;
-      const sy=H*0.46 + rz*H*0.30*tilt - h*26;
-      return {x:sx,y:sy,depth:rz};
+    /* ── build terrain ── */
+    function buildTerrain(seed){
+      const nT=makeNoise(seed), nC=makeNoise(seed^0x9e3779b1);
+      const field=new Float32Array(N*N); let fmax=0;
+      for(let gy=0;gy<N;gy++) for(let gx=0;gx<N;gx++){
+        const nx=gx/(N-1),ny=gy/(N-1);
+        let h=fbm(nT,nx*4.2+5,ny*4.2+5,6);
+        h=Math.pow(Math.max(0,h),1.25);
+        const dx=nx-0.5,dy=ny-0.47,d=Math.sqrt(dx*dx+dy*dy);
+        const coastR=0.345+0.125*(fbm(nC,nx*2.4+11,ny*2.4+11,3)-0.5)*2.0;
+        h*=(1-smth(Math.min(1,Math.max(0,(d-coastR+0.10)/0.17))))*(0.74+0.26*(1-Math.min(1,d/0.34)));
+        field[gy*N+gx]=h; if(h>fmax) fmax=h;
+      }
+      const inv=fmax>0?1/fmax:1; for(let i=0;i<field.length;i++) field[i]*=inv;
+      const COUNT=20,lo=0.05,hi=0.96;
+      tr.levels=[]; tr.levelColors=[];
+      for(let i=0;i<COUNT;i++){
+        const t=i/(COUNT-1); tr.levels.push(lo+(hi-lo)*t);
+        tr.levelColors.push(`oklch(${0.52+0.34*t} 0.155 ${30+34*t})`);
+      }
+      tr.field=field; computeContours();
     }
 
-    function draw(){
-      const st=stateRef.current;
-      st.t+=0.006;
-      if(st.auto&&!st.drag) st.rotY=Math.sin(st.t*0.25)*0.18;
-      const W=canvas.width/2, H=canvas.height/2;
-      ctx.clearRect(0,0,W,H);
-
-      // subtle contour rings (top-left) + nav grid (top-right) — faint
-      ctx.strokeStyle="rgba(120,140,170,0.06)"; ctx.lineWidth=1;
-      for(let k=0;k<4;k++){ ctx.beginPath(); ctx.ellipse(W*0.16,H*0.26,30+k*22,18+k*13,0.3,0,Math.PI*2); ctx.stroke(); }
-      ctx.strokeStyle="rgba(120,140,170,0.05)";
-      for(let gx=0;gx<6;gx++){ for(let gy=0;gy<4;gy++){ ctx.strokeRect(W*0.74+gx*22,H*0.08+gy*16,22,16); } }
-
-      const rotY=st.rotY;
-
-      // glow under ridge
-      const ridge=project(36,20,heightAt(36,20),W,H,rotY);
-      const gg=ctx.createRadialGradient(ridge.x,ridge.y,10,ridge.x,ridge.y,260);
-      gg.addColorStop(0,"rgba(140,230,60,0.18)");
-      gg.addColorStop(0.5,"rgba(120,200,50,0.06)");
-      gg.addColorStop(1,"rgba(0,0,0,0)");
-      ctx.fillStyle=gg; ctx.fillRect(0,0,W,H);
-
-      // wireframe mesh
-      ctx.lineWidth=0.7;
-      for(let j=0;j<ROWS;j++){
-        for(let i=0;i<COLS;i++){
-          const h=heightAt(i,j);
-          if(h<0.02) continue;
-          const p=project(i,j,h,W,H,rotY);
-          // brightness by height
-          const lum=Math.min(1,h/2.4);
-          const alpha=0.12+lum*0.7;
-          const col=`rgba(${Math.floor(120-lum*70)},${Math.floor(200+lum*55)},${Math.floor(50+lum*30)},${alpha})`;
-          // right neighbor
-          if(i<COLS-1){ const h2=heightAt(i+1,j); if(h2>0.02){ const p2=project(i+1,j,h2,W,H,rotY);
-            ctx.strokeStyle=col; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p2.x,p2.y); ctx.stroke(); } }
-          // down neighbor
-          if(j<ROWS-1){ const h3=heightAt(i,j+1); if(h3>0.02){ const p3=project(i,j+1,h3,W,H,rotY);
-            ctx.strokeStyle=col; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p3.x,p3.y); ctx.stroke(); } }
+    /* ── marching squares ── */
+    function computeContours(){
+      const f=tr.field; tr.levelSegs=tr.levels.map(()=>[]);
+      for(let li=0;li<tr.levels.length;li++){
+        const lev=tr.levels[li],out=tr.levelSegs[li];
+        for(let y=0;y<N-1;y++) for(let x=0;x<N-1;x++){
+          const tl=f[y*N+x],tr2=f[y*N+x+1],br=f[(y+1)*N+x+1],bl=f[(y+1)*N+x];
+          let idx=0; if(tl>lev)idx|=8;if(tr2>lev)idx|=4;if(br>lev)idx|=2;if(bl>lev)idx|=1;
+          if(idx===0||idx===15) continue;
+          const top=()=>[x+(lev-tl)/(tr2-tl),y],right=()=>[x+1,y+(lev-tr2)/(br-tr2)];
+          const bot=()=>[x+(lev-bl)/(br-bl),y+1],left=()=>[x,y+(lev-tl)/(bl-tl)];
+          const push=(a,b)=>{out.push(a[0],a[1],b[0],b[1]);};
+          switch(idx){
+            case 1:push(left(),bot());break;case 2:push(bot(),right());break;
+            case 3:push(left(),right());break;case 4:push(top(),right());break;
+            case 5:push(left(),top());push(bot(),right());break;case 6:push(top(),bot());break;
+            case 7:push(left(),top());break;case 8:push(left(),top());break;
+            case 9:push(top(),bot());break;case 10:push(top(),right());push(left(),bot());break;
+            case 11:push(top(),right());break;case 12:push(left(),right());break;
+            case 13:push(bot(),right());break;case 14:push(left(),bot());break;
+          }
         }
       }
-
-      // red pin markers
-      pins.forEach(pin=>{
-        const h=heightAt(pin.i,pin.j);
-        const base=project(pin.i,pin.j,h,W,H,rotY);
-        const top={x:base.x,y:base.y-30};
-        ctx.strokeStyle="rgba(255,255,255,0.4)"; ctx.lineWidth=1.2;
-        ctx.beginPath(); ctx.moveTo(base.x,base.y); ctx.lineTo(top.x,top.y); ctx.stroke();
-        // glossy red head
-        const rg=ctx.createRadialGradient(top.x-2,top.y-2,1,top.x,top.y,7);
-        rg.addColorStop(0,"#ff7a7a"); rg.addColorStop(0.5,"#e8202c"); rg.addColorStop(1,"#a00813");
-        ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(top.x,top.y,6,0,Math.PI*2); ctx.fill();
-      });
-
-      // edge vignette to black
-      const vg=ctx.createRadialGradient(W/2,H/2,H*0.35,W/2,H/2,W*0.62);
-      vg.addColorStop(0,"rgba(6,7,8,0)"); vg.addColorStop(1,"rgba(6,7,8,0.95)");
-      ctx.fillStyle=vg; ctx.fillRect(0,0,W,H);
-
-      raf=requestAnimationFrame(draw);
     }
+
+    /* ── isometric projection ── */
+    const yaw=-0.62,pitch=1.18,hScale=0.225;
+    function makeProj(W,H){
+      const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+      const scale=Math.min(W,H)*1.04, ox=W*0.5, oy=H*0.5+scale*0.04, inv=1/(N-1);
+      return(gx,gy,h)=>{
+        const px=gx*inv-0.5,py=gy*inv-0.47;
+        const x1=px*cy-py*sy, y1=px*sy+py*cy, z1=h*hScale;
+        return[ox+x1*scale, oy+(y1*cp-z1*sp)*scale];
+      };
+    }
+
+    /* ── ripple distortion ── */
+    function ripple(x,y){
+      if(st.amp<0.002) return[x,y];
+      const dx=x-st.curX,dy=y-st.curY,d=Math.sqrt(dx*dx+dy*dy);
+      const inf=Math.exp(-(d*d)/(170*170)); if(inf<0.01) return[x,y];
+      const w=Math.sin(d*0.045-st.t0*3.4),k=inf*st.amp,nd=d||1;
+      return[x+dx/nd*(7*w)*k, y+dy/nd*(7*w)*k-7*inf*k];
+    }
+
+    /* ── draw ── */
+    function draw(){
+      xG.setTransform(DPR,0,0,DPR,0,0); xC.setTransform(DPR,0,0,DPR,0,0);
+      xG.clearRect(0,0,W,H); xC.clearRect(0,0,W,H);
+      const proj=makeProj(W,H);
+      xG.globalCompositeOperation=xC.globalCompositeOperation="lighter";
+      xG.lineJoin=xC.lineJoin=xG.lineCap=xC.lineCap="round";
+      for(let li=0;li<tr.levelSegs.length;li++){
+        const segs=tr.levelSegs[li]; if(!segs.length) continue;
+        const lev=tr.levels[li],p=new Path2D();
+        for(let i=0;i<segs.length;i+=4){
+          const a=ripple(...proj(segs[i],segs[i+1],lev));
+          const b=ripple(...proj(segs[i+2],segs[i+3],lev));
+          p.moveTo(a[0],a[1]); p.lineTo(b[0],b[1]);
+        }
+        const col=tr.levelColors[li];
+        xG.strokeStyle=col;xG.lineWidth=1.9;xG.globalAlpha=0.7;xG.stroke(p);
+        xC.strokeStyle=col;xC.lineWidth=0.9;xC.globalAlpha=0.95;xC.stroke(p);
+      }
+      xG.globalAlpha=xC.globalAlpha=1;
+      xG.globalCompositeOperation=xC.globalCompositeOperation="source-over";
+      /* edge fade — painted on core canvas after contours */
+      const bg="rgb(11,12,14)";
+      const fadeW=W*0.22, fadeH=H*0.28;
+      const sides=[
+        {x:0,y:0,w:fadeW,h:H,   x0:0,   y0:H/2, x1:fadeW,y1:H/2},
+        {x:W-fadeW,y:0,w:fadeW,h:H, x0:W,  y0:H/2, x1:W-fadeW,y1:H/2},
+        {x:0,y:0,w:W,h:fadeH,   x0:W/2, y0:0,   x1:W/2,  y1:fadeH},
+        {x:0,y:H-fadeH,w:W,h:fadeH, x0:W/2, y0:H,   x1:W/2,  y1:H-fadeH},
+      ];
+      sides.forEach(s=>{
+        const g=xC.createLinearGradient(s.x0,s.y0,s.x1,s.y1);
+        g.addColorStop(0,bg); g.addColorStop(1,"rgba(11,12,14,0)");
+        xC.fillStyle=g; xC.fillRect(s.x,s.y,s.w,s.h);
+      });
+      /* soft corner fills */
+      [[0,0],[W,0],[W,H],[0,H]].forEach(([cx,cy])=>{
+        const g=xC.createRadialGradient(cx,cy,0,cx,cy,W*0.28);
+        g.addColorStop(0,bg); g.addColorStop(1,"rgba(11,12,14,0)");
+        xC.fillStyle=g; xC.fillRect(0,0,W,H);
+      });
+    }
+
+    /* ── animation loop (idle when no hover) ── */
+    function frame(now){
+      st.t0=now/1000;
+      st.amp+=((st.hovering?1:0)-st.amp)*0.07;
+      draw();
+      if(st.hovering||st.amp>0.003) requestAnimationFrame(frame);
+      else{st.running=false;st.amp=0;draw();}
+    }
+    function startLoop(){if(!st.running){st.running=true;requestAnimationFrame(frame);}}
+
+    /* ── resize ── */
+    function resize(){
+      DPR=Math.min(2,window.devicePixelRatio||1);
+      const r=cGlow.parentElement.getBoundingClientRect();
+      W=r.width; H=r.height;
+      cGlow.width=W*DPR;cGlow.height=H*DPR;
+      cCore.width=W*DPR;cCore.height=H*DPR;
+    }
+    const ro=new ResizeObserver(()=>{resize();draw();});
+    ro.observe(cGlow.parentElement);
+    resize();
+    buildTerrain(73511);
     draw();
 
-    function down(e){ const st=stateRef.current; st.drag=true; st.auto=false; st.lx=e.clientX; }
-    function move(e){ const st=stateRef.current; if(!st.drag) return; st.rotY+=(e.clientX-st.lx)*0.005; st.lx=e.clientX; }
-    function up(){ stateRef.current.drag=false; }
-    canvas.addEventListener("mousedown",down);
-    window.addEventListener("mousemove",move);
-    window.addEventListener("mouseup",up);
-    return ()=>{ cancelAnimationFrame(raf); ro.disconnect(); canvas.removeEventListener("mousedown",down); window.removeEventListener("mousemove",move); window.removeEventListener("mouseup",up); };
+    /* ── pointer events on the container ── */
+    const el=cGlow.parentElement;
+    function onMove(e){
+      const r=el.getBoundingClientRect();
+      st.curX=e.clientX-r.left; st.curY=e.clientY-r.top;
+      st.hovering=true; startLoop();
+    }
+    function onLeave(){st.hovering=false;}
+    el.addEventListener("pointermove",onMove);
+    el.addEventListener("pointerleave",onLeave);
+    return()=>{ ro.disconnect(); el.removeEventListener("pointermove",onMove); el.removeEventListener("pointerleave",onLeave); };
   },[]);
 
+  const canvasStyle={position:"absolute",inset:0,width:"100%",height:"100%"};
   return(
-    <div className="dk-hero">
-      <canvas ref={canvasRef} className="dk-hero-canvas"/>
+    <div className="dk-hero" style={{position:"relative",overflow:"hidden",cursor:"crosshair"}}>
+      <canvas ref={glowRef} style={{...canvasStyle,filter:"blur(7px) saturate(1.45) brightness(1.22)",opacity:.9}}/>
+      <canvas ref={coreRef} style={{...canvasStyle,filter:"saturate(1.05)"}}/>
       <div className="dk-hero-overlay">
         <div className="dk-hero-tag">SPATIAL MODEL</div>
         <div className="dk-hero-title">Terrain Intelligence</div>
-        <div className="dk-hero-sub">Surface elevation · drill targets · drag to rotate</div>
+        <div className="dk-hero-sub">Surface elevation · contour map · hover to ripple</div>
       </div>
       <div className="dk-hero-legend">
-        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"#8CE63C"}}/>Elevation mesh</div>
-        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"#E8202C"}}/>Drill target</div>
+        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.86 0.155 64)"}}/>High elevation</div>
+        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.52 0.155 30)"}}/>Low elevation</div>
       </div>
     </div>
   );
