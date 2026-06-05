@@ -85,7 +85,7 @@ function PitHero(){
     function fbm(n,x,y,o){let a=0.5,f=1,s=0,nm=0;for(let i=0;i<o;i++){s+=a*n(x*f,y*f);nm+=a;a*=0.5;f*=2;}return s/nm;}
 
     /* ── extended coordinate system ── */
-    const X_MIN=-5,X_MAX=12,Z_MIN=0,Z_MAX=10;
+    const X_MIN=-5,X_MAX=12,Z_MIN=0,Z_MAX=9;
     const XSPAN=X_MAX-X_MIN,ZSPAN=Z_MAX-Z_MIN;
     const XC=(X_MIN+X_MAX)/2,ZC=(Z_MIN+Z_MAX)/2;
     const STEP=0.25;
