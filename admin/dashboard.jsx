@@ -97,7 +97,6 @@ function PitHero(){
     const FEATURES=[
       {name:"West Ridge",   x:2.0,z:5.0,y:1.25,rx:1.05,rz:1.15},
       {name:"North Ridge",  x:5.5,z:7.0,y:1.50,rx:4.65,rz:3.05,warp:true},
-      {name:"East Ridge",   x:7.0,z:4.0,y:1.10,rx:1.05,rz:1.05},
       {name:"Central Hill", x:6.0,z:3.5,y:1.00,rx:1.15,rz:1.55},
       {name:"South Slope",  x:4.2,z:2.2,y:0.35,rx:1.10,rz:1.10},
       {name:"West Knoll",   x:-1.3,z:6.8,y:1.30,rx:1.25,rz:1.45,warp:true},
