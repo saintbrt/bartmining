@@ -33,9 +33,10 @@ You asked that nobody can even *reach* the admin files unless logged in.
 `middleware.js` runs on Vercel's edge **before any file is served**. For every
 request to `/admin/*` it:
 
-1. Reads the `gp-auth` cookie (a signed Supabase JWT).
-2. Verifies the signature with `SUPABASE_JWT_SECRET` (HMAC-SHA256) and checks
-   it isn't expired and belongs to an authenticated user.
+1. Reads the `gp-auth` cookie (a Supabase access token / JWT).
+2. Fetches your project's **public** signing keys from `${SUPABASE_URL}/auth/v1/jwks`
+   (cached 10 min) and verifies the token's ES256/RS256 signature with the Web
+   Crypto API, then checks it isn't expired and belongs to an authenticated user.
 3. If valid → serves the file. If missing/tampered/expired → **302 redirect to
    `/admin/login`**.
 
@@ -50,16 +51,31 @@ sync as the token refreshes, and clears it on sign-out.
 ## One-time setup on Vercel
 
 ### Environment variable (required for the gate)
-In **Vercel → Project → Settings → Environment Variables**, add:
+In **Vercel → Project → Settings → Environment Variables**, add both:
 
 | Name | Value | Where to find it |
 |---|---|---|
-| `SUPABASE_JWT_SECRET` | your project's JWT secret | Supabase → Settings → API → JWT Settings → **JWT Secret** |
+| `SUPABASE_URL` | https://your-project.supabase.co | Supabase → Settings → API → **Project URL** |
+| `SUPABASE_ANON_KEY` | your anon/public key | Supabase → Settings → API → **anon public** |
 
-### Two config spots (paste your project URL + anon key)
-Both must match. They only contain the **public** URL + anon key:
-- `admin/index.html` — the `window.SUPABASE_URL` / `window.SUPABASE_ANON_KEY` block
-- `admin/login.html` — the `SUPABASE_URL` / `SUPABASE_ANON_KEY` constants
+> No JWT secret is required. This project uses Supabase's new asymmetric
+> JWT Signing Keys (ECC / ES256), so the login gate verifies tokens against
+> the project's **public** JWKS endpoint (`/auth/v1/jwks`) — there is no
+> shared secret to store. The middleware derives the JWKS URL from
+> `SUPABASE_URL`.
+
+### How the keys reach the app (no hardcoding)
+The Supabase URL + anon key are **no longer in source**. At deploy time Vercel runs
+`build-env.js` (set as the Build Command in `vercel.json`), which reads
+`SUPABASE_URL` / `SUPABASE_ANON_KEY` from the environment and writes
+`admin/env.js`. Both `admin/index.html` and `admin/login.html` load
+`<script src="env.js">`. The generated `env.js` is gitignored, so the keys never
+touch the repository.
+
+- **Vercel Build Command:** `node build-env.js` (already in `vercel.json`)
+- **Local dev:** `admin/env.js` holds placeholders → app shows "Backend not configured" until real env vars are set on Vercel.
+- The anon key is public by design; RLS protects the data. `service_role` +
+  `ANTHROPIC_API_KEY` live ONLY in the Supabase edge functions, never in the client.
 
 ### Database + functions (from `goldpass/supabase/`)
 1. Run `INSTALL_ALL.sql` in the Supabase SQL editor.

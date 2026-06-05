@@ -20,11 +20,12 @@ class ErrorBoundary extends React.Component {
 }
 
 function Topbar({project,view}){
-  const labels={dashboard:"Dashboard",workspace:"Workspace",outputs:"Outputs",visualization:"Visualisation",settings:"Settings"};
+  const labels={dashboard:"Dashboard",validation:"Validation",cleaning:"Cleaning",analysis:"Analysis",outputs:"Outputs",visualization:"Visualisation",settings:"Settings"};
+  const stageNames={validation:"Stage 1 · Validation",cleaning:"Stage 2 · Cleaning",analysis:"Stage 3 · Analysis"};
   return(
     <div className="topbar" style={(!project||view==="dashboard")?{display:"none"}:{}}>
       <div className="topbar-title">{(!project||view==="dashboard")?"Dashboard":project.name}</div>
-      {project&&view!=="dashboard"&&<div className="topbar-sub">/ {labels[view]||view}</div>}
+      {project&&view!=="dashboard"&&<div className="topbar-sub">/ {stageNames[view]||labels[view]||view}</div>}
       <div className="topbar-actions">
         <span style={{fontSize:11,color:"var(--label-4)",fontFamily:"monospace"}}>Internal &middot; Live</span>
       </div>
@@ -36,7 +37,9 @@ function Sidebar({user,projects,project,view,onNav,onSelectProject,onSignOut}){
   const initials=user.email.slice(0,2).toUpperCase();
   const NAV=[
     {id:"dashboard",    ico:"⬡", label:"Dashboard"},
-    {id:"workspace",    ico:"⬛",label:"Workspace"},
+    {id:"validation",  ico:"①", label:"Validation"},
+    {id:"cleaning",    ico:"②", label:"Cleaning"},
+    {id:"analysis",    ico:"③", label:"Analysis"},
     {id:"outputs",      ico:"⬇", label:"Outputs"},
     {id:"visualization",ico:"◈", label:"Visualise"},
     {id:"settings",     ico:"⚙", label:"Settings"}
@@ -124,7 +127,7 @@ function App(){
 
   async function handleLogin(u){ await DB.bootstrap(); setProjects(DB.getProjects()); setUser(u); }
   function handleSignOut()         { DB.signOut(); setUser(null); setProject(null); setView("dashboard"); }
-  async function handleSelectProject(p){ await DB.loadProjectRows(p.id); setProject(p); setView("workspace"); setEditingTable(null); refresh(); }
+  async function handleSelectProject(p){ await DB.loadProjectRows(p.id); setProject(p); setView("validation"); setEditingTable(null); refresh(); }
   function handleCreateProject(n)  { DB.createProject(n); refresh(); }
   function handleNav(v)            { setView(v); setEditingTable(null); }
   function handleEditTable(tbl)    { setEditingTable(tbl); }
@@ -149,18 +152,19 @@ function App(){
   }
 
   function renderContent(){
-    if(view==="workspace"){
+    const STAGES=["validation","cleaning","analysis"];
+    if(STAGES.includes(view)){
       if(!project) return(
         <div className="content content-pad">
           <div className="empty-state">
-            <div className="empty-ico">⬛</div>
+            <div className="empty-ico">◆</div>
             <h3>No project selected</h3>
-            <p>Select a project from the sidebar or create one on the Dashboard.</p>
+            <p>Select a project from the sidebar or create one on the Dashboard to begin the {view} stage.</p>
             <button className="btn btn-primary" onClick={()=>setView("dashboard")}>Go to Dashboard</button>
           </div>
         </div>
       );
-      return <WorkspacePage project={project} user={user} tables={tables} onRefresh={refresh} onEditTable={handleEditTable}/>;
+      return <WorkspacePage key={view} stage={view} project={project} user={user} tables={tables} onRefresh={refresh} onEditTable={handleEditTable} onNavStage={handleNav}/>;
     }
     if(view==="visualization") return <VisualizationPage project={project||{id:"",name:"GoldPass"}} tables={tables}/>;
     if(view==="outputs")       return <OutputsPage project={project||{id:"",name:""}} user={user} onRefresh={refresh}/>;

@@ -72,6 +72,43 @@ const QC_DEFS = [
     tableTypes: ["collar"],
     needsCols: ["easting","northing"],
     fixable: false
+  },
+  {
+    id: "find_undrilled",
+    label: "Undrilled holes",
+    desc: "Collar holes that have no matching intervals in the comparison (assay/survey) table.",
+    category: "validation",
+    tableTypes: ["collar"],
+    needsCols: ["hole_id"],
+    needsCompare: true,
+    fixable: false
+  },
+  {
+    id: "find_orphan_assays",
+    label: "Orphan assays",
+    desc: "Hole IDs in this interval table that have no matching collar in the comparison table.",
+    category: "validation",
+    tableTypes: ["assay","survey","lithology"],
+    needsCols: ["hole_id"],
+    needsCompare: true,
+    fixable: false
+  },
+  {
+    id: "find_null_placeholders",
+    label: "Null placeholders",
+    desc: "Disguised nulls — values like N/A, -, -99, 9999, NULL used in place of empty cells.",
+    category: "validation",
+    tableTypes: ["collar","assay","survey","lithology"],
+    fixable: false
+  },
+  {
+    id: "check_collar_completeness",
+    label: "Collar completeness",
+    desc: "Collar rows missing easting, northing or elevation — incomplete coordinates.",
+    category: "validation",
+    tableTypes: ["collar"],
+    needsCols: ["easting","northing"],
+    fixable: false
   }
 ];
 
@@ -96,6 +133,13 @@ const CLEAN_DEFS = [
     desc: "Delete rows where every column is empty or null.",
     fixLabel: "Delete empty rows",
     fixable: true
+  },
+  {
+    id: "resolve_unit_conflicts",
+    label: "Resolve unit conflicts (ppm/ppb)",
+    desc: "Detect grade values likely recorded in ppb (e.g. >1000 in a ppm column) so units can be normalised.",
+    needsOneOf: ["au","cu","ag"],
+    fixable: false
   }
 ];
 
@@ -123,6 +167,32 @@ const ANALYSIS_DEFS = [
     desc: "Heuristic check whether easting/northing look like Arc1960 UTM, WGS84, or unknown.",
     tableTypes: ["collar"],
     needsCols: ["easting","northing"],
+    fixable: false
+  },
+  {
+    id: "best_intercept",
+    label: "Find best intercept",
+    desc: "Highest grade-thickness (grade × interval length) downhole intersection per hole.",
+    tableTypes: ["assay"],
+    needsCols: ["hole_id","from","to"],
+    needsOneOf: ["au","cu","ag"],
+    fixable: false
+  },
+  {
+    id: "rank_by_grade",
+    label: "Rank holes by grade",
+    desc: "Rank every hole by its peak grade value, highest first.",
+    tableTypes: ["assay"],
+    needsCols: ["hole_id"],
+    needsOneOf: ["au","cu","ag"],
+    fixable: false
+  },
+  {
+    id: "find_correlation",
+    label: "Grade correlation",
+    desc: "Pearson correlation between two grade columns (e.g. Au vs Cu) across all rows.",
+    tableTypes: ["assay"],
+    needsOneOf: ["au","cu","ag"],
     fixable: false
   }
 ];
@@ -354,6 +424,107 @@ function runQC(def, rows, invMap) {
       };
     }
 
+    case "find_null_placeholders": {
+      const PLACEHOLDERS = new Set(["n/a","na","null","-","--","none","nil","9999","-99","-9999","#n/a","tbd","."]);
+      const issues = rows.filter(r =>
+        Object.values(r).some(v => {
+          const s = String(v==null?"":v).trim().toLowerCase();
+          return s !== "" && PLACEHOLDERS.has(s);
+        })
+      );
+      return {
+        issues, count: issues.length,
+        summary: issues.length===0
+          ? "No disguised null placeholders found."
+          : `${issues.length} row${issues.length>1?"s":""} contain placeholder values (N/A, -, 9999, etc.).`,
+        cols: []
+      };
+    }
+
+    case "check_collar_completeness": {
+      const ec=getCol(invMap,"easting"), nc=getCol(invMap,"northing"), zc=getCol(invMap,"elevation");
+      const issues = rows.filter(r => {
+        const eMissing = ec ? (num(r[ec])===null) : true;
+        const nMissing = nc ? (num(r[nc])===null) : true;
+        const zMissing = zc ? (num(r[zc])===null) : false;
+        return eMissing || nMissing || zMissing;
+      });
+      return {
+        issues, count: issues.length,
+        summary: issues.length===0
+          ? "All collar rows have complete coordinates."
+          : `${issues.length} collar row${issues.length>1?"s":""} missing easting, northing or elevation.`,
+        cols: [ec,nc,zc].filter(Boolean)
+      };
+    }
+
+    case "resolve_unit_conflicts": {
+      const gradeCols = ["au","cu","ag"].map(k=>getCol(invMap,k)).filter(Boolean);
+      const issues = rows.filter(r => gradeCols.some(c => { const v=num(r[c]); return v!==null && v>1000; }));
+      return {
+        issues, count: issues.length,
+        summary: issues.length===0
+          ? "No unit conflicts detected — grades look consistent."
+          : `${issues.length} row${issues.length>1?"s":""} have grade values > 1000 (likely ppb in a ppm column). Review units.`,
+        cols: gradeCols
+      };
+    }
+
+    case "best_intercept": {
+      const gc = ["au","cu","ag"].map(k=>getCol(invMap,k)).find(Boolean);
+      if(!gc) return { issues:[], count:0, summary:"No grade column mapped.", cols:[] };
+      const byHole={};
+      rows.forEach(r=>{
+        const id=String(r[h]||"").trim(); if(!id) return;
+        const fv=num(r[f]), tv=num(r[t]), gv=num(r[gc]);
+        if(fv===null||tv===null||gv===null) return;
+        const gt=gv*(tv-fv);
+        if(!byHole[id]||gt>byHole[id]._gt){ byHole[id]={...r,_gt:gt,_interval:(tv-fv).toFixed(2)+"m",_grade:gv}; }
+      });
+      const issues=Object.values(byHole).sort((a,b)=>b._gt-a._gt);
+      return {
+        issues, count: issues.length,
+        summary: issues.length===0 ? "No valid intervals to evaluate." : `Best intercept per hole across ${issues.length} hole${issues.length>1?"s":""} (ranked by grade × thickness).`,
+        cols: [h,f,t,gc].filter(Boolean)
+      };
+    }
+
+    case "rank_by_grade": {
+      const gc = ["au","cu","ag"].map(k=>getCol(invMap,k)).find(Boolean);
+      if(!gc) return { issues:[], count:0, summary:"No grade column mapped.", cols:[] };
+      const byHole={};
+      rows.forEach(r=>{
+        const id=String(r[h]||"").trim(); if(!id) return;
+        const gv=num(r[gc]); if(gv===null) return;
+        if(!byHole[id]||gv>byHole[id]._grade){ byHole[id]={...r,_grade:gv}; }
+      });
+      const issues=Object.values(byHole).sort((a,b)=>b._grade-a._grade);
+      return {
+        issues, count: issues.length,
+        summary: issues.length===0 ? "No grade values to rank." : `${issues.length} hole${issues.length>1?"s":""} ranked by peak grade. Top: ${issues[0]._grade}.`,
+        cols: [h,gc].filter(Boolean)
+      };
+    }
+
+    case "find_correlation": {
+      const gcs = ["au","cu","ag"].map(k=>getCol(invMap,k)).filter(Boolean);
+      if(gcs.length<2) return { issues:[], count:0, summary:"Need at least two grade columns to correlate.", cols:[] };
+      const [ca,cb]=gcs;
+      const pairs=rows.map(r=>[num(r[ca]),num(r[cb])]).filter(([a,b])=>a!==null&&b!==null);
+      if(pairs.length<3) return { issues:[], count:0, summary:"Not enough paired values to correlate.", cols:[] };
+      const xs=pairs.map(p=>p[0]), ys=pairs.map(p=>p[1]);
+      const mx=mean(xs), my=mean(ys);
+      let cov=0,vx=0,vy=0;
+      pairs.forEach(([x,y])=>{ cov+=(x-mx)*(y-my); vx+=(x-mx)**2; vy+=(y-my)**2; });
+      const r=(vx&&vy)?cov/Math.sqrt(vx*vy):0;
+      const strength=Math.abs(r)>0.7?"strong":Math.abs(r)>0.4?"moderate":"weak";
+      return {
+        issues: [], count: 0,
+        summary: `Pearson r = ${r.toFixed(3)} between ${ca} and ${cb} (${strength} ${r>=0?"positive":"negative"} correlation, n=${pairs.length}).`,
+        cols: [ca,cb]
+      };
+    }
+
     default:
       return { issues:[], count:0, summary:"Function not implemented.", cols:[] };
   }
@@ -436,6 +607,36 @@ function findMissingRows(rowsA, rowsB, invMapA, invMapB) {
     summary: missing.length===0
       ? "All holes in table A are present in table B."
       : `${missing.length} hole${missing.length>1?"s":""} in table A not found in table B.`
+  };
+}
+
+/* ================================================================
+   findUndrilled — collar holes (A) with no intervals in table B
+   findOrphanAssays — interval holes (A) with no collar in table B
+   ================================================================ */
+function findUndrilled(rowsA, rowsB, invMapA, invMapB) {
+  const hA=getCol(invMapA,"hole_id"), hB=getCol(invMapB,"hole_id");
+  if(!hA||!hB) return { error:"Both tables need a Hole ID column mapped." };
+  const drilled=new Set(rowsB.map(r=>String(r[hB]||"").trim()));
+  const issues=rowsA.filter(r=>{ const id=String(r[hA]||"").trim(); return id && !drilled.has(id); });
+  return {
+    issues, count:issues.length,
+    summary: issues.length===0
+      ? "Every collar hole has matching interval data."
+      : `${issues.length} collar hole${issues.length>1?"s":""} have no interval data (undrilled).`
+  };
+}
+function findOrphanAssays(rowsA, rowsB, invMapA, invMapB) {
+  const hA=getCol(invMapA,"hole_id"), hB=getCol(invMapB,"hole_id");
+  if(!hA||!hB) return { error:"Both tables need a Hole ID column mapped." };
+  const collars=new Set(rowsB.map(r=>String(r[hB]||"").trim()));
+  const seen=new Set(); const issues=[];
+  rowsA.forEach(r=>{ const id=String(r[hA]||"").trim(); if(id && !collars.has(id) && !seen.has(id)){ seen.add(id); issues.push(r); } });
+  return {
+    issues, count:issues.length,
+    summary: issues.length===0
+      ? "Every interval hole has a matching collar."
+      : `${issues.length} hole${issues.length>1?"s":""} have assays but no collar record (orphans).`
   };
 }
 
@@ -530,5 +731,5 @@ function mockAIQuery(question, tables, activeTable) {
   };
 }
 
-const QC = { QC_DEFS, CLEAN_DEFS, ANALYSIS_DEFS, runQC, applyFix, findMissingRows, runSimpleSQL, mockAIQuery };
+const QC = { QC_DEFS, CLEAN_DEFS, ANALYSIS_DEFS, runQC, applyFix, findMissingRows, findUndrilled, findOrphanAssays, runSimpleSQL, mockAIQuery };
 Object.assign(window, { QC });

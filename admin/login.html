@@ -6,6 +6,7 @@
 <title>GoldPass — Sign in</title>
 <meta name="robots" content="noindex,nofollow"/>
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="env.js"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0B0C0E;color:#E8ECF4;
@@ -64,9 +65,9 @@
   </div>
 
 <script>
-  /* ── Supabase config — must match admin/index.html ───────────── */
-  const SUPABASE_URL = "https://xktpakkrcgxupkvfqxhj.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhrdHBha2tyY2d4dXBrdmZxeGhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0Njk1NzYsImV4cCI6MjA5NjA0NTU3Nn0.Tge35KsvB8XjSYirjbtv_40guhdTnly7vXnrTtqMJ0U";
+  /* ── Supabase config — injected from Vercel env vars via env.js ── */
+  const SUPABASE_URL = window.SUPABASE_URL || "";
+  const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
 
   const ready = SUPABASE_URL && SUPABASE_ANON_KEY && !SUPABASE_URL.includes("YOUR-PROJECT");
   const sb = ready ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
@@ -85,14 +86,31 @@
     document.cookie = "gp-auth=" + token + "; Path=/admin; Max-Age=" + maxAge + "; SameSite=Lax; Secure";
   }
 
-  /* if already signed in, go straight in */
+  /* if already signed in, go straight in — with loop protection.
+     If we redirect to /admin/ and the middleware bounces us back here
+     (e.g. token can't be verified), we must NOT redirect again or the
+     page ping-pongs forever. Track attempts in sessionStorage. */
   (async () => {
     if (!ready) return;
     const { data } = await sb.auth.getSession();
-    if (data?.session?.access_token) {
-      setAuthCookie(data.session.access_token, data.session.expires_in);
-      location.replace("/admin/");
+    if (!data?.session?.access_token) {
+      sessionStorage.removeItem("gp_redir");   // clean slate, show form
+      return;
     }
+    const last = parseInt(sessionStorage.getItem("gp_redir") || "0", 10);
+    const now = Date.now();
+    if (now - last < 4000) {
+      // We were just bounced back within 4s → the session can't pass the
+      // gate. Break the loop: sign out, clear cookie, show the form.
+      sessionStorage.removeItem("gp_redir");
+      try { await sb.auth.signOut(); } catch (e) {}
+      document.cookie = "gp-auth=; Path=/admin; Max-Age=0; SameSite=Lax; Secure";
+      showErr("Your session could not be verified. Please sign in again.");
+      return;
+    }
+    sessionStorage.setItem("gp_redir", String(now));
+    setAuthCookie(data.session.access_token, data.session.expires_in);
+    location.replace("/admin/");
   })();
 
   form.addEventListener("submit", async (e) => {
@@ -106,6 +124,7 @@
         password: document.getElementById("pass").value
       });
       if (error){ showErr(error.message); btn.disabled = false; btn.textContent = "Sign in"; return; }
+      sessionStorage.setItem("gp_redir", String(Date.now()));
       setAuthCookie(data.session.access_token, data.session.expires_in);
       location.replace("/admin/");
     } catch (ex) {

@@ -303,12 +303,13 @@ function QCPanel({project,tables,canvasTables,user,onClose,onRefresh,mode}){
       try{
         const rows=DB.getRows(selId,0);
         let res;
-        if(def.id==="find_missing_rows"){
+        const CROSS={find_missing_rows:QC.findMissingRows,find_undrilled:QC.findUndrilled,find_orphan_assays:QC.findOrphanAssays};
+        if(CROSS[def.id]){
           const compTbl=tables.find(t=>t.id===selCompId);
-          if(!compTbl){setRunning(null);return;}
+          if(!compTbl){ setRunning(null); setResults(p=>({...p,[def.id]:{count:0,summary:"Select a comparison table first (the second dropdown).",issues:[]}})); return; }
           const compInv=window.invertColMapping(compTbl.columns||{});
-          const r=QC.findMissingRows(rows,DB.getRows(selCompId,0),inv,compInv);
-          res=r.error?{count:0,summary:r.error,issues:[]}:{...r,issues:r.missing};
+          const r=CROSS[def.id](rows,DB.getRows(selCompId,0),inv,compInv);
+          res=r.error?{count:0,summary:r.error,issues:[]}:{...r,issues:r.issues||r.missing||[]};
         } else {
           res=QC.runQC(def,rows,inv);
         }
@@ -333,14 +334,20 @@ function QCPanel({project,tables,canvasTables,user,onClose,onRefresh,mode}){
     {group:"Cleaning",  defs:QC.CLEAN_DEFS},
     {group:"Analysis",  defs:QC.ANALYSIS_DEFS}
   ];
-  const ALL=mode==="clean"
-    ?[{group:"Cleaning",defs:QC.CLEAN_DEFS}]
-    :mode==="functions"
-    ?[{group:"Validation",defs:QC.QC_DEFS},{group:"Analysis",defs:QC.ANALYSIS_DEFS}]
+  const COMPARE_IDS=["find_missing_rows","find_duplicates"];
+  const compareDefs=QC.ANALYSIS_DEFS.filter(d=>COMPARE_IDS.includes(d.id));
+  const analysisOnly=QC.ANALYSIS_DEFS.filter(d=>!COMPARE_IDS.includes(d.id));
+  const ALL=
+     mode==="validation" ? [{group:"Validation checks",defs:QC.QC_DEFS}]
+    :mode==="cleaning"   ? [{group:"Clean & transform",defs:QC.CLEAN_DEFS},{group:"Compare files",defs:compareDefs}]
+    :mode==="analysis"   ? [{group:"Analysis & export",defs:analysisOnly}]
+    :mode==="clean"      ? [{group:"Cleaning",defs:QC.CLEAN_DEFS}]
+    :mode==="functions"  ? [{group:"Validation",defs:QC.QC_DEFS},{group:"Analysis",defs:QC.ANALYSIS_DEFS}]
     :ALL_FULL;
 
   function canRun(def){
     if(!tbl) return false;
+    if((def.needsCompare)&&!selCompId) return false;
     if(def.needsCols) return def.needsCols.every(c=>inv[c]);
     if(def.needsOneOf) return def.needsOneOf.some(c=>inv[c]);
     return true;
@@ -543,7 +550,7 @@ function FilesPanel({tables,canvasIds,onAdd,onUpload}){
 }
 
 /* ── WorkspacePage (main) ─────────────────────────────────── */
-function WorkspacePage({project,user,tables,onRefresh,onEditTable}){
+function WorkspacePage({project,user,tables,onRefresh,onEditTable,stage="all",onNavStage}){
   /* restore persisted state */
   const persisted=loadWS(project.id);
   const [canvasIds,setCanvasIds]=useState(persisted.canvasIds||[]);
@@ -572,6 +579,15 @@ function WorkspacePage({project,user,tables,onRefresh,onEditTable}){
   },[tables]);
 
   const canvasTables=tables.filter(t=>canvasIds.includes(t.id));
+
+  /* ── stage config ── */
+  const STAGE_INFO={
+    validation:{n:1,title:"Validation",sub:"Run quality checks on your data. Nothing is changed — issues are flagged for review.",panelMode:"validation"},
+    cleaning:{n:2,title:"Cleaning",sub:"Fix issues, standardise values, and compare or merge files.",panelMode:"cleaning"},
+    analysis:{n:3,title:"Analysis",sub:"Build outputs, find intercepts and correlations, then export.",panelMode:"analysis"}
+  };
+  const stageCfg=STAGE_INFO[stage];
+  const STEPS=[["validation","Validation"],["cleaning","Cleaning"],["analysis","Analysis"]];
 
   /* ── drag cards ── */
   const dragRef=useRef(null);
@@ -752,30 +768,74 @@ function WorkspacePage({project,user,tables,onRefresh,onEditTable}){
 
   return(
     <div className="workspace">
+      {/* Stage stepper */}
+      {stageCfg&&(
+        <div className="ws-stepper">
+          <div className="ws-stepper-steps">
+            {STEPS.map(([id,label],i)=>(
+              <React.Fragment key={id}>
+                {i>0&&<div className={"ws-step-bar"+(STEPS.findIndex(s=>s[0]===stage)>=i?" done":"")}/>}
+                <button className={"ws-step"+(stage===id?" active":"")+(STEPS.findIndex(s=>s[0]===stage)>i?" done":"")}
+                  onClick={()=>onNavStage&&onNavStage(id)}>
+                  <span className="ws-step-num">{i+1}</span>
+                  <span className="ws-step-label">{label}</span>
+                </button>
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="ws-stage-sub">{stageCfg.sub}</div>
+        </div>
+      )}
       {/* Toolbar */}
       <div className="ws-toolbar">
-        {/* Left group */}
-        <button className="ws-tb-btn ws-tb-primary" disabled={!canvasTables.length} onClick={analyse}>
-          <span className="ws-tb-icon">◆</span> Analyse
-        </button>
-        <button className={"ws-tb-btn"+(cleanOpen?" ws-tb-active":"")} onClick={()=>{setCleanOpen(v=>!v);setFuncsOpen(false);setAiOpen(false);}}>
-          <span className="ws-tb-icon">✦</span> Clean
-        </button>
-        <button className={"ws-tb-btn"+(funcsOpen?" ws-tb-active":"")} onClick={()=>{setFuncsOpen(v=>!v);setCleanOpen(false);setAiOpen(false);}}>
-          Functions
-        </button>
-        <button className={"ws-tb-btn"+(sqlOpen?" ws-tb-active":"")} onClick={()=>{setSqlOpen(v=>!v);setCleanOpen(false);setFuncsOpen(false);setAiOpen(false);}}>
-          <span className="ws-tb-icon">{ }</span> SQL
-        </button>
-        <button className={"ws-tb-btn ws-tb-ai"+(aiOpen?" ws-tb-active":"")} onClick={()=>{setAiOpen(v=>!v);setCleanOpen(false);setFuncsOpen(false);}}>
-          <span className="ws-tb-icon">✦</span> Gold AI
-        </button>
+        {/* Left group — gated by stage */}
+        {stage==="validation"&&(
+          <button className={"ws-tb-btn ws-tb-primary"+(funcsOpen?" ws-tb-active":"")} onClick={()=>{setFuncsOpen(v=>!v);setCleanOpen(false);setAiOpen(false);}}>
+            <span className="ws-tb-icon">✓</span> Run Checks
+          </button>
+        )}
+        {stage==="cleaning"&&(<>
+          <button className={"ws-tb-btn ws-tb-primary"+(funcsOpen?" ws-tb-active":"")} onClick={()=>{setFuncsOpen(v=>!v);setCleanOpen(false);setAiOpen(false);}}>
+            <span className="ws-tb-icon">✦</span> Clean &amp; Compare
+          </button>
+          <button className={"ws-tb-btn"+(sqlOpen?" ws-tb-active":"")} onClick={()=>{setSqlOpen(v=>!v);setCleanOpen(false);setFuncsOpen(false);setAiOpen(false);}}>
+            <span className="ws-tb-icon">{ }</span> SQL
+          </button>
+        </>)}
+        {stage==="analysis"&&(<>
+          <button className="ws-tb-btn ws-tb-primary" disabled={!canvasTables.length} onClick={analyse}>
+            <span className="ws-tb-icon">◆</span> Analyse
+          </button>
+          <button className={"ws-tb-btn"+(funcsOpen?" ws-tb-active":"")} onClick={()=>{setFuncsOpen(v=>!v);setCleanOpen(false);setAiOpen(false);}}>
+            Functions
+          </button>
+          <button className={"ws-tb-btn"+(sqlOpen?" ws-tb-active":"")} onClick={()=>{setSqlOpen(v=>!v);setCleanOpen(false);setFuncsOpen(false);setAiOpen(false);}}>
+            <span className="ws-tb-icon">{ }</span> SQL
+          </button>
+          <button className={"ws-tb-btn ws-tb-ai"+(aiOpen?" ws-tb-active":"")} onClick={()=>{setAiOpen(v=>!v);setCleanOpen(false);setFuncsOpen(false);}}>
+            <span className="ws-tb-icon">✦</span> Gold AI
+          </button>
+        </>)}
+        {stage==="all"&&(<>
+          <button className="ws-tb-btn ws-tb-primary" disabled={!canvasTables.length} onClick={analyse}>
+            <span className="ws-tb-icon">◆</span> Analyse
+          </button>
+          <button className={"ws-tb-btn"+(funcsOpen?" ws-tb-active":"")} onClick={()=>{setFuncsOpen(v=>!v);setCleanOpen(false);setAiOpen(false);}}>
+            Functions
+          </button>
+          <button className={"ws-tb-btn"+(sqlOpen?" ws-tb-active":"")} onClick={()=>{setSqlOpen(v=>!v);setCleanOpen(false);setFuncsOpen(false);setAiOpen(false);}}>
+            <span className="ws-tb-icon">{ }</span> SQL
+          </button>
+          <button className={"ws-tb-btn ws-tb-ai"+(aiOpen?" ws-tb-active":"")} onClick={()=>{setAiOpen(v=>!v);setCleanOpen(false);setFuncsOpen(false);}}>
+            <span className="ws-tb-icon">✦</span> Gold AI
+          </button>
+        </>)}
 
         {/* spacer */}
         <div style={{flex:1}}/>
 
         {/* Right group */}
-        {selOnCanvas.length>=2&&(
+        {stage!=="validation"&&selOnCanvas.length>=2&&(
           <button className="ws-tb-btn" style={{color:"var(--blue)",borderColor:"var(--blue)"}} onClick={doMerge}>
             Merge <span className="ws-tb-pill">{selOnCanvas.length}</span>
           </button>
@@ -791,9 +851,11 @@ function WorkspacePage({project,user,tables,onRefresh,onEditTable}){
             <span className="ws-tb-toggle-thumb"/>
           </button>
         </div>
-        <button className="ws-tb-btn ws-tb-export" disabled={!canvasTables.length} onClick={doExport}>
-          ↓ Export CSV
-        </button>
+        {stage!=="validation"&&(
+          <button className="ws-tb-btn ws-tb-export" disabled={!canvasTables.length} onClick={doExport}>
+            ↓ Export CSV
+          </button>
+        )}
       </div>
 
       {/* Canvas area */}
@@ -830,15 +892,15 @@ function WorkspacePage({project,user,tables,onRefresh,onEditTable}){
         )}
 
         {funcsOpen&&(
-          <SidePanel title="Functions" onClose={()=>setFuncsOpen(false)}>
+          <SidePanel title={stage==="validation"?"Validation Checks":stage==="cleaning"?"Clean & Compare":"Functions"} onClose={()=>setFuncsOpen(false)}>
             <QCPanel project={project} tables={tables} canvasTables={canvasTables}
-              user={user} onClose={()=>setFuncsOpen(false)} onRefresh={onRefresh} mode="functions"/>
+              user={user} onClose={()=>setFuncsOpen(false)} onRefresh={onRefresh} mode={stageCfg?stageCfg.panelMode:"functions"}/>
           </SidePanel>
         )}
         {cleanOpen&&(
           <SidePanel title="Clean" onClose={()=>setCleanOpen(false)}>
             <QCPanel project={project} tables={tables} canvasTables={canvasTables}
-              user={user} onClose={()=>setCleanOpen(false)} onRefresh={onRefresh} mode="clean"/>
+              user={user} onClose={()=>setCleanOpen(false)} onRefresh={onRefresh} mode="cleaning"/>
           </SidePanel>
         )}
         {aiOpen&&(

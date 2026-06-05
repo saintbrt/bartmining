@@ -171,6 +171,21 @@ select.field-input { cursor: pointer; }
 /* ---- WORKSPACE ---- */
 .workspace { height: calc(100vh - var(--topbar-h)); display: flex; flex-direction: column; position: relative; overflow: hidden; }
 
+/* ---- STAGE STEPPER ---- */
+.ws-stepper { flex: none; background: var(--bg); border-bottom: 1px solid var(--sep); padding: 12px 16px 11px; }
+.ws-stepper-steps { display: flex; align-items: center; gap: 0; }
+.ws-step { display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 5px 12px 5px 6px; border-radius: 22px; transition: background .15s; }
+.ws-step:hover { background: var(--bg-2); }
+.ws-step-num { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 600; background: var(--bg-3); color: var(--label-3); border: 1.5px solid var(--sep); transition: .15s; flex: none; }
+.ws-step-label { font-size: 13px; font-weight: 500; color: var(--label-3); white-space: nowrap; }
+.ws-step.active .ws-step-num { background: var(--gold, #C7A86C); color: #fff; border-color: var(--gold, #C7A86C); }
+.ws-step.active .ws-step-label { color: var(--label-1); font-weight: 600; }
+.ws-step.done .ws-step-num { background: #34C759; color: #fff; border-color: #34C759; }
+.ws-step.done .ws-step-label { color: var(--label-2); }
+.ws-step-bar { width: 28px; height: 2px; background: var(--sep); margin: 0 2px; flex: none; }
+.ws-step-bar.done { background: #34C759; }
+.ws-stage-sub { font-size: 12px; color: var(--label-3); margin-top: 8px; padding-left: 6px; }
+
 /* ---- TOOLBAR (redesigned) ---- */
 .ws-toolbar { height: 44px; flex: none; background: var(--bg); border-bottom: 1px solid var(--sep); display: flex; align-items: center; padding: 0 12px; gap: 5px; overflow-x: auto; }
 .ws-toolbar-sep { display: none; }

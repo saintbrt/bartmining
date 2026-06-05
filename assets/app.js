@@ -205,6 +205,7 @@
           "alternateName": "Bart Mining Consultancy",
           "url": SITE + "/",
           "email": EMAIL,
+          "slogan": "Resource development done responsibly.",
           "description": "Mining consultancy and equipment supply across East & Southern Africa - mineral exploration, geological survey, mine planning, gold processing plants and safety equipment. Principal-led by Bartholomew Ambrose.",
           "founder": { "@type": "Person", "name": "Bartholomew Ambrose", "jobTitle": "Founder, Exploration Manager & Mining Operator" },
           "address": { "@type": "PostalAddress", "addressLocality": "Mwanza", "addressCountry": "Tanzania" },
