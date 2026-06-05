@@ -1,0 +1,10 @@
+# Generated at deploy time by build-env.js — never commit real keys
+admin/env.js
+
+# Dependencies
+node_modules/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
