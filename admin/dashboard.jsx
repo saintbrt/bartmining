@@ -86,17 +86,34 @@ function PitHero(){
     }
     function fbm(n,x,y,oct){let amp=0.5,freq=1,sum=0,norm=0;for(let o=0;o<oct;o++){sum+=amp*n(x*freq,y*freq);norm+=amp;amp*=0.5;freq*=2;}return sum/norm;}
 
-    /* ── build terrain ── */
+    /* ── build terrain — multi-hill range spanning the full grid ── */
     function buildTerrain(seed){
-      const nT=makeNoise(seed), nC=makeNoise(seed^0x9e3779b1);
+      const nT=makeNoise(seed), nC=makeNoise(seed^0x9e3779b1), nD=makeNoise(seed^0xdeadbeef);
       const field=new Float32Array(N*N); let fmax=0;
+      // 4 hill centres spread across the terrain, each with its own spread shape
+      const hills=[
+        {cx:0.50,cy:0.44,rx:0.26,ry:0.20,str:1.00}, // central dominant peak
+        {cx:0.18,cy:0.55,rx:0.20,ry:0.15,str:0.72}, // left arm
+        {cx:0.80,cy:0.52,rx:0.22,ry:0.16,str:0.68}, // right arm
+        {cx:0.62,cy:0.26,rx:0.18,ry:0.14,str:0.55}, // back ridge (upper-right)
+        {cx:0.32,cy:0.30,rx:0.16,ry:0.13,str:0.50}, // back ridge (upper-left)
+      ];
       for(let gy=0;gy<N;gy++) for(let gx=0;gx<N;gx++){
         const nx=gx/(N-1),ny=gy/(N-1);
-        let h=fbm(nT,nx*4.2+5,ny*4.2+5,6);
-        h=Math.pow(Math.max(0,h),1.25);
-        const dx=nx-0.5,dy=ny-0.47,d=Math.sqrt(dx*dx+dy*dy);
-        const coastR=0.345+0.125*(fbm(nC,nx*2.4+11,ny*2.4+11,3)-0.5)*2.0;
-        h*=(1-smth(Math.min(1,Math.max(0,(d-coastR+0.10)/0.17))))*(0.74+0.26*(1-Math.min(1,d/0.34)));
+        let h=fbm(nT,nx*4.8+5,ny*4.8+5,6);
+        h=Math.pow(Math.max(0,h),1.15);
+        // combine hill masks — take the strongest influence at each point
+        let mask=0;
+        hills.forEach(hc=>{
+          const ex=(nx-hc.cx)/hc.rx, ey=(ny-hc.cy)/hc.ry;
+          const d=Math.sqrt(ex*ex+ey*ey);
+          const coast=0.72+0.18*(fbm(nC,nx*2.1+hc.cx*10,ny*2.1+hc.cy*10,3)-0.5)*2;
+          const m=hc.str*(1-smth(Math.min(1,Math.max(0,(d-coast+0.18)/0.22))));
+          if(m>mask) mask=m;
+        });
+        // soft floor — keep a tiny bit of terrain between hills for connectivity
+        const base=0.06*(fbm(nD,nx*3+2,ny*3+2,3));
+        h=h*mask+base*(1-mask*0.5);
         field[gy*N+gx]=h; if(h>fmax) fmax=h;
       }
       const inv=fmax>0?1/fmax:1; for(let i=0;i<field.length;i++) field[i]*=inv;
@@ -134,15 +151,17 @@ function PitHero(){
       }
     }
 
-    /* ── isometric projection ── */
-    const yaw=-0.62,pitch=1.18,hScale=0.225;
+    /* ── isometric projection — wide, lowered, horizontal stretch ── */
+    const yaw=-0.62,pitch=1.18,hScale=0.28;
     function makeProj(W,H){
       const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
-      const scale=Math.min(W,H)*1.04, ox=W*0.5, oy=H*0.5+scale*0.04, inv=1/(N-1);
+      // base scale on width so the range fills ~90% horizontally
+      const scaleX=W*1.05, scaleY=W*0.72;
+      const ox=W*0.5, oy=H*0.78, inv=1/(N-1);
       return(gx,gy,h)=>{
         const px=gx*inv-0.5,py=gy*inv-0.47;
         const x1=px*cy-py*sy, y1=px*sy+py*cy, z1=h*hScale;
-        return[ox+x1*scale, oy+(y1*cp-z1*sp)*scale];
+        return[ox+x1*scaleX, oy+(y1*cp-z1*sp)*scaleY];
       };
     }
 
