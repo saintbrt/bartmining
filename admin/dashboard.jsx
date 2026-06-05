@@ -56,172 +56,216 @@ function KpiCard({label,value,display,sub,trend,accent}){
   );
 }
 
-/* ── Topographic contour hero (marching-squares, hover ripple) ── */
+/* ── Topographic contour hero — coordinate field with ridges + ditch ── */
 function PitHero(){
-  const glowRef=useRef(); const coreRef=useRef();
+  const glowRef=useRef(), coreRef=useRef(), overlayRef=useRef();
   const stateRef=useRef({amp:0,hovering:false,t0:0,running:false,curX:-1e4,curY:-1e4});
-  const terrainRef=useRef({field:null,levels:[],levelSegs:[],levelColors:[]});
 
   useEffect(()=>{
-    const cGlow=glowRef.current, cCore=coreRef.current;
-    if(!cGlow||!cCore) return;
+    const cGlow=glowRef.current, cCore=coreRef.current, overlay=overlayRef.current;
+    if(!cGlow||!cCore||!overlay) return;
     const xG=cGlow.getContext("2d"), xC=cCore.getContext("2d");
-    let W=0,H=0,DPR=1;
-    const N=132;
-    const st=stateRef.current, tr=terrainRef.current;
+    let W=0,H=0,DPR=1,VIEW=null;
+    const st=stateRef.current;
 
     /* ── PRNG + noise ── */
     function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
     function smth(t){return t*t*(3-2*t);}
     function lerp(a,b,t){return a+(b-a)*t;}
+    function clamp(v,a,b){return v<a?a:v>b?b:v;}
     function makeNoise(seed){
       const S=256,M=S-1,r=mulberry32(seed),g=new Float32Array(S*S);
       for(let i=0;i<g.length;i++) g[i]=r();
       return(x,y)=>{
-        const x0=Math.floor(x),y0=Math.floor(y),xf=x-x0,yf=y-y0;
-        const sx=smth(xf),sy=smth(yf);
+        const x0=Math.floor(x),y0=Math.floor(y),xf=x-x0,yf=y-y0,sx=smth(xf),sy=smth(yf);
         const at=(i,j)=>g[((j&M)*S)+(i&M)];
         return lerp(lerp(at(x0,y0),at(x0+1,y0),sx),lerp(at(x0,y0+1),at(x0+1,y0+1),sx),sy);
       };
     }
-    function fbm(n,x,y,oct){let amp=0.5,freq=1,sum=0,norm=0;for(let o=0;o<oct;o++){sum+=amp*n(x*freq,y*freq);norm+=amp;amp*=0.5;freq*=2;}return sum/norm;}
+    function fbm(n,x,y,o){let a=0.5,f=1,s=0,nm=0;for(let i=0;i<o;i++){s+=a*n(x*f,y*f);nm+=a;a*=0.5;f*=2;}return s/nm;}
 
-    /* ── build terrain — multi-hill range spanning the full grid ── */
-    function buildTerrain(seed){
-      const nT=makeNoise(seed), nC=makeNoise(seed^0x9e3779b1), nD=makeNoise(seed^0xdeadbeef);
-      const field=new Float32Array(N*N); let fmax=0;
-      // 4 hill centres spread across the terrain, each with its own spread shape
-      const hills=[
-        {cx:0.50,cy:0.44,rx:0.26,ry:0.20,str:1.00}, // central dominant peak
-        {cx:0.18,cy:0.55,rx:0.20,ry:0.15,str:0.72}, // left arm
-        {cx:0.80,cy:0.52,rx:0.22,ry:0.16,str:0.68}, // right arm
-        {cx:0.62,cy:0.26,rx:0.18,ry:0.14,str:0.55}, // back ridge (upper-right)
-        {cx:0.32,cy:0.30,rx:0.16,ry:0.13,str:0.50}, // back ridge (upper-left)
-      ];
-      for(let gy=0;gy<N;gy++) for(let gx=0;gx<N;gx++){
-        const nx=gx/(N-1),ny=gy/(N-1);
-        let h=fbm(nT,nx*4.8+5,ny*4.8+5,6);
-        h=Math.pow(Math.max(0,h),1.15);
-        // combine hill masks — take the strongest influence at each point
-        let mask=0;
-        hills.forEach(hc=>{
-          const ex=(nx-hc.cx)/hc.rx, ey=(ny-hc.cy)/hc.ry;
-          const d=Math.sqrt(ex*ex+ey*ey);
-          const coast=0.72+0.18*(fbm(nC,nx*2.1+hc.cx*10,ny*2.1+hc.cy*10,3)-0.5)*2;
-          const m=hc.str*(1-smth(Math.min(1,Math.max(0,(d-coast+0.18)/0.22))));
-          if(m>mask) mask=m;
-        });
-        // soft floor — keep a tiny bit of terrain between hills for connectivity
-        const base=0.06*(fbm(nD,nx*3+2,ny*3+2,3));
-        h=h*mask+base*(1-mask*0.5);
-        field[gy*N+gx]=h; if(h>fmax) fmax=h;
+    /* ── field definition ── */
+    const FIELD=10, N=180, STEP=0.25;
+    const field=new Float32Array(N*N), ditchField=new Float32Array(N*N);
+    let maxH=1;
+    const FEATURES=[
+      {name:"West Ridge",   x:2.0,z:5.0,y:1.25,rx:1.05,rz:1.15},
+      {name:"North Ridge",  x:5.5,z:7.0,y:1.50,rx:4.65,rz:3.05,warp:true},
+      {name:"East Ridge",   x:7.0,z:4.0,y:1.10,rx:1.05,rz:1.05},
+      {name:"Central Hill", x:6.0,z:3.5,y:1.00,rx:1.15,rz:1.55},
+      {name:"South Slope",  x:4.2,z:2.2,y:0.35,rx:1.10,rz:1.10},
+    ];
+    const DITCH={x:2.5,z:2.5,depth:2.0,rx:1.5,rz:1.5};
+
+    let LEVELS=[],levelColors=[],levelSegs=[];
+    let ditchSegs=[],ditchLevels=[],ditchColors=[];
+
+    function buildField(seed){
+      const nC=makeNoise(seed^0x9e37), nD=makeNoise(seed^0xd34db);
+      maxH=0;
+      for(let gz=0;gz<N;gz++) for(let gx=0;gx<N;gx++){
+        const X=gx/(N-1)*FIELD, Z=gz/(N-1)*FIELD;
+        let h=0.10+0.22*fbm(nC,X*0.28+3,Z*0.28+3,3);
+        for(const f of FEATURES){
+          let wx=X,wz=Z;
+          if(f.warp){wx+=0.72*(fbm(nC,X*0.65+20,Z*0.65+20,3)-0.5);wz+=0.72*(fbm(nC,X*0.65+40,Z*0.65+40,3)-0.5);}
+          const dx=(wx-f.x)/f.rx,dz=(wz-f.z)/f.rz;
+          const g=f.y*Math.exp(-(dx*dx+dz*dz)); if(g>h) h=g;
+        }
+        const crinkle=0.12*(fbm(nC,X*1.8+11,Z*1.8+11,4)-0.5);
+        h+=crinkle*clamp((h-0.15)/0.5,0,1);
+        const dWx=X+0.55*(fbm(nD,X*1.1+7,Z*1.1+7,3)-0.5);
+        const dWz=Z+0.55*(fbm(nD,X*1.1+17,Z*1.1+17,3)-0.5);
+        const ddx=(dWx-DITCH.x)/DITCH.rx,ddz=(dWz-DITCH.z)/DITCH.rz;
+        const dip=DITCH.depth*Math.exp(-(ddx*ddx+ddz*ddz));
+        ditchField[gz*N+gx]=dip;
+        h=Math.max(0,h-dip);
+        field[gz*N+gx]=h; if(h>maxH) maxH=h;
       }
-      const inv=fmax>0?1/fmax:1; for(let i=0;i<field.length;i++) field[i]*=inv;
-      const COUNT=20,lo=0.05,hi=0.96;
-      tr.levels=[]; tr.levelColors=[];
-      for(let i=0;i<COUNT;i++){
-        const t=i/(COUNT-1); tr.levels.push(lo+(hi-lo)*t);
-        tr.levelColors.push(`oklch(${0.52+0.34*t} 0.155 ${30+34*t})`);
-      }
-      tr.field=field; computeContours();
+      buildLevels(); computeContours(); computeDitchContours();
     }
 
-    /* ── marching squares ── */
-    function computeContours(){
-      const f=tr.field; tr.levelSegs=tr.levels.map(()=>[]);
-      for(let li=0;li<tr.levels.length;li++){
-        const lev=tr.levels[li],out=tr.levelSegs[li];
+    function sampleHeight(X,Z){
+      const fx=clamp(X/FIELD,0,1)*(N-1),fz=clamp(Z/FIELD,0,1)*(N-1);
+      const x0=Math.floor(fx),z0=Math.floor(fz),x1=Math.min(N-1,x0+1),z1=Math.min(N-1,z0+1);
+      const tx=fx-x0,tz=fz-z0;
+      return lerp(lerp(field[z0*N+x0],field[z0*N+x1],tx),lerp(field[z1*N+x0],field[z1*N+x1],tx),tz);
+    }
+
+    function buildLevels(){
+      LEVELS=[]; levelColors=[];
+      for(let lev=STEP;lev<maxH+0.01;lev+=STEP){
+        LEVELS.push(lev);
+        const t=clamp(lev/maxH,0,1);
+        levelColors.push(`oklch(${0.50+0.37*t} 0.155 ${30+34*t})`);
+      }
+    }
+
+    function msSquares(f,levels,outSegs){
+      for(let li=0;li<levels.length;li++){
+        const lev=levels[li],out=outSegs[li];
         for(let y=0;y<N-1;y++) for(let x=0;x<N-1;x++){
-          const tl=f[y*N+x],tr2=f[y*N+x+1],br=f[(y+1)*N+x+1],bl=f[(y+1)*N+x];
-          let idx=0; if(tl>lev)idx|=8;if(tr2>lev)idx|=4;if(br>lev)idx|=2;if(bl>lev)idx|=1;
+          const tl=f[y*N+x],tr=f[y*N+x+1],br=f[(y+1)*N+x+1],bl=f[(y+1)*N+x];
+          let idx=0;if(tl>lev)idx|=8;if(tr>lev)idx|=4;if(br>lev)idx|=2;if(bl>lev)idx|=1;
           if(idx===0||idx===15) continue;
-          const top=()=>[x+(lev-tl)/(tr2-tl),y],right=()=>[x+1,y+(lev-tr2)/(br-tr2)];
+          const top=()=>[x+(lev-tl)/(tr-tl),y],right=()=>[x+1,y+(lev-tr)/(br-tr)];
           const bot=()=>[x+(lev-bl)/(br-bl),y+1],left=()=>[x,y+(lev-tl)/(bl-tl)];
           const push=(a,b)=>{out.push(a[0],a[1],b[0],b[1]);};
-          switch(idx){
-            case 1:push(left(),bot());break;case 2:push(bot(),right());break;
-            case 3:push(left(),right());break;case 4:push(top(),right());break;
-            case 5:push(left(),top());push(bot(),right());break;case 6:push(top(),bot());break;
-            case 7:push(left(),top());break;case 8:push(left(),top());break;
-            case 9:push(top(),bot());break;case 10:push(top(),right());push(left(),bot());break;
-            case 11:push(top(),right());break;case 12:push(left(),right());break;
-            case 13:push(bot(),right());break;case 14:push(left(),bot());break;
-          }
+          switch(idx){case 1:push(left(),bot());break;case 2:push(bot(),right());break;case 3:push(left(),right());break;case 4:push(top(),right());break;case 5:push(left(),top());push(bot(),right());break;case 6:push(top(),bot());break;case 7:push(left(),top());break;case 8:push(left(),top());break;case 9:push(top(),bot());break;case 10:push(top(),right());push(left(),bot());break;case 11:push(top(),right());break;case 12:push(left(),right());break;case 13:push(bot(),right());break;case 14:push(left(),bot());break;}
         }
       }
     }
+    function computeContours(){levelSegs=LEVELS.map(()=>[]); msSquares(field,LEVELS,levelSegs);}
+    function computeDitchContours(){
+      const steps=[0.20,0.45,0.75,1.10,1.50,1.85];
+      ditchLevels=steps; ditchSegs=steps.map(()=>[]);
+      ditchColors=steps.map((lev,i)=>{const t=i/(steps.length-1);return `oklch(${0.60+0.28*t} ${0.14-0.04*t} ${188+10*t})`;});
+      msSquares(ditchField,steps,ditchSegs);
+    }
+    function gridToUnit(gx,gz){return[gx/(N-1)*FIELD,gz/(N-1)*FIELD];}
 
-    /* ── isometric projection — wide, lowered, horizontal stretch ── */
-    const yaw=-0.62,pitch=1.18,hScale=0.28;
-    function makeProj(W,H){
-      const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
-      // base scale on width so the range fills ~90% horizontally
-      const scaleX=W*1.05, scaleY=W*0.72;
-      const ox=W*0.5, oy=H*0.78, inv=1/(N-1);
-      return(gx,gy,h)=>{
-        const px=gx*inv-0.5,py=gy*inv-0.47;
-        const x1=px*cy-py*sy, y1=px*sy+py*cy, z1=h*hScale;
-        return[ox+x1*scaleX, oy+(y1*cp-z1*sp)*scaleY];
-      };
+    /* ── projection ── */
+    const yaw=-0.62,pitch=1.06,vExag=1.5;
+    function makeView(W,H){
+      const cyaw=Math.cos(yaw),syaw=Math.sin(yaw),cpit=Math.cos(pitch),spit=Math.sin(pitch);
+      const scale=Math.min(W,H)*0.90, ox=W*0.5, oy=H*0.54;
+      function project(X,Z,Hu){
+        const px=X/FIELD-0.5,pz=0.5-Z/FIELD;
+        const x1=px*cyaw-pz*syaw,z1=px*syaw+pz*cyaw,y1=(Hu/FIELD)*vExag;
+        return[ox+x1*scale, oy+(z1*cpit-y1*spit)*scale];
+      }
+      function invGround(sx,sy){
+        const A=(sx-ox)/scale,B=((sy-oy)/scale)/cpit;
+        return[(A*cyaw+B*syaw+0.5)*FIELD,(0.5-(-A*syaw+B*cyaw))*FIELD];
+      }
+      return{project,invGround};
     }
 
-    /* ── ripple distortion ── */
+    /* ── ripple ── */
     function ripple(x,y){
       if(st.amp<0.002) return[x,y];
-      const dx=x-st.curX,dy=y-st.curY,d=Math.sqrt(dx*dx+dy*dy);
-      const inf=Math.exp(-(d*d)/(170*170)); if(inf<0.01) return[x,y];
+      const dx=x-st.curX,dy=y-st.curY,d=Math.hypot(dx,dy);
+      const inf=Math.exp(-(d*d)/(170*170));if(inf<0.01) return[x,y];
       const w=Math.sin(d*0.045-st.t0*3.4),k=inf*st.amp,nd=d||1;
-      return[x+dx/nd*(7*w)*k, y+dy/nd*(7*w)*k-7*inf*k];
+      return[x+dx/nd*7*w*k,y+dy/nd*7*w*k-7*inf*k];
     }
 
     /* ── draw ── */
     function draw(){
       xG.setTransform(DPR,0,0,DPR,0,0); xC.setTransform(DPR,0,0,DPR,0,0);
       xG.clearRect(0,0,W,H); xC.clearRect(0,0,W,H);
-      const proj=makeProj(W,H);
+      if(!VIEW) return;
+      /* ground grid */
+      xC.globalCompositeOperation="source-over";
+      xC.lineWidth=1; xC.strokeStyle="rgba(231,163,90,0.10)";
+      xC.beginPath();
+      for(let i=0;i<=FIELD;i++){
+        let p=VIEW.project(i,0,0),q=VIEW.project(i,FIELD,0); xC.moveTo(p[0],p[1]); xC.lineTo(q[0],q[1]);
+        p=VIEW.project(0,i,0); q=VIEW.project(FIELD,i,0); xC.moveTo(p[0],p[1]); xC.lineTo(q[0],q[1]);
+      }
+      xC.stroke();
+      const corners=[VIEW.project(0,0,0),VIEW.project(FIELD,0,0),VIEW.project(FIELD,FIELD,0),VIEW.project(0,FIELD,0)];
+      xC.strokeStyle="rgba(231,163,90,0.28)"; xC.lineWidth=1.4;
+      xC.beginPath(); xC.moveTo(corners[0][0],corners[0][1]);
+      for(let i=1;i<4;i++) xC.lineTo(corners[i][0],corners[i][1]);
+      xC.closePath(); xC.stroke();
+      /* contours */
       xG.globalCompositeOperation=xC.globalCompositeOperation="lighter";
       xG.lineJoin=xC.lineJoin=xG.lineCap=xC.lineCap="round";
-      for(let li=0;li<tr.levelSegs.length;li++){
-        const segs=tr.levelSegs[li]; if(!segs.length) continue;
-        const lev=tr.levels[li],p=new Path2D();
+      for(let li=0;li<levelSegs.length;li++){
+        const segs=levelSegs[li]; if(!segs.length) continue;
+        const lev=LEVELS[li],col=levelColors[li];
+        const idx=Math.abs(lev-Math.round(lev))<1e-6;
+        const p=new Path2D();
         for(let i=0;i<segs.length;i+=4){
-          const a=ripple(...proj(segs[i],segs[i+1],lev));
-          const b=ripple(...proj(segs[i+2],segs[i+3],lev));
+          const ua=gridToUnit(segs[i],segs[i+1]),ub=gridToUnit(segs[i+2],segs[i+3]);
+          const a=ripple(...VIEW.project(ua[0],ua[1],lev));
+          const b=ripple(...VIEW.project(ub[0],ub[1],lev));
           p.moveTo(a[0],a[1]); p.lineTo(b[0],b[1]);
         }
-        const col=tr.levelColors[li];
-        xG.strokeStyle=col;xG.lineWidth=1.9;xG.globalAlpha=0.7;xG.stroke(p);
-        xC.strokeStyle=col;xC.lineWidth=0.9;xC.globalAlpha=0.95;xC.stroke(p);
+        xG.strokeStyle=col;xG.lineWidth=idx?2.4:1.8;xG.globalAlpha=0.7;xG.stroke(p);
+        xC.strokeStyle=col;xC.lineWidth=idx?1.3:0.85;xC.globalAlpha=idx?1:0.92;xC.stroke(p);
+      }
+      /* aqua ditch contours */
+      for(let li=0;li<ditchSegs.length;li++){
+        const segs=ditchSegs[li]; if(!segs.length) continue;
+        const lev=ditchLevels[li],col=ditchColors[li],p=new Path2D();
+        for(let i=0;i<segs.length;i+=4){
+          const ua=gridToUnit(segs[i],segs[i+1]),ub=gridToUnit(segs[i+2],segs[i+3]);
+          const a=ripple(...VIEW.project(ua[0],ua[1],-lev*0.55));
+          const b=ripple(...VIEW.project(ub[0],ub[1],-lev*0.55));
+          p.moveTo(a[0],a[1]); p.lineTo(b[0],b[1]);
+        }
+        xG.strokeStyle=col;xG.lineWidth=2.0;xG.globalAlpha=0.65;xG.stroke(p);
+        xC.strokeStyle=col;xC.lineWidth=0.9;xC.globalAlpha=0.92;xC.stroke(p);
       }
       xG.globalAlpha=xC.globalAlpha=1;
       xG.globalCompositeOperation=xC.globalCompositeOperation="source-over";
-      /* edge fade — painted on core canvas after contours */
-      const bg="rgb(11,12,14)";
-      const fadeW=W*0.22, fadeH=H*0.28;
-      const sides=[
-        {x:0,y:0,w:fadeW,h:H,   x0:0,   y0:H/2, x1:fadeW,y1:H/2},
-        {x:W-fadeW,y:0,w:fadeW,h:H, x0:W,  y0:H/2, x1:W-fadeW,y1:H/2},
-        {x:0,y:0,w:W,h:fadeH,   x0:W/2, y0:0,   x1:W/2,  y1:fadeH},
-        {x:0,y:H-fadeH,w:W,h:fadeH, x0:W/2, y0:H,   x1:W/2,  y1:H-fadeH},
-      ];
-      sides.forEach(s=>{
-        const g=xC.createLinearGradient(s.x0,s.y0,s.x1,s.y1);
-        g.addColorStop(0,bg); g.addColorStop(1,"rgba(11,12,14,0)");
-        xC.fillStyle=g; xC.fillRect(s.x,s.y,s.w,s.h);
-      });
-      /* soft corner fills */
-      [[0,0],[W,0],[W,H],[0,H]].forEach(([cx,cy])=>{
-        const g=xC.createRadialGradient(cx,cy,0,cx,cy,W*0.28);
-        g.addColorStop(0,bg); g.addColorStop(1,"rgba(11,12,14,0)");
-        xC.fillStyle=g; xC.fillRect(0,0,W,H);
+    }
+
+    /* ── summit overlay ── */
+    function buildOverlay(){
+      overlay.innerHTML="";
+      if(!VIEW) return;
+      FEATURES.forEach(f=>{
+        const h=sampleHeight(f.x,f.z);
+        const [sx,sy]=VIEW.project(f.x,f.z,h);
+        const el=document.createElement("div");
+        el.style.cssText=`position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;pointer-events:none;left:${sx}px;top:${sy-4}px;`;
+        el.innerHTML=`
+          <div style="font-size:10px;color:#f4ede2;text-shadow:0 0 6px rgba(0,0,0,.95);white-space:nowrap;font-family:ui-monospace,'SF Mono',monospace">
+            <b style="color:#ffce96">${h.toFixed(1)}u</b>
+            <span style="color:#93a09a;font-size:9px"> ${f.name}</span>
+          </div>
+          <div style="width:1px;height:24px;background:linear-gradient(to bottom,rgba(244,237,226,.7),rgba(244,237,226,.05))"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#f4ede2;margin-top:-2.5px;box-shadow:0 0 7px 2px rgba(231,163,90,.85)"></div>`;
+        overlay.appendChild(el);
       });
     }
 
-    /* ── animation loop (idle when no hover) ── */
+    /* ── animation loop ── */
     function frame(now){
-      st.t0=now/1000;
-      st.amp+=((st.hovering?1:0)-st.amp)*0.07;
-      draw();
+      st.t0=now/1000; st.amp+=((st.hovering?1:0)-st.amp)*0.07; draw();
       if(st.hovering||st.amp>0.003) requestAnimationFrame(frame);
       else{st.running=false;st.amp=0;draw();}
     }
@@ -232,16 +276,17 @@ function PitHero(){
       DPR=Math.min(2,window.devicePixelRatio||1);
       const r=cGlow.parentElement.getBoundingClientRect();
       W=r.width; H=r.height;
-      cGlow.width=W*DPR;cGlow.height=H*DPR;
-      cCore.width=W*DPR;cCore.height=H*DPR;
+      cGlow.width=W*DPR; cGlow.height=H*DPR;
+      cCore.width=W*DPR; cCore.height=H*DPR;
+      VIEW=makeView(W,H);
     }
-    const ro=new ResizeObserver(()=>{resize();draw();});
+    const ro=new ResizeObserver(()=>{resize();draw();buildOverlay();});
     ro.observe(cGlow.parentElement);
     resize();
-    buildTerrain(73511);
-    draw();
+    buildField(42);
+    draw(); buildOverlay();
 
-    /* ── pointer events on the container ── */
+    /* ── pointer ── */
     const el=cGlow.parentElement;
     function onMove(e){
       const r=el.getBoundingClientRect();
@@ -251,22 +296,26 @@ function PitHero(){
     function onLeave(){st.hovering=false;}
     el.addEventListener("pointermove",onMove);
     el.addEventListener("pointerleave",onLeave);
-    return()=>{ ro.disconnect(); el.removeEventListener("pointermove",onMove); el.removeEventListener("pointerleave",onLeave); };
+    return()=>{ro.disconnect();el.removeEventListener("pointermove",onMove);el.removeEventListener("pointerleave",onLeave);};
   },[]);
 
   const canvasStyle={position:"absolute",inset:0,width:"100%",height:"100%"};
+  const maskStyle="radial-gradient(135% 125% at 50% 48%, #000 52%, rgba(0,0,0,0) 86%)";
   return(
     <div className="dk-hero" style={{position:"relative",overflow:"hidden",cursor:"crosshair"}}>
-      <canvas ref={glowRef} style={{...canvasStyle,filter:"blur(7px) saturate(1.45) brightness(1.22)",opacity:.9}}/>
-      <canvas ref={coreRef} style={{...canvasStyle,filter:"saturate(1.05)"}}/>
+      <div style={{position:"absolute",inset:0,WebkitMask:maskStyle,mask:maskStyle}}>
+        <canvas ref={glowRef} style={{...canvasStyle,filter:"blur(7px) saturate(1.45) brightness(1.2)",opacity:.85}}/>
+        <canvas ref={coreRef} style={{...canvasStyle,filter:"saturate(1.05)"}}/>
+      </div>
+      <div ref={overlayRef} style={{position:"absolute",inset:0,pointerEvents:"none"}}/>
       <div className="dk-hero-overlay">
         <div className="dk-hero-tag">SPATIAL MODEL</div>
         <div className="dk-hero-title">Terrain Intelligence</div>
-        <div className="dk-hero-sub">Surface elevation · contour map · hover to ripple</div>
+        <div className="dk-hero-sub">Surface elevation · coordinate field · hover to ripple</div>
       </div>
       <div className="dk-hero-legend">
-        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.86 0.155 64)"}}/>High elevation</div>
-        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.52 0.155 30)"}}/>Low elevation</div>
+        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.87 0.155 64)"}}/>Elevation</div>
+        <div className="dk-leg"><span className="dk-leg-dot" style={{background:"oklch(0.74 0.12 195)"}}/>Depression</div>
       </div>
     </div>
   );
