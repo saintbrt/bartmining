@@ -21,6 +21,7 @@ import { next } from "@vercel/edge";
 export const config = { matcher: ["/admin", "/admin/:path*"] };
 
 const SUPABASE_URL = process.env.SUPABASE_URL || "";
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "";
 
 /* base64url → bytes */
 function b64urlBytes(s) {
@@ -44,7 +45,9 @@ const JWKS_TTL = 10 * 60 * 1000; // 10 min
 async function getKeys() {
   const now = Date.now();
   if (_jwks && now - _jwksAt < JWKS_TTL) return _jwks;
-  const res = await fetch(`${SUPABASE_URL}/auth/v1/jwks`);
+  const res = await fetch(`${SUPABASE_URL}/auth/v1/jwks`, {
+    headers: { "apikey": SUPABASE_ANON_KEY }
+  });
   if (!res.ok) throw new Error("JWKS fetch failed: " + res.status);
   const data = await res.json();
   _jwks = data.keys || [];
@@ -99,7 +102,7 @@ async function verifyJWT(token) {
   if (!vparams) return null;
 
   let keys;
-  try { keys = await getKeys(); } catch (e) { console.error("[middleware] JWKS fetch failed:", e?.message || e, "SUPABASE_URL=", SUPABASE_URL || "(not set)"); return null; }
+  try { keys = await getKeys(); } catch { return null; }
   // match by kid, else try all keys of the right type
   const candidates = header.kid
     ? keys.filter(k => k.kid === header.kid)
