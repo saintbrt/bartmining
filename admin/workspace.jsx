@@ -549,8 +549,33 @@ function FilesPanel({tables,canvasIds,onAdd,onUpload}){
   );
 }
 
+/* ── ApproveBar — bottom banner to advance to next stage ──── */
+function ApproveBar({stage,done,onApprove,tables}){
+  const next={validation:"Cleaning",cleaning:"Analysis",analysis:"Outputs"};
+  const nextStage=next[stage];
+  if(!nextStage) return null;
+  if(done) return(
+    <div style={{padding:"10px 20px",background:"rgba(52,199,89,.08)",borderTop:"1px solid rgba(52,199,89,.2)",display:"flex",alignItems:"center",gap:12,flexShrink:0}}>
+      <span style={{color:"var(--green)",fontSize:13,fontWeight:600}}>✓ {stage.charAt(0).toUpperCase()+stage.slice(1)} approved</span>
+      <span style={{fontSize:12,color:"var(--label-3)"}}>— proceed to {nextStage} from the sidebar</span>
+    </div>
+  );
+  return(
+    <div style={{padding:"10px 20px",background:"var(--bg-2)",borderTop:"1px solid var(--sep)",display:"flex",alignItems:"center",gap:12,flexShrink:0}}>
+      <span style={{fontSize:13,color:"var(--label-3)",flex:1}}>
+        {tables.length===0
+          ? "Upload files and run checks before approving."
+          : `Ready to move on? Approve ${stage} to unlock ${nextStage}.`}
+      </span>
+      <button className="btn btn-primary" disabled={tables.length===0} onClick={onApprove}>
+        Approve &amp; Continue →
+      </button>
+    </div>
+  );
+}
+
 /* ── WorkspacePage (main) ─────────────────────────────────── */
-function WorkspacePage({project,user,tables,onRefresh,onEditTable,stage="all",onNavStage}){
+function WorkspacePage({project,user,tables,onRefresh,onEditTable,stage="all",onNavStage,stageDone,onApprove}){
   /* restore persisted state */
   const persisted=loadWS(project.id);
   const [canvasIds,setCanvasIds]=useState(persisted.canvasIds||[]);
@@ -570,6 +595,13 @@ function WorkspacePage({project,user,tables,onRefresh,onEditTable,stage="all",on
 
   /* persist on every state change */
   useEffect(()=>{ saveWS(project.id,{canvasIds,cardPos,showConn,childLinks}); },[canvasIds,cardPos,showConn,childLinks]);
+
+  /* auto-open upload on validation when project has no tables yet */
+  useEffect(()=>{
+    if(stage==="validation"&&tables.length===0){
+      setShowUpload(true);
+    }
+  },[]);
 
   /* keep canvas clean when tables are deleted */
   useEffect(()=>{
@@ -922,6 +954,11 @@ function WorkspacePage({project,user,tables,onRefresh,onEditTable,stage="all",on
         <UploadModal project={project} user={user}
           onClose={()=>setShowUpload(false)}
           onImported={()=>{ setShowUpload(false); onRefresh(); }}/>
+      )}
+
+      {/* Approve & Continue bar — only on gated stages */}
+      {["validation","cleaning","analysis"].includes(stage)&&(
+        <ApproveBar stage={stage} done={stageDone} onApprove={onApprove} tables={tables}/>
       )}
     </div>
   );

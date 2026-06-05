@@ -121,6 +121,8 @@ select.field-input { cursor: pointer; }
 .sb-item { display: flex; align-items: center; gap: 9px; padding: 8px 14px; font-size: 13px; font-weight: 400; color: rgba(255,255,255,.52); cursor: pointer; transition: .12s; border-left: 2px solid transparent; user-select: none; }
 .sb-item:hover { color: rgba(255,255,255,.82); background: rgba(255,255,255,.04); }
 .sb-item.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--blue); font-weight: 500; }
+.sb-item.sb-item-locked { opacity: .38; cursor: not-allowed; }
+.sb-item.sb-item-locked:hover { color: rgba(255,255,255,.52); background: transparent; }
 .sb-item .ico { width: 16px; text-align: center; font-size: 14px; flex: none; }
 .sb-sep { height: 1px; background: rgba(255,255,255,.06); margin: 6px 12px; }
 .sb-proj { display: flex; align-items: center; gap: 8px; padding: 6px 14px; font-size: 12px; color: rgba(255,255,255,.4); cursor: pointer; transition: .12s; overflow: hidden; }
