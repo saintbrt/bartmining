@@ -99,7 +99,7 @@ async function verifyJWT(token) {
   if (!vparams) return null;
 
   let keys;
-  try { keys = await getKeys(); } catch { return null; }
+  try { keys = await getKeys(); } catch (e) { console.error("[middleware] JWKS fetch failed:", e?.message || e, "SUPABASE_URL=", SUPABASE_URL || "(not set)"); return null; }
   // match by kid, else try all keys of the right type
   const candidates = header.kid
     ? keys.filter(k => k.kid === header.kid)
