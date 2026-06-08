@@ -43,30 +43,38 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     <>
       <ReadingProgress />
 
-      {/* Article hero */}
-      <div style={{ background: 'var(--slate)', paddingTop: 72, paddingBottom: 0, position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 70% 0%,rgba(174,138,76,.12),transparent 55%)', pointerEvents: 'none' }} />
+      {/* Article hero — light, matches rest of site */}
+      <section className="subhero" style={{ paddingBottom: 48 }}>
+        <div className="orb orb-1" /><div className="orb orb-2" />
         <div className="px-site" style={{ position: 'relative' }}>
           {/* Breadcrumb */}
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'rgba(255,255,255,.4)', marginBottom: 20, display: 'flex', gap: 8, alignItems: 'center' }}>
-            <Link href="/" style={{ color: 'rgba(255,255,255,.4)', textDecoration: 'none' }}>Home</Link>
-            <span>/</span>
-            <Link href="/insights" style={{ color: 'rgba(255,255,255,.4)', textDecoration: 'none' }}>Insights</Link>
-            <span>/</span>
-            <span style={{ color: 'rgba(255,255,255,.65)' }}>{article.category}</span>
+          <div className="crumb" style={{ marginBottom: 24 }}>
+            <Link href="/">Home</Link>
+            <span className="sep">/</span>
+            <Link href="/insights">Insights</Link>
+            <span className="sep">/</span>
+            <span>{article.category}</span>
           </div>
 
           {/* Tags */}
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 20 }}>
             {article.tags.slice(0, 4).map(tag => (
-              <span key={tag} style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.1em', textTransform: 'uppercase', padding: '4px 10px', borderRadius: 100, background: 'rgba(174,138,76,.15)', color: 'var(--gold-2)', border: '1px solid rgba(174,138,76,.25)' }}>{tag}</span>
+              <span key={tag} style={{
+                fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.1em',
+                textTransform: 'uppercase', padding: '4px 10px', borderRadius: 100,
+                background: 'rgba(174,138,76,.1)', color: 'var(--gold-deep)',
+                border: '1px solid rgba(174,138,76,.2)',
+              }}>{tag}</span>
             ))}
           </div>
 
-          <h1 style={{ color: '#fff', fontSize: 'clamp(26px,3.5vw,44px)', maxWidth: 720, lineHeight: 1.25, marginBottom: 18 }}>{article.title}</h1>
-          <p style={{ color: 'rgba(255,255,255,.65)', fontSize: 17, maxWidth: 620, lineHeight: 1.65, marginBottom: 28 }}>{article.description}</p>
-
-          <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--font-mono)', fontSize: 12, color: 'rgba(255,255,255,.4)', marginBottom: 36 }}>
+          <h1 style={{ fontSize: 'clamp(26px,3.5vw,48px)', maxWidth: 760, lineHeight: 1.2, marginBottom: 18 }}>
+            {article.title}
+          </h1>
+          <p style={{ color: 'var(--ink-2)', fontSize: 17, maxWidth: 640, lineHeight: 1.65, marginBottom: 24 }}>
+            {article.description}
+          </p>
+          <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--ink-3)' }}>
             <span>{article.date}</span>
             <span>·</span>
             <span>{article.readTime}</span>
@@ -74,12 +82,19 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <span>Bart Mining Editorial</span>
           </div>
         </div>
+      </section>
 
-        {/* Hero image */}
-        <div className="px-site">
-          <div style={{ position: 'relative', borderRadius: 'var(--r-lg) var(--r-lg) 0 0', overflow: 'hidden', aspectRatio: '21/8', maxHeight: 420 }}>
-            <Image src={article.image} alt={article.imageAlt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 860px) 100vw, 1240px" priority />
-          </div>
+      {/* Hero image — contained, full border radius */}
+      <div className="px-site" style={{ paddingBottom: 0 }}>
+        <div style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '21/9' }}>
+          <Image
+            src={article.image}
+            alt={article.imageAlt}
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="(max-width: 860px) 100vw, 1240px"
+            priority
+          />
         </div>
       </div>
 
@@ -105,19 +120,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
           {/* Sidebar */}
           <aside style={{ position: 'sticky', top: 80, display: 'flex', flexDirection: 'column', gap: 24 }}>
-            {/* TOC */}
             <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line-2)', padding: '20px 18px', boxShadow: 'var(--shadow-sm)' }}>
               <TableOfContents html={content} />
             </div>
 
-            {/* Contact card */}
             <div style={{ background: 'var(--slate)', borderRadius: 'var(--r-md)', padding: '20px 18px' }}>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.35)', marginBottom: 10 }}>Speak to a geologist</p>
               <p style={{ color: 'rgba(255,255,255,.75)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>Questions about this topic? Our team responds within one business day.</p>
               <Link href="/contact" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold-2)', textDecoration: 'none' }}>Contact us &rarr;</Link>
             </div>
 
-            {/* Related */}
             {related.length > 0 && (
               <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line-2)', padding: '20px 18px', boxShadow: 'var(--shadow-sm)' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>Related articles</div>

@@ -30,7 +30,7 @@ export default function Home() {
       <HeroSection />
       <MarqueeSection />
       <ServiceGrid />
-      <EquipGrid variant="dark" />
+      <EquipGrid />
 
       {/* Methodology */}
       <PhasesSection />
@@ -39,7 +39,7 @@ export default function Home() {
       <section className="sec-gap" id="founder" style={{ background: 'var(--bg)' }}>
         <div className="px-site">
           <div className="split2">
-            <div className="founder-img reveal" style={{ aspectRatio: '3/4' }}>
+            <div className="founder-img" style={{ aspectRatio: '3/4' }}>
               <Image
                 src="https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 alt="Exploration site in the field"

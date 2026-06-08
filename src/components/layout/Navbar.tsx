@@ -18,6 +18,11 @@ export default function Navbar() {
   const pathname = usePathname()
   const menuRef = useRef<HTMLDivElement>(null)
 
+  // Pages whose top hero is dark — navbar text needs to be white until scrolled
+  const darkHero = !scrolled && (pathname === '/' || pathname === '/insights')
+  const navText = darkHero ? '#fff' : 'var(--ink)'
+  const navTextMuted = darkHero ? 'rgba(255,255,255,.72)' : 'var(--ink-2)'
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     onScroll()
@@ -57,10 +62,10 @@ export default function Navbar() {
             }} />
           </div>
           <div>
-            <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 17, letterSpacing: '-0.02em', lineHeight: 1, whiteSpace: 'nowrap', color: 'var(--ink)' }}>
+            <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 17, letterSpacing: '-0.02em', lineHeight: 1, whiteSpace: 'nowrap', color: navText, transition: 'color .4s' }}>
               Bart Mining
             </div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9.5px', letterSpacing: '0.24em', color: 'var(--ink-3)', textTransform: 'uppercase' }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9.5px', letterSpacing: '0.24em', color: navTextMuted, textTransform: 'uppercase', transition: 'color .4s' }}>
               Consultancy
             </div>
           </div>
@@ -70,10 +75,13 @@ export default function Navbar() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="nav-desktop">
           {LINKS.map(l => (
             <Link key={l.href} href={l.href} style={{
-              fontSize: '14.5px', fontWeight: 500, color: pathname === l.href ? 'var(--ink)' : 'var(--ink-2)',
+              fontSize: '14.5px', fontWeight: 500,
+              color: pathname === l.href ? navText : navTextMuted,
               padding: '9px 15px', borderRadius: 100,
-              background: pathname === l.href ? 'rgba(27,24,19,.06)' : 'transparent',
-              transition: 'color .25s, background .25s',
+              background: pathname === l.href
+                ? (darkHero ? 'rgba(255,255,255,.12)' : 'rgba(27,24,19,.06)')
+                : 'transparent',
+              transition: 'color .4s, background .25s',
             }}>
               {l.label}
             </Link>
@@ -96,9 +104,9 @@ export default function Navbar() {
             display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: 8,
           }}
         >
-          <span style={{ display: 'block', width: 22, height: 2, background: 'var(--ink)', margin: '4px 0', borderRadius: 2, transition: '.3s', transform: open ? 'rotate(45deg) translate(4px,4px)' : undefined }} />
-          <span style={{ display: 'block', width: 22, height: 2, background: 'var(--ink)', margin: '4px 0', borderRadius: 2, transition: '.3s', opacity: open ? 0 : 1 }} />
-          <span style={{ display: 'block', width: 22, height: 2, background: 'var(--ink)', margin: '4px 0', borderRadius: 2, transition: '.3s', transform: open ? 'rotate(-45deg) translate(4px,-4px)' : undefined }} />
+          <span style={{ display: 'block', width: 22, height: 2, background: navText, margin: '4px 0', borderRadius: 2, transition: 'background .4s, transform .3s', transform: open ? 'rotate(45deg) translate(4px,4px)' : undefined }} />
+          <span style={{ display: 'block', width: 22, height: 2, background: navText, margin: '4px 0', borderRadius: 2, transition: 'background .4s', opacity: open ? 0 : 1 }} />
+          <span style={{ display: 'block', width: 22, height: 2, background: navText, margin: '4px 0', borderRadius: 2, transition: 'background .4s, transform .3s', transform: open ? 'rotate(-45deg) translate(4px,-4px)' : undefined }} />
         </button>
       </div>
 
