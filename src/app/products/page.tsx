@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
+import EquipGrid from '@/components/sections/EquipGrid'
 import RegionsSection from '@/components/sections/RegionsSection'
 import CtaSection from '@/components/sections/CtaSection'
 
@@ -63,16 +64,7 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Equipment grid */}
-      <section className="sec-gap" style={{ paddingTop: 30 }}>
-        <div className="px-site">
-          <Reveal className="sec-head">
-            <span className="eyebrow">The range</span>
-            <h2>Specialist mining &amp; mineral-processing equipment.</h2>
-            <p>Recognisable, serious gear for gold recovery and beyond - supplied and commissioned to site.</p>
-          </Reveal>
-        </div>
-      </section>
+      <EquipGrid variant="light" showLink={false} eyebrow="The range" heading="Specialist mining & mineral-processing equipment." subheading="Recognisable, serious gear for gold recovery and beyond - supplied and commissioned to site." />
 
       <RegionsSection />
 
