@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import HeroSection from '@/components/sections/HeroSection'
 import ServiceGrid from '@/components/sections/ServiceGrid'
-import EquipGrid from '@/components/sections/EquipGrid'
 import PhasesSection from '@/components/sections/PhasesSection'
 import PillarsSection from '@/components/sections/PillarsSection'
 import RegionsSection from '@/components/sections/RegionsSection'
@@ -28,7 +27,6 @@ export default function Home() {
     <>
       <HeroSection />
       <ServiceGrid />
-      <EquipGrid />
 
       {/* Methodology */}
       <PhasesSection />
