@@ -61,9 +61,8 @@ export default function About() {
       </section>
 
       {/* Stats */}
-      <section className="sec-gap" style={{ background: 'var(--slate)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%,rgba(174,138,76,.18),transparent 60%)', pointerEvents: 'none' }} />
-        <div className="px-site" style={{ position: 'relative' }}>
+      <section className="sec-gap" style={{ background: 'var(--paper)', position: 'relative', overflow: 'hidden' }}>
+        <div className="px-site">
           <div className="stats-band" style={{ background: 'transparent', padding: 0 }}>
             {[
               { target: 25, suffix: '+', label: 'Years mining experience' },
@@ -72,10 +71,10 @@ export default function About() {
               { target: 0,  suffix: '',  label: 'Safety corners cut', gold: true },
             ].map(s => (
               <Reveal key={s.label} style={{ textAlign: 'center', padding: '0 20px' }}>
-                <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 800, fontSize: 'clamp(36px,4vw,52px)', letterSpacing: '-0.04em', lineHeight: 1, color: s.gold ? 'var(--gold-2)' : '#fff' }}>
+                <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 800, fontSize: 'clamp(36px,4vw,52px)', letterSpacing: '-0.04em', lineHeight: 1, color: s.gold ? 'var(--gold-deep)' : 'var(--ink)' }}>
                   <Counter target={s.target} suffix={s.suffix} />
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.45)', marginTop: 8 }}>{s.label}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-3)', marginTop: 8 }}>{s.label}</div>
               </Reveal>
             ))}
           </div>
