@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import HeroSection from '@/components/sections/HeroSection'
-import MarqueeSection from '@/components/sections/MarqueeSection'
 import ServiceGrid from '@/components/sections/ServiceGrid'
 import EquipGrid from '@/components/sections/EquipGrid'
 import PhasesSection from '@/components/sections/PhasesSection'
@@ -28,7 +27,6 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <MarqueeSection />
       <ServiceGrid />
       <EquipGrid />
 
