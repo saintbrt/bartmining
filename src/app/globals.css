@@ -59,24 +59,22 @@ p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
-/* ── Layout utilities ────────────────────────────────────────── */
-@layer utilities {
-  .px-site {
-    width: 100%;
-    max-width: 1240px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  .sec-gap {
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
-  .sec-gap-sm {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
+/* ── Layout utilities (plain CSS — always emitted regardless of Tailwind config) ── */
+.px-site {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.sec-gap {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.sec-gap-sm {
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 @media (max-width: 600px) {
