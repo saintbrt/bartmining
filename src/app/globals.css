@@ -131,7 +131,7 @@ img { display: block; max-width: 100%; }
 
 .btn-gold {
   background: linear-gradient(180deg, #EDE0C0, #E4D3AB);
-  color: #5C3D11;
+  color: var(--slate);
   box-shadow: 0 10px 24px -10px rgba(174,138,76,.35), inset 0 1px 0 rgba(255,255,255,.6);
   border: 1px solid rgba(174,138,76,.25);
 }
