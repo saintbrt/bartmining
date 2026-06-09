@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import { EQUIP } from '@/data/equipment'
 
-export default function EquipGrid({ variant = 'dark', showLink = true }: { variant?: 'dark' | 'light', showLink?: boolean }) {
+export default function EquipGrid({ variant = 'light', showLink = true }: { variant?: 'dark' | 'light', showLink?: boolean }) {
   const dark = variant === 'dark'
   return (
     <section className="sec-gap" style={{ background: dark ? 'var(--slate)' : 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
