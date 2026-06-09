@@ -16,7 +16,6 @@ export default function Footer() {
               </div>
               <div>
                 <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 16, color: '#fff', letterSpacing: '-0.02em' }}>Bart Mining</div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,.35)' }}>Consultancy</div>
               </div>
             </div>
             <p style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(255,255,255,.5)', maxWidth: 240 }}>
