@@ -1,130 +1,264 @@
 # Bart Mining
 
-Marketing website and internal **GoldPass** data platform for Bart Mining — a principal-led mining consultancy and equipment supplier based in Dar es Salaam, Tanzania, operating across East & Southern Africa.
+Marketing website and internal **GoldPass** drill data platform for **Bart Mining**, a principal-led mining consultancy and equipment supplier based in **Dar es Salaam, Tanzania**, operating across **East and Southern Africa**.
 
-**Live Site:** [bartmining.com](https://www.bartmining.com)
-
----
-
-## About
-
-This repository contains the full web platform for Bart Mining, featuring:
-
-- A modern public marketing website
-- A powerful internal tool called **GoldPass** — used by geologists for drillhole data validation, cleaning, analysis, and export
+**🌐 Live Website:** https://www.bartmining.com
 
 ---
 
-## Tech Stack
+# Overview
 
-| Layer          | Technology                    |
-|----------------|-------------------------------|
-| Framework      | Next.js 15 (App Router)       |
-| Language       | TypeScript 5                  |
-| Styling        | Tailwind CSS v3               |
-| Auth & Database| Supabase                      |
-| Email          | Resend                        |
-| Hosting        | Vercel                        |
+This repository contains the complete Bart Mining web platform, including:
+
+* Modern public-facing corporate website
+* Internal **GoldPass** data intelligence platform
+* Knowledge hub and article management system
+* Contact and lead generation system
+* Secure administrator dashboard
+
+GoldPass is designed specifically for geologists and exploration teams to validate, clean, analyze, compare, and export drilling datasets while enforcing industry best practices.
 
 ---
 
-## Project Structure
+# Tech Stack
+
+| Layer          | Technology              |
+| -------------- | ----------------------- |
+| Framework      | Next.js 15 (App Router) |
+| Language       | TypeScript 5            |
+| Styling        | Tailwind CSS v3         |
+| Authentication | Supabase Auth           |
+| Database       | Supabase                |
+| Email          | Resend                  |
+| Hosting        | Vercel                  |
+
+---
+
+# Project Structure
+
+```text
+src/
+├── app/
+│   ├── page.tsx
+│   ├── about/
+│   ├── services/
+│   ├── products/
+│   ├── sustainability/
+│   ├── contact/
+│   ├── insights/
+│   │   └── [slug]/
+│   ├── admin/
+│   ├── api/
+│   │   └── contact/
+│   └── globals.css
+│
+├── components/
+│   ├── goldpass/
+│   ├── insights/
+│   ├── layout/
+│   ├── sections/
+│   └── ui/
+│
+├── content/
+│   └── insights/
+│
+├── data/
+│
+└── middleware.ts
+```
+
+---
+
+# Public Website
+
+The marketing website includes:
+
+| Route              | Description                        |
+| ------------------ | ---------------------------------- |
+| `/`                | Homepage                           |
+| `/about`           | Company overview and founder story |
+| `/services`        | Mining consulting services         |
+| `/products`        | Equipment catalogue                |
+| `/sustainability`  | ESG commitments                    |
+| `/contact`         | Contact form                       |
+| `/insights`        | Knowledge hub                      |
+| `/insights/[slug]` | Individual articles                |
+
+---
+
+# GoldPass
+
+GoldPass is Bart Mining's proprietary web-based drill data intelligence platform built for mineral exploration workflows.
+
+It enables users to:
+
+* Validate drilling datasets
+* Clean inconsistent records
+* Compare multiple files
+* Perform exploration analysis
+* Export standardized outputs
+
+The system currently implements **25 core functions** across five workflow stages.
+
+---
+
+# 1. Validation & Quality Control
+
+Ensures drilling data integrity before processing.
+
+| Function | Description               |
+| -------- | ------------------------- |
+| 01       | `findMissingHoleIDs`      |
+| 02       | `checkFromToErrors`       |
+| 03       | `findIntervalOverlaps`    |
+| 04       | `findIntervalGaps`        |
+| 05       | `findDuplicateIntervals`  |
+| 06       | `findNegativeGrades`      |
+| 07       | `findCoordinateOutliers`  |
+| 08       | `findUndrilled`           |
+| 09       | `findOrphanAssays`        |
+| 10       | `findNullPlaceholders`    |
+| 11       | `checkCollarCompleteness` |
+
+---
+
+# 2. Cleaning & Transformation
+
+Prepares exploration data for downstream analysis.
+
+| Function | Description            |
+| -------- | ---------------------- |
+| 12       | `standardiseHoleIDs`   |
+| 13       | `removeUndrilled`      |
+| 14       | `resolveUnitConflicts` |
+
+---
+
+# 3. File Comparison & Relationships
+
+Performs reconciliation across multiple datasets.
+
+| Function | Description                 |
+| -------- | --------------------------- |
+| 15       | `compareFiles`              |
+| 16       | `findDuplicatesAcrossFiles` |
+| 17       | `findMissingRows`           |
+| 18       | `reconcileColumns`          |
+| 19       | `mergeFiles`                |
+| 20       | `diffFiles`                 |
+
+---
+
+# 4. Analysis
+
+Generates exploration insights.
+
+| Function | Description         |
+| -------- | ------------------- |
+| 21       | `buildCollarOutput` |
+| 22       | `findBestIntercept` |
+| 23       | `findCorrelation`   |
+| 24       | `rankByGrade`       |
+
+---
+
+# 5. Export
+
+Produces standardized deliverables.
+
+| Function | Description          |
+| -------- | -------------------- |
+| 25       | `exportCollarOutput` |
+
+Supported export formats include:
+
+* CSV
+* Excel
+* Shapefile
+
+---
+
+# Getting Started
+
+## Prerequisites
+
+* Node.js 18+
+* npm
+* Supabase project
+* Resend API key
+
+---
+
+## Installation
 
 ```bash
-src/
-├── app/                          # Next.js App Router
-│   ├── page.tsx                  # Homepage
-│   ├── about/, services/, products/, sustainability/, contact/
-│   ├── insights/                 # Article hub + [slug] pages
-│   ├── admin/                    # GoldPass internal dashboard (protected)
-│   ├── api/contact/              # Contact form endpoint
-│   └── globals.css
-├── components/
-│   ├── goldpass/                 # GoldPass UI components
-│   ├── insights/, sections/, layout/, ui/
-├── content/insights/             # Article content
-├── data/                         # Static data (services, equipment, insights, etc.)
-└── middleware.ts                 # Auth protection
+git clone <repository-url>
 
-GoldPass — Drill Data Intelligence Platform
-GoldPass is Bart Mining’s internal web-based system for managing, validating, cleaning, analyzing, and exporting mineral exploration drilling data. It enforces industry best practices through a structured 5-stage workflow.
-Core Workflow (25 Functions)
-1. Validation & QC (Functions 01–11)
-Ensures data integrity before any processing:
-
-01 findMissingHoleIDs — Detects rows with missing or empty hole IDs
-02 checkFromToErrors — Flags intervals where from_depth ≥ to_depth
-03 findIntervalOverlaps — Identifies overlapping depth intervals in the same hole
-04 findIntervalGaps — Detects unexpected gaps in downhole logging
-05 findDuplicateIntervals — Finds exact duplicate depth intervals
-06 findNegativeGrades — Flags negative grade values
-07 findCoordinateOutliers — Detects unrealistic collar coordinates
-08 findUndrilled — Identifies planned holes with no downhole data
-09 findOrphanAssays — Flags assays without matching collar records
-10 findNullPlaceholders — Detects -999, "N/A", "NULL" etc.
-11 checkCollarCompleteness — Ensures all required collar fields are present
-
-2. Cleaning & Transform (Functions 12–14)
-Prepares data for analysis:
-
-12 standardiseHoleIDs — Normalizes hole ID formats (casing, delimiters, whitespace)
-13 removeUndrilled — Removes planned but uncompleted drillholes
-14 resolveUnitConflicts — Converts ppb to ppm and standardizes units
-
-3. Comparison & Relationships (Functions 15–20)
-Handles multi-file operations:
-
-15 compareFiles — Audits structure and compatibility between files
-16 findDuplicatesAcrossFiles — Detects duplicates across different data sources
-17 findMissingRows — Finds keys present in one file but missing in another
-18 reconcileColumns — Maps varying column names to canonical schema
-19 mergeFiles — Joins tables using standardized keys
-20 diffFiles — Compares versions and highlights added/modified/removed records
-
-4 & 5. Analysis & Export (Functions 21–25)
-Generates actionable insights and deliverables:
-
-21 buildCollarOutput — Creates summary with maximum gold grade and peak interval per hole + coordinates
-22 findBestIntercept — Computes length-weighted best mineralized intervals above cutoff (allows internal waste)
-23 findCorrelation — Correlates grades with lithology/alteration units
-24 rankByGrade — Ranks drillholes by peak grade for target prioritization
-25 exportCollarOutput — Exports results as CSV, Excel, or Shapefile (with versioned filenames)
-
-
-Public Website Pages
-
-/ — Homepage
-/about — Company & founder story
-/services — Full project lifecycle services
-/products — Mining equipment catalog
-/sustainability — ESG commitments
-/contact — Contact form
-/insights — Searchable knowledge hub
-/insights/[slug] — Individual articles
-
-
-Getting Started
-Prerequisites
-
-Node.js 18+
-Supabase project
-Resend API key
-
-Installation
-Bashgit clone <your-repo-url>
 cd bart-mining
+
 npm install
-Create .env.local file with your Supabase and Resend credentials.
-Bashnpm run dev
+```
 
-Content Management
+Create a `.env.local` file containing the required Supabase and Resend environment variables.
 
-Articles: Add file in src/content/insights/ and metadata in src/data/insights.ts
-Services / Equipment: Edit arrays in src/data/
+Start the development server:
 
+```bash
+npm run dev
+```
 
-Deployment
-Deployed on Vercel. Pushes to main trigger automatic production deployment.
-Admin routes (/admin/*) are protected by Supabase authentication via middleware.ts.
+---
 
-Proprietary software Bart Mining © 2026
+# Content Management
+
+## Insights
+
+Add new articles inside:
+
+```text
+src/content/insights/
+```
+
+Register metadata inside:
+
+```text
+src/data/insights.ts
+```
+
+## Services & Equipment
+
+Update the corresponding arrays located under:
+
+```text
+src/data/
+```
+
+---
+
+# Authentication
+
+Administrative routes under:
+
+```text
+/administration/*
+```
+
+(or `/admin/*` depending on deployment)
+
+are protected using **Supabase Authentication** through `middleware.ts`.
+
+---
+
+# Deployment
+
+The project is deployed on **Vercel**.
+
+Every push to the `main` branch automatically triggers a production deployment.
+
+---
+
+# License
+
+This repository contains proprietary software and is not licensed for public redistribution or reuse.
+
+**Copyright © 2026 Bart Mining. All rights reserved.**
