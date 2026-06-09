@@ -15,11 +15,17 @@ export default function ServiceGrid({ showAll = false }: { showAll?: boolean }) 
         {showAll ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             {SERVICES.map((s, i) => (
-              <Reveal key={s.n} delay={i % 3} style={{
-                display: 'grid', gridTemplateColumns: '80px 1fr auto',
-                gap: 32, padding: '36px 0', borderBottom: '1px solid var(--line-2)',
-                alignItems: 'start',
-              }}>
+              <Reveal
+                key={s.n}
+                delay={i % 3}
+                className="service-row"
+                style={{
+                  display: 'grid',
+                  gap: 32,
+                  padding: '36px 0',
+                  borderBottom: '1px solid var(--line-2)',
+                  alignItems: 'start',
+                }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: 28, fontWeight: 700, color: 'var(--gold-2)', opacity: .5 }}>{s.n}</div>
                 <div>
                   <h3 style={{ fontSize: 22, marginBottom: 12 }}>{s.t}</h3>
@@ -75,8 +81,24 @@ export default function ServiceGrid({ showAll = false }: { showAll?: boolean }) 
         )}
       </div>
       <style>{`
-        .svc-grid-responsive { grid-template-columns: repeat(3,1fr) !important; }
-        @media (max-width: 860px) { .svc-grid-responsive { grid-template-columns: 1fr !important; } }
+        .svc-grid-responsive {
+          grid-template-columns: repeat(3,1fr) !important;
+        }
+      
+        .service-row {
+          grid-template-columns: 80px 1fr auto;
+        }
+      
+        @media (max-width: 860px) {
+          .svc-grid-responsive {
+            grid-template-columns: 1fr !important;
+          }
+      
+          .service-row {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
       `}</style>
     </section>
   )
