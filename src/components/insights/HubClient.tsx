@@ -30,12 +30,12 @@ export default function HubClient({ articles }: { articles: ArticleMeta[] }) {
   return (
     <>
       {/* Search */}
-      <div style={{ background: 'var(--slate)', padding: '72px 0 56px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 0%,rgba(174,138,76,.14),transparent 55%)', pointerEvents: 'none' }} />
+      <div style={{ background: 'var(--paper)', padding: '120px 0 56px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 0%,rgba(174,138,76,.07),transparent 55%)', pointerEvents: 'none' }} />
         <div className="px-site" style={{ position: 'relative', textAlign: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 16 }}>KNOWLEDGE CENTER</p>
-          <h1 style={{ color: '#fff', fontSize: 'clamp(32px,4.5vw,54px)', marginBottom: 16 }}>Mining Expertise<br />Across Africa</h1>
-          <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 17, maxWidth: 560, margin: '0 auto 36px' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--gold-deep)', marginBottom: 16 }}>KNOWLEDGE CENTER</p>
+          <h1 style={{ color: 'var(--ink)', fontSize: 'clamp(32px,4.5vw,54px)', marginBottom: 16 }}>Mining Expertise<br />Across Africa</h1>
+          <p style={{ color: 'var(--ink-2)', fontSize: 17, maxWidth: 560, margin: '0 auto 36px' }}>
             In-depth guides on exploration services, drilling, geophysics, environmental compliance and mineral markets, written by field geologists with decades of experience.
           </p>
           <div style={{ position: 'relative', maxWidth: 500, margin: '0 auto' }}>
@@ -43,16 +43,17 @@ export default function HubClient({ articles }: { articles: ArticleMeta[] }) {
               type="search"
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Search articles, regions, minerals&hellip;"
+              placeholder="Search articles, regions, minerals…"
               style={{
                 width: '100%', padding: '14px 20px 14px 48px',
-                borderRadius: 100, border: '1px solid rgba(255,255,255,.15)',
-                background: 'rgba(255,255,255,.08)', color: '#fff',
-                fontSize: 15, outline: 'none', backdropFilter: 'blur(8px)',
+                borderRadius: 100, border: '1px solid var(--line)',
+                background: 'var(--bg)', color: 'var(--ink)',
+                fontSize: 15, outline: 'none',
                 fontFamily: 'var(--font-manrope)',
+                boxShadow: 'var(--shadow-sm)',
               }}
             />
-            <span style={{ position: 'absolute', left: 18, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,.4)', fontSize: 18 }}>&#8981;</span>
+            <span style={{ position: 'absolute', left: 18, top: '50%', transform: 'translateY(-50%)', color: 'var(--ink-3)', fontSize: 18 }}>&#8981;</span>
           </div>
         </div>
       </div>
