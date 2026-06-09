@@ -73,7 +73,6 @@ export default function Products() {
           </Reveal>
         </div>
       </section>
-      <EquipGrid variant="light" showLink={false} />
 
       <RegionsSection />
 
