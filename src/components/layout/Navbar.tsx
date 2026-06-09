@@ -18,10 +18,8 @@ export default function Navbar() {
   const pathname = usePathname()
   const menuRef = useRef<HTMLDivElement>(null)
 
-  // Pages whose top hero is dark — navbar text needs to be white until scrolled
-  const darkHero = !scrolled && (pathname === '/' || pathname === '/insights')
-  const navText = darkHero ? '#fff' : 'var(--ink)'
-  const navTextMuted = darkHero ? 'rgba(255,255,255,.72)' : 'var(--ink-2)'
+  const navText = 'var(--ink)'
+  const navTextMuted = 'var(--ink-2)'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -37,9 +35,9 @@ export default function Navbar() {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: scrolled ? '13px 0' : '22px 0',
-        background: scrolled ? 'rgba(246,244,239,.72)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(18px) saturate(1.4)' : undefined,
-        WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(1.4)' : undefined,
+        background: scrolled ? 'rgba(246,244,239,.72)' : 'rgba(247,246,243,.85)',
+        backdropFilter: 'blur(18px) saturate(1.4)',
+        WebkitBackdropFilter: 'blur(18px) saturate(1.4)',
         borderBottom: scrolled ? '1px solid var(--line-2)' : '1px solid transparent',
         boxShadow: scrolled ? '0 8px 30px -20px rgba(27,24,19,.4)' : undefined,
         transition: 'padding .4s var(--ease), background .4s, box-shadow .4s, border-color .4s',
@@ -78,9 +76,7 @@ export default function Navbar() {
               fontSize: '14.5px', fontWeight: 500,
               color: pathname === l.href ? navText : navTextMuted,
               padding: '9px 15px', borderRadius: 100,
-              background: pathname === l.href
-                ? (darkHero ? 'rgba(255,255,255,.12)' : 'rgba(27,24,19,.06)')
-                : 'transparent',
+              background: pathname === l.href ? 'rgba(27,24,19,.06)' : 'transparent',
               transition: 'color .4s, background .25s',
             }}>
               {l.label}
