@@ -63,9 +63,6 @@ export default function Navbar() {
             <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 17, letterSpacing: '-0.02em', lineHeight: 1, whiteSpace: 'nowrap', color: navText, transition: 'color .4s' }}>
               Bart Mining
             </div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9.5px', letterSpacing: '0.24em', color: navTextMuted, textTransform: 'uppercase', transition: 'color .4s' }}>
-              Consultancy
-            </div>
           </div>
         </Link>
 
