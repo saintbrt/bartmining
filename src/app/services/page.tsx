@@ -36,7 +36,7 @@ export default function Services() {
       </section>
 
       {/* Service detail list */}
-      <section className="sec-gap" style={{ paddingTop: 40 }}>
+      <section className="sec-gap" style={{ paddingTop: 10 }}>
         <div className="px-site">
           <ServiceGrid showAll />
         </div>
