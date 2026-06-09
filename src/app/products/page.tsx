@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
-import EquipGrid from '@/components/sections/EquipGrid'
 import RegionsSection from '@/components/sections/RegionsSection'
 import CtaSection from '@/components/sections/CtaSection'
 
