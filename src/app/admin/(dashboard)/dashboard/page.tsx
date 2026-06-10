@@ -102,6 +102,25 @@ export default function DashboardPage() {
         </form>
       </div>
 
+      {projects.length > 0 && (() => {
+        const recent = projects.flatMap(p => DB.getAuditLog(p.id).map(a => ({ ...a, _proj: p.name })))
+          .sort((a, b) => (b.created_at ?? '').localeCompare(a.created_at ?? '')).slice(0, 8)
+        return recent.length > 0 ? (
+          <div className="card" style={{ marginTop: 24 }}>
+            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Recent activity</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {recent.map(a => (
+                <div key={a.id} style={{ display: 'flex', gap: 10, alignItems: 'baseline', fontSize: 12 }}>
+                  <span style={{ color: 'var(--gold)', fontFamily: 'monospace', flexShrink: 0 }}>{a.operation}</span>
+                  <span style={{ color: 'var(--label-2)', flex: 1 }}>{a.details}</span>
+                  <span style={{ color: 'var(--label-4)', flexShrink: 0 }}>{a._proj}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null
+      })()}
+
       {projects.length > 0 && (
         <div style={{ marginTop: 24 }}>
           <div style={{ fontSize: 12, color: 'var(--label-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 12 }}>Projects</div>

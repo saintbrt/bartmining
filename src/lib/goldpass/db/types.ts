@@ -52,6 +52,12 @@ export interface Version {
   created_at: string
 }
 
+export interface StageStatus {
+  validation: 'pending' | 'done'
+  cleaning: 'pending' | 'done'
+  analysis: 'pending' | 'done'
+}
+
 export type ColType =
   | 'hole_id' | 'from' | 'to' | 'au' | 'cu' | 'ag'
   | 'easting' | 'northing' | 'elevation' | 'depth'

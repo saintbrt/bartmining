@@ -36,6 +36,7 @@ export default function TableEditorPage({ table, project, user, onBack, onRefres
         <button className="btn btn-secondary btn-sm" onClick={onBack}>← Back</button>
         <div style={{ fontWeight: 600, fontSize: 14 }}>{table.name}</div>
         <div style={{ fontSize: 12, color: 'var(--label-3)' }}>{allRows.length.toLocaleString()} rows</div>
+        <div style={{ fontSize: 11, color: 'var(--label-4)', fontFamily: 'monospace' }}>v{DB.getVersions(table.id).length + 1}</div>
         <div style={{ flex: 1 }} />
         <input className="input" style={{ width: 180, fontSize: 12, padding: '5px 10px' }} placeholder="Filter rows…" value={filter} onChange={e => setFilter(e.target.value)} />
         <button className="btn btn-secondary btn-sm" onClick={() => setConfirm({ msg: 'Remove all duplicate rows?', fn: removeDuplicates })}>Remove duplicates</button>

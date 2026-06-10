@@ -60,14 +60,50 @@ export const ANALYSIS_DEFS: QcDef[] = [
   { id: 'best_intercept', label: 'Find best intercept', desc: 'Highest grade-thickness intersection per hole.', category: 'analysis', tableTypes: ['assay'], needsCols: ['hole_id','from','to'], needsOneOf: ['au','cu','ag'], fixable: false },
   { id: 'rank_by_grade', label: 'Rank holes by grade', desc: 'Rank every hole by its peak grade value, highest first.', category: 'analysis', tableTypes: ['assay'], needsCols: ['hole_id'], needsOneOf: ['au','cu','ag'], fixable: false },
   { id: 'find_correlation', label: 'Grade correlation', desc: 'Pearson correlation between two grade columns.', category: 'analysis', tableTypes: ['assay'], needsOneOf: ['au','cu','ag'], fixable: false },
+  { id: 'diff_tables', label: 'Diff two tables', desc: 'Rows that exist only in this table or only in the comparison table.', category: 'comparison', needsCompare: true, fixable: false },
+  { id: 'duplicates_across', label: 'Duplicates across tables', desc: 'Identical hole/interval rows that appear in both tables (e.g. two lab batches).', category: 'comparison', needsCompare: true, fixable: false },
+  { id: 'reconcile_columns', label: 'Reconcile columns', desc: 'Column-name and role differences between this table and the comparison table.', category: 'comparison', needsCompare: true, fixable: false },
 ]
 
-export function runQC(def: QcDef, rows: TableRow[], invMap: InvMap): QcResult {
+export function runQC(def: QcDef, rows: TableRow[], invMap: InvMap, compare?: { rows: TableRow[]; invMap: InvMap; columns?: Record<string, string> }, columns?: Record<string, string>): QcResult {
   const h = getCol(invMap, 'hole_id')
   const f = getCol(invMap, 'from')
   const t = getCol(invMap, 'to')
 
   switch (def.id) {
+    case 'find_undrilled': {
+      if (!compare) return { issues: [], count: 0, summary: 'Select a comparison table (intervals) to run this check.', cols: [], error: 'needs_compare' }
+      const r = findUndrilled(rows, compare.rows, invMap, compare.invMap)
+      if ('error' in r && r.error) return { issues: [], count: 0, summary: r.error, cols: [], error: r.error }
+      return { issues: r.issues ?? [], count: r.count ?? 0, summary: r.summary ?? '', cols: h ? [h] : [] }
+    }
+    case 'find_orphan_assays': {
+      if (!compare) return { issues: [], count: 0, summary: 'Select a comparison table (collar) to run this check.', cols: [], error: 'needs_compare' }
+      const r = findOrphanAssays(rows, compare.rows, invMap, compare.invMap)
+      if ('error' in r && r.error) return { issues: [], count: 0, summary: r.error, cols: [], error: r.error }
+      return { issues: r.issues ?? [], count: r.count ?? 0, summary: r.summary ?? '', cols: h ? [h] : [] }
+    }
+    case 'find_missing_rows': {
+      if (!compare) return { issues: [], count: 0, summary: 'Select a comparison table to run this check.', cols: [], error: 'needs_compare' }
+      const r = findMissingRows(rows, compare.rows, invMap, compare.invMap)
+      if ('error' in r && r.error) return { issues: [], count: 0, summary: r.error, cols: [], error: r.error }
+      return { issues: r.missing ?? [], count: r.count ?? 0, summary: r.summary ?? '', cols: h ? [h] : [] }
+    }
+    case 'diff_tables': {
+      if (!compare) return { issues: [], count: 0, summary: 'Select a comparison table to diff against.', cols: [], error: 'needs_compare' }
+      const r = diffTables(rows, compare.rows)
+      return { issues: r.issues, count: r.count, summary: r.summary, cols: [] }
+    }
+    case 'duplicates_across': {
+      if (!compare) return { issues: [], count: 0, summary: 'Select a comparison table to check against.', cols: [], error: 'needs_compare' }
+      const r = findDuplicatesAcrossTables(rows, compare.rows, invMap, compare.invMap)
+      return { issues: r.issues, count: r.count, summary: r.summary, cols: h ? [h] : [] }
+    }
+    case 'reconcile_columns': {
+      if (!compare?.columns || !columns) return { issues: [], count: 0, summary: 'Select a comparison table to reconcile columns against.', cols: [], error: 'needs_compare' }
+      const r = reconcileColumns(columns, compare.columns)
+      return { issues: r.issues, count: r.count, summary: r.summary, cols: ['column', 'status', 'role'] }
+    }
     case 'missing_hole_ids': {
       const issues = rows.filter(r => !String(r[h!] ?? '').trim())
       return { issues, count: issues.length, summary: issues.length === 0 ? 'No missing Hole IDs found.' : `${issues.length} row${issues.length > 1 ? 's' : ''} have empty Hole IDs.`, cols: h ? [h] : [] }
@@ -258,47 +294,73 @@ export function findOrphanAssays(rowsA: TableRow[], rowsB: TableRow[], invMapA: 
   return { issues, count: issues.length, summary: issues.length === 0 ? 'Every interval hole has a matching collar.' : `${issues.length} hole${issues.length > 1 ? 's' : ''} have assays but no collar (orphans).` }
 }
 
-export function runSimpleSQL(sql: string, tables: { id: string; name: string }[], getRowsFn: (id: string) => TableRow[]) {
-  const cleaned = sql.trim().replace(/\s+/g, ' ')
-  const m = cleaned.match(/^SELECT\s+(.*?)\s+FROM\s+["']?(\w[\w\s]*)["']?(?:\s+WHERE\s+(.+?))?(?:\s+LIMIT\s+(\d+))?;?$/i)
-  if (!m) return { error: 'Only SELECT ... FROM table [WHERE ...] [LIMIT n] is supported in prototype mode.' }
-  const [, cols, rawName, whereClause, limitStr] = m
-  const tblName = rawName.trim()
-  const tbl = tables.find(t => t.name.toLowerCase() === tblName.toLowerCase() || t.name.replace(/\s+/g, '_').toLowerCase() === tblName.toLowerCase())
-  if (!tbl) return { error: `Table "${tblName}" not found. Available: ${tables.map(t => t.name).join(', ')}` }
-  let rows = getRowsFn(tbl.id)
-  if (whereClause) {
-    try {
-      const js = whereClause
-        .replace(/(\w+)\s+IS\s+NOT\s+NULL/gi, '(row["$1"]!=null&&row["$1"]!="")')
-        .replace(/(\w+)\s+IS\s+NULL/gi, '(row["$1"]==null||row["$1"]=="")')
-        .replace(/(\w+)\s*=\s*'([^']*)'/g, '(String(row["$1"])==="$2")')
-        .replace(/(\w+)\s*!=\s*'([^']*)'/g, '(String(row["$1"])!=="$2")')
-        .replace(/(\w+)\s*>=\s*([\d.]+)/g, '(parseFloat(row["$1"])>=$2)')
-        .replace(/(\w+)\s*<=\s*([\d.]+)/g, '(parseFloat(row["$1"])<=$2)')
-        .replace(/(\w+)\s*>\s*([\d.]+)/g, '(parseFloat(row["$1"])>$2)')
-        .replace(/(\w+)\s*<\s*([\d.]+)/g, '(parseFloat(row["$1"])<$2)')
-        .replace(/\bAND\b/gi, ' && ').replace(/\bOR\b/gi, ' || ')
-      rows = rows.filter(row => { try { return new Function('row', 'return ' + js)(row) } catch { return false } })
-    } catch (e) { return { error: 'WHERE error: ' + (e as Error).message } }
-  }
-  const limit = limitStr ? parseInt(limitStr) : 500
-  const total = rows.length
-  rows = rows.slice(0, limit)
-  if (cols.trim() !== '*') {
-    const selected = cols.split(',').map(c => c.trim())
-    rows = rows.map(row => { const r: TableRow = {}; selected.forEach(c => { r[c] = row[c] }); return r })
-  }
-  return { rows, tableName: tbl.name, total, showing: rows.length }
+/* ── Cross-file comparison suite (spec fns 15–20) ── */
+
+/** diffFiles: rows present in A but not in B, and vice versa (full-row comparison). */
+export function diffTables(rowsA: TableRow[], rowsB: TableRow[]) {
+  const key = (r: TableRow) => JSON.stringify(Object.keys(r).sort().map(k => [k, String(r[k] ?? '').trim()]))
+  const setB = new Set(rowsB.map(key)), setA = new Set(rowsA.map(key))
+  const onlyA = rowsA.filter(r => !setB.has(key(r))).map(r => ({ _side: 'only in A', ...r }))
+  const onlyB = rowsB.filter(r => !setA.has(key(r))).map(r => ({ _side: 'only in B', ...r }))
+  const issues = [...onlyA, ...onlyB]
+  return { issues, count: issues.length, summary: issues.length === 0 ? 'Tables are identical row-for-row.' : `${onlyA.length} row${onlyA.length !== 1 ? 's' : ''} only in A, ${onlyB.length} only in B.` }
 }
 
-export function mockAIQuery(question: string, tables: { id: string; name: string }[], activeTable?: { name: string } | null) {
-  const q = question.toLowerCase()
-  const tname = activeTable ? activeTable.name : (tables[0]?.name ?? 'collar')
-  if (/missing|empty|null|blank/.test(q) && /hole|id/.test(q)) return { sql: `SELECT * FROM ${tname} WHERE HOLEID IS NULL`, note: 'Finds rows where the Hole ID column is empty or null.' }
-  if (/negative|below zero/.test(q) && /au|gold|grade/.test(q)) return { sql: `SELECT * FROM ${tname} WHERE AU < 0`, note: 'Finds rows with negative Au values.' }
-  if (/duplicate/.test(q)) return { sql: `SELECT HOLEID, FROM_M, TO_M, COUNT(*) FROM ${tname} GROUP BY HOLEID, FROM_M, TO_M HAVING COUNT(*) > 1`, note: 'Finds duplicate interval combinations.' }
-  if (/max|highest|best/.test(q) && /au|gold/.test(q)) return { sql: `SELECT HOLEID, MAX(AU) as MaxAu FROM ${tname} GROUP BY HOLEID ORDER BY MaxAu DESC`, note: 'Best Au intercept per hole.' }
-  if (/count|how many|total/.test(q) && /hole/.test(q)) return { sql: `SELECT COUNT(DISTINCT HOLEID) as HoleCount FROM ${tname}`, note: 'Counts unique drill holes.' }
-  return { sql: `SELECT * FROM ${tname} LIMIT 50`, note: "Showing a preview of the table. Try the SQL editor or QC Functions panel for specific checks." }
+/** findDuplicatesAcrossFiles: identical hole_id+from+to (or full row) appearing in both tables. */
+export function findDuplicatesAcrossTables(rowsA: TableRow[], rowsB: TableRow[], invMapA: InvMap, invMapB: InvMap) {
+  const hA = getCol(invMapA, 'hole_id'), hB = getCol(invMapB, 'hole_id')
+  const fA = getCol(invMapA, 'from'), fB = getCol(invMapB, 'from')
+  const tA = getCol(invMapA, 'to'), tB = getCol(invMapB, 'to')
+  const key = (r: TableRow, h: string | null, f: string | null, t: string | null) =>
+    h ? [String(r[h] ?? '').trim().toUpperCase(), f ? String(r[f] ?? '').trim() : '', t ? String(r[t] ?? '').trim() : ''].join('|') : JSON.stringify(r)
+  const setB = new Set(rowsB.map(r => key(r, hB, fB, tB)))
+  const issues = rowsA.filter(r => setB.has(key(r, hA, fA, tA)))
+  return { issues, count: issues.length, summary: issues.length === 0 ? 'No rows duplicated across the two tables.' : `${issues.length} row${issues.length > 1 ? 's' : ''} appear in both tables (cross-file duplicates).` }
+}
+
+/** reconcileColumns: column-name / role differences between two tables. */
+export function reconcileColumns(colsA: Record<string, string>, colsB: Record<string, string>) {
+  const issues: TableRow[] = []
+  Object.keys(colsA).forEach(c => { if (!(c in colsB)) issues.push({ column: c, status: 'missing in B', role: colsA[c] }) })
+  Object.keys(colsB).forEach(c => { if (!(c in colsA)) issues.push({ column: c, status: 'missing in A', role: colsB[c] }) })
+  Object.keys(colsA).forEach(c => { if (c in colsB && colsA[c] !== colsB[c]) issues.push({ column: c, status: 'role mismatch', role: `A:${colsA[c]} vs B:${colsB[c]}` }) })
+  return { issues, count: issues.length, summary: issues.length === 0 ? 'Column structures match exactly.' : `${issues.length} column difference${issues.length > 1 ? 's' : ''} between the tables.` }
+}
+
+/* ── Output builders (spec fns 21, 25) ── */
+
+/** buildCollarOutput: one row per collar hole, joined with per-hole stats from an interval table. */
+export function buildCollarOutput(
+  collarRows: TableRow[], intervalRows: TableRow[],
+  collarInv: InvMap, intervalInv: InvMap,
+): { rows: TableRow[]; error?: string } {
+  const hC = getCol(collarInv, 'hole_id'), hI = getCol(intervalInv, 'hole_id')
+  if (!hC || !hI) return { rows: [], error: 'Both tables need a Hole ID column mapped.' }
+  const gradeKeys = ['au', 'cu', 'ag'] as const
+  const gradeCols = gradeKeys.map(k => ({ k, col: getCol(intervalInv, k) })).filter(g => g.col)
+  const f = getCol(intervalInv, 'from'), t = getCol(intervalInv, 'to')
+  const stats: Record<string, { n: number; grades: Record<string, number[]>; maxDepth: number }> = {}
+  intervalRows.forEach(r => {
+    const id = String(r[hI] ?? '').trim().toUpperCase(); if (!id) return
+    if (!stats[id]) stats[id] = { n: 0, grades: {}, maxDepth: 0 }
+    const s = stats[id]; s.n++
+    gradeCols.forEach(g => { const v = num(r[g.col!]); if (v !== null) { (s.grades[g.k] ??= []).push(v) } })
+    const tv = num(t ? r[t] : null); if (tv !== null && tv > s.maxDepth) s.maxDepth = tv
+    const fv = num(f ? r[f] : null); if (fv !== null && fv > s.maxDepth) s.maxDepth = fv
+  })
+  const rows = collarRows.map(r => {
+    const id = String(r[hC] ?? '').trim(); if (!id) return null
+    const s = stats[id.toUpperCase()]
+    const out: TableRow = { HoleID: id, Intervals: s?.n ?? 0, MaxDepth_m: s ? s.maxDepth.toFixed(2) : '' }
+    const e = getCol(collarInv, 'easting'), n2 = getCol(collarInv, 'northing'), z = getCol(collarInv, 'elevation')
+    if (e) out.Easting = r[e]; if (n2) out.Northing = r[n2]; if (z) out.Elevation = r[z]
+    gradeCols.forEach(g => {
+      const vals = s?.grades[g.k] ?? []
+      const label = g.k.toUpperCase()
+      out[`Max${label}`] = vals.length ? Math.max(...vals).toFixed(3) : ''
+      out[`Avg${label}`] = vals.length ? (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(3) : ''
+    })
+    return out
+  }).filter(Boolean) as TableRow[]
+  return { rows }
 }

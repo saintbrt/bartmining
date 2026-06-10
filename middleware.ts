@@ -6,11 +6,20 @@ export async function middleware(request: NextRequest) {
 
   if (!pathname.startsWith('/admin')) return NextResponse.next()
 
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON
+  if (!url || !key) {
+    // Don't crash the request — let the client app boot and surface
+    // GP-2314 via a toast instead of a blank/black page.
+    console.error('[GoldPass middleware] GP-2314: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON are not set.')
+    return NextResponse.next()
+  }
+
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    key,
     {
       cookies: {
         getAll() { return request.cookies.getAll() },

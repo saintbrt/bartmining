@@ -3,10 +3,9 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { DB } from '@/lib/goldpass/db'
+import { gpError } from '@/lib/goldpass/errors'
 import { AppContext } from '@/lib/goldpass/AppContext'
-import type { Project, TableMeta } from '@/lib/goldpass/db'
-
-type StageStatus = { validation: 'pending' | 'done'; cleaning: 'pending' | 'done'; analysis: 'pending' | 'done' }
+import type { Project, TableMeta, StageStatus } from '@/lib/goldpass/db'
 
 const NAV = [
   { id: 'dashboard',     ico: '⬡', label: 'Dashboard' },
@@ -40,8 +39,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         const u = await DB.restoreSession()
         if (!u) { router.push('/admin/login'); return }
         await DB.bootstrap()
-        if (alive) { setUser(u); setProjects(DB.getProjects()) }
-      } catch (e) { console.error('boot', e) }
+        if (alive) {
+          setUser(u)
+          setProjects(DB.getProjects())
+          const stages: Record<string, StageStatus> = {}
+          DB.getProjects().forEach(p => { stages[p.id] = DB.getStageStatus(p.id) })
+          setStageStatus(stages)
+        }
+      } catch (e) {
+        gpError('GP-2208', e instanceof Error ? e.message : String(e))
+        router.push('/admin/login'); return
+      }
       finally { if (alive) setBooting(false) }
     })()
     return () => { alive = false }
@@ -61,14 +69,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   function approveStage(stage: keyof StageStatus) {
     if (!project) return
-    setStageStatus(prev => {
-      const cur = prev[project.id] ?? { validation: 'pending', cleaning: 'pending', analysis: 'pending' }
-      const next = { ...cur, [stage]: 'done' as const }
-      const order: (keyof StageStatus)[] = ['validation', 'cleaning', 'analysis']
-      const idx = order.indexOf(stage)
-      if (idx >= 0 && idx < order.length - 1) router.push('/admin/' + order[idx + 1])
-      return { ...prev, [project.id]: next }
-    })
+    const cur = stageStatus[project.id] ?? DB.getStageStatus(project.id)
+    const next = { ...cur, [stage]: 'done' as const }
+    DB.setStageStatus(project.id, next, user?.email)
+    setStageStatus(prev => ({ ...prev, [project.id]: next }))
+    const order: (keyof StageStatus)[] = ['validation', 'cleaning', 'analysis']
+    const idx = order.indexOf(stage)
+    if (idx >= 0 && idx < order.length - 1) router.push('/admin/' + order[idx + 1])
   }
 
   function isStageUnlocked(stage: string): boolean {
@@ -121,7 +128,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="sb-section">Navigation</div>
             {NAV.map(item => {
               const locked = STAGE_GATES.has(item.id) && !isStageUnlocked(item.id)
-              const done = (ss as Record<string, string>)[item.id] === 'done'
+              const done = (ss as unknown as Record<string, string>)[item.id] === 'done'
               return (
                 <div key={item.id} className={`sb-item${curView === item.id ? ' active' : ''}${locked ? ' sb-item-locked' : ''}`} onClick={() => handleNav(item.id)}>
                   <span className="ico">{locked ? '🔒' : done ? '✓' : item.ico}</span>

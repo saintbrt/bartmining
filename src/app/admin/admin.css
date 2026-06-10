@@ -109,6 +109,18 @@
 .gp-root .tbl td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,.04); color: var(--label-1); vertical-align: middle; }
 .gp-root .tbl tr:hover td { background: rgba(255,255,255,.025); }
 
+/* Toast notifications */
+.gp-root .gp-toasts { position: fixed; right: 20px; bottom: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 8px; width: 340px; max-width: 90vw; }
+.gp-root .gp-toast { display: flex; align-items: flex-start; gap: 10px; background: var(--bg-3); border: 1px solid var(--sep-o); border-left: 3px solid var(--blue); border-radius: 10px; padding: 11px 14px; box-shadow: var(--s-md); cursor: pointer; animation: gp-toast-in .25s cubic-bezier(.2,.9,.3,1.2); }
+.gp-root .gp-toast-ico { font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.gp-root .gp-toast-msg { font-size: 12.5px; color: var(--label-1); line-height: 1.45; }
+.gp-root .gp-toast-code { font-size: 10px; color: var(--label-4); font-family: monospace; margin-top: 3px; letter-spacing: .04em; }
+@keyframes gp-toast-in { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: none; } }
+
+/* New-file appear animation (AI result lands on the workbench) */
+.gp-root .gp-appear { animation: gp-appear .5s cubic-bezier(.2,.9,.3,1.15); }
+@keyframes gp-appear { 0% { opacity: 0; transform: translateY(-8px) scale(.92); box-shadow: 0 0 0 2px rgba(200,151,59,.6); } 60% { box-shadow: 0 0 0 2px rgba(200,151,59,.35); } 100% { opacity: 1; transform: none; box-shadow: none; } }
+
 /* Scrollbar */
 .gp-root ::-webkit-scrollbar { width: 6px; height: 6px; }
 .gp-root ::-webkit-scrollbar-track { background: transparent; }
