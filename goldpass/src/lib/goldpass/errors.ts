@@ -14,7 +14,7 @@ import { notify } from './notify'
    25xx — outputs / export
 */
 export const GP_ERRORS: Record<string, string> = {
-  'GP-2314': 'Supabase is not connected — NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY are missing or invalid.',
+  'GP-2314': 'Supabase is not connected — NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON are missing or invalid.',
 
   'GP-2101': 'Sign-in failed — credentials rejected or auth service unreachable.',
   'GP-2102': 'Google sign-in failed — OAuth provider error (check Google provider config in Supabase).',

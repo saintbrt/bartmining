@@ -68,7 +68,7 @@ export default function SettingsPage() {
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: ready ? 'var(--green)' : 'var(--red)', boxShadow: ready ? '0 0 6px var(--green)' : undefined }} />
           <div style={{ fontSize: 13 }}>{ready ? 'Supabase connected' : 'Supabase not configured'}</div>
         </div>
-        {!ready && <p style={{ fontSize: 12, color: 'var(--label-4)', marginTop: 8, lineHeight: 1.6 }}>Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY environment variables.</p>}
+        {!ready && <p style={{ fontSize: 12, color: 'var(--label-4)', marginTop: 8, lineHeight: 1.6 }}>Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON environment variables.</p>}
       </div>
     </div>
   )

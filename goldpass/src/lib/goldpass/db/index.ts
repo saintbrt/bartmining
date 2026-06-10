@@ -46,7 +46,7 @@ const DEFAULT_STAGES: StageStatus = { validation: 'pending', cleaning: 'pending'
 
 export const DB = {
   ready() {
-    return !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    return !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON)
   },
 
   /* ── AUTH ── */

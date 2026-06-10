@@ -229,7 +229,7 @@ restored in code this session — verify it is still configured server-side).
    arbitrary JS execution in the browser. Acceptable for an internal tool used
    by trusted staff; should never be exposed to untrusted users or extended to
    run server-side.
-4. **`NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`**: intentionally
+4. **`NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON`**: intentionally
    public (anon key is safe to expose by design), but reinforces that RLS is
    the only thing standing between a logged-in user and other projects' data.
 5. **Audit log** (`audit_log`, capped at 200 rows in `getAuditLog`) provides
@@ -339,7 +339,7 @@ All of the following were implemented in the GoldPass rebuild:
 
 | Code | Meaning |
 |---|---|
-| GP-2314 | Supabase not connected — `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` missing or invalid |
+| GP-2314 | Supabase not connected — `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON` missing or invalid |
 | GP-2101 | Sign-in failed (credentials rejected or auth service unreachable) |
 | GP-2102 | Google sign-in failed (check Google provider config in Supabase) |
 | GP-2103 | Session restore failed |
@@ -371,7 +371,7 @@ All of the following were implemented in the GoldPass rebuild:
 3. `supabase functions deploy gold-ai`
 4. Verify Google provider is enabled (Auth → Providers) with redirect
    `https://bartmining.com/admin/dashboard`.
-5. Vercel env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+5. Vercel env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON`.
 
 ## 12. Remaining known limitations
 
