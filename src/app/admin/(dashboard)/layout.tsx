@@ -6,6 +6,7 @@ import { DB } from '@/lib/goldpass/db'
 import { gpError } from '@/lib/goldpass/errors'
 import { AppContext } from '@/lib/goldpass/AppContext'
 import type { Project, TableMeta, StageStatus } from '@/lib/goldpass/db'
+import ThemeToggle from '@/components/goldpass/ThemeToggle'
 
 const NAV = [
   { id: 'dashboard',     ico: '⬡', label: 'Dashboard' },
@@ -163,7 +164,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="topbar-title">{project?.name ?? 'GoldPass'}</div>
             {project && <div className="topbar-sub">/ {curView}</div>}
             <div className="topbar-actions">
-              <span style={{ fontSize: 11, color: 'var(--label-4)', fontFamily: 'monospace' }}>Internal · Live</span>
+              <ThemeToggle />
             </div>
           </div>
           {children}

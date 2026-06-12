@@ -378,3 +378,46 @@ All of the following were implemented in the GoldPass rebuild:
 - Audit log capped at 200 entries in the UI (full history stays in the table).
 - `getRows` default limit 5000; very large drill programs need pagination.
 - Visualisation page is still minimal (plan-view/section plots are the next milestone).
+
+---
+
+## Visual Stage Workbench (added)
+
+Each working stage (Validation, Cleaning, Analysis) is now a **visual canvas
+workbench** instead of a linear file list. Stage gating and the
+Approve & Continue flow are unchanged.
+
+**Components** (`src/components/goldpass/workbench/`):
+- `StageWorkbench.tsx` — the canvas page: file tray, draggable file cards,
+  connection lines, plain-English action bar, Ask AI box. A "Table view"
+  button opens the previous list-style workspace (`WorkspacePage`) for
+  row-level work.
+- `FileCard.tsx` — a file as a card: name, type, row count, column list.
+  Card geometry constants let line endpoints be computed without DOM
+  measurement.
+- `findConnections.ts` — detects matching columns between files on the
+  canvas: same semantic role (hole_id, easting/northing, from/to…) →
+  high-confidence line (hole_id is additionally value-checked); identical
+  raw column names with ≥30% value overlap → medium-confidence line.
+  Unrelated files get no lines.
+
+**Interaction model**: drag files from the tray onto the canvas → lines
+appear between related files → click to select 1-4 cards → run an action
+or ask the AI. Every non-destructive result is saved as a **Result File**
+(`tables_meta.type='child'`, `parent_ids` = sources) and animates onto the
+canvas with dashed gold "Made From" lineage lines. Destructive fixes
+(Remove Duplicate Rows, Remove Empty Rows, …) confirm first and record a
+version via `DB.replaceRows`.
+
+**Plain-language naming**: `src/lib/goldpass/qc/` is now
+`src/lib/goldpass/dataChecks/` (`CHECK_DEFS`, `runCheck`, `CheckDef`,
+`CheckResult`); `QCPanel` is `DataChecksPanel`. User-facing actions are
+plain English: Find Missing Hole IDs, Find Missing Values, Check
+Coordinates, Check Files Match, Remove Duplicate Rows, Remove Empty Rows,
+Fix Hole ID Format, Trim Extra Spaces, Merge Matching Files, Find Best
+Holes, Rank Holes by Grade, Compare Files, Ask AI.
+
+**Theme**: dark remains the default; a Dark/Light toggle
+(`ThemeToggle.tsx`) replaces the "Internal · Live" topbar label. Light
+theme is CSS-variable overrides under `.gp-root[data-theme="light"]`;
+the preference is a cosmetic localStorage value only.

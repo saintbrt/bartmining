@@ -126,3 +126,22 @@
 .gp-root ::-webkit-scrollbar-track { background: transparent; }
 .gp-root ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 3px; }
 .gp-root ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.2); }
+
+/* ── Light theme (toggled from the top bar; dark is the default) ── */
+.gp-root[data-theme="light"] {
+  --bg:     #F2F2F7;
+  --bg-2:   #FFFFFF;
+  --bg-3:   #E9E9EF;
+  --sep-o:  rgba(0,0,0,.1);
+  --sep:    #D9D9E0;
+  --label-1: #1C1C1E;
+  --label-2: #3A3A3C;
+  --label-3: #6E6E73;
+  --label-4: #98989E;
+  --s-xs: 0 1px 2px rgba(0,0,0,.08);
+  --s-sm: 0 2px 8px rgba(0,0,0,.1);
+  --s-md: 0 4px 20px rgba(0,0,0,.12);
+  --s-lg: 0 8px 40px rgba(0,0,0,.16);
+}
+.gp-root[data-theme="light"] .btn-secondary:hover { background: #DFDFE6; }
+.gp-root[data-theme="light"] .sb-item:hover { background: rgba(0,0,0,.05); }

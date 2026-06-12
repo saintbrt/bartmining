@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useAppContext } from '@/lib/goldpass/AppContext'
 import { DB } from '@/lib/goldpass/db'
 import { invertColMapping } from '@/lib/goldpass/db/helpers'
-import { buildCollarOutput } from '@/lib/goldpass/qc'
+import { buildCollarOutput } from '@/lib/goldpass/dataChecks'
 import { notify } from '@/lib/goldpass/notify'
 
 export default function OutputsPage() {

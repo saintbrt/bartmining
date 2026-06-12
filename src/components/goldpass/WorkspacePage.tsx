@@ -6,7 +6,7 @@ import { typeColor } from '@/lib/goldpass/db/helpers'
 import { executeSQL } from '@/lib/goldpass/sqlEngine'
 import { notify } from '@/lib/goldpass/notify'
 import type { Project, TableMeta, TableRow } from '@/lib/goldpass/db'
-import QCPanel from './QCPanel'
+import DataChecksPanel from './DataChecksPanel'
 import UploadModal from './UploadModal'
 import TableEditorPage from './TableEditorPage'
 
@@ -175,11 +175,11 @@ export default function WorkspacePage({ stage, project, user, tables, onRefresh,
         <div style={{ width: 320, borderLeft: '1px solid var(--sep)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
           <div style={{ display: 'flex', borderBottom: '1px solid var(--sep)' }}>
             {(['qc', 'sql', 'files'] as const).map(p => (
-              <button key={p} onClick={() => setActivePanel(p)} style={{ flex: 1, padding: '9px 0', fontSize: 11, fontWeight: 600, letterSpacing: '.06em', textTransform: 'uppercase', background: 'none', border: 'none', cursor: 'pointer', color: activePanel === p ? 'var(--blue)' : 'var(--label-4)', borderBottom: activePanel === p ? '2px solid var(--blue)' : '2px solid transparent' }}>{p === 'sql' ? 'AI · SQL' : p}</button>
+              <button key={p} onClick={() => setActivePanel(p)} style={{ flex: 1, padding: '9px 0', fontSize: 11, fontWeight: 600, letterSpacing: '.06em', textTransform: 'uppercase', background: 'none', border: 'none', cursor: 'pointer', color: activePanel === p ? 'var(--blue)' : 'var(--label-4)', borderBottom: activePanel === p ? '2px solid var(--blue)' : '2px solid transparent' }}>{p === 'sql' ? 'Ask AI' : p === 'qc' ? 'Checks' : p}</button>
             ))}
           </div>
           <div style={{ flex: 1, overflowY: 'auto', padding: 12 }}>
-            {activePanel === 'qc' && <QCPanel stage={stage} table={activeTable} tables={tables} project={project} user={user} onRefresh={onRefresh} />}
+            {activePanel === 'qc' && <DataChecksPanel stage={stage} table={activeTable} tables={tables} project={project} user={user} onRefresh={onRefresh} />}
             {activePanel === 'sql' && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <div style={{ display: 'flex', gap: 6 }}>

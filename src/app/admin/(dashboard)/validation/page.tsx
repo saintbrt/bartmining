@@ -1,7 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/lib/goldpass/AppContext'
-import WorkspacePage from '@/components/goldpass/WorkspacePage'
+import StageWorkbench from '@/components/goldpass/workbench/StageWorkbench'
 
 export default function ValidationPage() {
   const ctx = useAppContext()
@@ -17,5 +17,5 @@ export default function ValidationPage() {
     </div>
   )
   const ss = getStageStatus(project.id)
-  return <WorkspacePage stage="validation" project={project} user={user!} tables={tables} onRefresh={refresh} stageDone={ss.validation === 'done'} onApprove={() => approveStage('validation')} />
+  return <StageWorkbench stage="validation" project={project} user={user!} tables={tables} onRefresh={refresh} stageDone={ss.validation === 'done'} onApprove={() => approveStage('validation')} />
 }

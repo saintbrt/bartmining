@@ -1,7 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/lib/goldpass/AppContext'
-import WorkspacePage from '@/components/goldpass/WorkspacePage'
+import StageWorkbench from '@/components/goldpass/workbench/StageWorkbench'
 
 export default function CleaningPage() {
   const ctx = useAppContext()
@@ -17,5 +17,5 @@ export default function CleaningPage() {
     </div>
   )
   const ss = getStageStatus(project.id)
-  return <WorkspacePage stage="cleaning" project={project} user={user!} tables={tables} onRefresh={refresh} stageDone={ss.cleaning === 'done'} onApprove={() => approveStage('cleaning')} />
+  return <StageWorkbench stage="cleaning" project={project} user={user!} tables={tables} onRefresh={refresh} stageDone={ss.cleaning === 'done'} onApprove={() => approveStage('cleaning')} />
 }

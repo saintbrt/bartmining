@@ -1,7 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/lib/goldpass/AppContext'
-import WorkspacePage from '@/components/goldpass/WorkspacePage'
+import StageWorkbench from '@/components/goldpass/workbench/StageWorkbench'
 
 export default function AnalysisPage() {
   const ctx = useAppContext()
@@ -17,5 +17,5 @@ export default function AnalysisPage() {
     </div>
   )
   const ss = getStageStatus(project.id)
-  return <WorkspacePage stage="analysis" project={project} user={user!} tables={tables} onRefresh={refresh} stageDone={ss.analysis === 'done'} onApprove={() => approveStage('analysis')} />
+  return <StageWorkbench stage="analysis" project={project} user={user!} tables={tables} onRefresh={refresh} stageDone={ss.analysis === 'done'} onApprove={() => approveStage('analysis')} />
 }
