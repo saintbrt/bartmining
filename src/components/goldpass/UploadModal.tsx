@@ -28,8 +28,9 @@ function splitCsvLine(line: string): string[] {
 }
 
 async function parseFile(file: File): Promise<Record<string, unknown>[]> {
-  const text = await file.text()
-  if (file.name.endsWith('.csv')) {
+  const name = file.name.toLowerCase()
+  if (name.endsWith('.csv')) {
+    const text = await file.text()
     const lines = text.split(/\r?\n/).filter(l => l.trim())
     if (!lines.length) return []
     const headers = splitCsvLine(lines[0])
@@ -40,7 +41,14 @@ async function parseFile(file: File): Promise<Record<string, unknown>[]> {
       return row
     })
   }
-  throw new Error('Only CSV files are supported in this build.')
+  if (name.endsWith('.xlsx') || name.endsWith('.xls')) {
+    const XLSX = await import('xlsx')
+    const wb = XLSX.read(await file.arrayBuffer(), { type: 'array' })
+    const sheet = wb.Sheets[wb.SheetNames[0]]
+    if (!sheet) return []
+    return XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, { defval: '', raw: false })
+  }
+  throw new Error('Only CSV and Excel (.xlsx/.xls) files are supported.')
 }
 
 const TABLE_TYPES = ['collar', 'assay', 'survey', 'lithology', 'other']
@@ -94,9 +102,9 @@ export default function UploadModal({ project, user, onClose, onImported }: { pr
         <div onDrop={onDrop} onDragOver={e => { e.preventDefault(); setDrag(true) }} onDragLeave={() => setDrag(false)}
           style={{ border: `2px dashed ${drag ? 'var(--blue)' : 'var(--sep-o)'}`, borderRadius: 10, padding: '32px 20px', textAlign: 'center', cursor: 'pointer', marginBottom: 20, transition: 'border-color .15s', background: drag ? 'rgba(0,122,255,.05)' : undefined }}
           onClick={() => document.getElementById('gp-file-input')?.click()}>
-          <input id="gp-file-input" type="file" accept=".csv,.xlsx" multiple style={{ display: 'none' }} onChange={onFileChange} />
+          <input id="gp-file-input" type="file" accept=".csv,.xlsx,.xls" multiple style={{ display: 'none' }} onChange={onFileChange} />
           <div style={{ fontSize: 28, marginBottom: 8, opacity: .4 }}>⬆</div>
-          <div style={{ fontSize: 14, color: 'var(--label-2)' }}>Drop CSV files here or click to browse</div>
+          <div style={{ fontSize: 14, color: 'var(--label-2)' }}>Drop CSV or Excel files here or click to browse</div>
           <div style={{ fontSize: 12, color: 'var(--label-4)', marginTop: 4 }}>Collar, assay, survey, lithology — one file each</div>
         </div>
 
