@@ -36,10 +36,13 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2302': 'Table named in the query does not exist on this workbench.',
   'GP-2303': 'Column named in the query does not exist in the table.',
   'GP-2304': 'WHERE clause is invalid.',
+  'GP-2305': 'Backend data check failed — RPC returned an error (check supabase/setup.sql RPCs are installed).',
 
   'GP-2401': 'AI service unreachable — gold-ai edge function not deployed or network error.',
   'GP-2402': 'AI returned an unusable response.',
   'GP-2403': 'AI is not configured — ANTHROPIC_API_KEY secret missing on the edge function.',
+  'GP-2410': 'AI usage record failed to save (token meter may be incomplete).',
+  'GP-2411': 'Workbench layout failed to save — session resume may be out of date.',
 
   'GP-2501': 'Export failed — output has no rows.',
   'GP-2502': 'Output download failed — stored data could not be fetched.',

@@ -49,6 +49,7 @@ export interface Version {
   project_id: string
   operation: string
   row_count: number
+  data?: TableRow[]
   created_at: string
 }
 

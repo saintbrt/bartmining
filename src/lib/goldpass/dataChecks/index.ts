@@ -260,6 +260,17 @@ export function applyFix(def: CheckDef, rows: TableRow[], invMap: InvMap): Table
       return rows.map(r => { const nr = { ...r }; if (h && nr[h]) nr[h] = String(nr[h]).trim().toUpperCase().replace(/\s+/g, ''); return nr })
     case 'remove_empty_rows':
       return rows.filter(r => !Object.values(r).every(v => v == null || String(v).trim() === ''))
+    case 'find_null_placeholders': {
+      const PLACEHOLDERS = new Set(['n/a','na','null','-','--','none','nil','9999','-99','-9999','#n/a','tbd','.'])
+      return rows.map(r => {
+        const nr: TableRow = {}
+        Object.keys(r).forEach(k => {
+          const sv = String(r[k] == null ? '' : r[k]).trim().toLowerCase()
+          nr[k] = sv !== '' && PLACEHOLDERS.has(sv) ? '' : r[k]
+        })
+        return nr
+      })
+    }
     case 'find_duplicates': {
       const seen = new Set<string>(); const out: TableRow[] = []
       rows.forEach(r => { const key = JSON.stringify(r); if (!seen.has(key)) { seen.add(key); out.push(r) } })
@@ -363,4 +374,49 @@ export function buildCollarOutput(
     return out
   }).filter(Boolean) as TableRow[]
   return { rows }
+}
+
+
+/* ── Workbench composite helpers ── */
+
+/** Per-file grade summary: one row per grade column with min/avg/max. */
+export function gradeSummary(rows: TableRow[], invMap: InvMap, fileName: string): TableRow[] {
+  const out: TableRow[] = []
+  ;(['au', 'cu', 'ag'] as const).forEach(k => {
+    const col = getCol(invMap, k); if (!col) return
+    const vals = rows.map(r => num(r[col])).filter(v => v !== null) as number[]
+    if (!vals.length) return
+    out.push({
+      File: fileName, Column: col, Metal: k.toUpperCase(), Values: vals.length,
+      Min: Math.min(...vals).toFixed(3), Avg: (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(3), Max: Math.max(...vals).toFixed(3),
+    })
+  })
+  return out
+}
+
+/** Keep rows of A whose coordinates fall within maxDist metres of any
+    reference point. Reference points come from a second file's collar
+    coordinates, or a single typed E/N point. */
+export function distanceFilter(
+  rowsA: TableRow[], invA: InvMap,
+  refPoints: { e: number; n: number }[], maxDist: number,
+): { rows: TableRow[]; error?: string } {
+  const ec = getCol(invA, 'easting'), nc = getCol(invA, 'northing')
+  if (!ec || !nc) return { rows: [], error: 'This file needs East and North columns mapped.' }
+  if (!refPoints.length) return { rows: [], error: 'No reference coordinates available.' }
+  const d2 = maxDist * maxDist
+  const rows = rowsA.filter(r => {
+    const e = num(r[ec]), n = num(r[nc])
+    if (e === null || n === null) return false
+    return refPoints.some(p => (e - p.e) ** 2 + (n - p.n) ** 2 <= d2)
+  })
+  return { rows }
+}
+
+/** Extract collar coordinate points from a file (for distanceFilter refs). */
+export function coordPoints(rows: TableRow[], invMap: InvMap): { e: number; n: number }[] {
+  const ec = getCol(invMap, 'easting'), nc = getCol(invMap, 'northing')
+  if (!ec || !nc) return []
+  return rows.map(r => ({ e: num(r[ec]), n: num(r[nc]) }))
+    .filter(p => p.e !== null && p.n !== null) as { e: number; n: number }[]
 }

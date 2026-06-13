@@ -61,7 +61,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   function setProject(p: Project | null) {
     setProjectState(p)
-    if (p) router.push('/admin/validation')
+    if (p) {
+      // rows must be in the cache before any workbench/editor renders them
+      DB.loadProjectRows(p.id).then(() => refresh())
+      router.push('/admin/validation')
+    }
   }
 
   function getStageStatus(pid: string): StageStatus {

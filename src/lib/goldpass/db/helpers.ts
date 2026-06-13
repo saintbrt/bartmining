@@ -54,3 +54,12 @@ export function newId(): string {
   return crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2, 10)
 }
 export function ts(): string { return new Date().toISOString() }
+
+/* Excel export via SheetJS (lazy-loaded; same data shape as exportCsv). */
+export async function exportExcel(rows: Record<string, unknown>[], filename: string) {
+  const XLSX = await import('xlsx')
+  const ws = XLSX.utils.json_to_sheet(rows)
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, 'Data')
+  XLSX.writeFile(wb, filename.endsWith('.xlsx') ? filename : filename + '.xlsx')
+}

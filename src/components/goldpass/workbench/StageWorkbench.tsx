@@ -1,11 +1,11 @@
 'use client'
 
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { DB } from '@/lib/goldpass/db'
 import { invertColMapping } from '@/lib/goldpass/db/helpers'
 import { executeSQL } from '@/lib/goldpass/sqlEngine'
 import { notify } from '@/lib/goldpass/notify'
-import { CHECK_DEFS, CLEAN_DEFS, ANALYSIS_DEFS, runCheck, applyFix } from '@/lib/goldpass/dataChecks'
+import { CHECK_DEFS, CLEAN_DEFS, ANALYSIS_DEFS, distanceFilter, coordPoints } from '@/lib/goldpass/dataChecks'
 import type { CheckDef } from '@/lib/goldpass/dataChecks'
 import type { Project, TableMeta, TableRow } from '@/lib/goldpass/db'
 import FileCard, { CARD_W, CARD_HEADER_H, COL_ROW_H, MAX_COLS_SHOWN, cardHeight } from './FileCard'
@@ -32,24 +32,34 @@ const STAGE_ACTIONS: Record<Props['stage'], { id: string; label: string; minFile
     { id: 'missing_hole_ids',          label: 'Find Missing Hole IDs',   minFiles: 1 },
     { id: 'find_null_placeholders',    label: 'Find Missing Values',     minFiles: 1 },
     { id: 'check_collar_completeness', label: 'Check Coordinates',       minFiles: 1 },
+    { id: '_intervals',                label: 'Check Intervals',         minFiles: 1 },
     { id: '_files_match',              label: 'Check Files Match',       minFiles: 2 },
+    { id: '_undrilled',                label: 'Find Holes Without Data', minFiles: 2 },
+    { id: '_orphans',                  label: 'Find Data Without Holes', minFiles: 2 },
   ],
   cleaning: [
     { id: 'find_duplicates',     label: 'Remove Duplicate Rows', minFiles: 1 },
     { id: 'remove_empty_rows',   label: 'Remove Empty Rows',     minFiles: 1 },
     { id: 'standardise_hole_ids', label: 'Fix Hole ID Format',   minFiles: 1 },
     { id: 'trim_whitespace',     label: 'Trim Extra Spaces',     minFiles: 1 },
+    { id: 'find_null_placeholders_fix', label: 'Clear Placeholder Values', minFiles: 1 },
     { id: '_merge',              label: 'Merge Matching Files',  minFiles: 2 },
   ],
   analysis: [
-    { id: 'best_intercept', label: 'Find Best Holes',      minFiles: 1 },
-    { id: 'rank_by_grade',  label: 'Rank Holes by Grade',  minFiles: 1 },
-    { id: '_diff',          label: 'Compare Files',        minFiles: 2 },
+    { id: 'best_intercept',      label: 'Find Best Holes',         minFiles: 1 },
+    { id: 'rank_by_grade',       label: 'Rank Holes by Grade',     minFiles: 1 },
+    { id: '_grade_summary',      label: 'Grade Summary',           minFiles: 1 },
+    { id: 'detect_coord_system', label: 'Check Coordinate System', minFiles: 1 },
+    { id: '_distance',           label: 'Distance Filter',         minFiles: 1 },
+    { id: '_diff',               label: 'Compare Files',           minFiles: 2 },
   ],
 }
 
 const ALL_DEFS: CheckDef[] = [...CHECK_DEFS, ...CLEAN_DEFS, ...ANALYSIS_DEFS]
 const FIXING_IDS = new Set(['find_duplicates', 'remove_empty_rows', 'standardise_hole_ids', 'trim_whitespace'])
+
+/* Shape returned by the gp_run_check RPC (mirrors dataChecks CheckResult). */
+type CheckJson = { issues: TableRow[]; count: number; summary: string; cols: string[]; coordInfo?: Record<string, unknown>; error?: string }
 
 export default function StageWorkbench(props: Props) {
   const { stage, project, user, tables, onRefresh, stageDone, onApprove } = props
@@ -60,11 +70,48 @@ export default function StageWorkbench(props: Props) {
   const [newCardId, setNewCardId] = useState<string | null>(null)
   const [aiPrompt, setAiPrompt] = useState('')
   const [aiBusy, setAiBusy] = useState(false)
+  const [busyAction, setBusyAction] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const [showUpload, setShowUpload] = useState(false)
   const [openTable, setOpenTable] = useState<TableMeta | null>(null)
   const canvasRef = useRef<HTMLDivElement>(null)
   const dragRef = useRef<{ id: string; dx: number; dy: number } | null>(null)
+  const hydrated = useRef(false)
+
+  /* ── session resume: restore this stage's canvas from workbench_state ── */
+  useEffect(() => {
+    let cancelled = false
+    hydrated.current = false
+    DB.getWorkbenchState(project.id, stage).then(st => {
+      if (cancelled) return
+      if (st) {
+        const valid = st.layout.filter(l => tables.some(t => t.id === l.table_id))
+        setOnCanvas(valid.map(l => l.table_id))
+        setPositions(Object.fromEntries(valid.map(l => [l.table_id, { x: l.x, y: l.y }])))
+        setSelected(st.selection.filter(id => tables.some(t => t.id === id)))
+      }
+      hydrated.current = true
+    })
+    return () => { cancelled = true }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [project.id, stage])
+
+  /* persist the canvas (debounced) whenever it changes after hydration */
+  useEffect(() => {
+    if (!hydrated.current) return
+    const h = setTimeout(() => {
+      const layout = onCanvas.map(id => ({ table_id: id, x: positions[id]?.x ?? 60, y: positions[id]?.y ?? 60 }))
+      DB.saveWorkbenchState(project.id, stage, layout, selected)
+    }, 600)
+    return () => clearTimeout(h)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onCanvas, positions, selected])
+
+  /* run a backend data-check RPC; null means it errored (toast already shown) */
+  async function check(checkId: string, tableId: string, compareId?: string): Promise<CheckJson | null> {
+    const r = await DB.rpcRunCheck(checkId, tableId, compareId)
+    return r ? (r as unknown as CheckJson) : null
+  }
 
   const canvasTables = onCanvas.map(id => tables.find(t => t.id === id)).filter(Boolean) as TableMeta[]
   const selectedTables = selected.map(id => tables.find(t => t.id === id)).filter(Boolean) as TableMeta[]
@@ -105,6 +152,9 @@ export default function StageWorkbench(props: Props) {
   }
 
   function startDrag(id: string, e: React.PointerEvent) {
+    // Don't hijack clicks on the card's buttons (Open / ✕) into a drag —
+    // pointer capture would swallow their click events entirely.
+    if ((e.target as HTMLElement).closest('button')) return
     const pos = positions[id]; if (!pos) return
     dragRef.current = { id, dx: e.clientX - pos.x, dy: e.clientY - pos.y }
     ;(e.target as HTMLElement).closest('[data-canvas]')?.setPointerCapture?.(e.pointerId)
@@ -130,10 +180,19 @@ export default function StageWorkbench(props: Props) {
 
   /* ── actions ── */
 
-  function runAction(actionId: string) {
-    if (!selectedTables.length) return
+  async function runAction(actionId: string) {
+    if (!selectedTables.length || busyAction) return
+    console.info('[GoldPass] Action:', actionId, '→ files:', selectedTables.map(t => t.name))
     setMessage(null)
+    setBusyAction(actionId)
+    try {
+      await runActionInner(actionId)
+    } finally {
+      setBusyAction(null)
+    }
+  }
 
+  async function runActionInner(actionId: string) {
     if (actionId === '_merge') {
       const name = window.prompt(`Merge ${selectedTables.length} files into one. Name for the new file:`, `${project.name} merged`)
       if (!name?.trim()) return
@@ -144,11 +203,110 @@ export default function StageWorkbench(props: Props) {
       return
     }
 
+    if (actionId === '_intervals') {
+      // From≥To, overlaps and gaps in one pass, per selected file (backend)
+      for (const t of selectedTables) {
+        const parts: { def: CheckDef; r: CheckJson }[] = []
+        for (const id of ['from_greater_than_to', 'from_to_overlaps', 'from_to_gaps']) {
+          const def = ALL_DEFS.find(d => d.id === id)!
+          const r = await check(id, t.id)
+          if (!r) return
+          parts.push({ def, r })
+        }
+        const total = parts.reduce((a, p) => a + p.r.count, 0)
+        if (total === 0) { notify('success', `${t.name}: intervals look good — no From/To errors, overlaps or gaps.`); continue }
+        setMessage(`${t.name}: ${parts.map(p => `${p.r.count} ${p.def.label.toLowerCase()}`).join(', ')}.`)
+        const issues = parts.flatMap(p => p.r.issues.map(row => ({ Problem: p.def.label, ...row })))
+        if (window.confirm(`${t.name}: ${total} interval problem(s) found.\n\nSave them as a Result File on the workbench?`)) {
+          const meta = DB.createChildTable(project.id, `Interval problems · ${t.name}`.slice(0, 60), issues, [t.id], user.email)
+          spawnResultCard(meta, [t.id])
+        }
+      }
+      onRefresh(); return
+    }
+
+    if (actionId === '_undrilled' || actionId === '_orphans') {
+      // two-file checks: collar side vs interval side, auto-detected by file type
+      const [A, B] = selectedTables
+      if (!A || !B) { setMessage('Select two files first.'); return }
+      const collarFirst = A.type === 'collar' || B.type !== 'collar'
+      const main = actionId === '_undrilled' ? (collarFirst ? A : B) : (collarFirst ? B : A)
+      const other = main.id === A.id ? B : A
+      const def = ALL_DEFS.find(d => d.id === (actionId === '_undrilled' ? 'find_undrilled' : 'find_orphan_assays'))!
+      const res = await check(def.id, main.id, other.id)
+      if (!res) return
+      if (res.count === 0) { notify('success', `${main.name} vs ${other.name}: ${res.summary}`); return }
+      setMessage(`${main.name} vs ${other.name}: ${res.summary}`)
+      if (window.confirm(`${res.summary}\n\nSave these rows as a Result File?`)) {
+        const meta = DB.createChildTable(project.id, `${def.label} · ${main.name}`.slice(0, 60), res.issues, [A.id, B.id], user.email)
+        spawnResultCard(meta, [A.id, B.id]); onRefresh()
+      }
+      return
+    }
+
+    if (actionId === 'find_null_placeholders_fix') {
+      for (const t of selectedTables) {
+        const res = await check('find_null_placeholders', t.id)
+        if (!res) continue
+        if (res.count === 0) { notify('success', `${t.name}: no placeholder values found.`); continue }
+        if (!window.confirm(`${t.name}: ${res.summary}\n\nReplace all placeholders (N/A, -99, 9999…) with real blanks? A version is saved first.`)) continue
+        const fixed = await DB.rpcApplyFix('find_null_placeholders', t.id)
+        if (!fixed) continue
+        DB.replaceRows(t.id, fixed, user.email, 'clear_placeholders', `Cleared placeholder values in "${t.name}"`)
+        notify('success', `${t.name}: placeholder values cleared.`)
+      }
+      onRefresh(); return
+    }
+
+    if (actionId === '_grade_summary') {
+      const rows: TableRow[] = []
+      for (const t of selectedTables) {
+        const g = await DB.rpcGradeSummary(t.id)
+        if (g) rows.push(...g)
+      }
+      if (!rows.length) { setMessage('No grade columns (gold/copper/silver) mapped in the selected files.'); return }
+      const meta = DB.createChildTable(project.id, `Grade summary · ${selectedTables.map(t => t.name).join(' + ')}`.slice(0, 60), rows, selected, user.email)
+      spawnResultCard(meta, selected)
+      notify('success', `Grade summary created — ${rows.length} rows.`)
+      onRefresh(); return
+    }
+
+    if (actionId === '_distance') {
+      const distStr = window.prompt('Keep holes within how many metres? (e.g. 8000 ≈ 5 miles)', '1000')
+      const maxDist = parseFloat(distStr ?? '')
+      if (isNaN(maxDist) || maxDist <= 0) return
+      const [A, B] = selectedTables
+      let resRows: TableRow[]
+      let refLabel: string
+      if (B) {
+        // backend distance filter against the reference file's coordinates
+        const res = await DB.rpcDistanceFilter(A.id, B.id, maxDist)
+        if (!res) return
+        if (res.error) { setMessage(`${A.name}: ${res.error}`); return }
+        resRows = res.rows
+        refLabel = `holes in ${B.name}`
+      } else {
+        // single typed point: no reference table, so this stays client-side
+        const pt = window.prompt('Reference point as "East, North" (e.g. 412345, 9567890):')
+        const [e, n] = (pt ?? '').split(',').map(v => parseFloat(v.trim()))
+        if (isNaN(e) || isNaN(n)) return
+        const res = distanceFilter(DB.getRows(A.id, 0), invertColMapping(A.columns), [{ e, n }], maxDist)
+        if (res.error) { setMessage(`${A.name}: ${res.error}`); return }
+        resRows = res.rows
+        refLabel = `point ${e}, ${n}`
+      }
+      if (!resRows.length) { setMessage(`${A.name}: no holes within ${maxDist.toLocaleString()} m of ${refLabel}.`); return }
+      const meta = DB.createChildTable(project.id, `Within ${maxDist.toLocaleString()}m · ${A.name}`.slice(0, 60), resRows, selected, user.email)
+      spawnResultCard(meta, selected)
+      notify('success', `${resRows.length.toLocaleString()} hole(s) within ${maxDist.toLocaleString()} m of ${refLabel}.`)
+      onRefresh(); return
+    }
+
     if (actionId === '_files_match' || actionId === '_diff') {
       const [A, B] = selectedTables
       if (!A || !B) { setMessage('Select two files first.'); return }
-      const def = ALL_DEFS.find(d => d.id === 'diff_tables')!
-      const res = runCheck(def, DB.getRows(A.id, 0), invertColMapping(A.columns), { rows: DB.getRows(B.id, 0), invMap: invertColMapping(B.columns), columns: B.columns }, A.columns)
+      const res = await check('diff_tables', A.id, B.id)
+      if (!res) return
       setMessage(`${A.name} vs ${B.name}: ${res.summary}`)
       if (res.count > 0 && window.confirm(`${res.summary}\n\nSave the differing rows as a Result File on the workbench?`)) {
         const meta = DB.createChildTable(project.id, `Differences · ${A.name} vs ${B.name}`.slice(0, 60), res.issues, [A.id, B.id], user.email)
@@ -160,40 +318,50 @@ export default function StageWorkbench(props: Props) {
     const def = ALL_DEFS.find(d => d.id === actionId)
     if (!def) return
 
-    selectedTables.forEach(t => {
-      const rows = DB.getRows(t.id, 0)
-      const invMap = invertColMapping(t.columns)
-      const res = runCheck(def, rows, invMap, undefined, t.columns)
+    for (const t of selectedTables) {
+      const res = await check(def.id, t.id)
+      if (!res) continue
       if (FIXING_IDS.has(actionId)) {
-        if (res.count === 0) { notify('info', `${t.name}: ${res.summary}`); return }
-        if (!window.confirm(`${t.name}: ${res.summary}\n\nApply the fix now? (A new version is recorded — nothing is lost.)`)) return
-        const fixed = applyFix(def, rows, invMap)
+        if (res.count === 0) { notify('info', `${t.name}: ${res.summary}`); continue }
+        if (!window.confirm(`${t.name}: ${res.summary}\n\nApply the fix now? (A new version is recorded — nothing is lost.)`)) continue
+        const fixed = await DB.rpcApplyFix(def.id, t.id)
+        if (!fixed) continue
         DB.replaceRows(t.id, fixed, user.email, def.id, `${def.label} on "${t.name}"`)
         notify('success', `${t.name}: done — ${def.label.toLowerCase()}.`)
       } else {
         setMessage(`${t.name}: ${res.summary}`)
+        if (res.issues.length === 0) notify('success', `${t.name}: all clear — ${res.summary}`)
         if (res.issues.length > 0 && window.confirm(`${t.name}: ${res.summary}\n\nSave these rows as a Result File on the workbench?`)) {
           const meta = DB.createChildTable(project.id, `${def.label} · ${t.name}`.slice(0, 60), res.issues, [t.id], user.email)
           spawnResultCard(meta, [t.id])
         }
       }
-    })
+    }
     onRefresh()
   }
 
   async function askAi() {
     const q = aiPrompt.trim()
-    if (!q || !selectedTables.length) { setMessage('Select 1-4 files, then describe what you want.'); return }
+    if (!q || !selectedTables.length) { setMessage('Select 1-4 files on the workbench first (click a card), then describe what you want.'); return }
     setAiBusy(true)
     setMessage('Working on it…')
+    console.info('[GoldPass] Ask AI →', { files: selectedTables.map(t => t.name), question: q })
     try {
       const scoped = `Using only these files: ${selectedTables.map(t => t.name).join(', ')}. ${q}`
       const res = await DB.goldAI(project.id, scoped)
-      if (res.error || !res.sql) { setMessage(res.error ?? 'The AI could not build that request.'); return }
+      if (res.error || !res.sql) {
+        console.error('[GoldPass] Ask AI failed at the AI step:', res.error, res.code)
+        setMessage(res.error ?? 'The AI could not build that request.'); return
+      }
+      console.info('[GoldPass] AI SQL ←', res.sql, res.note ? `(${res.note})` : '')
       const exec = executeSQL(res.sql, tables, (id) => DB.getRows(id, 0))
-      if ('error' in exec) { setMessage(exec.error); notify('error', exec.error, exec.code); return }
+      if ('error' in exec) {
+        console.error('[GoldPass] Ask AI failed running the SQL:', exec.error, exec.code)
+        setMessage(exec.error); notify('error', exec.error, exec.code); return
+      }
       if (exec.action === 'delete') { setMessage('That request would remove rows — please use the cleaning actions for removals.'); return }
-      if (!exec.rows.length) { setMessage('Nothing matched that request — no Result File created.'); return }
+      if (!exec.rows.length) { console.info('[GoldPass] Ask AI: query ran, 0 rows.'); setMessage('Nothing matched that request — no Result File created.'); return }
+      console.info('[GoldPass] Ask AI: query ran,', exec.rows.length, 'rows → creating Result File.')
       const meta = DB.createChildTable(project.id, `AI · ${q.slice(0, 48)}`, exec.rows, selectedTables.map(t => t.id), user.email)
       spawnResultCard(meta, selected)
       setMessage(`Created "${meta.name}" — ${exec.rows.length.toLocaleString()} rows.`)
@@ -325,16 +493,17 @@ export default function StageWorkbench(props: Props) {
           </span>
           {STAGE_ACTIONS[stage].map(a => (
             <button key={a.id} className="btn btn-secondary btn-sm" style={{ fontSize: 12 }}
-              disabled={selected.length < a.minFiles}
+              disabled={selected.length < a.minFiles || !!busyAction}
               title={selected.length < a.minFiles ? `Select at least ${a.minFiles} file${a.minFiles > 1 ? 's' : ''}` : undefined}
-              onClick={() => runAction(a.id)}>{a.label}</button>
+              onClick={() => runAction(a.id)}>{busyAction === a.id ? '…' : a.label}</button>
           ))}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <input className="input" style={{ flex: 1, fontSize: 13 }} value={aiPrompt} onChange={e => setAiPrompt(e.target.value)}
             placeholder='Ask AI about the selected files… e.g. "find the best holes among these files" or "remove holes with duplicate values"'
             onKeyDown={e => { if (e.key === 'Enter') askAi() }} />
-          <button className="btn btn-primary btn-sm" onClick={askAi} disabled={aiBusy || !selected.length}>{aiBusy ? '…' : 'Ask AI'}</button>
+          <button className="btn btn-primary btn-sm" onClick={askAi} disabled={aiBusy || !selected.length}
+            title={!selected.length ? 'Select 1-4 files on the workbench first' : undefined}>{aiBusy ? '…' : 'Ask AI'}</button>
         </div>
         {message && <div style={{ fontSize: 12, color: 'var(--label-2)', padding: '4px 2px' }}>{message}</div>}
       </div>

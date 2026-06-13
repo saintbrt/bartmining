@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import HeroSection from '@/components/sections/HeroSection'
+import MarqueeSection from '@/components/sections/MarqueeSection'
 import ServiceGrid from '@/components/sections/ServiceGrid'
 import PhasesSection from '@/components/sections/PhasesSection'
 import PillarsSection from '@/components/sections/PillarsSection'
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <MarqueeSection />
       <ServiceGrid />
 
       {/* Methodology */}

@@ -129,6 +129,11 @@ export default function DashboardPage() {
               const tables = DB.getTables(p.id)
               const rows = tables.reduce((a, t) => a + t.row_count, 0)
               const colors = ['#007AFF', '#34C759', '#FF9500', '#AF52DE', '#FF3B30']
+              const ss = DB.getStageStatus(p.id)
+              const stages: { key: 'validation' | 'cleaning' | 'analysis'; label: string }[] = [
+                { key: 'validation', label: 'Validation' }, { key: 'cleaning', label: 'Cleaning' }, { key: 'analysis', label: 'Analysis' },
+              ]
+              const nextStage = stages.find(s => ss[s.key] !== 'done')
               return (
                 <div key={p.id} className="card" style={{ cursor: 'pointer', borderColor: 'var(--sep)', transition: 'border-color .15s' }}
                   onClick={() => setProject(p)}
@@ -137,13 +142,31 @@ export default function DashboardPage() {
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 10, height: 10, borderRadius: '50%', background: colors[i % 5] }} />
-                    <div style={{ fontSize: 14, fontWeight: 600 }}>{p.name}</div>
+                    <div style={{ fontSize: 14, fontWeight: 600, flex: 1 }}>{p.name}</div>
+                    <button className="btn-icon" style={{ fontSize: 10, padding: '2px 7px' }} title="Rename project"
+                      onClick={e => { e.stopPropagation(); const n = window.prompt('Rename project:', p.name); if (n?.trim()) { DB.renameProject(p.id, n); ctx!.refresh() } }}>✎</button>
+                    <button className="btn-icon" style={{ fontSize: 10, padding: '2px 7px', color: 'var(--red)' }} title="Delete project"
+                      onClick={e => {
+                        e.stopPropagation()
+                        const typed = window.prompt(`This permanently deletes "${p.name}" and ALL its files, versions and outputs.\n\nType the project name to confirm:`)
+                        if (typed !== p.name) { if (typed !== null) window.alert('Name did not match — nothing was deleted.'); return }
+                        DB.deleteProject(p.id); ctx!.refresh()
+                      }}>✕</button>
                   </div>
                   <div style={{ display: 'flex', gap: 16 }}>
-                    <div style={{ fontSize: 12, color: 'var(--label-3)' }}>{tables.length} table{tables.length !== 1 ? 's' : ''}</div>
+                    <div style={{ fontSize: 12, color: 'var(--label-3)' }}>{tables.length} file{tables.length !== 1 ? 's' : ''}</div>
                     <div style={{ fontSize: 12, color: 'var(--label-3)' }}>{rows.toLocaleString()} rows</div>
                   </div>
-                  <div style={{ marginTop: 12, fontSize: 12, color: colors[i % 5] }}>Open →</div>
+                  <div style={{ display: 'flex', gap: 8, marginTop: 10 }}>
+                    {stages.map(s => (
+                      <span key={s.key} title={`${s.label}: ${ss[s.key]}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 10, color: ss[s.key] === 'done' ? 'var(--green)' : 'var(--label-4)' }}>
+                        <span style={{ width: 7, height: 7, borderRadius: 4, background: ss[s.key] === 'done' ? 'var(--green)' : 'var(--label-4)' }} />{s.label}
+                      </span>
+                    ))}
+                  </div>
+                  <div style={{ marginTop: 12, fontSize: 12, color: colors[i % 5] }}>
+                    {nextStage ? `Continue: ${nextStage.label} →` : 'All stages done — Outputs →'}
+                  </div>
                 </div>
               )
             })}

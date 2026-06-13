@@ -130,6 +130,23 @@ export const DB = {
     }
   },
 
+  /* Lazy single-file row loader — fetch one file's rows on demand (medium data:
+     10k–100k rows/file). Refreshes the cache so getRows() stays synchronous for
+     the UI. Returns the rows it loaded. */
+  async loadTableRows(tableId: string): Promise<TableRow[]> {
+    const client = sb()
+    const meta = _c.meta[tableId]
+    const { data: rows, error } = await client.from('table_rows').select('data').eq('table_id', tableId).order('row_index')
+    if (error) { gpError('GP-2208', `rows for "${meta?.name ?? tableId}": ${error.message}`); return _c.rows[tableId] ?? [] }
+    _c.rows[tableId] = ((rows ?? []) as { data: TableRow }[]).map(r => r.data)
+    if (!_c.versions[tableId]) {
+      const { data: vers } = await client.from('versions').select('*').eq('table_id', tableId).order('created_at', { ascending: false })
+      _c.versions[tableId] = (vers as Version[]) ?? []
+    }
+    return _c.rows[tableId]
+  },
+  rowsLoaded(tableId: string): boolean { return Array.isArray(_c.rows[tableId]) },
+
   /* ── PROJECTS ── */
   getProjects(): Project[] { return _c.projects.slice() },
   createProject(name: string): Project {
@@ -176,7 +193,7 @@ export const DB = {
       const { error: me } = await client.from('tables_meta').insert({ id, project_id: projectId, name: meta.name, type, columns: colMapping, row_count: rows.length })
       if (me) throw me
       await insertRowsChunked(id, projectId, rows)
-      await client.from('versions').insert({ table_id: id, project_id: projectId, operation: 'import', row_count: rows.length })
+      await client.from('versions').insert({ table_id: id, project_id: projectId, operation: 'import', row_count: rows.length, data: rows })
     }, 'GP-2202', `table "${meta.name}" (${rows.length} rows)`)
     this.log(projectId, id, 'import', `Imported "${meta.name}" (${type}) — ${rows.length.toLocaleString()} rows`, userId)
     return meta
@@ -195,7 +212,7 @@ export const DB = {
       const { error: de } = await client.from('table_rows').delete().eq('table_id', tableId); if (de) throw de
       await insertRowsChunked(tableId, projectId, newRows)
       await client.from('tables_meta').update({ row_count: newRows.length, updated_at: ts() }).eq('id', tableId)
-      await client.from('versions').insert({ table_id: tableId, project_id: projectId, operation, row_count: newRows.length })
+      await client.from('versions').insert({ table_id: tableId, project_id: projectId, operation, row_count: newRows.length, data: newRows })
     }, 'GP-2203', `"${meta?.name ?? tableId}" (${operation})`)
     this.log(projectId, tableId, operation, detail, userId)
   },
@@ -221,7 +238,7 @@ export const DB = {
       const { error: me } = await client.from('tables_meta').insert({ id, project_id: projectId, name: meta.name, type: 'child', columns: colMapping, row_count: rows.length, parent_ids: parentIds })
       if (me) throw me
       await insertRowsChunked(id, projectId, rows)
-      await client.from('versions').insert({ table_id: id, project_id: projectId, operation: 'derived', row_count: rows.length })
+      await client.from('versions').insert({ table_id: id, project_id: projectId, operation: 'derived', row_count: rows.length, data: rows })
     }, 'GP-2202', `derived table "${meta.name}"`)
     this.log(projectId, id, 'derived', `Created derived table "${meta.name}" — ${rows.length.toLocaleString()} rows`, userId)
     return meta
@@ -280,6 +297,75 @@ export const DB = {
 
   getVersions(tableId: string): Version[] { return (_c.versions[tableId] ?? []).slice() },
 
+  /* Restore a table to the row snapshot stored with a version. */
+  async restoreVersion(tableId: string, versionId: string, userId?: string): Promise<boolean> {
+    const client = sb()
+    const { data, error } = await client.from('versions').select('data,operation,created_at').eq('id', versionId).single()
+    if (error || !Array.isArray(data?.data)) { gpError('GP-2209', error?.message ?? 'version has no stored rows'); return false }
+    const when = new Date(data.created_at).toLocaleString()
+    this.replaceRows(tableId, data.data as TableRow[], userId, 'restore', `Restored version from ${when} (${data.operation})`)
+    return true
+  },
+
+  renameTable(tableId: string, name: string, userId?: string) {
+    const meta = _c.meta[tableId]; if (!meta || !name.trim()) return
+    meta.name = name.trim(); meta.updated_at = ts()
+    _c.tables[meta.project_id] = (_c.tables[meta.project_id] ?? []).map(t => t.id === tableId ? { ...t, name: meta.name } : t)
+    const client = sb()
+    bg(async () => { const { error } = await client.from('tables_meta').update({ name: meta.name, updated_at: ts() }).eq('id', tableId); if (error) throw error }, 'GP-2203', `rename "${meta.name}"`)
+    this.log(meta.project_id, tableId, 'rename', `Renamed file to "${meta.name}"`, userId)
+  },
+
+  setTableType(tableId: string, type: string, userId?: string) {
+    const meta = _c.meta[tableId]; if (!meta) return
+    meta.type = type; meta.updated_at = ts()
+    _c.tables[meta.project_id] = (_c.tables[meta.project_id] ?? []).map(t => t.id === tableId ? { ...t, type } : t)
+    const client = sb()
+    bg(async () => { const { error } = await client.from('tables_meta').update({ type, updated_at: ts() }).eq('id', tableId); if (error) throw error }, 'GP-2203', `type of "${meta.name}"`)
+    this.log(meta.project_id, tableId, 'retype', `Changed file type of "${meta.name}" to ${type}`, userId)
+  },
+
+  setTableColumns(tableId: string, columns: Record<string, string>, rows: TableRow[] | null, userId?: string, detail = 'Updated columns') {
+    const meta = _c.meta[tableId]; if (!meta) return
+    meta.columns = columns; meta.updated_at = ts()
+    _c.tables[meta.project_id] = (_c.tables[meta.project_id] ?? []).map(t => t.id === tableId ? { ...t, columns } : t)
+    const client = sb()
+    bg(async () => { const { error } = await client.from('tables_meta').update({ columns, updated_at: ts() }).eq('id', tableId); if (error) throw error }, 'GP-2203', `columns of "${meta.name}"`)
+    if (rows) this.replaceRows(tableId, rows, userId, 'columns', detail)
+    else this.log(meta.project_id, tableId, 'columns', detail, userId)
+  },
+
+  renameProject(projectId: string, name: string, userId?: string) {
+    const p = _c.projects.find(x => x.id === projectId); if (!p || !name.trim()) return
+    p.name = name.trim(); p.updated_at = ts()
+    const client = sb()
+    bg(async () => { const { error } = await client.from('projects').update({ name: p.name, updated_at: ts() }).eq('id', projectId); if (error) throw error }, 'GP-2201', `rename project`)
+    this.log(projectId, null, 'rename', `Renamed project to "${p.name}"`, userId)
+  },
+
+  deleteProject(projectId: string, userId?: string) {
+    const p = _c.projects.find(x => x.id === projectId)
+    _c.projects = _c.projects.filter(x => x.id !== projectId)
+    ;(_c.tables[projectId] ?? []).forEach(t => { delete _c.rows[t.id]; delete _c.versions[t.id]; delete _c.meta[t.id] })
+    delete _c.tables[projectId]; delete _c.audit[projectId]; delete _c.outputs[projectId]; delete _c.stages[projectId]
+    const client = sb()
+    bg(async () => { const { error } = await client.from('projects').delete().eq('id', projectId); if (error) throw error }, 'GP-2204', `project "${p?.name ?? projectId}"`)
+  },
+
+  renameOutput(outputId: string, projectId: string, name: string) {
+    if (!name.trim()) return
+    _c.outputs[projectId] = (_c.outputs[projectId] ?? []).map(o => o.id === outputId ? { ...o, name: name.trim() } : o)
+    const client = sb()
+    bg(async () => { const { error } = await client.from('outputs').update({ name: name.trim() }).eq('id', outputId); if (error) throw error }, 'GP-2206', 'rename output')
+  },
+
+  deleteOutput(outputId: string, projectId: string) {
+    const o = (_c.outputs[projectId] ?? []).find(x => x.id === outputId)
+    _c.outputs[projectId] = (_c.outputs[projectId] ?? []).filter(x => x.id !== outputId)
+    const client = sb()
+    bg(async () => { const { error } = await client.from('outputs').delete().eq('id', outputId); if (error) throw error }, 'GP-2206', `delete output "${o?.name ?? outputId}"`)
+  },
+
   /* ── AI (gold-ai edge function — schema-aware NL → SQL) ── */
   async goldAI(projectId: string, question: string): Promise<{ sql?: string; note?: string; error?: string; code?: string }> {
     if (!this.ready()) return { error: gpError('GP-2314', 'AI request blocked'), code: 'GP-2314' }
@@ -301,10 +387,76 @@ export const DB = {
         return { error: gpError(code, `HTTP ${r.status}`), code }
       }
       const json = await r.json()
+      if (json?.usage) this.logAiUsage(projectId, json.model ?? 'claude-sonnet-4-6', json.usage.input_tokens ?? 0, json.usage.output_tokens ?? 0)
       if (!json?.sql || typeof json.sql !== 'string') return { error: gpError('GP-2402', JSON.stringify(json).slice(0, 120)), code: 'GP-2402' }
       return { sql: json.sql, note: json.note }
     } catch (e) {
       return { error: gpError('GP-2401', e instanceof Error ? e.message : String(e)), code: 'GP-2401' }
     }
+  },
+
+  /* ── AI USAGE (token + $ budget tracking for the Settings meter) ── */
+  logAiUsage(projectId: string, model: string, tokensIn: number, tokensOut: number) {
+    const client = sb()
+    bg(async () => {
+      const { error } = await client.from('ai_usage').insert({ project_id: projectId, model, tokens_in: tokensIn, tokens_out: tokensOut })
+      if (error) throw error
+    }, 'GP-2410', 'AI usage logging')
+  },
+  /* Sum this calendar month's tokens across all of the user's projects.
+     Sonnet 4.6 pricing: $3 / 1M input, $15 / 1M output. */
+  async getAiUsageThisMonth(): Promise<{ tokensIn: number; tokensOut: number; requests: number; cost: number }> {
+    const client = sb()
+    const since = new Date(); since.setDate(1); since.setHours(0, 0, 0, 0)
+    const { data, error } = await client.from('ai_usage').select('tokens_in,tokens_out').gte('created_at', since.toISOString())
+    if (error || !data) return { tokensIn: 0, tokensOut: 0, requests: 0, cost: 0 }
+    const tokensIn = data.reduce((a, r) => a + (r.tokens_in ?? 0), 0)
+    const tokensOut = data.reduce((a, r) => a + (r.tokens_out ?? 0), 0)
+    const cost = (tokensIn * 3 + tokensOut * 15) / 1_000_000
+    return { tokensIn, tokensOut, requests: data.length, cost }
+  },
+
+  /* ── WORKBENCH STATE (per project+stage canvas layout, for session resume) ── */
+  saveWorkbenchState(projectId: string, stage: string, layout: { table_id: string; x: number; y: number }[], selection: string[]) {
+    const client = sb()
+    bg(async () => {
+      const { error } = await client.from('workbench_state').upsert({ project_id: projectId, stage, layout, selection, updated_at: ts() })
+      if (error) throw error
+    }, 'GP-2411', `workbench layout (${stage})`)
+  },
+  async getWorkbenchState(projectId: string, stage: string): Promise<{ layout: { table_id: string; x: number; y: number }[]; selection: string[] } | null> {
+    const client = sb()
+    const { data, error } = await client.from('workbench_state').select('layout,selection').eq('project_id', projectId).eq('stage', stage).maybeSingle()
+    if (error || !data) return null
+    return { layout: (data.layout ?? []) as { table_id: string; x: number; y: number }[], selection: (data.selection ?? []) as string[] }
+  },
+
+  /* ── BACKEND CHECK RPCs (Step 2 parity port; run where the rows live) ──
+     Each returns the same shape as runCheck()/applyFix() in dataChecks, so the
+     thin client wrappers (Step 7) can swap to these without UI changes. */
+  async rpcRunCheck(checkId: string, tableId: string, compareId?: string): Promise<Record<string, unknown> | null> {
+    const { data, error } = await sb().rpc('gp_run_check', { p_check: checkId, p_table: tableId, p_compare: compareId ?? null })
+    if (error) { gpError('GP-2305', `${checkId}: ${error.message}`); return null }
+    return data as Record<string, unknown>
+  },
+  async rpcApplyFix(checkId: string, tableId: string): Promise<TableRow[] | null> {
+    const { data, error } = await sb().rpc('gp_apply_fix', { p_check: checkId, p_table: tableId })
+    if (error) { gpError('GP-2305', `${checkId} fix: ${error.message}`); return null }
+    return ((data as { rows?: TableRow[] })?.rows ?? []) as TableRow[]
+  },
+  async rpcBuildCollarOutput(collarId: string, intervalId: string): Promise<{ rows: TableRow[]; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_build_collar_output', { p_collar: collarId, p_interval: intervalId })
+    if (error) { gpError('GP-2303', error.message); return null }
+    return data as { rows: TableRow[]; error?: string }
+  },
+  async rpcGradeSummary(tableId: string): Promise<TableRow[] | null> {
+    const { data, error } = await sb().rpc('gp_grade_summary', { p_table: tableId })
+    if (error) { gpError('GP-2305', `grade summary: ${error.message}`); return null }
+    return (data ?? []) as TableRow[]
+  },
+  async rpcDistanceFilter(tableId: string, refId: string, maxDist: number): Promise<{ rows: TableRow[]; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_distance_filter', { p_table: tableId, p_ref: refId, p_max: maxDist })
+    if (error) { gpError('GP-2305', `distance filter: ${error.message}`); return null }
+    return data as { rows: TableRow[]; error?: string }
   },
 }

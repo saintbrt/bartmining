@@ -36,8 +36,12 @@ export default function Services() {
       </section>
 
       {/* Service detail list */}
-      <section className="sec-gap" style={{ paddingTop: 10 }}>
+      <section className="sec-gap" style={{ paddingTop: 80 }}>
         <div className="px-site">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Capabilities</span>
+            <h2>What we do, in detail.</h2>
+          </Reveal>
           <ServiceGrid showAll />
         </div>
       </section>
