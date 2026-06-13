@@ -96,6 +96,13 @@ export default function StageWorkbench(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [project.id, stage])
 
+  /* auto-select files placed on the canvas so actions/AI work without manual clicking */
+  useEffect(() => {
+    if (!hydrated.current) return
+    if (onCanvas.length && selected.length === 0) setSelected(onCanvas.slice(0, 4))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onCanvas])
+
   /* persist the canvas (debounced) whenever it changes after hydration */
   useEffect(() => {
     if (!hydrated.current) return
