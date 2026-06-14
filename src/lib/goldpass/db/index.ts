@@ -459,4 +459,44 @@ export const DB = {
     if (error) { gpError('GP-2305', `distance filter: ${error.message}`); return null }
     return data as { rows: TableRow[]; error?: string }
   },
+  async rpcCombineAndDedupe(tableIds: string[]): Promise<{ clean: TableRow[]; duplicates: TableRow[]; anomalies: { type: string; message: string }[]; summary: string; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_combine_and_dedupe', { p_tables: tableIds })
+    if (error) { gpError('GP-2305', `combine & dedupe: ${error.message}`); return null }
+    return data as { clean: TableRow[]; duplicates: TableRow[]; anomalies: { type: string; message: string }[]; summary: string; error?: string }
+  },
+  async rpcFixFormatting(tableIds: string[]): Promise<{ files: { table_id: string; rows: TableRow[]; trimmed: number; standardised: number; removed_empty: number; placeholders_cleared: number }[]; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_fix_formatting', { p_tables: tableIds })
+    if (error) { gpError('GP-2305', `fix formatting: ${error.message}`); return null }
+    return data as { files: { table_id: string; rows: TableRow[]; trimmed: number; standardised: number; removed_empty: number; placeholders_cleared: number }[]; error?: string }
+  },
+  async rpcCheckIntervals(tableIds: string[]): Promise<{ order_issues: TableRow[]; overlaps: TableRow[]; gaps: TableRow[]; count: number; summary: string; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_check_intervals', { p_tables: tableIds })
+    if (error) { gpError('GP-2305', `check intervals: ${error.message}`); return null }
+    return data as { order_issues: TableRow[]; overlaps: TableRow[]; gaps: TableRow[]; count: number; summary: string; error?: string }
+  },
+  async rpcCheckDataHealth(tableIds: string[]): Promise<{ issues: TableRow[]; negative_grades: number; coord_outliers: number; incomplete_collars: number; count: number; coord_system: { system: string; confidence: string; notes: string; avg_e: number; avg_n: number }; summary: string; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_check_data_health', { p_tables: tableIds })
+    if (error) { gpError('GP-2305', `check data health: ${error.message}`); return null }
+    return data as { issues: TableRow[]; negative_grades: number; coord_outliers: number; incomplete_collars: number; count: number; coord_system: { system: string; confidence: string; notes: string; avg_e: number; avg_n: number }; summary: string; error?: string }
+  },
+  async rpcFindUndrilledOrphans(collarIds: string[], intervalIds: string[]): Promise<{ undrilled: TableRow[]; orphans: TableRow[]; count: number; summary: string; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_find_undrilled_orphans', { p_collars: collarIds, p_intervals: intervalIds })
+    if (error) { gpError('GP-2305', `find undrilled/orphans: ${error.message}`); return null }
+    return data as { undrilled: TableRow[]; orphans: TableRow[]; count: number; summary: string; error?: string }
+  },
+  async rpcCompareFiles(tableIds: string[]): Promise<{ issues: TableRow[]; count: number; summary: string; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_compare_files', { p_tables: tableIds })
+    if (error) { gpError('GP-2305', `compare files: ${error.message}`); return null }
+    return data as { issues: TableRow[]; count: number; summary: string; error?: string }
+  },
+  async rpcAnalysisPool(tableIds: string[]): Promise<{ grade_summary: TableRow[]; best_intercept: TableRow[]; rank_by_grade: TableRow[]; summary: string; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_analysis_pool', { p_tables: tableIds })
+    if (error) { gpError('GP-2305', `analysis: ${error.message}`); return null }
+    return data as { grade_summary: TableRow[]; best_intercept: TableRow[]; rank_by_grade: TableRow[]; summary: string; error?: string }
+  },
+  async rpcDistanceFilterPooled(tableId: string, refIds: string[], maxDist: number): Promise<{ rows: TableRow[]; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_distance_filter_pooled', { p_table: tableId, p_refs: refIds, p_max: maxDist })
+    if (error) { gpError('GP-2305', `distance filter: ${error.message}`); return null }
+    return data as { rows: TableRow[]; error?: string }
+  },
 }

@@ -37,6 +37,7 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2303': 'Column named in the query does not exist in the table.',
   'GP-2304': 'WHERE clause is invalid.',
   'GP-2305': 'Backend data check failed — RPC returned an error (check supabase/setup.sql RPCs are installed).',
+  'GP-2306': 'Data anomaly flagged during combine & dedupe — manual review recommended.',
 
   'GP-2401': 'AI service unreachable — gold-ai edge function not deployed or network error.',
   'GP-2402': 'AI returned an unusable response.',

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import GpToasts from '@/components/goldpass/GpToasts'
+import GpConfirm from '@/components/goldpass/GpConfirm'
 import './admin.css'
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="gp-root">
       {children}
       <GpToasts />
+      <GpConfirm />
     </div>
   )
 }

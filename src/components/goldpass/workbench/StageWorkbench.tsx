@@ -5,6 +5,7 @@ import { DB } from '@/lib/goldpass/db'
 import { invertColMapping } from '@/lib/goldpass/db/helpers'
 import { executeSQL } from '@/lib/goldpass/sqlEngine'
 import { notify } from '@/lib/goldpass/notify'
+import { confirmDialog } from '@/lib/goldpass/confirm'
 import { CHECK_DEFS, CLEAN_DEFS, ANALYSIS_DEFS, distanceFilter, coordPoints } from '@/lib/goldpass/dataChecks'
 import type { CheckDef } from '@/lib/goldpass/dataChecks'
 import type { Project, TableMeta, TableRow } from '@/lib/goldpass/db'
@@ -31,27 +32,19 @@ const STAGE_ACTIONS: Record<Props['stage'], { id: string; label: string; minFile
   validation: [
     { id: 'missing_hole_ids',          label: 'Find Missing Hole IDs',   minFiles: 1 },
     { id: 'find_null_placeholders',    label: 'Find Missing Values',     minFiles: 1 },
-    { id: 'check_collar_completeness', label: 'Check Coordinates',       minFiles: 1 },
+    { id: '_data_health',              label: 'Check Data Health',       minFiles: 1 },
     { id: '_intervals',                label: 'Check Intervals',         minFiles: 1 },
-    { id: '_files_match',              label: 'Check Files Match',       minFiles: 2 },
-    { id: '_undrilled',                label: 'Find Holes Without Data', minFiles: 2 },
-    { id: '_orphans',                  label: 'Find Data Without Holes', minFiles: 2 },
+    { id: '_compare_files',            label: 'Check Files Match',       minFiles: 2 },
+    { id: '_undrilled_orphans',        label: 'Find Undrilled/Orphan Data', minFiles: 2 },
   ],
   cleaning: [
-    { id: 'find_duplicates',     label: 'Remove Duplicate Rows', minFiles: 1 },
-    { id: 'remove_empty_rows',   label: 'Remove Empty Rows',     minFiles: 1 },
-    { id: 'standardise_hole_ids', label: 'Fix Hole ID Format',   minFiles: 1 },
-    { id: 'trim_whitespace',     label: 'Trim Extra Spaces',     minFiles: 1 },
-    { id: 'find_null_placeholders_fix', label: 'Clear Placeholder Values', minFiles: 1 },
+    { id: '_combine_dedupe',      label: 'Combine & Remove Duplicates', minFiles: 1 },
+    { id: '_fix_formatting',     label: 'Clean Up Formatting',  minFiles: 1 },
     { id: '_merge',              label: 'Merge Matching Files',  minFiles: 2 },
   ],
   analysis: [
-    { id: 'best_intercept',      label: 'Find Best Holes',         minFiles: 1 },
-    { id: 'rank_by_grade',       label: 'Rank Holes by Grade',     minFiles: 1 },
-    { id: '_grade_summary',      label: 'Grade Summary',           minFiles: 1 },
-    { id: 'detect_coord_system', label: 'Check Coordinate System', minFiles: 1 },
+    { id: '_analysis',           label: 'Run Analysis',            minFiles: 1 },
     { id: '_distance',           label: 'Distance Filter',         minFiles: 1 },
-    { id: '_diff',               label: 'Compare Files',           minFiles: 2 },
   ],
 }
 
@@ -200,6 +193,50 @@ export default function StageWorkbench(props: Props) {
   }
 
   async function runActionInner(actionId: string) {
+    if (actionId === '_combine_dedupe') {
+      const res = await DB.rpcCombineAndDedupe(selectedTables.map(t => t.id))
+      if (!res) return
+      if (res.error) { setMessage(res.error); return }
+      setMessage(res.summary)
+      for (const a of res.anomalies) notify('warn', a.message, 'GP-2306')
+      if (!await confirmDialog(`${res.summary}\n\nSave the cleaned (and, if any, duplicates) Result File(s) on the workbench?`)) return
+      const names = selectedTables.map(t => t.name).join(' + ')
+      const cleanMeta = DB.createChildTable(project.id, `Clean · ${names}`.slice(0, 60), res.clean, selected, user.email)
+      spawnResultCard(cleanMeta, selected)
+      if (res.duplicates.length) {
+        const dupMeta = DB.createChildTable(project.id, `Duplicates · ${names}`.slice(0, 60), res.duplicates, selected, user.email)
+        spawnResultCard(dupMeta, selected)
+      }
+      notify('success', `Created "${cleanMeta.name}"${res.duplicates.length ? ` and a Duplicates file` : ''} — ${res.summary}`)
+      onRefresh()
+      return
+    }
+
+    if (actionId === '_fix_formatting') {
+      const res = await DB.rpcFixFormatting(selectedTables.map(t => t.id))
+      if (!res) return
+      if (res.error) { setMessage(res.error); return }
+      const changed = res.files.filter(f => f.trimmed || f.standardised || f.removed_empty || f.placeholders_cleared)
+      if (!changed.length) { notify('success', 'No formatting issues found — all clear.'); return }
+      const parts = changed.map(f => {
+        const t = selectedTables.find(x => x.id === f.table_id)!
+        const bits: string[] = []
+        if (f.trimmed) bits.push(`${f.trimmed} cell(s) trimmed`)
+        if (f.standardised) bits.push(`${f.standardised} Hole ID(s) standardised`)
+        if (f.placeholders_cleared) bits.push(`${f.placeholders_cleared} placeholder value(s) cleared`)
+        if (f.removed_empty) bits.push(`${f.removed_empty} empty row(s) removed`)
+        return `${t.name}: ${bits.join(', ')}`
+      })
+      if (!await confirmDialog(`${parts.join('\n')}\n\nApply these fixes now? A new version is recorded per file — nothing is lost.`)) return
+      for (const f of changed) {
+        const t = selectedTables.find(x => x.id === f.table_id)!
+        DB.replaceRows(t.id, f.rows, user.email, '_fix_formatting', `Cleaned up formatting in "${t.name}"`)
+      }
+      notify('success', `Formatting cleaned up — ${parts.join(' · ')}`)
+      onRefresh()
+      return
+    }
+
     if (actionId === '_merge') {
       const name = window.prompt(`Merge ${selectedTables.length} files into one. Name for the new file:`, `${project.name} merged`)
       if (!name?.trim()) return
@@ -211,70 +248,77 @@ export default function StageWorkbench(props: Props) {
     }
 
     if (actionId === '_intervals') {
-      // From≥To, overlaps and gaps in one pass, per selected file (backend)
-      for (const t of selectedTables) {
-        const parts: { def: CheckDef; r: CheckJson }[] = []
-        for (const id of ['from_greater_than_to', 'from_to_overlaps', 'from_to_gaps']) {
-          const def = ALL_DEFS.find(d => d.id === id)!
-          const r = await check(id, t.id)
-          if (!r) return
-          parts.push({ def, r })
-        }
-        const total = parts.reduce((a, p) => a + p.r.count, 0)
-        if (total === 0) { notify('success', `${t.name}: intervals look good — no From/To errors, overlaps or gaps.`); continue }
-        setMessage(`${t.name}: ${parts.map(p => `${p.r.count} ${p.def.label.toLowerCase()}`).join(', ')}.`)
-        const issues = parts.flatMap(p => p.r.issues.map(row => ({ Problem: p.def.label, ...row })))
-        if (window.confirm(`${t.name}: ${total} interval problem(s) found.\n\nSave them as a Result File on the workbench?`)) {
-          const meta = DB.createChildTable(project.id, `Interval problems · ${t.name}`.slice(0, 60), issues, [t.id], user.email)
-          spawnResultCard(meta, [t.id])
-        }
+      // pooled From≥To, overlap and gap check across ALL selected interval files
+      const res = await DB.rpcCheckIntervals(selectedTables.map(t => t.id))
+      if (!res) return
+      if (res.error) { setMessage(res.error); return }
+      setMessage(res.summary)
+      if (res.count === 0) { notify('success', res.summary); return }
+      const issues = [
+        ...res.order_issues.map(row => ({ Problem: 'From >= To', ...row })),
+        ...res.overlaps.map(row => ({ Problem: 'Overlap', ...row })),
+        ...res.gaps.map(row => ({ Problem: 'Gap', ...row })),
+      ]
+      if (await confirmDialog(`${res.summary}\n\nSave these as a Result File on the workbench?`)) {
+        const names = selectedTables.map(t => t.name).join(' + ')
+        const meta = DB.createChildTable(project.id, `Interval problems · ${names}`.slice(0, 60), issues, selected, user.email)
+        spawnResultCard(meta, selected)
       }
       onRefresh(); return
     }
 
-    if (actionId === '_undrilled' || actionId === '_orphans') {
-      // two-file checks: collar side vs interval side, auto-detected by file type
-      const [A, B] = selectedTables
-      if (!A || !B) { setMessage('Select two files first.'); return }
-      const collarFirst = A.type === 'collar' || B.type !== 'collar'
-      const main = actionId === '_undrilled' ? (collarFirst ? A : B) : (collarFirst ? B : A)
-      const other = main.id === A.id ? B : A
-      const def = ALL_DEFS.find(d => d.id === (actionId === '_undrilled' ? 'find_undrilled' : 'find_orphan_assays'))!
-      const res = await check(def.id, main.id, other.id)
+    if (actionId === '_data_health') {
+      const res = await DB.rpcCheckDataHealth(selectedTables.map(t => t.id))
       if (!res) return
-      if (res.count === 0) { notify('success', `${main.name} vs ${other.name}: ${res.summary}`); return }
-      setMessage(`${main.name} vs ${other.name}: ${res.summary}`)
-      if (window.confirm(`${res.summary}\n\nSave these rows as a Result File?`)) {
-        const meta = DB.createChildTable(project.id, `${def.label} · ${main.name}`.slice(0, 60), res.issues, [A.id, B.id], user.email)
-        spawnResultCard(meta, [A.id, B.id]); onRefresh()
+      if (res.error) { setMessage(res.error); return }
+      const cs = res.coord_system
+      const csMsg = cs ? ` Coordinate system: ${cs.system} (${cs.confidence} confidence) — ${cs.notes}` : ''
+      setMessage(`${res.summary}${csMsg}`)
+      if (res.count === 0) { notify('success', `${res.summary}${csMsg}`); return }
+      if (await confirmDialog(`${res.summary}${csMsg}\n\nSave these issues as a Result File on the workbench?`)) {
+        const names = selectedTables.map(t => t.name).join(' + ')
+        const meta = DB.createChildTable(project.id, `Data health · ${names}`.slice(0, 60), res.issues, selected, user.email)
+        spawnResultCard(meta, selected)
+      }
+      onRefresh(); return
+    }
+
+    if (actionId === '_undrilled_orphans') {
+      // pooled: every collar-type file in selection vs every interval-type file in selection
+      const collars = selectedTables.filter(t => t.type === 'collar')
+      const intervals = selectedTables.filter(t => t.type !== 'collar')
+      if (!collars.length || !intervals.length) { setMessage('Select at least one collar file and one interval file (assay/survey/lithology).'); return }
+      const res = await DB.rpcFindUndrilledOrphans(collars.map(t => t.id), intervals.map(t => t.id))
+      if (!res) return
+      if (res.error) { setMessage(res.error); return }
+      setMessage(res.summary)
+      if (res.count === 0) { notify('success', res.summary); return }
+      if (await confirmDialog(`${res.summary}\n\nSave these as Result Files on the workbench?`)) {
+        if (res.undrilled.length) {
+          const meta = DB.createChildTable(project.id, `Undrilled holes · ${collars.map(t => t.name).join(' + ')}`.slice(0, 60), res.undrilled, selected, user.email)
+          spawnResultCard(meta, selected)
+        }
+        if (res.orphans.length) {
+          const meta = DB.createChildTable(project.id, `Orphan data · ${intervals.map(t => t.name).join(' + ')}`.slice(0, 60), res.orphans, selected, user.email)
+          spawnResultCard(meta, selected)
+        }
+        onRefresh()
       }
       return
     }
 
-    if (actionId === 'find_null_placeholders_fix') {
-      for (const t of selectedTables) {
-        const res = await check('find_null_placeholders', t.id)
-        if (!res) continue
-        if (res.count === 0) { notify('success', `${t.name}: no placeholder values found.`); continue }
-        if (!window.confirm(`${t.name}: ${res.summary}\n\nReplace all placeholders (N/A, -99, 9999…) with real blanks? A version is saved first.`)) continue
-        const fixed = await DB.rpcApplyFix('find_null_placeholders', t.id)
-        if (!fixed) continue
-        DB.replaceRows(t.id, fixed, user.email, 'clear_placeholders', `Cleared placeholder values in "${t.name}"`)
-        notify('success', `${t.name}: placeholder values cleared.`)
-      }
-      onRefresh(); return
-    }
-
-    if (actionId === '_grade_summary') {
-      const rows: TableRow[] = []
-      for (const t of selectedTables) {
-        const g = await DB.rpcGradeSummary(t.id)
-        if (g) rows.push(...g)
-      }
-      if (!rows.length) { setMessage('No grade columns (gold/copper/silver) mapped in the selected files.'); return }
-      const meta = DB.createChildTable(project.id, `Grade summary · ${selectedTables.map(t => t.name).join(' + ')}`.slice(0, 60), rows, selected, user.email)
-      spawnResultCard(meta, selected)
-      notify('success', `Grade summary created — ${rows.length} rows.`)
+    if (actionId === '_analysis') {
+      const res = await DB.rpcAnalysisPool(selectedTables.map(t => t.id))
+      if (!res) return
+      if (res.error) { setMessage(res.error); return }
+      setMessage(res.summary)
+      const names = selectedTables.map(t => t.name).join(' + ')
+      let created = 0
+      if (res.grade_summary.length) { spawnResultCard(DB.createChildTable(project.id, `Grade summary · ${names}`.slice(0, 60), res.grade_summary, selected, user.email), selected); created++ }
+      if (res.best_intercept.length) { spawnResultCard(DB.createChildTable(project.id, `Best intercepts · ${names}`.slice(0, 60), res.best_intercept, selected, user.email), selected); created++ }
+      if (res.rank_by_grade.length) { spawnResultCard(DB.createChildTable(project.id, `Ranked by grade · ${names}`.slice(0, 60), res.rank_by_grade, selected, user.email), selected); created++ }
+      if (!created) { setMessage('No grade columns (gold/copper/silver) and Hole ID/From/To mapped in the selected files.'); return }
+      notify('success', `${res.summary} — ${created} Result File(s) created.`)
       onRefresh(); return
     }
 
@@ -282,18 +326,18 @@ export default function StageWorkbench(props: Props) {
       const distStr = window.prompt('Keep holes within how many metres? (e.g. 8000 ≈ 5 miles)', '1000')
       const maxDist = parseFloat(distStr ?? '')
       if (isNaN(maxDist) || maxDist <= 0) return
-      const [A, B] = selectedTables
+      const [A, ...refs] = selectedTables
       let resRows: TableRow[]
       let refLabel: string
-      if (B) {
-        // backend distance filter against the reference file's coordinates
-        const res = await DB.rpcDistanceFilter(A.id, B.id, maxDist)
+      if (refs.length) {
+        // backend distance filter against ALL other selected files' coordinates, pooled
+        const res = await DB.rpcDistanceFilterPooled(A.id, refs.map(t => t.id), maxDist)
         if (!res) return
         if (res.error) { setMessage(`${A.name}: ${res.error}`); return }
         resRows = res.rows
-        refLabel = `holes in ${B.name}`
+        refLabel = `holes in ${refs.map(t => t.name).join(' + ')}`
       } else {
-        // single typed point: no reference table, so this stays client-side
+        // single file, no reference: typed point, stays client-side
         const pt = window.prompt('Reference point as "East, North" (e.g. 412345, 9567890):')
         const [e, n] = (pt ?? '').split(',').map(v => parseFloat(v.trim()))
         if (isNaN(e) || isNaN(n)) return
@@ -309,15 +353,16 @@ export default function StageWorkbench(props: Props) {
       onRefresh(); return
     }
 
-    if (actionId === '_files_match' || actionId === '_diff') {
-      const [A, B] = selectedTables
-      if (!A || !B) { setMessage('Select two files first.'); return }
-      const res = await check('diff_tables', A.id, B.id)
+    if (actionId === '_compare_files') {
+      const res = await DB.rpcCompareFiles(selectedTables.map(t => t.id))
       if (!res) return
-      setMessage(`${A.name} vs ${B.name}: ${res.summary}`)
-      if (res.count > 0 && window.confirm(`${res.summary}\n\nSave the differing rows as a Result File on the workbench?`)) {
-        const meta = DB.createChildTable(project.id, `Differences · ${A.name} vs ${B.name}`.slice(0, 60), res.issues, [A.id, B.id], user.email)
-        spawnResultCard(meta, [A.id, B.id]); onRefresh()
+      if (res.error) { setMessage(res.error); return }
+      setMessage(res.summary)
+      if (res.count === 0) { notify('success', res.summary); return }
+      if (await confirmDialog(`${res.summary}\n\nSave the differing rows as a Result File on the workbench?`)) {
+        const names = selectedTables.map(t => t.name).join(' vs ')
+        const meta = DB.createChildTable(project.id, `Differences · ${names}`.slice(0, 60), res.issues, selected, user.email)
+        spawnResultCard(meta, selected); onRefresh()
       }
       return
     }
@@ -330,7 +375,7 @@ export default function StageWorkbench(props: Props) {
       if (!res) continue
       if (FIXING_IDS.has(actionId)) {
         if (res.count === 0) { notify('info', `${t.name}: ${res.summary}`); continue }
-        if (!window.confirm(`${t.name}: ${res.summary}\n\nApply the fix now? (A new version is recorded — nothing is lost.)`)) continue
+        if (!await confirmDialog(`${t.name}: ${res.summary}\n\nApply the fix now? (A new version is recorded — nothing is lost.)`)) continue
         const fixed = await DB.rpcApplyFix(def.id, t.id)
         if (!fixed) continue
         DB.replaceRows(t.id, fixed, user.email, def.id, `${def.label} on "${t.name}"`)
@@ -338,7 +383,7 @@ export default function StageWorkbench(props: Props) {
       } else {
         setMessage(`${t.name}: ${res.summary}`)
         if (res.issues.length === 0) notify('success', `${t.name}: all clear — ${res.summary}`)
-        if (res.issues.length > 0 && window.confirm(`${t.name}: ${res.summary}\n\nSave these rows as a Result File on the workbench?`)) {
+        if (res.issues.length > 0 && await confirmDialog(`${t.name}: ${res.summary}\n\nSave these rows as a Result File on the workbench?`)) {
           const meta = DB.createChildTable(project.id, `${def.label} · ${t.name}`.slice(0, 60), res.issues, [t.id], user.email)
           spawnResultCard(meta, [t.id])
         }
