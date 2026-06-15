@@ -99,9 +99,9 @@ export default function DataChecksPanel({ stage, table, tables = [], project, us
                   <div style={{ fontSize: 11, color: 'var(--label-4)', flex: 1 }}>First {Math.min(res.issues.length, 50)} of {res.issues.length} issues</div>
                   {stage === 'analysis' && table && (
                     <button className="btn btn-secondary btn-sm" style={{ fontSize: 10, padding: '2px 8px' }}
-                      onClick={() => {
+                      onClick={async () => {
                         const clean = res.issues.map(r => { const nr: TableRow = {}; Object.keys(r).filter(k => !k.startsWith('_')).forEach(k => { nr[k] = r[k] }); return nr })
-                        DB.createChildTable(project.id, `${def.label} – ${table.name}`, clean, [table.id], user.email)
+                        await DB.createChildTable(project.id, `${def.label} – ${table.name}`, clean, [table.id], user.email)
                         onRefresh()
                       }}>
                       Save as table

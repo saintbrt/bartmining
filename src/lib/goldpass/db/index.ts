@@ -184,18 +184,25 @@ export const DB = {
     return limit ? r.slice(0, limit) : r
   },
 
-  insertTable(projectId: string, name: string, type: string, colMapping: Record<string, string>, rows: TableRow[], userId?: string): TableMeta {
+  /* Persists tables_meta + rows BEFORE resolving, so the returned TableMeta's id
+     is immediately usable in gp_* RPC calls (which look it up via tables_meta).
+     Versions are written in the background — not needed for the row to "exist". */
+  async insertTable(projectId: string, name: string, type: string, colMapping: Record<string, string>, rows: TableRow[], userId?: string): Promise<TableMeta> {
     const id = newId()
     const meta: TableMeta = { id, project_id: projectId, name: name.trim(), type, columns: colMapping, row_count: rows.length, created_at: ts(), updated_at: ts() }
-    _c.tables[projectId] = [...(_c.tables[projectId] ?? []), meta]
-    _c.meta[id] = meta; _c.rows[id] = rows.slice(); _c.versions[id] = []
     const client = sb()
-    bg(async () => {
+    try {
       const { error: me } = await client.from('tables_meta').insert({ id, project_id: projectId, name: meta.name, type, columns: colMapping, row_count: rows.length })
       if (me) throw me
       await insertRowsChunked(id, projectId, rows)
+    } catch (e) {
+      gpError('GP-2202', `table "${meta.name}" (${rows.length} rows): ${e instanceof Error ? e.message : String(e)}`)
+    }
+    _c.tables[projectId] = [...(_c.tables[projectId] ?? []), meta]
+    _c.meta[id] = meta; _c.rows[id] = rows.slice(); _c.versions[id] = []
+    bg(async () => {
       await client.from('versions').insert({ table_id: id, project_id: projectId, operation: 'import', row_count: rows.length, data: rows })
-    }, 'GP-2202', `table "${meta.name}" (${rows.length} rows)`)
+    }, 'GP-2202', `table "${meta.name}" version snapshot`)
     this.log(projectId, id, 'import', `Imported "${meta.name}" (${type}) — ${rows.length.toLocaleString()} rows`, userId)
     return meta
   },
@@ -227,25 +234,32 @@ export const DB = {
     this.log(projectId, tableId, 'delete', `Deleted table "${meta?.name ?? tableId}"`, userId)
   },
 
-  createChildTable(projectId: string, name: string, rows: TableRow[], parentIds: string[], userId?: string): TableMeta {
+  /* See insertTable() comment — same "persist before resolving" rationale, so
+     a result/derived table can be selected and used in a follow-up RPC
+     immediately after creation. */
+  async createChildTable(projectId: string, name: string, rows: TableRow[], parentIds: string[], userId?: string): Promise<TableMeta> {
     const id = newId()
     const colMapping: Record<string, string> = {}
     if (rows.length) Object.keys(rows[0]).forEach(k => { colMapping[k] = detectColType(k) })
     const meta: TableMeta = { id, project_id: projectId, name: name.trim(), type: 'child', columns: colMapping, row_count: rows.length, parent_ids: parentIds, created_at: ts(), updated_at: ts() }
-    _c.tables[projectId] = [...(_c.tables[projectId] ?? []), meta]
-    _c.meta[id] = meta; _c.rows[id] = rows.slice(); _c.versions[id] = []
     const client = sb()
-    bg(async () => {
+    try {
       const { error: me } = await client.from('tables_meta').insert({ id, project_id: projectId, name: meta.name, type: 'child', columns: colMapping, row_count: rows.length, parent_ids: parentIds })
       if (me) throw me
       await insertRowsChunked(id, projectId, rows)
+    } catch (e) {
+      gpError('GP-2202', `derived table "${meta.name}": ${e instanceof Error ? e.message : String(e)}`)
+    }
+    _c.tables[projectId] = [...(_c.tables[projectId] ?? []), meta]
+    _c.meta[id] = meta; _c.rows[id] = rows.slice(); _c.versions[id] = []
+    bg(async () => {
       await client.from('versions').insert({ table_id: id, project_id: projectId, operation: 'derived', row_count: rows.length, data: rows })
-    }, 'GP-2202', `derived table "${meta.name}"`)
+    }, 'GP-2202', `derived table "${meta.name}" version snapshot`)
     this.log(projectId, id, 'derived', `Created derived table "${meta.name}" — ${rows.length.toLocaleString()} rows`, userId)
     return meta
   },
 
-  mergeTables(projectId: string, tableIds: string[], newName: string, userId?: string): TableMeta {
+  async mergeTables(projectId: string, tableIds: string[], newName: string, userId?: string): Promise<TableMeta> {
     // column-aware union: the merged table carries every column seen in any source
     const allRows: TableRow[] = []
     const colMapping: Record<string, string> = {}
@@ -259,7 +273,7 @@ export const DB = {
         allRows.push(nr)
       })
     })
-    return this.insertTable(projectId, newName, 'merged', colMapping, allRows, userId)
+    return await this.insertTable(projectId, newName, 'merged', colMapping, allRows, userId)
   },
 
   /* ── AUDIT ── */

@@ -212,10 +212,10 @@ export default function StageWorkbench(props: Props) {
       for (const a of res.anomalies) notify('warn', a.message, 'GP-2306')
       if (!await confirmDialog(`${res.summary}\n\nSave the cleaned (and, if any, duplicates) Result File(s) on the workbench?`)) return
       const names = selectedTables.map(t => t.name).join(' + ')
-      const cleanMeta = DB.createChildTable(project.id, `Clean · ${names}`.slice(0, 60), res.clean, selected, user.email)
+      const cleanMeta = await DB.createChildTable(project.id, `Clean · ${names}`.slice(0, 60), res.clean, selected, user.email)
       spawnResultCard(cleanMeta, selected)
       if (res.duplicates.length) {
-        const dupMeta = DB.createChildTable(project.id, `Duplicates · ${names}`.slice(0, 60), res.duplicates, selected, user.email)
+        const dupMeta = await DB.createChildTable(project.id, `Duplicates · ${names}`.slice(0, 60), res.duplicates, selected, user.email)
         spawnResultCard(dupMeta, selected)
       }
       notify('success', `Created "${cleanMeta.name}"${res.duplicates.length ? ` and a Duplicates file` : ''} — ${res.summary}`)
@@ -251,7 +251,7 @@ export default function StageWorkbench(props: Props) {
     if (actionId === '_merge') {
       const name = window.prompt(`Merge ${selectedTables.length} files into one. Name for the new file:`, `${project.name} merged`)
       if (!name?.trim()) return
-      const meta = DB.mergeTables(project.id, selectedTables.map(t => t.id), name.trim(), user.email)
+      const meta = await DB.mergeTables(project.id, selectedTables.map(t => t.id), name.trim(), user.email)
       spawnResultCard(meta, selected)
       notify('success', `Merged ${selectedTables.length} files into "${meta.name}" — ${meta.row_count.toLocaleString()} rows.`)
       onRefresh()
@@ -272,7 +272,7 @@ export default function StageWorkbench(props: Props) {
       ]
       if (await confirmDialog(`${res.summary}\n\nSave these as a Result File on the workbench?`)) {
         const names = selectedTables.map(t => t.name).join(' + ')
-        const meta = DB.createChildTable(project.id, `Interval problems · ${names}`.slice(0, 60), issues, selected, user.email)
+        const meta = await DB.createChildTable(project.id, `Interval problems · ${names}`.slice(0, 60), issues, selected, user.email)
         spawnResultCard(meta, selected)
       }
       onRefresh(); return
@@ -288,7 +288,7 @@ export default function StageWorkbench(props: Props) {
       if (res.count === 0) { notify('success', `${res.summary}${csMsg}`); return }
       if (await confirmDialog(`${res.summary}${csMsg}\n\nSave these issues as a Result File on the workbench?`)) {
         const names = selectedTables.map(t => t.name).join(' + ')
-        const meta = DB.createChildTable(project.id, `Data health · ${names}`.slice(0, 60), res.issues, selected, user.email)
+        const meta = await DB.createChildTable(project.id, `Data health · ${names}`.slice(0, 60), res.issues, selected, user.email)
         spawnResultCard(meta, selected)
       }
       onRefresh(); return
@@ -306,11 +306,11 @@ export default function StageWorkbench(props: Props) {
       if (res.count === 0) { notify('success', res.summary); return }
       if (await confirmDialog(`${res.summary}\n\nSave these as Result Files on the workbench?`)) {
         if (res.undrilled.length) {
-          const meta = DB.createChildTable(project.id, `Undrilled holes · ${collars.map(t => t.name).join(' + ')}`.slice(0, 60), res.undrilled, selected, user.email)
+          const meta = await DB.createChildTable(project.id, `Undrilled holes · ${collars.map(t => t.name).join(' + ')}`.slice(0, 60), res.undrilled, selected, user.email)
           spawnResultCard(meta, selected)
         }
         if (res.orphans.length) {
-          const meta = DB.createChildTable(project.id, `Orphan data · ${intervals.map(t => t.name).join(' + ')}`.slice(0, 60), res.orphans, selected, user.email)
+          const meta = await DB.createChildTable(project.id, `Orphan data · ${intervals.map(t => t.name).join(' + ')}`.slice(0, 60), res.orphans, selected, user.email)
           spawnResultCard(meta, selected)
         }
         onRefresh()
@@ -325,10 +325,10 @@ export default function StageWorkbench(props: Props) {
       setMessage(res.summary)
       const names = selectedTables.map(t => t.name).join(' + ')
       let created = 0
-      if (res.grade_summary.length) { spawnResultCard(DB.createChildTable(project.id, `Grade summary · ${names}`.slice(0, 60), res.grade_summary, selected, user.email), selected); created++ }
-      if (res.best_intercept.length) { spawnResultCard(DB.createChildTable(project.id, `Best intercepts · ${names}`.slice(0, 60), res.best_intercept, selected, user.email), selected); created++ }
-      if (res.rank_by_grade.length) { spawnResultCard(DB.createChildTable(project.id, `Ranked by grade · ${names}`.slice(0, 60), res.rank_by_grade, selected, user.email), selected); created++ }
-      if (res.ppm_table.length) { spawnResultCard(DB.createChildTable(project.id, `Analysis (HOLEID-MFRO-MTO-MAXIMUMPPM) · ${names}`.slice(0, 60), res.ppm_table, selected, user.email), selected); created++ }
+      if (res.grade_summary.length) { spawnResultCard(await DB.createChildTable(project.id, `Grade summary · ${names}`.slice(0, 60), res.grade_summary, selected, user.email), selected); created++ }
+      if (res.best_intercept.length) { spawnResultCard(await DB.createChildTable(project.id, `Best intercepts · ${names}`.slice(0, 60), res.best_intercept, selected, user.email), selected); created++ }
+      if (res.rank_by_grade.length) { spawnResultCard(await DB.createChildTable(project.id, `Ranked by grade · ${names}`.slice(0, 60), res.rank_by_grade, selected, user.email), selected); created++ }
+      if (res.ppm_table.length) { spawnResultCard(await DB.createChildTable(project.id, `Analysis (HOLEID-MFRO-MTO-MAXIMUMPPM) · ${names}`.slice(0, 60), res.ppm_table, selected, user.email), selected); created++ }
       if (!created) { setMessage('No grade columns (gold/copper/silver) and Hole ID/From/To mapped in the selected files.'); return }
       notify('success', `${res.summary} — ${created} Result File(s) created.`)
       onRefresh(); return
@@ -360,7 +360,7 @@ export default function StageWorkbench(props: Props) {
         refLabel = `point ${e}, ${n}`
       }
       if (!resRows.length) { setMessage(`${A.name}: no holes within ${maxDist.toLocaleString()} m of ${refLabel}.`); return }
-      const meta = DB.createChildTable(project.id, `Within ${maxDist.toLocaleString()}m · ${A.name}`.slice(0, 60), resRows, selected, user.email)
+      const meta = await DB.createChildTable(project.id, `Within ${maxDist.toLocaleString()}m · ${A.name}`.slice(0, 60), resRows, selected, user.email)
       spawnResultCard(meta, selected)
       notify('success', `${resRows.length.toLocaleString()} hole(s) within ${maxDist.toLocaleString()} m of ${refLabel}.`)
       onRefresh(); return
@@ -374,7 +374,7 @@ export default function StageWorkbench(props: Props) {
       if (res.count === 0) { notify('success', res.summary); return }
       if (await confirmDialog(`${res.summary}\n\nSave the differing rows as a Result File on the workbench?`)) {
         const names = selectedTables.map(t => t.name).join(' vs ')
-        const meta = DB.createChildTable(project.id, `Differences · ${names}`.slice(0, 60), res.issues, selected, user.email)
+        const meta = await DB.createChildTable(project.id, `Differences · ${names}`.slice(0, 60), res.issues, selected, user.email)
         spawnResultCard(meta, selected); onRefresh()
       }
       return
@@ -397,7 +397,7 @@ export default function StageWorkbench(props: Props) {
         setMessage(`${t.name}: ${res.summary}`)
         if (res.issues.length === 0) notify('success', `${t.name}: all clear — ${res.summary}`)
         if (res.issues.length > 0 && await confirmDialog(`${t.name}: ${res.summary}\n\nSave these rows as a Result File on the workbench?`)) {
-          const meta = DB.createChildTable(project.id, `${def.label} · ${t.name}`.slice(0, 60), res.issues, [t.id], user.email)
+          const meta = await DB.createChildTable(project.id, `${def.label} · ${t.name}`.slice(0, 60), res.issues, [t.id], user.email)
           spawnResultCard(meta, [t.id])
         }
       }
@@ -427,7 +427,7 @@ export default function StageWorkbench(props: Props) {
       if (exec.action === 'delete') { setMessage('That request would remove rows — please use the cleaning actions for removals.'); return }
       if (!exec.rows.length) { console.info('[GoldPass] Ask AI: query ran, 0 rows.'); setMessage('Nothing matched that request — no Result File created.'); return }
       console.info('[GoldPass] Ask AI: query ran,', exec.rows.length, 'rows → creating Result File.')
-      const meta = DB.createChildTable(project.id, `AI · ${q.slice(0, 48)}`, exec.rows, selectedTables.map(t => t.id), user.email)
+      const meta = await DB.createChildTable(project.id, `AI · ${q.slice(0, 48)}`, exec.rows, selectedTables.map(t => t.id), user.email)
       spawnResultCard(meta, selected)
       setMessage(`Created "${meta.name}" — ${exec.rows.length.toLocaleString()} rows.`)
       notify('success', `Result File "${meta.name}" added to the workbench.`)

@@ -35,7 +35,7 @@ export default function WorkspacePage({ stage, project, user, tables, onRefresh,
 
   /** Runs a statement through the workbench engine. AI-originated runs that
       return rows are saved as a new table that appears on the workbench. */
-  function runStatement(sql: string, opts?: { fromAI?: boolean; note?: string; label?: string }) {
+  async function runStatement(sql: string, opts?: { fromAI?: boolean; note?: string; label?: string }) {
     const res = executeSQL(sql, tables, (id) => DB.getRows(id, 0))
     if ('error' in res) {
       setSqlResult({ error: `${res.error} [${res.code}]` })
@@ -67,7 +67,7 @@ export default function WorkspacePage({ stage, project, user, tables, onRefresh,
     setSqlResult({ rows: res.rows, summary: `${res.rows.length.toLocaleString()} of ${res.total.toLocaleString()} rows from ${res.sources.join(' + ')}` })
     if (opts?.fromAI) {
       const name = (opts.label ?? 'AI result').slice(0, 60)
-      const meta = DB.createChildTable(project.id, name, res.rows, tables.filter(t => res.sources.includes(t.name)).map(t => t.id), user.email)
+      const meta = await DB.createChildTable(project.id, name, res.rows, tables.filter(t => res.sources.includes(t.name)).map(t => t.id), user.email)
       setNewTableId(meta.id)
       setTimeout(() => setNewTableId(null), 1600)
       setActivePanel('files')
@@ -98,10 +98,10 @@ export default function WorkspacePage({ stage, project, user, tables, onRefresh,
     } finally { setAiBusy(false) }
   }
 
-  function handleMerge() {
+  async function handleMerge() {
     const name = window.prompt(`Merge ${tables.length} tables into a new table. Name:`, `${project.name} merged`)
     if (!name?.trim()) return
-    const meta = DB.mergeTables(project.id, tables.map(t => t.id), name.trim(), user.email)
+    const meta = await DB.mergeTables(project.id, tables.map(t => t.id), name.trim(), user.email)
     setNewTableId(meta.id)
     setTimeout(() => setNewTableId(null), 1600)
     notify('success', `Merged ${tables.length} tables into "${meta.name}" — ${meta.row_count.toLocaleString()} rows.`)
@@ -200,10 +200,10 @@ export default function WorkspacePage({ stage, project, user, tables, onRefresh,
                     {sqlResult.rows && sqlResult.rows.length > 0 && (
                       <>
                         <button className="btn btn-secondary btn-sm" style={{ fontSize: 10, padding: '2px 8px', marginBottom: 6 }}
-                          onClick={() => {
+                          onClick={async () => {
                             const name = window.prompt('Save result as a new file. Name:', 'SQL result')
                             if (!name?.trim()) return
-                            const meta = DB.createChildTable(project.id, name.trim(), sqlResult.rows!, activeTable ? [activeTable.id] : [], user.email)
+                            const meta = await DB.createChildTable(project.id, name.trim(), sqlResult.rows!, activeTable ? [activeTable.id] : [], user.email)
                             setNewTableId(meta.id); setTimeout(() => setNewTableId(null), 1600)
                             notify('success', `File "${meta.name}" created — ${meta.row_count.toLocaleString()} rows.`)
                             onRefresh()

@@ -3,7 +3,7 @@
 import { useState, DragEvent, ChangeEvent } from 'react'
 import { DB, detectColType } from '@/lib/goldpass/db'
 import { notify } from '@/lib/goldpass/notify'
-import type { Project } from '@/lib/goldpass/db'
+import type { Project, TableMeta } from '@/lib/goldpass/db'
 
 interface ParsedFile {
   name: string
@@ -139,12 +139,13 @@ export default function UploadModal({ project, user, onClose, onImported }: { pr
   async function handleImport() {
     setImporting(true)
     const taken = new Set(DB.getTables(project.id).map(t => t.name))
-    files.forEach(f => {
-      if (f.status !== 'ready') return
+    const inserts = files.map(f => {
+      if (f.status !== 'ready') return null
       const name = uniqueName(f.name, taken)
       taken.add(name)
-      DB.insertTable(project.id, name, f.type, f.colMapping, f.rows as Record<string, unknown>[], user.email)
-    })
+      return DB.insertTable(project.id, name, f.type, f.colMapping, f.rows as Record<string, unknown>[], user.email)
+    }).filter((p): p is Promise<TableMeta> => p !== null)
+    await Promise.all(inserts)
     setImporting(false)
     notify('success', `Imported ${files.filter(f => f.status === 'ready').length} file(s).`)
     onImported()
