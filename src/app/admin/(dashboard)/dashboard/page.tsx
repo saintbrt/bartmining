@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useAppContext } from '@/lib/goldpass/AppContext'
 import { DB } from '@/lib/goldpass/db'
 import type { Project } from '@/lib/goldpass/db'
@@ -59,6 +60,7 @@ function PitHero() {
 
 export default function DashboardPage() {
   const ctx = useAppContext()
+  const router = useRouter()
   if (!ctx) return null
   const { projects, setProject } = ctx
   const [newName, setNewName] = useState('')
@@ -92,6 +94,18 @@ export default function DashboardPage() {
             <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>{k.label}</div>
           </div>
         ))}
+      </div>
+
+      <div className="card" style={{ marginTop: 24, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14 }}
+        onClick={() => router.push('/admin/maxgold')}
+        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--gold)' }}
+        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
+        <div style={{ fontSize: 28 }}>⛏</div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 13, fontWeight: 600 }}>Max Gold Finder</div>
+          <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 2 }}>Upload a CSV/Excel file and instantly find the highest-grade interval per hole — no project needed.</div>
+        </div>
+        <div style={{ fontSize: 12, color: 'var(--gold)' }}>Open →</div>
       </div>
 
       <div className="card" style={{ marginTop: 24 }}>

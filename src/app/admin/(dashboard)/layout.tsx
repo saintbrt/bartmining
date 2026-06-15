@@ -16,6 +16,7 @@ const NAV = [
   { id: 'analysis',      ico: '③', label: 'Analysis' },
   { id: 'outputs',       ico: '⬇', label: 'Outputs' },
   { id: 'visualization', ico: '◈', label: 'Visualise' },
+  { id: 'maxgold',       ico: '⛏', label: 'Max Gold' },
   { id: 'settings',      ico: '⚙', label: 'Settings' },
 ]
 const STAGE_GATES = new Set(['cleaning', 'analysis', 'outputs', 'visualization'])
