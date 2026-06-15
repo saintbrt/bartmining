@@ -1,264 +1,202 @@
 # Bart Mining
 
-Marketing website and internal **GoldPass** drill data platform for **Bart Mining**, a principal-led mining consultancy and equipment supplier based in **Dar es Salaam, Tanzania**, operating across **East and Southern Africa**.
+Marketing website and internal data platform for Bart Mining — a principal-led mining consultancy and equipment supplier based in Dar es Salaam, Tanzania, operating across East & Southern Africa.
 
-**🌐 Live Website:** https://www.bartmining.com
-
----
-
-# Overview
-
-This repository contains the complete Bart Mining web platform, including:
-
-* Modern public-facing corporate website
-* Internal **GoldPass** data intelligence platform
-* Knowledge hub and article management system
-* Contact and lead generation system
-* Secure administrator dashboard
-
-GoldPass is designed specifically for geologists and exploration teams to validate, clean, analyze, compare, and export drilling datasets while enforcing industry best practices.
+**Live site:** [bartmining.com](https://www.bartmining.com)
 
 ---
 
-# Tech Stack
+## Tech Stack
 
-| Layer          | Technology              |
-| -------------- | ----------------------- |
-| Framework      | Next.js 15 (App Router) |
-| Language       | TypeScript 5            |
-| Styling        | Tailwind CSS v3         |
-| Authentication | Supabase Auth           |
-| Database       | Supabase                |
-| Email          | Resend                  |
-| Hosting        | Vercel                  |
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS v3 + inline React styles |
+| Auth & DB | Supabase |
+| Email | Resend |
+| Hosting | Vercel |
+| Fonts | Sora, Manrope, Space Mono (Google Fonts) |
 
 ---
 
-# Project Structure
+## Project Structure
 
-```text
+```
 src/
-├── app/
-│   ├── page.tsx
-│   ├── about/
-│   ├── services/
-│   ├── products/
-│   ├── sustainability/
-│   ├── contact/
-│   ├── insights/
-│   │   └── [slug]/
-│   ├── admin/
+├── app/                        # Next.js App Router pages
+│   ├── page.tsx                # Homepage
+│   ├── about/                  # About page
+│   ├── services/               # Services page
+│   ├── products/               # Products & equipment page
+│   ├── sustainability/         # ESG & sustainability page
+│   ├── contact/                # Contact page
+│   ├── insights/               # Insights hub + article pages
+│   │   └── [slug]/             # Dynamic article pages
+│   ├── admin/                  # Internal GoldPass tool (auth-protected)
+│   │   ├── login/
+│   │   └── (dashboard)/        # Dashboard, analysis, validation, outputs
 │   ├── api/
-│   │   └── contact/
-│   └── globals.css
+│   │   └── contact/            # Contact form API endpoint (Resend)
+│   └── globals.css             # Global styles, design tokens, utility classes
 │
 ├── components/
-│   ├── goldpass/
-│   ├── insights/
 │   ├── layout/
-│   ├── sections/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   ├── sections/               # Page section components
+│   │   ├── HeroSection.tsx
+│   │   ├── MarqueeSection.tsx
+│   │   ├── ServiceGrid.tsx
+│   │   ├── EquipGrid.tsx
+│   │   ├── PhasesSection.tsx
+│   │   ├── PillarsSection.tsx
+│   │   ├── RegionsSection.tsx
+│   │   ├── TestimonialsSection.tsx
+│   │   └── CtaSection.tsx
+│   ├── insights/
+│   │   ├── HubClient.tsx       # Searchable & filterable article grid
+│   │   ├── TableOfContents.tsx
+│   │   └── ReadingProgress.tsx
+│   ├── goldpass/               # Internal GoldPass data tool components
 │   └── ui/
+│       ├── Reveal.tsx          # Scroll-triggered fade-in animation
+│       └── Counter.tsx         # Animated stat counters
 │
 ├── content/
-│   └── insights/
+│   └── insights/               # Article content files (TypeScript)
 │
-├── data/
-│
-└── middleware.ts
+└── data/                       # Static data arrays
+    ├── insights.ts             # Article metadata (20+ articles)
+    ├── services.ts             # 6 core services
+    ├── equipment.ts            # Mining equipment catalog
+    ├── regions.ts              # East & Southern Africa coverage
+    ├── phases.ts               # Project methodology phases
+    ├── pillars.ts              # ESG/values pillars
+    └── testimonials.ts         # Client testimonials
 ```
 
 ---
 
-# Public Website
+## Pages
 
-The marketing website includes:
+### Public Marketing Site
 
-| Route              | Description                        |
-| ------------------ | ---------------------------------- |
-| `/`                | Homepage                           |
-| `/about`           | Company overview and founder story |
-| `/services`        | Mining consulting services         |
-| `/products`        | Equipment catalogue                |
-| `/sustainability`  | ESG commitments                    |
-| `/contact`         | Contact form                       |
-| `/insights`        | Knowledge hub                      |
-| `/insights/[slug]` | Individual articles                |
+| Route | Description |
+|---|---|
+| `/` | Homepage — hero, services, methodology, founder, ESG, regions, testimonials |
+| `/about` | About Bart Mining — founder bio, career history, stats, who we serve |
+| `/services` | Full-lifecycle service offering |
+| `/products` | Mining machinery & processing plants — equipment grid |
+| `/sustainability` | ESG approach, environmental & social commitments |
+| `/contact` | Contact form (submits via Resend email API) |
+| `/insights` | Knowledge centre — searchable, filterable article hub |
+| `/insights/[slug]` | Individual articles with reading progress & table of contents |
 
----
+### Admin — GoldPass (Internal)
 
-# GoldPass
+Protected by Supabase auth middleware. Accessible at `/admin`.
 
-GoldPass is Bart Mining's proprietary web-based drill data intelligence platform built for mineral exploration workflows.
-
-It enables users to:
-
-* Validate drilling datasets
-* Clean inconsistent records
-* Compare multiple files
-* Perform exploration analysis
-* Export standardized outputs
-
-The system currently implements **25 core functions** across five workflow stages.
-
----
-
-# 1. Validation & Quality Control
-
-Ensures drilling data integrity before processing.
-
-| Function | Description               |
-| -------- | ------------------------- |
-| 01       | `findMissingHoleIDs`      |
-| 02       | `checkFromToErrors`       |
-| 03       | `findIntervalOverlaps`    |
-| 04       | `findIntervalGaps`        |
-| 05       | `findDuplicateIntervals`  |
-| 06       | `findNegativeGrades`      |
-| 07       | `findCoordinateOutliers`  |
-| 08       | `findUndrilled`           |
-| 09       | `findOrphanAssays`        |
-| 10       | `findNullPlaceholders`    |
-| 11       | `checkCollarCompleteness` |
+| Route | Description |
+|---|---|
+| `/admin/login` | Authentication |
+| `/admin/dashboard` | Main dashboard |
+| `/admin/analysis` | Data analysis |
+| `/admin/cleaning` | Data cleaning & processing |
+| `/admin/validation` | Data validation & QC |
+| `/admin/visualization` | Data visualisation |
+| `/admin/outputs` | Export & output management |
+| `/admin/settings` | Configuration |
 
 ---
 
-# 2. Cleaning & Transformation
+## Design System
 
-Prepares exploration data for downstream analysis.
+Design tokens are defined as CSS custom properties in `src/app/globals.css`.
 
-| Function | Description            |
-| -------- | ---------------------- |
-| 12       | `standardiseHoleIDs`   |
-| 13       | `removeUndrilled`      |
-| 14       | `resolveUnitConflicts` |
+### Colour Palette
 
----
+| Token | Value | Usage |
+|---|---|---|
+| `--gold` | `#AE8A4C` | Primary accent |
+| `--gold-2` | `#C7A86C` | Lighter gold |
+| `--gold-hi` | `#E4D3AB` | Cream-gold (buttons) |
+| `--gold-deep` | `#8A6C36` | Deep gold, eyebrow labels |
+| `--slate` | `#20262A` | Dark backgrounds |
+| `--ink` | `#1C1A16` | Primary text |
+| `--ink-2` | `#5A5648` | Secondary text |
+| `--ink-3` | `#8A8278` | Muted text |
+| `--bg` | `#F7F6F3` | Page background |
+| `--paper` | `#F2EFE8` | Section background (warm off-white) |
 
-# 3. File Comparison & Relationships
+### Key CSS Classes
 
-Performs reconciliation across multiple datasets.
-
-| Function | Description                 |
-| -------- | --------------------------- |
-| 15       | `compareFiles`              |
-| 16       | `findDuplicatesAcrossFiles` |
-| 17       | `findMissingRows`           |
-| 18       | `reconcileColumns`          |
-| 19       | `mergeFiles`                |
-| 20       | `diffFiles`                 |
-
----
-
-# 4. Analysis
-
-Generates exploration insights.
-
-| Function | Description         |
-| -------- | ------------------- |
-| 21       | `buildCollarOutput` |
-| 22       | `findBestIntercept` |
-| 23       | `findCorrelation`   |
-| 24       | `rankByGrade`       |
+| Class | Description |
+|---|---|
+| `.px-site` | Max-width container (1240px, centred, 32px side padding) |
+| `.sec-gap` | Standard section padding (100px top/bottom) |
+| `.btn-gold` | Primary CTA button (cream-gold `#E4D3AB`, slate text) |
+| `.btn-ink` | Dark filled button |
+| `.btn-ghost` | Outlined button |
+| `.eyebrow` | Small uppercase section label |
+| `.grad` | Gold gradient text highlight |
 
 ---
 
-# 5. Export
+## Getting Started
 
-Produces standardized deliverables.
+### Prerequisites
 
-| Function | Description          |
-| -------- | -------------------- |
-| 25       | `exportCollarOutput` |
+- Node.js 18+
+- A Supabase project (for admin auth)
+- A Resend account (for contact form emails)
 
-Supported export formats include:
+### Environment Variables
 
-* CSV
-* Excel
-* Shapefile
+Create a `.env.local` file:
 
----
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON=your_supabase_anon_key
+RESEND_API_KEY=your_resend_api_key
+CONTACT_EMAIL=hello@bartmining.com
+```
 
-# Getting Started
-
-## Prerequisites
-
-* Node.js 18+
-* npm
-* Supabase project
-* Resend API key
-
----
-
-## Installation
+### Run Locally
 
 ```bash
-git clone <repository-url>
-
-cd bart-mining
-
 npm install
-```
-
-Create a `.env.local` file containing the required Supabase and Resend environment variables.
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
----
+Open [http://localhost:3000](http://localhost:3000).
 
-# Content Management
+### Build for Production
 
-## Insights
-
-Add new articles inside:
-
-```text
-src/content/insights/
-```
-
-Register metadata inside:
-
-```text
-src/data/insights.ts
-```
-
-## Services & Equipment
-
-Update the corresponding arrays located under:
-
-```text
-src/data/
+```bash
+npm run build
+npm start
 ```
 
 ---
 
-# Authentication
+## Content Management
 
-Administrative routes under:
+### Adding an Article
 
-```text
-/administration/*
-```
+1. Create the content file: `src/content/insights/your-article-slug.ts`
+2. Add the metadata entry to `src/data/insights.ts` (slug, title, description, tags, category, image, date, readTime)
 
-(or `/admin/*` depending on deployment)
+The article will automatically appear in the insights hub and get its own page at `/insights/your-article-slug`.
 
-are protected using **Supabase Authentication** through `middleware.ts`.
+### Updating Services or Equipment
 
----
-
-# Deployment
-
-The project is deployed on **Vercel**.
-
-Every push to the `main` branch automatically triggers a production deployment.
+Edit the arrays in `src/data/services.ts` or `src/data/equipment.ts`. Changes reflect across all pages that use those components.
 
 ---
 
-# License
+## Deployment
 
-This repository contains proprietary software and is not licensed for public redistribution or reuse.
+The site is deployed on **Vercel** and connects to the `main` branch. Push to `main` to trigger a production deploy.
 
-**Copyright © 2026 Bart Mining. All rights reserved.**
+The `/admin` routes are protected by `src/middleware.ts` which checks Supabase session cookies and redirects unauthenticated requests to `/admin/login`.
