@@ -12,7 +12,9 @@ export default function OutputsPage() {
   const [collarId, setCollarId] = useState('')
   const [intervalId, setIntervalId] = useState('')
   const [preview, setPreview] = useState<TableRow[] | null>(null)
+  const [previewName, setPreviewName] = useState('collar_output')
   const [saveAsId, setSaveAsId] = useState('')
+  const [ppmIds, setPpmIds] = useState<string[]>([])
   if (!ctx || !ctx.user) return null
   const { project, user, refresh } = ctx
 
@@ -24,10 +26,14 @@ export default function OutputsPage() {
 
   const outputs = DB.getOutputs(project.id)
   const tables = DB.getTables(project.id)
-  const collar = tables.find(t => t.id === collarId) ?? tables.find(t => t.type === 'collar')
-  const interval = tables.find(t => t.id === intervalId) ?? tables.find(t => t.type === 'assay')
+  const collarTables = tables.filter(t => t.type === 'collar')
+  const intervalTables = tables.filter(t => t.type === 'assay')
+  const collar = tables.find(t => t.id === collarId) ?? (collarTables.length === 1 ? collarTables[0] : undefined)
+  const interval = tables.find(t => t.id === intervalId) ?? (intervalTables.length === 1 ? intervalTables[0] : undefined)
 
   async function buildPreview() {
+    if (!collarId && collarTables.length > 1) { notify('warn', 'Multiple collar files found — pick which one to use.'); return }
+    if (!intervalId && intervalTables.length > 1) { notify('warn', 'Multiple interval files found — pick which one to use.'); return }
     if (!collar || !interval) { notify('warn', 'Pick a collar file and an interval file first.'); return }
     const intInv = invertColMapping(interval.columns)
     if (!intInv.from || !intInv.to) { notify('warn', `"${interval.name}" has no From/To depth columns mapped — pick an interval file (assay, survey or lithology) or fix its column meanings in Open → Columns.`); return }
@@ -35,6 +41,21 @@ export default function OutputsPage() {
     if (!res) return
     if (res.error) { notify('error', res.error, 'GP-2303'); return }
     if (!res.rows.length) { notify('info', 'Collar output produced no rows — check the Hole ID mapping on both files.'); return }
+    setPreviewName('collar_output')
+    setPreview(res.rows)
+  }
+
+  function togglePpm(id: string) {
+    setPpmIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
+  }
+
+  async function buildPpmPreview() {
+    if (!ppmIds.length) { notify('warn', 'Pick one or more cleaned files with Hole ID, From, To and a grade column mapped.'); return }
+    const res = await DB.rpcBuildPpmOutput(ppmIds)
+    if (!res) return
+    if (res.error) { notify('error', res.error, 'GP-2303'); return }
+    if (!res.rows.length) { notify('info', 'No rows produced — check Hole ID/From/To/grade column mappings on the selected files.'); return }
+    setPreviewName('ppm_summary')
     setPreview(res.rows)
   }
 
@@ -76,6 +97,20 @@ export default function OutputsPage() {
         </div>
       </div>
 
+      <div className="card" style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Build PPM summary (HOLEID / MFRO / MTO / MAXIMUMPPM)</div>
+        <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 14 }}>One row per hole, peak-grade interval, pooled across the cleaned files you select below.</p>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>
+          {tables.map(t => (
+            <label key={t.id} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, background: 'var(--bg-3)', borderRadius: 8, padding: '4px 10px', cursor: 'pointer' }}>
+              <input type="checkbox" checked={ppmIds.includes(t.id)} onChange={() => togglePpm(t.id)} />
+              {t.name} ({t.type === 'child' ? 'result file' : t.type})
+            </label>
+          ))}
+        </div>
+        <button className="btn btn-primary btn-sm" onClick={buildPpmPreview} disabled={!ppmIds.length}>Preview PPM summary</button>
+      </div>
+
       <div className="card" style={{ marginBottom: 24 }}>
         <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Save a workbench file as an output</div>
         <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 14 }}>Any file — including Result Files made on the workbench — can be stored as a downloadable output.</p>
@@ -93,7 +128,7 @@ export default function OutputsPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
             <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>Preview — {preview.length.toLocaleString()} rows, {Object.keys(preview[0]).length} columns (showing first 20)</div>
             <button className="btn btn-secondary btn-sm" onClick={() => setPreview(null)}>Discard</button>
-            <button className="btn btn-primary btn-sm" onClick={() => saveOutput(preview, `collar_output_${new Date().toISOString().slice(0, 10)}`)}>Save output</button>
+            <button className="btn btn-primary btn-sm" onClick={() => saveOutput(preview, `${previewName}_${new Date().toISOString().slice(0, 10)}`)}>Save output</button>
           </div>
           <div style={{ overflowX: 'auto', maxHeight: 320 }}>
             <table className="tbl" style={{ fontSize: 11 }}>

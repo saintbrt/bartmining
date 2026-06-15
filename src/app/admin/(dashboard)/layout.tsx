@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { DB } from '@/lib/goldpass/db'
 import { gpError } from '@/lib/goldpass/errors'
+import { notify } from '@/lib/goldpass/notify'
 import { AppContext } from '@/lib/goldpass/AppContext'
 import type { Project, TableMeta, StageStatus } from '@/lib/goldpass/db'
 import ThemeToggle from '@/components/goldpass/ThemeToggle'
@@ -30,6 +31,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [tables, setTables] = useState<TableMeta[]>([])
   const [stageStatus, setStageStatus] = useState<Record<string, StageStatus>>({})
   const [refreshKey, setRefreshKey] = useState(0)
+  const [rowsLoading, setRowsLoading] = useState(false)
 
   const refresh = useCallback(() => setRefreshKey(k => k + 1), [])
 
@@ -63,7 +65,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     setProjectState(p)
     if (p) {
       // rows must be in the cache before any workbench/editor renders them
-      DB.loadProjectRows(p.id).then(() => refresh())
+      setRowsLoading(true)
+      DB.loadProjectRows(p.id).then(() => { setRowsLoading(false); refresh() })
       router.push('/admin/validation')
     }
   }
@@ -96,7 +99,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   function handleNav(id: string) {
     if (!isStageUnlocked(id)) {
       const prereq: Record<string, string> = { cleaning: 'Validation', analysis: 'Cleaning', outputs: 'Analysis', visualization: 'Analysis' }
-      alert(`Complete ${prereq[id] ?? 'the previous stage'} first.`)
+      notify('warn', `Complete ${prereq[id] ?? 'the previous stage'} first.`)
       return
     }
     router.push('/admin/' + id)
@@ -119,7 +122,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!user) return null
 
   return (
-    <AppContext.Provider value={{ user, projects, project, tables, stageStatus, booting, setProject, approveStage, isStageUnlocked, getStageStatus, refresh }}>
+    <AppContext.Provider value={{ user, projects, project, tables, stageStatus, booting, rowsLoading, setProject, approveStage, isStageUnlocked, getStageStatus, refresh }}>
       <div className="app-root">
         <div className="sidebar">
           <div className="sb-brand">
@@ -171,6 +174,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <ThemeToggle />
             </div>
           </div>
+          {rowsLoading && (
+            <div style={{ position: 'fixed', inset: 0, background: 'rgba(11,12,14,0.5)', display: 'grid', placeItems: 'center', zIndex: 999 }}>
+              <div style={{ textAlign: 'center' }}>
+                <div className="sb-diamond" style={{ margin: '0 auto 16px', width: 32, height: 32 }} />
+                <div style={{ color: '#9BA6BC', fontSize: 13, fontFamily: 'monospace' }}>Loading project data…</div>
+              </div>
+            </div>
+          )}
           {children}
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useAppContext } from '@/lib/goldpass/AppContext'
 import { useRouter } from 'next/navigation'
 import { DB } from '@/lib/goldpass/db'
+import { AI_MODEL } from '@/lib/goldpass/aiConfig'
 
 const AI_BUDGET = 50 // USD / month
 
@@ -89,7 +90,7 @@ export default function SettingsPage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: ready ? 'var(--green)' : 'var(--red)', boxShadow: ready ? '0 0 6px var(--green)' : undefined }} />
           <div style={{ fontSize: 13 }}>{ready ? 'Claude AI connected' : 'Claude AI not configured'}</div>
-          <div style={{ marginLeft: 'auto', fontSize: 11, color: 'var(--label-4)' }}>gold-ai · claude-sonnet-4-6</div>
+          <div style={{ marginLeft: 'auto', fontSize: 11, color: 'var(--label-4)' }}>gold-ai · {AI_MODEL}</div>
         </div>
         {ready && (
           <div style={{ marginTop: 14 }}>

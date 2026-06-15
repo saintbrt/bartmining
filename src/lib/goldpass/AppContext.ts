@@ -10,6 +10,7 @@ export interface AppState {
   tables: TableMeta[]
   stageStatus: Record<string, StageStatus>
   booting: boolean
+  rowsLoading: boolean
   setProject: (p: Project | null) => void
   approveStage: (stage: keyof StageStatus) => void
   isStageUnlocked: (stage: string) => boolean

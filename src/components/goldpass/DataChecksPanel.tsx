@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { DB } from '@/lib/goldpass/db'
-import { invertColMapping } from '@/lib/goldpass/db/helpers'
-import { CHECK_DEFS, CLEAN_DEFS, ANALYSIS_DEFS, runCheck, applyFix } from '@/lib/goldpass/dataChecks'
+import { notify } from '@/lib/goldpass/notify'
+import { CHECK_DEFS, CLEAN_DEFS, ANALYSIS_DEFS } from '@/lib/goldpass/dataChecks'
 import type { TableMeta, TableRow } from '@/lib/goldpass/db'
 import type { CheckDef, CheckResult } from '@/lib/goldpass/dataChecks'
 
@@ -28,29 +28,30 @@ export default function DataChecksPanel({ stage, table, tables = [], project, us
   async function handleRun(def: CheckDef) {
     if (!table) return
     setRunning(def.id)
-    const rows = DB.getRows(table.id, 0) as TableRow[]
-    const invMap = invertColMapping(table.columns)
-    let compare: { rows: TableRow[]; invMap: Record<string, string>; columns?: Record<string, string> } | undefined
-    if (def.needsCompare) {
-      const cmpId = compareIds[def.id] ?? otherTables[0]?.id
-      const cmpMeta = tables.find(tm => tm.id === cmpId)
-      if (cmpMeta) compare = { rows: DB.getRows(cmpMeta.id, 0) as TableRow[], invMap: invertColMapping(cmpMeta.columns), columns: cmpMeta.columns }
-    }
-    const result = runCheck(def, rows, invMap, compare, table.columns)
-    setResults(prev => ({ ...prev, [def.id]: result }))
+    let compareId: string | undefined
+    if (def.needsCompare) compareId = compareIds[def.id] ?? otherTables[0]?.id
+    const data = await DB.rpcRunCheck(def.id, table.id, compareId)
     setRunning(null)
+    if (!data) return
+    if (data.error) { notify('error', String(data.error), 'GP-2305'); return }
+    const result: CheckResult = {
+      issues: (data.issues ?? []) as TableRow[],
+      count: (data.count ?? 0) as number,
+      summary: String(data.summary ?? ''),
+      cols: (data.cols ?? []) as string[],
+      coordInfo: data.coordInfo as Record<string, unknown> | undefined,
+    }
+    setResults(prev => ({ ...prev, [def.id]: result }))
     setExpanded(def.id)
   }
 
   async function handleFix(def: CheckDef) {
     if (!table) return
-    const rows = DB.getRows(table.id, 0) as TableRow[]
-    const invMap = invertColMapping(table.columns)
-    const fixed = applyFix(def, rows, invMap)
+    const fixed = await DB.rpcApplyFix(def.id, table.id)
+    if (!fixed) return
     DB.replaceRows(table.id, fixed, user.email, def.id, `Applied fix: ${def.fixLabel ?? def.label}`)
     onRefresh()
-    const newResult = runCheck(def, fixed, invMap)
-    setResults(prev => ({ ...prev, [def.id]: newResult }))
+    await handleRun(def)
   }
 
   return (

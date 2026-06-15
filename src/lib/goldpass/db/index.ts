@@ -3,6 +3,7 @@
 import { createClient } from '../supabase/client'
 import { gpError } from '../errors'
 import { notify } from '../notify'
+import { AI_MODEL, AI_PRICE_IN_PER_1M, AI_PRICE_OUT_PER_1M } from '../aiConfig'
 import type { Project, TableMeta, TableRow, AuditEntry, Output, Version, StageStatus } from './types'
 import { detectColType, invertColMapping, newId, ts, exportCsv } from './helpers'
 
@@ -178,7 +179,7 @@ export const DB = {
 
   /* ── TABLES ── */
   getTables(projectId: string): TableMeta[] { return (_c.tables[projectId] ?? []).slice() },
-  getRows(tableId: string, limit = 5000): TableRow[] {
+  getRows(tableId: string, limit = 0): TableRow[] {
     const r = _c.rows[tableId] ?? []
     return limit ? r.slice(0, limit) : r
   },
@@ -387,7 +388,7 @@ export const DB = {
         return { error: gpError(code, `HTTP ${r.status}`), code }
       }
       const json = await r.json()
-      if (json?.usage) this.logAiUsage(projectId, json.model ?? 'claude-sonnet-4-6', json.usage.input_tokens ?? 0, json.usage.output_tokens ?? 0)
+      if (json?.usage) this.logAiUsage(projectId, json.model ?? AI_MODEL, json.usage.input_tokens ?? 0, json.usage.output_tokens ?? 0)
       if (!json?.sql || typeof json.sql !== 'string') return { error: gpError('GP-2402', JSON.stringify(json).slice(0, 120)), code: 'GP-2402' }
       return { sql: json.sql, note: json.note }
     } catch (e) {
@@ -403,8 +404,7 @@ export const DB = {
       if (error) throw error
     }, 'GP-2410', 'AI usage logging')
   },
-  /* Sum this calendar month's tokens across all of the user's projects.
-     Sonnet 4.6 pricing: $3 / 1M input, $15 / 1M output. */
+  /* Sum this calendar month's tokens across all of the user's projects. */
   async getAiUsageThisMonth(): Promise<{ tokensIn: number; tokensOut: number; requests: number; cost: number }> {
     const client = sb()
     const since = new Date(); since.setDate(1); since.setHours(0, 0, 0, 0)
@@ -412,7 +412,7 @@ export const DB = {
     if (error || !data) return { tokensIn: 0, tokensOut: 0, requests: 0, cost: 0 }
     const tokensIn = data.reduce((a, r) => a + (r.tokens_in ?? 0), 0)
     const tokensOut = data.reduce((a, r) => a + (r.tokens_out ?? 0), 0)
-    const cost = (tokensIn * 3 + tokensOut * 15) / 1_000_000
+    const cost = (tokensIn * AI_PRICE_IN_PER_1M + tokensOut * AI_PRICE_OUT_PER_1M) / 1_000_000
     return { tokensIn, tokensOut, requests: data.length, cost }
   },
 
@@ -442,21 +442,18 @@ export const DB = {
   async rpcApplyFix(checkId: string, tableId: string): Promise<TableRow[] | null> {
     const { data, error } = await sb().rpc('gp_apply_fix', { p_check: checkId, p_table: tableId })
     if (error) { gpError('GP-2305', `${checkId} fix: ${error.message}`); return null }
-    return ((data as { rows?: TableRow[] })?.rows ?? []) as TableRow[]
+    const d = data as { rows?: TableRow[]; error?: string }
+    if (d?.error) { gpError('GP-2305', d.error); return null }
+    return (d?.rows ?? []) as TableRow[]
   },
   async rpcBuildCollarOutput(collarId: string, intervalId: string): Promise<{ rows: TableRow[]; error?: string } | null> {
     const { data, error } = await sb().rpc('gp_build_collar_output', { p_collar: collarId, p_interval: intervalId })
     if (error) { gpError('GP-2303', error.message); return null }
     return data as { rows: TableRow[]; error?: string }
   },
-  async rpcGradeSummary(tableId: string): Promise<TableRow[] | null> {
-    const { data, error } = await sb().rpc('gp_grade_summary', { p_table: tableId })
-    if (error) { gpError('GP-2305', `grade summary: ${error.message}`); return null }
-    return (data ?? []) as TableRow[]
-  },
-  async rpcDistanceFilter(tableId: string, refId: string, maxDist: number): Promise<{ rows: TableRow[]; error?: string } | null> {
-    const { data, error } = await sb().rpc('gp_distance_filter', { p_table: tableId, p_ref: refId, p_max: maxDist })
-    if (error) { gpError('GP-2305', `distance filter: ${error.message}`); return null }
+  async rpcBuildPpmOutput(tableIds: string[]): Promise<{ rows: TableRow[]; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_build_ppm_output', { p_tables: tableIds })
+    if (error) { gpError('GP-2303', error.message); return null }
     return data as { rows: TableRow[]; error?: string }
   },
   async rpcCombineAndDedupe(tableIds: string[]): Promise<{ clean: TableRow[]; duplicates: TableRow[]; anomalies: { type: string; message: string }[]; summary: string; error?: string } | null> {
@@ -489,13 +486,13 @@ export const DB = {
     if (error) { gpError('GP-2305', `compare files: ${error.message}`); return null }
     return data as { issues: TableRow[]; count: number; summary: string; error?: string }
   },
-  async rpcAnalysisPool(tableIds: string[]): Promise<{ grade_summary: TableRow[]; best_intercept: TableRow[]; rank_by_grade: TableRow[]; summary: string; error?: string } | null> {
+  async rpcAnalysisPool(tableIds: string[]): Promise<{ grade_summary: TableRow[]; best_intercept: TableRow[]; rank_by_grade: TableRow[]; ppm_table: TableRow[]; summary: string; error?: string } | null> {
     const { data, error } = await sb().rpc('gp_analysis_pool', { p_tables: tableIds })
     if (error) { gpError('GP-2305', `analysis: ${error.message}`); return null }
-    return data as { grade_summary: TableRow[]; best_intercept: TableRow[]; rank_by_grade: TableRow[]; summary: string; error?: string }
+    return data as { grade_summary: TableRow[]; best_intercept: TableRow[]; rank_by_grade: TableRow[]; ppm_table: TableRow[]; summary: string; error?: string }
   },
-  async rpcDistanceFilterPooled(tableId: string, refIds: string[], maxDist: number): Promise<{ rows: TableRow[]; error?: string } | null> {
-    const { data, error } = await sb().rpc('gp_distance_filter_pooled', { p_table: tableId, p_refs: refIds, p_max: maxDist })
+  async rpcDistanceFilterPooled(tableId: string, refIds: string[], maxDist: number, point?: [number, number]): Promise<{ rows: TableRow[]; error?: string } | null> {
+    const { data, error } = await sb().rpc('gp_distance_filter_pooled', { p_table: tableId, p_refs: refIds, p_max: maxDist, p_point: point ?? null })
     if (error) { gpError('GP-2305', `distance filter: ${error.message}`); return null }
     return data as { rows: TableRow[]; error?: string }
   },

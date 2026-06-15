@@ -27,9 +27,10 @@ interface Props {
   onToggleSelect: () => void
   onOpen: () => void
   onRemove: () => void
+  onDelete: () => void
 }
 
-export default function FileCard({ table, x, y, selected, isNew, highlightCols, onPointerDown, onToggleSelect, onOpen, onRemove }: Props) {
+export default function FileCard({ table, x, y, selected, isNew, highlightCols, onPointerDown, onToggleSelect, onOpen, onRemove, onDelete }: Props) {
   const cols = Object.entries(table.columns)
   const shown = cols.slice(0, MAX_COLS_SHOWN)
   const color = typeColor(table.type)
@@ -51,6 +52,7 @@ export default function FileCard({ table, x, y, selected, isNew, highlightCols, 
           <div style={{ flex: 1, fontSize: 12.5, fontWeight: 700, color: 'var(--label-1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{table.name}</div>
           <button className="btn-icon" style={{ fontSize: 9, padding: '1px 6px' }} onClick={e => { e.stopPropagation(); onOpen() }}>Open</button>
           <button className="btn-icon" style={{ fontSize: 9, padding: '1px 6px' }} title="Remove from workbench" onClick={e => { e.stopPropagation(); onRemove() }}>✕</button>
+          <button className="btn-icon" style={{ fontSize: 9, padding: '1px 6px', color: 'var(--red)' }} title="Delete file permanently" onClick={e => { e.stopPropagation(); onDelete() }}>🗑</button>
         </div>
         <div style={{ fontSize: 10, color: 'var(--label-3)', marginTop: 3 }}>
           <span style={{ color, fontWeight: 600, textTransform: 'capitalize' }}>{table.type === 'child' ? 'result file' : table.type}</span>

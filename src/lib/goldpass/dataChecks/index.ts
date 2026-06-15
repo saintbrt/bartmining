@@ -311,8 +311,8 @@ export function findOrphanAssays(rowsA: TableRow[], rowsB: TableRow[], invMapA: 
 export function diffTables(rowsA: TableRow[], rowsB: TableRow[]) {
   const key = (r: TableRow) => JSON.stringify(Object.keys(r).sort().map(k => [k, String(r[k] ?? '').trim()]))
   const setB = new Set(rowsB.map(key)), setA = new Set(rowsA.map(key))
-  const onlyA = rowsA.filter(r => !setB.has(key(r))).map(r => ({ _side: 'only in A', ...r }))
-  const onlyB = rowsB.filter(r => !setA.has(key(r))).map(r => ({ _side: 'only in B', ...r }))
+  const onlyA = rowsA.filter(r => !setB.has(key(r))).map(r => ({ _only_in: 'A', _missing_from: 'B', ...r }))
+  const onlyB = rowsB.filter(r => !setA.has(key(r))).map(r => ({ _only_in: 'B', _missing_from: 'A', ...r }))
   const issues = [...onlyA, ...onlyB]
   return { issues, count: issues.length, summary: issues.length === 0 ? 'Tables are identical row-for-row.' : `${onlyA.length} row${onlyA.length !== 1 ? 's' : ''} only in A, ${onlyB.length} only in B.` }
 }
@@ -378,21 +378,6 @@ export function buildCollarOutput(
 
 
 /* ── Workbench composite helpers ── */
-
-/** Per-file grade summary: one row per grade column with min/avg/max. */
-export function gradeSummary(rows: TableRow[], invMap: InvMap, fileName: string): TableRow[] {
-  const out: TableRow[] = []
-  ;(['au', 'cu', 'ag'] as const).forEach(k => {
-    const col = getCol(invMap, k); if (!col) return
-    const vals = rows.map(r => num(r[col])).filter(v => v !== null) as number[]
-    if (!vals.length) return
-    out.push({
-      File: fileName, Column: col, Metal: k.toUpperCase(), Values: vals.length,
-      Min: Math.min(...vals).toFixed(3), Avg: (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(3), Max: Math.max(...vals).toFixed(3),
-    })
-  })
-  return out
-}
 
 /** Keep rows of A whose coordinates fall within maxDist metres of any
     reference point. Reference points come from a second file's collar

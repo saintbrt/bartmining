@@ -39,7 +39,6 @@ export interface Output {
   name: string
   format: string
   row_count: number
-  rows?: number
   created_at: string
 }
 

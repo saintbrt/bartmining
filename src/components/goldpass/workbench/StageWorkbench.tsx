@@ -2,11 +2,10 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { DB } from '@/lib/goldpass/db'
-import { invertColMapping } from '@/lib/goldpass/db/helpers'
 import { executeSQL } from '@/lib/goldpass/sqlEngine'
 import { notify } from '@/lib/goldpass/notify'
 import { confirmDialog } from '@/lib/goldpass/confirm'
-import { CHECK_DEFS, CLEAN_DEFS, ANALYSIS_DEFS, distanceFilter, coordPoints } from '@/lib/goldpass/dataChecks'
+import { CHECK_DEFS, CLEAN_DEFS, ANALYSIS_DEFS } from '@/lib/goldpass/dataChecks'
 import type { CheckDef } from '@/lib/goldpass/dataChecks'
 import type { Project, TableMeta, TableRow } from '@/lib/goldpass/db'
 import FileCard, { CARD_W, CARD_HEADER_H, COL_ROW_H, MAX_COLS_SHOWN, cardHeight } from './FileCard'
@@ -49,7 +48,7 @@ const STAGE_ACTIONS: Record<Props['stage'], { id: string; label: string; minFile
 }
 
 const ALL_DEFS: CheckDef[] = [...CHECK_DEFS, ...CLEAN_DEFS, ...ANALYSIS_DEFS]
-const FIXING_IDS = new Set(['find_duplicates', 'remove_empty_rows', 'standardise_hole_ids', 'trim_whitespace'])
+const FIXING_IDS = new Set(['remove_empty_rows', 'standardise_hole_ids', 'trim_whitespace'])
 
 /* Shape returned by the gp_run_check RPC (mirrors dataChecks CheckResult). */
 type CheckJson = { issues: TableRow[]; count: number; summary: string; cols: string[]; coordInfo?: Record<string, unknown>; error?: string }
@@ -92,7 +91,7 @@ export default function StageWorkbench(props: Props) {
   /* auto-select files placed on the canvas so actions/AI work without manual clicking */
   useEffect(() => {
     if (!hydrated.current) return
-    if (onCanvas.length && selected.length === 0) setSelected(onCanvas.slice(0, 4))
+    if (onCanvas.length) setSelected(prev => Array.from(new Set([...prev, ...onCanvas])).slice(0, 4))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onCanvas])
 
@@ -157,7 +156,6 @@ export default function StageWorkbench(props: Props) {
     if ((e.target as HTMLElement).closest('button')) return
     const pos = positions[id]; if (!pos) return
     dragRef.current = { id, dx: e.clientX - pos.x, dy: e.clientY - pos.y }
-    ;(e.target as HTMLElement).closest('[data-canvas]')?.setPointerCapture?.(e.pointerId)
   }
   function onPointerMove(e: React.PointerEvent) {
     const d = dragRef.current; if (!d) return
@@ -166,7 +164,20 @@ export default function StageWorkbench(props: Props) {
   function endDrag() { dragRef.current = null }
 
   function toggleSelect(id: string) {
-    setSelected(prev => prev.includes(id) ? prev.filter(s => s !== id) : prev.length >= 4 ? prev : [...prev, id])
+    setSelected(prev => {
+      if (prev.includes(id)) return prev.filter(s => s !== id)
+      if (prev.length >= 4) { notify('info', 'Max 4 files selected — deselect one first.'); return prev }
+      return [...prev, id]
+    })
+  }
+
+  async function deleteFile(t: TableMeta) {
+    if (!await confirmDialog(`Permanently delete "${t.name}" and all its versions/rows? This cannot be undone.`)) return
+    DB.deleteTable(t.id, project.id, user.email)
+    setOnCanvas(prev => prev.filter(id => id !== t.id))
+    setSelected(prev => prev.filter(id => id !== t.id))
+    notify('success', `"${t.name}" deleted.`)
+    onRefresh()
   }
 
   /* line endpoint: right or left edge of the matching column row */
@@ -317,6 +328,7 @@ export default function StageWorkbench(props: Props) {
       if (res.grade_summary.length) { spawnResultCard(DB.createChildTable(project.id, `Grade summary · ${names}`.slice(0, 60), res.grade_summary, selected, user.email), selected); created++ }
       if (res.best_intercept.length) { spawnResultCard(DB.createChildTable(project.id, `Best intercepts · ${names}`.slice(0, 60), res.best_intercept, selected, user.email), selected); created++ }
       if (res.rank_by_grade.length) { spawnResultCard(DB.createChildTable(project.id, `Ranked by grade · ${names}`.slice(0, 60), res.rank_by_grade, selected, user.email), selected); created++ }
+      if (res.ppm_table.length) { spawnResultCard(DB.createChildTable(project.id, `Analysis (HOLEID-MFRO-MTO-MAXIMUMPPM) · ${names}`.slice(0, 60), res.ppm_table, selected, user.email), selected); created++ }
       if (!created) { setMessage('No grade columns (gold/copper/silver) and Hole ID/From/To mapped in the selected files.'); return }
       notify('success', `${res.summary} — ${created} Result File(s) created.`)
       onRefresh(); return
@@ -337,11 +349,12 @@ export default function StageWorkbench(props: Props) {
         resRows = res.rows
         refLabel = `holes in ${refs.map(t => t.name).join(' + ')}`
       } else {
-        // single file, no reference: typed point, stays client-side
+        // single file, no reference: typed point, runs server-side via p_point
         const pt = window.prompt('Reference point as "East, North" (e.g. 412345, 9567890):')
         const [e, n] = (pt ?? '').split(',').map(v => parseFloat(v.trim()))
         if (isNaN(e) || isNaN(n)) return
-        const res = distanceFilter(DB.getRows(A.id, 0), invertColMapping(A.columns), [{ e, n }], maxDist)
+        const res = await DB.rpcDistanceFilterPooled(A.id, [], maxDist, [e, n])
+        if (!res) return
         if (res.error) { setMessage(`${A.name}: ${res.error}`); return }
         resRows = res.rows
         refLabel = `point ${e}, ${n}`
@@ -532,7 +545,8 @@ export default function StageWorkbench(props: Props) {
               onPointerDown={e => startDrag(t.id, e)}
               onToggleSelect={() => toggleSelect(t.id)}
               onOpen={() => setOpenTable(t)}
-              onRemove={() => { setOnCanvas(prev => prev.filter(id => id !== t.id)); setSelected(prev => prev.filter(id => id !== t.id)) }} />
+              onRemove={() => { setOnCanvas(prev => prev.filter(id => id !== t.id)); setSelected(prev => prev.filter(id => id !== t.id)) }}
+              onDelete={() => deleteFile(t)} />
           ))}
         </div>
       </div>
