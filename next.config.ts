@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // mapbox-gl is loaded from CDN at runtime; skip bundling it
+      config.externals = [
+        ...(Array.isArray(config.externals) ? config.externals : config.externals ? [config.externals] : []),
+        { 'mapbox-gl': 'mapboxgl' },
+      ]
+    }
+    return config
+  },
 }
 
 export default nextConfig

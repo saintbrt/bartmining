@@ -21,12 +21,40 @@ type DevicePosition = {
 
 type PanelDevice = DevicePosition & { label?: string }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type MapboxGL = any
+
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
+const MAPBOX_VERSION = '3.3.0'
+
+function loadMapboxSDK(): Promise<MapboxGL> {
+  return new Promise((resolve, reject) => {
+    // Already loaded
+    if ((window as Window & { mapboxgl?: MapboxGL }).mapboxgl) {
+      resolve((window as Window & { mapboxgl?: MapboxGL }).mapboxgl)
+      return
+    }
+    // Inject CSS once
+    if (!document.getElementById('mapbox-css')) {
+      const link = document.createElement('link')
+      link.id = 'mapbox-css'
+      link.rel = 'stylesheet'
+      link.href = `https://api.mapbox.com/mapbox-gl-js/v${MAPBOX_VERSION}/mapbox-gl.css`
+      document.head.appendChild(link)
+    }
+    // Inject script
+    const script = document.createElement('script')
+    script.src = `https://api.mapbox.com/mapbox-gl-js/v${MAPBOX_VERSION}/mapbox-gl.js`
+    script.onload = () => resolve((window as Window & { mapboxgl?: MapboxGL }).mapboxgl)
+    script.onerror = reject
+    document.head.appendChild(script)
+  })
+}
 
 export default function LiveMapPage() {
   const mapContainer = useRef<HTMLDivElement>(null)
-  const mapRef = useRef<unknown>(null)
-  const markersRef = useRef<Map<string, unknown>>(new Map())
+  const mapRef = useRef<MapboxGL>(null)
+  const markersRef = useRef<Map<string, MapboxGL>>(new Map())
   const [positions, setPositions] = useState<DevicePosition[]>([])
   const [selected, setSelected] = useState<PanelDevice | null>(null)
   const [teamColors, setTeamColors] = useState<TeamColor>({})
@@ -40,7 +68,6 @@ export default function LiveMapPage() {
       const sb = createClient()
       const [teamsRes, posRes] = await Promise.all([
         sb.from('explore_teams').select('id, name, color_hex'),
-        // Latest position per profile_id
         sb.from('device_positions')
           .select('id, profile_id, team_id, lat, lng, accuracy_m, altitude_m, source, recorded_at')
           .order('recorded_at', { ascending: false })
@@ -57,7 +84,6 @@ export default function LiveMapPage() {
       })
       setTeamColors(colorMap)
 
-      // Dedupe to latest per profile
       const seen = new Map<string, DevicePosition>()
       ;(posRes.data ?? []).forEach((p: DevicePosition) => {
         if (!seen.has(p.profile_id)) {
@@ -73,13 +99,13 @@ export default function LiveMapPage() {
     return () => { alive = false }
   }, [])
 
-  // Init Mapbox map
+  // Init Mapbox map (loads SDK from CDN — no webpack dependency)
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return
     if (!MAPBOX_TOKEN) { setError('NEXT_PUBLIC_MAPBOX_TOKEN is not set. Add it to your .env.local file.'); return }
 
-    import('mapbox-gl').then(({ default: mapboxgl }) => {
-      mapboxgl.accessToken = MAPBOX_TOKEN!
+    loadMapboxSDK().then(mapboxgl => {
+      mapboxgl.accessToken = MAPBOX_TOKEN
       const map = new mapboxgl.Map({
         container: mapContainer.current!,
         style: 'mapbox://styles/mapbox/dark-v11',
@@ -89,20 +115,19 @@ export default function LiveMapPage() {
       map.addControl(new mapboxgl.NavigationControl(), 'top-right')
       map.on('load', () => setMapLoaded(true))
       mapRef.current = map
-    }).catch(() => setError('Failed to load Mapbox GL. Run: npm install mapbox-gl'))
+    }).catch(() => setError('Failed to load Mapbox GL JS from CDN. Check your internet connection.'))
   }, [])
 
   // Render / update markers whenever positions or map change
   useEffect(() => {
     if (!mapLoaded || !mapRef.current) return
-    import('mapbox-gl').then(({ default: mapboxgl }) => {
-      const map = mapRef.current as InstanceType<typeof mapboxgl.Map>
+    loadMapboxSDK().then(mapboxgl => {
+      const map = mapRef.current
       const existing = markersRef.current
 
-      // Remove stale markers
       existing.forEach((marker, pid) => {
         if (!positions.find(p => p.profile_id === pid)) {
-          (marker as InstanceType<typeof mapboxgl.Marker>).remove()
+          marker.remove()
           existing.delete(pid)
         }
       })
@@ -112,12 +137,10 @@ export default function LiveMapPage() {
         const el = document.createElement('div')
         el.style.cssText = `width:14px;height:14px;border-radius:50%;background:${color};border:2px solid #fff;cursor:pointer;box-shadow:0 0 6px ${color}80`
         el.title = pos.team_name ?? pos.profile_id.slice(0, 8)
-
         el.addEventListener('click', () => setSelected(pos))
 
         if (existing.has(pos.profile_id)) {
-          (existing.get(pos.profile_id) as InstanceType<typeof mapboxgl.Marker>)
-            .setLngLat([pos.lng, pos.lat])
+          existing.get(pos.profile_id).setLngLat([pos.lng, pos.lat])
           return
         }
 
@@ -156,10 +179,8 @@ export default function LiveMapPage() {
   useEffect(() => {
     return () => {
       if (mapRef.current) {
-        import('mapbox-gl').then(({ default: mapboxgl }) => {
-          ;(mapRef.current as InstanceType<typeof mapboxgl.Map>).remove()
-          mapRef.current = null
-        })
+        mapRef.current.remove()
+        mapRef.current = null
       }
     }
   }, [])
@@ -174,14 +195,12 @@ export default function LiveMapPage() {
           </p>
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginLeft: 16 }}>
-          {Object.entries(teamColors).length === 0 ? null : (
-            Object.entries(teamColors).map(([id, color]) => (
-              <span key={id} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--label-3)' }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: color, display: 'inline-block' }} />
-                {id.slice(0, 6)}
-              </span>
-            ))
-          )}
+          {Object.entries(teamColors).map(([id, color]) => (
+            <span key={id} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--label-3)' }}>
+              <span style={{ width: 8, height: 8, borderRadius: '50%', background: color, display: 'inline-block' }} />
+              {id.slice(0, 6)}
+            </span>
+          ))}
         </div>
       </div>
 
@@ -194,7 +213,6 @@ export default function LiveMapPage() {
       <div style={{ flex: 1, position: 'relative', minHeight: 0 }}>
         <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
 
-        {/* Side panel for selected device */}
         {selected && (
           <div style={{
             position: 'absolute', top: 16, right: 16, width: 260,
@@ -233,8 +251,8 @@ export default function LiveMapPage() {
               </div>
             </div>
             <button className="btn btn-secondary btn-sm" style={{ width: '100%', marginTop: 14 }}
-              onClick={() => {/* TODO: pre-fill radio call with this team */}}>
-              📢 Send Radio Call
+              onClick={() => { /* TODO: pre-fill radio call with this team */ }}>
+              Send Radio Call
             </button>
           </div>
         )}
