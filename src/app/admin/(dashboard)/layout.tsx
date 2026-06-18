@@ -16,6 +16,11 @@ const NAV = [
   { id: 'explore',   ico: '◈', label: 'Explore' },
   { id: 'settings',  ico: '⚙', label: 'Settings' },
 ]
+const MAP_DATA_SUBTABS = [
+  { id: 'cleaning', label: 'Cleaning' },
+  { id: 'analysis', label: 'Analysis' },
+  { id: 'outputs',  label: 'Outputs' },
+]
 const EXPLORE_SUBTABS = [
   { id: 'overview',       label: 'Overview' },
   { id: 'live-map',       label: 'Live Map' },
@@ -33,6 +38,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const router = useRouter()
   const pathname = usePathname()
   const [booting, setBooting] = useState(true)
+  const [mapDataOpen, setMapDataOpen] = useState(false)
   const [exploreOpen, setExploreOpen] = useState(false)
   const [user, setUser] = useState<{ email: string } | null>(null)
   const [projects, setProjects] = useState<Project[]>([])
@@ -70,13 +76,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   useEffect(() => { if (!user) return; setProjects(DB.getProjects()) }, [user, refreshKey])
   useEffect(() => { if (project) setTables(DB.getTables(project.id)); else setTables([]) }, [project, refreshKey])
 
+  // Auto-open the correct accordion when navigating directly via URL
+  useEffect(() => {
+    if (pathname.startsWith('/admin/map-data')) setMapDataOpen(true)
+    if (pathname.startsWith('/admin/explore')) setExploreOpen(true)
+  }, [pathname])
+
   function setProject(p: Project | null) {
     setProjectState(p)
     if (p) {
-      // rows must be in the cache before any workbench/editor renders them
       setRowsLoading(true)
       DB.loadProjectRows(p.id).then(() => { setRowsLoading(false); refresh() })
-      router.push('/admin/validation')
+      router.push('/admin/map-data/cleaning')
     }
   }
 
@@ -92,7 +103,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     setStageStatus(prev => ({ ...prev, [project.id]: next }))
     const order: (keyof StageStatus)[] = ['validation', 'cleaning', 'analysis']
     const idx = order.indexOf(stage)
-    if (idx >= 0 && idx < order.length - 1) router.push('/admin/' + order[idx + 1])
+    if (idx >= 0 && idx < order.length - 1) router.push('/admin/map-data/' + order[idx + 1])
   }
 
   function isStageUnlocked(_stage: string): boolean {
@@ -100,8 +111,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
 
   function handleNav(id: string) {
+    if (id === 'map-data') {
+      setMapDataOpen(o => !o)
+      return
+    }
     if (id === 'explore') {
       setExploreOpen(o => !o)
+      return
+    }
+    const mapDataIds = new Set(MAP_DATA_SUBTABS.map(s => s.id))
+    if (mapDataIds.has(id)) {
+      router.push('/admin/map-data/' + id)
       return
     }
     const exploreIds = new Set(EXPLORE_SUBTABS.map(s => s.id))
@@ -115,9 +135,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   function handleSignOut() { DB.signOut(); router.push('/admin/login') }
 
   const pathParts = pathname.replace('/admin/', '').split('/')
-  const curView = pathParts[0] || 'dashboard'
-  const curSubView = pathParts[1] ?? ''
-  const ss = project ? getStageStatus(project.id) : {} as StageStatus
+  const curSection = pathParts[0] || 'dashboard'
+  const curSubSection = pathParts[1] ?? ''
+  const curSubView = pathParts[2] ?? ''
 
   if (booting) return (
     <div style={{ height: '100%', display: 'grid', placeItems: 'center', background: '#0B0C0E' }}>
@@ -137,27 +157,49 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="sb-brand">
             <div className="sb-diamond" />
             <div>
-              <div className="sb-brand-name">Bart Mining</div>
-              <div className="sb-brand-sub">GoldPass · Internal</div>
+              <div className="sb-brand-name">GoldPass</div>
             </div>
           </div>
           <div className="sb-nav">
             <div className="sb-section">Navigation</div>
             {NAV.map(item => {
+              const isMapData = item.id === 'map-data'
               const isExplore = item.id === 'explore'
-              const isActive = isExplore ? curView === 'explore' : curView === item.id
+              const isActive = isMapData
+                ? curSection === 'map-data'
+                : isExplore
+                  ? curSection === 'explore'
+                  : curSection === item.id
               return (
                 <div key={item.id}>
                   <div className={`sb-item${isActive ? ' active' : ''}`} onClick={() => handleNav(item.id)}>
                     <span className="ico">{item.ico}</span>
                     <span className="sb-label">{item.label}</span>
-                    {isExplore && <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.5 }}>{exploreOpen ? '▲' : '▼'}</span>}
+                    {(isMapData || isExplore) && (
+                      <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.5 }}>
+                        {isMapData ? (mapDataOpen ? '▲' : '▼') : (exploreOpen ? '▲' : '▼')}
+                      </span>
+                    )}
                   </div>
+
+                  {isMapData && mapDataOpen && (
+                    <div style={{ paddingLeft: 20 }}>
+                      {MAP_DATA_SUBTABS.map(sub => (
+                        <div key={sub.id}
+                          className={`sb-item${curSection === 'map-data' && curSubSection === sub.id ? ' active' : ''}`}
+                          style={{ fontSize: 12, paddingLeft: 12 }}
+                          onClick={() => handleNav(sub.id)}>
+                          <span className="sb-label">{sub.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   {isExplore && exploreOpen && (
                     <div style={{ paddingLeft: 20 }}>
                       {EXPLORE_SUBTABS.map(sub => (
                         <div key={sub.id}
-                          className={`sb-item${curSubView === sub.id && curView === 'explore' ? ' active' : ''}`}
+                          className={`sb-item${curSubSection === sub.id && curSection === 'explore' ? ' active' : ''}`}
                           style={{ fontSize: 12, paddingLeft: 12 }}
                           onClick={() => handleNav(sub.id)}>
                           <span className="sb-label">{sub.label}</span>
@@ -182,7 +224,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             )}
           </div>
           <div className="sb-foot">
-            <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6B7A9A', fontSize: 12, textAlign: 'left', padding: '4px 0', marginBottom: 6 }} onClick={handleSignOut}>Sign out</button>
+            <button
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6B7A9A', fontSize: 12, textAlign: 'left', padding: '4px 0', marginBottom: 6 }}
+              onClick={handleSignOut}>
+              Sign out
+            </button>
             <div className="sb-user">
               <div className="sb-av">{user.email.slice(0, 2).toUpperCase()}</div>
               <div className="sb-email">{user.email}</div>
@@ -191,9 +237,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         <div className="main-area">
-          <div className="topbar" style={curView === 'dashboard' ? { display: 'none' } : {}}>
+          <div className="topbar" style={curSection === 'dashboard' ? { display: 'none' } : {}}>
             <div className="topbar-title">{project?.name ?? 'GoldPass'}</div>
-            {project && <div className="topbar-sub">/ {curView}{curSubView ? ` / ${curSubView}` : ''}</div>}
+            {project && (
+              <div className="topbar-sub">
+                / {curSection}
+                {curSubSection ? ` / ${curSubSection}` : ''}
+                {curSubView ? ` / ${curSubView}` : ''}
+              </div>
+            )}
             <div className="topbar-actions">
               <ThemeToggle />
             </div>
