@@ -27,7 +27,7 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.bartmining.com'),
   title: {
-    default: 'Bart Mining - Mining Consultancy & Gold Processing Plants | Tanzania & Africa',
+    default: 'Bart Mining',
     template: '%s | Bart Mining',
   },
   description:
