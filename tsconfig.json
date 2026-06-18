@@ -37,6 +37,8 @@
   "exclude": [
     "node_modules",
     "goldpass",
-    "supabase/functions"
+    "supabase/functions",
+    "apps/mobile",
+    "packages"
   ]
 }

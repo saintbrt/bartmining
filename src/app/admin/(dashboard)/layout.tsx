@@ -10,22 +10,30 @@ import type { Project, TableMeta, StageStatus } from '@/lib/goldpass/db'
 import ThemeToggle from '@/components/goldpass/ThemeToggle'
 
 const NAV = [
-  { id: 'dashboard',     ico: '⬡', label: 'Dashboard' },
-  { id: 'validation',    ico: '①', label: 'Validation' },
-  { id: 'cleaning',      ico: '②', label: 'Cleaning' },
-  { id: 'analysis',      ico: '③', label: 'Analysis' },
-  { id: 'outputs',       ico: '⬇', label: 'Outputs' },
-  { id: 'visualization', ico: '◈', label: 'Visualise' },
-  { id: 'maxgold',       ico: '⛏', label: 'Max Gold' },
-  { id: 'settings',      ico: '⚙', label: 'Settings' },
+  { id: 'dashboard', ico: '⬡', label: 'Dashboard' },
+  { id: 'map-data',  ico: '◎', label: 'Map Data' },
+  { id: 'maxgold',   ico: '⛏', label: 'Max Gold' },
+  { id: 'explore',   ico: '◈', label: 'Explore' },
+  { id: 'settings',  ico: '⚙', label: 'Settings' },
 ]
-const STAGE_GATES = new Set(['cleaning', 'analysis', 'outputs', 'visualization'])
+const EXPLORE_SUBTABS = [
+  { id: 'overview',       label: 'Overview' },
+  { id: 'live-map',       label: 'Live Map' },
+  { id: 'my-holes',       label: 'My Holes' },
+  { id: 'assignments',    label: 'Assignments' },
+  { id: 'radio-call',     label: 'Radio Call' },
+  { id: 'survey-photos',  label: 'Survey Photos' },
+  { id: 'devices',        label: 'Devices' },
+  { id: 'settings',       label: 'Site Settings' },
+]
+const STAGE_GATES = new Set<string>()
 const PROJ_COLORS = ['#007AFF', '#34C759', '#FF9500', '#AF52DE', '#FF3B30']
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
   const [booting, setBooting] = useState(true)
+  const [exploreOpen, setExploreOpen] = useState(false)
   const [user, setUser] = useState<{ email: string } | null>(null)
   const [projects, setProjects] = useState<Project[]>([])
   const [project, setProjectState] = useState<Project | null>(null)
@@ -87,20 +95,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     if (idx >= 0 && idx < order.length - 1) router.push('/admin/' + order[idx + 1])
   }
 
-  function isStageUnlocked(stage: string): boolean {
-    if (!project) return stage === 'validation' || stage === 'dashboard' || stage === 'settings'
-    const s = getStageStatus(project.id)
-    if (stage === 'validation' || stage === 'dashboard' || stage === 'settings') return true
-    if (stage === 'cleaning') return s.validation === 'done'
-    if (stage === 'analysis') return s.cleaning === 'done'
-    if (stage === 'outputs' || stage === 'visualization') return s.analysis === 'done'
+  function isStageUnlocked(_stage: string): boolean {
     return true
   }
 
   function handleNav(id: string) {
-    if (!isStageUnlocked(id)) {
-      const prereq: Record<string, string> = { cleaning: 'Validation', analysis: 'Cleaning', outputs: 'Analysis', visualization: 'Analysis' }
-      notify('warn', `Complete ${prereq[id] ?? 'the previous stage'} first.`)
+    if (id === 'explore') {
+      setExploreOpen(o => !o)
+      return
+    }
+    const exploreIds = new Set(EXPLORE_SUBTABS.map(s => s.id))
+    if (exploreIds.has(id)) {
+      router.push('/admin/explore/' + id)
       return
     }
     router.push('/admin/' + id)
@@ -108,7 +114,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   function handleSignOut() { DB.signOut(); router.push('/admin/login') }
 
-  const curView = pathname.replace('/admin/', '').split('/')[0] || 'dashboard'
+  const pathParts = pathname.replace('/admin/', '').split('/')
+  const curView = pathParts[0] || 'dashboard'
+  const curSubView = pathParts[1] ?? ''
   const ss = project ? getStageStatus(project.id) : {} as StageStatus
 
   if (booting) return (
@@ -136,12 +144,27 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="sb-nav">
             <div className="sb-section">Navigation</div>
             {NAV.map(item => {
-              const locked = STAGE_GATES.has(item.id) && !isStageUnlocked(item.id)
-              const done = (ss as unknown as Record<string, string>)[item.id] === 'done'
+              const isExplore = item.id === 'explore'
+              const isActive = isExplore ? curView === 'explore' : curView === item.id
               return (
-                <div key={item.id} className={`sb-item${curView === item.id ? ' active' : ''}${locked ? ' sb-item-locked' : ''}`} onClick={() => handleNav(item.id)}>
-                  <span className="ico">{locked ? '🔒' : done ? '✓' : item.ico}</span>
-                  <span className="sb-label">{item.label}</span>
+                <div key={item.id}>
+                  <div className={`sb-item${isActive ? ' active' : ''}`} onClick={() => handleNav(item.id)}>
+                    <span className="ico">{item.ico}</span>
+                    <span className="sb-label">{item.label}</span>
+                    {isExplore && <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.5 }}>{exploreOpen ? '▲' : '▼'}</span>}
+                  </div>
+                  {isExplore && exploreOpen && (
+                    <div style={{ paddingLeft: 20 }}>
+                      {EXPLORE_SUBTABS.map(sub => (
+                        <div key={sub.id}
+                          className={`sb-item${curSubView === sub.id && curView === 'explore' ? ' active' : ''}`}
+                          style={{ fontSize: 12, paddingLeft: 12 }}
+                          onClick={() => handleNav(sub.id)}>
+                          <span className="sb-label">{sub.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )
             })}
@@ -159,18 +182,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             )}
           </div>
           <div className="sb-foot">
+            <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6B7A9A', fontSize: 12, textAlign: 'left', padding: '4px 0', marginBottom: 6 }} onClick={handleSignOut}>Sign out</button>
             <div className="sb-user">
               <div className="sb-av">{user.email.slice(0, 2).toUpperCase()}</div>
               <div className="sb-email">{user.email}</div>
             </div>
-            <button className="sb-signout" onClick={handleSignOut}>Sign out</button>
           </div>
         </div>
 
         <div className="main-area">
           <div className="topbar" style={curView === 'dashboard' ? { display: 'none' } : {}}>
             <div className="topbar-title">{project?.name ?? 'GoldPass'}</div>
-            {project && <div className="topbar-sub">/ {curView}</div>}
+            {project && <div className="topbar-sub">/ {curView}{curSubView ? ` / ${curSubView}` : ''}</div>}
             <div className="topbar-actions">
               <ThemeToggle />
             </div>
