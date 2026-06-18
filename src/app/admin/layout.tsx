@@ -4,7 +4,7 @@ import GpConfirm from '@/components/goldpass/GpConfirm'
 import './admin.css'
 
 export const metadata: Metadata = {
-  title: 'GoldPass · Bart Mining',
+  title: 'GoldPass',
   description: 'Internal drill data management platform.',
   robots: { index: false, follow: false },
 }
