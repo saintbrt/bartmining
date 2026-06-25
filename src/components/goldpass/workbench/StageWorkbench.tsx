@@ -645,7 +645,7 @@ export default function StageWorkbench(props: Props) {
   const offCanvas = tables.filter(t => !onCanvas.includes(t.id))
 
   const stageTips: Record<Props['stage'], string> = {
-    cleaning: 'Add files to the workbench. Click "Analyse Files" to scan for issues — missing IDs, null values, interval problems, and orphan data. Fix what's flagged, then join or merge your files when clean.',
+    cleaning: "Add files to the workbench. Click \"Analyse Files\" to scan for issues — missing IDs, null values, interval problems, and orphan data. Fix what's flagged, then join or merge your files when clean.",
     analysis: 'Work with cleaned, validated files. Run Analysis to produce grade summaries, best intercepts, and ranked tables. Use Distance Filter to scope results to an area of interest.',
   }
 
