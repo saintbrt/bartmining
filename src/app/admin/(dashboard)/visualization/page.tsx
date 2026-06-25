@@ -68,7 +68,7 @@ function CollarMap({ points, metal }: { points: CollarPoint[]; metal: Metal }) {
       ctx.fillStyle = `rgba(${Math.round(200 + t * 55)},${Math.round(151 - t * 100)},59,${0.5 + t * 0.5})`
       ctx.fill()
     })
-    ctx.strokeStyle = isLight ? 'rgba(0,0,0,.08)' : 'rgba(255,255,255,.05)'
+    ctx.strokeStyle = 'rgba(0,0,0,.08)'
     ctx.strokeRect(pad, pad, W - pad * 2, H - pad * 2)
   }, [points, view, metal])
 
