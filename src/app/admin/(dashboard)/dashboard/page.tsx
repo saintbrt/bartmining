@@ -39,7 +39,7 @@ function PitHero() {
     canvas.height = canvas.offsetHeight * window.devicePixelRatio
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
     const W = canvas.offsetWidth, H = canvas.offsetHeight
-    ctx.fillStyle = '#0B0C0E'; ctx.fillRect(0, 0, W, H)
+    ctx.clearRect(0, 0, W, H)
     const cx = W * 0.5, cy = H * 0.6
     for (let i = 12; i >= 1; i--) {
       const rx = (W * 0.38) * (i / 12), ry = (H * 0.18) * (i / 12)

@@ -7,7 +7,6 @@ import { gpError } from '@/lib/goldpass/errors'
 import { notify } from '@/lib/goldpass/notify'
 import { AppContext } from '@/lib/goldpass/AppContext'
 import type { Project, TableMeta, StageStatus } from '@/lib/goldpass/db'
-import ThemeToggle from '@/components/goldpass/ThemeToggle'
 
 const NAV = [
   { id: 'dashboard', ico: '⬡', label: 'Dashboard' },
@@ -140,10 +139,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const curSubView = pathParts[2] ?? ''
 
   if (booting) return (
-    <div style={{ height: '100%', display: 'grid', placeItems: 'center', background: '#0B0C0E' }}>
+    <div style={{ height: '100%', display: 'grid', placeItems: 'center', background: 'var(--bg)' }}>
       <div style={{ textAlign: 'center' }}>
         <div className="sb-diamond" style={{ margin: '0 auto 16px', width: 32, height: 32 }} />
-        <div style={{ color: '#9BA6BC', fontSize: 13, fontFamily: 'monospace' }}>Connecting to GoldPass…</div>
+        <div style={{ color: 'var(--label-3)', fontSize: 13, fontFamily: 'monospace' }}>Connecting to GoldPass…</div>
       </div>
     </div>
   )
@@ -247,7 +246,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </div>
             )}
             <div className="topbar-actions">
-              <ThemeToggle />
             </div>
           </div>
           {rowsLoading && (
