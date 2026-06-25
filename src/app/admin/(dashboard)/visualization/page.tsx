@@ -49,8 +49,7 @@ function CollarMap({ points, metal }: { points: CollarPoint[]; metal: Metal }) {
     const W = canvas.offsetWidth, H = canvas.offsetHeight
     canvas.width = W * devicePixelRatio; canvas.height = H * devicePixelRatio
     ctx.scale(devicePixelRatio, devicePixelRatio)
-    const isLight = document.querySelector('.gp-root')?.getAttribute('data-theme') === 'light'
-    ctx.fillStyle = isLight ? '#FFFFFF' : '#0B0C0E'; ctx.fillRect(0, 0, W, H)
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, W, H)
     const es = points.map(p => p.e), ns = points.map(p => p.n)
     const minE = Math.min(...es), maxE = Math.max(...es)
     const minN = Math.min(...ns), maxN = Math.max(...ns)

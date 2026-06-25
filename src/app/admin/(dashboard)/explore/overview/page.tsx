@@ -111,22 +111,80 @@ function generateHoleId(prefix: string, idx: number): string {
   return `${prefix.toUpperCase()}-${rowLetter}${String(cols).padStart(3, '0')}`
 }
 
+// ─── Map styles ───────────────────────────────────────────────────────────────
+const STYLES = [
+  { id: 'satellite-streets-v12', label: 'Satellite' },
+  { id: 'outdoors-v12',          label: 'Terrain'   },
+  { id: 'streets-v12',           label: 'Streets'   },
+  { id: 'dark-v11',              label: 'Dark'      },
+]
+
+// UTM → WGS84 (WGS84 ellipsoid; S hemisphere uses 10 000 000 m false northing)
+function utmToWgs84(easting: number, northing: number, zone: number, hemisphere: 'N' | 'S'): { lat: number; lng: number } {
+  const a = 6378137.0, f = 1 / 298.257223563
+  const b = a * (1 - f)
+  const e2 = 1 - (b * b) / (a * a)
+  const ep2 = e2 / (1 - e2)
+  const k0 = 0.9996, E0 = 500000, N0 = hemisphere === 'S' ? 10000000 : 0
+  const E = easting - E0, N = northing - N0
+  const M = N / k0
+  const mu = M / (a * (1 - e2 / 4 - 3 * e2 * e2 / 64 - 5 * e2 ** 3 / 256))
+  const e1 = (1 - Math.sqrt(1 - e2)) / (1 + Math.sqrt(1 - e2))
+  const phi1 = mu
+    + (3 * e1 / 2 - 27 * e1 ** 3 / 32) * Math.sin(2 * mu)
+    + (21 * e1 ** 2 / 16 - 55 * e1 ** 4 / 32) * Math.sin(4 * mu)
+    + (151 * e1 ** 3 / 96) * Math.sin(6 * mu)
+  const sp1 = Math.sin(phi1), cp1 = Math.cos(phi1), tp1 = sp1 / cp1
+  const N1 = a / Math.sqrt(1 - e2 * sp1 * sp1)
+  const T1 = tp1 * tp1
+  const C1 = ep2 * cp1 * cp1
+  const R1 = a * (1 - e2) / Math.pow(1 - e2 * sp1 * sp1, 1.5)
+  const D = E / (N1 * k0)
+  const latRad = phi1 - (N1 * tp1 / R1) * (
+    D * D / 2
+    - (5 + 3 * T1 + 10 * C1 - 4 * C1 * C1 - 9 * ep2) * D ** 4 / 24
+    + (61 + 90 * T1 + 298 * C1 + 45 * T1 * T1 - 252 * ep2 - 3 * C1 * C1) * D ** 6 / 720
+  )
+  const lngOrigin = (zone - 1) * 6 - 180 + 3
+  const lngRad = (lngOrigin * Math.PI / 180) + (
+    D - (1 + 2 * T1 + C1) * D ** 3 / 6
+    + (5 - 2 * C1 + 28 * T1 - 3 * C1 * C1 + 8 * ep2 + 24 * T1 * T1) * D ** 5 / 120
+  ) / cp1
+  return { lat: latRad * 180 / Math.PI, lng: lngRad * 180 / Math.PI }
+}
+
+function parseDms(deg: number, min: number, sec: number, dir: string): number {
+  const dd = Math.abs(deg) + min / 60 + sec / 3600
+  return (dir === 'S' || dir === 'W') ? -dd : dd
+}
+
 // ─── Map Panel ───────────────────────────────────────────────────────────────
 function SiteMapPanel({
   vertices,
   gridPoints,
   painted,
   onMapClick,
+  flyToTarget,
 }: {
   vertices: Vertex[]
   gridPoints: { lat: number; lng: number }[]
   painted: boolean
   onMapClick: (lat: number, lng: number) => void
+  flyToTarget: { lat: number; lng: number } | null
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapboxGL>(null)
   const markersRef = useRef<MapboxGL[]>([])
-  const gridLayerRef = useRef(false)
+  const [styleIdx, setStyleIdx] = useState(0)
+  const [styleSeq, setStyleSeq] = useState(0)
+
+  function setupLayers(map: MapboxGL) {
+    map.addSource('polygon', { type: 'geojson', data: { type: 'Feature', geometry: { type: 'Polygon', coordinates: [[]] }, properties: {} } })
+    map.addLayer({ id: 'polygon-fill', type: 'fill', source: 'polygon', paint: { 'fill-color': '#F59E0B', 'fill-opacity': 0 } })
+    map.addLayer({ id: 'polygon-line', type: 'line', source: 'polygon', paint: { 'line-color': '#F59E0B', 'line-width': 2, 'line-dasharray': [4, 3] } })
+    map.addSource('grid', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
+    map.addLayer({ id: 'grid-points', type: 'circle', source: 'grid', paint: { 'circle-radius': 4, 'circle-color': '#F59E0B', 'circle-opacity': 0.85, 'circle-stroke-width': 1, 'circle-stroke-color': '#fff' } })
+  }
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
@@ -135,22 +193,18 @@ function SiteMapPanel({
       mgl.accessToken = MAPBOX_TOKEN
       const map = new mgl.Map({
         container: containerRef.current!,
-        style: 'mapbox://styles/mapbox/satellite-streets-v12',
+        style: `mapbox://styles/mapbox/${STYLES[0].id}`,
         center: [34.8, -6.4],
         zoom: 10,
       })
+      mapRef.current = map
       map.addControl(new mgl.NavigationControl(), 'top-right')
       map.on('click', (e: { lngLat: { lat: number; lng: number } }) => {
         onMapClick(e.lngLat.lat, e.lngLat.lng)
       })
-      map.on('load', () => {
-        map.addSource('polygon', { type: 'geojson', data: { type: 'Feature', geometry: { type: 'Polygon', coordinates: [[]] }, properties: {} } })
-        map.addLayer({ id: 'polygon-fill', type: 'fill', source: 'polygon', paint: { 'fill-color': '#F59E0B', 'fill-opacity': 0 } })
-        map.addLayer({ id: 'polygon-line', type: 'line', source: 'polygon', paint: { 'line-color': '#F59E0B', 'line-width': 2, 'line-dasharray': [4, 3] } })
-        map.addSource('grid', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
-        map.addLayer({ id: 'grid-points', type: 'circle', source: 'grid', paint: { 'circle-radius': 4, 'circle-color': '#F59E0B', 'circle-opacity': 0.85, 'circle-stroke-width': 1, 'circle-stroke-color': '#fff' } })
-        gridLayerRef.current = true
-        mapRef.current = map
+      map.on('style.load', () => {
+        setupLayers(map)
+        setStyleSeq(s => s + 1)
       })
     })
     return () => {
@@ -158,23 +212,34 @@ function SiteMapPanel({
     }
   }, [])
 
-  // Update polygon + markers when vertices change
+  function cycleStyle() {
+    const next = (styleIdx + 1) % STYLES.length
+    setStyleIdx(next)
+    const map = mapRef.current
+    if (map) map.setStyle(`mapbox://styles/mapbox/${STYLES[next].id}`)
+  }
+
+  // flyTo when a coordinate is typed in (not on map click — map already shows the location)
   useEffect(() => {
     const map = mapRef.current
-    if (!map || !gridLayerRef.current) return
+    if (!map || !flyToTarget) return
+    map.flyTo({ center: [flyToTarget.lng, flyToTarget.lat], zoom: 15, duration: 1200 })
+  }, [flyToTarget])
 
-    // Clear old markers
+  // Update polygon + markers
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !map.getSource('polygon')) return
+
     markersRef.current.forEach(m => m.remove())
     markersRef.current = []
 
     if (vertices.length === 0) {
-      const src = map.getSource('polygon')
-      if (src) src.setData({ type: 'Feature', geometry: { type: 'Polygon', coordinates: [[]] }, properties: {} })
+      map.getSource('polygon').setData({ type: 'Feature', geometry: { type: 'Polygon', coordinates: [[]] }, properties: {} })
       return
     }
 
     loadMapbox().then(mgl => {
-      // Drop numbered pins
       vertices.forEach((v, i) => {
         const el = document.createElement('div')
         el.style.cssText = `width:22px;height:22px;border-radius:50%;background:#F59E0B;color:#000;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.4)`
@@ -185,47 +250,59 @@ function SiteMapPanel({
         markersRef.current.push(marker)
       })
 
-      // Draw polygon outline (closes when ≥3 points)
       const coords = vertices.length >= 3
         ? [...vertices.map(v => [v.lng, v.lat]), [vertices[0].lng, vertices[0].lat]]
         : vertices.map(v => [v.lng, v.lat])
-      const src = map.getSource('polygon')
-      if (src) src.setData({
+      map.getSource('polygon').setData({
         type: 'Feature',
         geometry: { type: vertices.length >= 3 ? 'Polygon' : 'LineString', coordinates: vertices.length >= 3 ? [coords] : coords },
         properties: {},
       })
 
-      // Fill opacity
       map.setPaintProperty('polygon-fill', 'fill-opacity', painted && vertices.length >= 3 ? 0.08 : 0)
 
-      // Fly to bounds
       const lngs = vertices.map(v => v.lng), lats = vertices.map(v => v.lat)
       map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]], { padding: 60, maxZoom: 15 })
     })
-  }, [vertices, painted])
+  }, [vertices, painted, styleSeq])
 
   // Update grid points layer
   useEffect(() => {
     const map = mapRef.current
-    if (!map || !gridLayerRef.current) return
+    if (!map) return
     const src = map.getSource('grid')
     if (!src) return
     src.setData({
       type: 'FeatureCollection',
       features: gridPoints.map(p => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [p.lng, p.lat] }, properties: {} })),
     })
-  }, [gridPoints])
+  }, [gridPoints, styleSeq])
 
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%', borderRadius: 12, overflow: 'hidden' }}>
-      {!MAPBOX_TOKEN && (
-        <div style={{ width: '100%', height: '100%', display: 'grid', placeItems: 'center', background: 'var(--bg-3)', borderRadius: 12 }}>
-          <div style={{ textAlign: 'center', color: 'var(--label-4)', fontSize: 12 }}>
-            <div style={{ fontSize: 28, marginBottom: 8, opacity: 0.3 }}>◎</div>
-            Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local to enable the map.
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      <div ref={containerRef} style={{ width: '100%', height: '100%', borderRadius: 12, overflow: 'hidden' }}>
+        {!MAPBOX_TOKEN && (
+          <div style={{ width: '100%', height: '100%', display: 'grid', placeItems: 'center', background: 'var(--bg-3)', borderRadius: 12 }}>
+            <div style={{ textAlign: 'center', color: 'var(--label-4)', fontSize: 12 }}>
+              <div style={{ fontSize: 28, marginBottom: 8, opacity: 0.3 }}>◎</div>
+              Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local to enable the map.
+            </div>
           </div>
-        </div>
+        )}
+      </div>
+      {MAPBOX_TOKEN && (
+        <button
+          onClick={cycleStyle}
+          style={{
+            position: 'absolute', bottom: 40, right: 10, zIndex: 10,
+            background: 'rgba(20,20,20,0.82)', color: '#fff',
+            border: 'none', borderRadius: 8, padding: '5px 11px',
+            fontSize: 11, fontWeight: 600, cursor: 'pointer',
+            backdropFilter: 'blur(4px)', boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+          }}
+        >
+          {STYLES[styleIdx].label}
+        </button>
       )}
     </div>
   )
@@ -246,6 +323,24 @@ function SiteSetupPanel({
   const [gridPoints, setGridPoints] = useState<{ lat: number; lng: number }[]>([])
   const [saving, setSaving] = useState(false)
   const [generating, setGenerating] = useState(false)
+
+  // Coordinate input
+  const [coordFormat, setCoordFormat] = useState<'utm' | 'dd' | 'dms'>('utm')
+  const [utme, setUtme] = useState('')
+  const [utmn, setUtmn] = useState('')
+  const [utmZone, setUtmZone] = useState('36S')
+  const [ddLat, setDdLat] = useState('')
+  const [ddLng, setDdLng] = useState('')
+  const [dmsLatD, setDmsLatD] = useState('')
+  const [dmsLatM, setDmsLatM] = useState('0')
+  const [dmsLatS, setDmsLatS] = useState('0')
+  const [dmsLatDir, setDmsLatDir] = useState('S')
+  const [dmsLngD, setDmsLngD] = useState('')
+  const [dmsLngM, setDmsLngM] = useState('0')
+  const [dmsLngS, setDmsLngS] = useState('0')
+  const [dmsLngDir, setDmsLngDir] = useState('E')
+  const [geocodeLabel, setGeocodeLabel] = useState<string | null>(null)
+  const [flyToTarget, setFlyToTarget] = useState<{ lat: number; lng: number } | null>(null)
 
   // Auto-derive prefix from name
   useEffect(() => {
@@ -276,6 +371,40 @@ function SiteSetupPanel({
     setVertices(prev => prev.map(v => v.seq === seq ? { ...v, [field]: val } : v))
     setGridPoints([])
     setPainted(false)
+  }
+
+  async function addVertexFromInput() {
+    let lat: number, lng: number
+    try {
+      if (coordFormat === 'utm') {
+        const e = parseFloat(utme), n = parseFloat(utmn)
+        const m = utmZone.trim().match(/^(\d+)([NS]?)$/i)
+        if (!m || isNaN(e) || isNaN(n)) { notify('warn', 'Enter valid UTME, UTMN and zone (e.g. 36S).'); return }
+        const zoneNum = parseInt(m[1])
+        if (zoneNum < 1 || zoneNum > 60) { notify('warn', 'UTM zone must be 1–60.'); return }
+        const hemi = (m[2].toUpperCase() === 'N' ? 'N' : 'S') as 'N' | 'S'
+        ;({ lat, lng } = utmToWgs84(e, n, zoneNum, hemi))
+      } else if (coordFormat === 'dms') {
+        lat = parseDms(parseFloat(dmsLatD), parseFloat(dmsLatM || '0'), parseFloat(dmsLatS || '0'), dmsLatDir)
+        lng = parseDms(parseFloat(dmsLngD), parseFloat(dmsLngM || '0'), parseFloat(dmsLngS || '0'), dmsLngDir)
+        if (isNaN(lat) || isNaN(lng)) { notify('warn', 'Enter valid DMS values.'); return }
+      } else {
+        lat = parseFloat(ddLat)
+        lng = parseFloat(ddLng)
+        if (isNaN(lat) || isNaN(lng)) { notify('warn', 'Enter valid decimal degree coordinates.'); return }
+      }
+      addVertex(lat, lng)
+      const target = { lat, lng }
+      setFlyToTarget(target)
+      setGeocodeLabel(null)
+      if (MAPBOX_TOKEN) {
+        const r = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${MAPBOX_TOKEN}&language=en`)
+        const d = await r.json()
+        setGeocodeLabel(d.features?.[0]?.place_name ?? null)
+      }
+    } catch (err) {
+      notify('error', err instanceof Error ? err.message : 'Invalid coordinates')
+    }
   }
 
   function previewGrid() {
@@ -375,13 +504,107 @@ function SiteSetupPanel({
         </div>
 
         <div style={{ marginBottom: 14 }}>
-          <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span>Boundary points <span style={{ fontWeight: 400, color: 'var(--label-4)' }}>({vertices.length}/10 — min 3)</span></span>
-            <span style={{ fontSize: 11, color: 'var(--label-4)' }}>Click map to add</span>
+          <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8 }}>
+            Boundary points <span style={{ fontWeight: 400, color: 'var(--label-4)' }}>({vertices.length}/10 — min 3)</span>
           </div>
+
+          {/* Coordinate input form */}
+          <div style={{ marginBottom: 10, padding: '10px 12px', background: 'var(--bg-3)', borderRadius: 8 }}>
+            <div style={{ display: 'flex', gap: 4, marginBottom: 8 }}>
+              {(['utm', 'dd', 'dms'] as const).map(fmt => (
+                <button
+                  key={fmt}
+                  onClick={() => setCoordFormat(fmt)}
+                  style={{
+                    padding: '2px 9px', fontSize: 10, fontWeight: 600, border: 'none', borderRadius: 5, cursor: 'pointer',
+                    background: coordFormat === fmt ? 'var(--blue)' : 'var(--bg-4)',
+                    color: coordFormat === fmt ? '#fff' : 'var(--label-3)',
+                  }}
+                >
+                  {fmt === 'utm' ? 'UTM' : fmt === 'dd' ? 'Decimal °' : 'DMS'}
+                </button>
+              ))}
+            </div>
+
+            {coordFormat === 'utm' && (
+              <div style={{ display: 'flex', gap: 6 }}>
+                <div style={{ flex: 2 }}>
+                  <div style={{ fontSize: 10, color: 'var(--label-4)', marginBottom: 3 }}>UTME</div>
+                  <input className="input" style={{ width: '100%', boxSizing: 'border-box', fontSize: 11 }} value={utme} onChange={e => setUtme(e.target.value)} placeholder="500000" />
+                </div>
+                <div style={{ flex: 2 }}>
+                  <div style={{ fontSize: 10, color: 'var(--label-4)', marginBottom: 3 }}>UTMN</div>
+                  <input className="input" style={{ width: '100%', boxSizing: 'border-box', fontSize: 11 }} value={utmn} onChange={e => setUtmn(e.target.value)} placeholder="9605000" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 10, color: 'var(--label-4)', marginBottom: 3 }}>Zone</div>
+                  <input className="input" style={{ width: '100%', boxSizing: 'border-box', fontSize: 11 }} value={utmZone} onChange={e => setUtmZone(e.target.value.toUpperCase())} placeholder="36S" />
+                </div>
+              </div>
+            )}
+
+            {coordFormat === 'dd' && (
+              <div style={{ display: 'flex', gap: 6 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 10, color: 'var(--label-4)', marginBottom: 3 }}>Latitude</div>
+                  <input className="input" style={{ width: '100%', boxSizing: 'border-box', fontSize: 11 }} value={ddLat} onChange={e => setDdLat(e.target.value)} placeholder="-6.4000" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 10, color: 'var(--label-4)', marginBottom: 3 }}>Longitude</div>
+                  <input className="input" style={{ width: '100%', boxSizing: 'border-box', fontSize: 11 }} value={ddLng} onChange={e => setDdLng(e.target.value)} placeholder="34.8000" />
+                </div>
+              </div>
+            )}
+
+            {coordFormat === 'dms' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                  <span style={{ fontSize: 10, color: 'var(--label-4)', width: 22, flexShrink: 0 }}>Lat</span>
+                  <input className="input" style={{ flex: 2, fontSize: 11 }} value={dmsLatD} onChange={e => setDmsLatD(e.target.value)} placeholder="6" />
+                  <span style={{ fontSize: 11 }}>°</span>
+                  <input className="input" style={{ flex: 1, fontSize: 11 }} value={dmsLatM} onChange={e => setDmsLatM(e.target.value)} placeholder="24" />
+                  <span style={{ fontSize: 11 }}>&apos;</span>
+                  <input className="input" style={{ flex: 1, fontSize: 11 }} value={dmsLatS} onChange={e => setDmsLatS(e.target.value)} placeholder="0" />
+                  <span style={{ fontSize: 11 }}>&quot;</span>
+                  <select className="input" style={{ fontSize: 11, width: 44, padding: '4px 4px' }} value={dmsLatDir} onChange={e => setDmsLatDir(e.target.value)}>
+                    <option>S</option><option>N</option>
+                  </select>
+                </div>
+                <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                  <span style={{ fontSize: 10, color: 'var(--label-4)', width: 22, flexShrink: 0 }}>Lng</span>
+                  <input className="input" style={{ flex: 2, fontSize: 11 }} value={dmsLngD} onChange={e => setDmsLngD(e.target.value)} placeholder="34" />
+                  <span style={{ fontSize: 11 }}>°</span>
+                  <input className="input" style={{ flex: 1, fontSize: 11 }} value={dmsLngM} onChange={e => setDmsLngM(e.target.value)} placeholder="48" />
+                  <span style={{ fontSize: 11 }}>&apos;</span>
+                  <input className="input" style={{ flex: 1, fontSize: 11 }} value={dmsLngS} onChange={e => setDmsLngS(e.target.value)} placeholder="0" />
+                  <span style={{ fontSize: 11 }}>&quot;</span>
+                  <select className="input" style={{ fontSize: 11, width: 44, padding: '4px 4px' }} value={dmsLngDir} onChange={e => setDmsLngDir(e.target.value)}>
+                    <option>E</option><option>W</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 8 }}>
+              <button
+                className="btn btn-sm"
+                style={{ background: 'var(--blue)', color: '#fff', border: 'none', fontWeight: 600 }}
+                onClick={addVertexFromInput}
+                disabled={vertices.length >= 10}
+              >
+                + Add point
+              </button>
+              {geocodeLabel && (
+                <span style={{ fontSize: 10, color: 'var(--green)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  ✓ {geocodeLabel}
+                </span>
+              )}
+            </div>
+          </div>
+
           {vertices.length === 0 && (
-            <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '12px 0', textAlign: 'center', background: 'var(--bg-3)', borderRadius: 8 }}>
-              Click on the map to place boundary points
+            <div style={{ fontSize: 11, color: 'var(--label-4)', padding: '8px 0', textAlign: 'center' }}>
+              Add via coordinates above or click the map
             </div>
           )}
           {vertices.map(v => (
@@ -470,6 +693,7 @@ function SiteSetupPanel({
           gridPoints={gridPoints}
           painted={painted}
           onMapClick={addVertex}
+          flyToTarget={flyToTarget}
         />
       </div>
     </div>

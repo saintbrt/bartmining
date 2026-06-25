@@ -1270,13 +1270,68 @@ All current call sites pass `0` (unlimited) explicitly. Default of 5000 is a tra
 2. **Resolve validation stage dead code** — decide to build the validation page or purge the `validation` references throughout the type system.
 3. **Remove legacy `generateGrid()` from assignments** — conflicts with polygon hole IDs.
 
-### B. Explore module — polish
+### B. Explore — Map & Coordinate overhaul (planned, not started)
+
+The site setup flow and map across Explore need a full coordinate-layer upgrade. All work uses only free Mapbox built-in styles — no paid overlays or custom Mapbox Studio hosting.
+
+**B1 — Map style switcher (all pages with a map)**
+
+Add a floating style picker (bottom-right corner) to Overview and Live Map:
+
+| Button | Style ID | Why |
+|---|---|---|
+| Satellite | `satellite-streets-v12` | Current default — best for site recognition |
+| Terrain | `outdoors-v12` | Topographic contours + elevation — most useful for exploration |
+| Street | `streets-v12` | Road names, locality labels, regional context |
+| Dark | `dark-v11` | Already used in Live Map — low-glare option |
+
+When style switches, re-add all GeoJSON sources and layers in the `style.load` event (Mapbox wipes added layers on `setStyle`).
+
+**B2 — Coordinate format input for site boundary (Overview / SiteSetupPanel)**
+
+Replace "click map only" with a proper coordinate entry system:
+
+- Format selector: `UTM` / `Decimal Degrees` / `DMS`
+- UTM inputs: `UTME`, `UTMN`, zone dropdown (`35S / 36S / 37S`) — the most common format in Tanzanian mine data (Arc 1960)
+- DD inputs: `Latitude`, `Longitude` — current format, keep as-is
+- DMS inputs: `°  '  "  N/S` and `°  '  "  E/W`
+- "Add point" button converts input → WGS84 → appends vertex (same as map click)
+- Map click still works; coordinates displayed in whichever format is selected
+- All conversion is client-side math (~30 lines, no library needed)
+- Storage unchanged: Supabase `site_vertices.lat / lng` stays WGS84
+
+**B3 — Map-as-confirmation layer**
+
+When any coordinate is entered (typed or clicked), the map:
+1. Converts to WGS84 and calls `map.flyTo({ center: [lng, lat], zoom: 14 })`
+2. Reverse-geocodes via Mapbox Geocoding API (`/geocoding/v5/mapbox.places/{lng},{lat}.json`) — free tier: 100k calls/month
+3. Shows returned place name/region as a sanity-check label next to the point (e.g. "Geita Region, Tanzania")
+
+This makes the satellite imagery the verification layer — geologist sees the actual ground truth before confirming each point.
+
+**B4 — Collar file holes on the map**
+
+Once a project has collar files with UTME/UTMN columns, those holes should be plottable on the same Explore map:
+- In GoldPass workbench: detect easting/northing columns via `invertColMapping`
+- Convert UTM → WGS84 client-side
+- Plot as a GeoJSON circle layer on the Explore satellite map
+- Colour by status (pending / completed / flagged) using the same status colours as the hole cards
+- This closes the loop between the drill data in GoldPass and the physical site on the map
+
+**B5 — Mapbox Geocoding search bar (Overview)**
+
+Add a small "Search location" input above the map in SiteSetupPanel:
+- User types "Geita" or "Singida" — calls Mapbox forward geocoding
+- Map flies to result; user can then click or type precise coordinates
+- Useful when setting up a new site from scratch without coordinates yet
+
+### C. Explore module — polish
 
 1. **Radio Call → Individual target picker** — add device dropdown for `target_type = 'individual'`
 2. **Live Map → Radio Call pre-fill** — wire the "Send Radio Call" device-panel button
 3. **Survey Photos — mini map popup** — show photo GPS vs hole GPS for rejected/pending reviews
 
-### C. Mobile app — pending features
+### D. Mobile app — pending features
 
 1. **Offline hole map** (`explore/map.tsx`) — render site polygon + hole grid from local SQLite cache
 2. **BLE mesh relay** — connect stub to actual BLE layer
@@ -1284,14 +1339,14 @@ All current call sites pass `0` (unlimited) explicitly. Default of 5000 is a tra
 4. **Alert history** (`command/alerts.tsx`) — verify it loads `explore_alerts` scoped to device's team
 5. **Mobile photo review** (`command/photos.tsx`) — supervisor approve/reject on mobile
 
-### D. Supabase hardening
+### E. Supabase hardening
 
 1. Add proper RLS on Explore tables for anon-key access (currently relying on service-role key in edge functions)
 2. Rate-limit `gold-ai` edge function per project/user (prevent AI budget abuse)
 3. Confirm `profiles`, `site_vertices`, `site_grid_config` tables exist in final `setup.sql`
 4. Handle Supabase JWT refresh in Expo app (token expiry)
 
-### E. UX improvements
+### F. UX improvements
 
 1. Replace remaining `window.prompt` / `window.alert` calls with `GpConfirm` / `notify()` system
 2. WorkspacePage "Ask AI" — show generated SQL in read-only box before executing
