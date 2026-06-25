@@ -676,7 +676,7 @@ export default function StageWorkbench(props: Props) {
             onClick={runAutoAnalysis}
             style={{
               background: analyseColor ?? 'var(--blue)',
-              color: analyseColor ? '#fff' : undefined,
+              color: analyseColor ? '#fff',
               fontWeight: 600,
               border: 'none',
             }}
