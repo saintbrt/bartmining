@@ -6,7 +6,10 @@ import { DB } from '@/lib/goldpass/db'
 import { gpError } from '@/lib/goldpass/errors'
 import { notify } from '@/lib/goldpass/notify'
 import { AppContext } from '@/lib/goldpass/AppContext'
+import { createClient } from '@/lib/goldpass/supabase/client'
 import type { Project, TableMeta, StageStatus } from '@/lib/goldpass/db'
+
+type ExploreSite = { id: string; name: string }
 
 const NAV = [
   { id: 'dashboard', ico: '⬡', label: 'Dashboard' },
@@ -46,6 +49,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [stageStatus, setStageStatus] = useState<Record<string, StageStatus>>({})
   const [refreshKey, setRefreshKey] = useState(0)
   const [rowsLoading, setRowsLoading] = useState(false)
+  const [exploreSites, setExploreSites] = useState<ExploreSite[]>([])
 
   const refresh = useCallback(() => setRefreshKey(k => k + 1), [])
 
@@ -62,6 +66,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           const stages: Record<string, StageStatus> = {}
           DB.getProjects().forEach(p => { stages[p.id] = DB.getStageStatus(p.id) })
           setStageStatus(stages)
+          // Load explore sites from Supabase
+          const sb = createClient()
+          const { data } = await sb.from('sites').select('id, name').order('name')
+          if (alive && data) setExploreSites(data)
         }
       } catch (e) {
         gpError('GP-2208', e instanceof Error ? e.message : String(e))
@@ -222,6 +230,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </>
             )}
           </div>
+          {exploreSites.length > 0 && (
+            <>
+              <div className="sb-sep" />
+              <div className="sb-section">Field Sites</div>
+              {exploreSites.map(s => (
+                <div key={s.id} className="sb-proj" onClick={() => router.push('/admin/explore/overview')}>
+                  <div className="sb-proj-dot" style={{ background: 'var(--gold)' }} />
+                  <div className="sb-proj-name">{s.name}</div>
+                </div>
+              ))}
+            </>
+          )}
           <div className="sb-foot">
             <button
               style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6B7A9A', fontSize: 12, textAlign: 'left', padding: '4px 0', marginBottom: 6 }}

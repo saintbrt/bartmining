@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { createClient } from '@/lib/goldpass/supabase/client'
 import { notify } from '@/lib/goldpass/notify'
 
@@ -8,9 +8,6 @@ import { notify } from '@/lib/goldpass/notify'
 type Vertex   = { seq: number; lat: number; lng: number; label: string }
 type Site     = { id: string; name: string; prefix: string }
 type Team     = { id: string; name: string; color_hex: string; site_id: string }
-type Stats    = { activeTeams: number; holesThisWeek: number; photosPending: number; alertsSent: number }
-type TeamRow  = { id: string; name: string; color_hex: string; completed: number; total: number }
-type Alert    = { id: string; message: string; priority: string; created_at: string; target_type: string }
 type SiteHole = { id: string; hole_id: string; lat: number; lng: number; status: string }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -348,7 +345,7 @@ function SiteMapPanel({
 function SiteSetupPanel({
   onCreated,
 }: {
-  onCreated: () => void
+  onCreated?: () => void
 }) {
   const [name, setName] = useState('')
   const [prefix, setPrefix] = useState('')
@@ -509,7 +506,7 @@ function SiteSetupPanel({
       }
 
       notify('success', `Site "${name.trim()}" created with ${gridPoints.length.toLocaleString()} survey points.`)
-      onCreated()
+      onCreated?.()
     } catch (e) {
       notify('error', e instanceof Error ? e.message : String(e))
     } finally { setSaving(false); setGenerating(false) }
@@ -798,195 +795,9 @@ function TeamPanel({ site, teams, onChanged }: { site: Site; teams: Team[]; onCh
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function ExploreOverviewPage() {
-  const [sites, setSites]           = useState<Site[]>([])
-  const [teams, setTeams]           = useState<Team[]>([])
-  const [stats, setStats]           = useState<Stats | null>(null)
-  const [teamRows, setTeamRows]     = useState<TeamRow[]>([])
-  const [alerts, setAlerts]         = useState<Alert[]>([])
-  const [loading, setLoading]       = useState(true)
-  const [error, setError]           = useState<string | null>(null)
-  const [siteVertices, setSiteVertices] = useState<Vertex[]>([])
-  const [siteHoles, setSiteHoles]       = useState<SiteHole[]>([])
-
-  const load = useCallback(async () => {
-    setLoading(true)
-    setError(null)
-    try {
-      const sb = createClient()
-      const weekStart = new Date()
-      weekStart.setDate(weekStart.getDate() - weekStart.getDay())
-      const weekStartStr = weekStart.toISOString().slice(0, 10)
-
-      const [sitesRes, teamsRes, photosRes, alertsRes, assignmentsRes, holesRes] = await Promise.all([
-        sb.from('sites').select('id, name'),
-        sb.from('explore_teams').select('id, name, color_hex, site_id'),
-        sb.from('hole_surveys').select('id', { count: 'exact', head: true }).eq('status', 'pending'),
-        sb.from('explore_alerts').select('id, message, priority, created_at, target_type').order('created_at', { ascending: false }).limit(5),
-        sb.from('assignments').select('hole_id, team_id').gte('week_start', weekStartStr),
-        sb.from('holes').select('id, status'),
-      ])
-
-      const rawSites = (sitesRes.data ?? []) as { id: string; name: string }[]
-      const siteList: Site[] = rawSites.map(s => ({ id: s.id, name: s.name, prefix: '' }))
-      const teamList = teamsRes.data ?? []
-      setSites(siteList)
-      setTeams(teamList)
-
-      // Load site boundary + holes for the live map
-      if (rawSites.length > 0) {
-        const siteId = rawSites[0].id
-        const [vtxRes, holesRes2] = await Promise.all([
-          sb.from('site_vertices').select('seq, lat, lng, label').eq('site_id', siteId).order('seq'),
-          sb.from('holes').select('id, hole_id, lat, lng, status').eq('site_id', siteId).limit(2000),
-        ])
-        if (vtxRes.data) setSiteVertices(vtxRes.data.map(v => ({ ...v, label: v.label ?? `Point ${v.seq}` })))
-        if (holesRes2.data) setSiteHoles(holesRes2.data)
-      }
-
-      const rows: TeamRow[] = teamList.map((t: Team) => {
-        const assigned = (assignmentsRes.data ?? []).filter((a: { team_id: string }) => a.team_id === t.id)
-        const assignedIds = new Set(assigned.map((a: { hole_id: string }) => a.hole_id))
-        const completed = (holesRes.data ?? []).filter((h: { id: string; status: string }) => assignedIds.has(h.id) && h.status === 'completed').length
-        return { id: t.id, name: t.name, color_hex: t.color_hex, completed, total: assignedIds.size }
-      })
-      setTeamRows(rows)
-      setAlerts(alertsRes.data ?? [])
-      setStats({
-        activeTeams: rows.filter(r => r.total > 0).length,
-        holesThisWeek: (assignmentsRes.data ?? []).length,
-        photosPending: photosRes.count ?? 0,
-        alertsSent: (alertsRes.data ?? []).length,
-      })
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e))
-    } finally { setLoading(false) }
-  }, [])
-
-  useEffect(() => { load() }, [load])
-
-  const activeSite = sites[0] ?? null
-  const hasSite = sites.length > 0
-
   return (
-    <div className="content content-pad" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', gap: 0 }}>
-      {/* Header */}
-      <div style={{ marginBottom: 16, flexShrink: 0 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Explore Overview</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Field exploration tracking. Monitor teams, holes, alerts and devices.</p>
-      </div>
-
-      {error && <div style={{ color: 'var(--red)', fontSize: 12, marginBottom: 12, flexShrink: 0 }}>{error}</div>}
-
-      {/* No site yet: full-width setup panel (includes its own map) */}
-      {!loading && !hasSite && (
-        <div style={{ flex: 1, minHeight: 0 }}>
-          <SiteSetupPanel onCreated={load} />
-        </div>
-      )}
-
-      {/* Site exists: left dashboard + right live map — always two-column */}
-      {hasSite && (
-        <div style={{ display: 'flex', flex: 1, minHeight: 0, gap: 0 }}>
-
-          {/* ── Left: dashboard ── */}
-          <div style={{ width: 340, flexShrink: 0, overflowY: 'auto', paddingRight: 20, borderRight: '1px solid var(--sep)', display: 'flex', flexDirection: 'column', gap: 0 }}>
-
-            {activeSite && <TeamPanel site={activeSite} teams={teams} onChanged={load} />}
-
-            {/* Stats */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 16 }}>
-              {[
-                { label: 'Active teams',    value: stats?.activeTeams   },
-                { label: 'Holes this week', value: stats?.holesThisWeek },
-                { label: 'Photos pending',  value: stats?.photosPending  },
-                { label: 'Alerts sent',     value: stats?.alertsSent     },
-              ].map(k => (
-                <div key={k.label} className="card" style={{ textAlign: 'center', padding: '12px 8px' }}>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--label-1)', lineHeight: 1 }}>{loading ? '…' : (k.value ?? 0).toLocaleString()}</div>
-                  <div style={{ fontSize: 10, color: 'var(--label-4)', marginTop: 4 }}>{k.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Map legend */}
-            <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--label-4)', letterSpacing: 0.6, marginBottom: 8 }}>HOLE STATUS</div>
-              {[
-                { color: '#A3A3A3', label: `Pending (${siteHoles.filter(h => h.status === 'pending').length})` },
-                { color: '#D97706', label: `Assigned (${siteHoles.filter(h => h.status === 'assigned').length})` },
-                { color: '#16A34A', label: `Completed (${siteHoles.filter(h => h.status === 'completed').length})` },
-              ].map(r => (
-                <div key={r.label} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: r.color, flexShrink: 0 }} />
-                  <span style={{ fontSize: 12, color: 'var(--label-2)' }}>{r.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Team progress */}
-            <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 10 }}>Team progress this week</div>
-              {teamRows.length === 0 ? (
-                <div style={{ fontSize: 12, color: 'var(--label-4)' }}>No teams yet. Add teams above.</div>
-              ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  {teamRows.map(t => {
-                    const pct = t.total > 0 ? Math.round((t.completed / t.total) * 100) : 0
-                    return (
-                      <div key={t.id}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, marginBottom: 4 }}>
-                          <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <span style={{ width: 8, height: 8, borderRadius: '50%', background: t.color_hex, display: 'inline-block' }} />
-                            {t.name}
-                          </span>
-                          <span style={{ color: 'var(--label-4)' }}>{t.completed}/{t.total} · {pct}%</span>
-                        </div>
-                        <div style={{ height: 5, borderRadius: 3, background: 'var(--bg-3)' }}>
-                          <div style={{ height: '100%', borderRadius: 3, background: t.color_hex, width: `${pct}%`, transition: 'width .4s' }} />
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              )}
-            </div>
-
-            {/* Recent alerts */}
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 10 }}>Recent alerts</div>
-              {alerts.length === 0 ? (
-                <div style={{ fontSize: 12, color: 'var(--label-4)' }}>No alerts yet.</div>
-              ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  {alerts.map(a => (
-                    <div key={a.id} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12 }}>
-                      <span style={{ color: a.priority === 'urgent' ? 'var(--red)' : 'var(--gold)', flexShrink: 0, fontWeight: 600, fontSize: 11 }}>
-                        {a.priority === 'urgent' ? '!' : '›'} {a.target_type}
-                      </span>
-                      <span style={{ flex: 1, color: 'var(--label-2)' }}>{a.message}</span>
-                      <span style={{ color: 'var(--label-4)', fontSize: 11, flexShrink: 0 }}>{new Date(a.created_at).toLocaleDateString()}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* ── Right: live site map — always visible ── */}
-          <div style={{ flex: 1, paddingLeft: 20, minHeight: 0 }}>
-            <SiteMapPanel
-              vertices={siteVertices}
-              gridPoints={[]}
-              painted={siteVertices.length >= 3}
-              onMapClick={() => {}}
-              flyToTarget={null}
-              holes={siteHoles}
-              readonly
-            />
-          </div>
-
-        </div>
-      )}
+    <div className="content" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
+      <SiteSetupPanel />
     </div>
   )
 }
