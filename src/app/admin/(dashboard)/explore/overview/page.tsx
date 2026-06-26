@@ -519,7 +519,7 @@ function SiteSetupPanel({
   return (
     <div style={{ display: 'flex', gap: 0, flex: 1, minHeight: 0 }}>
       {/* Left panel */}
-      <div style={{ width: 340, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 0, overflowY: 'auto', paddingRight: 20, borderRight: '1px solid var(--sep)' }}>
+      <div style={{ width: 340, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 0, overflowY: 'auto', paddingTop: 28, paddingLeft: 32, paddingRight: 20, borderRight: '1px solid var(--sep)' }}>
         <div style={{ marginBottom: 20 }}>
           <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 2 }}>Create site</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)' }}>Define the boundary polygon, then set grid intervals to place survey points.</div>
@@ -720,7 +720,7 @@ function SiteSetupPanel({
       </div>
 
       {/* Map */}
-      <div style={{ flex: 1, paddingLeft: 20 }}>
+      <div style={{ flex: 1, paddingTop: 28, paddingLeft: 20 }}>
         <SiteMapPanel
           vertices={vertices}
           gridPoints={gridPoints}
@@ -796,7 +796,7 @@ function TeamPanel({ site, teams, onChanged }: { site: Site; teams: Team[]; onCh
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function ExploreOverviewPage() {
   return (
-    <div className="content content-pad" style={{ display: 'flex', flex: 1, minHeight: 0, overflow: 'hidden' }}>
+    <div className="content" style={{ display: 'flex', overflow: 'hidden' }}>
       <SiteSetupPanel />
     </div>
   )

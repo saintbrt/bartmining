@@ -21,7 +21,6 @@ const NAV = [
 const MAP_DATA_SUBTABS = [
   { id: 'cleaning', label: 'Cleaning' },
   { id: 'analysis', label: 'Analysis' },
-  { id: 'outputs',  label: 'Outputs' },
 ]
 const EXPLORE_SUBTABS = [
   { id: 'overview',       label: 'Overview' },
