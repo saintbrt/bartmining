@@ -5,7 +5,7 @@ import ContactForm from '@/components/sections/ContactForm'
 
 export const metadata: Metadata = {
   title: 'Contact Bart Mining | Mining Consultancy & Equipment, Dar es Salaam',
-  description: 'Contact Bart Mining in Dar es Salaam, Tanzania for mining consultancy, mineral exploration, gold processing plants and safety equipment across East & Southern Africa. Email hello@bartmining.com.',
+  description: 'Contact Bart Mining in Dar es Salaam, Tanzania for mining consultancy, mineral exploration, gold processing plants and safety equipment across East & Southern Africa. WhatsApp +255 759 141 705.',
   alternates: { canonical: 'https://www.bartmining.com/contact' },
 }
 
@@ -34,7 +34,7 @@ export default function Contact() {
               <div style={{ background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '28px 26px', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', top: -60, right: -60, width: 180, height: 180, borderRadius: '50%', background: 'radial-gradient(circle,rgba(174,138,76,.25),transparent 65%)', pointerEvents: 'none' }} />
                 {[
-                  { label: 'General enquiries', value: <a href="mailto:hello@bartmining.com" style={{ color: 'var(--gold-2)' }}>hello@bartmining.com</a> },
+                  { label: 'General enquiries', value: <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-2)' }}>+255 759 141 705</a> },
                   { label: 'Headquarters', value: 'Dar es Salaam, Tanzania' },
                   { label: 'Reach', value: '12+ countries · 6 continents' },
                 ].map(row => (

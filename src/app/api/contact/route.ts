@@ -44,6 +44,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Contact form error:', err)
-    return NextResponse.json({ error: 'Failed to send. Please email hello@bartmining.com directly.' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to send. Please WhatsApp +255 759 141 705 directly.' }, { status: 500 })
   }
 }

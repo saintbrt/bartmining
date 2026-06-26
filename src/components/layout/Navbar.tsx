@@ -83,7 +83,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }} className="nav-desktop">
-          <Link href="/contact" className="btn btn-gold" style={{ fontSize: 14, padding: '10px 20px' }}>
+          <Link href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ fontSize: 14, padding: '10px 20px' }}>
             Get in touch
           </Link>
         </div>
@@ -120,7 +120,7 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn btn-gold" style={{ marginTop: 16, justifyContent: 'center' }}>
+          <Link href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ marginTop: 16, justifyContent: 'center' }}>
             Get in touch
           </Link>
         </div>

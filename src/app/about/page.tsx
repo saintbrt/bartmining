@@ -136,7 +136,7 @@ export default function About() {
         heading={<>Let&apos;s build something <span className="grad">worth leaving behind.</span></>}
         body="Start with a direct conversation about your project, your stage and what responsible looks like for your site."
         primaryLabel="Get in touch"
-        primaryHref="/contact"
+        primaryHref="https://wa.me/255759141705"
         secondaryLabel="Explore services"
         secondaryHref="/services"
       />

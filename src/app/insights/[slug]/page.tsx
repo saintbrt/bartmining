@@ -113,7 +113,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.35)', marginBottom: 12 }}>Work with Bart Mining</p>
                 <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Ready to start your exploration programme?</h3>
                 <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>Our geologists have operated across East and Southern Africa for decades. Tell us your project - we&apos;ll tell you how to de-risk it.</p>
-                <Link href="/contact" className="btn btn-gold">Get in touch &rarr;</Link>
+                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Get in touch &rarr;</a>
               </div>
             </div>
           </article>
@@ -127,7 +127,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div style={{ background: 'var(--slate)', borderRadius: 'var(--r-md)', padding: '20px 18px' }}>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.35)', marginBottom: 10 }}>Speak to a geologist</p>
               <p style={{ color: 'rgba(255,255,255,.75)', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>Questions about this topic? Our team responds within one business day.</p>
-              <Link href="/contact" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold-2)', textDecoration: 'none' }}>Contact us &rarr;</Link>
+              <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold-2)', textDecoration: 'none' }}>Contact us &rarr;</a>
             </div>
 
             {related.length > 0 && (

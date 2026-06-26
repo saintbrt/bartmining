@@ -73,7 +73,7 @@ export default function Products() {
         heading={<>Tell us your <span className="grad">throughput &amp; grade.</span></>}
         body="We'll come back with a recommended configuration, indicative budget and a commissioning plan."
         primaryLabel="Request a quote"
-        primaryHref="/contact"
+        primaryHref="https://wa.me/255759141705"
         secondaryLabel="Browse the range"
         secondaryHref="#"
       />

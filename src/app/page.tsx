@@ -118,7 +118,7 @@ export default function Home() {
         heading={<>Let&apos;s build something <span className="grad">worth leaving behind.</span></>}
         body="Whether you're proving a deposit, planning a mine, sourcing a processing plant or evaluating a project - start with a conversation with the principal."
         primaryLabel="Start a project"
-        primaryHref="/contact"
+        primaryHref="https://wa.me/255759141705"
         secondaryLabel="View services"
         secondaryHref="/services"
       />

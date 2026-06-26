@@ -23,10 +23,10 @@ export default function CtaSection({ eyebrow = "Let's talk", heading, body, prim
             <h2>{heading}</h2>
             <p>{body}</p>
             <div className="cta-actions">
-              <Link href={primaryHref} className="btn btn-gold">
+              <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="btn btn-gold">
                 {primaryLabel}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} style={{ width: 16, height: 16 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </Link>
+              </a>
               {secondaryLabel && secondaryHref && (
                 <Link href={secondaryHref} className="btn btn-ghost">{secondaryLabel}</Link>
               )}

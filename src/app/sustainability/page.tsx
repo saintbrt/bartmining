@@ -101,7 +101,7 @@ export default function Sustainability() {
         heading={<>Build it <span className="grad">worth leaving behind.</span></>}
         body="Let's design your project so the land, the water and the community come out ahead."
         primaryLabel="Talk to us"
-        primaryHref="/contact"
+        primaryHref="https://wa.me/255759141705"
         secondaryLabel="Our services"
         secondaryHref="/services"
       />
