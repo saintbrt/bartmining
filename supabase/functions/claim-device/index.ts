@@ -8,7 +8,7 @@
 // Response: { access_token, refresh_token, profile_id, team_id }  or { error }
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.1/mod.ts'
+import { compareSync } from 'https://deno.land/x/bcrypt@v0.4.1/src/main.ts'
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -42,7 +42,7 @@ Deno.serve(async (req) => {
     if (new Date(inv.expires_at) < new Date()) return Response.json({ error: 'Device code has expired' }, { status: 401, headers: CORS })
 
     // Validate key against bcrypt hash
-    const keyValid = await bcrypt.compare(device_key, inv.device_key)
+    const keyValid = compareSync(device_key, inv.device_key)
     if (!keyValid) return Response.json({ error: 'Invalid device key' }, { status: 401, headers: CORS })
 
     // Check if android_id already registered to a different invitation

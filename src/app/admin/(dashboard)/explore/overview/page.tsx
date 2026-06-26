@@ -5,12 +5,13 @@ import { createClient } from '@/lib/goldpass/supabase/client'
 import { notify } from '@/lib/goldpass/notify'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-type Vertex = { seq: number; lat: number; lng: number; label: string }
-type Site = { id: string; name: string; prefix: string }
-type Team = { id: string; name: string; color_hex: string; site_id: string }
-type Stats = { activeTeams: number; holesThisWeek: number; photosPending: number; alertsSent: number }
-type TeamRow = { id: string; name: string; color_hex: string; completed: number; total: number }
-type Alert = { id: string; message: string; priority: string; created_at: string; target_type: string }
+type Vertex   = { seq: number; lat: number; lng: number; label: string }
+type Site     = { id: string; name: string; prefix: string }
+type Team     = { id: string; name: string; color_hex: string; site_id: string }
+type Stats    = { activeTeams: number; holesThisWeek: number; photosPending: number; alertsSent: number }
+type TeamRow  = { id: string; name: string; color_hex: string; completed: number; total: number }
+type Alert    = { id: string; message: string; priority: string; created_at: string; target_type: string }
+type SiteHole = { id: string; hole_id: string; lat: number; lng: number; status: string }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type MapboxGL = any
@@ -159,18 +160,28 @@ function parseDms(deg: number, min: number, sec: number, dir: string): number {
 }
 
 // ─── Map Panel ───────────────────────────────────────────────────────────────
+function holeStatusColor(status: string): string {
+  if (status === 'completed') return '#16A34A'
+  if (status === 'assigned')  return '#D97706'
+  return '#A3A3A3'
+}
+
 function SiteMapPanel({
   vertices,
   gridPoints,
   painted,
   onMapClick,
   flyToTarget,
+  holes = [],
+  readonly = false,
 }: {
   vertices: Vertex[]
   gridPoints: { lat: number; lng: number }[]
   painted: boolean
   onMapClick: (lat: number, lng: number) => void
   flyToTarget: { lat: number; lng: number } | null
+  holes?: SiteHole[]
+  readonly?: boolean
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapboxGL>(null)
@@ -184,6 +195,8 @@ function SiteMapPanel({
     map.addLayer({ id: 'polygon-line', type: 'line', source: 'polygon', paint: { 'line-color': '#F59E0B', 'line-width': 2, 'line-dasharray': [4, 3] } })
     map.addSource('grid', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
     map.addLayer({ id: 'grid-points', type: 'circle', source: 'grid', paint: { 'circle-radius': 4, 'circle-color': '#F59E0B', 'circle-opacity': 0.85, 'circle-stroke-width': 1, 'circle-stroke-color': '#fff' } })
+    map.addSource('holes', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } })
+    map.addLayer({ id: 'holes-circle', type: 'circle', source: 'holes', paint: { 'circle-radius': 5, 'circle-color': ['get', 'color'], 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff', 'circle-opacity': 0.9 } })
   }
 
   useEffect(() => {
@@ -194,14 +207,16 @@ function SiteMapPanel({
       const map = new mgl.Map({
         container: containerRef.current!,
         style: `mapbox://styles/mapbox/${STYLES[0].id}`,
-        center: [34.8, -6.4],
-        zoom: 10,
+        center: [35.0997, -9.8948],
+        zoom: 13,
       })
       mapRef.current = map
       map.addControl(new mgl.NavigationControl(), 'top-right')
-      map.on('click', (e: { lngLat: { lat: number; lng: number } }) => {
-        onMapClick(e.lngLat.lat, e.lngLat.lng)
-      })
+      if (!readonly) {
+        map.on('click', (e: { lngLat: { lat: number; lng: number } }) => {
+          onMapClick(e.lngLat.lat, e.lngLat.lng)
+        })
+      }
       map.on('style.load', () => {
         setupLayers(map)
         setStyleSeq(s => s + 1)
@@ -259,7 +274,7 @@ function SiteMapPanel({
         properties: {},
       })
 
-      map.setPaintProperty('polygon-fill', 'fill-opacity', painted && vertices.length >= 3 ? 0.08 : 0)
+      map.setPaintProperty('polygon-fill', 'fill-opacity', painted && vertices.length >= 3 ? 0.05 : 0)
 
       const lngs = vertices.map(v => v.lng), lats = vertices.map(v => v.lat)
       map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]], { padding: 60, maxZoom: 15 })
@@ -277,6 +292,27 @@ function SiteMapPanel({
       features: gridPoints.map(p => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [p.lng, p.lat] }, properties: {} })),
     })
   }, [gridPoints, styleSeq])
+
+  // Update holes layer
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+    const src = map.getSource('holes')
+    if (!src) return
+    src.setData({
+      type: 'FeatureCollection',
+      features: holes.map(h => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [h.lng, h.lat] },
+        properties: { color: holeStatusColor(h.status), hole_id: h.hole_id },
+      })),
+    })
+    // Fit to holes if no vertices defined
+    if (holes.length > 0 && vertices.length === 0) {
+      const lngs = holes.map(h => h.lng), lats = holes.map(h => h.lat)
+      map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]], { padding: 60, maxZoom: 15 })
+    }
+  }, [holes, styleSeq])
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -762,13 +798,15 @@ function TeamPanel({ site, teams, onChanged }: { site: Site; teams: Team[]; onCh
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function ExploreOverviewPage() {
-  const [sites, setSites] = useState<Site[]>([])
-  const [teams, setTeams] = useState<Team[]>([])
-  const [stats, setStats] = useState<Stats | null>(null)
-  const [teamRows, setTeamRows] = useState<TeamRow[]>([])
-  const [alerts, setAlerts] = useState<Alert[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [sites, setSites]           = useState<Site[]>([])
+  const [teams, setTeams]           = useState<Team[]>([])
+  const [stats, setStats]           = useState<Stats | null>(null)
+  const [teamRows, setTeamRows]     = useState<TeamRow[]>([])
+  const [alerts, setAlerts]         = useState<Alert[]>([])
+  const [loading, setLoading]       = useState(true)
+  const [error, setError]           = useState<string | null>(null)
+  const [siteVertices, setSiteVertices] = useState<Vertex[]>([])
+  const [siteHoles, setSiteHoles]       = useState<SiteHole[]>([])
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -793,6 +831,17 @@ export default function ExploreOverviewPage() {
       const teamList = teamsRes.data ?? []
       setSites(siteList)
       setTeams(teamList)
+
+      // Load site boundary + holes for the live map
+      if (rawSites.length > 0) {
+        const siteId = rawSites[0].id
+        const [vtxRes, holesRes2] = await Promise.all([
+          sb.from('site_vertices').select('seq, lat, lng, label').eq('site_id', siteId).order('seq'),
+          sb.from('holes').select('id, hole_id, lat, lng, status').eq('site_id', siteId).limit(2000),
+        ])
+        if (vtxRes.data) setSiteVertices(vtxRes.data.map(v => ({ ...v, label: v.label ?? `Point ${v.seq}` })))
+        if (holesRes2.data) setSiteHoles(holesRes2.data)
+      }
 
       const rows: TeamRow[] = teamList.map((t: Team) => {
         const assigned = (assignmentsRes.data ?? []).filter((a: { team_id: string }) => a.team_id === t.id)
@@ -819,54 +868,66 @@ export default function ExploreOverviewPage() {
   const hasSite = sites.length > 0
 
   return (
-    <div className="content content-pad" style={{ display: 'flex', flexDirection: 'column', gap: 0, overflow: 'hidden' }}>
+    <div className="content content-pad" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', gap: 0 }}>
       {/* Header */}
-      <div style={{ marginBottom: 20 }}>
+      <div style={{ marginBottom: 16, flexShrink: 0 }}>
         <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Explore Overview</h2>
         <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Field exploration tracking. Monitor teams, holes, alerts and devices.</p>
       </div>
 
-      {error && <div style={{ color: 'var(--red)', fontSize: 12, marginBottom: 16 }}>{error}</div>}
+      {error && <div style={{ color: 'var(--red)', fontSize: 12, marginBottom: 12, flexShrink: 0 }}>{error}</div>}
 
-      {/* Site setup — full two-column layout when no site exists */}
+      {/* No site yet: full-width setup panel (includes its own map) */}
       {!loading && !hasSite && (
         <div style={{ flex: 1, minHeight: 0 }}>
           <SiteSetupPanel onCreated={load} />
         </div>
       )}
 
-      {/* Dashboard when site exists */}
+      {/* Site exists: left dashboard + right live map — always two-column */}
       {hasSite && (
-        <>
-          {activeSite && (
-            <TeamPanel site={activeSite} teams={teams} onChanged={load} />
-          )}
+        <div style={{ display: 'flex', flex: 1, minHeight: 0, gap: 0 }}>
 
-          {/* Stats row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 20 }}>
-            {[
-              { label: 'Active teams',    value: stats?.activeTeams,   color: 'var(--blue)' },
-              { label: 'Holes this week', value: stats?.holesThisWeek, color: 'var(--green)' },
-              { label: 'Photos pending',  value: stats?.photosPending, color: 'var(--orange)' },
-              { label: 'Alerts sent',     value: stats?.alertsSent,    color: 'var(--purple)' },
-            ].map(k => (
-              <div key={k.label} className="card" style={{ textAlign: 'center', padding: '16px 12px' }}>
-                <div style={{ fontSize: 26, fontWeight: 700, color: k.color, lineHeight: 1 }}>{loading ? '…' : (k.value ?? 0).toLocaleString()}</div>
-                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 6 }}>{k.label}</div>
-              </div>
-            ))}
-          </div>
+          {/* ── Left: dashboard ── */}
+          <div style={{ width: 340, flexShrink: 0, overflowY: 'auto', paddingRight: 20, borderRight: '1px solid var(--sep)', display: 'flex', flexDirection: 'column', gap: 0 }}>
 
-          {/* Team progress + recent alerts */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            <div className="card">
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Team progress this week</div>
-              {loading ? (
-                <div style={{ fontSize: 12, color: 'var(--label-4)' }}>Loading…</div>
-              ) : teamRows.length === 0 ? (
-                <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '20px 0', textAlign: 'center' }}>
-                  No teams yet. Add teams above, then assign holes from the Assignments tab.
+            {activeSite && <TeamPanel site={activeSite} teams={teams} onChanged={load} />}
+
+            {/* Stats */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 16 }}>
+              {[
+                { label: 'Active teams',    value: stats?.activeTeams   },
+                { label: 'Holes this week', value: stats?.holesThisWeek },
+                { label: 'Photos pending',  value: stats?.photosPending  },
+                { label: 'Alerts sent',     value: stats?.alertsSent     },
+              ].map(k => (
+                <div key={k.label} className="card" style={{ textAlign: 'center', padding: '12px 8px' }}>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--label-1)', lineHeight: 1 }}>{loading ? '…' : (k.value ?? 0).toLocaleString()}</div>
+                  <div style={{ fontSize: 10, color: 'var(--label-4)', marginTop: 4 }}>{k.label}</div>
                 </div>
+              ))}
+            </div>
+
+            {/* Map legend */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--label-4)', letterSpacing: 0.6, marginBottom: 8 }}>HOLE STATUS</div>
+              {[
+                { color: '#A3A3A3', label: `Pending (${siteHoles.filter(h => h.status === 'pending').length})` },
+                { color: '#D97706', label: `Assigned (${siteHoles.filter(h => h.status === 'assigned').length})` },
+                { color: '#16A34A', label: `Completed (${siteHoles.filter(h => h.status === 'completed').length})` },
+              ].map(r => (
+                <div key={r.label} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: r.color, flexShrink: 0 }} />
+                  <span style={{ fontSize: 12, color: 'var(--label-2)' }}>{r.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Team progress */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 10 }}>Team progress this week</div>
+              {teamRows.length === 0 ? (
+                <div style={{ fontSize: 12, color: 'var(--label-4)' }}>No teams yet. Add teams above.</div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {teamRows.map(t => {
@@ -890,12 +951,11 @@ export default function ExploreOverviewPage() {
               )}
             </div>
 
-            <div className="card">
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Recent alerts</div>
-              {loading ? (
-                <div style={{ fontSize: 12, color: 'var(--label-4)' }}>Loading…</div>
-              ) : alerts.length === 0 ? (
-                <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '20px 0', textAlign: 'center' }}>No alerts yet. Send one from the Radio Call tab.</div>
+            {/* Recent alerts */}
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 10 }}>Recent alerts</div>
+              {alerts.length === 0 ? (
+                <div style={{ fontSize: 12, color: 'var(--label-4)' }}>No alerts yet.</div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {alerts.map(a => (
@@ -911,7 +971,21 @@ export default function ExploreOverviewPage() {
               )}
             </div>
           </div>
-        </>
+
+          {/* ── Right: live site map — always visible ── */}
+          <div style={{ flex: 1, paddingLeft: 20, minHeight: 0 }}>
+            <SiteMapPanel
+              vertices={siteVertices}
+              gridPoints={[]}
+              painted={siteVertices.length >= 3}
+              onMapClick={() => {}}
+              flyToTarget={null}
+              holes={siteHoles}
+              readonly
+            />
+          </div>
+
+        </div>
       )}
     </div>
   )
