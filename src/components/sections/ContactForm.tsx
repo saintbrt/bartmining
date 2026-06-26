@@ -35,7 +35,7 @@ export default function ContactForm() {
           <svg viewBox="0 0 24 24" fill="none" stroke="#34C759" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}><path d="m5 13 4 4L19 7"/></svg>
         </div>
         <h3 style={{ fontSize: 22, marginBottom: 10 }}>Thank you - message received.</h3>
-        <p style={{ color: 'var(--ink-2)', fontSize: 16 }}>We&apos;ll be in touch shortly. For anything urgent, email <a href="mailto:hello@bartmining.com" style={{ color: 'var(--gold-deep)', fontWeight: 600 }}>hello@bartmining.com</a>.</p>
+        <p style={{ color: 'var(--ink-2)', fontSize: 16 }}>We&apos;ll be in touch shortly. For anything urgent, message on WhatsApp: <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-deep)', fontWeight: 600 }}>+255 759 141 705</a>.</p>
       </div>
     )
   }

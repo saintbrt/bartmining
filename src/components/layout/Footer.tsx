@@ -22,8 +22,8 @@ export default function Footer() {
             <p style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(255,255,255,.5)', maxWidth: 240 }}>
               Principal-led mining consultancy and equipment supply across East &amp; Southern Africa.
             </p>
-            <a href="mailto:hello@bartmining.com" style={{ display: 'inline-block', marginTop: 18, fontSize: 13.5, color: 'var(--gold-2)', fontWeight: 600 }}>
-              hello@bartmining.com
+            <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: 18, fontSize: 13.5, color: 'var(--gold-2)', fontWeight: 600 }}>
+              +255 759 141 705
             </a>
           </div>
 

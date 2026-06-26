@@ -64,10 +64,10 @@ export default function Contact() {
                   </div>
                 ))}
                 <p style={{ color: 'var(--ink-2)', fontSize: 14, marginTop: 16, lineHeight: 1.6 }}>
-                  Prefer email? Reach the principal directly and we&apos;ll set up a conversation about your project, stage and location.
+                  Prefer to talk? Reach the principal directly on WhatsApp and we&apos;ll set up a conversation about your project, stage and location.
                 </p>
-                <a href="mailto:hello@bartmining.com" className="btn btn-ghost" style={{ marginTop: 14, width: '100%', justifyContent: 'center', display: 'flex' }}>
-                  Email hello@bartmining.com
+                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ marginTop: 14, width: '100%', justifyContent: 'center', display: 'flex' }}>
+                  WhatsApp +255 759 141 705
                 </a>
               </div>
             </Reveal>

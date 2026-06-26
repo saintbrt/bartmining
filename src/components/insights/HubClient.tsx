@@ -83,7 +83,7 @@ export default function HubClient({ articles }: { articles: ArticleMeta[] }) {
       <div className="px-site" style={{ paddingTop: 32, paddingBottom: 80 }}>
         {visible.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--ink-3)' }}>
-            No articles match your search. <a href="mailto:hello@bartmining.com" style={{ color: 'var(--gold)' }}>Ask our team directly &rarr;</a>
+            No articles match your search. <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>Ask our team directly &rarr;</a>
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }} className="hub-grid-responsive">
