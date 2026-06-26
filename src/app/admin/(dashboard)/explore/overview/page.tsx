@@ -517,7 +517,7 @@ function SiteSetupPanel({
   const estimatedPts = gridPoints.length
 
   return (
-    <div style={{ display: 'flex', gap: 0, height: '100%', minHeight: 520 }}>
+    <div style={{ display: 'flex', gap: 0, flex: 1, minHeight: 0 }}>
       {/* Left panel */}
       <div style={{ width: 340, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 0, overflowY: 'auto', paddingRight: 20, borderRight: '1px solid var(--sep)' }}>
         <div style={{ marginBottom: 20 }}>
@@ -796,7 +796,7 @@ function TeamPanel({ site, teams, onChanged }: { site: Site; teams: Team[]; onCh
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function ExploreOverviewPage() {
   return (
-    <div className="content" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
+    <div className="content content-pad" style={{ display: 'flex', flex: 1, minHeight: 0, overflow: 'hidden' }}>
       <SiteSetupPanel />
     </div>
   )
