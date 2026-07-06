@@ -34,9 +34,20 @@ const EXPLORE_SUBTABS = [
   { id: 'settings',       label: 'Site Settings' },
 ]
 const OPERATIONS_SUBTABS = [
-  { id: 'overview',  label: 'Overview' },
-  { id: 'expenses',  label: 'Expenses' },
-  { id: 'inventory', label: 'Inventory' },
+  { id: 'overview',     label: 'Overview' },
+  { id: 'expenses',     label: 'Expenses' },
+  { id: 'inventory',    label: 'Inventory' },
+  { id: 'sales',        label: 'Sales' },
+  { id: 'procurement',  label: 'Procurement' },
+  { id: 'shift-logs',   label: 'Shift Logs' },
+  { id: 'equipment',    label: 'Equipment' },
+  { id: 'daily-ops',    label: 'Daily Ops' },
+  { id: 'payroll',      label: 'Payroll' },
+  { id: 'executive',    label: 'Executive' },
+  { id: 'conflicts',    label: 'Conflicts' },
+  { id: 'master-data',  label: 'Master Data' },
+  { id: 'users',        label: 'Users' },
+  { id: 'audit',        label: 'Audit Log' },
 ]
 const STAGE_GATES = new Set<string>()
 const PROJ_COLORS = ['#007AFF', '#34C759', '#FF9500', '#AF52DE', '#FF3B30']

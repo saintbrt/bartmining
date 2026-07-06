@@ -4,20 +4,20 @@ import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import { getExpenseOversight, workflowTransition, type ExpenseOversightRow } from '@/lib/goldpass/erp'
 
-const STATUS_FILTERS = ['all', 'submitted', 'approved', 'rejected', 'void'] as const
+const STATUS_FILTERS = ['all', 'pending', 'approved', 'rejected', 'voided'] as const
 type StatusFilter = (typeof STATUS_FILTERS)[number]
 
 const STATUS_BADGE: Record<string, string> = {
-  submitted: 'badge-blue',
+  pending: 'badge-blue',
   approved: 'badge-green',
   rejected: 'badge-red',
-  void: 'badge-gray',
+  voided: 'badge-gray',
 }
 
 export default function ExpensesOversightPage() {
   const [rows, setRows] = useState<ExpenseOversightRow[]>([])
   const [loading, setLoading] = useState(true)
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('submitted')
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('pending')
   const [actingId, setActingId] = useState<string | null>(null)
 
   const load = useCallback(async () => {
@@ -92,7 +92,7 @@ export default function ExpensesOversightPage() {
                     <td>{r.category_name ?? '—'}</td>
                     <td>{r.location_name ?? '—'}</td>
                     <td>{r.cost_centre_name ?? '—'}</td>
-                    <td>{r.submitted_by_name ?? '—'}</td>
+                    <td>{r.entered_by_name ?? '—'}</td>
                     <td style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
                     <td><span className={`badge ${STATUS_BADGE[r.status] ?? 'badge-gray'}`}>{r.status}</span></td>
                     <td>
@@ -101,7 +101,7 @@ export default function ExpensesOversightPage() {
                       ) : '—'}
                     </td>
                     <td>
-                      {r.status === 'submitted' && (
+                      {r.status === 'pending' && (
                         <div style={{ display: 'flex', gap: 6 }}>
                           <button className="btn-icon" style={{ fontSize: 10, color: 'var(--green)' }} disabled={actingId === r.id}
                             onClick={() => act(r, 'approve')}>Approve</button>

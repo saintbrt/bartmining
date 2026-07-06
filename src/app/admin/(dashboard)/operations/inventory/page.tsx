@@ -4,14 +4,19 @@ import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import {
   getStockLevels, getInventoryAlerts, acknowledgeInventoryAlert,
+  INVENTORY_ITEMS_ENTITY, WAREHOUSES_ENTITY,
   type StockLevelRow, type InventoryAlertRow,
 } from '@/lib/goldpass/erp'
+import EntityCrudCard from '@/components/goldpass/EntityCrudCard'
+
+const CONFIG_ENTITIES = [INVENTORY_ITEMS_ENTITY, WAREHOUSES_ENTITY]
 
 export default function InventoryOversightPage() {
   const [levels, setLevels] = useState<StockLevelRow[]>([])
   const [alerts, setAlerts] = useState<InventoryAlertRow[]>([])
   const [loading, setLoading] = useState(true)
   const [ackingId, setAckingId] = useState<string | null>(null)
+  const [configEntityId, setConfigEntityId] = useState(CONFIG_ENTITIES[0].id)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -32,7 +37,8 @@ export default function InventoryOversightPage() {
     load()
   }
 
-  const openAlerts = alerts.filter(a => !a.acknowledged_at)
+  const openAlerts = alerts.filter(a => a.status === 'open')
+  const configEntity = CONFIG_ENTITIES.find(e => e.id === configEntityId)!
 
   return (
     <div className="content content-pad">
@@ -61,11 +67,11 @@ export default function InventoryOversightPage() {
                 {levels.length === 0 ? (
                   <tr><td colSpan={5} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No stock levels found.</td></tr>
                 ) : levels.map(r => (
-                  <tr key={`${r.item_id}-${r.warehouse_name}`}>
+                  <tr key={`${r.item_id}-${r.warehouse_id}`}>
                     <td>{r.item_name}</td>
                     <td>{r.warehouse_name}</td>
                     <td style={{ fontWeight: 600 }}>{r.quantity.toLocaleString()}</td>
-                    <td style={{ color: 'var(--label-4)' }}>{r.minimum_qty.toLocaleString()}</td>
+                    <td style={{ color: 'var(--label-4)' }}>{r.effective_minimum_qty.toLocaleString()}</td>
                     <td>
                       {r.is_below_minimum
                         ? <span className="badge badge-orange">Below minimum</span>
@@ -79,7 +85,7 @@ export default function InventoryOversightPage() {
         )}
       </div>
 
-      <div className="card">
+      <div className="card" style={{ marginBottom: 20 }}>
         <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>
           Alerts {openAlerts.length > 0 && <span className="badge badge-red" style={{ marginLeft: 8 }}>{openAlerts.length} open</span>}
         </div>
@@ -108,12 +114,12 @@ export default function InventoryOversightPage() {
                     <td>{a.alert_type}</td>
                     <td>{a.message ?? '—'}</td>
                     <td>
-                      {a.acknowledged_at
-                        ? <span className="badge badge-gray">Acknowledged</span>
-                        : <span className="badge badge-orange">Open</span>}
+                      {a.status === 'open'
+                        ? <span className="badge badge-orange">Open</span>
+                        : <span className="badge badge-gray">{a.status}</span>}
                     </td>
                     <td>
-                      {!a.acknowledged_at && (
+                      {a.status === 'open' && (
                         <button className="btn-icon" style={{ fontSize: 10 }} disabled={ackingId === a.id}
                           onClick={() => acknowledge(a.id)}>Acknowledge</button>
                       )}
@@ -124,6 +130,19 @@ export default function InventoryOversightPage() {
             </table>
           </div>
         )}
+      </div>
+
+      <div style={{ marginBottom: 24 }}>
+        <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>Configuration</h3>
+        <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 12 }}>Items and warehouses stock levels are tracked against.</p>
+        <div style={{ display: 'flex', gap: 6, marginBottom: 16 }}>
+          {CONFIG_ENTITIES.map(e => (
+            <button key={e.id} onClick={() => setConfigEntityId(e.id)} className={configEntityId === e.id ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'}>
+              {e.label}
+            </button>
+          ))}
+        </div>
+        <EntityCrudCard key={configEntity.id} entity={configEntity} />
       </div>
     </div>
   )
