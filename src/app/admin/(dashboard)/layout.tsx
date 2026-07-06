@@ -12,11 +12,12 @@ import type { Project, TableMeta, StageStatus } from '@/lib/goldpass/db'
 type ExploreSite = { id: string; name: string }
 
 const NAV = [
-  { id: 'dashboard', ico: '⬡', label: 'Dashboard' },
-  { id: 'map-data',  ico: '◎', label: 'Map Data' },
-  { id: 'maxgold',   ico: '⛏', label: 'Max Gold' },
-  { id: 'explore',   ico: '◈', label: 'Explore' },
-  { id: 'settings',  ico: '⚙', label: 'Settings' },
+  { id: 'dashboard',   ico: '⬡', label: 'Dashboard' },
+  { id: 'map-data',    ico: '◎', label: 'Map Data' },
+  { id: 'maxgold',     ico: '⛏', label: 'Max Gold' },
+  { id: 'explore',     ico: '◈', label: 'Explore' },
+  { id: 'operations',  ico: '▤', label: 'Operations' },
+  { id: 'settings',    ico: '⚙', label: 'Settings' },
 ]
 const MAP_DATA_SUBTABS = [
   { id: 'cleaning', label: 'Cleaning' },
@@ -32,6 +33,22 @@ const EXPLORE_SUBTABS = [
   { id: 'devices',        label: 'Devices' },
   { id: 'settings',       label: 'Site Settings' },
 ]
+const OPERATIONS_SUBTABS = [
+  { id: 'overview',     label: 'Overview' },
+  { id: 'expenses',     label: 'Expenses' },
+  { id: 'inventory',    label: 'Inventory' },
+  { id: 'sales',        label: 'Sales' },
+  { id: 'procurement',  label: 'Procurement' },
+  { id: 'shift-logs',   label: 'Shift Logs' },
+  { id: 'equipment',    label: 'Equipment' },
+  { id: 'daily-ops',    label: 'Daily Ops' },
+  { id: 'payroll',      label: 'Payroll' },
+  { id: 'executive',    label: 'Executive' },
+  { id: 'conflicts',    label: 'Conflicts' },
+  { id: 'master-data',  label: 'Master Data' },
+  { id: 'users',        label: 'Users' },
+  { id: 'audit',        label: 'Audit Log' },
+]
 const STAGE_GATES = new Set<string>()
 const PROJ_COLORS = ['#007AFF', '#34C759', '#FF9500', '#AF52DE', '#FF3B30']
 
@@ -41,6 +58,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [booting, setBooting] = useState(true)
   const [mapDataOpen, setMapDataOpen] = useState(false)
   const [exploreOpen, setExploreOpen] = useState(false)
+  const [operationsOpen, setOperationsOpen] = useState(false)
   const [user, setUser] = useState<{ email: string } | null>(null)
   const [projects, setProjects] = useState<Project[]>([])
   const [project, setProjectState] = useState<Project | null>(null)
@@ -86,6 +104,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   useEffect(() => {
     if (pathname.startsWith('/admin/map-data')) setMapDataOpen(true)
     if (pathname.startsWith('/admin/explore')) setExploreOpen(true)
+    if (pathname.startsWith('/admin/operations')) setOperationsOpen(true)
   }, [pathname])
 
   function setProject(p: Project | null) {
@@ -125,6 +144,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       setExploreOpen(o => !o)
       return
     }
+    if (id === 'operations') {
+      setOperationsOpen(o => !o)
+      return
+    }
     const mapDataIds = new Set(MAP_DATA_SUBTABS.map(s => s.id))
     if (mapDataIds.has(id)) {
       router.push('/admin/map-data/' + id)
@@ -133,6 +156,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const exploreIds = new Set(EXPLORE_SUBTABS.map(s => s.id))
     if (exploreIds.has(id)) {
       router.push('/admin/explore/' + id)
+      return
+    }
+    const operationsIds = new Set(OPERATIONS_SUBTABS.map(s => s.id))
+    if (operationsIds.has(id)) {
+      router.push('/admin/operations/' + id)
       return
     }
     router.push('/admin/' + id)
@@ -171,19 +199,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             {NAV.map(item => {
               const isMapData = item.id === 'map-data'
               const isExplore = item.id === 'explore'
+              const isOperations = item.id === 'operations'
               const isActive = isMapData
                 ? curSection === 'map-data'
                 : isExplore
                   ? curSection === 'explore'
-                  : curSection === item.id
+                  : isOperations
+                    ? curSection === 'operations'
+                    : curSection === item.id
               return (
                 <div key={item.id}>
                   <div className={`sb-item${isActive ? ' active' : ''}`} onClick={() => handleNav(item.id)}>
                     <span className="ico">{item.ico}</span>
                     <span className="sb-label">{item.label}</span>
-                    {(isMapData || isExplore) && (
+                    {(isMapData || isExplore || isOperations) && (
                       <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.5 }}>
-                        {isMapData ? (mapDataOpen ? '▲' : '▼') : (exploreOpen ? '▲' : '▼')}
+                        {isMapData ? (mapDataOpen ? '▲' : '▼') : isExplore ? (exploreOpen ? '▲' : '▼') : (operationsOpen ? '▲' : '▼')}
                       </span>
                     )}
                   </div>
@@ -206,6 +237,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                       {EXPLORE_SUBTABS.map(sub => (
                         <div key={sub.id}
                           className={`sb-item${curSubSection === sub.id && curSection === 'explore' ? ' active' : ''}`}
+                          style={{ fontSize: 12, paddingLeft: 12 }}
+                          onClick={() => handleNav(sub.id)}>
+                          <span className="sb-label">{sub.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {isOperations && operationsOpen && (
+                    <div style={{ paddingLeft: 20 }}>
+                      {OPERATIONS_SUBTABS.map(sub => (
+                        <div key={sub.id}
+                          className={`sb-item${curSubSection === sub.id && curSection === 'operations' ? ' active' : ''}`}
                           style={{ fontSize: 12, paddingLeft: 12 }}
                           onClick={() => handleNav(sub.id)}>
                           <span className="sb-label">{sub.label}</span>

@@ -12,6 +12,7 @@ import { notify } from './notify'
    23xx — SQL workbench engine
    24xx — AI (gold-ai edge function)
    25xx — outputs / export
+   26xx — Operations/ERP oversight (expenses, inventory — goldpass-field schema)
 */
 export const GP_ERRORS: Record<string, string> = {
   'GP-2314': 'Supabase is not connected — NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON are missing or invalid.',
@@ -47,6 +48,49 @@ export const GP_ERRORS: Record<string, string> = {
 
   'GP-2501': 'Export failed — output has no rows.',
   'GP-2502': 'Output download failed — stored data could not be fetched.',
+
+  'GP-2601': 'Pending approvals count failed to load.',
+  'GP-2602': 'Open inventory alerts count failed to load.',
+  'GP-2603': 'Stock levels failed to load.',
+  'GP-2604': 'Expense spend (month-to-date) failed to load.',
+  'GP-2605': 'Expense oversight list failed to load.',
+  'GP-2606': 'Approval decision failed to reach the workflow engine.',
+  'GP-2607': 'Inventory alerts failed to load.',
+  'GP-2608': 'Failed to acknowledge inventory alert.',
+  'GP-2609': 'Master data list failed to load.',
+  'GP-2610': 'Master data row failed to save.',
+  'GP-2611': 'Master data row failed to delete.',
+  'GP-2612': 'Sync conflicts failed to load.',
+  'GP-2613': 'Failed to resolve sync conflict.',
+  'GP-2614': 'Shift log oversight list failed to load.',
+  'GP-2615': 'Equipment registry failed to load.',
+  'GP-2616': 'Equipment failed to save.',
+  'GP-2617': 'Equipment utilization failed to load.',
+  'GP-2618': 'Daily ops summary failed to load.',
+  'GP-2619': 'User/profile list failed to load.',
+  'GP-2620': 'Failed to update user role.',
+  'GP-2621': 'Procurement pipeline failed to load.',
+  'GP-2622': 'Failed to convert purchase request to purchase order.',
+  'GP-2623': 'Audit log failed to load.',
+  'GP-2624': 'Sales register failed to load.',
+  'GP-2625': 'Attendance records failed to load.',
+  'GP-2626': 'Failed to confirm attendance record.',
+  'GP-2627': 'Payroll adjustments failed to load.',
+  'GP-2628': 'Payroll runs failed to load.',
+  'GP-2629': 'Failed to generate payroll preview.',
+  'GP-2630': 'Failed to lock payroll run.',
+  'GP-2631': 'Labor cost by cost centre failed to load.',
+  'GP-2632': 'Executive KPIs failed to load.',
+  'GP-2633': 'Failed to refresh executive reporting views.',
+  'GP-2634': 'Manager scorecard failed to load.',
+  'GP-2635': 'Month-end closes failed to load.',
+  'GP-2636': 'Failed to initiate month-end close.',
+  'GP-2637': 'Failed to create monthly snapshot.',
+  'GP-2638': 'Failed to finalize month-end close.',
+  'GP-2639': 'Monthly snapshots failed to load.',
+  'GP-2640': 'Failed to amend monthly snapshot.',
+  'GP-2641': 'Site report config failed to load.',
+  'GP-2642': 'Site report config failed to save.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */
