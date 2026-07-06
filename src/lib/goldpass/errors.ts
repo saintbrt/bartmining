@@ -12,6 +12,7 @@ import { notify } from './notify'
    23xx — SQL workbench engine
    24xx — AI (gold-ai edge function)
    25xx — outputs / export
+   26xx — Operations/ERP oversight (expenses, inventory — goldpass-field schema)
 */
 export const GP_ERRORS: Record<string, string> = {
   'GP-2314': 'Supabase is not connected — NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON are missing or invalid.',
@@ -47,6 +48,15 @@ export const GP_ERRORS: Record<string, string> = {
 
   'GP-2501': 'Export failed — output has no rows.',
   'GP-2502': 'Output download failed — stored data could not be fetched.',
+
+  'GP-2601': 'Pending approvals count failed to load.',
+  'GP-2602': 'Open inventory alerts count failed to load.',
+  'GP-2603': 'Stock levels failed to load.',
+  'GP-2604': 'Expense spend (month-to-date) failed to load.',
+  'GP-2605': 'Expense oversight list failed to load.',
+  'GP-2606': 'Approval decision failed to reach the workflow engine.',
+  'GP-2607': 'Inventory alerts failed to load.',
+  'GP-2608': 'Failed to acknowledge inventory alert.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */
