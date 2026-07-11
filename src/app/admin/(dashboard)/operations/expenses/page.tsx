@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import { getExpenseOversight, workflowTransition, type ExpenseOversightRow } from '@/lib/goldpass/erp'
+import { exportCsv } from '@/lib/goldpass/db/helpers'
 
 const STATUS_FILTERS = ['all', 'pending', 'approved', 'rejected', 'voided'] as const
 type StatusFilter = (typeof STATUS_FILTERS)[number]
@@ -19,6 +20,7 @@ export default function ExpensesOversightPage() {
   const [loading, setLoading] = useState(true)
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('pending')
   const [actingId, setActingId] = useState<string | null>(null)
+  const [exporting, setExporting] = useState(false)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -45,6 +47,26 @@ export default function ExpensesOversightPage() {
     load()
   }
 
+  async function exportAll() {
+    setExporting(true)
+    const all = await getExpenseOversight({ limit: 10000 })
+    setExporting(false)
+    if (all.length === 0) { notify('warn', 'No expenses to export.'); return }
+    exportCsv(all.map(r => ({
+      Date: new Date(r.created_at).toLocaleDateString(),
+      Category: r.category_name ?? '',
+      Payee: r.payee_name ?? '',
+      'Payee Role': r.payee_role ?? '',
+      Details: r.notes ?? '',
+      Reference: r.reference_no ?? '',
+      'Cost Centre': r.cost_centre_name ?? '',
+      'Paid By': r.entered_by_name ?? '',
+      'Amount (TSh)': r.amount_tsh,
+      Status: r.status,
+    })), `expenses-${new Date().toISOString().slice(0, 10)}.csv`)
+    notify('success', `Exported ${all.length} expense${all.length === 1 ? '' : 's'}.`)
+  }
+
   return (
     <div className="content content-pad">
       <div style={{ marginBottom: 24 }}>
@@ -52,16 +74,21 @@ export default function ExpensesOversightPage() {
         <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Oversight of expense entries submitted from the field.</p>
       </div>
 
-      <div style={{ display: 'flex', gap: 6, marginBottom: 16 }}>
-        {STATUS_FILTERS.map(s => (
-          <button
-            key={s}
-            onClick={() => setStatusFilter(s)}
-            className={statusFilter === s ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'}
-          >
-            {s === 'all' ? 'All' : s[0].toUpperCase() + s.slice(1)}
-          </button>
-        ))}
+      <div style={{ display: 'flex', gap: 6, marginBottom: 16, justifyContent: 'space-between', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          {STATUS_FILTERS.map(s => (
+            <button
+              key={s}
+              onClick={() => setStatusFilter(s)}
+              className={statusFilter === s ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'}
+            >
+              {s === 'all' ? 'All' : s[0].toUpperCase() + s.slice(1)}
+            </button>
+          ))}
+        </div>
+        <button className="btn btn-secondary btn-sm" disabled={exporting} onClick={exportAll}>
+          {exporting ? 'Exporting…' : 'Export all (CSV)'}
+        </button>
       </div>
 
       <div className="card">
@@ -77,7 +104,7 @@ export default function ExpensesOversightPage() {
                   <th>Payee</th>
                   <th>Details</th>
                   <th>Cost centre</th>
-                  <th>Submitted by</th>
+                  <th>Paid by</th>
                   <th>Amount (TSh)</th>
                   <th>Status</th>
                   <th>Proof</th>

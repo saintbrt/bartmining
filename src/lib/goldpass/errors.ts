@@ -90,6 +90,8 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2640': 'Failed to amend monthly snapshot.',
   'GP-2641': 'Site report config failed to load.',
   'GP-2642': 'Site report config failed to save.',
+  'GP-2643': 'Failed to update user name.',
+  'GP-2644': 'Failed to record sale.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */
