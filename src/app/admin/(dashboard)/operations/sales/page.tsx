@@ -48,6 +48,7 @@ export default function SalesPage() {
     if (!customerId) { notify('warn', 'Select a customer.'); return }
     if (!weightG || Number(weightG) <= 0) { notify('warn', 'Enter a weight in grams.'); return }
     if (!priceTsh || Number(priceTsh) < 0) { notify('warn', 'Enter a price.'); return }
+    if (!paymentTerms.trim()) { notify('warn', 'Enter payment terms (e.g. COD, Net 30) — the database rejects sales without it.'); return }
     setRecording(true)
     const id = await submitSale({
       siteId: siteId || null,
@@ -121,7 +122,7 @@ export default function SalesPage() {
           <input className="input" style={{ flex: 1, minWidth: 110, fontSize: 12 }} type="number" placeholder="Weight (g) *" value={weightG} onChange={e => setWeightG(e.target.value)} />
           <input className="input" style={{ flex: 1, minWidth: 110, fontSize: 12 }} type="number" placeholder="Purity % (optional)" value={purityPct} onChange={e => setPurityPct(e.target.value)} />
           <input className="input" style={{ flex: 1, minWidth: 110, fontSize: 12 }} type="number" placeholder="Price (TSh) *" value={priceTsh} onChange={e => setPriceTsh(e.target.value)} />
-          <input className="input" style={{ flex: 1, minWidth: 130, fontSize: 12 }} placeholder="Payment terms" value={paymentTerms} onChange={e => setPaymentTerms(e.target.value)} />
+          <input className="input" style={{ flex: 1, minWidth: 130, fontSize: 12 }} placeholder="Payment terms * (e.g. COD, Net 30)" value={paymentTerms} onChange={e => setPaymentTerms(e.target.value)} />
         </div>
         <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
           <input className="input" style={{ flex: 1, fontSize: 12 }} placeholder="Notes (optional)" value={notes} onChange={e => setNotes(e.target.value)} />
