@@ -148,21 +148,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       setOperationsOpen(o => !o)
       return
     }
-    const mapDataIds = new Set(MAP_DATA_SUBTABS.map(s => s.id))
-    if (mapDataIds.has(id)) {
-      router.push('/admin/map-data/' + id)
-      return
-    }
-    const exploreIds = new Set(EXPLORE_SUBTABS.map(s => s.id))
-    if (exploreIds.has(id)) {
-      router.push('/admin/explore/' + id)
-      return
-    }
-    const operationsIds = new Set(OPERATIONS_SUBTABS.map(s => s.id))
-    if (operationsIds.has(id)) {
-      router.push('/admin/operations/' + id)
-      return
-    }
+    // Subtab clicks route directly (see MAP_DATA_SUBTABS/EXPLORE_SUBTABS/
+    // OPERATIONS_SUBTABS onClick handlers below) — routing them through here
+    // by id alone broke when 'overview' existed in more than one subtab list
+    // (Explore and Operations both have one; the first matching set always
+    // won, so Operations → Overview silently opened Explore → Overview).
     router.push('/admin/' + id)
   }
 
@@ -225,7 +215,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         <div key={sub.id}
                           className={`sb-item${curSection === 'map-data' && curSubSection === sub.id ? ' active' : ''}`}
                           style={{ fontSize: 12, paddingLeft: 12 }}
-                          onClick={() => handleNav(sub.id)}>
+                          onClick={() => router.push('/admin/map-data/' + sub.id)}>
                           <span className="sb-label">{sub.label}</span>
                         </div>
                       ))}
@@ -238,7 +228,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         <div key={sub.id}
                           className={`sb-item${curSubSection === sub.id && curSection === 'explore' ? ' active' : ''}`}
                           style={{ fontSize: 12, paddingLeft: 12 }}
-                          onClick={() => handleNav(sub.id)}>
+                          onClick={() => router.push('/admin/explore/' + sub.id)}>
                           <span className="sb-label">{sub.label}</span>
                         </div>
                       ))}
@@ -251,7 +241,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         <div key={sub.id}
                           className={`sb-item${curSubSection === sub.id && curSection === 'operations' ? ' active' : ''}`}
                           style={{ fontSize: 12, paddingLeft: 12 }}
-                          onClick={() => handleNav(sub.id)}>
+                          onClick={() => router.push('/admin/operations/' + sub.id)}>
                           <span className="sb-label">{sub.label}</span>
                         </div>
                       ))}
