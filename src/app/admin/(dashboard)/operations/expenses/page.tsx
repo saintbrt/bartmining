@@ -74,7 +74,8 @@ export default function ExpensesOversightPage() {
                 <tr>
                   <th>Date</th>
                   <th>Category</th>
-                  <th>Location</th>
+                  <th>Payee</th>
+                  <th>Details</th>
                   <th>Cost centre</th>
                   <th>Submitted by</th>
                   <th>Amount (TSh)</th>
@@ -85,12 +86,16 @@ export default function ExpensesOversightPage() {
               </thead>
               <tbody>
                 {rows.length === 0 ? (
-                  <tr><td colSpan={9} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No expenses found for this filter.</td></tr>
+                  <tr><td colSpan={10} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No expenses found for this filter.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.id}>
                     <td style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleDateString()}</td>
                     <td>{r.category_name ?? '—'}</td>
-                    <td>{r.location_name ?? '—'}</td>
+                    <td>{r.payee_name ?? '—'}{r.payee_role ? <span style={{ color: 'var(--label-4)' }}> ({r.payee_role})</span> : null}</td>
+                    <td style={{ maxWidth: 220 }} title={r.notes ?? ''}>
+                      <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.notes ?? '—'}</div>
+                      {r.reference_no && <div style={{ fontSize: 10, color: 'var(--label-4)' }}>Ref: {r.reference_no}</div>}
+                    </td>
                     <td>{r.cost_centre_name ?? '—'}</td>
                     <td>{r.entered_by_name ?? '—'}</td>
                     <td style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
