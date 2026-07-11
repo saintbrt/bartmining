@@ -84,9 +84,9 @@ export async function getOperationsKpis(): Promise<OperationsKpis> {
   }
 }
 
-export async function getExpenseOversight(filters?: { status?: string }): Promise<ExpenseOversightRow[]> {
+export async function getExpenseOversight(filters?: { status?: string; limit?: number }): Promise<ExpenseOversightRow[]> {
   const client = sb()
-  let q = client.from('v_expense_oversight').select('*').order('created_at', { ascending: false }).limit(200)
+  let q = client.from('v_expense_oversight').select('*').order('created_at', { ascending: false }).limit(filters?.limit ?? 200)
   if (filters?.status) q = q.eq('status', filters.status)
   const { data, error } = await q
   if (error) { gpError('GP-2605', error.message); return [] }
@@ -223,6 +223,12 @@ export async function listProfiles(): Promise<ProfileRow[]> {
 export async function updateProfileRole(id: string, role: string): Promise<boolean> {
   const { error } = await sb().from('profiles').update({ role }).eq('id', id)
   if (error) { gpError('GP-2620', error.message); return false }
+  return true
+}
+
+export async function updateProfileName(id: string, name: string): Promise<boolean> {
+  const { error } = await sb().from('profiles').update({ name }).eq('id', id)
+  if (error) { gpError('GP-2643', error.message); return false }
   return true
 }
 
@@ -383,6 +389,34 @@ export async function getSaleWorkflowInstanceId(saleId: string): Promise<string 
   const { data, error } = await sb().from('sales').select('workflow_instance_id').eq('id', saleId).single()
   if (error) { gpError('GP-2624', error.message); return null }
   return (data?.workflow_instance_id as string | null) ?? null
+}
+
+export type NewSaleInput = {
+  siteId: string | null
+  customerId: string
+  saleDate: string
+  weightG: number
+  purityPct: number | null
+  priceTsh: number
+  paymentTerms: string | null
+  notes: string | null
+}
+
+/* submit_sale(...) — 0006_erp_sales.sql, widened in 0013 to also allow admin
+   accounts (originally manager-only, since sale entry was mobile-only). */
+export async function submitSale(input: NewSaleInput): Promise<string | null> {
+  const { data, error } = await sb().rpc('submit_sale', {
+    p_site_id: input.siteId,
+    p_customer_id: input.customerId,
+    p_sale_date: input.saleDate,
+    p_weight_g: input.weightG,
+    p_purity_pct: input.purityPct,
+    p_price_tsh: input.priceTsh,
+    p_payment_terms: input.paymentTerms,
+    p_notes: input.notes,
+  })
+  if (error) { gpError('GP-2644', error.message); return null }
+  return data as string
 }
 
 /* ── PAYROLL — 0007_erp_payroll.sql ──

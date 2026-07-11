@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import {
-  getSalesRegister, getSaleWorkflowInstanceId, workflowTransition, CUSTOMERS_ENTITY,
-  type SalesRegisterRow,
+  getSalesRegister, getSaleWorkflowInstanceId, workflowTransition, submitSale, CUSTOMERS_ENTITY,
+  listSimpleTable, type SalesRegisterRow, type SimpleRow,
 } from '@/lib/goldpass/erp'
 import EntityCrudCard from '@/components/goldpass/EntityCrudCard'
 
@@ -21,13 +21,50 @@ export default function SalesPage() {
   const [loading, setLoading] = useState(true)
   const [actingId, setActingId] = useState<string | null>(null)
 
+  const [sites, setSites] = useState<SimpleRow[]>([])
+  const [customers, setCustomers] = useState<SimpleRow[]>([])
+  const [siteId, setSiteId] = useState('')
+  const [customerId, setCustomerId] = useState('')
+  const [saleDate, setSaleDate] = useState(() => new Date().toISOString().slice(0, 10))
+  const [weightG, setWeightG] = useState('')
+  const [purityPct, setPurityPct] = useState('')
+  const [priceTsh, setPriceTsh] = useState('')
+  const [paymentTerms, setPaymentTerms] = useState('')
+  const [notes, setNotes] = useState('')
+  const [recording, setRecording] = useState(false)
+
   const load = useCallback(async () => {
     setLoading(true)
-    setRows(await getSalesRegister())
+    const [salesData, sitesData, customersData] = await Promise.all([
+      getSalesRegister(), listSimpleTable('sites'), listSimpleTable('customers'),
+    ])
+    setRows(salesData); setSites(sitesData); setCustomers(customersData)
     setLoading(false)
   }, [])
 
   useEffect(() => { load() }, [load])
+
+  async function recordSale() {
+    if (!customerId) { notify('warn', 'Select a customer.'); return }
+    if (!weightG || Number(weightG) <= 0) { notify('warn', 'Enter a weight in grams.'); return }
+    if (!priceTsh || Number(priceTsh) < 0) { notify('warn', 'Enter a price.'); return }
+    setRecording(true)
+    const id = await submitSale({
+      siteId: siteId || null,
+      customerId,
+      saleDate,
+      weightG: Number(weightG),
+      purityPct: purityPct ? Number(purityPct) : null,
+      priceTsh: Number(priceTsh),
+      paymentTerms: paymentTerms.trim() || null,
+      notes: notes.trim() || null,
+    })
+    setRecording(false)
+    if (!id) return
+    notify('success', 'Sale recorded and submitted for approval.')
+    setCustomerId(''); setWeightG(''); setPurityPct(''); setPriceTsh(''); setPaymentTerms(''); setNotes('')
+    load()
+  }
 
   async function act(row: SalesRegisterRow, action: 'approve' | 'reject') {
     let comment = ''
@@ -65,6 +102,31 @@ export default function SalesPage() {
           <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--green)' }}>TSh {totalRevenueTsh.toLocaleString()}</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Total revenue (all rows shown)</div>
         </div>
+      </div>
+
+      <div className="card" style={{ maxWidth: 680, marginBottom: 24 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Record sale</div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+          <select className="input" style={{ flex: 1, minWidth: 140, fontSize: 12 }} value={siteId} onChange={e => setSiteId(e.target.value)}>
+            <option value="">Site (optional)</option>
+            {sites.map(s => <option key={s.id} value={s.id}>{s.name as string}</option>)}
+          </select>
+          <select className="input" style={{ flex: 1, minWidth: 140, fontSize: 12 }} value={customerId} onChange={e => setCustomerId(e.target.value)}>
+            <option value="">Select customer…</option>
+            {customers.map(c => <option key={c.id} value={c.id}>{c.name as string}</option>)}
+          </select>
+          <input className="input" style={{ width: 140, fontSize: 12 }} type="date" value={saleDate} onChange={e => setSaleDate(e.target.value)} />
+        </div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+          <input className="input" style={{ flex: 1, minWidth: 110, fontSize: 12 }} type="number" placeholder="Weight (g) *" value={weightG} onChange={e => setWeightG(e.target.value)} />
+          <input className="input" style={{ flex: 1, minWidth: 110, fontSize: 12 }} type="number" placeholder="Purity % (optional)" value={purityPct} onChange={e => setPurityPct(e.target.value)} />
+          <input className="input" style={{ flex: 1, minWidth: 110, fontSize: 12 }} type="number" placeholder="Price (TSh) *" value={priceTsh} onChange={e => setPriceTsh(e.target.value)} />
+          <input className="input" style={{ flex: 1, minWidth: 130, fontSize: 12 }} placeholder="Payment terms" value={paymentTerms} onChange={e => setPaymentTerms(e.target.value)} />
+        </div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+          <input className="input" style={{ flex: 1, fontSize: 12 }} placeholder="Notes (optional)" value={notes} onChange={e => setNotes(e.target.value)} />
+        </div>
+        <button className="btn btn-primary btn-sm" disabled={recording} onClick={recordSale}>{recording ? 'Recording…' : 'Record sale'}</button>
       </div>
 
       <div className="card" style={{ marginBottom: 24 }}>

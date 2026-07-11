@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
-import { listProfiles, updateProfileRole, type ProfileRow } from '@/lib/goldpass/erp'
+import { listProfiles, updateProfileRole, updateProfileName, type ProfileRow } from '@/lib/goldpass/erp'
 
 const ROLES = ['admin', 'manager', 'supervisor'] as const
 
@@ -27,6 +27,18 @@ export default function UsersPage() {
     setSavingId(null)
     if (!ok) return
     notify('success', 'Role updated.')
+    load()
+  }
+
+  async function renameUser(row: ProfileRow) {
+    const typed = window.prompt('New name:', row.name ?? '')
+    if (typed === null) return
+    if (!typed.trim()) { notify('warn', 'Name cannot be empty.'); return }
+    setSavingId(row.id)
+    const ok = await updateProfileName(row.id, typed.trim())
+    setSavingId(null)
+    if (!ok) return
+    notify('success', 'Name updated.')
     load()
   }
 
@@ -64,7 +76,11 @@ export default function UsersPage() {
                   <tr><td colSpan={3} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No users found.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.id}>
-                    <td>{r.name ?? '—'}</td>
+                    <td>
+                      <span>{r.name ?? '—'}</span>
+                      <button className="btn-icon" style={{ fontSize: 10, marginLeft: 8, padding: '2px 7px' }} disabled={savingId === r.id}
+                        onClick={() => renameUser(r)}>✎</button>
+                    </td>
                     <td style={{ color: 'var(--label-4)' }}>{r.email ?? '—'}</td>
                     <td>
                       <select
