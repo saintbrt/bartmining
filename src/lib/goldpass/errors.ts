@@ -18,7 +18,6 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2314': 'Supabase is not connected — NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON are missing or invalid.',
 
   'GP-2101': 'Sign-in failed — credentials rejected or auth service unreachable.',
-  'GP-2102': 'Google sign-in failed — OAuth provider error (check Google provider config in Supabase).',
   'GP-2103': 'Session restore failed — stored session is invalid or Supabase unreachable.',
   'GP-2104': 'Sign-out failed to reach Supabase (local session was cleared anyway).',
   'GP-2105': 'Signed in, but no access to GoldPass tables — check RLS policies (run supabase/setup.sql).',

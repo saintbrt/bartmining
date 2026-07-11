@@ -64,17 +64,6 @@ export const DB = {
     }
   },
 
-  async signInWithGoogle(): Promise<{ error: string | null }> {
-    if (!this.ready()) return { error: gpError('GP-2314', 'Unable to start Google sign-in') }
-    const client = sb()
-    const { error } = await client.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo: `${window.location.origin}/admin/dashboard` },
-    })
-    if (error) return { error: gpError('GP-2102', error.message) }
-    return { error: null }
-  },
-
   async restoreSession(): Promise<typeof _c.user> {
     if (!this.ready()) { gpError('GP-2314', 'Session restore skipped'); return null }
     try {
