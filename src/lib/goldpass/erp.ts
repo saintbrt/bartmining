@@ -17,9 +17,12 @@ export type ExpenseOversightRow = {
   status: string
   amount_tsh: number
   category_name: string | null
-  location_name: string | null
   cost_centre_name: string | null
   entered_by_name: string | null
+  payee_name: string | null
+  payee_role: string | null
+  reference_no: string | null
+  notes: string | null
   proof_image_url: string | null
   created_at: string
 }
