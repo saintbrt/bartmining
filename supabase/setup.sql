@@ -1363,7 +1363,7 @@ CREATE TABLE IF NOT EXISTS device_positions (
 ALTER TABLE device_positions ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "positions_own" ON device_positions USING (profile_id = auth.uid());
 CREATE POLICY "positions_admin_read" ON device_positions FOR SELECT USING (
-  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role IN ('admin','supervisor'))
+  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role = 'admin')
 );
 
 CREATE TABLE IF NOT EXISTS hole_surveys (
@@ -1386,7 +1386,7 @@ CREATE TABLE IF NOT EXISTS hole_surveys (
 ALTER TABLE hole_surveys ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "surveys_own" ON hole_surveys USING (submitted_by = auth.uid());
 CREATE POLICY "surveys_admin" ON hole_surveys FOR SELECT USING (
-  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role IN ('admin','supervisor'))
+  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role = 'admin')
 );
 
 CREATE TABLE IF NOT EXISTS explore_alerts (
@@ -1402,7 +1402,7 @@ CREATE TABLE IF NOT EXISTS explore_alerts (
 );
 ALTER TABLE explore_alerts ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "alerts_admin" ON explore_alerts USING (
-  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role IN ('admin','supervisor'))
+  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role = 'admin')
 );
 
 CREATE TABLE IF NOT EXISTS device_invitations (
@@ -1424,7 +1424,7 @@ CREATE TABLE IF NOT EXISTS device_invitations (
 );
 ALTER TABLE device_invitations ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "invitations_admin" ON device_invitations USING (
-  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role IN ('admin','supervisor'))
+  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role = 'admin')
 );
 
 CREATE TABLE IF NOT EXISTS registered_devices (
@@ -1444,82 +1444,84 @@ CREATE TABLE IF NOT EXISTS registered_devices (
 ALTER TABLE registered_devices ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "devices_own" ON registered_devices USING (profile_id = auth.uid());
 CREATE POLICY "devices_admin" ON registered_devices FOR SELECT USING (
-  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role IN ('admin','supervisor'))
+  EXISTS (SELECT 1 FROM profiles p WHERE p.id = auth.uid() AND p.role = 'admin')
 );
 
 -- ── 8. Explore Module — INSERT / UPDATE / DELETE RLS policies ──────────────
 -- Additive: the SELECT policies from section 7 remain; these add write access.
 
--- Helper: check if caller is admin or supervisor
-CREATE OR REPLACE FUNCTION is_admin_or_supervisor() RETURNS BOOLEAN
+-- Helper: check if caller is admin. GoldPass Admin PC access is admin-only —
+-- 'supervisor' was never actually assigned to any account and has been
+-- retired; 'manager' accounts use the mobile app, not this panel.
+CREATE OR REPLACE FUNCTION is_admin() RETURNS BOOLEAN
   LANGUAGE sql SECURITY DEFINER AS $$
     SELECT EXISTS (
-      SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role IN ('admin', 'supervisor')
+      SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin'
     )
   $$;
 
 -- SITES
 CREATE POLICY "sites_insert" ON sites FOR INSERT
-  WITH CHECK (is_admin_or_supervisor());
+  WITH CHECK (is_admin());
 CREATE POLICY "sites_update" ON sites FOR UPDATE
-  USING (created_by = auth.uid() OR is_admin_or_supervisor());
+  USING (created_by = auth.uid() OR is_admin());
 CREATE POLICY "sites_delete" ON sites FOR DELETE
-  USING (created_by = auth.uid() OR is_admin_or_supervisor());
+  USING (created_by = auth.uid() OR is_admin());
 
 -- HOLES
 CREATE POLICY "holes_insert" ON holes FOR INSERT
-  WITH CHECK (is_admin_or_supervisor());
+  WITH CHECK (is_admin());
 CREATE POLICY "holes_update" ON holes FOR UPDATE
-  USING (is_admin_or_supervisor() OR auth.uid() IS NOT NULL);
+  USING (is_admin() OR auth.uid() IS NOT NULL);
 CREATE POLICY "holes_delete" ON holes FOR DELETE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 
 -- EXPLORE_TEAMS
 CREATE POLICY "teams_insert" ON explore_teams FOR INSERT
-  WITH CHECK (is_admin_or_supervisor());
+  WITH CHECK (is_admin());
 CREATE POLICY "teams_update" ON explore_teams FOR UPDATE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 CREATE POLICY "teams_delete" ON explore_teams FOR DELETE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 
 -- ASSIGNMENTS
 CREATE POLICY "assignments_insert" ON assignments FOR INSERT
-  WITH CHECK (is_admin_or_supervisor());
+  WITH CHECK (is_admin());
 CREATE POLICY "assignments_update" ON assignments FOR UPDATE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 CREATE POLICY "assignments_delete" ON assignments FOR DELETE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 
 -- DEVICE_POSITIONS (field devices insert their own; admins can delete)
 CREATE POLICY "positions_insert" ON device_positions FOR INSERT
   WITH CHECK (profile_id = auth.uid());
 CREATE POLICY "positions_delete" ON device_positions FOR DELETE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 
--- HOLE_SURVEYS (field devices insert; admins/supervisors update status)
+-- HOLE_SURVEYS (field devices insert; admins update status)
 CREATE POLICY "surveys_insert" ON hole_surveys FOR INSERT
   WITH CHECK (submitted_by = auth.uid());
 CREATE POLICY "surveys_update" ON hole_surveys FOR UPDATE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 
 -- EXPLORE_ALERTS
 CREATE POLICY "alerts_insert" ON explore_alerts FOR INSERT
-  WITH CHECK (is_admin_or_supervisor());
+  WITH CHECK (is_admin());
 CREATE POLICY "alerts_update" ON explore_alerts FOR UPDATE
-  USING (is_admin_or_supervisor());
+  USING (is_admin());
 
 -- DEVICE_INVITATIONS
 CREATE POLICY "invitations_insert" ON device_invitations FOR INSERT
-  WITH CHECK (is_admin_or_supervisor());
+  WITH CHECK (is_admin());
 CREATE POLICY "invitations_update" ON device_invitations FOR UPDATE
-  USING (is_admin_or_supervisor() OR claimed_by = auth.uid());
+  USING (is_admin() OR claimed_by = auth.uid());
 
 -- REGISTERED_DEVICES
 CREATE POLICY "devices_insert" ON registered_devices FOR INSERT
   WITH CHECK (profile_id = auth.uid());
 CREATE POLICY "devices_update" ON registered_devices FOR UPDATE
-  USING (profile_id = auth.uid() OR is_admin_or_supervisor());
+  USING (profile_id = auth.uid() OR is_admin());
 
--- profiles role column (needed by is_admin_or_supervisor helper)
+-- profiles role column (needed by is_admin helper)
 -- If your profiles table doesn't have a role column yet, add it:
 ALTER TABLE profiles ADD COLUMN IF NOT EXISTS role TEXT NOT NULL DEFAULT 'user';

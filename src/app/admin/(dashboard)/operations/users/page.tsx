@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import { listProfiles, updateProfileRole, updateProfileName, type ProfileRow } from '@/lib/goldpass/erp'
 
-const ROLES = ['admin', 'manager', 'supervisor'] as const
+const ROLES = ['admin', 'manager'] as const
 
 export default function UsersPage() {
   const [rows, setRows] = useState<ProfileRow[]>([])

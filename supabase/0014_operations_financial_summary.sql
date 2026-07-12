@@ -48,7 +48,7 @@ SECURITY DEFINER
 SET search_path = public, pg_temp
 AS $$
 BEGIN
-  IF NOT is_admin_or_supervisor() THEN
+  IF NOT is_admin() THEN
     RAISE EXCEPTION 'Not authorized';
   END IF;
 
