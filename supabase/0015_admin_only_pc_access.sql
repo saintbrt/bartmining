@@ -9,16 +9,23 @@
 -- Renaming (rather than dropping + recreating) is_admin_or_supervisor()
 -- keeps all 19 existing RLS policies that reference it intact — Postgres
 -- tracks policy dependencies by function OID, not by name, so the rename
--- propagates automatically. Re-running this script is safe: IF EXISTS on
--- the rename means a second run is a no-op there, and CREATE OR REPLACE /
--- DROP POLICY + CREATE POLICY replace cleanly rather than erroring.
+-- propagates automatically. Re-running this script is safe: the DO block
+-- below swallows "function does not exist" on a second run (already
+-- renamed), and CREATE OR REPLACE / DROP POLICY + CREATE POLICY replace
+-- cleanly rather than erroring.
 --
 -- Scope: only profiles.role (PC/web access). device_invitations.role
 -- ('field_team' / 'supervisor') is untouched — that's a mobile field-crew
 -- device type, unrelated to who can log into the PC panel.
 -- ============================================================================
 
-ALTER FUNCTION IF EXISTS is_admin_or_supervisor() RENAME TO is_admin();
+DO $$
+BEGIN
+  ALTER FUNCTION is_admin_or_supervisor() RENAME TO is_admin();
+EXCEPTION
+  WHEN undefined_function THEN
+    NULL; -- already renamed (or this is a fresh DB that never had the old name)
+END $$;
 
 CREATE OR REPLACE FUNCTION is_admin() RETURNS BOOLEAN
   LANGUAGE sql SECURITY DEFINER AS $$
