@@ -92,6 +92,7 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2642': 'Site report config failed to save.',
   'GP-2643': 'Failed to update user name.',
   'GP-2644': 'Failed to record sale.',
+  'GP-2645': 'Financial summary failed to load.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */
