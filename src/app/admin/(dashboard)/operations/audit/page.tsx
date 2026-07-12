@@ -39,7 +39,7 @@ export default function AuditLogPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Date</th>
@@ -55,10 +55,10 @@ export default function AuditLogPage() {
                 ) : rows.map(r => (
                   <Fragment key={r.id}>
                     <tr>
-                      <td style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleString()}</td>
-                      <td>{r.entity_type}</td>
-                      <td style={{ fontFamily: 'monospace', fontSize: 11 }}>{r.entity_id ?? '—'}</td>
-                      <td>{r.action}</td>
+                      <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleString()}</td>
+                      <td data-label="Entity type">{r.entity_type}</td>
+                      <td data-label="Entity ID" style={{ fontFamily: 'monospace', fontSize: 11 }}>{r.entity_id ?? '—'}</td>
+                      <td data-label="Action">{r.action}</td>
                       <td>
                         <button className="btn-icon" style={{ fontSize: 10 }}
                           onClick={() => setExpandedId(expandedId === r.id ? null : r.id)}>
@@ -69,12 +69,12 @@ export default function AuditLogPage() {
                     {expandedId === r.id && (
                       <tr>
                         <td colSpan={5} style={{ background: 'var(--bg-3)' }}>
-                          <div style={{ display: 'flex', gap: 16, padding: 12 }}>
-                            <div style={{ flex: 1 }}>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, padding: 12, width: '100%' }}>
+                            <div style={{ flex: 1, minWidth: 220 }}>
                               <div style={{ fontSize: 10, color: 'var(--label-4)', marginBottom: 4 }}>Before</div>
                               <pre style={{ fontSize: 11, whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>{JSON.stringify(r.before, null, 2)}</pre>
                             </div>
-                            <div style={{ flex: 1 }}>
+                            <div style={{ flex: 1, minWidth: 220 }}>
                               <div style={{ fontSize: 10, color: 'var(--label-4)', marginBottom: 4 }}>After</div>
                               <pre style={{ fontSize: 11, whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>{JSON.stringify(r.after, null, 2)}</pre>
                             </div>

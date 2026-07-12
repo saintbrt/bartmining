@@ -67,7 +67,7 @@ export default function OperationsOverviewPage() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 24 }}>
+      <div className="grid-kpi" style={{ marginBottom: 24 }}>
         {tiles.map(t => (
           <div key={t.label} className="card" style={{ textAlign: 'center', cursor: 'pointer' }}
             onClick={() => router.push(t.href)}
@@ -94,7 +94,7 @@ export default function OperationsOverviewPage() {
           <div className="card" style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>No financial data yet.</div>
         ) : (
           <>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16, marginBottom: 16 }}>
+            <div className="grid-3" style={{ marginBottom: 16 }}>
               <div className="card" style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--green)' }}>TSh {current.revenue_tsh.toLocaleString()}</div>
                 <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Revenue</div>
@@ -168,7 +168,7 @@ export default function OperationsOverviewPage() {
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: 16 }}>
+      <div className="grid-2">
         <div className="card" style={{ flex: 1, cursor: 'pointer' }} onClick={() => router.push('/admin/operations/expenses')}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Expenses</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)' }}>Review submitted expenses, approve or reject with a comment.</div>

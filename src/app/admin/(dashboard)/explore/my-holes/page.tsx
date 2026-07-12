@@ -111,7 +111,7 @@ export default function MyHolesPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 32, textAlign: 'center' }}>Loading holes…</div>
         ) : (
           <div style={{ overflowX: 'auto', maxHeight: 600 }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Hole ID</th>
@@ -131,18 +131,18 @@ export default function MyHolesPage() {
                   </td></tr>
                 ) : visible.map(h => (
                   <tr key={h.id}>
-                    <td style={{ fontFamily: 'monospace', fontWeight: 600 }}>{h.hole_id}</td>
-                    <td>{h.row_num}</td>
-                    <td>{h.col_num}</td>
-                    <td style={{ fontFamily: 'monospace' }}>{h.lat.toFixed(6)}</td>
-                    <td style={{ fontFamily: 'monospace' }}>{h.lng.toFixed(6)}</td>
-                    <td>{h.team_name ?? <span style={{ color: 'var(--label-4)' }}>Unassigned</span>}</td>
-                    <td>
+                    <td data-label="Hole ID" style={{ fontFamily: 'monospace', fontWeight: 600 }}>{h.hole_id}</td>
+                    <td data-label="Row">{h.row_num}</td>
+                    <td data-label="Col">{h.col_num}</td>
+                    <td data-label="Lat" style={{ fontFamily: 'monospace' }}>{h.lat.toFixed(6)}</td>
+                    <td data-label="Lng" style={{ fontFamily: 'monospace' }}>{h.lng.toFixed(6)}</td>
+                    <td data-label="Team">{h.team_name ?? <span style={{ color: 'var(--label-4)' }}>Unassigned</span>}</td>
+                    <td data-label="Status">
                       <span style={{ color: STATUS_COLOR[h.status], fontWeight: 500 }}>
                         {h.status.replace('_', ' ')}
                       </span>
                     </td>
-                    <td style={{ color: 'var(--label-4)' }}>
+                    <td data-label="Last Survey" style={{ color: 'var(--label-4)' }}>
                       {h.last_survey ? new Date(h.last_survey).toLocaleDateString() : '—'}
                     </td>
                   </tr>

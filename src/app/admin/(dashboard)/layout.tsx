@@ -59,6 +59,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [mapDataOpen, setMapDataOpen] = useState(false)
   const [exploreOpen, setExploreOpen] = useState(false)
   const [operationsOpen, setOperationsOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [user, setUser] = useState<{ email: string } | null>(null)
   const [projects, setProjects] = useState<Project[]>([])
   const [project, setProjectState] = useState<Project | null>(null)
@@ -106,6 +107,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     if (pathname.startsWith('/admin/explore')) setExploreOpen(true)
     if (pathname.startsWith('/admin/operations')) setOperationsOpen(true)
   }, [pathname])
+
+  // Close the mobile drawer whenever the route actually changes.
+  useEffect(() => { setSidebarOpen(false) }, [pathname])
 
   function setProject(p: Project | null) {
     setProjectState(p)
@@ -177,7 +181,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <AppContext.Provider value={{ user, projects, project, tables, stageStatus, booting, rowsLoading, setProject, approveStage, isStageUnlocked, getStageStatus, refresh }}>
       <div className="app-root">
-        <div className="sidebar">
+        <div className={`sb-backdrop${sidebarOpen ? ' open' : ''}`} onClick={() => setSidebarOpen(false)} />
+        <div className={`sidebar${sidebarOpen ? ' open' : ''}`}>
           <div className="sb-brand">
             <div className="sb-diamond" />
             <div>
@@ -290,6 +295,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         <div className="main-area">
           <div className="topbar" style={curSection === 'dashboard' ? { display: 'none' } : {}}>
+            <button className="sb-hamburger" onClick={() => setSidebarOpen(o => !o)} aria-label="Toggle menu">☰</button>
             <div className="topbar-title">{project?.name ?? 'GoldPass'}</div>
             {project && (
               <div className="topbar-sub">

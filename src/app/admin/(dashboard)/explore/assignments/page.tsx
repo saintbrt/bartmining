@@ -245,7 +245,7 @@ export default function AssignmentsPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '24px 0', textAlign: 'center' }}>No assignments for this week.</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead><tr><th>Hole ID</th><th>Row</th><th>Col</th><th>Team</th><th></th></tr></thead>
               <tbody>
                 {assignments.map(a => {
@@ -253,10 +253,10 @@ export default function AssignmentsPage() {
                   const t = teams.find(x => x.id === a.team_id)
                   return (
                     <tr key={a.id}>
-                      <td style={{ fontFamily: 'monospace', fontWeight: 600 }}>{h?.hole_id ?? '—'}</td>
-                      <td>{h?.row_num ?? '—'}</td>
-                      <td>{h?.col_num ?? '—'}</td>
-                      <td>
+                      <td data-label="Hole ID" style={{ fontFamily: 'monospace', fontWeight: 600 }}>{h?.hole_id ?? '—'}</td>
+                      <td data-label="Row">{h?.row_num ?? '—'}</td>
+                      <td data-label="Col">{h?.col_num ?? '—'}</td>
+                      <td data-label="Team">
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                           <span style={{ width: 8, height: 8, borderRadius: '50%', background: t?.color_hex ?? '#888', display: 'inline-block' }} />
                           {t?.name ?? '—'}

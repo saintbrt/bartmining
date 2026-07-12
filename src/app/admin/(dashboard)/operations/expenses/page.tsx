@@ -96,7 +96,7 @@ export default function ExpensesOversightPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Date</th>
@@ -116,18 +116,18 @@ export default function ExpensesOversightPage() {
                   <tr><td colSpan={10} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No expenses found for this filter.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.id}>
-                    <td style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleDateString()}</td>
-                    <td>{r.category_name ?? '—'}</td>
-                    <td>{r.payee_name ?? '—'}{r.payee_role ? <span style={{ color: 'var(--label-4)' }}> ({r.payee_role})</span> : null}</td>
-                    <td style={{ maxWidth: 220 }} title={r.notes ?? ''}>
+                    <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleDateString()}</td>
+                    <td data-label="Category">{r.category_name ?? '—'}</td>
+                    <td data-label="Payee">{r.payee_name ?? '—'}{r.payee_role ? <span style={{ color: 'var(--label-4)' }}> ({r.payee_role})</span> : null}</td>
+                    <td data-label="Details" style={{ maxWidth: 220 }} title={r.notes ?? ''}>
                       <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.notes ?? '—'}</div>
                       {r.reference_no && <div style={{ fontSize: 10, color: 'var(--label-4)' }}>Ref: {r.reference_no}</div>}
                     </td>
-                    <td>{r.cost_centre_name ?? '—'}</td>
-                    <td>{r.entered_by_name ?? '—'}</td>
-                    <td style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
-                    <td><span className={`badge ${STATUS_BADGE[r.status] ?? 'badge-gray'}`}>{r.status}</span></td>
-                    <td>
+                    <td data-label="Cost centre">{r.cost_centre_name ?? '—'}</td>
+                    <td data-label="Paid by">{r.entered_by_name ?? '—'}</td>
+                    <td data-label="Amount (TSh)" style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
+                    <td data-label="Status"><span className={`badge ${STATUS_BADGE[r.status] ?? 'badge-gray'}`}>{r.status}</span></td>
+                    <td data-label="Proof">
                       {r.proof_image_url ? (
                         <a href={r.proof_image_url} target="_blank" rel="noreferrer" style={{ color: 'var(--blue)' }}>View</a>
                       ) : '—'}

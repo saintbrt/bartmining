@@ -104,7 +104,7 @@ export default function DashboardPage() {
               <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>Operations Snapshot</div>
               <div style={{ fontSize: 12, color: 'var(--blue)' }}>View Operations →</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}>
+            <div className="grid-kpi">
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--green)' }}>TSh {(current?.revenue_tsh ?? 0).toLocaleString()}</div>
                 <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Revenue (MTD)</div>
@@ -128,7 +128,7 @@ export default function DashboardPage() {
         )
       })()}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginTop: 24 }}>
+      <div className="grid-kpi" style={{ marginTop: 24 }}>
         {[
           { label: 'Projects', value: projects.length, color: 'var(--blue)' },
           { label: 'Data rows', value: totalRows, color: 'var(--green)' },

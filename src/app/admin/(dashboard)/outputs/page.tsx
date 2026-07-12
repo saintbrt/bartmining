@@ -131,9 +131,9 @@ export default function OutputsPage() {
             <button className="btn btn-primary btn-sm" onClick={() => saveOutput(preview, `${previewName}_${new Date().toISOString().slice(0, 10)}`)}>Save output</button>
           </div>
           <div style={{ overflowX: 'auto', maxHeight: 320 }}>
-            <table className="tbl" style={{ fontSize: 11 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 11 }}>
               <thead><tr>{Object.keys(preview[0]).map(k => <th key={k}>{k}</th>)}</tr></thead>
-              <tbody>{preview.slice(0, 20).map((r, i) => <tr key={i}>{Object.keys(preview[0]).map(k => <td key={k}>{String(r[k] ?? '')}</td>)}</tr>)}</tbody>
+              <tbody>{preview.slice(0, 20).map((r, i) => <tr key={i}>{Object.keys(preview[0]).map(k => <td key={k} data-label={k}>{String(r[k] ?? '')}</td>)}</tr>)}</tbody>
             </table>
           </div>
         </div>

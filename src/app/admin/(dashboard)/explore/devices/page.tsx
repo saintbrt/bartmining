@@ -166,7 +166,7 @@ export default function DevicesPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Code</th>
@@ -184,13 +184,13 @@ export default function DevicesPage() {
                   <tr><td colSpan={8} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No devices generated yet.</td></tr>
                 ) : devices.map(d => (
                   <tr key={d.id}>
-                    <td style={{ fontFamily: 'monospace', fontWeight: 700, color: 'var(--gold)' }}>{d.device_code}</td>
-                    <td>{d.label ?? '—'}</td>
-                    <td>{d.team_name ?? '—'}</td>
-                    <td>{d.role}</td>
-                    <td><span style={{ color: statusColor[d.status] ?? 'var(--label-4)', fontWeight: 500 }}>{d.status}</span></td>
-                    <td style={{ color: 'var(--label-4)' }}>{d.last_seen_at ? new Date(d.last_seen_at).toLocaleString() : '—'}</td>
-                    <td style={{ color: 'var(--label-4)' }}>{new Date(d.expires_at).toLocaleDateString()}</td>
+                    <td data-label="Code" style={{ fontFamily: 'monospace', fontWeight: 700, color: 'var(--gold)' }}>{d.device_code}</td>
+                    <td data-label="Label">{d.label ?? '—'}</td>
+                    <td data-label="Team">{d.team_name ?? '—'}</td>
+                    <td data-label="Role">{d.role}</td>
+                    <td data-label="Status"><span style={{ color: statusColor[d.status] ?? 'var(--label-4)', fontWeight: 500 }}>{d.status}</span></td>
+                    <td data-label="Last seen" style={{ color: 'var(--label-4)' }}>{d.last_seen_at ? new Date(d.last_seen_at).toLocaleString() : '—'}</td>
+                    <td data-label="Expires" style={{ color: 'var(--label-4)' }}>{new Date(d.expires_at).toLocaleDateString()}</td>
                     <td>
                       {d.status !== 'revoked' && (
                         <button className="btn-icon" style={{ fontSize: 10, color: 'var(--red)' }} title="Revoke"

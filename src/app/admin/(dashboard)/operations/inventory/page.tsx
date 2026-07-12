@@ -53,7 +53,7 @@ export default function InventoryOversightPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Item</th>
@@ -68,11 +68,11 @@ export default function InventoryOversightPage() {
                   <tr><td colSpan={5} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No stock levels found.</td></tr>
                 ) : levels.map(r => (
                   <tr key={`${r.item_id}-${r.warehouse_id}`}>
-                    <td>{r.item_name}</td>
-                    <td>{r.warehouse_name}</td>
-                    <td style={{ fontWeight: 600 }}>{r.quantity.toLocaleString()}</td>
-                    <td style={{ color: 'var(--label-4)' }}>{r.effective_minimum_qty.toLocaleString()}</td>
-                    <td>
+                    <td data-label="Item">{r.item_name}</td>
+                    <td data-label="Warehouse">{r.warehouse_name}</td>
+                    <td data-label="Quantity" style={{ fontWeight: 600 }}>{r.quantity.toLocaleString()}</td>
+                    <td data-label="Minimum" style={{ color: 'var(--label-4)' }}>{r.effective_minimum_qty.toLocaleString()}</td>
+                    <td data-label="Status">
                       {r.is_below_minimum
                         ? <span className="badge badge-orange">Below minimum</span>
                         : <span className="badge badge-green">OK</span>}
@@ -93,7 +93,7 @@ export default function InventoryOversightPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Date</th>
@@ -109,11 +109,11 @@ export default function InventoryOversightPage() {
                   <tr><td colSpan={6} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No alerts yet.</td></tr>
                 ) : alerts.map(a => (
                   <tr key={a.id}>
-                    <td style={{ color: 'var(--label-4)' }}>{new Date(a.created_at).toLocaleDateString()}</td>
-                    <td>{a.item_name ?? '—'}</td>
-                    <td>{a.alert_type}</td>
-                    <td>{a.message ?? '—'}</td>
-                    <td>
+                    <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(a.created_at).toLocaleDateString()}</td>
+                    <td data-label="Item">{a.item_name ?? '—'}</td>
+                    <td data-label="Type">{a.alert_type}</td>
+                    <td data-label="Message">{a.message ?? '—'}</td>
+                    <td data-label="Status">
                       {a.status === 'open'
                         ? <span className="badge badge-orange">Open</span>
                         : <span className="badge badge-gray">{a.status}</span>}

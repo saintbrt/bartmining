@@ -63,7 +63,7 @@ export default function UsersPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Name</th>
@@ -76,13 +76,13 @@ export default function UsersPage() {
                   <tr><td colSpan={3} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No users found.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.id}>
-                    <td>
+                    <td data-label="Name">
                       <span>{r.name ?? '—'}</span>
                       <button className="btn-icon" style={{ fontSize: 10, marginLeft: 8, padding: '2px 7px' }} disabled={savingId === r.id}
                         onClick={() => renameUser(r)}>✎</button>
                     </td>
-                    <td style={{ color: 'var(--label-4)' }}>{r.email ?? '—'}</td>
-                    <td>
+                    <td data-label="Email" style={{ color: 'var(--label-4)' }}>{r.email ?? '—'}</td>
+                    <td data-label="Role">
                       <select
                         className="input"
                         style={{ fontSize: 12, padding: '4px 8px' }}
