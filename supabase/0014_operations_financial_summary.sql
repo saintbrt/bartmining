@@ -9,7 +9,7 @@
 -- inclusive). There's no unified cost ledger (cost_events only ever got
 -- wired up for expenses), so this pulls from the three source tables/views
 -- directly:
---   revenue_tsh     — sales, status = 'approved'
+--   revenue_tsh     — v_sales_register, status = 'approved'
 --   expense_tsh     — v_expense_oversight, status = 'approved'
 --   payroll_tsh     — payroll_runs (total_net_tsh), status = 'approved'
 --   procurement_tsh — v_procurement_pipeline (total_amount_tsh), grn_status = 'approved'
@@ -62,8 +62,11 @@ BEGIN
     ) AS d
   ),
   revenue AS (
+    -- v_sales_register (the view), NOT the base 'sales' table: status lives on
+    -- the view (derived via the workflow_instances join), the base table has
+    -- no status column. The view exposes sale_date / site_id / price_tsh too.
     SELECT date_trunc('month', sale_date)::date AS month_start, SUM(price_tsh) AS total
-    FROM sales
+    FROM v_sales_register
     WHERE status = 'approved'
       AND (p_site_id IS NULL OR site_id = p_site_id)
     GROUP BY 1
