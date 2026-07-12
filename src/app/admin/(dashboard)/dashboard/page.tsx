@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useAppContext } from '@/lib/goldpass/AppContext'
 import { DB } from '@/lib/goldpass/db'
 import type { Project } from '@/lib/goldpass/db'
+import { getOperationsKpis, getFinancialSummary, type OperationsKpis, type FinancialSummaryRow } from '@/lib/goldpass/erp'
 
 function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [val, setVal] = useState(0)
@@ -65,6 +66,16 @@ export default function DashboardPage() {
   const { projects, setProject } = ctx
   const [newName, setNewName] = useState('')
   const [creating, setCreating] = useState(false)
+  const [opsKpis, setOpsKpis] = useState<OperationsKpis | null>(null)
+  const [opsFinancials, setOpsFinancials] = useState<FinancialSummaryRow[]>([])
+
+  useEffect(() => {
+    let alive = true
+    Promise.all([getOperationsKpis(), getFinancialSummary(1)]).then(([k, f]) => {
+      if (alive) { setOpsKpis(k); setOpsFinancials(f) }
+    })
+    return () => { alive = false }
+  }, [])
 
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault()
@@ -82,6 +93,41 @@ export default function DashboardPage() {
   return (
     <div className="content content-pad">
       <PitHero />
+
+      {opsKpis && (() => {
+        const current = opsFinancials[opsFinancials.length - 1]
+        return (
+          <div className="card" style={{ marginTop: 24, cursor: 'pointer' }} onClick={() => router.push('/admin/operations/overview')}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--blue)' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>Operations Snapshot</div>
+              <div style={{ fontSize: 12, color: 'var(--blue)' }}>View Operations →</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--green)' }}>TSh {(current?.revenue_tsh ?? 0).toLocaleString()}</div>
+                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Revenue (MTD)</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--red)' }}>TSh {(current?.cost_tsh ?? 0).toLocaleString()}</div>
+                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Cost (MTD)</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 20, fontWeight: 700, color: (current?.profit_tsh ?? 0) >= 0 ? 'var(--green)' : 'var(--red)' }}>
+                  TSh {(current?.profit_tsh ?? 0).toLocaleString()}
+                </div>
+                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Profit (MTD)</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--blue)' }}>{opsKpis.pendingApprovals}</div>
+                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Pending Approvals</div>
+              </div>
+            </div>
+          </div>
+        )
+      })()}
+
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginTop: 24 }}>
         {[
           { label: 'Projects', value: projects.length, color: 'var(--blue)' },

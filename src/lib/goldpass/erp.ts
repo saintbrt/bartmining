@@ -692,3 +692,36 @@ export async function upsertSiteReportConfig(siteId: string, payload: { close_da
   if (error) { gpError('GP-2642', error.message); return false }
   return true
 }
+
+/* ── FINANCIAL SUMMARY — 0014_operations_financial_summary.sql ──
+   "Cost" = expenses + payroll + approved procurement. There's no unified
+   cost ledger in the schema to just query (cost_events only ever got wired
+   up for expenses — see the migration's own comment), so this is three
+   sources aggregated server-side per month. */
+export type FinancialSummaryRow = {
+  month: string
+  revenue_tsh: number
+  expense_tsh: number
+  payroll_tsh: number
+  procurement_tsh: number
+  cost_tsh: number
+  profit_tsh: number
+}
+
+export async function getFinancialSummary(months = 6, siteId?: string): Promise<FinancialSummaryRow[]> {
+  const { data, error } = await sb().rpc('get_operations_financial_summary', { p_site_id: siteId ?? null, p_months: months })
+  if (error) { gpError('GP-2645', error.message); return [] }
+  return (data ?? []) as FinancialSummaryRow[]
+}
+
+/* Simple trailing-trend projection — no RPC involved, kept here so the logic
+   is visible/auditable rather than buried in SQL. Flat projection (= last
+   actual) if there isn't enough history to compute a trend from. */
+export function projectNextMonth(rows: FinancialSummaryRow[]): number {
+  if (rows.length === 0) return 0
+  if (rows.length === 1) return rows[0].revenue_tsh
+  const first = rows[0].revenue_tsh
+  const last = rows[rows.length - 1].revenue_tsh
+  const avgDelta = (last - first) / (rows.length - 1)
+  return Math.max(0, last + avgDelta)
+}
