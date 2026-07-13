@@ -51,7 +51,7 @@ export default function UsersPage() {
 
       <div className="card" style={{ marginBottom: 20, background: 'var(--bg-3)' }}>
         <div style={{ fontSize: 12, color: 'var(--label-3)' }}>
-          Creating brand-new accounts isn&apos;t available here yet — it needs a service-role
+          Creating brand-new accounts isn&apos;t available here yet: it needs a service-role
           edge function (similar to <span style={{ fontFamily: 'monospace' }}>generate-device-invitation</span>)
           so a new user can be created without signing the admin out of their own session.
           Ask if you want that built next.
@@ -77,11 +77,11 @@ export default function UsersPage() {
                 ) : rows.map(r => (
                   <tr key={r.id}>
                     <td data-label="Name">
-                      <span>{r.name ?? '—'}</span>
+                      <span>{r.name ?? '-'}</span>
                       <button className="btn-icon" style={{ fontSize: 10, marginLeft: 8, padding: '2px 7px' }} disabled={savingId === r.id}
                         onClick={() => renameUser(r)}>✎</button>
                     </td>
-                    <td data-label="Email" style={{ color: 'var(--label-4)' }}>{r.email ?? '—'}</td>
+                    <td data-label="Email" style={{ color: 'var(--label-4)' }}>{r.email ?? '-'}</td>
                     <td data-label="Role">
                       <select
                         className="input"

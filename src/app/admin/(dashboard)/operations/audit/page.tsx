@@ -57,7 +57,7 @@ export default function AuditLogPage() {
                     <tr>
                       <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleString()}</td>
                       <td data-label="Entity type">{r.entity_type}</td>
-                      <td data-label="Entity ID" style={{ fontFamily: 'monospace', fontSize: 11 }}>{r.entity_id ?? '—'}</td>
+                      <td data-label="Entity ID" style={{ fontFamily: 'monospace', fontSize: 11 }}>{r.entity_id ?? '-'}</td>
                       <td data-label="Action">{r.action}</td>
                       <td>
                         <button className="btn-icon" style={{ fontSize: 10 }}

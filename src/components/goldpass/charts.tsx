@@ -4,7 +4,7 @@ import {
   ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts'
 
-// Reserved status ink for deltas/meters — good vs bad only, never decoration.
+// Reserved status ink for deltas/meters: good vs bad only, never decoration.
 const GOOD = '#0D8F5F'
 const BAD = '#D63A39'
 const WARN = '#B8770A'
@@ -59,7 +59,7 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
   return <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '28px 0', textAlign: 'center' }}>{label}</div>
 }
 
-/* ── Single-series line (e.g. revenue trend). One accent, no legend — the card
+/* Single-series line (e.g. revenue trend). One accent, no legend: the card
    title names the series. Hairline recessive grid, compact y-ticks, tooltip. */
 export function LineTrendChart({ data, prefix = '', color = ACCENT, height = 220, emptyLabel }: {
   data: { label: string; value: number }[]
@@ -82,7 +82,7 @@ export function LineTrendChart({ data, prefix = '', color = ACCENT, height = 220
   )
 }
 
-/* ── Multi-series comparison (e.g. Revenue vs Cost vs Profit over months).
+/* Multi-series comparison (e.g. Revenue vs Cost vs Profit over months).
    Legend always present; series colours assigned in fixed order from the
    validated categorical set; one shared y-axis (never dual-axis). */
 export function MultiLineChart({ data, series, prefix = '', height = 260, emptyLabel }: {
@@ -111,8 +111,8 @@ export function MultiLineChart({ data, series, prefix = '', height = 260, emptyL
   )
 }
 
-/* ── Single-hue bar/column comparison (magnitude across a few categories).
-   One accent for every bar (bar length already shows the value — colour must
+/* Single-hue bar/column comparison (magnitude across a few categories).
+   One accent for every bar (bar length already shows the value, colour must
    not re-encode it); 4px rounded caps, hairline grid, tooltip. */
 export function BarCompareChart({ data, prefix = '', color = ACCENT, height = 200, emptyLabel }: {
   data: { label: string; value: number }[]
@@ -135,8 +135,8 @@ export function BarCompareChart({ data, prefix = '', color = ACCENT, height = 20
   )
 }
 
-/* ── Stat tile: value + optional signed delta (colour = direction × whether up
-   is good — a reserved status use) + optional sparkline. The value wears ink;
+/* Stat tile: value + optional signed delta (colour = direction times whether up
+   is good, a reserved status use) + optional sparkline. The value wears ink;
    only the delta and the last spark point carry colour. */
 export function StatTile({ label, value, prefix = '', delta, spark, goodWhenUp = true }: {
   label: string
@@ -175,7 +175,7 @@ export function StatTile({ label, value, prefix = '', delta, spark, goodWhenUp =
   )
 }
 
-/* ── Meter: one ratio against a limit. Track is a lighter step; fill severity
+/* Meter: one ratio against a limit. Track is a lighter step; fill severity
    goes accent → warning → danger as it approaches/exceeds the limit. */
 export function Meter({ value, max, label, prefix = '', suffix = '', format }: {
   value: number

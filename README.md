@@ -1,6 +1,6 @@
 # Bart Mining
 
-Marketing website and internal data platform for Bart Mining — a principal-led mining consultancy and equipment supplier based in Dar es Salaam, Tanzania, operating across East & Southern Africa.
+Marketing website and internal data platform for Bart Mining, a principal-led mining consultancy and equipment supplier based in Dar es Salaam, Tanzania, operating across East & Southern Africa.
 
 **Live site:** [bartmining.com](https://www.bartmining.com)
 
@@ -84,16 +84,16 @@ src/
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — hero, services, methodology, founder, ESG, regions, testimonials |
-| `/about` | About Bart Mining — founder bio, career history, stats, who we serve |
+| `/` | Homepage: hero, services, methodology, founder, ESG, regions, testimonials |
+| `/about` | About Bart Mining: founder bio, career history, stats, who we serve |
 | `/services` | Full-lifecycle service offering |
-| `/products` | Mining machinery & processing plants — equipment grid |
+| `/products` | Mining machinery & processing plants: equipment grid |
 | `/sustainability` | ESG approach, environmental & social commitments |
 | `/contact` | Contact form (submits via Resend email API) |
-| `/insights` | Knowledge centre — searchable, filterable article hub |
+| `/insights` | Knowledge centre: searchable, filterable article hub |
 | `/insights/[slug]` | Individual articles with reading progress & table of contents |
 
-### Admin — GoldPass (Internal)
+### Admin: GoldPass (Internal)
 
 Protected by Supabase auth middleware. Accessible at `/admin`.
 

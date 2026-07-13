@@ -4,7 +4,7 @@ import { createClient } from './supabase/client'
 import { gpError } from './errors'
 
 /* Read/write helpers for the goldpass-field ERP schema (expenses, inventory,
-   procurement, operations, sales, payroll, executive — see
+   procurement, operations, sales, payroll, executive, see
    goldpass-field/supabase/migrations/0001-0008). Column/RPC-param names here
    are taken directly from those migration files, not guessed. Shared across
    the Operations sub-pages so the names live in one place instead of N. */
@@ -27,7 +27,7 @@ export type ExpenseOversightRow = {
   created_at: string
 }
 
-/* get_stock_levels() — 0002_erp_inventory.sql */
+/* get_stock_levels() (0002_erp_inventory.sql) */
 export type StockLevelRow = {
   warehouse_id: string
   warehouse_name: string
@@ -39,7 +39,7 @@ export type StockLevelRow = {
   is_below_minimum: boolean
 }
 
-/* inventory_alerts — 0002_erp_inventory.sql */
+/* inventory_alerts (0002_erp_inventory.sql) */
 export type InventoryAlertRow = {
   id: string
   item_id: string
@@ -93,7 +93,7 @@ export async function getExpenseOversight(filters?: { status?: string; limit?: n
   return (data ?? []) as ExpenseOversightRow[]
 }
 
-/* workflow_transition(p_workflow_instance_id, p_decision, p_comment) — 0003_erp_procurement.sql.
+/* workflow_transition(p_workflow_instance_id, p_decision, p_comment) (0003_erp_procurement.sql).
    p_decision: submit | approve | reject | return | cancel | void. */
 export async function workflowTransition(instanceId: string, action: 'approve' | 'reject', comment: string): Promise<boolean> {
   const client = sb()
@@ -131,7 +131,7 @@ export async function getInventoryAlerts(): Promise<InventoryAlertRow[]> {
   }) as InventoryAlertRow[]
 }
 
-/* acknowledge_inventory_alert(p_alert_id) — 0002_erp_inventory.sql */
+/* acknowledge_inventory_alert(p_alert_id) (0002_erp_inventory.sql) */
 export async function acknowledgeInventoryAlert(id: string): Promise<boolean> {
   const client = sb()
   const { error } = await client.rpc('acknowledge_inventory_alert', { p_alert_id: id })
@@ -208,8 +208,8 @@ export async function deleteRow(table: string, id: string): Promise<boolean> {
   return true
 }
 
-/* ── USERS (profiles + role) ──
-   Role reassignment only — creating brand-new auth accounts needs a
+/* USERS (profiles + role).
+   Role reassignment only: creating brand-new auth accounts needs a
    service-role key/edge function this codebase doesn't have. Not needed:
    this is a private-company deployment, not self-service signup. */
 export type ProfileRow = { id: string; name: string | null; email: string | null; role: string; site_id: string | null }
@@ -232,7 +232,7 @@ export async function updateProfileName(id: string, name: string): Promise<boole
   return true
 }
 
-/* ── SYNC CONFLICTS — 0004_erp_expenses_hardening.sql ── */
+/* SYNC CONFLICTS (0004_erp_expenses_hardening.sql) */
 export type SyncConflictRow = Record<string, unknown> & { id: string }
 
 export async function getSyncConflicts(): Promise<SyncConflictRow[]> {
@@ -249,7 +249,7 @@ export async function resolveSyncConflict(id: string, resolution: 'keep_server' 
   return true
 }
 
-/* ── SHIFT LOGS — 0005_erp_operations.sql ──
+/* SHIFT LOGS (0005_erp_operations.sql).
    v_shift_log_oversight doesn't expose workflow_instance_id directly, so it's
    fetched separately from shift_logs and merged in. */
 export type ShiftLogOversightRow = Record<string, unknown> & { id: string; status: string; workflow_instance_id: string | null }
@@ -271,7 +271,7 @@ export async function getShiftLogOversight(filters?: { status?: string }): Promi
   return rows.map(r => ({ ...r, workflow_instance_id: wfMap.get(r.id as string) ?? null })) as ShiftLogOversightRow[]
 }
 
-/* ── EQUIPMENT — 0004_erp_expenses_hardening.sql (registry), 0005 (utilization) ── */
+/* EQUIPMENT (0004_erp_expenses_hardening.sql: registry, 0005: utilization) */
 export type EquipmentRow = { id: string; name: string; equipment_type: string | null; active: boolean }
 export type EquipmentUtilizationRow = Record<string, unknown> & { equipment_id?: string }
 
@@ -293,8 +293,8 @@ export async function getEquipmentUtilization(): Promise<EquipmentUtilizationRow
   return (data ?? []) as EquipmentUtilizationRow[]
 }
 
-/* ── DAILY OPS — 0005_erp_operations.sql (no "target" column exists yet;
-   this is actual vs. pending/approved shift log counts, not actual vs. plan) ── */
+/* DAILY OPS (0005_erp_operations.sql; no "target" column exists yet,
+   this is actual vs. pending/approved shift log counts, not actual vs. plan) */
 export type DailyOpsSummaryRow = Record<string, unknown>
 
 export async function getDailyOpsSummary(): Promise<DailyOpsSummaryRow[]> {
@@ -303,9 +303,9 @@ export async function getDailyOpsSummary(): Promise<DailyOpsSummaryRow[]> {
   return (data ?? []) as DailyOpsSummaryRow[]
 }
 
-/* ── PROCUREMENT — 0003_erp_procurement.sql ──
+/* PROCUREMENT (0003_erp_procurement.sql).
    v_procurement_pipeline is one row per PR (with joined PO/GRN columns), not
-   one row per document — pr_id/pr_status, po_id/po_status, grn_id/grn_status. */
+   one row per document: pr_id/pr_status, po_id/po_status, grn_id/grn_status. */
 export type ProcurementPipelineRow = {
   pr_id: string
   pr_number: string | null
@@ -330,14 +330,14 @@ export async function getProcurementPipeline(): Promise<ProcurementPipelineRow[]
   return (data ?? []) as ProcurementPipelineRow[]
 }
 
-/* convert_pr_to_po(p_pr_id) — 0003_erp_procurement.sql */
+/* convert_pr_to_po(p_pr_id) (0003_erp_procurement.sql) */
 export async function convertPrToPo(prId: string): Promise<boolean> {
   const { error } = await sb().rpc('convert_pr_to_po', { p_pr_id: prId })
   if (error) { gpError('GP-2622', error.message); return false }
   return true
 }
 
-/* ── AUDIT LOG — 0001_erp_foundation.sql ── */
+/* AUDIT LOG (0001_erp_foundation.sql) */
 export type AuditLogRow = {
   id: string
   entity_type: string
@@ -357,7 +357,7 @@ export async function getAuditLog(filters?: { entityType?: string }): Promise<Au
   return (data ?? []) as AuditLogRow[]
 }
 
-/* ── SALES — 0006_erp_sales.sql ── */
+/* SALES (0006_erp_sales.sql) */
 export type SalesRegisterRow = {
   id: string
   sale_number: string | null
@@ -382,7 +382,7 @@ export async function getSalesRegister(): Promise<SalesRegisterRow[]> {
   return (data ?? []) as SalesRegisterRow[]
 }
 
-/* Sales are recorded directly by admins — there is no approval step (the admin
+/* Sales are recorded directly by admins: there is no approval step (the admin
    entering the sale would only be approving themselves). submitSale() inserts
    the sale and it counts as revenue immediately; no workflow_transition. */
 export type NewSaleInput = {
@@ -396,7 +396,7 @@ export type NewSaleInput = {
   notes: string | null
 }
 
-/* submit_sale(...) — 0006_erp_sales.sql, widened in 0013 to also allow admin
+/* submit_sale(...) (0006_erp_sales.sql), widened in 0013 to also allow admin
    accounts (originally manager-only, since sale entry was mobile-only). */
 export async function submitSale(input: NewSaleInput): Promise<string | null> {
   const { data, error } = await sb().rpc('submit_sale', {
@@ -413,14 +413,14 @@ export async function submitSale(input: NewSaleInput): Promise<string | null> {
   return data as string
 }
 
-/* ── PAYROLL — 0007_erp_payroll.sql ──
+/* PAYROLL (0007_erp_payroll.sql).
    IMPORTANT GAP found in the migration itself: sync_workflow_to_document()
    (0003/0004/0005) never got a 'payroll_run' or 'payroll_adjustment' case
    added in 0007. That means workflow_transition('approve') only flips
-   workflow_instances.current_state — it does NOT set payroll_runs.status to
+   workflow_instances.current_state, it does NOT set payroll_runs.status to
    'approved'. lock_payroll_run() then checks payroll_runs.status = 'approved'
    literally and will raise "Payroll run must be approved before locking"
-   even after a real approval. This is a backend gap, not a web bug — the
+   even after a real approval. This is a backend gap, not a web bug: the
    functions below surface whatever the RPC actually returns rather than
    pretending the lock step always works. */
 
@@ -447,7 +447,7 @@ export async function getAttendanceRecords(filters?: { status?: string }): Promi
   }) as AttendanceRecordRow[]
 }
 
-/* confirm_attendance_record(p_attendance_id) — supervisor/admin only */
+/* confirm_attendance_record(p_attendance_id): supervisor/admin only */
 export async function confirmAttendanceRecord(id: string): Promise<boolean> {
   const { error } = await sb().rpc('confirm_attendance_record', { p_attendance_id: id })
   if (error) { gpError('GP-2626', error.message); return false }
@@ -507,7 +507,7 @@ export async function getPayrollRuns(): Promise<PayrollRunRow[]> {
   }) as PayrollRunRow[]
 }
 
-/* generate_payroll_preview(p_site_id, p_period_start, p_period_end, p_run_label) — admin only */
+/* generate_payroll_preview(p_site_id, p_period_start, p_period_end, p_run_label): admin only */
 export async function generatePayrollPreview(siteId: string | null, periodStart: string, periodEnd: string, runLabel?: string): Promise<string | null> {
   const { data, error } = await sb().rpc('generate_payroll_preview', {
     p_site_id: siteId, p_period_start: periodStart, p_period_end: periodEnd, p_run_label: runLabel ?? null,
@@ -516,8 +516,8 @@ export async function generatePayrollPreview(siteId: string | null, periodStart:
   return data as string
 }
 
-/* lock_payroll_run(p_run_id) — admin only; requires payroll_runs.status = 'approved'
-   (see gap note above — this may fail even after a real workflow approval). */
+/* lock_payroll_run(p_run_id): admin only; requires payroll_runs.status = 'approved'
+   (see gap note above, this may fail even after a real workflow approval). */
 export async function lockPayrollRun(runId: string): Promise<boolean> {
   const { error } = await sb().rpc('lock_payroll_run', { p_run_id: runId })
   if (error) { gpError('GP-2630', error.message); return false }
@@ -532,7 +532,7 @@ export async function getLaborCostByCostCentre(): Promise<LaborCostRow[]> {
   return (data ?? []) as LaborCostRow[]
 }
 
-/* ── EXECUTIVE — 0008_erp_executive.sql ── */
+/* EXECUTIVE (0008_erp_executive.sql) */
 export type ExecutiveKpis = {
   period_start: string
   period_end: string
@@ -547,9 +547,9 @@ export type ExecutiveKpis = {
   pending_approvals: number
 }
 
-/* get_executive_kpis(p_site_id default null) — current-month live KPIs, but
+/* get_executive_kpis(p_site_id default null): current-month live KPIs, but
    reads from materialized views (mv_monthly_*) which are only refreshed by
-   refresh_executive_mviews() or the month-end snapshot job — call
+   refresh_executive_mviews() or the month-end snapshot job. Call
    refreshExecutiveMviews() first if the numbers look stale. */
 export async function getExecutiveKpis(siteId?: string): Promise<ExecutiveKpis | null> {
   const { data, error } = await sb().rpc('get_executive_kpis', { p_site_id: siteId ?? null })
@@ -608,21 +608,21 @@ export async function getMonthEndCloses(): Promise<MonthEndCloseRow[]> {
   }) as MonthEndCloseRow[]
 }
 
-/* initiate_month_end_close(p_site_id, p_year, p_month) — admin only */
+/* initiate_month_end_close(p_site_id, p_year, p_month): admin only */
 export async function initiateMonthEndClose(siteId: string, year: number, month: number): Promise<string | null> {
   const { data, error } = await sb().rpc('initiate_month_end_close', { p_site_id: siteId, p_year: year, p_month: month })
   if (error) { gpError('GP-2636', error.message); return null }
   return data as string
 }
 
-/* create_monthly_snapshot(p_close_id) — admin only; freezes the period */
+/* create_monthly_snapshot(p_close_id): admin only; freezes the period */
 export async function createMonthlySnapshot(closeId: string): Promise<string | null> {
   const { data, error } = await sb().rpc('create_monthly_snapshot', { p_close_id: closeId })
   if (error) { gpError('GP-2637', error.message); return null }
   return data as string
 }
 
-/* finalize_month_end_close(p_close_id) — admin only; requires a snapshot to exist */
+/* finalize_month_end_close(p_close_id): admin only; requires a snapshot to exist */
 export async function finalizeMonthEndClose(closeId: string): Promise<boolean> {
   const { error } = await sb().rpc('finalize_month_end_close', { p_close_id: closeId })
   if (error) { gpError('GP-2638', error.message); return false }
@@ -654,7 +654,7 @@ export async function getMonthlySnapshots(): Promise<MonthlySnapshotRow[]> {
   }) as MonthlySnapshotRow[]
 }
 
-/* amend_monthly_snapshot(p_snapshot_id, p_reason) — admin only; only frozen snapshots */
+/* amend_monthly_snapshot(p_snapshot_id, p_reason): admin only; only frozen snapshots */
 export async function amendMonthlySnapshot(snapshotId: string, reason: string): Promise<string | null> {
   const { data, error } = await sb().rpc('amend_monthly_snapshot', { p_snapshot_id: snapshotId, p_reason: reason })
   if (error) { gpError('GP-2640', error.message); return null }
@@ -687,10 +687,10 @@ export async function upsertSiteReportConfig(siteId: string, payload: { close_da
   return true
 }
 
-/* ── FINANCIAL SUMMARY — 0014_operations_financial_summary.sql ──
+/* FINANCIAL SUMMARY (0014_operations_financial_summary.sql).
    "Cost" = expenses + payroll + approved procurement. There's no unified
    cost ledger in the schema to just query (cost_events only ever got wired
-   up for expenses — see the migration's own comment), so this is three
+   up for expenses, see the migration's own comment), so this is three
    sources aggregated server-side per month. */
 export type FinancialSummaryRow = {
   month: string
@@ -708,7 +708,7 @@ export async function getFinancialSummary(months = 6, siteId?: string): Promise<
   return (data ?? []) as FinancialSummaryRow[]
 }
 
-/* Simple trailing-trend projection — no RPC involved, kept here so the logic
+/* Simple trailing-trend projection: no RPC involved, kept here so the logic
    is visible/auditable rather than buried in SQL. Flat projection (= last
    actual) if there isn't enough history to compute a trend from. */
 export function projectNextMonth(rows: FinancialSummaryRow[]): number {

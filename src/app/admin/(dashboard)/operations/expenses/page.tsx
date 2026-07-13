@@ -32,7 +32,7 @@ export default function ExpensesOversightPage() {
   useEffect(() => { load() }, [load])
 
   async function act(row: ExpenseOversightRow, action: 'approve' | 'reject') {
-    if (!row.workflow_instance_id) { notify('warn', 'This entry has no workflow instance — cannot act on it.'); return }
+    if (!row.workflow_instance_id) { notify('warn', 'This entry has no workflow instance, cannot act on it.'); return }
     let comment = ''
     if (action === 'reject') {
       const typed = window.prompt('Reason for rejection (required):')
@@ -117,20 +117,20 @@ export default function ExpensesOversightPage() {
                 ) : rows.map(r => (
                   <tr key={r.id}>
                     <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleDateString()}</td>
-                    <td data-label="Category">{r.category_name ?? '—'}</td>
-                    <td data-label="Payee">{r.payee_name ?? '—'}{r.payee_role ? <span style={{ color: 'var(--label-4)' }}> ({r.payee_role})</span> : null}</td>
+                    <td data-label="Category">{r.category_name ?? '-'}</td>
+                    <td data-label="Payee">{r.payee_name ?? '-'}{r.payee_role ? <span style={{ color: 'var(--label-4)' }}> ({r.payee_role})</span> : null}</td>
                     <td data-label="Details" style={{ maxWidth: 220 }} title={r.notes ?? ''}>
-                      <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.notes ?? '—'}</div>
+                      <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.notes ?? '-'}</div>
                       {r.reference_no && <div style={{ fontSize: 10, color: 'var(--label-4)' }}>Ref: {r.reference_no}</div>}
                     </td>
-                    <td data-label="Cost centre">{r.cost_centre_name ?? '—'}</td>
-                    <td data-label="Paid by">{r.entered_by_name ?? '—'}</td>
+                    <td data-label="Cost centre">{r.cost_centre_name ?? '-'}</td>
+                    <td data-label="Paid by">{r.entered_by_name ?? '-'}</td>
                     <td data-label="Amount (TSh)" style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
                     <td data-label="Status"><span className={`badge ${STATUS_BADGE[r.status] ?? 'badge-gray'}`}>{r.status}</span></td>
                     <td data-label="Proof">
                       {r.proof_image_url ? (
                         <a href={r.proof_image_url} target="_blank" rel="noreferrer" style={{ color: 'var(--blue)' }}>View</a>
-                      ) : '—'}
+                      ) : '-'}
                     </td>
                     <td>
                       {r.status === 'pending' && (

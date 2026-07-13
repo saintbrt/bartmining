@@ -39,7 +39,7 @@ export default function SalesPage() {
     if (!customerId) { notify('warn', 'Select a customer.'); return }
     if (!weightG || Number(weightG) <= 0) { notify('warn', 'Enter a weight in grams.'); return }
     if (!priceTsh || Number(priceTsh) < 0) { notify('warn', 'Enter a price.'); return }
-    if (!paymentTerms.trim()) { notify('warn', 'Enter payment terms (e.g. COD, Net 30) — the database rejects sales without it.'); return }
+    if (!paymentTerms.trim()) { notify('warn', 'Enter payment terms (e.g. COD, Net 30): the database rejects sales without it.'); return }
     setRecording(true)
     const id = await submitSale({
       siteId: siteId || null,
@@ -65,7 +65,7 @@ export default function SalesPage() {
     <div className="content content-pad">
       <div style={{ marginBottom: 24 }}>
         <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Sales</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Gold sales register — recorded sales with weight and revenue totals.</p>
+        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Gold sales register: recorded sales with weight and revenue totals.</p>
       </div>
 
       <div className="grid-2" style={{ marginBottom: 24 }}>
@@ -129,14 +129,14 @@ export default function SalesPage() {
                 ) : rows.map(r => (
                   <tr key={r.id}>
                     <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.sale_date).toLocaleDateString()}</td>
-                    <td data-label="Sale #" style={{ fontFamily: 'monospace' }}>{r.sale_number ?? '—'}</td>
+                    <td data-label="Sale #" style={{ fontFamily: 'monospace' }}>{r.sale_number ?? '-'}</td>
                     <td data-label="Customer">{r.customer_name}</td>
                     <td data-label="Weight (g)">{r.weight_g.toLocaleString()}</td>
-                    <td data-label="Purity %">{r.purity_pct ?? '—'}</td>
+                    <td data-label="Purity %">{r.purity_pct ?? '-'}</td>
                     <td data-label="Fine gold (g)">{r.fine_gold_g.toLocaleString()}</td>
                     <td data-label="Price (TSh)" style={{ fontWeight: 600 }}>{r.price_tsh.toLocaleString()}</td>
                     <td data-label="TSh/g">{r.price_per_gram_tsh.toLocaleString()}</td>
-                    <td data-label="Recorded by">{r.recorded_by_name ?? '—'}</td>
+                    <td data-label="Recorded by">{r.recorded_by_name ?? '-'}</td>
                   </tr>
                 ))}
               </tbody>

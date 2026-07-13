@@ -115,15 +115,15 @@ export default function PayrollPage() {
           Known gap in the current backend: approving a payroll run here updates its workflow
           state, but the underlying <span style={{ fontFamily: 'monospace' }}>payroll_runs.status</span> column
           isn&apos;t synced by the workflow engine for payroll (unlike expenses/shift logs). Locking
-          a run may fail with &quot;must be approved before locking&quot; even right after approval —
-          that&apos;s a real backend issue, not a UI bug. This page shows the workflow state
+          a run may fail with &quot;must be approved before locking&quot; even right after approval.
+          That&apos;s a real backend issue, not a UI bug. This page shows the workflow state
           alongside the raw status so it&apos;s visible either way.
         </div>
       </div>
 
       <div style={{ marginBottom: 24 }}>
         <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12 }}>
-          Attendance — pending confirmation {attendance.length > 0 && <span className="badge badge-orange" style={{ marginLeft: 8 }}>{attendance.length}</span>}
+          Attendance: pending confirmation {attendance.length > 0 && <span className="badge badge-orange" style={{ marginLeft: 8 }}>{attendance.length}</span>}
         </h3>
         <div className="card">
           {loading ? <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div> : (
@@ -136,7 +136,7 @@ export default function PayrollPage() {
                   ) : attendance.map(a => (
                     <tr key={a.id}>
                       <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(a.work_date).toLocaleDateString()}</td>
-                      <td data-label="Employee">{a.employee_name ?? '—'}</td>
+                      <td data-label="Employee">{a.employee_name ?? '-'}</td>
                       <td data-label="Hours">{a.hours_worked}</td>
                       <td data-label="Source">{a.source}</td>
                       <td>
@@ -165,11 +165,11 @@ export default function PayrollPage() {
                   ) : adjustments.map(r => (
                     <tr key={r.id}>
                       <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.effective_date).toLocaleDateString()}</td>
-                      <td data-label="Employee">{r.employee_name ?? '—'}</td>
+                      <td data-label="Employee">{r.employee_name ?? '-'}</td>
                       <td data-label="Type">{r.adjustment_type}</td>
                       <td data-label="Amount (TSh)" style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
                       <td data-label="Reason">{r.reason}</td>
-                      <td data-label="Status">{r.workflow_state ?? '—'}</td>
+                      <td data-label="Status">{r.workflow_state ?? '-'}</td>
                       <td>
                         {r.workflow_state === 'submitted' && (
                           <div style={{ display: 'flex', gap: 6 }}>
@@ -216,12 +216,12 @@ export default function PayrollPage() {
                   ) : runs.map(r => (
                     <tr key={r.id}>
                       <td data-label="Period" style={{ color: 'var(--label-4)' }}>{new Date(r.period_start).toLocaleDateString()} – {new Date(r.period_end).toLocaleDateString()}</td>
-                      <td data-label="Label">{r.run_label ?? '—'}</td>
+                      <td data-label="Label">{r.run_label ?? '-'}</td>
                       <td data-label="Employees">{r.employee_count}</td>
                       <td data-label="Gross (TSh)" style={{ fontWeight: 600 }}>{r.total_gross_tsh.toLocaleString()}</td>
                       <td data-label="Net (TSh)">{r.total_net_tsh.toLocaleString()}</td>
                       <td data-label="Raw status">{r.status}</td>
-                      <td data-label="Workflow state">{r.workflow_state ?? '—'}</td>
+                      <td data-label="Workflow state">{r.workflow_state ?? '-'}</td>
                       <td>
                         <div style={{ display: 'flex', gap: 6 }}>
                           {r.workflow_state === 'submitted' && (

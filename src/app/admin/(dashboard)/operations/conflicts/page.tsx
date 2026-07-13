@@ -42,7 +42,7 @@ export default function ConflictsPage() {
         ) : (
           <DynamicTable
             rows={rows}
-            emptyLabel="No sync conflicts — nothing to resolve."
+            emptyLabel="No sync conflicts, nothing to resolve."
             hideColumns={['id']}
             actions={row => row.resolution !== 'pending' ? null : (
               <div style={{ display: 'flex', gap: 6 }}>
