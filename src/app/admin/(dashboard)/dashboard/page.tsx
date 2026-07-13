@@ -6,7 +6,14 @@ import { useAppContext } from '@/lib/goldpass/AppContext'
 import { DB } from '@/lib/goldpass/db'
 import type { Project } from '@/lib/goldpass/db'
 import { getOperationsKpis, getFinancialSummary, type OperationsKpis, type FinancialSummaryRow } from '@/lib/goldpass/erp'
-import { MultiLineChart } from '@/components/goldpass/charts'
+import { MultiLineChart, StatTile } from '@/components/goldpass/charts'
+
+function pctDelta(series: number[]): number | undefined {
+  if (series.length < 2) return undefined
+  const last = series[series.length - 1], prev = series[series.length - 2]
+  if (prev === 0) return undefined
+  return ((last - prev) / Math.abs(prev)) * 100
+}
 
 function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [val, setVal] = useState(0)
@@ -76,15 +83,9 @@ export default function DashboardPage() {
 
       {(() => {
         const current = opsFinancials[opsFinancials.length - 1]
-        const profit = current?.profit_tsh ?? 0
-        // Values wear text ink, not colour (minimum-colour system). Only the
-        // small mark/emphasis carries meaning: profit turns red when negative.
-        const tiles = [
-          { label: 'Revenue (this month)', value: current?.revenue_tsh ?? 0, prefix: 'TSh ', muted: false },
-          { label: 'Cost (this month)', value: current?.cost_tsh ?? 0, prefix: 'TSh ', muted: false },
-          { label: 'Profit (this month)', value: profit, prefix: 'TSh ', negative: profit < 0 },
-          { label: 'Pending approvals', value: opsKpis?.pendingApprovals ?? 0, prefix: '', muted: false },
-        ]
+        const revSeries = opsFinancials.map(f => f.revenue_tsh)
+        const costSeries = opsFinancials.map(f => f.cost_tsh)
+        const profitSeries = opsFinancials.map(f => f.profit_tsh)
         const chartData = opsFinancials.map(f => ({
           label: monthLabel(f.month), revenue: f.revenue_tsh, cost: f.cost_tsh, profit: f.profit_tsh,
         }))
@@ -96,14 +97,10 @@ export default function DashboardPage() {
         return (
           <>
             <div className="grid-kpi" style={{ marginBottom: 20 }}>
-              {tiles.map(t => (
-                <div key={t.label} className="card" style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: t.negative ? 'var(--red)' : 'var(--label-1)' }}>
-                    {t.prefix}{Math.round(t.value).toLocaleString()}
-                  </div>
-                  <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>{t.label}</div>
-                </div>
-              ))}
+              <StatTile label="Revenue (this month)" value={current?.revenue_tsh ?? 0} prefix="TSh " delta={pctDelta(revSeries)} spark={revSeries} goodWhenUp />
+              <StatTile label="Cost (this month)" value={current?.cost_tsh ?? 0} prefix="TSh " delta={pctDelta(costSeries)} spark={costSeries} goodWhenUp={false} />
+              <StatTile label="Profit (this month)" value={current?.profit_tsh ?? 0} prefix="TSh " delta={pctDelta(profitSeries)} spark={profitSeries} goodWhenUp />
+              <StatTile label="Pending approvals" value={opsKpis?.pendingApprovals ?? 0} />
             </div>
 
             <div className="card" style={{ marginBottom: 24, cursor: 'pointer', transition: 'border-color .15s' }}

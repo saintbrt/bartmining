@@ -1,8 +1,13 @@
 'use client'
 
 import {
-  ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts'
+
+// Reserved status ink for deltas/meters — good vs bad only, never decoration.
+const GOOD = '#0D8F5F'
+const BAD = '#D63A39'
+const WARN = '#B8770A'
 
 /* Shared chart primitives for the GoldPass admin panel.
 
@@ -103,5 +108,100 @@ export function MultiLineChart({ data, series, prefix = '', height = 260, emptyL
         ))}
       </LineChart>
     </ResponsiveContainer>
+  )
+}
+
+/* ── Single-hue bar/column comparison (magnitude across a few categories).
+   One accent for every bar (bar length already shows the value — colour must
+   not re-encode it); 4px rounded caps, hairline grid, tooltip. */
+export function BarCompareChart({ data, prefix = '', color = ACCENT, height = 200, emptyLabel }: {
+  data: { label: string; value: number }[]
+  prefix?: string
+  color?: string
+  height?: number
+  emptyLabel?: string
+}) {
+  if (data.length === 0) return <EmptyState label={emptyLabel} />
+  return (
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
+        <CartesianGrid vertical={false} stroke={GRID} />
+        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS }} />
+        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS }} />
+        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ fill: 'rgba(0,0,0,.04)' }} />
+        <Bar dataKey="value" name="Value" fill={color} radius={[4, 4, 0, 0]} maxBarSize={40} isAnimationActive={false} />
+      </BarChart>
+    </ResponsiveContainer>
+  )
+}
+
+/* ── Stat tile: value + optional signed delta (colour = direction × whether up
+   is good — a reserved status use) + optional sparkline. The value wears ink;
+   only the delta and the last spark point carry colour. */
+export function StatTile({ label, value, prefix = '', delta, spark, goodWhenUp = true }: {
+  label: string
+  value: number
+  prefix?: string
+  delta?: number            // signed percentage vs previous period
+  spark?: number[]          // trailing series for the sparkline
+  goodWhenUp?: boolean      // whether an increase is good (revenue) or bad (cost)
+}) {
+  const good = delta != null && (delta >= 0 ? goodWhenUp : !goodWhenUp)
+  const deltaColor = delta == null || delta === 0 ? 'var(--label-4)' : good ? GOOD : BAD
+  const sparkData = (spark ?? []).map((v, i) => ({ i, v }))
+  return (
+    <div className="card">
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--label-1)' }}>{prefix}{Math.round(value).toLocaleString()}</div>
+          <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 3 }}>{label}</div>
+        </div>
+        {delta != null && (
+          <div style={{ fontSize: 12, fontWeight: 600, color: deltaColor, flexShrink: 0, fontVariantNumeric: 'tabular-nums' }}>
+            {delta > 0 ? '↑' : delta < 0 ? '↓' : ''} {Math.abs(delta).toFixed(0)}%
+          </div>
+        )}
+      </div>
+      {sparkData.length > 1 && (
+        <div style={{ height: 34, marginTop: 8 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={sparkData} margin={{ top: 4, right: 2, bottom: 0, left: 2 }}>
+              <Line type="monotone" dataKey="v" stroke="var(--label-4)" strokeWidth={1.5} dot={false} isAnimationActive={false} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ── Meter: one ratio against a limit. Track is a lighter step; fill severity
+   goes accent → warning → danger as it approaches/exceeds the limit. */
+export function Meter({ value, max, label, prefix = '', suffix = '', format }: {
+  value: number
+  max: number
+  label?: string
+  prefix?: string
+  suffix?: string
+  format?: (n: number) => string
+}) {
+  const fmt = format ?? ((n: number) => Math.round(n).toLocaleString())
+  const ratio = max > 0 ? value / max : 0
+  const pct = Math.min(100, Math.max(0, ratio * 100))
+  const fill = ratio > 1 ? BAD : ratio > 0.85 ? WARN : ACCENT
+  return (
+    <div>
+      {label && (
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, marginBottom: 6 }}>
+          <span style={{ color: 'var(--label-3)' }}>{label}</span>
+          <span style={{ color: 'var(--label-1)', fontWeight: 600, fontVariantNumeric: 'tabular-nums' }}>
+            {prefix}{fmt(value)}{suffix} <span style={{ color: 'var(--label-4)', fontWeight: 400 }}>/ {prefix}{fmt(max)}{suffix}</span>
+          </span>
+        </div>
+      )}
+      <div style={{ height: 8, borderRadius: 4, background: 'var(--bg-3)', overflow: 'hidden' }}>
+        <div style={{ height: '100%', width: `${pct}%`, background: fill, borderRadius: 4, transition: 'width .4s ease' }} />
+      </div>
+    </div>
   )
 }
