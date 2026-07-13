@@ -399,3 +399,82 @@ export async function getTanks(): Promise<TankRow[]> {
   if (error) { gpError('GP-2646', error.message); return [] }
   return (data ?? []) as TankRow[]
 }
+
+/* PLANT: LEACHING PERIODS + COLOR TESTS (0017_leaching_periods_color_tests.sql). */
+export type LeachingPeriodRow = {
+  id: string
+  period_start: string
+  period_end: string | null
+  status: 'open' | 'closed'
+  closed_by: string | null
+  notes: string | null
+  created_at: string
+}
+
+export async function getLeachingPeriods(): Promise<LeachingPeriodRow[]> {
+  const { data, error } = await sb().from('leaching_periods').select('*').order('period_start', { ascending: false })
+  if (error) { gpError('GP-2647', error.message); return [] }
+  return (data ?? []) as LeachingPeriodRow[]
+}
+
+export async function openLeachingPeriod(periodStart: string, notes?: string): Promise<boolean> {
+  const { error } = await sb().from('leaching_periods').insert({ period_start: periodStart, notes: notes ?? null })
+  if (error) { gpError('GP-2648', error.message); return false }
+  return true
+}
+
+export async function closeLeachingPeriod(id: string, periodEnd: string): Promise<boolean> {
+  const { data: auth } = await sb().auth.getUser()
+  const { error } = await sb().from('leaching_periods')
+    .update({ status: 'closed', period_end: periodEnd, closed_by: auth.user?.id ?? null })
+    .eq('id', id)
+  if (error) { gpError('GP-2649', error.message); return false }
+  return true
+}
+
+export type ColorTestRow = {
+  id: string
+  test_date: string
+  tank_id: string
+  result: 'black' | 'grey' | 'clear'
+  notes: string | null
+}
+
+export async function getColorTests(tankId?: string): Promise<ColorTestRow[]> {
+  let q = sb().from('color_tests').select('id, test_date, tank_id, result, notes').order('test_date', { ascending: false })
+  if (tankId) q = q.eq('tank_id', tankId)
+  const { data, error } = await q
+  if (error) { gpError('GP-2650', error.message); return [] }
+  return (data ?? []) as ColorTestRow[]
+}
+
+export async function logColorTest(input: { tankId: string; testDate: string; result: 'black' | 'grey' | 'clear'; notes?: string }): Promise<boolean> {
+  const { data: auth } = await sb().auth.getUser()
+  const { error } = await sb().from('color_tests').insert({
+    tank_id: input.tankId,
+    test_date: input.testDate,
+    result: input.result,
+    notes: input.notes ?? null,
+    created_by: auth.user?.id ?? null,
+  })
+  if (error) { gpError('GP-2651', error.message); return false }
+  return true
+}
+
+export type TankLatestColor = { tank_id: string; result: 'black' | 'grey' | 'clear'; test_date: string }
+
+export async function getLatestTankColors(): Promise<Record<string, TankLatestColor>> {
+  const { data, error } = await sb().from('v_tank_latest_color').select('*')
+  if (error) { gpError('GP-2652', error.message); return {} }
+  const out: Record<string, TankLatestColor> = {}
+  for (const row of (data ?? []) as TankLatestColor[]) out[row.tank_id] = row
+  return out
+}
+
+export type PeriodCostRow = { month: string; total_cost_tsh: number }
+
+export async function getLeachingPeriodCost(periodId: string): Promise<PeriodCostRow[]> {
+  const { data, error } = await sb().rpc('get_leaching_period_cost', { p_period_id: periodId })
+  if (error) { gpError('GP-2653', error.message); return [] }
+  return (data ?? []) as PeriodCostRow[]
+}

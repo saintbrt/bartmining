@@ -94,6 +94,13 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2644': 'Failed to record sale.',
   'GP-2645': 'Financial summary failed to load.',
   'GP-2646': 'Tanks failed to load.',
+  'GP-2647': 'Leaching periods failed to load.',
+  'GP-2648': 'Failed to open leaching period.',
+  'GP-2649': 'Failed to close leaching period.',
+  'GP-2650': 'Color tests failed to load.',
+  'GP-2651': 'Failed to log color test.',
+  'GP-2652': 'Tank color state failed to load.',
+  'GP-2653': 'Period cost failed to load.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */
