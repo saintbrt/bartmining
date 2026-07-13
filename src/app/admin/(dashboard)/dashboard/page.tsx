@@ -6,6 +6,7 @@ import { useAppContext } from '@/lib/goldpass/AppContext'
 import { DB } from '@/lib/goldpass/db'
 import type { Project } from '@/lib/goldpass/db'
 import { getOperationsKpis, getFinancialSummary, type OperationsKpis, type FinancialSummaryRow } from '@/lib/goldpass/erp'
+import { MultiLineChart } from '@/components/goldpass/charts'
 
 function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [val, setVal] = useState(0)
@@ -76,21 +77,30 @@ export default function DashboardPage() {
       {(() => {
         const current = opsFinancials[opsFinancials.length - 1]
         const profit = current?.profit_tsh ?? 0
-        const maxRev = Math.max(...opsFinancials.map(f => f.revenue_tsh), 1)
-        // Revenue is a single-series magnitude-over-time → bar chart, one hue,
-        // no legend (the card title names the series), value labels per bar.
+        // Values wear text ink, not colour (minimum-colour system). Only the
+        // small mark/emphasis carries meaning: profit turns red when negative.
         const tiles = [
-          { label: 'Revenue (MTD)', value: current?.revenue_tsh ?? 0, color: 'var(--green)', prefix: 'TSh ' },
-          { label: 'Cost (MTD)', value: current?.cost_tsh ?? 0, color: 'var(--red)', prefix: 'TSh ' },
-          { label: 'Profit (MTD)', value: profit, color: profit >= 0 ? 'var(--green)' : 'var(--red)', prefix: 'TSh ' },
-          { label: 'Pending Approvals', value: opsKpis?.pendingApprovals ?? 0, color: 'var(--blue)', prefix: '' },
+          { label: 'Revenue (this month)', value: current?.revenue_tsh ?? 0, prefix: 'TSh ', muted: false },
+          { label: 'Cost (this month)', value: current?.cost_tsh ?? 0, prefix: 'TSh ', muted: false },
+          { label: 'Profit (this month)', value: profit, prefix: 'TSh ', negative: profit < 0 },
+          { label: 'Pending approvals', value: opsKpis?.pendingApprovals ?? 0, prefix: '', muted: false },
+        ]
+        const chartData = opsFinancials.map(f => ({
+          label: monthLabel(f.month), revenue: f.revenue_tsh, cost: f.cost_tsh, profit: f.profit_tsh,
+        }))
+        const series = [
+          { key: 'revenue', name: 'Revenue' },
+          { key: 'cost', name: 'Cost' },
+          { key: 'profit', name: 'Profit' },
         ]
         return (
           <>
             <div className="grid-kpi" style={{ marginBottom: 20 }}>
               {tiles.map(t => (
                 <div key={t.label} className="card" style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: t.color }}>{t.prefix}{Math.round(t.value).toLocaleString()}</div>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: t.negative ? 'var(--red)' : 'var(--label-1)' }}>
+                    {t.prefix}{Math.round(t.value).toLocaleString()}
+                  </div>
                   <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>{t.label}</div>
                 </div>
               ))}
@@ -98,32 +108,16 @@ export default function DashboardPage() {
 
             <div className="card" style={{ marginBottom: 24, cursor: 'pointer', transition: 'border-color .15s' }}
               onClick={() => router.push('/admin/operations/overview')}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--blue)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--chart-accent)' }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>Revenue{opsFinancials.length > 0 ? ` — last ${opsFinancials.length} months` : ''}</div>
-                <div style={{ fontSize: 12, color: 'var(--blue)' }}>View Operations →</div>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+                <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>
+                  Revenue, cost &amp; profit{opsFinancials.length > 0 ? ` — last ${opsFinancials.length} months` : ''}
+                </div>
+                <div style={{ fontSize: 12, color: 'var(--label-3)' }}>View Operations →</div>
               </div>
-              {opsFinancials.length === 0 ? (
-                <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '28px 0', textAlign: 'center' }}>
-                  No financial data yet — run the operations financial summary migration to populate this.
-                </div>
-              ) : (
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10, height: 160, borderBottom: '1px solid var(--sep)', paddingBottom: 2 }}>
-                  {opsFinancials.map(f => (
-                    <div key={f.month} title={`${monthLabel(f.month)} — TSh ${Math.round(f.revenue_tsh).toLocaleString()}`}
-                      style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-                      <div style={{ fontSize: 10, color: 'var(--label-4)' }}>{Math.round(f.revenue_tsh).toLocaleString()}</div>
-                      <div style={{
-                        width: '100%', maxWidth: 40,
-                        height: `${Math.max(4, (f.revenue_tsh / maxRev) * 118)}px`,
-                        background: 'var(--green)', borderRadius: '4px 4px 0 0',
-                      }} />
-                      <div style={{ fontSize: 10, color: 'var(--label-3)' }}>{monthLabel(f.month)}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
+              <MultiLineChart data={chartData} series={series} prefix="TSh " height={260}
+                emptyLabel="No financial data yet — run the operations financial summary migration to populate this." />
             </div>
           </>
         )
@@ -131,13 +125,13 @@ export default function DashboardPage() {
 
       <div className="grid-kpi" style={{ marginTop: 24 }}>
         {[
-          { label: 'Projects', value: projects.length, color: 'var(--blue)' },
-          { label: 'Data rows', value: totalRows, color: 'var(--green)' },
-          { label: 'Tables', value: projects.reduce((a, p) => a + DB.getTables(p.id).length, 0), color: 'var(--orange)' },
-          { label: 'Outputs', value: projects.reduce((a, p) => a + DB.getOutputs(p.id).length, 0), color: 'var(--purple)' },
+          { label: 'Projects', value: projects.length },
+          { label: 'Data rows', value: totalRows },
+          { label: 'Tables', value: projects.reduce((a, p) => a + DB.getTables(p.id).length, 0) },
+          { label: 'Outputs', value: projects.reduce((a, p) => a + DB.getOutputs(p.id).length, 0) },
         ].map(k => (
           <div key={k.label} className="card" style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 28, fontWeight: 700, color: k.color }}><Counter target={k.value} /></div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: 'var(--label-1)' }}><Counter target={k.value} /></div>
             <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>{k.label}</div>
           </div>
         ))}
@@ -186,10 +180,9 @@ export default function DashboardPage() {
         <div style={{ marginTop: 24 }}>
           <div style={{ fontSize: 12, color: 'var(--label-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 12 }}>Projects</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: 16 }}>
-            {projects.map((p: Project, i: number) => {
+            {projects.map((p: Project) => {
               const tables = DB.getTables(p.id)
               const rows = tables.reduce((a, t) => a + t.row_count, 0)
-              const colors = ['#007AFF', '#34C759', '#FF9500', '#AF52DE', '#FF3B30']
               const ss = DB.getStageStatus(p.id)
               const stages: { key: 'validation' | 'cleaning' | 'analysis'; label: string }[] = [
                 { key: 'validation', label: 'Validation' }, { key: 'cleaning', label: 'Cleaning' }, { key: 'analysis', label: 'Analysis' },
@@ -198,11 +191,11 @@ export default function DashboardPage() {
               return (
                 <div key={p.id} className="card" style={{ cursor: 'pointer', borderColor: 'var(--sep)', transition: 'border-color .15s' }}
                   onClick={() => setProject(p)}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = colors[i % 5] }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--gold)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: colors[i % 5] }} />
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)' }} />
                     <div style={{ fontSize: 14, fontWeight: 600, flex: 1 }}>{p.name}</div>
                     <button className="btn-icon" style={{ fontSize: 10, padding: '2px 7px' }} title="Rename project"
                       onClick={e => { e.stopPropagation(); const n = window.prompt('Rename project:', p.name); if (n?.trim()) { DB.renameProject(p.id, n); ctx!.refresh() } }}>✎</button>
@@ -225,7 +218,7 @@ export default function DashboardPage() {
                       </span>
                     ))}
                   </div>
-                  <div style={{ marginTop: 12, fontSize: 12, color: colors[i % 5] }}>
+                  <div style={{ marginTop: 12, fontSize: 12, color: 'var(--gold)' }}>
                     {nextStage ? `Continue: ${nextStage.label} →` : 'All stages done — Outputs →'}
                   </div>
                 </div>
