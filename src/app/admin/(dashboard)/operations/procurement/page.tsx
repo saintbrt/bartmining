@@ -59,15 +59,15 @@ export default function ProcurementPage() {
                   <tr><td colSpan={9} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No procurement activity yet.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.pr_id}>
-                    <td data-label="PR" style={{ fontFamily: 'monospace' }}>{r.pr_number ?? '—'}</td>
-                    <td data-label="PR status">{r.pr_status ?? '—'}</td>
-                    <td data-label="Est. amount">{r.total_estimated_tsh?.toLocaleString() ?? '—'}</td>
-                    <td data-label="Supplier">{r.supplier_name ?? '—'}</td>
-                    <td data-label="PO" style={{ fontFamily: 'monospace' }}>{r.po_number ?? '—'}</td>
-                    <td data-label="PO status">{r.po_status ?? '—'}</td>
-                    <td data-label="GRN" style={{ fontFamily: 'monospace' }}>{r.grn_number ?? '—'}</td>
+                    <td data-label="PR" style={{ fontFamily: 'monospace' }}>{r.pr_number ?? '-'}</td>
+                    <td data-label="PR status">{r.pr_status ?? '-'}</td>
+                    <td data-label="Est. amount">{r.total_estimated_tsh?.toLocaleString() ?? '-'}</td>
+                    <td data-label="Supplier">{r.supplier_name ?? '-'}</td>
+                    <td data-label="PO" style={{ fontFamily: 'monospace' }}>{r.po_number ?? '-'}</td>
+                    <td data-label="PO status">{r.po_status ?? '-'}</td>
+                    <td data-label="GRN" style={{ fontFamily: 'monospace' }}>{r.grn_number ?? '-'}</td>
                     <td data-label="GRN status">
-                      {r.grn_status ?? '—'}
+                      {r.grn_status ?? '-'}
                       {r.variance_flag && <span className="badge badge-orange" style={{ marginLeft: 6 }}>Variance</span>}
                     </td>
                     <td>

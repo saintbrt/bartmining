@@ -189,7 +189,7 @@ export default function ExecutivePage() {
             <div>Shift logs: {scorecard.shift_logs_approved}/{scorecard.shift_logs_submitted}</div>
             <div>Sales: {scorecard.sales_recorded}</div>
             <div>Adjustments: {scorecard.payroll_adjustments_submitted}</div>
-            <div>Approval rate: {scorecard.approval_rate_pct != null ? `${scorecard.approval_rate_pct}%` : '—'}</div>
+            <div>Approval rate: {scorecard.approval_rate_pct != null ? `${scorecard.approval_rate_pct}%` : '-'}</div>
           </div>
         )}
       </div>
@@ -219,7 +219,7 @@ export default function ExecutivePage() {
                     <tr><td colSpan={4} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No month-end closes yet.</td></tr>
                   ) : closes.map(c => (
                     <tr key={c.id}>
-                      <td data-label="Site">{c.site_name ?? '—'}</td>
+                      <td data-label="Site">{c.site_name ?? '-'}</td>
                       <td data-label="Period">{c.period_year}-{String(c.period_month).padStart(2, '0')}</td>
                       <td data-label="Status">{c.status}</td>
                       <td>
@@ -255,11 +255,11 @@ export default function ExecutivePage() {
                     <tr><td colSpan={6} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No snapshots yet.</td></tr>
                   ) : snapshots.map(s => (
                     <tr key={s.id}>
-                      <td data-label="Site">{s.site_name ?? '—'}</td>
+                      <td data-label="Site">{s.site_name ?? '-'}</td>
                       <td data-label="Period">{new Date(s.period_start).toLocaleDateString()} – {new Date(s.period_end).toLocaleDateString()}</td>
                       <td data-label="Version">v{s.snapshot_version}</td>
                       <td data-label="Status">{s.status}</td>
-                      <td data-label="Frozen at" style={{ color: 'var(--label-4)' }}>{s.frozen_at ? new Date(s.frozen_at).toLocaleString() : '—'}</td>
+                      <td data-label="Frozen at" style={{ color: 'var(--label-4)' }}>{s.frozen_at ? new Date(s.frozen_at).toLocaleString() : '-'}</td>
                       <td>
                         {s.status === 'frozen' && (
                           <button className="btn-icon" style={{ fontSize: 10 }} disabled={busyId === s.id}
@@ -299,7 +299,7 @@ export default function ExecutivePage() {
                     <tr><td colSpan={4} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No site config set yet.</td></tr>
                   ) : configs.map(c => (
                     <tr key={c.site_id}>
-                      <td data-label="Site">{c.site_name ?? '—'}</td>
+                      <td data-label="Site">{c.site_name ?? '-'}</td>
                       <td data-label="Close day">{c.close_day_of_month}</td>
                       <td data-label="Monthly budget (TSh)">{c.monthly_budget_tsh.toLocaleString()}</td>
                       <td data-label="Production plan (g)">{c.production_plan_g.toLocaleString()}</td>

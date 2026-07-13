@@ -1,4 +1,4 @@
-# Bart Mining GoldPass — Build Reference
+# Bart Mining GoldPass: Build Reference
 
 Authoritative guide for the mine operations platform. This replaces the old
 AUDIT_REPORT.md (which described the retired drill/exploration app). Everything

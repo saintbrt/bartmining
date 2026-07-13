@@ -5,11 +5,11 @@ import type { ReactNode } from 'react'
 /* Renders whatever columns a row actually has. Used for oversight views
    (shift logs, equipment utilization, daily ops, procurement pipeline, sync
    conflicts) where the exact column set comes from a Supabase view this repo
-   doesn't have direct visibility into yet — safer than hardcoding column
+   doesn't have direct visibility into yet, safer than hardcoding column
    names we can't verify against the live schema. */
 
 function formatCell(value: unknown): string {
-  if (value === null || value === undefined) return '—'
+  if (value === null || value === undefined) return '-'
   if (typeof value === 'boolean') return value ? 'Yes' : 'No'
   if (typeof value === 'number') return value.toLocaleString()
   if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(value)) {

@@ -48,7 +48,7 @@ export default function OperationsOverviewPage() {
   }, [])
 
   // Attention tiles: value is ink; low-stock / open-alerts turn amber only when
-  // there's actually something to act on (> 0) — a reserved status use, not decoration.
+  // there's actually something to act on (> 0), a reserved status use, not decoration.
   const tiles: { label: string; value: number; suffix?: string; prefix?: string; href: string; alert?: boolean }[] = [
     { label: 'Pending approvals', value: kpis.pendingApprovals, href: '/admin/operations/expenses' },
     { label: 'Spend (month-to-date)', value: Math.round(kpis.spendMtd), prefix: 'TSh ', href: '/admin/operations/expenses' },
@@ -77,7 +77,7 @@ export default function OperationsOverviewPage() {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--chart-accent)' }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
               <div style={{ fontSize: 26, fontWeight: 700, color: attention ? 'var(--orange)' : 'var(--label-1)' }}>
-                {loading ? '—' : <Counter target={t.value} prefix={t.prefix} suffix={t.suffix} />}
+                {loading ? '-' : <Counter target={t.value} prefix={t.prefix} suffix={t.suffix} />}
               </div>
               <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>{t.label}</div>
             </div>
@@ -86,9 +86,9 @@ export default function OperationsOverviewPage() {
       </div>
 
       <div style={{ marginBottom: 24 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>Financial Summary — This Month</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>Financial Summary: This Month</h3>
         <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 12 }}>
-          Cost = expenses + payroll + approved procurement. Numbers come from monthly reporting views —
+          Cost = expenses + payroll + approved procurement. Numbers come from monthly reporting views,
           use the &quot;Refresh&quot; button on the Executive page if these look stale.
         </p>
 
@@ -119,7 +119,7 @@ export default function OperationsOverviewPage() {
             </div>
 
             <div className="card" style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Revenue vs Cost vs Profit — this month</div>
+              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Revenue vs Cost vs Profit (this month)</div>
               <BarCompareChart
                 data={[
                   { label: 'Revenue', value: current.revenue_tsh },

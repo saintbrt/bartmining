@@ -63,12 +63,12 @@ export default function DashboardPage() {
         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
           <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>
-            Revenue, cost &amp; profit{opsFinancials.length > 0 ? ` — last ${opsFinancials.length} months` : ''}
+            Revenue, cost &amp; profit{opsFinancials.length > 0 ? ` (last ${opsFinancials.length} months)` : ''}
           </div>
           <div style={{ fontSize: 12, color: 'var(--label-3)' }}>View Operations →</div>
         </div>
         <MultiLineChart data={chartData} series={series} prefix="TSh " height={260}
-          emptyLabel="No financial data yet — run the operations financial summary migration to populate this." />
+          emptyLabel="No financial data yet, run the operations financial summary migration to populate this." />
       </div>
 
       <div className="grid-2" style={{ marginBottom: 24 }}>

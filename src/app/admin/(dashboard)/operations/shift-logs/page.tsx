@@ -23,7 +23,7 @@ export default function ShiftLogsPage() {
   useEffect(() => { load() }, [load])
 
   async function act(row: ShiftLogOversightRow, action: 'approve' | 'reject') {
-    if (!row.workflow_instance_id) { notify('warn', 'This shift log has no workflow instance — cannot act on it.'); return }
+    if (!row.workflow_instance_id) { notify('warn', 'This shift log has no workflow instance, cannot act on it.'); return }
     let comment = ''
     if (action === 'reject') {
       const typed = window.prompt('Reason for rejection (required):')

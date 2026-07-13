@@ -110,9 +110,9 @@ export default function InventoryOversightPage() {
                 ) : alerts.map(a => (
                   <tr key={a.id}>
                     <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(a.created_at).toLocaleDateString()}</td>
-                    <td data-label="Item">{a.item_name ?? '—'}</td>
+                    <td data-label="Item">{a.item_name ?? '-'}</td>
                     <td data-label="Type">{a.alert_type}</td>
-                    <td data-label="Message">{a.message ?? '—'}</td>
+                    <td data-label="Message">{a.message ?? '-'}</td>
                     <td data-label="Status">
                       {a.status === 'open'
                         ? <span className="badge badge-orange">Open</span>

@@ -17,13 +17,13 @@
   --label-2: #3A3A3C;
   --label-3: #6E6E73;
   --label-4: #98989E;
-  /* ── Chart tokens (minimum-color data-viz system) ──
+  /* Chart tokens (minimum-color data-viz system).
      One accent for single-series; a validated colorblind-safe categorical
-     set (fixed order, never cycled) for multi-series comparison — passes the
+     set (fixed order, never cycled) for multi-series comparison, passes the
      six-checks (CVD worst-adjacent ΔE 12.5, contrast >= 3:1). Grid/axis are
      recessive; chart VALUES wear text ink (--label-*), never the data colour.
      The chart components mirror these as JS constants (Recharts sets SVG
-     attributes, which don't resolve CSS vars) — keep the two in sync. */
+     attributes, which don't resolve CSS vars), keep the two in sync. */
   --chart-accent: #2A78D6;
   --chart-grid:   rgba(0,0,0,.08);
   --chart-axis:   #98989E;

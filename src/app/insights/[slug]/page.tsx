@@ -43,7 +43,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     <>
       <ReadingProgress />
 
-      {/* Article hero — light, matches rest of site */}
+      {/* Article hero, light, matches rest of site */}
       <section className="subhero" style={{ paddingBottom: 48 }}>
         <div className="orb orb-1" /><div className="orb orb-2" />
         <div className="px-site" style={{ position: 'relative' }}>
@@ -84,7 +84,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* Hero image — contained, full border radius */}
+      {/* Hero image, contained, full border radius */}
       <div className="px-site" style={{ paddingBottom: 0 }}>
         <div style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '21/9' }}>
           <Image
