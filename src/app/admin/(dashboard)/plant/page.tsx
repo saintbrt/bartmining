@@ -6,9 +6,11 @@ import {
   getTanks, getLatestTankColors, getLeachingPeriods, openLeachingPeriod, closeLeachingPeriod,
   getColorTests, logColorTest, getLeachingPeriodCost,
   getPits, createPit, getPitMachinery, assignMachinery, getPitsMonthlyCost,
+  getElutionBatches, logElutionBatch, getRecoveryReconciliation,
   listSimpleTable, listEquipment,
   type TankRow, type TankLatestColor, type LeachingPeriodRow, type ColorTestRow, type PeriodCostRow,
   type PitRow, type PitMachineryRow, type PitMonthlyCostRow, type SimpleRow, type EquipmentRow,
+  type ElutionBatchRow, type RecoveryReconciliationRow,
 } from '@/lib/goldpass/erp'
 import { PlantMap } from '@/components/goldpass/PlantMap'
 import { PitsGrid } from '@/components/goldpass/PitsGrid'
@@ -28,6 +30,9 @@ export default function PlantPage() {
   const [projects, setProjects] = useState<SimpleRow[]>([])
   const [equipment, setEquipment] = useState<EquipmentRow[]>([])
   const [pitCosts, setPitCosts] = useState<PitMonthlyCostRow[]>([])
+
+  const [elutionBatches, setElutionBatches] = useState<ElutionBatchRow[]>([])
+  const [reconciliation, setReconciliation] = useState<RecoveryReconciliationRow[]>([])
 
   const [loading, setLoading] = useState(true)
 
@@ -53,19 +58,27 @@ export default function PlantPage() {
   const [assignNotes, setAssignNotes] = useState('')
   const [assigning, setAssigning] = useState(false)
 
+  const [batchDate, setBatchDate] = useState(todayStr())
+  const [goldRecoveredG, setGoldRecoveredG] = useState('')
+  const [carbonStageNotes, setCarbonStageNotes] = useState('')
+  const [loggingBatch, setLoggingBatch] = useState(false)
+
   const load = useCallback(async () => {
     setLoading(true)
     const [
       tanksData, colorsData, periodsData, testsData,
       pitsData, machineryData, locationsData, projectsData, equipmentData, pitCostData,
+      elutionData, reconciliationData,
     ] = await Promise.all([
       getTanks(), getLatestTankColors(), getLeachingPeriods(), getColorTests(),
       getPits(), getPitMachinery(), listSimpleTable('mine_locations'), listSimpleTable('projects'),
       listEquipment(), getPitsMonthlyCost(),
+      getElutionBatches(), getRecoveryReconciliation(),
     ])
     setTanks(tanksData); setTankColors(colorsData); setPeriods(periodsData); setColorTests(testsData)
     setPits(pitsData); setPitMachinery(machineryData); setMineLocations(locationsData)
     setProjects(projectsData); setEquipment(equipmentData); setPitCosts(pitCostData)
+    setElutionBatches(elutionData); setReconciliation(reconciliationData)
     setLoading(false)
   }, [])
 
@@ -102,6 +115,17 @@ export default function PlantPage() {
     const pitNames = Array.from(new Set(pitCosts.map(c => c.pit_name)))
     return pitNames.map((name, i) => ({ key: name, name, color: SERIES_COLORS[i % SERIES_COLORS.length] }))
   }, [pitCosts])
+
+  const reconciliationChartData = useMemo(() => reconciliation.map(r => ({
+    label: r.month.slice(0, 7),
+    'Recovered (elution)': Number(r.recovered_g),
+    'Sold (sales)': Number(r.sold_g),
+  })), [reconciliation])
+
+  const reconciliationSeries = [
+    { key: 'Recovered (elution)', name: 'Recovered (elution)', color: SERIES_COLORS[0] },
+    { key: 'Sold (sales)', name: 'Sold (sales)', color: SERIES_COLORS[1] },
+  ]
 
   async function handleOpenPeriod() {
     setOpeningPeriod(true)
@@ -160,6 +184,21 @@ export default function PlantPage() {
     if (!ok) return
     notify('success', 'Machinery assigned.')
     setAssignNotes('')
+    load()
+  }
+
+  async function handleLogElutionBatch() {
+    if (!goldRecoveredG || Number(goldRecoveredG) < 0) { notify('warn', 'Enter grams recovered.'); return }
+    setLoggingBatch(true)
+    const ok = await logElutionBatch({
+      batchDate, goldRecoveredG: Number(goldRecoveredG),
+      carbonStageNotes: carbonStageNotes.trim() || undefined,
+      leachingPeriodId: openPeriod?.id,
+    })
+    setLoggingBatch(false)
+    if (!ok) return
+    notify('success', 'Elution batch logged.')
+    setGoldRecoveredG(''); setCarbonStageNotes('')
     load()
   }
 
@@ -332,6 +371,52 @@ export default function PlantPage() {
                     <td>{tanks.find(tk => tk.id === t.tank_id)?.tank_code ?? t.tank_id}</td>
                     <td>{t.result}</td>
                     <td>{t.notes ?? ''}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+      <div className="card" style={{ maxWidth: 680, marginTop: 24, marginBottom: 24 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Log elution batch</div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+          <input className="input" style={{ width: 140, fontSize: 12 }} type="date" value={batchDate} onChange={e => setBatchDate(e.target.value)} />
+          <input className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} type="number" placeholder="Gold recovered (g) *" value={goldRecoveredG} onChange={e => setGoldRecoveredG(e.target.value)} />
+        </div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+          <input className="input" style={{ flex: 1, fontSize: 12 }} placeholder="Carbon stage notes (optional)" value={carbonStageNotes} onChange={e => setCarbonStageNotes(e.target.value)} />
+        </div>
+        <button className="btn btn-primary btn-sm" disabled={loggingBatch} onClick={handleLogElutionBatch}>{loggingBatch ? 'Logging…' : 'Log batch'}</button>
+      </div>
+
+      <div className="card" style={{ marginBottom: 24 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Recovery reconciliation</div>
+        <p style={{ fontSize: 11, color: 'var(--label-4)', marginBottom: 12 }}>
+          Physical gold recovered (elution) against fine gold sold (sales), by month. Elution is the
+          source of truth for grams recovered; sales is the source of truth for money. A gap is stock
+          on hand or worth a closer look, not an error to force-match.
+        </p>
+        <MultiLineChart data={reconciliationChartData} series={reconciliationSeries} emptyLabel="No recovery data yet." />
+      </div>
+
+      <div className="card">
+        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Recent elution batches</div>
+        {elutionBatches.length === 0 ? (
+          <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 8 }}>No elution batches logged yet.</div>
+        ) : (
+          <div style={{ overflowX: 'auto' }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
+              <thead>
+                <tr><th>Date</th><th>Recovered (g)</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                {elutionBatches.slice(0, 30).map(b => (
+                  <tr key={b.id}>
+                    <td>{b.batch_date}</td>
+                    <td>{b.gold_recovered_g.toLocaleString()}</td>
+                    <td>{b.carbon_stage_notes ?? ''}</td>
                   </tr>
                 ))}
               </tbody>

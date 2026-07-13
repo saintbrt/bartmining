@@ -106,6 +106,9 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2656': 'Pit machinery failed to load.',
   'GP-2657': 'Failed to assign machinery.',
   'GP-2658': 'Pit cost comparison failed to load.',
+  'GP-2659': 'Elution batches failed to load.',
+  'GP-2660': 'Failed to log elution batch.',
+  'GP-2661': 'Recovery reconciliation failed to load.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */

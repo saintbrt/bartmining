@@ -539,3 +539,39 @@ export async function getPitsMonthlyCost(months = 6): Promise<PitMonthlyCostRow[
   if (error) { gpError('GP-2658', error.message); return [] }
   return (data ?? []) as PitMonthlyCostRow[]
 }
+
+/* ELUTION + RECOVERY RECONCILIATION (0019_elution_recovery.sql). */
+export type ElutionBatchRow = {
+  id: string
+  batch_date: string
+  gold_recovered_g: number
+  carbon_stage_notes: string | null
+  leaching_period_id: string | null
+}
+
+export async function getElutionBatches(): Promise<ElutionBatchRow[]> {
+  const { data, error } = await sb().from('elution_batches').select('*').order('batch_date', { ascending: false })
+  if (error) { gpError('GP-2659', error.message); return [] }
+  return (data ?? []) as ElutionBatchRow[]
+}
+
+export async function logElutionBatch(input: { batchDate: string; goldRecoveredG: number; carbonStageNotes?: string; leachingPeriodId?: string }): Promise<boolean> {
+  const { data: auth } = await sb().auth.getUser()
+  const { error } = await sb().from('elution_batches').insert({
+    batch_date: input.batchDate,
+    gold_recovered_g: input.goldRecoveredG,
+    carbon_stage_notes: input.carbonStageNotes ?? null,
+    leaching_period_id: input.leachingPeriodId ?? null,
+    created_by: auth.user?.id ?? null,
+  })
+  if (error) { gpError('GP-2660', error.message); return false }
+  return true
+}
+
+export type RecoveryReconciliationRow = { month: string; recovered_g: number; sold_g: number; variance_g: number }
+
+export async function getRecoveryReconciliation(months = 6): Promise<RecoveryReconciliationRow[]> {
+  const { data, error } = await sb().rpc('get_recovery_reconciliation', { p_months: months })
+  if (error) { gpError('GP-2661', error.message); return [] }
+  return (data ?? []) as RecoveryReconciliationRow[]
+}
