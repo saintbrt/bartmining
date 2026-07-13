@@ -85,6 +85,18 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      <div className="card" style={{ marginBottom: 24, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14 }}
+        onClick={() => router.push('/admin/maxgold')}
+        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--gold)' }}
+        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
+        <div style={{ fontSize: 28 }}>⛏</div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 13, fontWeight: 600 }}>Max Gold Finder</div>
+          <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 2 }}>Upload a CSV/Excel file and instantly find the highest-grade interval per hole, no project needed.</div>
+        </div>
+        <div style={{ fontSize: 12, color: 'var(--gold)' }}>Open →</div>
+      </div>
     </div>
   )
 }
