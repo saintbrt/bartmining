@@ -382,15 +382,9 @@ export async function getSalesRegister(): Promise<SalesRegisterRow[]> {
   return (data ?? []) as SalesRegisterRow[]
 }
 
-/* Sales approve/reject goes through the same workflow_transition() RPC as
-   expenses/shift logs — 'sale' is a registered workflow_document_type. Needs
-   the sale's workflow_instance_id, which the view doesn't expose directly. */
-export async function getSaleWorkflowInstanceId(saleId: string): Promise<string | null> {
-  const { data, error } = await sb().from('sales').select('workflow_instance_id').eq('id', saleId).single()
-  if (error) { gpError('GP-2624', error.message); return null }
-  return (data?.workflow_instance_id as string | null) ?? null
-}
-
+/* Sales are recorded directly by admins — there is no approval step (the admin
+   entering the sale would only be approving themselves). submitSale() inserts
+   the sale and it counts as revenue immediately; no workflow_transition. */
 export type NewSaleInput = {
   siteId: string | null
   customerId: string

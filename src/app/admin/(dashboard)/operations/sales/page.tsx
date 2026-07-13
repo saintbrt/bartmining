@@ -3,23 +3,14 @@
 import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import {
-  getSalesRegister, getSaleWorkflowInstanceId, workflowTransition, submitSale, CUSTOMERS_ENTITY,
+  getSalesRegister, submitSale, CUSTOMERS_ENTITY,
   listSimpleTable, type SalesRegisterRow, type SimpleRow,
 } from '@/lib/goldpass/erp'
 import EntityCrudCard from '@/components/goldpass/EntityCrudCard'
 
-const STATUS_BADGE: Record<string, string> = {
-  submitted: 'badge-blue',
-  approved: 'badge-green',
-  rejected: 'badge-red',
-  voided: 'badge-gray',
-  cancelled: 'badge-gray',
-}
-
 export default function SalesPage() {
   const [rows, setRows] = useState<SalesRegisterRow[]>([])
   const [loading, setLoading] = useState(true)
-  const [actingId, setActingId] = useState<string | null>(null)
 
   const [sites, setSites] = useState<SimpleRow[]>([])
   const [customers, setCustomers] = useState<SimpleRow[]>([])
@@ -62,25 +53,8 @@ export default function SalesPage() {
     })
     setRecording(false)
     if (!id) return
-    notify('success', 'Sale recorded and submitted for approval.')
+    notify('success', 'Sale recorded.')
     setCustomerId(''); setWeightG(''); setPurityPct(''); setPriceTsh(''); setPaymentTerms(''); setNotes('')
-    load()
-  }
-
-  async function act(row: SalesRegisterRow, action: 'approve' | 'reject') {
-    let comment = ''
-    if (action === 'reject') {
-      const typed = window.prompt('Reason for rejection (required):')
-      if (!typed?.trim()) { if (typed !== null) notify('warn', 'A rejection reason is required.'); return }
-      comment = typed.trim()
-    }
-    setActingId(row.id)
-    const instanceId = await getSaleWorkflowInstanceId(row.id)
-    if (!instanceId) { setActingId(null); notify('warn', 'This sale has no workflow instance — cannot act on it.'); return }
-    const ok = await workflowTransition(instanceId, action, comment)
-    setActingId(null)
-    if (!ok) return
-    notify('success', `Sale ${action === 'approve' ? 'approved' : 'rejected'}.`)
     load()
   }
 
@@ -91,7 +65,7 @@ export default function SalesPage() {
     <div className="content content-pad">
       <div style={{ marginBottom: 24 }}>
         <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Sales</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Gold sales register captured from the field, with approval and revenue totals.</p>
+        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Gold sales register — recorded sales with weight and revenue totals.</p>
       </div>
 
       <div className="grid-2" style={{ marginBottom: 24 }}>
@@ -147,13 +121,11 @@ export default function SalesPage() {
                   <th>Price (TSh)</th>
                   <th>TSh/g</th>
                   <th>Recorded by</th>
-                  <th>Status</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 {rows.length === 0 ? (
-                  <tr><td colSpan={11} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No sales recorded yet.</td></tr>
+                  <tr><td colSpan={9} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No sales recorded yet.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.id}>
                     <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.sale_date).toLocaleDateString()}</td>
@@ -165,17 +137,6 @@ export default function SalesPage() {
                     <td data-label="Price (TSh)" style={{ fontWeight: 600 }}>{r.price_tsh.toLocaleString()}</td>
                     <td data-label="TSh/g">{r.price_per_gram_tsh.toLocaleString()}</td>
                     <td data-label="Recorded by">{r.recorded_by_name ?? '—'}</td>
-                    <td data-label="Status"><span className={`badge ${STATUS_BADGE[r.status ?? ''] ?? 'badge-gray'}`}>{r.status ?? '—'}</span></td>
-                    <td>
-                      {r.status === 'submitted' && (
-                        <div style={{ display: 'flex', gap: 6 }}>
-                          <button className="btn-icon" style={{ fontSize: 10, color: 'var(--green)' }} disabled={actingId === r.id}
-                            onClick={() => act(r, 'approve')}>Approve</button>
-                          <button className="btn-icon" style={{ fontSize: 10, color: 'var(--red)' }} disabled={actingId === r.id}
-                            onClick={() => act(r, 'reject')}>Reject</button>
-                        </div>
-                      )}
-                    </td>
                   </tr>
                 ))}
               </tbody>
