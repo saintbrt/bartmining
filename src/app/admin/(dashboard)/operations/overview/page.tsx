@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getOperationsKpis, getFinancialSummary, projectNextMonth, type OperationsKpis, type FinancialSummaryRow } from '@/lib/goldpass/erp'
-import { LineTrendChart } from '@/components/goldpass/charts'
+import { LineTrendChart, BarCompareChart } from '@/components/goldpass/charts'
 
 function Counter({ target, prefix = '', suffix = '' }: { target: number; prefix?: string; suffix?: string }) {
   const [val, setVal] = useState(0)
@@ -58,7 +58,6 @@ export default function OperationsOverviewPage() {
 
   const current = financials[financials.length - 1]
   const projectedRevenue = financials.length > 0 ? projectNextMonth(financials) : 0
-  const maxRCP = current ? Math.max(current.revenue_tsh, current.cost_tsh, Math.abs(current.profit_tsh), 1) : 1
 
   return (
     <div className="content content-pad">
@@ -120,25 +119,15 @@ export default function OperationsOverviewPage() {
             </div>
 
             <div className="card" style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Revenue vs Cost vs Profit</div>
-              {[
-                { label: 'Revenue', value: current.revenue_tsh, color: 'var(--chart-accent)' },
-                { label: 'Cost', value: current.cost_tsh, color: 'var(--chart-accent)' },
-                { label: 'Profit', value: current.profit_tsh, color: current.profit_tsh >= 0 ? 'var(--chart-accent)' : 'var(--red)' },
-              ].map(bar => (
-                <div key={bar.label} style={{ marginBottom: 10 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--label-3)', marginBottom: 3 }}>
-                    <span>{bar.label}</span>
-                    <span>TSh {bar.value.toLocaleString()}</span>
-                  </div>
-                  <div style={{ background: 'var(--bg-3)', borderRadius: 4, height: 10, overflow: 'hidden' }}>
-                    <div style={{
-                      width: `${Math.min(100, Math.abs(bar.value) / maxRCP * 100)}%`,
-                      background: bar.color, height: '100%', borderRadius: 4, transition: 'width .6s ease',
-                    }} />
-                  </div>
-                </div>
-              ))}
+              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Revenue vs Cost vs Profit — this month</div>
+              <BarCompareChart
+                data={[
+                  { label: 'Revenue', value: current.revenue_tsh },
+                  { label: 'Cost', value: current.cost_tsh },
+                  { label: 'Profit', value: current.profit_tsh },
+                ]}
+                prefix="TSh " height={200}
+              />
             </div>
 
             <div className="card">

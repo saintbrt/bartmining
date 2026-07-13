@@ -5,6 +5,7 @@ import { useAppContext } from '@/lib/goldpass/AppContext'
 import { useRouter } from 'next/navigation'
 import { DB } from '@/lib/goldpass/db'
 import { AI_MODEL } from '@/lib/goldpass/aiConfig'
+import { Meter } from '@/components/goldpass/charts'
 
 const AI_BUDGET = 50 // USD / month
 
@@ -94,13 +95,7 @@ export default function SettingsPage() {
         </div>
         {ready && (
           <div style={{ marginTop: 14 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, marginBottom: 6 }}>
-              <span style={{ color: 'var(--label-3)' }}>Usage this month</span>
-              <span style={{ color: 'var(--label-1)', fontWeight: 600 }}>${(aiUsage?.cost ?? 0).toFixed(2)} <span style={{ color: 'var(--label-4)', fontWeight: 400 }}>of ${AI_BUDGET.toFixed(2)}</span></span>
-            </div>
-            <div style={{ height: 6, borderRadius: 3, background: 'var(--bg-3)', overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${Math.min(100, ((aiUsage?.cost ?? 0) / AI_BUDGET) * 100)}%`, background: (aiUsage?.cost ?? 0) / AI_BUDGET > 0.9 ? 'var(--red)' : (aiUsage?.cost ?? 0) / AI_BUDGET > 0.7 ? 'var(--orange)' : 'var(--green)', transition: 'width .4s' }} />
-            </div>
+            <Meter label="Usage this month" value={aiUsage?.cost ?? 0} max={AI_BUDGET} prefix="$" format={n => n.toFixed(2)} />
             <div style={{ display: 'flex', gap: 16, marginTop: 10, fontSize: 11, color: 'var(--label-3)' }}>
               <span>{(aiUsage?.requests ?? 0).toLocaleString()} request{(aiUsage?.requests ?? 0) !== 1 ? 's' : ''}</span>
               <span>{(aiUsage?.tokensIn ?? 0).toLocaleString()} tokens in</span>
