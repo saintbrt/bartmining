@@ -7,6 +7,7 @@ import { AppContext } from '@/lib/goldpass/AppContext'
 
 const NAV = [
   { id: 'dashboard',  ico: '⬡', label: 'Dashboard' },
+  { id: 'maxgold',    ico: '◆', label: 'Max Gold' },
   { id: 'operations', ico: '▤', label: 'Operations' },
   { id: 'plant',      ico: '⚗', label: 'Plant' },
   { id: 'settings',   ico: '⚙', label: 'Settings' },
