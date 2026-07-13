@@ -30,33 +30,9 @@ function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
   return <span ref={ref}>{val.toLocaleString()}{suffix}</span>
 }
 
-function PitHero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')!
-    canvas.width = canvas.offsetWidth * window.devicePixelRatio
-    canvas.height = canvas.offsetHeight * window.devicePixelRatio
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
-    const W = canvas.offsetWidth, H = canvas.offsetHeight
-    ctx.clearRect(0, 0, W, H)
-    const cx = W * 0.5, cy = H * 0.6
-    for (let i = 12; i >= 1; i--) {
-      const rx = (W * 0.38) * (i / 12), ry = (H * 0.18) * (i / 12)
-      const alpha = 0.04 + (i / 12) * 0.06
-      ctx.strokeStyle = `rgba(200,151,59,${alpha})`
-      ctx.lineWidth = 1
-      ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2); ctx.stroke()
-    }
-    for (let i = 0; i < 40; i++) {
-      const x = Math.random() * W, y = Math.random() * H
-      const r = Math.random() * 1.5
-      ctx.fillStyle = `rgba(200,151,59,${Math.random() * 0.4 + 0.1})`
-      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill()
-    }
-  }, [])
-  return <canvas ref={canvasRef} style={{ width: '100%', height: 200, borderRadius: 12 }} />
+function monthLabel(month: string): string {
+  // month is 'YYYY-MM' from the RPC; anchor to day 01 for a stable short label.
+  return new Date(month + '-01T00:00:00').toLocaleDateString(undefined, { month: 'short' })
 }
 
 export default function DashboardPage() {
@@ -71,7 +47,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     let alive = true
-    Promise.all([getOperationsKpis(), getFinancialSummary(1)]).then(([k, f]) => {
+    Promise.all([getOperationsKpis(), getFinancialSummary(6)]).then(([k, f]) => {
       if (alive) { setOpsKpis(k); setOpsFinancials(f) }
     })
     return () => { alive = false }
@@ -92,43 +68,68 @@ export default function DashboardPage() {
 
   return (
     <div className="content content-pad">
-      <PitHero />
+      <div style={{ marginBottom: 20 }}>
+        <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 2 }}>Dashboard</h2>
+        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Operations and financial overview at a glance.</p>
+      </div>
 
-      {opsKpis && (() => {
+      {(() => {
         const current = opsFinancials[opsFinancials.length - 1]
+        const profit = current?.profit_tsh ?? 0
+        const maxRev = Math.max(...opsFinancials.map(f => f.revenue_tsh), 1)
+        // Revenue is a single-series magnitude-over-time → bar chart, one hue,
+        // no legend (the card title names the series), value labels per bar.
+        const tiles = [
+          { label: 'Revenue (MTD)', value: current?.revenue_tsh ?? 0, color: 'var(--green)', prefix: 'TSh ' },
+          { label: 'Cost (MTD)', value: current?.cost_tsh ?? 0, color: 'var(--red)', prefix: 'TSh ' },
+          { label: 'Profit (MTD)', value: profit, color: profit >= 0 ? 'var(--green)' : 'var(--red)', prefix: 'TSh ' },
+          { label: 'Pending Approvals', value: opsKpis?.pendingApprovals ?? 0, color: 'var(--blue)', prefix: '' },
+        ]
         return (
-          <div className="card" style={{ marginTop: 24, cursor: 'pointer' }} onClick={() => router.push('/admin/operations/overview')}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--blue)' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>Operations Snapshot</div>
-              <div style={{ fontSize: 12, color: 'var(--blue)' }}>View Operations →</div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--green)' }}>TSh {(current?.revenue_tsh ?? 0).toLocaleString()}</div>
-                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Revenue (MTD)</div>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--red)' }}>TSh {(current?.cost_tsh ?? 0).toLocaleString()}</div>
-                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Cost (MTD)</div>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 700, color: (current?.profit_tsh ?? 0) >= 0 ? 'var(--green)' : 'var(--red)' }}>
-                  TSh {(current?.profit_tsh ?? 0).toLocaleString()}
+          <>
+            <div className="grid-kpi" style={{ marginBottom: 20 }}>
+              {tiles.map(t => (
+                <div key={t.label} className="card" style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: t.color }}>{t.prefix}{Math.round(t.value).toLocaleString()}</div>
+                  <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>{t.label}</div>
                 </div>
-                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Profit (MTD)</div>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--blue)' }}>{opsKpis.pendingApprovals}</div>
-                <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 4 }}>Pending Approvals</div>
-              </div>
+              ))}
             </div>
-          </div>
+
+            <div className="card" style={{ marginBottom: 24, cursor: 'pointer', transition: 'border-color .15s' }}
+              onClick={() => router.push('/admin/operations/overview')}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--blue)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
+                <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>Revenue{opsFinancials.length > 0 ? ` — last ${opsFinancials.length} months` : ''}</div>
+                <div style={{ fontSize: 12, color: 'var(--blue)' }}>View Operations →</div>
+              </div>
+              {opsFinancials.length === 0 ? (
+                <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '28px 0', textAlign: 'center' }}>
+                  No financial data yet — run the operations financial summary migration to populate this.
+                </div>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10, height: 160, borderBottom: '1px solid var(--sep)', paddingBottom: 2 }}>
+                  {opsFinancials.map(f => (
+                    <div key={f.month} title={`${monthLabel(f.month)} — TSh ${Math.round(f.revenue_tsh).toLocaleString()}`}
+                      style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+                      <div style={{ fontSize: 10, color: 'var(--label-4)' }}>{Math.round(f.revenue_tsh).toLocaleString()}</div>
+                      <div style={{
+                        width: '100%', maxWidth: 40,
+                        height: `${Math.max(4, (f.revenue_tsh / maxRev) * 118)}px`,
+                        background: 'var(--green)', borderRadius: '4px 4px 0 0',
+                      }} />
+                      <div style={{ fontSize: 10, color: 'var(--label-3)' }}>{monthLabel(f.month)}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </>
         )
       })()}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginTop: 24 }}>
+      <div className="grid-kpi" style={{ marginTop: 24 }}>
         {[
           { label: 'Projects', value: projects.length, color: 'var(--blue)' },
           { label: 'Data rows', value: totalRows, color: 'var(--green)' },

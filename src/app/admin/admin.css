@@ -135,3 +135,126 @@
 .gp-root ::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); border-radius: 3px; }
 .gp-root ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,.25); }
 
+/* ── Responsive shell ───────────────────────────────────────────────────────
+   Breakpoints mirror the marketing site (globals.css): 860px = tablet/phone,
+   600px = small phone. Desktop (>860px) keeps the original fixed layout below.
+   Hamburger + backdrop live in the dashboard layout; their markup is inert
+   above 860px because these rules hide them there. */
+.gp-root .sb-hamburger { display: none; }
+.gp-root .sb-backdrop { display: none; }
+
+@media (max-width: 860px) {
+  /* Sidebar becomes an off-canvas drawer, toggled by .open from the layout. */
+  .gp-root .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 260px;
+    max-width: 82vw;
+    z-index: 300;
+    transform: translateX(-100%);
+    transition: transform .25s cubic-bezier(.2,.9,.3,1);
+    box-shadow: var(--s-lg);
+  }
+  .gp-root .sidebar.open { transform: none; }
+
+  /* Dimmed backdrop behind the open drawer; tap to dismiss. */
+  .gp-root .sb-backdrop {
+    display: block;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 250;
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s;
+  }
+  .gp-root .sb-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  /* Main area spans the full width now the sidebar overlays instead of docking. */
+  .gp-root .main-area { width: 100%; }
+
+  /* The topbar hosts the hamburger, so it must show even on the dashboard
+     (where it's inline-hidden on desktop). !important beats the inline style. */
+  .gp-root .topbar { display: flex !important; }
+
+  /* Hamburger toggle. */
+  .gp-root .sb-hamburger {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 38px; height: 38px;
+    background: none; border: none;
+    font-size: 20px; line-height: 1; color: var(--label-1);
+    cursor: pointer; flex-shrink: 0;
+    margin-left: -8px; margin-right: 2px;
+  }
+
+  /* Tighter page padding + topbar gutter on tablet/phone. */
+  .gp-root .content-pad { padding: 20px 18px; }
+  .gp-root .topbar { padding: 0 14px; }
+}
+
+@media (max-width: 600px) {
+  .gp-root .content-pad { padding: 16px 14px; }
+}
+
+/* ── Collapsing grids ────────────────────────────────────────────────────────
+   Opt-in helpers replacing inline gridTemplateColumns:repeat(4,1fr). KPI tiles
+   go 4 → 2 → 1 col; card grids auto-fill and are responsive already. */
+.gp-root .grid-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.gp-root .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.gp-root .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.gp-root .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+@media (max-width: 860px) {
+  .gp-root .grid-kpi { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .gp-root .grid-kpi,
+  .gp-root .grid-3,
+  .gp-root .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Responsive tables (stacked cards) ───────────────────────────────────────
+   Opt-in: add class "tbl-card" to a .tbl and give each <td> a data-label. Below
+   600px the header hides and every row becomes a labelled card; above 600px it
+   stays a normal table. Wrap in an overflow-x:auto div for the desktop case. */
+@media (max-width: 600px) {
+  .gp-root table.tbl-card,
+  .gp-root table.tbl-card tbody,
+  .gp-root table.tbl-card tr,
+  .gp-root table.tbl-card td { display: block; width: 100%; }
+  .gp-root table.tbl-card thead { display: none; }
+  .gp-root table.tbl-card tr {
+    background: var(--bg-2);
+    border: 1px solid var(--sep);
+    border-radius: var(--r-md);
+    padding: 4px 12px;
+    margin-bottom: 10px;
+  }
+  .gp-root table.tbl-card td {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    text-align: right;
+    white-space: normal;
+  }
+  .gp-root table.tbl-card tr td:last-child { border-bottom: none; }
+  .gp-root table.tbl-card td::before {
+    content: attr(data-label);
+    font-size: 11px; font-weight: 600; letter-spacing: .04em;
+    color: var(--label-3); text-transform: uppercase;
+    text-align: left; flex-shrink: 0;
+  }
+  /* An actions/label-less cell (no data-label) centres its content full-width. */
+  .gp-root table.tbl-card td:not([data-label]) { justify-content: center; }
+  .gp-root table.tbl-card td:not([data-label])::before { content: none; }
+  /* Any maxWidth caps from the desktop layout shouldn't clip the stacked value. */
+  .gp-root table.tbl-card td > div { max-width: none !important; white-space: normal !important; }
+}
+
+/* ── Touch targets ───────────────────────────────────────────────────────────
+   Comfortable tap heights on phones; opt-in .form-stack stacks form controls. */
+@media (max-width: 600px) {
+  .gp-root .btn { min-height: 40px; }
+  .gp-root .btn-sm { min-height: 36px; }
+  .gp-root .form-stack { flex-direction: column; align-items: stretch; }
+  .gp-root .form-stack > * { width: 100%; }
+}
+

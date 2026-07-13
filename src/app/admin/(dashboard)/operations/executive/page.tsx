@@ -162,7 +162,7 @@ export default function ExecutivePage() {
       ) : !kpis ? (
         <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>KPIs unavailable.</div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 24 }}>
+        <div className="grid-kpi" style={{ marginBottom: 24 }}>
           <Kpi label="Gold output (g) vs plan" value={`${p?.gold_output_g.toLocaleString()} / ${p?.production_plan_g.toLocaleString()}`} color="var(--gold)" />
           <Kpi label="Ore tonnes" value={p?.ore_tonnes.toLocaleString() ?? '0'} color="var(--label-2)" />
           <Kpi label="Spend vs budget" value={`TSh ${sp?.total_spend_tsh.toLocaleString()}${sp?.budget_variance_pct != null ? ` (${sp.budget_variance_pct > 0 ? '+' : ''}${sp.budget_variance_pct}%)` : ''}`} color={sp && sp.budget_variance_pct != null && sp.budget_variance_pct > 0 ? 'var(--red)' : 'var(--green)'} />
@@ -184,7 +184,7 @@ export default function ExecutivePage() {
           <button className="btn btn-primary btn-sm" disabled={loadingScorecard} onClick={loadScorecard}>{loadingScorecard ? 'Loading…' : 'Load'}</button>
         </div>
         {scorecard && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, fontSize: 12 }}>
+          <div className="grid-3" style={{ gap: 10, fontSize: 12 }}>
             <div>Expenses: {scorecard.expense_entries_approved}/{scorecard.expense_entries_submitted}</div>
             <div>Shift logs: {scorecard.shift_logs_approved}/{scorecard.shift_logs_submitted}</div>
             <div>Sales: {scorecard.sales_recorded}</div>
@@ -212,16 +212,16 @@ export default function ExecutivePage() {
         <div className="card">
           {loadingRest ? <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div> : (
             <div style={{ overflowX: 'auto' }}>
-              <table className="tbl" style={{ fontSize: 12 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 12 }}>
                 <thead><tr><th>Site</th><th>Period</th><th>Status</th><th></th></tr></thead>
                 <tbody>
                   {closes.length === 0 ? (
                     <tr><td colSpan={4} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No month-end closes yet.</td></tr>
                   ) : closes.map(c => (
                     <tr key={c.id}>
-                      <td>{c.site_name ?? '—'}</td>
-                      <td>{c.period_year}-{String(c.period_month).padStart(2, '0')}</td>
-                      <td>{c.status}</td>
+                      <td data-label="Site">{c.site_name ?? '—'}</td>
+                      <td data-label="Period">{c.period_year}-{String(c.period_month).padStart(2, '0')}</td>
+                      <td data-label="Status">{c.status}</td>
                       <td>
                         <div style={{ display: 'flex', gap: 6 }}>
                           {(c.status === 'draft' || c.status === 'freezing') && (
@@ -248,18 +248,18 @@ export default function ExecutivePage() {
         <div className="card">
           {loadingRest ? <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div> : (
             <div style={{ overflowX: 'auto' }}>
-              <table className="tbl" style={{ fontSize: 12 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 12 }}>
                 <thead><tr><th>Site</th><th>Period</th><th>Version</th><th>Status</th><th>Frozen at</th><th></th></tr></thead>
                 <tbody>
                   {snapshots.length === 0 ? (
                     <tr><td colSpan={6} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No snapshots yet.</td></tr>
                   ) : snapshots.map(s => (
                     <tr key={s.id}>
-                      <td>{s.site_name ?? '—'}</td>
-                      <td>{new Date(s.period_start).toLocaleDateString()} – {new Date(s.period_end).toLocaleDateString()}</td>
-                      <td>v{s.snapshot_version}</td>
-                      <td>{s.status}</td>
-                      <td style={{ color: 'var(--label-4)' }}>{s.frozen_at ? new Date(s.frozen_at).toLocaleString() : '—'}</td>
+                      <td data-label="Site">{s.site_name ?? '—'}</td>
+                      <td data-label="Period">{new Date(s.period_start).toLocaleDateString()} – {new Date(s.period_end).toLocaleDateString()}</td>
+                      <td data-label="Version">v{s.snapshot_version}</td>
+                      <td data-label="Status">{s.status}</td>
+                      <td data-label="Frozen at" style={{ color: 'var(--label-4)' }}>{s.frozen_at ? new Date(s.frozen_at).toLocaleString() : '—'}</td>
                       <td>
                         {s.status === 'frozen' && (
                           <button className="btn-icon" style={{ fontSize: 10 }} disabled={busyId === s.id}
@@ -292,17 +292,17 @@ export default function ExecutivePage() {
         <div className="card">
           {loadingRest ? <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div> : (
             <div style={{ overflowX: 'auto' }}>
-              <table className="tbl" style={{ fontSize: 12 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 12 }}>
                 <thead><tr><th>Site</th><th>Close day</th><th>Monthly budget (TSh)</th><th>Production plan (g)</th></tr></thead>
                 <tbody>
                   {configs.length === 0 ? (
                     <tr><td colSpan={4} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No site config set yet.</td></tr>
                   ) : configs.map(c => (
                     <tr key={c.site_id}>
-                      <td>{c.site_name ?? '—'}</td>
-                      <td>{c.close_day_of_month}</td>
-                      <td>{c.monthly_budget_tsh.toLocaleString()}</td>
-                      <td>{c.production_plan_g.toLocaleString()}</td>
+                      <td data-label="Site">{c.site_name ?? '—'}</td>
+                      <td data-label="Close day">{c.close_day_of_month}</td>
+                      <td data-label="Monthly budget (TSh)">{c.monthly_budget_tsh.toLocaleString()}</td>
+                      <td data-label="Production plan (g)">{c.production_plan_g.toLocaleString()}</td>
                     </tr>
                   ))}
                 </tbody>

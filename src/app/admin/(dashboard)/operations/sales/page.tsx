@@ -94,7 +94,7 @@ export default function SalesPage() {
         <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Gold sales register captured from the field, with approval and revenue totals.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 24 }}>
+      <div className="grid-2" style={{ marginBottom: 24 }}>
         <div className="card" style={{ textAlign: 'center' }}>
           <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--gold)' }}>{totalWeightG.toLocaleString()} g</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Total weight (all rows shown)</div>
@@ -135,7 +135,7 @@ export default function SalesPage() {
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table className="tbl" style={{ fontSize: 12 }}>
+            <table className="tbl tbl-card" style={{ fontSize: 12 }}>
               <thead>
                 <tr>
                   <th>Date</th>
@@ -156,16 +156,16 @@ export default function SalesPage() {
                   <tr><td colSpan={11} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No sales recorded yet.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.id}>
-                    <td style={{ color: 'var(--label-4)' }}>{new Date(r.sale_date).toLocaleDateString()}</td>
-                    <td style={{ fontFamily: 'monospace' }}>{r.sale_number ?? '—'}</td>
-                    <td>{r.customer_name}</td>
-                    <td>{r.weight_g.toLocaleString()}</td>
-                    <td>{r.purity_pct ?? '—'}</td>
-                    <td>{r.fine_gold_g.toLocaleString()}</td>
-                    <td style={{ fontWeight: 600 }}>{r.price_tsh.toLocaleString()}</td>
-                    <td>{r.price_per_gram_tsh.toLocaleString()}</td>
-                    <td>{r.recorded_by_name ?? '—'}</td>
-                    <td><span className={`badge ${STATUS_BADGE[r.status ?? ''] ?? 'badge-gray'}`}>{r.status ?? '—'}</span></td>
+                    <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.sale_date).toLocaleDateString()}</td>
+                    <td data-label="Sale #" style={{ fontFamily: 'monospace' }}>{r.sale_number ?? '—'}</td>
+                    <td data-label="Customer">{r.customer_name}</td>
+                    <td data-label="Weight (g)">{r.weight_g.toLocaleString()}</td>
+                    <td data-label="Purity %">{r.purity_pct ?? '—'}</td>
+                    <td data-label="Fine gold (g)">{r.fine_gold_g.toLocaleString()}</td>
+                    <td data-label="Price (TSh)" style={{ fontWeight: 600 }}>{r.price_tsh.toLocaleString()}</td>
+                    <td data-label="TSh/g">{r.price_per_gram_tsh.toLocaleString()}</td>
+                    <td data-label="Recorded by">{r.recorded_by_name ?? '—'}</td>
+                    <td data-label="Status"><span className={`badge ${STATUS_BADGE[r.status ?? ''] ?? 'badge-gray'}`}>{r.status ?? '—'}</span></td>
                     <td>
                       {r.status === 'submitted' && (
                         <div style={{ display: 'flex', gap: 6 }}>

@@ -128,17 +128,17 @@ export default function PayrollPage() {
         <div className="card">
           {loading ? <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div> : (
             <div style={{ overflowX: 'auto' }}>
-              <table className="tbl" style={{ fontSize: 12 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 12 }}>
                 <thead><tr><th>Date</th><th>Employee</th><th>Hours</th><th>Source</th><th></th></tr></thead>
                 <tbody>
                   {attendance.length === 0 ? (
                     <tr><td colSpan={5} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>Nothing pending confirmation.</td></tr>
                   ) : attendance.map(a => (
                     <tr key={a.id}>
-                      <td style={{ color: 'var(--label-4)' }}>{new Date(a.work_date).toLocaleDateString()}</td>
-                      <td>{a.employee_name ?? '—'}</td>
-                      <td>{a.hours_worked}</td>
-                      <td>{a.source}</td>
+                      <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(a.work_date).toLocaleDateString()}</td>
+                      <td data-label="Employee">{a.employee_name ?? '—'}</td>
+                      <td data-label="Hours">{a.hours_worked}</td>
+                      <td data-label="Source">{a.source}</td>
                       <td>
                         <button className="btn-icon" style={{ fontSize: 10, color: 'var(--green)' }} disabled={busyId === a.id}
                           onClick={() => confirmAttendance(a.id)}>Confirm</button>
@@ -157,19 +157,19 @@ export default function PayrollPage() {
         <div className="card">
           {loading ? <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div> : (
             <div style={{ overflowX: 'auto' }}>
-              <table className="tbl" style={{ fontSize: 12 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 12 }}>
                 <thead><tr><th>Date</th><th>Employee</th><th>Type</th><th>Amount (TSh)</th><th>Reason</th><th>Status</th><th></th></tr></thead>
                 <tbody>
                   {adjustments.length === 0 ? (
                     <tr><td colSpan={7} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No adjustments submitted yet.</td></tr>
                   ) : adjustments.map(r => (
                     <tr key={r.id}>
-                      <td style={{ color: 'var(--label-4)' }}>{new Date(r.effective_date).toLocaleDateString()}</td>
-                      <td>{r.employee_name ?? '—'}</td>
-                      <td>{r.adjustment_type}</td>
-                      <td style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
-                      <td>{r.reason}</td>
-                      <td>{r.workflow_state ?? '—'}</td>
+                      <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.effective_date).toLocaleDateString()}</td>
+                      <td data-label="Employee">{r.employee_name ?? '—'}</td>
+                      <td data-label="Type">{r.adjustment_type}</td>
+                      <td data-label="Amount (TSh)" style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
+                      <td data-label="Reason">{r.reason}</td>
+                      <td data-label="Status">{r.workflow_state ?? '—'}</td>
                       <td>
                         {r.workflow_state === 'submitted' && (
                           <div style={{ display: 'flex', gap: 6 }}>
@@ -208,20 +208,20 @@ export default function PayrollPage() {
         <div className="card">
           {loading ? <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div> : (
             <div style={{ overflowX: 'auto' }}>
-              <table className="tbl" style={{ fontSize: 12 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 12 }}>
                 <thead><tr><th>Period</th><th>Label</th><th>Employees</th><th>Gross (TSh)</th><th>Net (TSh)</th><th>Raw status</th><th>Workflow state</th><th></th></tr></thead>
                 <tbody>
                   {runs.length === 0 ? (
                     <tr><td colSpan={8} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No payroll runs yet.</td></tr>
                   ) : runs.map(r => (
                     <tr key={r.id}>
-                      <td style={{ color: 'var(--label-4)' }}>{new Date(r.period_start).toLocaleDateString()} – {new Date(r.period_end).toLocaleDateString()}</td>
-                      <td>{r.run_label ?? '—'}</td>
-                      <td>{r.employee_count}</td>
-                      <td style={{ fontWeight: 600 }}>{r.total_gross_tsh.toLocaleString()}</td>
-                      <td>{r.total_net_tsh.toLocaleString()}</td>
-                      <td>{r.status}</td>
-                      <td>{r.workflow_state ?? '—'}</td>
+                      <td data-label="Period" style={{ color: 'var(--label-4)' }}>{new Date(r.period_start).toLocaleDateString()} – {new Date(r.period_end).toLocaleDateString()}</td>
+                      <td data-label="Label">{r.run_label ?? '—'}</td>
+                      <td data-label="Employees">{r.employee_count}</td>
+                      <td data-label="Gross (TSh)" style={{ fontWeight: 600 }}>{r.total_gross_tsh.toLocaleString()}</td>
+                      <td data-label="Net (TSh)">{r.total_net_tsh.toLocaleString()}</td>
+                      <td data-label="Raw status">{r.status}</td>
+                      <td data-label="Workflow state">{r.workflow_state ?? '—'}</td>
                       <td>
                         <div style={{ display: 'flex', gap: 6 }}>
                           {r.workflow_state === 'submitted' && (

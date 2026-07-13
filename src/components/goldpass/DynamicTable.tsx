@@ -41,7 +41,7 @@ export default function DynamicTable({
 
   return (
     <div style={{ overflowX: 'auto' }}>
-      <table className="tbl" style={{ fontSize: 12 }}>
+      <table className="tbl tbl-card" style={{ fontSize: 12 }}>
         <thead>
           <tr>
             {columns.map(c => <th key={c}>{humanizeHeader(c)}</th>)}
@@ -53,7 +53,7 @@ export default function DynamicTable({
             <tr><td colSpan={columns.length + (actions ? 1 : 0) || 1} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>{emptyLabel}</td></tr>
           ) : rows.map((r, i) => (
             <tr key={(r.id as string) ?? i}>
-              {columns.map(c => <td key={c}>{formatCell(r[c])}</td>)}
+              {columns.map(c => <td key={c} data-label={humanizeHeader(c)}>{formatCell(r[c])}</td>)}
               {actions && <td>{actions(r)}</td>}
             </tr>
           ))}

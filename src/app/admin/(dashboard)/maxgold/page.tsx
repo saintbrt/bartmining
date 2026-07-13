@@ -206,9 +206,9 @@ export default function MaxGoldPage() {
           </div>
           {openOutput && (
             <div style={{ overflowX: 'auto', maxHeight: 400, marginTop: 10 }}>
-              <table className="tbl" style={{ fontSize: 11 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 11 }}>
                 <thead><tr>{Object.keys(output[0]).map(k => <th key={k}>{k}</th>)}</tr></thead>
-                <tbody>{output.map((r, i) => <tr key={i}>{Object.keys(output[0]).map(k => <td key={k}>{String(r[k] ?? '')}</td>)}</tr>)}</tbody>
+                <tbody>{output.map((r, i) => <tr key={i}>{Object.keys(output[0]).map(k => <td key={k} data-label={k}>{String(r[k] ?? '')}</td>)}</tr>)}</tbody>
               </table>
             </div>
           )}

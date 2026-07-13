@@ -39,7 +39,7 @@ Deno.serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
     )
 
-    // Verify caller is admin/supervisor
+    // Verify caller is admin
     const userSb = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_ANON_KEY')!,
@@ -49,8 +49,8 @@ Deno.serve(async (req) => {
     if (authErr || !user) return Response.json({ error: 'Unauthorized' }, { status: 401, headers: CORS })
 
     const { data: profile } = await sb.from('profiles').select('role').eq('id', user.id).single()
-    if (!profile || !['admin', 'supervisor'].includes(profile.role)) {
-      return Response.json({ error: 'Forbidden — admin or supervisor role required' }, { status: 403, headers: CORS })
+    if (!profile || profile.role !== 'admin') {
+      return Response.json({ error: 'Forbidden — admin role required' }, { status: 403, headers: CORS })
     }
 
     const body = await req.json()
