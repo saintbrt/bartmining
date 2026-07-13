@@ -50,7 +50,6 @@ const OPERATIONS_SUBTABS = [
   { id: 'audit',        label: 'Audit Log' },
 ]
 const STAGE_GATES = new Set<string>()
-const PROJ_COLORS = ['#007AFF', '#34C759', '#FF9500', '#AF52DE', '#FF3B30']
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
@@ -259,9 +258,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <>
                 <div className="sb-sep" />
                 <div className="sb-section">Projects</div>
-                {projects.map((p, i) => (
+                {projects.map((p) => (
                   <div key={p.id} className={`sb-proj${project?.id === p.id ? ' active' : ''}`} onClick={() => setProject(p)}>
-                    <div className="sb-proj-dot" style={{ background: PROJ_COLORS[i % 5] }} />
+                    <div className="sb-proj-dot" style={{ background: 'var(--gold)' }} />
                     <div className="sb-proj-name">{p.name}</div>
                   </div>
                 ))}

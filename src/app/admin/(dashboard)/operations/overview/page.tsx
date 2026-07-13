@@ -47,11 +47,13 @@ export default function OperationsOverviewPage() {
     return () => { alive = false }
   }, [])
 
-  const tiles: { label: string; value: number; color: string; suffix?: string; prefix?: string; href: string }[] = [
-    { label: 'Pending approvals', value: kpis.pendingApprovals, color: 'var(--blue)', href: '/admin/operations/expenses' },
-    { label: 'Spend (month-to-date)', value: Math.round(kpis.spendMtd), color: 'var(--green)', prefix: 'TSh ', href: '/admin/operations/expenses' },
-    { label: 'Low-stock items', value: kpis.lowStockCount, color: 'var(--orange)', href: '/admin/operations/inventory' },
-    { label: 'Open inventory alerts', value: kpis.openAlertsCount, color: 'var(--red)', href: '/admin/operations/inventory' },
+  // Attention tiles: value is ink; low-stock / open-alerts turn amber only when
+  // there's actually something to act on (> 0) — a reserved status use, not decoration.
+  const tiles: { label: string; value: number; suffix?: string; prefix?: string; href: string; alert?: boolean }[] = [
+    { label: 'Pending approvals', value: kpis.pendingApprovals, href: '/admin/operations/expenses' },
+    { label: 'Spend (month-to-date)', value: Math.round(kpis.spendMtd), prefix: 'TSh ', href: '/admin/operations/expenses' },
+    { label: 'Low-stock items', value: kpis.lowStockCount, href: '/admin/operations/inventory', alert: true },
+    { label: 'Open inventory alerts', value: kpis.openAlertsCount, href: '/admin/operations/inventory', alert: true },
   ]
 
   const current = financials[financials.length - 1]
@@ -68,17 +70,20 @@ export default function OperationsOverviewPage() {
       </div>
 
       <div className="grid-kpi" style={{ marginBottom: 24 }}>
-        {tiles.map(t => (
-          <div key={t.label} className="card" style={{ textAlign: 'center', cursor: 'pointer' }}
-            onClick={() => router.push(t.href)}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = t.color }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
-            <div style={{ fontSize: 26, fontWeight: 700, color: t.color }}>
-              {loading ? '—' : <Counter target={t.value} prefix={t.prefix} suffix={t.suffix} />}
+        {tiles.map(t => {
+          const attention = t.alert && t.value > 0
+          return (
+            <div key={t.label} className="card" style={{ textAlign: 'center', cursor: 'pointer' }}
+              onClick={() => router.push(t.href)}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--chart-accent)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
+              <div style={{ fontSize: 26, fontWeight: 700, color: attention ? 'var(--orange)' : 'var(--label-1)' }}>
+                {loading ? '—' : <Counter target={t.value} prefix={t.prefix} suffix={t.suffix} />}
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>{t.label}</div>
             </div>
-            <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>{t.label}</div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       <div style={{ marginBottom: 24 }}>
@@ -96,18 +101,18 @@ export default function OperationsOverviewPage() {
           <>
             <div className="grid-3" style={{ marginBottom: 16 }}>
               <div className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--green)' }}>TSh {current.revenue_tsh.toLocaleString()}</div>
+                <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--label-1)' }}>TSh {current.revenue_tsh.toLocaleString()}</div>
                 <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Revenue</div>
               </div>
               <div className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--red)' }}>TSh {current.cost_tsh.toLocaleString()}</div>
+                <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--label-1)' }}>TSh {current.cost_tsh.toLocaleString()}</div>
                 <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Total Cost</div>
                 <div style={{ fontSize: 10, color: 'var(--label-4)', marginTop: 6 }}>
                   Expenses {current.expense_tsh.toLocaleString()} · Payroll {current.payroll_tsh.toLocaleString()} · Procurement {current.procurement_tsh.toLocaleString()}
                 </div>
               </div>
               <div className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 700, color: current.profit_tsh >= 0 ? 'var(--green)' : 'var(--red)' }}>
+                <div style={{ fontSize: 24, fontWeight: 700, color: current.profit_tsh >= 0 ? 'var(--label-1)' : 'var(--red)' }}>
                   TSh {current.profit_tsh.toLocaleString()}
                 </div>
                 <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Profit</div>
@@ -117,9 +122,9 @@ export default function OperationsOverviewPage() {
             <div className="card" style={{ marginBottom: 16 }}>
               <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Revenue vs Cost vs Profit</div>
               {[
-                { label: 'Revenue', value: current.revenue_tsh, color: 'var(--green)' },
-                { label: 'Cost', value: current.cost_tsh, color: 'var(--red)' },
-                { label: 'Profit', value: current.profit_tsh, color: current.profit_tsh >= 0 ? 'var(--blue)' : 'var(--red)' },
+                { label: 'Revenue', value: current.revenue_tsh, color: 'var(--chart-accent)' },
+                { label: 'Cost', value: current.cost_tsh, color: 'var(--chart-accent)' },
+                { label: 'Profit', value: current.profit_tsh, color: current.profit_tsh >= 0 ? 'var(--chart-accent)' : 'var(--red)' },
               ].map(bar => (
                 <div key={bar.label} style={{ marginBottom: 10 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--label-3)', marginBottom: 3 }}>

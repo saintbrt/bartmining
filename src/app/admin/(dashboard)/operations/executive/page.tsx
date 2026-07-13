@@ -163,14 +163,14 @@ export default function ExecutivePage() {
         <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>KPIs unavailable.</div>
       ) : (
         <div className="grid-kpi" style={{ marginBottom: 24 }}>
-          <Kpi label="Gold output (g) vs plan" value={`${p?.gold_output_g.toLocaleString()} / ${p?.production_plan_g.toLocaleString()}`} color="var(--gold)" />
-          <Kpi label="Ore tonnes" value={p?.ore_tonnes.toLocaleString() ?? '0'} color="var(--label-2)" />
-          <Kpi label="Spend vs budget" value={`TSh ${sp?.total_spend_tsh.toLocaleString()}${sp?.budget_variance_pct != null ? ` (${sp.budget_variance_pct > 0 ? '+' : ''}${sp.budget_variance_pct}%)` : ''}`} color={sp && sp.budget_variance_pct != null && sp.budget_variance_pct > 0 ? 'var(--red)' : 'var(--green)'} />
-          <Kpi label="Sales revenue" value={`TSh ${sa?.revenue_tsh.toLocaleString()}`} color="var(--green)" />
-          <Kpi label="Labor cost" value={`TSh ${pr?.labor_cost_tsh.toLocaleString()}`} color="var(--label-2)" />
-          <Kpi label="Below-minimum items" value={`${inv?.below_minimum_count} / ${inv?.total_skus}`} color="var(--orange)" />
-          <Kpi label="Fuel (30d)" value={`${fu?.fuel_litres_30d.toLocaleString()} L`} color="var(--label-2)" />
-          <Kpi label="Pending approvals" value={String(kpis.pending_approvals)} color="var(--blue)" />
+          <Kpi label="Gold output (g) vs plan" value={`${p?.gold_output_g.toLocaleString()} / ${p?.production_plan_g.toLocaleString()}`} color="var(--label-1)" />
+          <Kpi label="Ore tonnes" value={p?.ore_tonnes.toLocaleString() ?? '0'} color="var(--label-1)" />
+          <Kpi label="Spend vs budget" value={`TSh ${sp?.total_spend_tsh.toLocaleString()}${sp?.budget_variance_pct != null ? ` (${sp.budget_variance_pct > 0 ? '+' : ''}${sp.budget_variance_pct}%)` : ''}`} color={sp && sp.budget_variance_pct != null && sp.budget_variance_pct > 0 ? 'var(--red)' : 'var(--label-1)'} />
+          <Kpi label="Sales revenue" value={`TSh ${sa?.revenue_tsh.toLocaleString()}`} color="var(--label-1)" />
+          <Kpi label="Labor cost" value={`TSh ${pr?.labor_cost_tsh.toLocaleString()}`} color="var(--label-1)" />
+          <Kpi label="Below-minimum items" value={`${inv?.below_minimum_count} / ${inv?.total_skus}`} color="var(--label-1)" />
+          <Kpi label="Fuel (30d)" value={`${fu?.fuel_litres_30d.toLocaleString()} L`} color="var(--label-1)" />
+          <Kpi label="Pending approvals" value={String(kpis.pending_approvals)} color="var(--label-1)" />
         </div>
       )}
 

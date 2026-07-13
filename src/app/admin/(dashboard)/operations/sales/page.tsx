@@ -96,11 +96,11 @@ export default function SalesPage() {
 
       <div className="grid-2" style={{ marginBottom: 24 }}>
         <div className="card" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--gold)' }}>{totalWeightG.toLocaleString()} g</div>
+          <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--label-1)' }}>{totalWeightG.toLocaleString()} g</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Total weight (all rows shown)</div>
         </div>
         <div className="card" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--green)' }}>TSh {totalRevenueTsh.toLocaleString()}</div>
+          <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--label-1)' }}>TSh {totalRevenueTsh.toLocaleString()}</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Total revenue (all rows shown)</div>
         </div>
       </div>

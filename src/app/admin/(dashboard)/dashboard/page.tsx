@@ -125,13 +125,13 @@ export default function DashboardPage() {
 
       <div className="grid-kpi" style={{ marginTop: 24 }}>
         {[
-          { label: 'Projects', value: projects.length, color: 'var(--blue)' },
-          { label: 'Data rows', value: totalRows, color: 'var(--green)' },
-          { label: 'Tables', value: projects.reduce((a, p) => a + DB.getTables(p.id).length, 0), color: 'var(--orange)' },
-          { label: 'Outputs', value: projects.reduce((a, p) => a + DB.getOutputs(p.id).length, 0), color: 'var(--purple)' },
+          { label: 'Projects', value: projects.length },
+          { label: 'Data rows', value: totalRows },
+          { label: 'Tables', value: projects.reduce((a, p) => a + DB.getTables(p.id).length, 0) },
+          { label: 'Outputs', value: projects.reduce((a, p) => a + DB.getOutputs(p.id).length, 0) },
         ].map(k => (
           <div key={k.label} className="card" style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 28, fontWeight: 700, color: k.color }}><Counter target={k.value} /></div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: 'var(--label-1)' }}><Counter target={k.value} /></div>
             <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>{k.label}</div>
           </div>
         ))}
@@ -180,10 +180,9 @@ export default function DashboardPage() {
         <div style={{ marginTop: 24 }}>
           <div style={{ fontSize: 12, color: 'var(--label-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 12 }}>Projects</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: 16 }}>
-            {projects.map((p: Project, i: number) => {
+            {projects.map((p: Project) => {
               const tables = DB.getTables(p.id)
               const rows = tables.reduce((a, t) => a + t.row_count, 0)
-              const colors = ['#007AFF', '#34C759', '#FF9500', '#AF52DE', '#FF3B30']
               const ss = DB.getStageStatus(p.id)
               const stages: { key: 'validation' | 'cleaning' | 'analysis'; label: string }[] = [
                 { key: 'validation', label: 'Validation' }, { key: 'cleaning', label: 'Cleaning' }, { key: 'analysis', label: 'Analysis' },
@@ -192,11 +191,11 @@ export default function DashboardPage() {
               return (
                 <div key={p.id} className="card" style={{ cursor: 'pointer', borderColor: 'var(--sep)', transition: 'border-color .15s' }}
                   onClick={() => setProject(p)}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = colors[i % 5] }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--gold)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: colors[i % 5] }} />
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)' }} />
                     <div style={{ fontSize: 14, fontWeight: 600, flex: 1 }}>{p.name}</div>
                     <button className="btn-icon" style={{ fontSize: 10, padding: '2px 7px' }} title="Rename project"
                       onClick={e => { e.stopPropagation(); const n = window.prompt('Rename project:', p.name); if (n?.trim()) { DB.renameProject(p.id, n); ctx!.refresh() } }}>✎</button>
@@ -219,7 +218,7 @@ export default function DashboardPage() {
                       </span>
                     ))}
                   </div>
-                  <div style={{ marginTop: 12, fontSize: 12, color: colors[i % 5] }}>
+                  <div style={{ marginTop: 12, fontSize: 12, color: 'var(--gold)' }}>
                     {nextStage ? `Continue: ${nextStage.label} →` : 'All stages done — Outputs →'}
                   </div>
                 </div>
