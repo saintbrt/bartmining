@@ -1,13 +1,18 @@
 'use client'
 
-import { Fragment, useCallback, useEffect, useState } from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import {
   getTanks, getLatestTankColors, getLeachingPeriods, openLeachingPeriod, closeLeachingPeriod,
   getColorTests, logColorTest, getLeachingPeriodCost,
+  getPits, createPit, getPitMachinery, assignMachinery, getPitsMonthlyCost,
+  listSimpleTable, listEquipment,
   type TankRow, type TankLatestColor, type LeachingPeriodRow, type ColorTestRow, type PeriodCostRow,
+  type PitRow, type PitMachineryRow, type PitMonthlyCostRow, type SimpleRow, type EquipmentRow,
 } from '@/lib/goldpass/erp'
 import { PlantMap } from '@/components/goldpass/PlantMap'
+import { PitsGrid } from '@/components/goldpass/PitsGrid'
+import { MultiLineChart, SERIES_COLORS } from '@/components/goldpass/charts'
 
 function todayStr() { return new Date().toISOString().slice(0, 10) }
 
@@ -16,6 +21,14 @@ export default function PlantPage() {
   const [tankColors, setTankColors] = useState<Record<string, TankLatestColor>>({})
   const [periods, setPeriods] = useState<LeachingPeriodRow[]>([])
   const [colorTests, setColorTests] = useState<ColorTestRow[]>([])
+
+  const [pits, setPits] = useState<PitRow[]>([])
+  const [pitMachinery, setPitMachinery] = useState<PitMachineryRow[]>([])
+  const [mineLocations, setMineLocations] = useState<SimpleRow[]>([])
+  const [projects, setProjects] = useState<SimpleRow[]>([])
+  const [equipment, setEquipment] = useState<EquipmentRow[]>([])
+  const [pitCosts, setPitCosts] = useState<PitMonthlyCostRow[]>([])
+
   const [loading, setLoading] = useState(true)
 
   const [openPeriodDate, setOpenPeriodDate] = useState(todayStr())
@@ -29,18 +42,66 @@ export default function PlantPage() {
   const [testNotes, setTestNotes] = useState('')
   const [logging, setLogging] = useState(false)
 
+  const [pitName, setPitName] = useState('')
+  const [pitCode, setPitCode] = useState('')
+  const [pitLocationId, setPitLocationId] = useState('')
+  const [pitProjectId, setPitProjectId] = useState('')
+  const [creatingPit, setCreatingPit] = useState(false)
+
+  const [assignPitId, setAssignPitId] = useState('')
+  const [assignEquipmentId, setAssignEquipmentId] = useState('')
+  const [assignNotes, setAssignNotes] = useState('')
+  const [assigning, setAssigning] = useState(false)
+
   const load = useCallback(async () => {
     setLoading(true)
-    const [tanksData, colorsData, periodsData, testsData] = await Promise.all([
+    const [
+      tanksData, colorsData, periodsData, testsData,
+      pitsData, machineryData, locationsData, projectsData, equipmentData, pitCostData,
+    ] = await Promise.all([
       getTanks(), getLatestTankColors(), getLeachingPeriods(), getColorTests(),
+      getPits(), getPitMachinery(), listSimpleTable('mine_locations'), listSimpleTable('projects'),
+      listEquipment(), getPitsMonthlyCost(),
     ])
     setTanks(tanksData); setTankColors(colorsData); setPeriods(periodsData); setColorTests(testsData)
+    setPits(pitsData); setPitMachinery(machineryData); setMineLocations(locationsData)
+    setProjects(projectsData); setEquipment(equipmentData); setPitCosts(pitCostData)
     setLoading(false)
   }, [])
 
   useEffect(() => { load() }, [load])
 
   const openPeriod = periods.find(p => p.status === 'open')
+
+  const locationNames = useMemo(() => {
+    const out: Record<string, string> = {}
+    for (const loc of mineLocations) out[loc.id] = loc.name as string
+    return out
+  }, [mineLocations])
+
+  const machineryCountByPit = useMemo(() => {
+    const out: Record<string, number> = {}
+    for (const m of pitMachinery) out[m.pit_id] = (out[m.pit_id] ?? 0) + 1
+    return out
+  }, [pitMachinery])
+
+  const pitChartData = useMemo(() => {
+    const months = Array.from(new Set(pitCosts.map(c => c.month))).sort()
+    const pitNames = Array.from(new Set(pitCosts.map(c => c.pit_name)))
+    return months.map(month => {
+      const row: Record<string, string | number> = { label: month.slice(0, 7) }
+      for (const name of pitNames) {
+        const match = pitCosts.find(c => c.month === month && c.pit_name === name)
+        row[name] = match ? Number(match.total_cost_tsh) : 0
+      }
+      return row
+    })
+  }, [pitCosts])
+
+  const pitChartSeries = useMemo(() => {
+    const pitNames = Array.from(new Set(pitCosts.map(c => c.pit_name)))
+    return pitNames.map((name, i) => ({ key: name, name, color: SERIES_COLORS[i % SERIES_COLORS.length] }))
+  }, [pitCosts])
 
   async function handleOpenPeriod() {
     setOpeningPeriod(true)
@@ -77,18 +138,96 @@ export default function PlantPage() {
     load()
   }
 
+  async function handleCreatePit() {
+    if (!pitName.trim()) { notify('warn', 'Enter a pit name.'); return }
+    setCreatingPit(true)
+    const id = await createPit({
+      name: pitName.trim(), code: pitCode.trim() || undefined,
+      mineLocationId: pitLocationId || undefined, projectId: pitProjectId || undefined,
+    })
+    setCreatingPit(false)
+    if (!id) return
+    notify('success', 'Pit created.')
+    setPitName(''); setPitCode(''); setPitLocationId(''); setPitProjectId('')
+    load()
+  }
+
+  async function handleAssignMachinery() {
+    if (!assignPitId || !assignEquipmentId) { notify('warn', 'Select a pit and a machine.'); return }
+    setAssigning(true)
+    const ok = await assignMachinery({ pitId: assignPitId, equipmentId: assignEquipmentId, teamNotes: assignNotes.trim() || undefined })
+    setAssigning(false)
+    if (!ok) return
+    notify('success', 'Machinery assigned.')
+    setAssignNotes('')
+    load()
+  }
+
   return (
     <div className="content content-pad">
       <div style={{ marginBottom: 24 }}>
         <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Plant</h2>
         <p style={{ fontSize: 12, color: 'var(--label-3)' }}>
-          Top view of the 15 leaching tanks across lines A, B and C, and the flow into elution.
-          Tank state reflects the latest color test logged for each tank.
+          Tanks and pits at a glance. Tank state reflects the latest color test per tank; pit costs roll
+          up from the ledger through each pit's cost centre.
         </p>
       </div>
 
-      <div className="card" style={{ marginBottom: 24 }}>
-        <PlantMap tanks={tanks} loading={loading} tankColors={tankColors} />
+      <div className="plant-split" style={{ marginBottom: 24 }}>
+        <div className="card">
+          <div className="plant-panel-title">Tanks</div>
+          <PlantMap tanks={tanks} loading={loading} tankColors={tankColors} />
+        </div>
+        <div className="card">
+          <div className="plant-panel-title">Pits</div>
+          <PitsGrid pits={pits} loading={loading} machineryCountByPit={machineryCountByPit} locationNames={locationNames} />
+        </div>
+      </div>
+
+      {pitChartSeries.length > 0 && (
+        <div className="card" style={{ marginBottom: 24 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Pit cost comparison</div>
+          <MultiLineChart data={pitChartData} series={pitChartSeries} prefix="TSh " emptyLabel="No pit cost data yet." />
+        </div>
+      )}
+
+      <div className="plant-split" style={{ marginBottom: 24 }}>
+        <div className="card">
+          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Add pit</div>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+            <input className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} placeholder="Pit name *" value={pitName} onChange={e => setPitName(e.target.value)} />
+            <input className="input" style={{ width: 100, fontSize: 12 }} placeholder="Code" value={pitCode} onChange={e => setPitCode(e.target.value)} />
+          </div>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+            <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={pitLocationId} onChange={e => setPitLocationId(e.target.value)}>
+              <option value="">Location (optional)</option>
+              {mineLocations.map(l => <option key={l.id} value={l.id}>{l.name as string}</option>)}
+            </select>
+            <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={pitProjectId} onChange={e => setPitProjectId(e.target.value)}>
+              <option value="">Project (optional)</option>
+              {projects.map(p => <option key={p.id} value={p.id}>{p.name as string}</option>)}
+            </select>
+          </div>
+          <button className="btn btn-primary btn-sm" disabled={creatingPit} onClick={handleCreatePit}>{creatingPit ? 'Creating…' : 'Create pit'}</button>
+        </div>
+
+        <div className="card">
+          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Assign machinery</div>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+            <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={assignPitId} onChange={e => setAssignPitId(e.target.value)}>
+              <option value="">Select pit…</option>
+              {pits.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+            </select>
+            <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={assignEquipmentId} onChange={e => setAssignEquipmentId(e.target.value)}>
+              <option value="">Select machine…</option>
+              {equipment.map(eq => <option key={eq.id} value={eq.id}>{eq.name}</option>)}
+            </select>
+          </div>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
+            <input className="input" style={{ flex: 1, fontSize: 12 }} placeholder="Team notes (optional)" value={assignNotes} onChange={e => setAssignNotes(e.target.value)} />
+          </div>
+          <button className="btn btn-primary btn-sm" disabled={assigning} onClick={handleAssignMachinery}>{assigning ? 'Assigning…' : 'Assign'}</button>
+        </div>
       </div>
 
       <div className="card" style={{ maxWidth: 680, marginBottom: 24 }}>

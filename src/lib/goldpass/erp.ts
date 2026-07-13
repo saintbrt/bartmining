@@ -478,3 +478,64 @@ export async function getLeachingPeriodCost(periodId: string): Promise<PeriodCos
   if (error) { gpError('GP-2653', error.message); return [] }
   return (data ?? []) as PeriodCostRow[]
 }
+
+/* PITS + MACHINERY (0018_pits_machinery.sql). */
+export type PitRow = {
+  id: string
+  mine_location_id: string | null
+  project_id: string | null
+  cost_centre_id: string | null
+  name: string
+  code: string | null
+  active: boolean
+  sort_order: number
+}
+
+export async function getPits(): Promise<PitRow[]> {
+  const { data, error } = await sb().from('pits').select('*').eq('active', true).order('sort_order')
+  if (error) { gpError('GP-2654', error.message); return [] }
+  return (data ?? []) as PitRow[]
+}
+
+export async function createPit(input: { name: string; code?: string; mineLocationId?: string; projectId?: string }): Promise<string | null> {
+  const { data, error } = await sb().rpc('create_pit', {
+    p_name: input.name,
+    p_code: input.code ?? null,
+    p_mine_location_id: input.mineLocationId ?? null,
+    p_project_id: input.projectId ?? null,
+  })
+  if (error) { gpError('GP-2655', error.message); return null }
+  return data as string
+}
+
+export type PitMachineryRow = {
+  id: string
+  pit_id: string
+  equipment_id: string
+  team_notes: string | null
+  active: boolean
+}
+
+export async function getPitMachinery(pitId?: string): Promise<PitMachineryRow[]> {
+  let q = sb().from('pit_machinery').select('*').eq('active', true)
+  if (pitId) q = q.eq('pit_id', pitId)
+  const { data, error } = await q
+  if (error) { gpError('GP-2656', error.message); return [] }
+  return (data ?? []) as PitMachineryRow[]
+}
+
+export async function assignMachinery(input: { pitId: string; equipmentId: string; teamNotes?: string }): Promise<boolean> {
+  const { error } = await sb().from('pit_machinery').insert({
+    pit_id: input.pitId, equipment_id: input.equipmentId, team_notes: input.teamNotes ?? null,
+  })
+  if (error) { gpError('GP-2657', error.message); return false }
+  return true
+}
+
+export type PitMonthlyCostRow = { pit_id: string; pit_name: string; month: string; total_cost_tsh: number }
+
+export async function getPitsMonthlyCost(months = 6): Promise<PitMonthlyCostRow[]> {
+  const { data, error } = await sb().rpc('get_pits_monthly_cost', { p_months: months })
+  if (error) { gpError('GP-2658', error.message); return [] }
+  return (data ?? []) as PitMonthlyCostRow[]
+}

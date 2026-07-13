@@ -25,7 +25,7 @@ const COLOR_STATE: Record<'black' | 'grey' | 'clear', { label: string; swatch: s
 function TankCell({ tank, latest }: { tank: TankRow; latest?: TankLatestColor }) {
   const state = latest ? COLOR_STATE[latest.result] : null
   return (
-    <div className="card" style={{ textAlign: 'center', padding: '12px 8px', minWidth: 84 }}>
+    <div className="card grid-cell">
       <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--label-1)' }}>{tank.tank_code}</div>
       <div style={{ fontSize: 10, color: 'var(--label-3)', marginTop: 2 }}>{tank.volume_m3.toLocaleString()} m³</div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5, marginTop: 6 }}>
@@ -59,8 +59,8 @@ export function PlantMap({ tanks, loading, tankColors }: { tanks: TankRow[]; loa
         if (lineTanks.length === 0) return null
         return (
           <div key={line} style={{ marginBottom: 20 }}>
-            <div style={{ fontSize: 11, color: 'var(--label-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 8 }}>{label}</div>
-            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <div className="plant-panel-title">{label}</div>
+            <div className="grid-cell-set">
               {lineTanks.map(t => <TankCell key={t.id} tank={t} latest={tankColors?.[t.id]} />)}
             </div>
           </div>

@@ -101,6 +101,11 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2651': 'Failed to log color test.',
   'GP-2652': 'Tank color state failed to load.',
   'GP-2653': 'Period cost failed to load.',
+  'GP-2654': 'Pits failed to load.',
+  'GP-2655': 'Failed to create pit.',
+  'GP-2656': 'Pit machinery failed to load.',
+  'GP-2657': 'Failed to assign machinery.',
+  'GP-2658': 'Pit cost comparison failed to load.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */
