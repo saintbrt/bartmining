@@ -1,21 +1,10 @@
 import { createContext, useContext } from 'react'
-import type { Project, TableMeta } from './db'
+import type { AuthUser } from './auth'
 
-type StageStatus = { validation: 'pending' | 'done'; cleaning: 'pending' | 'done'; analysis: 'pending' | 'done' }
-
+/* Minimal admin context: just the signed-in user. The old drill project/table
+   state was removed with the exploration module. */
 export interface AppState {
-  user: { email: string } | null
-  projects: Project[]
-  project: Project | null
-  tables: TableMeta[]
-  stageStatus: Record<string, StageStatus>
-  booting: boolean
-  rowsLoading: boolean
-  setProject: (p: Project | null) => void
-  approveStage: (stage: keyof StageStatus) => void
-  isStageUnlocked: (stage: string) => boolean
-  getStageStatus: (pid: string) => StageStatus
-  refresh: () => void
+  user: AuthUser
 }
 
 export const AppContext = createContext<AppState | null>(null)
