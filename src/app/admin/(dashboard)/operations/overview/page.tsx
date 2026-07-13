@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getOperationsKpis, getFinancialSummary, projectNextMonth, type OperationsKpis, type FinancialSummaryRow } from '@/lib/goldpass/erp'
+import { LineTrendChart } from '@/components/goldpass/charts'
 
 function Counter({ target, prefix = '', suffix = '' }: { target: number; prefix?: string; suffix?: string }) {
   const [val, setVal] = useState(0)
@@ -56,7 +57,6 @@ export default function OperationsOverviewPage() {
   const current = financials[financials.length - 1]
   const projectedRevenue = financials.length > 0 ? projectNextMonth(financials) : 0
   const maxRCP = current ? Math.max(current.revenue_tsh, current.cost_tsh, Math.abs(current.profit_tsh), 1) : 1
-  const maxTrend = financials.length > 0 ? Math.max(...financials.map(f => Math.max(f.revenue_tsh, f.cost_tsh)), projectedRevenue, 1) : 1
 
   return (
     <div className="content content-pad">
@@ -137,32 +137,17 @@ export default function OperationsOverviewPage() {
             </div>
 
             <div className="card">
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Revenue Trend & Projection</div>
-              <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 14 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Revenue Trend &amp; Projection</div>
+              <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 8 }}>
                 Last {financials.length} months actual, next month projected from the trailing trend.
               </div>
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10, height: 140 }}>
-                {financials.map(f => (
-                  <div key={f.month} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-                    <div style={{ fontSize: 10, color: 'var(--label-4)' }}>{Math.round(f.revenue_tsh).toLocaleString()}</div>
-                    <div style={{
-                      width: '100%', maxWidth: 32,
-                      height: `${Math.max(4, f.revenue_tsh / maxTrend * 100)}px`,
-                      background: 'var(--green)', borderRadius: '4px 4px 0 0',
-                    }} />
-                    <div style={{ fontSize: 10, color: 'var(--label-3)' }}>{monthLabel(f.month)}</div>
-                  </div>
-                ))}
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-                  <div style={{ fontSize: 10, color: 'var(--label-4)' }}>{Math.round(projectedRevenue).toLocaleString()}</div>
-                  <div style={{
-                    width: '100%', maxWidth: 32,
-                    height: `${Math.max(4, projectedRevenue / maxTrend * 100)}px`,
-                    background: 'transparent', border: '2px dashed var(--green)', borderRadius: '4px 4px 0 0', boxSizing: 'border-box',
-                  }} />
-                  <div style={{ fontSize: 10, color: 'var(--green)', fontWeight: 600 }}>Projected</div>
-                </div>
-              </div>
+              <LineTrendChart
+                data={[
+                  ...financials.map(f => ({ label: monthLabel(f.month), value: f.revenue_tsh })),
+                  { label: 'Proj.', value: projectedRevenue },
+                ]}
+                prefix="TSh " height={200}
+              />
             </div>
           </>
         )}
