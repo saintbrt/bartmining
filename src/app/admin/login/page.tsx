@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { DB } from '@/lib/goldpass/db'
+import { signIn } from '@/lib/goldpass/auth'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -14,9 +14,8 @@ export default function LoginPage() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setLoading(true); setError('')
-    const { error: err } = await DB.signIn(email, password)
+    const { error: err } = await signIn(email, password)
     if (err) { setError(err); setLoading(false); return }
-    await DB.bootstrap()
     router.push('/admin/dashboard')
   }
 

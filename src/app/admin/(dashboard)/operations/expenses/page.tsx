@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { notify } from '@/lib/goldpass/notify'
 import { getExpenseOversight, workflowTransition, type ExpenseOversightRow } from '@/lib/goldpass/erp'
-import { exportCsv } from '@/lib/goldpass/db/helpers'
+import { exportCsv } from '@/lib/goldpass/exportFile'
 
 const STATUS_FILTERS = ['all', 'pending', 'approved', 'rejected', 'voided'] as const
 type StatusFilter = (typeof STATUS_FILTERS)[number]
