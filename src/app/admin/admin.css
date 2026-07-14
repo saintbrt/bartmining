@@ -218,6 +218,19 @@
 .gp-root .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .gp-root .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .gp-root .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+/* ── Plant split layout: two panels sharing one grid rhythm ──────────────────
+   Tanks and Pits sit side by side above ~900px, sharing the same card
+   min-width, gap and row height (.grid-cell) so their rows line up without
+   drawing any visible grid lines. Below ~900px they stack, each panel's
+   internal grid reflowing to fewer columns on its own. */
+.gp-root .plant-split { display: grid; grid-template-columns: 3fr 2fr; gap: 24px; align-items: start; }
+.gp-root .plant-panel-title { font-size: 11px; color: var(--label-3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+.gp-root .grid-cell-set { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); grid-auto-rows: 84px; gap: 10px; }
+.gp-root .grid-cell { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8px; }
+@media (max-width: 899px) {
+  .gp-root .plant-split { grid-template-columns: 1fr; }
+}
 @media (max-width: 860px) {
   .gp-root .grid-kpi { grid-template-columns: repeat(2, 1fr); }
 }

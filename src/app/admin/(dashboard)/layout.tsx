@@ -7,8 +7,9 @@ import { AppContext } from '@/lib/goldpass/AppContext'
 
 const NAV = [
   { id: 'dashboard',  ico: '⬡', label: 'Dashboard' },
+  { id: 'maxgold',    ico: '◆', label: 'Max Gold' },
   { id: 'operations', ico: '▤', label: 'Operations' },
-  { id: 'plant',      ico: '⚗', label: 'Plant', soon: true },
+  { id: 'plant',      ico: '⚗', label: 'Plant' },
   { id: 'settings',   ico: '⚙', label: 'Settings' },
 ]
 const OPERATIONS_SUBTABS = [
@@ -17,14 +18,8 @@ const OPERATIONS_SUBTABS = [
   { id: 'inventory',    label: 'Inventory' },
   { id: 'sales',        label: 'Sales' },
   { id: 'procurement',  label: 'Procurement' },
-  { id: 'shift-logs',   label: 'Shift Logs' },
   { id: 'equipment',    label: 'Equipment' },
-  { id: 'daily-ops',    label: 'Daily Ops' },
-  { id: 'payroll',      label: 'Payroll' },
-  { id: 'executive',    label: 'Executive' },
   { id: 'conflicts',    label: 'Conflicts' },
-  { id: 'master-data',  label: 'Master Data' },
-  { id: 'users',        label: 'Users' },
   { id: 'audit',        label: 'Audit Log' },
 ]
 
@@ -84,15 +79,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             {NAV.map(item => {
               const isOperations = item.id === 'operations'
               const isActive = curSection === item.id
-              if (item.soon) {
-                return (
-                  <div key={item.id} className="sb-item sb-item-locked" title="Coming soon">
-                    <span className="ico">{item.ico}</span>
-                    <span className="sb-label">{item.label}</span>
-                    <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.6 }}>soon</span>
-                  </div>
-                )
-              }
               return (
                 <div key={item.id}>
                   <div className={`sb-item${isActive ? ' active' : ''}`}

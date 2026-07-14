@@ -88,8 +88,7 @@ export default function OperationsOverviewPage() {
       <div style={{ marginBottom: 24 }}>
         <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>Financial Summary: This Month</h3>
         <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 12 }}>
-          Cost = expenses + payroll + approved procurement. Numbers come from monthly reporting views,
-          use the &quot;Refresh&quot; button on the Executive page if these look stale.
+          Cost = expenses + payroll + approved procurement.
         </p>
 
         {loading ? (
@@ -107,7 +106,7 @@ export default function OperationsOverviewPage() {
                 <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--label-1)' }}>TSh {current.cost_tsh.toLocaleString()}</div>
                 <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Total Cost</div>
                 <div style={{ fontSize: 10, color: 'var(--label-4)', marginTop: 6 }}>
-                  Expenses {current.expense_tsh.toLocaleString()} · Payroll {current.payroll_tsh.toLocaleString()} · Procurement {current.procurement_tsh.toLocaleString()}
+                  Expenses {current.expense_tsh.toLocaleString()} · Procurement {current.procurement_tsh.toLocaleString()}
                 </div>
               </div>
               <div className="card" style={{ textAlign: 'center' }}>
