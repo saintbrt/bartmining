@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { getOperationsKpis, getFinancialSummary, type OperationsKpis, type FinancialSummaryRow } from '@/lib/goldpass/erp'
+import {
+  getOperationsKpis, getFinancialSummary, projectNextMonthProfit,
+  getTanks, getLatestTankColors, getLeachingPeriods, getPits, getPitMachinery,
+  getExpansionSignal, getFaultFlags,
+  type OperationsKpis, type FinancialSummaryRow, type TankRow, type TankLatestColor,
+  type LeachingPeriodRow, type PitRow, type PitMachineryRow, type ExpansionSignalRow, type FaultFlagRow,
+} from '@/lib/goldpass/erp'
 import { MultiLineChart, StatTile } from '@/components/goldpass/charts'
 
 function monthLabel(month: string): string {
@@ -22,10 +28,26 @@ export default function DashboardPage() {
   const [opsKpis, setOpsKpis] = useState<OperationsKpis | null>(null)
   const [opsFinancials, setOpsFinancials] = useState<FinancialSummaryRow[]>([])
 
+  const [tanks, setTanks] = useState<TankRow[]>([])
+  const [tankColors, setTankColors] = useState<Record<string, TankLatestColor>>({})
+  const [periods, setPeriods] = useState<LeachingPeriodRow[]>([])
+  const [pits, setPits] = useState<PitRow[]>([])
+  const [pitMachinery, setPitMachinery] = useState<PitMachineryRow[]>([])
+
+  const [expansionSignal, setExpansionSignal] = useState<ExpansionSignalRow | null>(null)
+  const [faultFlags, setFaultFlags] = useState<FaultFlagRow[]>([])
+
   useEffect(() => {
     let alive = true
-    Promise.all([getOperationsKpis(), getFinancialSummary(6)]).then(([k, f]) => {
-      if (alive) { setOpsKpis(k); setOpsFinancials(f) }
+    Promise.all([
+      getOperationsKpis(), getFinancialSummary(6),
+      getTanks(), getLatestTankColors(), getLeachingPeriods(), getPits(), getPitMachinery(),
+      getExpansionSignal(), getFaultFlags(),
+    ]).then(([k, f, tk, tc, per, pt, pm, es, ff]) => {
+      if (!alive) return
+      setOpsKpis(k); setOpsFinancials(f)
+      setTanks(tk); setTankColors(tc); setPeriods(per); setPits(pt); setPitMachinery(pm)
+      setExpansionSignal(es); setFaultFlags(ff)
     })
     return () => { alive = false }
   }, [])
@@ -42,6 +64,16 @@ export default function DashboardPage() {
     { key: 'cost', name: 'Cost' },
     { key: 'profit', name: 'Profit' },
   ]
+  const projectedProfit = opsFinancials.length > 0 ? projectNextMonthProfit(opsFinancials) : 0
+
+  const clearCount = tanks.filter(t => tankColors[t.id]?.result === 'clear').length
+  const greyCount = tanks.filter(t => tankColors[t.id]?.result === 'grey').length
+  const blackCount = tanks.filter(t => tankColors[t.id]?.result === 'black').length
+  const openPeriod = periods.find(p => p.status === 'open')
+
+  const machineryCount = pitMachinery.length
+
+  const overdueFault = faultFlags.find(f => f.is_overdue)
 
   return (
     <div className="content content-pad">
@@ -50,11 +82,36 @@ export default function DashboardPage() {
         <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Operations and financial overview at a glance.</p>
       </div>
 
+      {overdueFault && (
+        <div className="card" style={{ marginBottom: 20, borderColor: 'var(--orange)', cursor: 'pointer' }}
+          onClick={() => router.push('/admin/plant')}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--orange)' }}>Round taking too long</div>
+          <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
+            The open leaching period (started {overdueFault.period_start}) has run {overdueFault.days_open} days,
+            past the {overdueFault.threshold_days.toFixed(0)} day threshold
+            {overdueFault.avg_closed_period_days ? ` (average closed period: ${overdueFault.avg_closed_period_days.toFixed(0)} days)` : ''}.
+          </div>
+        </div>
+      )}
+
+      {expansionSignal?.signal && (
+        <div className="card" style={{ marginBottom: 20, borderColor: 'var(--green)', cursor: 'pointer' }}
+          onClick={() => router.push('/admin/plant')}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--green)' }}>Room to expand</div>
+          <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
+            {expansionSignal.utilization_pct}% of tanks are actively leaching and cost per gram recovered
+            (TSh {expansionSignal.current_cost_per_gram_tsh?.toLocaleString()}) is at or below the trailing
+            average (TSh {expansionSignal.trailing_avg_cost_per_gram_tsh?.toLocaleString()}). Capacity is being
+            used well, this may be a good time to consider adding tanks or pits.
+          </div>
+        </div>
+      )}
+
       <div className="grid-kpi" style={{ marginBottom: 20 }}>
         <StatTile label="Revenue (this month)" value={current?.revenue_tsh ?? 0} prefix="TSh " delta={pctDelta(revSeries)} spark={revSeries} goodWhenUp />
         <StatTile label="Cost (this month)" value={current?.cost_tsh ?? 0} prefix="TSh " delta={pctDelta(costSeries)} spark={costSeries} goodWhenUp={false} />
         <StatTile label="Profit (this month)" value={current?.profit_tsh ?? 0} prefix="TSh " delta={pctDelta(profitSeries)} spark={profitSeries} goodWhenUp />
-        <StatTile label="Pending approvals" value={opsKpis?.pendingApprovals ?? 0} />
+        <StatTile label="Projected profit (next month)" value={projectedProfit} prefix="TSh " />
       </div>
 
       <div className="card" style={{ marginBottom: 24, cursor: 'pointer', transition: 'border-color .15s' }}
@@ -72,17 +129,26 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid-2" style={{ marginBottom: 24 }}>
-        <div className="card">
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Plant status</div>
-          <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>
-            Tank map, leaching rounds and color tests will appear here once the Plant module is built.
-          </div>
+          {tanks.length === 0 ? (
+            <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No tanks configured yet.</div>
+          ) : (
+            <div style={{ fontSize: 12, color: 'var(--label-3)', lineHeight: 1.6 }}>
+              {clearCount} clear · {greyCount} grey · {blackCount} black of {tanks.length} tanks.
+              {openPeriod ? ` Leaching period open since ${openPeriod.period_start}.` : ' No open leaching period.'}
+            </div>
+          )}
         </div>
-        <div className="card">
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Pit status</div>
-          <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>
-            Pit activity, assigned machinery and fuel usage will appear here once the Pits module is built.
-          </div>
+          {pits.length === 0 ? (
+            <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No pits registered yet.</div>
+          ) : (
+            <div style={{ fontSize: 12, color: 'var(--label-3)', lineHeight: 1.6 }}>
+              {pits.length} pit{pits.length === 1 ? '' : 's'}, {machineryCount} machine{machineryCount === 1 ? '' : 's'} assigned.
+            </div>
+          )}
         </div>
       </div>
 

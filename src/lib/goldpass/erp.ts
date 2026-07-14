@@ -357,7 +357,6 @@ export type FinancialSummaryRow = {
   month: string
   revenue_tsh: number
   expense_tsh: number
-  payroll_tsh: number
   procurement_tsh: number
   cost_tsh: number
   profit_tsh: number
@@ -372,13 +371,25 @@ export async function getFinancialSummary(months = 6, siteId?: string): Promise<
 /* Simple trailing-trend projection: no RPC involved, kept here so the logic
    is visible/auditable rather than buried in SQL. Flat projection (= last
    actual) if there isn't enough history to compute a trend from. */
-export function projectNextMonth(rows: FinancialSummaryRow[]): number {
-  if (rows.length === 0) return 0
-  if (rows.length === 1) return rows[0].revenue_tsh
-  const first = rows[0].revenue_tsh
-  const last = rows[rows.length - 1].revenue_tsh
-  const avgDelta = (last - first) / (rows.length - 1)
+function projectSeries(values: number[]): number {
+  if (values.length === 0) return 0
+  if (values.length === 1) return values[0]
+  const first = values[0]
+  const last = values[values.length - 1]
+  const avgDelta = (last - first) / (values.length - 1)
   return Math.max(0, last + avgDelta)
+}
+
+export function projectNextMonth(rows: FinancialSummaryRow[]): number {
+  return projectSeries(rows.map(r => r.revenue_tsh))
+}
+
+export function projectNextMonthCost(rows: FinancialSummaryRow[]): number {
+  return projectSeries(rows.map(r => r.cost_tsh))
+}
+
+export function projectNextMonthProfit(rows: FinancialSummaryRow[]): number {
+  return projectSeries(rows.map(r => r.profit_tsh))
 }
 
 /* PLANT: TANKS (0016_plant_tanks.sql).
@@ -574,4 +585,35 @@ export async function getRecoveryReconciliation(months = 6): Promise<RecoveryRec
   const { data, error } = await sb().rpc('get_recovery_reconciliation', { p_months: months })
   if (error) { gpError('GP-2661', error.message); return [] }
   return (data ?? []) as RecoveryReconciliationRow[]
+}
+
+/* DECISIONING (0021_decisioning.sql): expansion signal + first fault flag. */
+export type ExpansionSignalRow = {
+  tanks_total: number
+  tanks_clear: number
+  utilization_pct: number | null
+  current_cost_per_gram_tsh: number | null
+  trailing_avg_cost_per_gram_tsh: number | null
+  signal: boolean
+}
+
+export async function getExpansionSignal(): Promise<ExpansionSignalRow | null> {
+  const { data, error } = await sb().rpc('get_expansion_signal').single()
+  if (error) { gpError('GP-2662', error.message); return null }
+  return data as ExpansionSignalRow
+}
+
+export type FaultFlagRow = {
+  open_period_id: string
+  period_start: string
+  days_open: number
+  avg_closed_period_days: number | null
+  threshold_days: number
+  is_overdue: boolean
+}
+
+export async function getFaultFlags(): Promise<FaultFlagRow[]> {
+  const { data, error } = await sb().rpc('get_fault_flags')
+  if (error) { gpError('GP-2663', error.message); return [] }
+  return (data ?? []) as FaultFlagRow[]
 }
