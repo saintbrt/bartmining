@@ -48,19 +48,23 @@ function ChartTooltip({ active, payload, label, prefix = '' }: {
   const goldRaw = row && typeof row.goldRaw === 'number' ? row.goldRaw as number : null
   const primaryName = (primaryEntry?.name && primaryEntry.name !== 'Value') ? String(primaryEntry.name) : 'Sales'
   const goldLabel = typeof row?.goldLabel === 'string' ? row.goldLabel as string : 'Gold'
-  /* Sparse sales vertices use null on the line; tooltip still shows the month total. */
+  /* Prefer real bucket date along the gold river; fall back to axis label. */
+  const headLabel = (row && typeof row.tooltipLabel === 'string' && row.tooltipLabel)
+    ? String(row.tooltipLabel)
+    : (label || ' ')
+  /* Sparse sales villages use null on the line; tooltip shows month total when known. */
   const salesShown = row && typeof row.salesTooltip === 'number'
     ? row.salesTooltip as number
-    : (primaryEntry?.value ?? 0)
+    : (typeof primaryEntry?.value === 'number' ? primaryEntry.value : null)
 
   if (goldRaw != null) {
     return (
       <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 'var(--r-sm)', padding: '8px 12px', boxShadow: 'var(--s-sm)', minWidth: 160 }}>
-        <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 6 }}>{label || ' '}</div>
+        <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 6 }}>{headLabel}</div>
         <div style={{ marginBottom: 6 }}>
           <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 1 }}>{primaryName}</div>
           <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--label-1)', fontFamily: MONO, fontVariantNumeric: 'tabular-nums' }}>
-            {prefix}{Math.round(salesShown).toLocaleString()}
+            {salesShown != null ? `${prefix}${Math.round(salesShown).toLocaleString()}` : '—'}
           </div>
         </div>
         <div style={{ borderTop: '1px solid var(--sep)', paddingTop: 6 }}>
@@ -158,13 +162,17 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
 
 /* Single-series line (e.g. revenue trend). One accent, no legend: the card
    title names the series. Straight segments, faint gradient wash, mono ticks.
-   Optional gold overlay: denser weekly path (linear polyline), same opacity/fill
-   as before. Sales may use sparse vertices (null between months) + connectNulls
-   so month-to-month legs stay linear without stepping.
-   Y domain is explicit (data-fit) so Area baseline-to-0 does not zoom out or
-   invent a false negative floor under non-negative sales. */
+   Optional gold overlay: continuous market "river" on unique date keys (not
+   locked to sales labels). Sales = sparse villages (null between anchors) +
+   connectNulls linear legs. Y domain data-fit (no false zero floor). */
 export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
-  data: { label: string; value: number | null; salesTooltip?: number }[]
+  data: {
+    label: string
+    value: number | null
+    salesTooltip?: number | null
+    xKey?: string
+    tooltipLabel?: string
+  }[]
   gold?: ChartGoldOverlay | null
   valueName?: string
   prefix?: string
@@ -189,11 +197,15 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
   const [domainLo] = yDomain
   const rows = data.map((d, i) => ({
     ...d,
+    /* Unique X key so weekly gold never collapses onto shared month labels. */
+    xKey: d.xKey ?? d.label ?? String(i),
     gold: gold?.values[i] ?? null,
     goldRaw: gold?.rawValues[i] ?? null,
     goldLabel: goldName,
-    salesTooltip: d.salesTooltip ?? (typeof d.value === 'number' ? d.value : 0),
+    salesTooltip: d.salesTooltip ?? (typeof d.value === 'number' ? d.value : null),
+    tooltipLabel: d.tooltipLabel ?? d.label,
   }))
+  const tickByXKey = new Map(rows.map(r => [r.xKey, r.label]))
   return (
     <ResponsiveContainer width="100%" height={height}>
       <AreaChart data={rows} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
@@ -209,12 +221,14 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
         </defs>
         <CartesianGrid vertical={false} stroke={GRID} />
         <XAxis
-          dataKey="label"
+          dataKey="xKey"
           tickLine={false}
           axisLine={{ stroke: GRID }}
           tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }}
           interval="preserveStartEnd"
-          minTickGap={sparseSales ? 20 : 8}
+          minTickGap={sparseSales ? 28 : 8}
+          tickFormatter={(xKey: string) => tickByXKey.get(xKey) || ''}
+          padding={{ left: 0, right: 0 }}
         />
         <YAxis
           domain={yDomain}
@@ -237,7 +251,14 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
         <Area type="linear" dataKey="value" name={valueName} stroke={color} strokeWidth={2}
           fill={sparseSales ? 'none' : `url(#${gradId})`}
           baseValue={domainLo}
-          dot={false} activeDot={{ r: 4 }} isAnimationActive={false}
+          /* Villages only — solid dots where sales anchors land. */
+          dot={sparseSales
+            ? (props: { cx?: number; cy?: number; payload?: { value?: number | null } }) => {
+                if (props.payload?.value == null || props.cx == null || props.cy == null) return null
+                return <circle cx={props.cx} cy={props.cy} r={3.5} fill={color} stroke="var(--bg-2)" strokeWidth={1.5} />
+              }
+            : false}
+          activeDot={{ r: 5 }} isAnimationActive={false}
           connectNulls={sparseSales} />
       </AreaChart>
     </ResponsiveContainer>

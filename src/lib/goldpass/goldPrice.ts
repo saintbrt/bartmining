@@ -75,21 +75,35 @@ function monthShort(month: string): string {
 }
 
 export type DenseHeroRow = {
-  /** X tick label — month short name only on the sales vertex for that month */
+  /** Unique category key (ISO date) so gold river never collapses onto sales labels. */
+  xKey: string
+  /** Axis tick text — month short name on villages / month starts; '' elsewhere. */
   label: string
+  /** Hover label (real bucket date) for decision-making along the gold river. */
+  tooltipLabel: string
   /**
-   * Sales/revenue vertex: set on ONE bucket per month only; null elsewhere
-   * so Recharts linear+connectNulls draws month-to-month legs (not steps).
+   * Sales "village": set only on sparse anchors (edge-pinned + interior months);
+   * null on pure gold weeks so connectNulls draws month-to-month legs (not steps).
    */
   value: number | null
-  /** Always the month's sales total for tooltip (even on gold-only weeks). */
-  salesTooltip: number
+  /** Month sales total for tooltip when that month has sales; null if none. */
+  salesTooltip: number | null
+  /** Market gold TSh/g on every river sample (not only at sales villages). */
   goldRaw: number | null
 }
 
+function formatBucketLabel(date: string): string {
+  const d = new Date(date + 'T00:00:00')
+  if (Number.isNaN(d.getTime())) return date
+  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
 /**
- * Weekly (or denser) gold path + sparse monthly sales vertices.
- * Does NOT repeat sales on every bucket (that created the broken step chart).
+ * Gold = continuous river (every market bucket in the window).
+ * Sales = sparse villages (edge-pinned to range ends + one interior vertex/month).
+ *
+ * X is driven by unique gold dates, not sales month labels — so market price
+ * stays visible between and outside sales points for decision-making.
  */
 export function buildGoldDenseSeries(
   financials: { month: string; value: number }[],
@@ -104,6 +118,8 @@ export function buildGoldDenseSeries(
   const firstMonth = active[0].month
   const lastMonth = active[active.length - 1].month
 
+  /* River: all unique gold buckets in the calendar window (not only sales dates). */
+  const seenDates = new Set<string>()
   const inWindow = gold
     .filter(g => {
       const m = monthKeyFromDate(g.date)
@@ -111,34 +127,70 @@ export function buildGoldDenseSeries(
     })
     .slice()
     .sort((a, b) => a.date.localeCompare(b.date))
+    .filter(g => {
+      if (seenDates.has(g.date)) return false
+      seenDates.add(g.date)
+      return true
+    })
 
   if (inWindow.length === 0) {
     return active.map(f => ({
+      xKey: f.month,
       label: monthShort(f.month),
+      tooltipLabel: monthShort(f.month),
       value: f.value,
       salesTooltip: f.value,
       goldRaw: null,
     }))
   }
 
-  /* Last bucket index per month → sales vertex (month-end-ish). */
+  const n = inWindow.length
   const lastIdxByMonth = new Map<string, number>()
+  const firstIdxByMonth = new Map<string, number>()
   inWindow.forEach((g, i) => {
-    lastIdxByMonth.set(monthKeyFromDate(g.date), i)
+    const m = monthKeyFromDate(g.date)
+    lastIdxByMonth.set(m, i)
+    if (!firstIdxByMonth.has(m)) firstIdxByMonth.set(m, i)
   })
-  const salesVertex = new Set(lastIdxByMonth.values())
+
+  /* Villages: index → sales total.
+     - Edge-pin first/last row so the sales line spans the full plot width.
+     - Interior months with sales: one vertex at month-end (last gold week).
+     - Months without sales: no village; gold still flows through. */
+  const villageAt = new Map<number, number>()
+
+  for (const [m, sales] of byMonth) {
+    if (m === firstMonth || m === lastMonth) continue
+    const idx = lastIdxByMonth.get(m)
+    if (idx != null) villageAt.set(idx, sales)
+  }
+
+  const firstSales = byMonth.get(firstMonth)
+  if (firstSales != null) villageAt.set(0, firstSales)
+
+  const lastSales = byMonth.get(lastMonth)
+  if (lastSales != null) villageAt.set(n - 1, lastSales)
+
+  /* Axis labels: prefer village indices; otherwise first bucket of each month
+     so the timeline stays readable along pure gold stretches. */
+  const labelAt = new Set<number>()
+  for (const idx of villageAt.keys()) labelAt.add(idx)
+  for (const [m, idx] of firstIdxByMonth) {
+    if (m >= firstMonth && m <= lastMonth) labelAt.add(idx)
+  }
 
   let lastLabeledMonth = ''
   return inWindow.map((g, i) => {
     const m = monthKeyFromDate(g.date)
-    const sales = byMonth.get(m) ?? 0
-    const isVertex = salesVertex.has(i)
-    /* Label once per month on the sales vertex so X-axis stays readable. */
-    const showLabel = isVertex && m !== lastLabeledMonth
+    const sales = byMonth.has(m) ? byMonth.get(m)! : null
+    const village = villageAt.has(i) ? villageAt.get(i)! : null
+    const showLabel = labelAt.has(i) && m !== lastLabeledMonth
     if (showLabel) lastLabeledMonth = m
     return {
+      xKey: g.date,
       label: showLabel ? monthShort(m) : '',
-      value: isVertex ? sales : null,
+      tooltipLabel: formatBucketLabel(g.date),
+      value: village,
       salesTooltip: sales,
       goldRaw: g.price_tsh_g,
     }

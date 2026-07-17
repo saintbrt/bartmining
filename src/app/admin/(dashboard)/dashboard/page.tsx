@@ -125,17 +125,20 @@ export default function DashboardPage() {
 
   const valueName = METRIC_LABELS[activeMetric] ?? 'Sales'
 
-  /* Gold off: classic monthly sales chart. Gold on: weekly gold path + sparse
-     monthly sales vertices (linear connectNulls — not stepped). */
+  /* Gold off: classic monthly sales chart.
+     Gold on: continuous market river (unique dates) + sparse sales villages
+     edge-pinned to the range (linear connectNulls — not stepped). */
   const heroBuilt = useMemo(() => {
     const field = metricField[activeMetric] ?? metricField.revenue
     const financials = opsFinancials.map(f => ({ month: f.month, value: field(f) }))
     if (!goldOn || goldPoints.length === 0) {
       const start = Math.max(0, financials.length - rangeMonths)
       return financials.slice(start).map(f => ({
+        xKey: f.month,
         label: monthLabel(f.month),
+        tooltipLabel: monthLabel(f.month),
         value: f.value as number | null,
-        salesTooltip: f.value,
+        salesTooltip: f.value as number | null,
         goldRaw: null as number | null,
       }))
     }
@@ -144,7 +147,9 @@ export default function DashboardPage() {
 
   const heroData = useMemo(
     () => heroBuilt.map(r => ({
+      xKey: r.xKey,
       label: r.label,
+      tooltipLabel: r.tooltipLabel,
       value: r.value,
       salesTooltip: r.salesTooltip,
     })),
@@ -251,7 +256,7 @@ export default function DashboardPage() {
         {goldOn && (
           <div style={{ fontSize: 11, color: 'var(--label-4)', marginTop: 8 }}>
             {goldOverlay
-              ? 'Gold: weekly market TSh/g (scaled · sales monthly · hover for real values)'
+              ? 'Gold: continuous market path (TSh/g, scaled) · sales villages monthly · hover any week for real gold'
               : goldError
                 ? `Gold price unavailable: ${goldError}`
                 : 'Loading gold price…'}
