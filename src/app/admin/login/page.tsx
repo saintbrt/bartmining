@@ -30,8 +30,8 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 16, padding: '32px 28px' }}>
-          <h1 style={{ fontSize: 20, fontWeight: 700, marginBottom: 6, color: 'var(--label-1)' }}>Sign in</h1>
+        <div className="card" style={{ padding: '32px 28px' }}>
+          <h1 className="page-title" style={{ marginBottom: 6 }}>Sign in</h1>
           <p style={{ fontSize: 13, color: 'var(--label-3)', marginBottom: 24 }}>Authorised personnel only.</p>
 
           <form onSubmit={handleSubmit}>
@@ -43,7 +43,7 @@ export default function LoginPage() {
               <label style={{ fontSize: 12, color: 'var(--label-3)', display: 'block', marginBottom: 5 }}>Password</label>
               <input className="input" style={{ width: '100%' }} type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required autoComplete="current-password" />
             </div>
-            {error && <p style={{ fontSize: 13, color: 'var(--red)', marginBottom: 14, padding: '8px 12px', background: 'rgba(255,59,48,.08)', borderRadius: 6 }}>{error}</p>}
+            {error && <p style={{ fontSize: 13, color: 'var(--red)', marginBottom: 14, padding: '8px 12px', background: 'rgba(255,59,48,.08)', borderRadius: 'var(--r-sm)' }}>{error}</p>}
             <button className="btn btn-primary" type="submit" disabled={loading} style={{ width: '100%', justifyContent: 'center', opacity: loading ? .6 : 1 }}>
               {loading ? 'Signing in…' : 'Sign in'}
             </button>

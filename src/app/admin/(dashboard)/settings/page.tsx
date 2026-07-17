@@ -15,12 +15,12 @@ export default function SettingsPage() {
 
   return (
     <div className="content content-pad" style={{ maxWidth: 600 }}>
-      <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 24 }}>Settings</h2>
+      <h2 className="page-title" style={{ marginBottom: 24 }}>Settings</h2>
 
       <div className="card" style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 12, color: 'var(--label-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 12 }}>Account</div>
+        <div className="section-label" style={{ marginBottom: 12 }}>Account</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: '#fff' }}>{user.email.slice(0, 2).toUpperCase()}</div>
+          <div className="sb-av" style={{ width: 40, height: 40, fontSize: 14 }}>{user.email.slice(0, 2).toUpperCase()}</div>
           <div>
             <div style={{ fontSize: 14, fontWeight: 500 }}>{user.email}</div>
             <div style={{ fontSize: 12, color: 'var(--label-3)' }}>Bart Mining GoldPass</div>
@@ -32,9 +32,9 @@ export default function SettingsPage() {
       </div>
 
       <div className="card">
-        <div style={{ fontSize: 12, color: 'var(--label-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 12 }}>Backend</div>
+        <div className="section-label" style={{ marginBottom: 12 }}>Backend</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: connected ? 'var(--green)' : 'var(--red)', boxShadow: connected ? '0 0 6px var(--green)' : undefined }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: connected ? 'var(--green)' : 'var(--red)', }} />
           <div style={{ fontSize: 13 }}>{connected ? 'Supabase connected' : 'Supabase not configured'}</div>
         </div>
         {!connected && <p style={{ fontSize: 12, color: 'var(--label-4)', marginTop: 8, lineHeight: 1.6 }}>Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON environment variables.</p>}
