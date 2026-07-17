@@ -1,6 +1,6 @@
 /* Market gold helpers for the dashboard overlay.
    Drawing uses a proportional band (not dual-axis); tooltips use real TSh.
-   Sales/revenue stay monthly; gold is aligned onto those same month keys. */
+   Gold uses weekly (TV-leaning density); sales stays sparse monthly vertices. */
 
 export type GoldPricePoint = {
   /** ISO calendar date for the bucket start (week/day/month), YYYY-MM-DD */
@@ -19,6 +19,8 @@ export const GRAMS_PER_TROY_OZ = 31.1034768
 /**
  * Map gold into a visual band inside the primary domain so both series share
  * one Y-axis without 1:1 unit confusion. Band: 15%–85% of primary min–max.
+ * `primary` is only used for domain (e.g. monthly sales); length need not match
+ * `secondary` (e.g. weekly gold).
  */
 export function scaleToPrimaryBand(
   primary: number[],
@@ -64,21 +66,81 @@ export function scaleToPrimaryBand(
   })
 }
 
-/** Align gold onto financial month keys (YYYY-MM); missing → null. */
-export function alignGoldToMonths(
-  months: string[],
+export function monthKeyFromDate(date: string): string {
+  return date.slice(0, 7)
+}
+
+function monthShort(month: string): string {
+  return new Date(month + '-01T00:00:00').toLocaleDateString(undefined, { month: 'short' })
+}
+
+export type DenseHeroRow = {
+  /** X tick label — month short name only on the sales vertex for that month */
+  label: string
+  /**
+   * Sales/revenue vertex: set on ONE bucket per month only; null elsewhere
+   * so Recharts linear+connectNulls draws month-to-month legs (not steps).
+   */
+  value: number | null
+  /** Always the month's sales total for tooltip (even on gold-only weeks). */
+  salesTooltip: number
+  goldRaw: number | null
+}
+
+/**
+ * Weekly (or denser) gold path + sparse monthly sales vertices.
+ * Does NOT repeat sales on every bucket (that created the broken step chart).
+ */
+export function buildGoldDenseSeries(
+  financials: { month: string; value: number }[],
   gold: GoldPricePoint[],
-  field: keyof Pick<GoldPricePoint, 'price_tsh_g' | 'price_tsh_oz' | 'price_usd_oz'> = 'price_tsh_g',
-): (number | null)[] {
-  const byMonth = new Map<string, number>()
-  for (const g of gold) {
-    const key = (g.date || '').slice(0, 7)
-    if (!/^\d{4}-\d{2}$/.test(key)) continue
-    const v = g[field]
-    if (v != null && Number.isFinite(v)) byMonth.set(key, v)
+  rangeMonths: number,
+): DenseHeroRow[] {
+  if (financials.length === 0) return []
+
+  const windowStart = Math.max(0, financials.length - rangeMonths)
+  const active = financials.slice(windowStart)
+  const byMonth = new Map(active.map(f => [f.month, f.value]))
+  const firstMonth = active[0].month
+  const lastMonth = active[active.length - 1].month
+
+  const inWindow = gold
+    .filter(g => {
+      const m = monthKeyFromDate(g.date)
+      return m >= firstMonth && m <= lastMonth
+    })
+    .slice()
+    .sort((a, b) => a.date.localeCompare(b.date))
+
+  if (inWindow.length === 0) {
+    return active.map(f => ({
+      label: monthShort(f.month),
+      value: f.value,
+      salesTooltip: f.value,
+      goldRaw: null,
+    }))
   }
-  return months.map(m => {
-    const v = byMonth.get(m)
-    return v != null && Number.isFinite(v) ? v : null
+
+  /* Last bucket index per month → sales vertex (month-end-ish). */
+  const lastIdxByMonth = new Map<string, number>()
+  inWindow.forEach((g, i) => {
+    lastIdxByMonth.set(monthKeyFromDate(g.date), i)
+  })
+  const salesVertex = new Set(lastIdxByMonth.values())
+
+  let lastLabeledMonth = ''
+  return inWindow.map((g, i) => {
+    const m = monthKeyFromDate(g.date)
+    const sales = byMonth.get(m) ?? 0
+    const isVertex = salesVertex.has(i)
+    /* Label once per month on the sales vertex so X-axis stays readable. */
+    const showLabel = isVertex && m !== lastLabeledMonth
+    if (showLabel) lastLabeledMonth = m
+    return {
+      label: showLabel ? monthShort(m) : '',
+      value: isVertex ? sales : null,
+      salesTooltip: sales,
+      goldRaw: g.price_tsh_g,
+    }
   })
 }

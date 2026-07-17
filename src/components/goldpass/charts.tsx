@@ -48,15 +48,19 @@ function ChartTooltip({ active, payload, label, prefix = '' }: {
   const goldRaw = row && typeof row.goldRaw === 'number' ? row.goldRaw as number : null
   const primaryName = (primaryEntry?.name && primaryEntry.name !== 'Value') ? String(primaryEntry.name) : 'Sales'
   const goldLabel = typeof row?.goldLabel === 'string' ? row.goldLabel as string : 'Gold'
+  /* Sparse sales vertices use null on the line; tooltip still shows the month total. */
+  const salesShown = row && typeof row.salesTooltip === 'number'
+    ? row.salesTooltip as number
+    : (primaryEntry?.value ?? 0)
 
   if (goldRaw != null) {
     return (
       <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 'var(--r-sm)', padding: '8px 12px', boxShadow: 'var(--s-sm)', minWidth: 160 }}>
-        <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 6 }}>{label}</div>
+        <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 6 }}>{label || ' '}</div>
         <div style={{ marginBottom: 6 }}>
           <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 1 }}>{primaryName}</div>
           <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--label-1)', fontFamily: MONO, fontVariantNumeric: 'tabular-nums' }}>
-            {prefix}{Math.round(primaryEntry?.value ?? 0).toLocaleString()}
+            {prefix}{Math.round(salesShown).toLocaleString()}
           </div>
         </div>
         <div style={{ borderTop: '1px solid var(--sep)', paddingTop: 6 }}>
@@ -116,13 +120,12 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
 }
 
 /* Single-series line (e.g. revenue trend). One accent, no legend: the card
-   title names the series. Straight segments (not a spline), a faint gradient
-   wash under the line, hairline recessive grid, mono ticks, dashed cursor.
-   Optional `gold` overlays market gold as a very light line + solid fill
-   under the path (scaled into the primary domain; raw TSh/g in tooltip).
-   Primary sales/revenue stays monthly linear — gold does not rewrite that axis. */
+   title names the series. Straight segments, faint gradient wash, mono ticks.
+   Optional gold overlay: denser weekly path (linear polyline), same opacity/fill
+   as before. Sales may use sparse vertices (null between months) + connectNulls
+   so month-to-month legs stay linear without stepping. */
 export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
-  data: { label: string; value: number }[]
+  data: { label: string; value: number | null; salesTooltip?: number }[]
   gold?: ChartGoldOverlay | null
   valueName?: string
   prefix?: string
@@ -134,16 +137,18 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
   const gradId = `gp-trend-${color.replace('#', '')}`
   const hasGold = !!gold && gold.values.some(v => v != null)
   const goldColor = gold?.color ?? GOLD_OVERLAY
+  /* Opacity + fill unchanged — density/path only. */
   const goldOpacity = gold?.strokeOpacity ?? 0.42
-  /* Solid wash under the gold path: same gold, 60% less than full opacity → 0.4 */
   const goldFillOpacity = 0.4
   const goldName = gold?.name ?? 'Gold (market)'
   const goldFillId = `gp-gold-fill-${goldColor.replace('#', '')}`
+  const sparseSales = data.some(d => d.value == null)
   const rows = data.map((d, i) => ({
     ...d,
     gold: gold?.values[i] ?? null,
     goldRaw: gold?.rawValues[i] ?? null,
     goldLabel: goldName,
+    salesTooltip: d.salesTooltip ?? (typeof d.value === 'number' ? d.value : 0),
   }))
   return (
     <ResponsiveContainer width="100%" height={height}>
@@ -153,25 +158,33 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
             <stop offset="0%" stopColor={color} stopOpacity={0.12} />
             <stop offset="100%" stopColor={color} stopOpacity={0} />
           </linearGradient>
-          {/* Uniform gold fill (not a fade): same hue under the line at reduced opacity */}
           <linearGradient id={goldFillId} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={goldColor} stopOpacity={goldFillOpacity} />
             <stop offset="100%" stopColor={goldColor} stopOpacity={goldFillOpacity} />
           </linearGradient>
         </defs>
         <CartesianGrid vertical={false} stroke={GRID} />
-        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <XAxis
+          dataKey="label"
+          tickLine={false}
+          axisLine={{ stroke: GRID }}
+          tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }}
+          interval="preserveStartEnd"
+          minTickGap={sparseSales ? 20 : 8}
+        />
         <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
         {hasGold && (
-          <Area type="monotone" dataKey="gold" name={goldName} stroke={goldColor} strokeWidth={1.5}
+          /* linear = TV-style polyline kinks (not monotone smooth). Opacity/fill left as-is. */
+          <Area type="linear" dataKey="gold" name={goldName} stroke={goldColor} strokeWidth={1.5}
             strokeOpacity={goldOpacity} fill={`url(#${goldFillId})`}
-            dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: 1 }}
+            dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: goldOpacity }}
             isAnimationActive={false} connectNulls />
         )}
-        {/* Primary: always monthly linear — same as pre-gold dashboard chart */}
         <Area type="linear" dataKey="value" name={valueName} stroke={color} strokeWidth={2}
-          fill={`url(#${gradId})`} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
+          fill={sparseSales ? 'none' : `url(#${gradId})`}
+          dot={false} activeDot={{ r: 4 }} isAnimationActive={false}
+          connectNulls={sparseSales} />
       </AreaChart>
     </ResponsiveContainer>
   )
