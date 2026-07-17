@@ -77,19 +77,27 @@ function monthShort(month: string): string {
 export type DenseHeroRow = {
   /** Unique category key (ISO date) so gold river never collapses onto sales labels. */
   xKey: string
-  /** Axis tick text — month short name on villages / month starts; '' elsewhere. */
+  /** Axis tick text — month short / sale day; '' elsewhere. */
   label: string
-  /** Hover label (real bucket date) for decision-making along the gold river. */
+  /** Hover label (real bucket or sale date) for decision-making along the gold river. */
   tooltipLabel: string
   /**
-   * Sales "village": set only on sparse anchors (edge-pinned + interior months);
-   * null on pure gold weeks so connectNulls draws month-to-month legs (not steps).
+   * Sales "village": real sale_date anchors (or monthly fallback);
+   * null on pure gold weeks so connectNulls draws legs between villages (not steps).
    */
   value: number | null
-  /** Month sales total for tooltip when that month has sales; null if none. */
+  /** Sale amount at this village (or month total for fallback); null if no sale here. */
   salesTooltip: number | null
   /** Market gold TSh/g on every river sample (not only at sales villages). */
   goldRaw: number | null
+}
+
+/** One recorded sale for chart villages — use real `sale_date`, not month rollups. */
+export type SaleEvent = {
+  /** ISO date YYYY-MM-DD from sales.sale_date */
+  saleDate: string
+  /** price_tsh (or other metric value for that sale) */
+  value: number
 }
 
 function formatBucketLabel(date: string): string {
@@ -98,27 +106,61 @@ function formatBucketLabel(date: string): string {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
+function isoDate(raw: string): string {
+  const s = String(raw).trim()
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10)
+  const t = Date.parse(s)
+  if (!Number.isFinite(t)) return s.slice(0, 10)
+  return new Date(t).toISOString().slice(0, 10)
+}
+
+/** Nearest gold-river index for a calendar day (sale_date → market bucket). */
+function nearestGoldIndex(goldDates: string[], saleDate: string): number {
+  const target = Date.parse(saleDate + 'T00:00:00')
+  if (!Number.isFinite(target) || goldDates.length === 0) return 0
+  let best = 0
+  let bestDist = Infinity
+  for (let i = 0; i < goldDates.length; i++) {
+    const t = Date.parse(goldDates[i] + 'T00:00:00')
+    const dist = Math.abs(t - target)
+    if (dist < bestDist) {
+      bestDist = dist
+      best = i
+    }
+  }
+  return best
+}
+
 /**
  * Gold = continuous river (every market bucket in the window).
- * Sales = sparse villages (edge-pinned to range ends + one interior vertex/month).
- *
- * X is driven by unique gold dates, not sales month labels — so market price
- * stays visible between and outside sales points for decision-making.
+ * Sales villages = real `sale_date` events from the sales register (preferred).
+ * Fallback = monthly financial rollups only when no sale events are passed.
  */
 export function buildGoldDenseSeries(
   financials: { month: string; value: number }[],
   gold: GoldPricePoint[],
   rangeMonths: number,
+  saleEvents?: SaleEvent[],
 ): DenseHeroRow[] {
-  if (financials.length === 0) return []
+  if (financials.length === 0 && (!saleEvents || saleEvents.length === 0)) return []
 
   const windowStart = Math.max(0, financials.length - rangeMonths)
   const active = financials.slice(windowStart)
   const byMonth = new Map(active.map(f => [f.month, f.value]))
-  const firstMonth = active[0].month
-  const lastMonth = active[active.length - 1].month
 
-  /* River: all unique gold buckets in the calendar window (not only sales dates). */
+  /* Calendar window: prefer financial months; else from sale_date span. */
+  let firstMonth: string
+  let lastMonth: string
+  if (active.length > 0) {
+    firstMonth = active[0].month
+    lastMonth = active[active.length - 1].month
+  } else {
+    const dates = saleEvents!.map(s => isoDate(s.saleDate)).sort()
+    firstMonth = monthKeyFromDate(dates[0])
+    lastMonth = monthKeyFromDate(dates[dates.length - 1])
+  }
+
+  /* River: all unique gold buckets in the calendar window. */
   const seenDates = new Set<string>()
   const inWindow = gold
     .filter(g => {
@@ -134,6 +176,25 @@ export function buildGoldDenseSeries(
     })
 
   if (inWindow.length === 0) {
+    /* No gold: plot sale_date events if present, else monthly rollups. */
+    if (saleEvents && saleEvents.length > 0) {
+      const byDay = new Map<string, number>()
+      for (const s of saleEvents) {
+        const d = isoDate(s.saleDate)
+        if (monthKeyFromDate(d) < firstMonth || monthKeyFromDate(d) > lastMonth) continue
+        byDay.set(d, (byDay.get(d) ?? 0) + s.value)
+      }
+      return [...byDay.entries()]
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([d, v]) => ({
+          xKey: d,
+          label: formatBucketLabel(d),
+          tooltipLabel: formatBucketLabel(d),
+          value: v,
+          salesTooltip: v,
+          goldRaw: null,
+        }))
+    }
     return active.map(f => ({
       xKey: f.month,
       label: monthShort(f.month),
@@ -144,37 +205,43 @@ export function buildGoldDenseSeries(
     }))
   }
 
-  const n = inWindow.length
-  const lastIdxByMonth = new Map<string, number>()
+  const goldDates = inWindow.map(g => g.date)
   const firstIdxByMonth = new Map<string, number>()
   inWindow.forEach((g, i) => {
     const m = monthKeyFromDate(g.date)
-    lastIdxByMonth.set(m, i)
     if (!firstIdxByMonth.has(m)) firstIdxByMonth.set(m, i)
   })
 
-  /* Villages: index → sales total.
-     - Edge-pin first/last row so the sales line spans the full plot width.
-     - Interior months with sales: one vertex at month-end (last gold week).
-     - Months without sales: no village; gold still flows through. */
+  /* Villages from real sale_date (sum same-day sales → one village). */
   const villageAt = new Map<number, number>()
+  const useSaleDates = !!(saleEvents && saleEvents.length > 0)
 
-  for (const [m, sales] of byMonth) {
-    if (m === firstMonth || m === lastMonth) continue
-    const idx = lastIdxByMonth.get(m)
-    if (idx != null) villageAt.set(idx, sales)
+  if (useSaleDates) {
+    const byDay = new Map<string, number>()
+    for (const s of saleEvents!) {
+      if (!Number.isFinite(s.value)) continue
+      const d = isoDate(s.saleDate)
+      const m = monthKeyFromDate(d)
+      if (m < firstMonth || m > lastMonth) continue
+      byDay.set(d, (byDay.get(d) ?? 0) + s.value)
+    }
+    for (const [d, total] of byDay) {
+      const idx = nearestGoldIndex(goldDates, d)
+      villageAt.set(idx, (villageAt.get(idx) ?? 0) + total)
+    }
+  } else {
+    /* Fallback only: monthly totals at month-end gold week (no sale_date available). */
+    const lastIdxByMonth = new Map<string, number>()
+    inWindow.forEach((g, i) => {
+      lastIdxByMonth.set(monthKeyFromDate(g.date), i)
+    })
+    for (const [m, sales] of byMonth) {
+      const idx = lastIdxByMonth.get(m)
+      if (idx != null) villageAt.set(idx, sales)
+    }
   }
 
-  const firstSales = byMonth.get(firstMonth)
-  if (firstSales != null) villageAt.set(0, firstSales)
-
-  const lastSales = byMonth.get(lastMonth)
-  if (lastSales != null) villageAt.set(n - 1, lastSales)
-
-  /* Axis labels: prefer village indices; otherwise first bucket of each month
-     so the timeline stays readable along pure gold stretches. */
-  const labelAt = new Set<number>()
-  for (const idx of villageAt.keys()) labelAt.add(idx)
+  const labelAt = new Set<number>(villageAt.keys())
   for (const [m, idx] of firstIdxByMonth) {
     if (m >= firstMonth && m <= lastMonth) labelAt.add(idx)
   }
@@ -182,16 +249,21 @@ export function buildGoldDenseSeries(
   let lastLabeledMonth = ''
   return inWindow.map((g, i) => {
     const m = monthKeyFromDate(g.date)
-    const sales = byMonth.has(m) ? byMonth.get(m)! : null
     const village = villageAt.has(i) ? villageAt.get(i)! : null
-    const showLabel = labelAt.has(i) && m !== lastLabeledMonth
-    if (showLabel) lastLabeledMonth = m
+    /* Tooltip: village amount when on a sale; else monthly context only in fallback mode. */
+    const salesTip = village != null
+      ? village
+      : (!useSaleDates && byMonth.has(m) ? byMonth.get(m)! : null)
+    const showLabel = labelAt.has(i) && (village != null || m !== lastLabeledMonth)
+    if (showLabel && m !== lastLabeledMonth) lastLabeledMonth = m
     return {
       xKey: g.date,
-      label: showLabel ? monthShort(m) : '',
+      label: showLabel
+        ? (village != null && useSaleDates ? formatBucketLabel(g.date) : monthShort(m))
+        : '',
       tooltipLabel: formatBucketLabel(g.date),
       value: village,
-      salesTooltip: sales,
+      salesTooltip: salesTip,
       goldRaw: g.price_tsh_g,
     }
   })

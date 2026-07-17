@@ -311,8 +311,25 @@ export type SalesRegisterRow = {
   created_at: string
 }
 
-export async function getSalesRegister(): Promise<SalesRegisterRow[]> {
-  const { data, error } = await sb().from('v_sales_register').select('*').order('sale_date', { ascending: false }).limit(200)
+/** Sales register rows. Optional `months` filters by real sale_date column. */
+export async function getSalesRegister(opts?: {
+  months?: number
+  limit?: number
+  /** Default false (newest first) for register UI; chart can sort client-side. */
+  ascending?: boolean
+}): Promise<SalesRegisterRow[]> {
+  let q = sb()
+    .from('v_sales_register')
+    .select('*')
+    .order('sale_date', { ascending: opts?.ascending ?? false })
+  if (opts?.months != null && opts.months > 0) {
+    const d = new Date()
+    d.setUTCDate(1)
+    d.setUTCHours(0, 0, 0, 0)
+    d.setUTCMonth(d.getUTCMonth() - (opts.months - 1))
+    q = q.gte('sale_date', d.toISOString().slice(0, 10))
+  }
+  const { data, error } = await q.limit(opts?.limit ?? 500)
   if (error) { gpError('GP-2624', error.message); return [] }
   return (data ?? []) as SalesRegisterRow[]
 }
