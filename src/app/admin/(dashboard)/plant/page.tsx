@@ -155,8 +155,8 @@ export default function PlantPage() {
     <div className="content content-pad">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Plant</h2>
-          <p style={{ fontSize: 12, color: 'var(--label-3)' }}>
+          <h2 className="page-title">Plant</h2>
+          <p className="page-sub">
             Tank rounds, cycle time, and pit status at a glance. Logged from the field on the
             mobile app; this page is for viewing, not data entry.
           </p>
@@ -164,7 +164,7 @@ export default function PlantPage() {
         <button className="btn btn-secondary btn-sm" onClick={() => setSetupOpen(true)}>+ Structural setup</button>
       </div>
 
-      <div className="plant-split" style={{ marginBottom: 24 }}>
+      <div className="plant-split" style={{ marginBottom: 20 }}>
         <div className="card">
           <div className="plant-panel-title">Tanks</div>
           <PlantMap tanks={tanks} loading={loading} tankColors={tankColors} />
@@ -175,31 +175,31 @@ export default function PlantPage() {
         </div>
       </div>
 
-      <div className="card" style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Leaching round timeline</div>
+      <div className="card" style={{ marginBottom: 20 }}>
+        <div className="section-title">Leaching round timeline</div>
         <TankTimeline rows={timeline} overdueRoundIds={overdueRoundIds} />
       </div>
 
-      <div className="plant-split" style={{ marginBottom: 24 }}>
+      <div className="plant-split" style={{ marginBottom: 20 }}>
         <div className="card">
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Round cycle time (avg days, closed rounds)</div>
+          <div className="section-title">Round cycle time (avg days, closed rounds)</div>
           <LineTrendChart data={cycleTimeChartData} emptyLabel="No closed rounds yet." />
         </div>
         {pitChartSeries.length > 0 && (
           <div className="card">
-            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Pit cost comparison</div>
+            <div className="section-title">Pit cost comparison</div>
             <MultiLineChart data={pitChartData} series={pitChartSeries} prefix="TSh " emptyLabel="No pit cost data yet." />
           </div>
         )}
       </div>
 
-      <div className="card" style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Tank status</div>
+      <div className="card" style={{ marginBottom: 20 }}>
+        <div className="section-title">Tank status</div>
         <TankStatusBoard rows={roundStatus} loading={loading} />
       </div>
 
       <div className="card">
-        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Recovery reconciliation</div>
+        <div className="section-title">Recovery reconciliation</div>
         <p style={{ fontSize: 11, color: 'var(--label-4)', marginBottom: 12 }}>
           Physical gold recovered (elution) against fine gold sold (sales), by month. Elution is the
           source of truth for grams recovered; sales is the source of truth for money. A gap is stock
@@ -211,17 +211,17 @@ export default function PlantPage() {
       {setupOpen && (
         <Modal title="Structural setup" onClose={() => setSetupOpen(false)}>
           <div style={{ marginBottom: 20 }}>
-            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Add pit</div>
+            <div className="section-title">Add pit</div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
-              <input className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} placeholder="Pit name *" value={pitName} onChange={e => setPitName(e.target.value)} />
-              <input className="input" style={{ width: 100, fontSize: 12 }} placeholder="Code" value={pitCode} onChange={e => setPitCode(e.target.value)} />
+              <input className="input input-sm" style={{ flex: 1, minWidth: 120 }} placeholder="Pit name *" value={pitName} onChange={e => setPitName(e.target.value)} />
+              <input className="input input-sm" style={{ width: 100 }} placeholder="Code" value={pitCode} onChange={e => setPitCode(e.target.value)} />
             </div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
-              <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={pitLocationId} onChange={e => setPitLocationId(e.target.value)}>
+              <select className="input input-sm" style={{ flex: 1, minWidth: 120 }} value={pitLocationId} onChange={e => setPitLocationId(e.target.value)}>
                 <option value="">Location (optional)</option>
                 {mineLocations.map(l => <option key={l.id} value={l.id}>{l.name as string}</option>)}
               </select>
-              <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={pitProjectId} onChange={e => setPitProjectId(e.target.value)}>
+              <select className="input input-sm" style={{ flex: 1, minWidth: 120 }} value={pitProjectId} onChange={e => setPitProjectId(e.target.value)}>
                 <option value="">Project (optional)</option>
                 {projects.map(p => <option key={p.id} value={p.id}>{p.name as string}</option>)}
               </select>
@@ -230,19 +230,19 @@ export default function PlantPage() {
           </div>
 
           <div>
-            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Assign machinery</div>
+            <div className="section-title">Assign machinery</div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
-              <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={assignPitId} onChange={e => setAssignPitId(e.target.value)}>
+              <select className="input input-sm" style={{ flex: 1, minWidth: 120 }} value={assignPitId} onChange={e => setAssignPitId(e.target.value)}>
                 <option value="">Select pit…</option>
                 {pits.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
               </select>
-              <select className="input" style={{ flex: 1, minWidth: 120, fontSize: 12 }} value={assignEquipmentId} onChange={e => setAssignEquipmentId(e.target.value)}>
+              <select className="input input-sm" style={{ flex: 1, minWidth: 120 }} value={assignEquipmentId} onChange={e => setAssignEquipmentId(e.target.value)}>
                 <option value="">Select machine…</option>
                 {equipment.map(eq => <option key={eq.id} value={eq.id}>{eq.name}</option>)}
               </select>
             </div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
-              <input className="input" style={{ flex: 1, fontSize: 12 }} placeholder="Team notes (optional)" value={assignNotes} onChange={e => setAssignNotes(e.target.value)} />
+              <input className="input input-sm" style={{ flex: 1 }} placeholder="Team notes (optional)" value={assignNotes} onChange={e => setAssignNotes(e.target.value)} />
             </div>
             <button className="btn btn-primary btn-sm" disabled={assigning} onClick={handleAssignMachinery}>{assigning ? 'Assigning…' : 'Assign'}</button>
           </div>

@@ -15,7 +15,7 @@ function PitCell({ pit, machineryCount }: { pit: PitRow; machineryCount: number 
     <div className="card grid-cell">
       <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--label-1)' }}>{pit.name}</div>
       <div style={{ fontSize: 10, color: 'var(--label-3)', marginTop: 2 }}>{pit.code ?? ' '}</div>
-      <div style={{ fontSize: 10, color: 'var(--label-3)', marginTop: 6 }}>
+      <div className="num" style={{ fontSize: 10, color: 'var(--label-3)', marginTop: 6 }}>
         {machineryCount > 0 ? `${machineryCount} machine${machineryCount === 1 ? '' : 's'}` : 'No machinery'}
       </div>
     </div>
