@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/goldpass/supabase/server'
-import { GRAMS_PER_TROY_OZ, type GoldMonthPrice } from '@/lib/goldpass/goldPrice'
+import { GRAMS_PER_TROY_OZ, type GoldPricePoint } from '@/lib/goldpass/goldPrice'
 
-/* Monthly market gold (XAU) for the dashboard overlay.
+/* Market gold (XAU) for the dashboard overlay.
    - Key stays server-side (GOLD_API_KEY).
    - Free gold-api.com history tier is 10 req/hour → long cache is mandatory.
+   - Weekly (or daily for short windows) so the line is not a flat monthly average.
    - Prices converted to TSh via USD/TZS so tooltips match company currency. */
 
 const GOLD_API = 'https://api.gold-api.com'
@@ -12,18 +13,20 @@ const FX_URLS = [
   'https://open.er-api.com/v6/latest/USD',
   'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json',
 ]
-const CACHE_TTL_MS = 6 * 60 * 60 * 1000 // 6 hours (monthly averages; spare the free tier)
+const CACHE_TTL_MS = 6 * 60 * 60 * 1000 // 6 hours
 /** Last-resort USD→TZS if every FX feed fails (approx; better than blank overlay). */
 const FALLBACK_USD_TO_TZS = 2600
 
 type CacheEntry = {
   expires: number
-  months: GoldMonthPrice[]
+  points: GoldPricePoint[]
+  /** Monthly rollup (avg of weekly/daily buckets) for callers that still want months. */
+  months: GoldPricePoint[]
   usdToTzs: number
   asOf: string
+  groupBy: 'week' | 'day'
 }
 
-// Module-scope cache survives across warm serverless invocations in the same isolate.
 const cache = new Map<string, CacheEntry>()
 let stale: CacheEntry | null = null
 
@@ -33,7 +36,11 @@ function clampMonths(raw: string | null): number {
   return Math.min(24, Math.max(1, Math.round(n)))
 }
 
-/** First day of the month `months` ago (UTC), as unix seconds. */
+/** Day for ≤3M (more realistic short-window path); week for longer ranges. */
+function pickGroupBy(months: number): 'week' | 'day' {
+  return months <= 3 ? 'day' : 'week'
+}
+
 function startOfWindow(months: number): number {
   const d = new Date()
   d.setUTCDate(1)
@@ -61,22 +68,41 @@ async function fetchUsdToTzs(): Promise<number> {
   return FALLBACK_USD_TO_TZS
 }
 
-type HistoryRow = { year_month?: string; month?: string; avg_price?: string | number }
+type HistoryRow = {
+  year_month?: string
+  month?: string
+  week?: string
+  day?: string
+  avg_price?: string | number
+}
 
-async function fetchGoldHistory(months: number, apiKey: string): Promise<{ month: string; price_usd_oz: number }[]> {
+function parseBucketDate(r: HistoryRow): string | null {
+  const raw = r.day ?? r.week ?? r.year_month ?? r.month
+  if (!raw) return null
+  // API returns "2026-01-12 00:00:00" or "2026-01"
+  const iso = String(raw).trim().replace(' ', 'T').slice(0, 10)
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso
+  if (/^\d{4}-\d{2}$/.test(iso)) return `${iso}-01`
+  return null
+}
+
+async function fetchGoldHistory(
+  months: number,
+  groupBy: 'week' | 'day',
+  apiKey: string,
+): Promise<{ date: string; price_usd_oz: number }[]> {
   const startTimestamp = startOfWindow(months)
   const endTimestamp = Math.floor(Date.now() / 1000)
   const url = new URL(`${GOLD_API}/history`)
   url.searchParams.set('symbol', 'XAU')
   url.searchParams.set('startTimestamp', String(startTimestamp))
   url.searchParams.set('endTimestamp', String(endTimestamp))
-  url.searchParams.set('groupBy', 'month')
+  url.searchParams.set('groupBy', groupBy)
   url.searchParams.set('aggregation', 'avg')
   url.searchParams.set('orderBy', 'asc')
 
   const res = await fetch(url.toString(), {
     headers: { 'x-api-key': apiKey },
-    // Bypass Next fetch cache; we own TTL ourselves.
     cache: 'no-store',
   })
   if (!res.ok) {
@@ -87,18 +113,34 @@ async function fetchGoldHistory(months: number, apiKey: string): Promise<{ month
   if (!Array.isArray(rows)) throw new Error('gold-api history: unexpected body')
 
   return rows.map(r => {
-    const month = String(r.year_month ?? r.month ?? '').slice(0, 7)
+    const date = parseBucketDate(r)
     const price = Number(r.avg_price)
-    return { month, price_usd_oz: price }
-  }).filter(r => /^\d{4}-\d{2}$/.test(r.month) && Number.isFinite(r.price_usd_oz))
+    return date && Number.isFinite(price) ? { date, price_usd_oz: price } : null
+  }).filter((r): r is { date: string; price_usd_oz: number } => r != null)
+}
+
+/** Average weekly/daily points into YYYY-MM monthly rollups. */
+function rollupMonths(points: GoldPricePoint[]): GoldPricePoint[] {
+  const buckets = new Map<string, GoldPricePoint[]>()
+  for (const p of points) {
+    const m = p.date.slice(0, 7)
+    const arr = buckets.get(m) ?? []
+    arr.push(p)
+    buckets.set(m, arr)
+  }
+  return Array.from(buckets.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([month, rows]) => {
+      const n = rows.length
+      const price_usd_oz = rows.reduce((s, r) => s + r.price_usd_oz, 0) / n
+      const price_tsh_oz = rows.reduce((s, r) => s + r.price_tsh_oz, 0) / n
+      const price_tsh_g = rows.reduce((s, r) => s + r.price_tsh_g, 0) / n
+      return { date: `${month}-01`, price_usd_oz, price_tsh_oz, price_tsh_g }
+    })
 }
 
 async function requireAdminUser(req: NextRequest) {
   const supabase = await createClient()
-  /* Prefer Bearer from the already-logged-in browser client. Cookie-only
-     getUser() is flaky on this app because the admin panel primarily restores
-     session via the browser Supabase client (local storage + cookies), and
-     the API route is outside the /admin middleware matcher. */
   const auth = req.headers.get('authorization')
   const bearer = auth?.toLowerCase().startsWith('bearer ') ? auth.slice(7).trim() : null
   if (bearer) {
@@ -117,11 +159,14 @@ export async function GET(req: NextRequest) {
     }
 
     const months = clampMonths(req.nextUrl.searchParams.get('months'))
-    const cacheKey = `m${months}`
+    const groupBy = pickGroupBy(months)
+    const cacheKey = `m${months}:${groupBy}`
     const hit = cache.get(cacheKey)
     if (hit && hit.expires > Date.now()) {
       return NextResponse.json({
+        points: hit.points,
         months: hit.months,
+        groupBy: hit.groupBy,
         usd_to_tzs: hit.usdToTzs,
         asOf: hit.asOf,
         cached: true,
@@ -132,7 +177,9 @@ export async function GET(req: NextRequest) {
     if (!apiKey) {
       if (stale) {
         return NextResponse.json({
+          points: stale.points,
           months: stale.months,
+          groupBy: stale.groupBy,
           usd_to_tzs: stale.usdToTzs,
           asOf: stale.asOf,
           cached: true,
@@ -146,32 +193,37 @@ export async function GET(req: NextRequest) {
 
     try {
       const [history, usdToTzs] = await Promise.all([
-        fetchGoldHistory(months, apiKey),
+        fetchGoldHistory(months, groupBy, apiKey),
         fetchUsdToTzs(),
       ])
 
-      const converted: GoldMonthPrice[] = history.map(h => {
+      const points: GoldPricePoint[] = history.map(h => {
         const price_tsh_oz = h.price_usd_oz * usdToTzs
-        const price_tsh_g = price_tsh_oz / GRAMS_PER_TROY_OZ
         return {
-          month: h.month,
+          date: h.date,
           price_usd_oz: h.price_usd_oz,
           price_tsh_oz,
-          price_tsh_g,
+          price_tsh_g: price_tsh_oz / GRAMS_PER_TROY_OZ,
         }
       })
 
+      const monthsRollup = rollupMonths(points)
+
       const entry: CacheEntry = {
         expires: Date.now() + CACHE_TTL_MS,
-        months: converted,
+        points,
+        months: monthsRollup,
         usdToTzs,
         asOf: new Date().toISOString(),
+        groupBy,
       }
       cache.set(cacheKey, entry)
       stale = entry
 
       return NextResponse.json({
-        months: converted,
+        points,
+        months: monthsRollup,
+        groupBy,
         usd_to_tzs: usdToTzs,
         asOf: entry.asOf,
         cached: false,
@@ -180,7 +232,9 @@ export async function GET(req: NextRequest) {
       console.error('[gold/history] upstream failed:', upstream)
       if (stale) {
         return NextResponse.json({
+          points: stale.points,
           months: stale.months,
+          groupBy: stale.groupBy,
           usd_to_tzs: stale.usdToTzs,
           asOf: stale.asOf,
           cached: true,
