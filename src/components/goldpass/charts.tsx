@@ -136,8 +136,11 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
   const hasGold = !!gold && gold.values.some(v => v != null)
   const goldColor = gold?.color ?? GOLD_OVERLAY
   const goldOpacity = gold?.strokeOpacity ?? 0.42
+  /* Solid wash under the gold path: same gold, 60% less than full opacity → 0.4 */
+  const goldFillOpacity = 0.4
   const goldName = gold?.name ?? 'Gold (market)'
   const dense = data.length > 14
+  const goldFillId = `gp-gold-fill-${goldColor.replace('#', '')}`
   const rows = data.map((d, i) => ({
     ...d,
     gold: gold?.values[i] ?? null,
@@ -151,6 +154,11 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
           <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={color} stopOpacity={0.12} />
             <stop offset="100%" stopColor={color} stopOpacity={0} />
+          </linearGradient>
+          {/* Uniform gold fill (not a fade): same hue under the line at reduced opacity */}
+          <linearGradient id={goldFillId} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={goldColor} stopOpacity={goldFillOpacity} />
+            <stop offset="100%" stopColor={goldColor} stopOpacity={goldFillOpacity} />
           </linearGradient>
         </defs>
         <CartesianGrid vertical={false} stroke={GRID} />
@@ -168,7 +176,8 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
         <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
         {hasGold && (
           <Area type="monotone" dataKey="gold" name={goldName} stroke={goldColor} strokeWidth={1.5}
-            strokeOpacity={goldOpacity} fill="none" dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: 1 }}
+            strokeOpacity={goldOpacity} fill={`url(#${goldFillId})`}
+            dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: 1 }}
             isAnimationActive={false} connectNulls />
         )}
         {/* stepAfter: monthly financials held flat across dense gold buckets */}
