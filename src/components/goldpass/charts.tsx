@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts'
 
 // Reserved status ink for deltas/meters: good vs bad only, never decoration.
@@ -22,8 +22,10 @@ const WARN = '#B8770A'
    presentation attributes, which don't resolve CSS custom properties. */
 export const ACCENT = '#2A78D6'
 export const SERIES_COLORS = ['#2A78D6', '#0D8F5F', '#B8770A', '#4A3AA7', '#D63A39', '#C85018']
-const GRID = 'rgba(0,0,0,.08)'
+const GRID = 'rgba(60,50,30,.08)'
 const AXIS = '#98989E'
+/* Numerals wear the mono stack (mirrors --font-mono in admin.css). */
+const MONO = 'ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace'
 
 function compact(n: number): string {
   const abs = Math.abs(n)
@@ -39,14 +41,27 @@ function ChartTooltip({ active, payload, label, prefix = '' }: {
   active?: boolean; payload?: TooltipEntry[]; label?: string; prefix?: string
 }) {
   if (!active || !payload?.length) return null
+  /* Single series: small gray label over one big mono value. Multi-series:
+     the label plus a swatch-name-value row per series, values in mono. */
+  if (payload.length === 1) {
+    const p = payload[0]
+    return (
+      <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 'var(--r-sm)', padding: '8px 12px', boxShadow: 'var(--s-sm)' }}>
+        <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 2 }}>{label}</div>
+        <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--label-1)', fontFamily: MONO, fontVariantNumeric: 'tabular-nums' }}>
+          {prefix}{Math.round(p.value ?? 0).toLocaleString()}
+        </div>
+      </div>
+    )
+  }
   return (
-    <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 8, padding: '8px 10px', boxShadow: 'var(--s-sm)', fontSize: 12 }}>
-      <div style={{ color: 'var(--label-3)', marginBottom: payload.length > 1 ? 6 : 2 }}>{label}</div>
+    <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 'var(--r-sm)', padding: '8px 12px', boxShadow: 'var(--s-sm)', fontSize: 12 }}>
+      <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 6 }}>{label}</div>
       {payload.map(p => (
         <div key={String(p.dataKey)} style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 150 }}>
           <span style={{ width: 8, height: 8, borderRadius: 2, background: p.color, flexShrink: 0 }} />
           <span style={{ color: 'var(--label-2)' }}>{p.name}</span>
-          <span style={{ marginLeft: 'auto', fontWeight: 600, color: 'var(--label-1)', fontVariantNumeric: 'tabular-nums' }}>
+          <span style={{ marginLeft: 'auto', fontWeight: 600, color: 'var(--label-1)', fontFamily: MONO, fontVariantNumeric: 'tabular-nums' }}>
             {prefix}{Math.round(p.value ?? 0).toLocaleString()}
           </span>
         </div>
@@ -60,7 +75,8 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
 }
 
 /* Single-series line (e.g. revenue trend). One accent, no legend: the card
-   title names the series. Hairline recessive grid, compact y-ticks, tooltip. */
+   title names the series. Straight segments (not a spline), a faint gradient
+   wash under the line, hairline recessive grid, mono ticks, dashed cursor. */
 export function LineTrendChart({ data, prefix = '', color = ACCENT, height = 220, emptyLabel }: {
   data: { label: string; value: number }[]
   prefix?: string
@@ -69,15 +85,23 @@ export function LineTrendChart({ data, prefix = '', color = ACCENT, height = 220
   emptyLabel?: string
 }) {
   if (data.length === 0) return <EmptyState label={emptyLabel} />
+  const gradId = `gp-trend-${color.replace('#', '')}`
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <LineChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
+      <AreaChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
+        <defs>
+          <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity={0.12} />
+            <stop offset="100%" stopColor={color} stopOpacity={0} />
+          </linearGradient>
+        </defs>
         <CartesianGrid vertical={false} stroke={GRID} />
-        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS }} />
-        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS }} />
-        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: GRID }} />
-        <Line type="monotone" dataKey="value" name="Value" stroke={color} strokeWidth={2} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
-      </LineChart>
+        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
+        <Area type="linear" dataKey="value" name="Value" stroke={color} strokeWidth={2}
+          fill={`url(#${gradId})`} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
+      </AreaChart>
     </ResponsiveContainer>
   )
 }
@@ -97,12 +121,12 @@ export function MultiLineChart({ data, series, prefix = '', height = 260, emptyL
     <ResponsiveContainer width="100%" height={height}>
       <LineChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
         <CartesianGrid vertical={false} stroke={GRID} />
-        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS }} />
-        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS }} />
-        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: GRID }} />
+        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
         <Legend iconType="plainline" wrapperStyle={{ fontSize: 12, paddingTop: 8 }} />
         {series.map((s, i) => (
-          <Line key={s.key} type="monotone" dataKey={s.key} name={s.name}
+          <Line key={s.key} type="linear" dataKey={s.key} name={s.name}
             stroke={s.color ?? SERIES_COLORS[i % SERIES_COLORS.length]}
             strokeWidth={2} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
         ))}
@@ -126,23 +150,24 @@ export function BarCompareChart({ data, prefix = '', color = ACCENT, height = 20
     <ResponsiveContainer width="100%" height={height}>
       <BarChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
         <CartesianGrid vertical={false} stroke={GRID} />
-        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS }} />
-        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS }} />
-        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ fill: 'rgba(0,0,0,.04)' }} />
+        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ fill: 'rgba(60,50,30,.04)' }} />
         <Bar dataKey="value" name="Value" fill={color} radius={[4, 4, 0, 0]} maxBarSize={40} isAnimationActive={false} />
       </BarChart>
     </ResponsiveContainer>
   )
 }
 
-/* Stat tile: value + optional signed delta (colour = direction times whether up
-   is good, a reserved status use) + optional sparkline. The value wears ink;
-   only the delta and the last spark point carry colour. */
-export function StatTile({ label, value, prefix = '', delta, spark, goodWhenUp = true }: {
+/* Stat tile: label over a big mono value, delta (colour = direction times
+   whether up is good, a reserved status use) with a "vs last month" sublabel,
+   optional sparkline. The value wears ink; only the delta carries colour. */
+export function StatTile({ label, value, prefix = '', delta, deltaLabel = 'vs last month', spark, goodWhenUp = true }: {
   label: string
   value: number
   prefix?: string
   delta?: number            // signed percentage vs previous period
+  deltaLabel?: string       // context line shown after the delta
   spark?: number[]          // trailing series for the sparkline
   goodWhenUp?: boolean      // whether an increase is good (revenue) or bad (cost)
 }) {
@@ -151,26 +176,80 @@ export function StatTile({ label, value, prefix = '', delta, spark, goodWhenUp =
   const sparkData = (spark ?? []).map((v, i) => ({ i, v }))
   return (
     <div className="card">
-      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 8 }}>
-        <div style={{ minWidth: 0 }}>
-          <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--label-1)' }}>{prefix}{Math.round(value).toLocaleString()}</div>
-          <div style={{ fontSize: 11, color: 'var(--label-3)', marginTop: 3 }}>{label}</div>
+      <div style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 4 }}>{label}</div>
+      <div className="stat-value-sm">{prefix}{Math.round(value).toLocaleString()}</div>
+      {delta != null && (
+        <div style={{ fontSize: 11, color: 'var(--label-4)', marginTop: 4 }}>
+          <span className="num" style={{ fontWeight: 600, color: deltaColor }}>
+            {delta > 0 ? '↑' : delta < 0 ? '↓' : ''}{Math.abs(delta).toFixed(0)}%
+          </span>{' '}{deltaLabel}
         </div>
-        {delta != null && (
-          <div style={{ fontSize: 12, fontWeight: 600, color: deltaColor, flexShrink: 0, fontVariantNumeric: 'tabular-nums' }}>
-            {delta > 0 ? '↑' : delta < 0 ? '↓' : ''} {Math.abs(delta).toFixed(0)}%
-          </div>
-        )}
-      </div>
+      )}
       {sparkData.length > 1 && (
         <div style={{ height: 34, marginTop: 8 }}>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={sparkData} margin={{ top: 4, right: 2, bottom: 0, left: 2 }}>
-              <Line type="monotone" dataKey="v" stroke="var(--label-4)" strokeWidth={1.5} dot={false} isAnimationActive={false} />
+              <Line type="linear" dataKey="v" stroke="var(--label-4)" strokeWidth={1.5} dot={false} isAnimationActive={false} />
             </LineChart>
           </ResponsiveContainer>
         </div>
       )}
+    </div>
+  )
+}
+
+/* Metric strip: the hero chart's attached KPI row. Each cell is a button:
+   gray label, big mono value, delta + context line. The active cell wears a
+   2px ink bar across its top (tab affordance). Values are preformatted
+   strings so callers control prefix/units. Collapses 4 -> 2x2 via grid-kpi
+   breakpoints (grid-template-columns set inline to divide evenly). */
+export type MetricStripItem = {
+  key: string
+  label: string
+  value: string
+  delta?: number
+  deltaLabel?: string
+  goodWhenUp?: boolean
+}
+
+export function MetricStrip({ metrics, active, onSelect }: {
+  metrics: MetricStripItem[]
+  active: string
+  onSelect: (key: string) => void
+}) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(150px, 1fr))`, borderTop: '1px solid var(--sep)' }}>
+      {metrics.map(m => {
+        const isActive = m.key === active
+        const good = m.delta != null && (m.delta >= 0 ? (m.goodWhenUp ?? true) : !(m.goodWhenUp ?? true))
+        const deltaColor = m.delta == null || m.delta === 0 ? 'var(--label-4)' : good ? GOOD : BAD
+        return (
+          <button
+            key={m.key}
+            onClick={() => onSelect(m.key)}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left',
+              padding: '14px 16px 12px',
+              borderTop: isActive ? '2px solid var(--label-1)' : '2px solid transparent',
+              marginTop: -1,
+              borderRight: '1px solid var(--sep)',
+              fontFamily: 'inherit',
+            }}
+          >
+            <div style={{ fontSize: 12, color: isActive ? 'var(--label-1)' : 'var(--label-3)', fontWeight: isActive ? 600 : 400, marginBottom: 6 }}>
+              {m.label}
+            </div>
+            <div className="stat-value">{m.value}</div>
+            {m.delta != null && (
+              <div style={{ fontSize: 11, color: 'var(--label-4)', marginTop: 4 }}>
+                <span className="num" style={{ fontWeight: 600, color: deltaColor }}>
+                  {m.delta > 0 ? '↑' : m.delta < 0 ? '↓' : ''}{Math.abs(m.delta).toFixed(1)}%
+                </span>{' '}{m.deltaLabel ?? 'vs last month'}
+              </div>
+            )}
+          </button>
+        )
+      })}
     </div>
   )
 }
