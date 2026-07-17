@@ -31,11 +31,15 @@ function compactTsh(n: number): string {
   return 'TSh ' + Math.round(n).toLocaleString()
 }
 
+const RANGES = [{ id: 3, label: '3M' }, { id: 6, label: '6M' }, { id: 12, label: '12M' }] as const
+
 export default function DashboardPage() {
   const router = useRouter()
   const [opsKpis, setOpsKpis] = useState<OperationsKpis | null>(null)
   const [opsFinancials, setOpsFinancials] = useState<FinancialSummaryRow[]>([])
   const [activeMetric, setActiveMetric] = useState('revenue')
+  const [rangeMonths, setRangeMonths] = useState<number>(6)
+  const [compareOn, setCompareOn] = useState(false)
 
   const [tanks, setTanks] = useState<TankRow[]>([])
   const [tankColors, setTankColors] = useState<Record<string, TankLatestColor>>({})
@@ -49,7 +53,7 @@ export default function DashboardPage() {
   useEffect(() => {
     let alive = true
     Promise.all([
-      getOperationsKpis(), getFinancialSummary(6),
+      getOperationsKpis(), getFinancialSummary(12),
       getTanks(), getLatestTankColors(), getTankRoundStatus(), getPits(), getPitMachinery(),
       getExpansionSignal(), getRoundFaultFlags(),
     ]).then(([k, f, tk, tc, rs, pt, pm, es, ff]) => {
@@ -67,15 +71,25 @@ export default function DashboardPage() {
   const profitSeries = opsFinancials.map(f => f.profit_tsh)
   const projectedProfit = opsFinancials.length > 0 ? projectNextMonthProfit(opsFinancials) : 0
 
-  /* Hero chart: one series at a time, switched by the metric strip below it.
-     "Projected" charts the profit history its projection is derived from. */
-  const heroSeries: Record<string, number[]> = {
-    revenue: revSeries, cost: costSeries, profit: profitSeries, projected: profitSeries,
+  const metricField: Record<string, (f: FinancialSummaryRow) => number> = {
+    revenue: f => f.revenue_tsh, cost: f => f.cost_tsh, profit: f => f.profit_tsh, projected: f => f.profit_tsh,
   }
-  const heroData = opsFinancials.map((f, i) => ({
-    label: monthLabel(f.month),
-    value: (heroSeries[activeMetric] ?? revSeries)[i] ?? 0,
-  }))
+  const pick = metricField[activeMetric] ?? metricField.revenue
+
+  /* The active window is the last `rangeMonths` rows; "compare" is the window
+     immediately before it, aligned onto the active window's positions as a
+     muted dashed line. */
+  const windowStart = Math.max(0, opsFinancials.length - rangeMonths)
+  const activeRows = opsFinancials.slice(windowStart)
+  const prevRows = opsFinancials.slice(Math.max(0, windowStart - rangeMonths), windowStart)
+  const heroData = activeRows.map(f => ({ label: monthLabel(f.month), value: pick(f) }))
+  const compareArr = compareOn
+    ? activeRows.map((_, i) => {
+        const p = prevRows[prevRows.length - activeRows.length + i]
+        return p ? pick(p) : null
+      })
+    : undefined
+
   const heroMetrics: MetricStripItem[] = [
     { key: 'revenue', label: 'Revenue (this month)', value: compactTsh(current?.revenue_tsh ?? 0), delta: pctDelta(revSeries), goodWhenUp: true },
     { key: 'cost', label: 'Cost (this month)', value: compactTsh(current?.cost_tsh ?? 0), delta: pctDelta(costSeries), goodWhenUp: false },
@@ -128,13 +142,22 @@ export default function DashboardPage() {
       )}
 
       {/* Hero: one trend chart, the KPI metrics attached below as tabs.
-          Clicking a metric switches the charted series. */}
+          Clicking a metric switches the charted series. Range + compare
+          controls scope the window and overlay the previous period. */}
       <div className="card" style={{ marginBottom: 20, paddingBottom: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12, flexWrap: 'wrap' }}>
           <div className="section-title" style={{ marginBottom: 0, flex: 1 }}>Performance trend</div>
+          <div className="seg">
+            {RANGES.map(r => (
+              <button key={r.id} className={`seg-btn${rangeMonths === r.id ? ' active' : ''}`} onClick={() => setRangeMonths(r.id)}>{r.label}</button>
+            ))}
+          </div>
+          <button className={`chip-toggle${compareOn ? ' on' : ''}`} onClick={() => setCompareOn(v => !v)}>
+            <span className="dot" /> Compare
+          </button>
           <button className="btn-text" onClick={() => router.push('/admin/operations/overview')}>View Operations →</button>
         </div>
-        <LineTrendChart data={heroData} prefix="TSh " height={260}
+        <LineTrendChart data={heroData} compare={compareArr} compareName="Previous period" prefix="TSh " height={260}
           emptyLabel="No financial data yet, run the operations financial summary migration to populate this." />
         <div style={{ margin: '12px -20px 0' }}>
           <MetricStrip metrics={heroMetrics} active={activeMetric} onSelect={setActiveMetric} />

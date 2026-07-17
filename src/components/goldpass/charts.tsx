@@ -76,9 +76,13 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
 
 /* Single-series line (e.g. revenue trend). One accent, no legend: the card
    title names the series. Straight segments (not a spline), a faint gradient
-   wash under the line, hairline recessive grid, mono ticks, dashed cursor. */
-export function LineTrendChart({ data, prefix = '', color = ACCENT, height = 220, emptyLabel }: {
+   wash under the line, hairline recessive grid, mono ticks, dashed cursor.
+   Optional `compare` overlays the previous period as a muted dashed line
+   (aligned to `data` by index) so the current window reads against it. */
+export function LineTrendChart({ data, compare, compareName = 'Previous', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
   data: { label: string; value: number }[]
+  compare?: (number | null)[]
+  compareName?: string
   prefix?: string
   color?: string
   height?: number
@@ -86,9 +90,11 @@ export function LineTrendChart({ data, prefix = '', color = ACCENT, height = 220
 }) {
   if (data.length === 0) return <EmptyState label={emptyLabel} />
   const gradId = `gp-trend-${color.replace('#', '')}`
+  const hasCompare = !!compare && compare.some(v => v != null)
+  const rows = data.map((d, i) => ({ ...d, compare: compare?.[i] ?? null }))
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <AreaChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
+      <AreaChart data={rows} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
         <defs>
           <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={color} stopOpacity={0.12} />
@@ -99,6 +105,10 @@ export function LineTrendChart({ data, prefix = '', color = ACCENT, height = 220
         <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
+        {hasCompare && (
+          <Area type="linear" dataKey="compare" name={compareName} stroke={AXIS} strokeWidth={1.5}
+            strokeDasharray="4 3" fill="none" dot={false} activeDot={{ r: 3 }} isAnimationActive={false} connectNulls />
+        )}
         <Area type="linear" dataKey="value" name="Value" stroke={color} strokeWidth={2}
           fill={`url(#${gradId})`} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
       </AreaChart>
