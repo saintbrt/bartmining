@@ -119,9 +119,11 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
    title names the series. Straight segments (not a spline), a faint gradient
    wash under the line, hairline recessive grid, mono ticks, dashed cursor.
    Optional `gold` overlays market gold as a very light, low-opacity line
-   (scaled into the primary domain for geometry; raw TSh/g in tooltip). */
+   (scaled into the primary domain for geometry; raw TSh/g in tooltip).
+   Dense weekly/daily gold uses many more points than monthly sales — primary
+   is stepped (same month value) while gold zigzags. */
 export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
-  data: { label: string; value: number }[]
+  data: { label: string; value: number; tick?: boolean }[]
   gold?: ChartGoldOverlay | null
   valueName?: string
   prefix?: string
@@ -134,7 +136,11 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
   const hasGold = !!gold && gold.values.some(v => v != null)
   const goldColor = gold?.color ?? GOLD_OVERLAY
   const goldOpacity = gold?.strokeOpacity ?? 0.42
+  /* Solid wash under the gold path: same gold, 60% less than full opacity → 0.4 */
+  const goldFillOpacity = 0.4
   const goldName = gold?.name ?? 'Gold (market)'
+  const dense = data.length > 14
+  const goldFillId = `gp-gold-fill-${goldColor.replace('#', '')}`
   const rows = data.map((d, i) => ({
     ...d,
     gold: gold?.values[i] ?? null,
@@ -149,17 +155,33 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
             <stop offset="0%" stopColor={color} stopOpacity={0.12} />
             <stop offset="100%" stopColor={color} stopOpacity={0} />
           </linearGradient>
+          {/* Uniform gold fill (not a fade): same hue under the line at reduced opacity */}
+          <linearGradient id={goldFillId} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={goldColor} stopOpacity={goldFillOpacity} />
+            <stop offset="100%" stopColor={goldColor} stopOpacity={goldFillOpacity} />
+          </linearGradient>
         </defs>
         <CartesianGrid vertical={false} stroke={GRID} />
-        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <XAxis
+          dataKey="label"
+          tickLine={false}
+          axisLine={{ stroke: GRID }}
+          tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }}
+          /* Dense weekly series only labels month starts (empty string elsewhere);
+             minTickGap skips the blanks so ticks stay readable. */
+          interval="preserveStartEnd"
+          minTickGap={dense ? 24 : 8}
+        />
         <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
         {hasGold && (
-          <Area type="linear" dataKey="gold" name={goldName} stroke={goldColor} strokeWidth={1.5}
-            strokeOpacity={goldOpacity} fill="none" dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: 1 }}
+          <Area type="monotone" dataKey="gold" name={goldName} stroke={goldColor} strokeWidth={1.5}
+            strokeOpacity={goldOpacity} fill={`url(#${goldFillId})`}
+            dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: 1 }}
             isAnimationActive={false} connectNulls />
         )}
-        <Area type="linear" dataKey="value" name={valueName} stroke={color} strokeWidth={2}
+        {/* stepAfter: monthly financials held flat across dense gold buckets */}
+        <Area type={dense ? 'stepAfter' : 'linear'} dataKey="value" name={valueName} stroke={color} strokeWidth={2}
           fill={`url(#${gradId})`} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
       </AreaChart>
     </ResponsiveContainer>
