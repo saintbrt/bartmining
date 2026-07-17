@@ -118,10 +118,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         <div className="main-area">
+          {/* Mobile-only hamburger bar; no desktop topbar, each page's own
+              heading is the title. */}
           <div className="topbar">
             <button className="sb-hamburger" onClick={() => setSidebarOpen(o => !o)} aria-label="Toggle menu">☰</button>
-            <div className="topbar-title">GoldPass</div>
-            <div className="topbar-sub">/ {curSection}{curSubSection ? ` / ${curSubSection}` : ''}</div>
           </div>
           {children}
         </div>
