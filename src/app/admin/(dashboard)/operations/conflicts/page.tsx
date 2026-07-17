@@ -31,9 +31,9 @@ export default function ConflictsPage() {
 
   return (
     <div className="content content-pad">
-      <div style={{ marginBottom: 24 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Sync Conflicts</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Duplicate or conflicting offline submissions from the mobile app that need manual resolution.</p>
+      <div style={{ marginBottom: 20 }}>
+        <h2 className="page-title">Sync Conflicts</h2>
+        <p className="page-sub">Duplicate or conflicting offline submissions from the mobile app that need manual resolution.</p>
       </div>
 
       <div className="card">
@@ -46,11 +46,11 @@ export default function ConflictsPage() {
             hideColumns={['id']}
             actions={row => row.resolution !== 'pending' ? null : (
               <div style={{ display: 'flex', gap: 6 }}>
-                <button className="btn-icon" style={{ fontSize: 10 }} disabled={resolvingId === row.id}
+                <button className="btn-text" disabled={resolvingId === row.id}
                   onClick={() => resolve(row.id as string, 'keep_client')}>Keep mobile submission</button>
-                <button className="btn-icon" style={{ fontSize: 10 }} disabled={resolvingId === row.id}
+                <button className="btn-text" disabled={resolvingId === row.id}
                   onClick={() => resolve(row.id as string, 'keep_server')}>Keep existing</button>
-                <button className="btn-icon" style={{ fontSize: 10, color: 'var(--red)' }} disabled={resolvingId === row.id}
+                <button className="btn-text btn-text-danger" disabled={resolvingId === row.id}
                   onClick={() => resolve(row.id as string, 'dismissed')}>Dismiss</button>
               </div>
             )}

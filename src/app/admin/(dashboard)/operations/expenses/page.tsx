@@ -69,9 +69,9 @@ export default function ExpensesOversightPage() {
 
   return (
     <div className="content content-pad">
-      <div style={{ marginBottom: 24 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Expenses</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Oversight of expense entries submitted from the field.</p>
+      <div style={{ marginBottom: 20 }}>
+        <h2 className="page-title">Expenses</h2>
+        <p className="page-sub">Oversight of expense entries submitted from the field.</p>
       </div>
 
       <div style={{ display: 'flex', gap: 6, marginBottom: 16, justifyContent: 'space-between', flexWrap: 'wrap' }}>
@@ -116,7 +116,7 @@ export default function ExpensesOversightPage() {
                   <tr><td colSpan={10} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No expenses found for this filter.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.id}>
-                    <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleDateString()}</td>
+                    <td data-label="Date" className="num" style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleDateString()}</td>
                     <td data-label="Category">{r.category_name ?? '-'}</td>
                     <td data-label="Payee">{r.payee_name ?? '-'}{r.payee_role ? <span style={{ color: 'var(--label-4)' }}> ({r.payee_role})</span> : null}</td>
                     <td data-label="Details" style={{ maxWidth: 220 }} title={r.notes ?? ''}>
@@ -125,7 +125,7 @@ export default function ExpensesOversightPage() {
                     </td>
                     <td data-label="Cost centre">{r.cost_centre_name ?? '-'}</td>
                     <td data-label="Paid by">{r.entered_by_name ?? '-'}</td>
-                    <td data-label="Amount (TSh)" style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
+                    <td data-label="Amount (TSh)" className="num" style={{ fontWeight: 600 }}>{r.amount_tsh.toLocaleString()}</td>
                     <td data-label="Status"><span className={`badge ${STATUS_BADGE[r.status] ?? 'badge-gray'}`}>{r.status}</span></td>
                     <td data-label="Proof">
                       {r.proof_image_url ? (
@@ -135,9 +135,9 @@ export default function ExpensesOversightPage() {
                     <td>
                       {r.status === 'pending' && (
                         <div style={{ display: 'flex', gap: 6 }}>
-                          <button className="btn-icon" style={{ fontSize: 10, color: 'var(--green)' }} disabled={actingId === r.id}
+                          <button className="btn-text btn-text-success" disabled={actingId === r.id}
                             onClick={() => act(r, 'approve')}>Approve</button>
-                          <button className="btn-icon" style={{ fontSize: 10, color: 'var(--red)' }} disabled={actingId === r.id}
+                          <button className="btn-text btn-text-danger" disabled={actingId === r.id}
                             onClick={() => act(r, 'reject')}>Reject</button>
                         </div>
                       )}
