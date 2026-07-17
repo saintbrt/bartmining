@@ -55,7 +55,7 @@ RETURNS TABLE (
   current_month AS (
     SELECT cost_per_gram_tsh FROM monthly_efficiency ORDER BY month DESC LIMIT 1
   ),
-  trailing AS (
+  trailing_avg AS (
     SELECT AVG(cost_per_gram_tsh) AS avg_cost_per_gram_tsh
     FROM monthly_efficiency
     WHERE month < (SELECT MAX(month) FROM monthly_efficiency) AND cost_per_gram_tsh IS NOT NULL
@@ -65,12 +65,12 @@ RETURNS TABLE (
     ts.tanks_clear,
     ROUND(100.0 * (ts.tanks_total - ts.tanks_clear) / NULLIF(ts.tanks_total, 0), 1) AS utilization_pct,
     ROUND((SELECT cost_per_gram_tsh FROM current_month), 2) AS current_cost_per_gram_tsh,
-    ROUND((SELECT avg_cost_per_gram_tsh FROM trailing), 2) AS trailing_avg_cost_per_gram_tsh,
+    ROUND((SELECT avg_cost_per_gram_tsh FROM trailing_avg), 2) AS trailing_avg_cost_per_gram_tsh,
     (
       (100.0 * (ts.tanks_total - ts.tanks_clear) / NULLIF(ts.tanks_total, 0)) >= 80
       AND (SELECT cost_per_gram_tsh FROM current_month) IS NOT NULL
-      AND (SELECT avg_cost_per_gram_tsh FROM trailing) IS NOT NULL
-      AND (SELECT cost_per_gram_tsh FROM current_month) <= (SELECT avg_cost_per_gram_tsh FROM trailing)
+      AND (SELECT avg_cost_per_gram_tsh FROM trailing_avg) IS NOT NULL
+      AND (SELECT cost_per_gram_tsh FROM current_month) <= (SELECT avg_cost_per_gram_tsh FROM trailing_avg)
     ) AS signal
   FROM tank_state ts;
 $$ LANGUAGE sql STABLE;
