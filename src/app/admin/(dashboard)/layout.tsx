@@ -106,7 +106,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
           <div className="sb-foot">
             <button
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#6B7A9A', fontSize: 12, textAlign: 'left', padding: '4px 0', marginBottom: 6 }}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--label-3)', fontSize: 12, textAlign: 'left', padding: '4px 0', marginBottom: 6 }}
               onClick={handleSignOut}>
               Sign out
             </button>
@@ -118,7 +118,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         <div className="main-area">
-          <div className="topbar" style={curSection === 'dashboard' ? { display: 'none' } : {}}>
+          <div className="topbar">
             <button className="sb-hamburger" onClick={() => setSidebarOpen(o => !o)} aria-label="Toggle menu">☰</button>
             <div className="topbar-title">GoldPass</div>
             <div className="topbar-sub">/ {curSection}{curSubSection ? ` / ${curSubSection}` : ''}</div>

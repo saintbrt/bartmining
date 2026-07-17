@@ -32,9 +32,9 @@ export function TankStatusBoard({ rows, loading }: { rows: TankRoundStatusRow[];
           {rows.map(r => (
             <tr key={r.tank_id}>
               <td data-label="Tank">{r.tank_code}</td>
-              <td data-label="Round">{r.round_number ?? <span style={{ color: 'var(--label-4)' }}>Idle</span>}</td>
-              <td data-label="Started">{r.start_date ?? '—'}</td>
-              <td data-label="Days open">
+              <td data-label="Round" className="num">{r.round_number ?? <span style={{ color: 'var(--label-4)' }}>Idle</span>}</td>
+              <td data-label="Started" className="num">{r.start_date ?? '—'}</td>
+              <td data-label="Days open" className="num">
                 {r.days_open != null ? (
                   <span style={{ color: r.is_overdue ? 'var(--red)' : 'var(--label-1)', fontWeight: r.is_overdue ? 600 : 400 }}>
                     {r.days_open}{r.is_overdue ? ' (overdue)' : ''}
@@ -44,7 +44,7 @@ export function TankStatusBoard({ rows, loading }: { rows: TankRoundStatusRow[];
               <td data-label="Last color test">
                 {r.latest_color ? `${COLOR_LABEL[r.latest_color]} (${r.latest_test_date})` : <span style={{ color: 'var(--label-4)' }}>No test</span>}
               </td>
-              <td data-label="Days since test">
+              <td data-label="Days since test" className="num">
                 {r.days_since_last_test != null ? (
                   <span style={{ color: r.days_since_last_test >= 5 ? 'var(--orange)' : 'var(--label-1)', fontWeight: r.days_since_last_test >= 5 ? 600 : 400 }}>
                     {r.days_since_last_test}{r.days_since_last_test >= 5 ? ' (stale)' : ''}

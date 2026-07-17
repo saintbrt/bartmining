@@ -19,9 +19,9 @@ export default function AuditLogPage() {
 
   return (
     <div className="content content-pad">
-      <div style={{ marginBottom: 24 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Audit Log</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Before/after history of changes to operational records.</p>
+      <div style={{ marginBottom: 20 }}>
+        <h2 className="page-title">Audit Log</h2>
+        <p className="page-sub">Before/after history of changes to operational records.</p>
       </div>
 
       <div style={{ marginBottom: 16 }}>
@@ -57,10 +57,10 @@ export default function AuditLogPage() {
                     <tr>
                       <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(r.created_at).toLocaleString()}</td>
                       <td data-label="Entity type">{r.entity_type}</td>
-                      <td data-label="Entity ID" style={{ fontFamily: 'monospace', fontSize: 11 }}>{r.entity_id ?? '-'}</td>
+                      <td data-label="Entity ID" className="num" style={{ fontSize: 11 }}>{r.entity_id ?? '-'}</td>
                       <td data-label="Action">{r.action}</td>
                       <td>
-                        <button className="btn-icon" style={{ fontSize: 10 }}
+                        <button className="btn-text"
                           onClick={() => setExpandedId(expandedId === r.id ? null : r.id)}>
                           {expandedId === r.id ? 'Hide' : 'Diff'}
                         </button>

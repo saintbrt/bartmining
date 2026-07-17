@@ -42,13 +42,13 @@ export default function InventoryOversightPage() {
 
   return (
     <div className="content content-pad">
-      <div style={{ marginBottom: 24 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Inventory</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Stock levels against minimum thresholds, and open stock alerts from the field.</p>
+      <div style={{ marginBottom: 20 }}>
+        <h2 className="page-title">Inventory</h2>
+        <p className="page-sub">Stock levels against minimum thresholds, and open stock alerts from the field.</p>
       </div>
 
       <div className="card" style={{ marginBottom: 20 }}>
-        <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 12 }}>Stock levels</div>
+        <div className="section-title">Stock levels</div>
         {loading ? (
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
@@ -70,7 +70,7 @@ export default function InventoryOversightPage() {
                   <tr key={`${r.item_id}-${r.warehouse_id}`}>
                     <td data-label="Item">{r.item_name}</td>
                     <td data-label="Warehouse">{r.warehouse_name}</td>
-                    <td data-label="Quantity" style={{ fontWeight: 600 }}>{r.quantity.toLocaleString()}</td>
+                    <td data-label="Quantity" className="num" style={{ fontWeight: 600 }}>{r.quantity.toLocaleString()}</td>
                     <td data-label="Minimum" style={{ color: 'var(--label-4)' }}>{r.effective_minimum_qty.toLocaleString()}</td>
                     <td data-label="Status">
                       {r.is_below_minimum
@@ -109,7 +109,7 @@ export default function InventoryOversightPage() {
                   <tr><td colSpan={6} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No alerts yet.</td></tr>
                 ) : alerts.map(a => (
                   <tr key={a.id}>
-                    <td data-label="Date" style={{ color: 'var(--label-4)' }}>{new Date(a.created_at).toLocaleDateString()}</td>
+                    <td data-label="Date" className="num" style={{ color: 'var(--label-4)' }}>{new Date(a.created_at).toLocaleDateString()}</td>
                     <td data-label="Item">{a.item_name ?? '-'}</td>
                     <td data-label="Type">{a.alert_type}</td>
                     <td data-label="Message">{a.message ?? '-'}</td>
@@ -120,7 +120,7 @@ export default function InventoryOversightPage() {
                     </td>
                     <td>
                       {a.status === 'open' && (
-                        <button className="btn-icon" style={{ fontSize: 10 }} disabled={ackingId === a.id}
+                        <button className="btn-text" disabled={ackingId === a.id}
                           onClick={() => acknowledge(a.id)}>Acknowledge</button>
                       )}
                     </td>
@@ -132,7 +132,7 @@ export default function InventoryOversightPage() {
         )}
       </div>
 
-      <div style={{ marginBottom: 24 }}>
+      <div style={{ marginBottom: 20 }}>
         <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>Configuration</h3>
         <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 12 }}>Items and warehouses stock levels are tracked against.</p>
         <div style={{ display: 'flex', gap: 6, marginBottom: 16 }}>

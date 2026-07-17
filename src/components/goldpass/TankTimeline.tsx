@@ -86,7 +86,7 @@ export function TankTimeline({
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: 'var(--label-4)', marginBottom: 6, paddingLeft: 54 }}>
+      <div className="num" style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: 'var(--label-4)', marginBottom: 6, paddingLeft: 54 }}>
         <span>{new Date(domainStart).toISOString().slice(0, 10)}</span>
         <span>today</span>
       </div>

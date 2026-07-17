@@ -56,8 +56,8 @@ export default function EntityCrudCard({ entity, title }: { entity: SimpleEntity
           {entity.fields.map(f => (
             <input
               key={f.key}
-              className="input"
-              style={{ flex: 1, minWidth: 130, fontSize: 12 }}
+              className="input input-sm"
+              style={{ flex: 1, minWidth: 130 }}
               type={f.numeric ? 'number' : 'text'}
               placeholder={f.label + (f.required ? ' *' : '')}
               value={form[f.key] ?? ''}
@@ -77,7 +77,7 @@ export default function EntityCrudCard({ entity, title }: { entity: SimpleEntity
             rows={rows}
             emptyLabel={`No ${(title ?? entity.label).toLowerCase()} yet.`}
             actions={row => (
-              <button className="btn-icon" style={{ fontSize: 10, color: 'var(--red)' }}
+              <button className="btn-text btn-text-danger"
                 onClick={() => remove(row.id as string)}>Delete</button>
             )}
           />

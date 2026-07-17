@@ -1,32 +1,9 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getOperationsKpis, getFinancialSummary, projectNextMonth, type OperationsKpis, type FinancialSummaryRow } from '@/lib/goldpass/erp'
-import { LineTrendChart, BarCompareChart } from '@/components/goldpass/charts'
-
-function Counter({ target, prefix = '', suffix = '' }: { target: number; prefix?: string; suffix?: string }) {
-  const [val, setVal] = useState(0)
-  const ref = useRef<HTMLSpanElement>(null)
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return
-      obs.disconnect()
-      const start = performance.now()
-      const dur = 1000
-      function frame(now: number) {
-        const t = Math.min((now - start) / dur, 1)
-        const ease = 1 - Math.pow(1 - t, 3)
-        setVal(Math.round(ease * target))
-        if (t < 1) requestAnimationFrame(frame)
-      }
-      requestAnimationFrame(frame)
-    }, { threshold: 0.3 })
-    if (ref.current) obs.observe(ref.current)
-    return () => obs.disconnect()
-  }, [target])
-  return <span ref={ref}>{prefix}{val.toLocaleString()}{suffix}</span>
-}
+import { LineTrendChart, BarCompareChart, StatTile } from '@/components/goldpass/charts'
 
 function monthLabel(month: string): string {
   return new Date(month + 'T00:00:00').toLocaleDateString(undefined, { month: 'short' })
@@ -49,7 +26,7 @@ export default function OperationsOverviewPage() {
 
   // Attention tiles: value is ink; low-stock / open-alerts turn amber only when
   // there's actually something to act on (> 0), a reserved status use, not decoration.
-  const tiles: { label: string; value: number; suffix?: string; prefix?: string; href: string; alert?: boolean }[] = [
+  const tiles: { label: string; value: number; prefix?: string; href: string; alert?: boolean }[] = [
     { label: 'Pending approvals', value: kpis.pendingApprovals, href: '/admin/operations/expenses' },
     { label: 'Spend (month-to-date)', value: Math.round(kpis.spendMtd), prefix: 'TSh ', href: '/admin/operations/expenses' },
     { label: 'Low-stock items', value: kpis.lowStockCount, href: '/admin/operations/inventory', alert: true },
@@ -61,33 +38,30 @@ export default function OperationsOverviewPage() {
 
   return (
     <div className="content content-pad">
-      <div style={{ marginBottom: 24 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Operations</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>
+      <div style={{ marginBottom: 20 }}>
+        <h2 className="page-title">Operations</h2>
+        <p className="page-sub">
           Oversight of expenses and inventory captured by field managers and supervisors in the GoldPass mobile app.
         </p>
       </div>
 
-      <div className="grid-kpi" style={{ marginBottom: 24 }}>
+      <div className="grid-kpi" style={{ marginBottom: 20 }}>
         {tiles.map(t => {
           const attention = t.alert && t.value > 0
           return (
-            <div key={t.label} className="card" style={{ textAlign: 'center', cursor: 'pointer' }}
-              onClick={() => router.push(t.href)}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--chart-accent)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
-              <div style={{ fontSize: 26, fontWeight: 700, color: attention ? 'var(--orange)' : 'var(--label-1)' }}>
-                {loading ? '-' : <Counter target={t.value} prefix={t.prefix} suffix={t.suffix} />}
+            <div key={t.label} className="card card-link" onClick={() => router.push(t.href)}>
+              <div style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 4 }}>{t.label}</div>
+              <div className="stat-value-sm" style={attention ? { color: 'var(--orange)' } : undefined}>
+                {loading ? '-' : `${t.prefix ?? ''}${t.value.toLocaleString()}`}
               </div>
-              <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>{t.label}</div>
             </div>
           )
         })}
       </div>
 
-      <div style={{ marginBottom: 24 }}>
+      <div style={{ marginBottom: 20 }}>
         <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>Financial Summary: This Month</h3>
-        <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 12 }}>
+        <p className="page-sub" style={{ marginBottom: 12 }}>
           Cost = expenses + payroll + approved procurement.
         </p>
 
@@ -98,27 +72,24 @@ export default function OperationsOverviewPage() {
         ) : (
           <>
             <div className="grid-3" style={{ marginBottom: 16 }}>
-              <div className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--label-1)' }}>TSh {current.revenue_tsh.toLocaleString()}</div>
-                <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Revenue</div>
-              </div>
-              <div className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 700, color: 'var(--label-1)' }}>TSh {current.cost_tsh.toLocaleString()}</div>
-                <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Total Cost</div>
-                <div style={{ fontSize: 10, color: 'var(--label-4)', marginTop: 6 }}>
+              <StatTile label="Revenue" value={current.revenue_tsh} prefix="TSh " />
+              <div className="card">
+                <div style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 4 }}>Total Cost</div>
+                <div className="stat-value-sm">TSh {current.cost_tsh.toLocaleString()}</div>
+                <div className="num" style={{ fontSize: 10, color: 'var(--label-4)', marginTop: 6 }}>
                   Expenses {current.expense_tsh.toLocaleString()} · Procurement {current.procurement_tsh.toLocaleString()}
                 </div>
               </div>
-              <div className="card" style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 24, fontWeight: 700, color: current.profit_tsh >= 0 ? 'var(--label-1)' : 'var(--red)' }}>
+              <div className="card">
+                <div style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 4 }}>Profit</div>
+                <div className="stat-value-sm" style={current.profit_tsh < 0 ? { color: 'var(--red)' } : undefined}>
                   TSh {current.profit_tsh.toLocaleString()}
                 </div>
-                <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>Profit</div>
               </div>
             </div>
 
             <div className="card" style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Revenue vs Cost vs Profit (this month)</div>
+              <div className="section-title" style={{ marginBottom: 8 }}>Revenue vs Cost vs Profit (this month)</div>
               <BarCompareChart
                 data={[
                   { label: 'Revenue', value: current.revenue_tsh },
@@ -130,7 +101,7 @@ export default function OperationsOverviewPage() {
             </div>
 
             <div className="card">
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Revenue Trend &amp; Projection</div>
+              <div className="section-title" style={{ marginBottom: 4 }}>Revenue Trend &amp; Projection</div>
               <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 8 }}>
                 Last {financials.length} months actual, next month projected from the trailing trend.
               </div>
@@ -147,12 +118,12 @@ export default function OperationsOverviewPage() {
       </div>
 
       <div className="grid-2">
-        <div className="card" style={{ flex: 1, cursor: 'pointer' }} onClick={() => router.push('/admin/operations/expenses')}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Expenses</div>
+        <div className="card card-link" onClick={() => router.push('/admin/operations/expenses')}>
+          <div className="section-title" style={{ marginBottom: 4 }}>Expenses</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)' }}>Review submitted expenses, approve or reject with a comment.</div>
         </div>
-        <div className="card" style={{ flex: 1, cursor: 'pointer' }} onClick={() => router.push('/admin/operations/inventory')}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Inventory</div>
+        <div className="card card-link" onClick={() => router.push('/admin/operations/inventory')}>
+          <div className="section-title" style={{ marginBottom: 4 }}>Inventory</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)' }}>Current stock levels against minimums, and open stock alerts.</div>
         </div>
       </div>

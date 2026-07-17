@@ -30,12 +30,12 @@ export default function ProcurementPage() {
 
   return (
     <div className="content content-pad">
-      <div style={{ marginBottom: 24 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Procurement</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Purchase Request → Purchase Order → Goods Received Note pipeline, one row per request.</p>
+      <div style={{ marginBottom: 20 }}>
+        <h2 className="page-title">Procurement</h2>
+        <p className="page-sub">Purchase Request → Purchase Order → Goods Received Note pipeline, one row per request.</p>
       </div>
 
-      <div className="card" style={{ marginBottom: 24 }}>
+      <div className="card" style={{ marginBottom: 20 }}>
         {loading ? (
           <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
         ) : (
@@ -59,20 +59,20 @@ export default function ProcurementPage() {
                   <tr><td colSpan={9} style={{ textAlign: 'center', color: 'var(--label-4)', padding: 32 }}>No procurement activity yet.</td></tr>
                 ) : rows.map(r => (
                   <tr key={r.pr_id}>
-                    <td data-label="PR" style={{ fontFamily: 'monospace' }}>{r.pr_number ?? '-'}</td>
+                    <td data-label="PR" className="num">{r.pr_number ?? '-'}</td>
                     <td data-label="PR status">{r.pr_status ?? '-'}</td>
                     <td data-label="Est. amount">{r.total_estimated_tsh?.toLocaleString() ?? '-'}</td>
                     <td data-label="Supplier">{r.supplier_name ?? '-'}</td>
-                    <td data-label="PO" style={{ fontFamily: 'monospace' }}>{r.po_number ?? '-'}</td>
+                    <td data-label="PO" className="num">{r.po_number ?? '-'}</td>
                     <td data-label="PO status">{r.po_status ?? '-'}</td>
-                    <td data-label="GRN" style={{ fontFamily: 'monospace' }}>{r.grn_number ?? '-'}</td>
+                    <td data-label="GRN" className="num">{r.grn_number ?? '-'}</td>
                     <td data-label="GRN status">
                       {r.grn_status ?? '-'}
                       {r.variance_flag && <span className="badge badge-orange" style={{ marginLeft: 6 }}>Variance</span>}
                     </td>
                     <td>
                       {r.pr_status === 'approved' && !r.po_id && (
-                        <button className="btn-icon" style={{ fontSize: 10, color: 'var(--blue)' }} disabled={convertingId === r.pr_id}
+                        <button className="btn-text btn-text-accent" disabled={convertingId === r.pr_id}
                           onClick={() => convert(r.pr_id)}>Create PO</button>
                       )}
                     </td>

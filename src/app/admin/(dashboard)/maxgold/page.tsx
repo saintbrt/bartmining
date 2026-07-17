@@ -145,7 +145,7 @@ export default function MaxGoldPage() {
   return (
     <div className="content content-pad">
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 700 }}>Max Gold Finder</h2>
+        <h2 className="page-title" style={{ marginBottom: 0 }}>Max Gold Finder</h2>
       </div>
       <p style={{ fontSize: 12, color: 'var(--label-3)', marginBottom: 16, maxWidth: 640 }}>
         Upload a CSV or Excel file with Hole ID, depth (From/To) and grade columns. For every unique
@@ -159,7 +159,7 @@ export default function MaxGoldPage() {
           onDragLeave={() => setDrag(false)}
           onDrop={onDrop}
           style={{
-            border: `2px dashed ${drag ? 'var(--blue)' : 'var(--sep)'}`, borderRadius: 12, padding: 48,
+            border: `2px dashed ${drag ? 'var(--blue)' : 'var(--sep)'}`, borderRadius: 'var(--r-md)', padding: 48,
             textAlign: 'center', background: drag ? 'var(--bg-3)' : 'var(--bg-2)', cursor: 'pointer', maxWidth: 640,
           }}
           onClick={() => document.getElementById('maxgold-file-input')?.click()}
@@ -182,7 +182,7 @@ export default function MaxGoldPage() {
           <div style={{ fontSize: 11, color: 'var(--label-4)', marginBottom: 8 }}>Confirm the column meanings: at least Hole ID and a grade (ppm) column are required.</div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 14 }}>
             {Object.keys(colMapping).map(col => (
-              <label key={col} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, background: 'var(--bg-3)', borderRadius: 8, padding: '4px 8px' }}>
+              <label key={col} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, background: 'var(--bg-3)', borderRadius: 'var(--r-sm)', padding: '4px 8px' }}>
                 <span style={{ fontWeight: 500 }}>{col}</span>
                 <select className="input" style={{ fontSize: 11, padding: '2px 4px' }} value={colMapping[col]} onChange={e => setMeaning(col, e.target.value)}>
                   {MEANINGS.map(m => <option key={m} value={m}>{m}</option>)}
@@ -207,7 +207,7 @@ export default function MaxGoldPage() {
           </div>
           {openOutput && (
             <div style={{ overflowX: 'auto', maxHeight: 400, marginTop: 10 }}>
-              <table className="tbl tbl-card" style={{ fontSize: 11 }}>
+              <table className="tbl tbl-card" style={{ fontSize: 12 }}>
                 <thead><tr>{Object.keys(output[0]).map(k => <th key={k}>{k}</th>)}</tr></thead>
                 <tbody>{output.map((r, i) => <tr key={i}>{Object.keys(output[0]).map(k => <td key={k} data-label={k}>{String(r[k] ?? '')}</td>)}</tr>)}</tbody>
               </table>

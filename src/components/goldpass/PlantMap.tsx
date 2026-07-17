@@ -27,7 +27,7 @@ function TankCell({ tank, latest }: { tank: TankRow; latest?: TankLatestColor })
   return (
     <div className="card grid-cell">
       <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--label-1)' }}>{tank.tank_code}</div>
-      <div style={{ fontSize: 10, color: 'var(--label-3)', marginTop: 2 }}>{tank.volume_m3.toLocaleString()} m³</div>
+      <div className="num" style={{ fontSize: 10, color: 'var(--label-3)', marginTop: 2 }}>{tank.volume_m3.toLocaleString()} m³</div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5, marginTop: 6 }}>
         <span style={{
           width: 8, height: 8, borderRadius: '50%',
@@ -74,7 +74,7 @@ export function PlantMap({ tanks, loading, tankColors }: { tanks: TankRow[]; loa
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
           {FLOW_STEPS.map((step, i) => (
             <div key={step} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <div style={{ fontSize: 11, padding: '6px 10px', borderRadius: 8, background: 'var(--bg-3)', color: 'var(--label-2)' }}>{step}</div>
+              <div style={{ fontSize: 11, padding: '6px 10px', borderRadius: 'var(--r-sm)', background: 'var(--bg-3)', color: 'var(--label-2)' }}>{step}</div>
               {i < FLOW_STEPS.length - 1 && <span style={{ color: 'var(--label-4)', fontSize: 12 }}>→</span>}
             </div>
           ))}
