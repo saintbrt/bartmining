@@ -76,27 +76,37 @@ export default function DashboardPage() {
   }, [])
 
   /* Fetch 12 months of market gold once; slice client-side for 3M/6M/12M.
-     Server caches heavily (free tier is 10 req/hour). */
+     Server caches heavily (free tier is 10 req/hour). Send the browser
+     session access token so the API route can auth without relying only on
+     cookies (admin UI restores session via the Supabase browser client). */
   useEffect(() => {
     let alive = true
-    fetch('/api/gold/history?months=12')
-      .then(async res => {
+    ;(async () => {
+      try {
+        const { createClient } = await import('@/lib/goldpass/supabase/client')
+        const { data: { session } } = await createClient().auth.getSession()
+        const headers: HeadersInit = {}
+        if (session?.access_token) {
+          headers.Authorization = `Bearer ${session.access_token}`
+        }
+        const res = await fetch('/api/gold/history?months=12', {
+          headers,
+          credentials: 'same-origin',
+        })
         if (!res.ok) {
           const body = await res.json().catch(() => ({})) as { error?: string }
           throw new Error(body.error || `Gold history ${res.status}`)
         }
-        return res.json() as Promise<{ months: GoldMonthPrice[] }>
-      })
-      .then(body => {
+        const body = await res.json() as { months: GoldMonthPrice[] }
         if (!alive) return
         setGoldMonths(body.months ?? [])
         setGoldError(null)
-      })
-      .catch(err => {
+      } catch (err) {
         if (!alive) return
         setGoldMonths([])
         setGoldError(err instanceof Error ? err.message : 'Gold price unavailable')
-      })
+      }
+    })()
     return () => { alive = false }
   }, [])
 

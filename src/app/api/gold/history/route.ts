@@ -93,12 +93,27 @@ async function fetchGoldHistory(months: number, apiKey: string): Promise<{ month
   }).filter(r => /^\d{4}-\d{2}$/.test(r.month) && Number.isFinite(r.price_usd_oz))
 }
 
+async function requireAdminUser(req: NextRequest) {
+  const supabase = await createClient()
+  /* Prefer Bearer from the already-logged-in browser client. Cookie-only
+     getUser() is flaky on this app because the admin panel primarily restores
+     session via the browser Supabase client (local storage + cookies), and
+     the API route is outside the /admin middleware matcher. */
+  const auth = req.headers.get('authorization')
+  const bearer = auth?.toLowerCase().startsWith('bearer ') ? auth.slice(7).trim() : null
+  if (bearer) {
+    const { data: { user }, error } = await supabase.auth.getUser(bearer)
+    if (user && !error) return user
+  }
+  const { data: { user } } = await supabase.auth.getUser()
+  return user
+}
+
 export async function GET(req: NextRequest) {
   try {
-    const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const user = await requireAdminUser(req)
     if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      return NextResponse.json({ error: 'Unauthorized — sign in again' }, { status: 401 })
     }
 
     const months = clampMonths(req.nextUrl.searchParams.get('months'))
@@ -124,7 +139,9 @@ export async function GET(req: NextRequest) {
           stale: true,
         })
       }
-      return NextResponse.json({ error: 'GOLD_API_KEY is not configured' }, { status: 503 })
+      return NextResponse.json({
+        error: 'GOLD_API_KEY is not configured on the server (set it in Vercel env, not GitHub)',
+      }, { status: 503 })
     }
 
     try {
