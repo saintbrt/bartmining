@@ -3,23 +3,15 @@
 import type { TankRoundStatusRow } from '@/lib/goldpass/erp'
 
 /* One row per tank: current round, days elapsed, last color test, days
-   since last test. Read-only on the Plant Overview subtab; the optional
-   `actions` render-prop lets the Chemical Manager subtab render the same
-   rows with Start round / End round buttons, one component, two call
-   sites (same convention DynamicTable already uses elsewhere).
+   since last test. Read-only, admin never enters plant data here, it's
+   logged from the field on the mobile app.
 
    Colour reserved for status only: red = overdue round, amber = stale
    colour test (>= 5 days since last reading), ink otherwise. */
 
 const COLOR_LABEL: Record<'black' | 'grey' | 'clear', string> = { black: 'Black', grey: 'Grey', clear: 'Clear' }
 
-export function TankStatusBoard({
-  rows, loading, actions,
-}: {
-  rows: TankRoundStatusRow[]
-  loading: boolean
-  actions?: (row: TankRoundStatusRow) => React.ReactNode
-}) {
+export function TankStatusBoard({ rows, loading }: { rows: TankRoundStatusRow[]; loading: boolean }) {
   if (loading) {
     return <div style={{ fontSize: 12, color: 'var(--label-4)', padding: 16 }}>Loading…</div>
   }
@@ -33,7 +25,7 @@ export function TankStatusBoard({
         <thead>
           <tr>
             <th>Tank</th><th>Round</th><th>Started</th><th>Days open</th>
-            <th>Last color test</th><th>Days since test</th>{actions && <th>Action</th>}
+            <th>Last color test</th><th>Days since test</th>
           </tr>
         </thead>
         <tbody>
@@ -59,7 +51,6 @@ export function TankStatusBoard({
                   </span>
                 ) : '—'}
               </td>
-              {actions && <td data-label="Action">{actions(r)}</td>}
             </tr>
           ))}
         </tbody>

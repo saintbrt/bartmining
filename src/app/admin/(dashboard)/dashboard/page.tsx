@@ -86,7 +86,7 @@ export default function DashboardPage() {
 
       {overdueFault && (
         <div className="card" style={{ marginBottom: 20, borderColor: 'var(--orange)', cursor: 'pointer' }}
-          onClick={() => router.push('/admin/plant/overview')}>
+          onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--orange)' }}>Round taking too long</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
             {overdueFault.tank_code} round {overdueFault.round_number} (started {overdueFault.start_date}) has run{' '}
@@ -99,7 +99,7 @@ export default function DashboardPage() {
 
       {expansionSignal?.signal && (
         <div className="card" style={{ marginBottom: 20, borderColor: 'var(--green)', cursor: 'pointer' }}
-          onClick={() => router.push('/admin/plant/overview')}>
+          onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--green)' }}>Room to expand</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
             {expansionSignal.utilization_pct}% of tanks are actively leaching and cost per gram recovered
@@ -132,7 +132,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid-2" style={{ marginBottom: 24 }}>
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant/overview')}>
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Plant status</div>
           {tanks.length === 0 ? (
             <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No tanks configured yet.</div>
@@ -143,7 +143,7 @@ export default function DashboardPage() {
             </div>
           )}
         </div>
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant/overview')}>
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Pit status</div>
           {pits.length === 0 ? (
             <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No pits registered yet.</div>

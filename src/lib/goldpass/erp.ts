@@ -415,7 +415,14 @@ export async function getTanks(): Promise<TankRow[]> {
    The plant-wide leaching_periods open/close switch this phase originally
    shipped (getLeachingPeriods/openLeachingPeriod/closeLeachingPeriod, error
    codes GP-2647-2649, now unused but left registered per this file's
-   existing convention) is superseded by per-tank leaching_rounds below. */
+   existing convention) is superseded by per-tank leaching_rounds below.
+
+   bartmining (this web admin panel) only ever READS plant data. Color
+   tests, leaching rounds, and elution batches are entered exclusively
+   through the field manager's mobile app (goldpass-field, a separate
+   codebase), so this file intentionally has no logColorTest / startRound /
+   endRound / logElutionBatch write functions, those exist only on the
+   mobile side. */
 export type ColorTestRow = {
   id: string
   test_date: string
@@ -433,19 +440,6 @@ export async function getColorTests(tankId?: string): Promise<ColorTestRow[]> {
   return (data ?? []) as ColorTestRow[]
 }
 
-export async function logColorTest(input: { tankId: string; testDate: string; result: 'black' | 'grey' | 'clear'; notes?: string }): Promise<boolean> {
-  const { data: auth } = await sb().auth.getUser()
-  const { error } = await sb().from('color_tests').insert({
-    tank_id: input.tankId,
-    test_date: input.testDate,
-    result: input.result,
-    notes: input.notes ?? null,
-    created_by: auth.user?.id ?? null,
-  })
-  if (error) { gpError('GP-2651', error.message); return false }
-  return true
-}
-
 export type TankLatestColor = { tank_id: string; result: 'black' | 'grey' | 'clear'; test_date: string }
 
 export async function getLatestTankColors(): Promise<Record<string, TankLatestColor>> {
@@ -458,43 +452,9 @@ export async function getLatestTankColors(): Promise<Record<string, TankLatestCo
 
 /* PLANT: LEACHING ROUNDS (0022_leaching_rounds.sql). Replaces the phase B
    global leaching_periods concept: each tank runs its own round(s), with
-   its own start date, clearing (end) date, and day count. */
-export type LeachingRoundRow = {
-  id: string
-  tank_id: string
-  round_number: number
-  start_date: string
-  end_date: string | null
-  status: 'open' | 'closed'
-  closed_by: string | null
-  notes: string | null
-}
-
-export async function getLeachingRounds(tankId?: string): Promise<LeachingRoundRow[]> {
-  let q = sb().from('leaching_rounds').select('*').order('start_date', { ascending: false })
-  if (tankId) q = q.eq('tank_id', tankId)
-  const { data, error } = await q
-  if (error) { gpError('GP-2664', error.message); return [] }
-  return (data ?? []) as LeachingRoundRow[]
-}
-
-export async function startRound(tankId: string, startDate: string, notes?: string): Promise<string | null> {
-  const { data, error } = await sb().rpc('start_leaching_round', {
-    p_tank_id: tankId, p_start_date: startDate, p_notes: notes ?? null,
-  })
-  if (error) { gpError('GP-2665', error.message); return null }
-  return data as string
-}
-
-export async function endRound(roundId: string, endDate: string, notes?: string): Promise<boolean> {
-  const { data: auth } = await sb().auth.getUser()
-  const { error } = await sb().from('leaching_rounds')
-    .update({ status: 'closed', end_date: endDate, closed_by: auth.user?.id ?? null, ...(notes ? { notes } : {}) })
-    .eq('id', roundId)
-  if (error) { gpError('GP-2666', error.message); return false }
-  return true
-}
-
+   its own start date, clearing (end) date, and day count. Rounds are
+   started/ended from the mobile app (start_leaching_round RPC, plain
+   updates against leaching_rounds), not from bartmining, only read here. */
 export type TankRoundStatusRow = {
   tank_id: string
   tank_code: string
@@ -636,22 +596,6 @@ export async function getElutionBatches(): Promise<ElutionBatchRow[]> {
   const { data, error } = await sb().from('elution_batches').select('*').order('batch_date', { ascending: false })
   if (error) { gpError('GP-2659', error.message); return [] }
   return (data ?? []) as ElutionBatchRow[]
-}
-
-// leachingPeriodId is a legacy field from the retired global-period era
-// (kept on ElutionBatchRow/the DB column since it's a valid nullable FK);
-// no call site passes it since leaching_rounds is per-tank, not plant-wide.
-export async function logElutionBatch(input: { batchDate: string; goldRecoveredG: number; carbonStageNotes?: string; leachingPeriodId?: string }): Promise<boolean> {
-  const { data: auth } = await sb().auth.getUser()
-  const { error } = await sb().from('elution_batches').insert({
-    batch_date: input.batchDate,
-    gold_recovered_g: input.goldRecoveredG,
-    carbon_stage_notes: input.carbonStageNotes ?? null,
-    leaching_period_id: input.leachingPeriodId ?? null,
-    created_by: auth.user?.id ?? null,
-  })
-  if (error) { gpError('GP-2660', error.message); return false }
-  return true
 }
 
 export type RecoveryReconciliationRow = { month: string; recovered_g: number; sold_g: number; variance_g: number }

@@ -22,18 +22,12 @@ const OPERATIONS_SUBTABS = [
   { id: 'conflicts',    label: 'Conflicts' },
   { id: 'audit',        label: 'Audit Log' },
 ]
-const PLANT_SUBTABS = [
-  { id: 'overview',          label: 'Overview' },
-  { id: 'chemical-manager',  label: 'Chemical Manager' },
-]
-
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
   const [booting, setBooting] = useState(true)
   const [user, setUser] = useState<AuthUser>(null)
   const [operationsOpen, setOperationsOpen] = useState(false)
-  const [plantOpen, setPlantOpen] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
@@ -46,9 +40,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return () => { alive = false }
   }, [])
 
-  // Auto-open the Operations/Plant accordions when navigating directly via URL.
+  // Auto-open the Operations accordion when navigating directly via URL.
   useEffect(() => { if (pathname.startsWith('/admin/operations')) setOperationsOpen(true) }, [pathname])
-  useEffect(() => { if (pathname.startsWith('/admin/plant')) setPlantOpen(true) }, [pathname])
   // Close the mobile drawer whenever the route changes.
   useEffect(() => { setSidebarOpen(false) }, [pathname])
 
@@ -84,29 +77,24 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="sb-section">Navigation</div>
             {NAV.map(item => {
               const isOperations = item.id === 'operations'
-              const isPlant = item.id === 'plant'
-              const isAccordion = isOperations || isPlant
               const isActive = curSection === item.id
-              const subtabs = isOperations ? OPERATIONS_SUBTABS : isPlant ? PLANT_SUBTABS : []
-              const isOpen = isOperations ? operationsOpen : plantOpen
-              const toggle = isOperations ? setOperationsOpen : setPlantOpen
               return (
                 <div key={item.id}>
                   <div className={`sb-item${isActive ? ' active' : ''}`}
-                    onClick={() => (isAccordion ? toggle(o => !o) : router.push('/admin/' + item.id))}>
+                    onClick={() => (isOperations ? setOperationsOpen(o => !o) : router.push('/admin/' + item.id))}>
                     <span className="ico">{item.ico}</span>
                     <span className="sb-label">{item.label}</span>
-                    {isAccordion && (
-                      <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.5 }}>{isOpen ? '▲' : '▼'}</span>
+                    {isOperations && (
+                      <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.5 }}>{operationsOpen ? '▲' : '▼'}</span>
                     )}
                   </div>
-                  {isAccordion && isOpen && (
+                  {isOperations && operationsOpen && (
                     <div style={{ paddingLeft: 20 }}>
-                      {subtabs.map(sub => (
+                      {OPERATIONS_SUBTABS.map(sub => (
                         <div key={sub.id}
-                          className={`sb-item${curSection === item.id && curSubSection === sub.id ? ' active' : ''}`}
+                          className={`sb-item${curSection === 'operations' && curSubSection === sub.id ? ' active' : ''}`}
                           style={{ fontSize: 12, paddingLeft: 12 }}
-                          onClick={() => router.push(`/admin/${item.id}/${sub.id}`)}>
+                          onClick={() => router.push('/admin/operations/' + sub.id)}>
                           <span className="sb-label">{sub.label}</span>
                         </div>
                       ))}
