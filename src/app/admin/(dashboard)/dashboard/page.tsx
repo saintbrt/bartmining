@@ -9,7 +9,7 @@ import {
   type OperationsKpis, type FinancialSummaryRow, type TankRow, type TankLatestColor,
   type TankRoundStatusRow, type PitRow, type PitMachineryRow, type ExpansionSignalRow, type RoundFaultFlagRow,
 } from '@/lib/goldpass/erp'
-import { MultiLineChart, StatTile } from '@/components/goldpass/charts'
+import { LineTrendChart, MetricStrip, type MetricStripItem } from '@/components/goldpass/charts'
 
 function monthLabel(month: string): string {
   // month is 'YYYY-MM' from the RPC; anchor to day 01 for a stable short label.
@@ -23,10 +23,19 @@ function pctDelta(series: number[]): number | undefined {
   return ((last - prev) / Math.abs(prev)) * 100
 }
 
+function compactTsh(n: number): string {
+  const abs = Math.abs(n)
+  if (abs >= 1e9) return 'TSh ' + (n / 1e9).toFixed(1).replace(/\.0$/, '') + 'B'
+  if (abs >= 1e6) return 'TSh ' + (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
+  if (abs >= 1e3) return 'TSh ' + (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'k'
+  return 'TSh ' + Math.round(n).toLocaleString()
+}
+
 export default function DashboardPage() {
   const router = useRouter()
   const [opsKpis, setOpsKpis] = useState<OperationsKpis | null>(null)
   const [opsFinancials, setOpsFinancials] = useState<FinancialSummaryRow[]>([])
+  const [activeMetric, setActiveMetric] = useState('revenue')
 
   const [tanks, setTanks] = useState<TankRow[]>([])
   const [tankColors, setTankColors] = useState<Record<string, TankLatestColor>>({})
@@ -56,15 +65,23 @@ export default function DashboardPage() {
   const revSeries = opsFinancials.map(f => f.revenue_tsh)
   const costSeries = opsFinancials.map(f => f.cost_tsh)
   const profitSeries = opsFinancials.map(f => f.profit_tsh)
-  const chartData = opsFinancials.map(f => ({
-    label: monthLabel(f.month), revenue: f.revenue_tsh, cost: f.cost_tsh, profit: f.profit_tsh,
-  }))
-  const series = [
-    { key: 'revenue', name: 'Revenue' },
-    { key: 'cost', name: 'Cost' },
-    { key: 'profit', name: 'Profit' },
-  ]
   const projectedProfit = opsFinancials.length > 0 ? projectNextMonthProfit(opsFinancials) : 0
+
+  /* Hero chart: one series at a time, switched by the metric strip below it.
+     "Projected" charts the profit history its projection is derived from. */
+  const heroSeries: Record<string, number[]> = {
+    revenue: revSeries, cost: costSeries, profit: profitSeries, projected: profitSeries,
+  }
+  const heroData = opsFinancials.map((f, i) => ({
+    label: monthLabel(f.month),
+    value: (heroSeries[activeMetric] ?? revSeries)[i] ?? 0,
+  }))
+  const heroMetrics: MetricStripItem[] = [
+    { key: 'revenue', label: 'Revenue (this month)', value: compactTsh(current?.revenue_tsh ?? 0), delta: pctDelta(revSeries), goodWhenUp: true },
+    { key: 'cost', label: 'Cost (this month)', value: compactTsh(current?.cost_tsh ?? 0), delta: pctDelta(costSeries), goodWhenUp: false },
+    { key: 'profit', label: 'Profit (this month)', value: compactTsh(current?.profit_tsh ?? 0), delta: pctDelta(profitSeries), goodWhenUp: true },
+    { key: 'projected', label: 'Projected profit (next month)', value: compactTsh(projectedProfit) },
+  ]
 
   const clearCount = tanks.filter(t => tankColors[t.id]?.result === 'clear').length
   const greyCount = tanks.filter(t => tankColors[t.id]?.result === 'grey').length
@@ -80,12 +97,12 @@ export default function DashboardPage() {
   return (
     <div className="content content-pad">
       <div style={{ marginBottom: 20 }}>
-        <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 2 }}>Dashboard</h2>
-        <p style={{ fontSize: 12, color: 'var(--label-3)' }}>Operations and financial overview at a glance.</p>
+        <h2 className="page-title">Dashboard</h2>
+        <p className="page-sub">Operations and financial overview at a glance.</p>
       </div>
 
       {overdueFault && (
-        <div className="card" style={{ marginBottom: 20, borderColor: 'var(--orange)', cursor: 'pointer' }}
+        <div className="card card-link" style={{ marginBottom: 20, borderColor: 'var(--orange)' }}
           onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--orange)' }}>Round taking too long</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
@@ -98,7 +115,7 @@ export default function DashboardPage() {
       )}
 
       {expansionSignal?.signal && (
-        <div className="card" style={{ marginBottom: 20, borderColor: 'var(--green)', cursor: 'pointer' }}
+        <div className="card card-link" style={{ marginBottom: 20, borderColor: 'var(--green)' }}
           onClick={() => router.push('/admin/plant')}>
           <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--green)' }}>Room to expand</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
@@ -110,55 +127,48 @@ export default function DashboardPage() {
         </div>
       )}
 
-      <div className="grid-kpi" style={{ marginBottom: 20 }}>
-        <StatTile label="Revenue (this month)" value={current?.revenue_tsh ?? 0} prefix="TSh " delta={pctDelta(revSeries)} spark={revSeries} goodWhenUp />
-        <StatTile label="Cost (this month)" value={current?.cost_tsh ?? 0} prefix="TSh " delta={pctDelta(costSeries)} spark={costSeries} goodWhenUp={false} />
-        <StatTile label="Profit (this month)" value={current?.profit_tsh ?? 0} prefix="TSh " delta={pctDelta(profitSeries)} spark={profitSeries} goodWhenUp />
-        <StatTile label="Projected profit (next month)" value={projectedProfit} prefix="TSh " />
-      </div>
-
-      <div className="card" style={{ marginBottom: 24, cursor: 'pointer', transition: 'border-color .15s' }}
-        onClick={() => router.push('/admin/operations/overview')}
-        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--chart-accent)' }}
-        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
+      {/* Hero: one trend chart, the KPI metrics attached below as tabs.
+          Clicking a metric switches the charted series. */}
+      <div className="card" style={{ marginBottom: 20, paddingBottom: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
-          <div style={{ fontSize: 13, fontWeight: 600, flex: 1 }}>
-            Revenue, cost &amp; profit{opsFinancials.length > 0 ? ` (last ${opsFinancials.length} months)` : ''}
-          </div>
-          <div style={{ fontSize: 12, color: 'var(--label-3)' }}>View Operations →</div>
+          <div className="section-title" style={{ marginBottom: 0, flex: 1 }}>Performance trend</div>
+          <button className="btn-text" onClick={() => router.push('/admin/operations/overview')}>View Operations →</button>
         </div>
-        <MultiLineChart data={chartData} series={series} prefix="TSh " height={260}
+        <LineTrendChart data={heroData} prefix="TSh " height={260}
           emptyLabel="No financial data yet, run the operations financial summary migration to populate this." />
+        <div style={{ margin: '12px -20px 0' }}>
+          <MetricStrip metrics={heroMetrics} active={activeMetric} onSelect={setActiveMetric} />
+        </div>
       </div>
 
-      <div className="grid-2" style={{ marginBottom: 24 }}>
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Plant status</div>
+      <div className="grid-2" style={{ marginBottom: 20 }}>
+        <div className="card card-link" onClick={() => router.push('/admin/plant')}>
+          <div className="section-title" style={{ marginBottom: 4 }}>Plant status</div>
           {tanks.length === 0 ? (
             <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No tanks configured yet.</div>
           ) : (
             <div style={{ fontSize: 12, color: 'var(--label-3)', lineHeight: 1.6 }}>
-              {clearCount} clear · {greyCount} grey · {blackCount} black of {tanks.length} tanks.
-              {' '}{openRoundCount} round{openRoundCount === 1 ? '' : 's'} in progress.
+              <span className="num">{clearCount}</span> clear · <span className="num">{greyCount}</span> grey ·{' '}
+              <span className="num">{blackCount}</span> black of <span className="num">{tanks.length}</span> tanks.
+              {' '}<span className="num">{openRoundCount}</span> round{openRoundCount === 1 ? '' : 's'} in progress.
             </div>
           )}
         </div>
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Pit status</div>
+        <div className="card card-link" onClick={() => router.push('/admin/plant')}>
+          <div className="section-title" style={{ marginBottom: 4 }}>Pit status</div>
           {pits.length === 0 ? (
             <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No pits registered yet.</div>
           ) : (
             <div style={{ fontSize: 12, color: 'var(--label-3)', lineHeight: 1.6 }}>
-              {pits.length} pit{pits.length === 1 ? '' : 's'}, {machineryCount} machine{machineryCount === 1 ? '' : 's'} assigned.
+              <span className="num">{pits.length}</span> pit{pits.length === 1 ? '' : 's'},{' '}
+              <span className="num">{machineryCount}</span> machine{machineryCount === 1 ? '' : 's'} assigned.
             </div>
           )}
         </div>
       </div>
 
-      <div className="card" style={{ marginBottom: 24, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14 }}
-        onClick={() => router.push('/admin/maxgold')}
-        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--gold)' }}
-        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--sep)' }}>
+      <div className="card card-link" style={{ marginBottom: 20, display: 'flex', alignItems: 'center', gap: 14 }}
+        onClick={() => router.push('/admin/maxgold')}>
         <div style={{ fontSize: 28 }}>⛏</div>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 13, fontWeight: 600 }}>Max Gold Finder</div>

@@ -219,7 +219,7 @@ export function MetricStrip({ metrics, active, onSelect }: {
 }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(150px, 1fr))`, borderTop: '1px solid var(--sep)' }}>
-      {metrics.map(m => {
+      {metrics.map((m, i) => {
         const isActive = m.key === active
         const good = m.delta != null && (m.delta >= 0 ? (m.goodWhenUp ?? true) : !(m.goodWhenUp ?? true))
         const deltaColor = m.delta == null || m.delta === 0 ? 'var(--label-4)' : good ? GOOD : BAD
@@ -232,7 +232,7 @@ export function MetricStrip({ metrics, active, onSelect }: {
               padding: '14px 16px 12px',
               borderTop: isActive ? '2px solid var(--label-1)' : '2px solid transparent',
               marginTop: -1,
-              borderRight: '1px solid var(--sep)',
+              borderRight: i < metrics.length - 1 ? '1px solid var(--sep)' : 'none',
               fontFamily: 'inherit',
             }}
           >

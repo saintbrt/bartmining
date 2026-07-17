@@ -118,7 +118,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         <div className="main-area">
-          <div className="topbar" style={curSection === 'dashboard' ? { display: 'none' } : {}}>
+          <div className="topbar">
             <button className="sb-hamburger" onClick={() => setSidebarOpen(o => !o)} aria-label="Toggle menu">☰</button>
             <div className="topbar-title">GoldPass</div>
             <div className="topbar-sub">/ {curSection}{curSubSection ? ` / ${curSubSection}` : ''}</div>
