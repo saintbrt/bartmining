@@ -1,11 +1,13 @@
 .gp-root {
-  /* ── Light theme (default) ── */
-  --bg:     #F2F2F7;
+  /* ── Light theme (default) ──
+     Warm paper neutrals: the canvas and raised grays carry a slight warm
+     cast; cards stay pure white so charts keep their validated surface. */
+  --bg:     #F3F1EC;
   --bg-2:   #FFFFFF;
-  --bg-3:   #E9E9EF;
-  --bg-4:   #D0D0D9;
-  --sep-o:  rgba(0,0,0,.1);
-  --sep:    #D9D9E0;
+  --bg-3:   #EAE7DF;
+  --bg-4:   #D8D4C9;
+  --sep-o:  rgba(60,50,30,.12);
+  --sep:    #E3E0D8;
   --blue:   #007AFF;
   --green:  #34C759;
   --orange: #FF9500;
@@ -25,7 +27,7 @@
      The chart components mirror these as JS constants (Recharts sets SVG
      attributes, which don't resolve CSS vars), keep the two in sync. */
   --chart-accent: #2A78D6;
-  --chart-grid:   rgba(0,0,0,.08);
+  --chart-grid:   rgba(60,50,30,.08);
   --chart-axis:   #98989E;
   --series-1: #2A78D6;
   --series-2: #0D8F5F;
@@ -37,15 +39,18 @@
   --s-sm: 0 2px 8px rgba(0,0,0,.1);
   --s-md: 0 4px 20px rgba(0,0,0,.12);
   --s-lg: 0 8px 40px rgba(0,0,0,.16);
+  /* Less curvy: cards 12, overlays 10, controls 8. Consume the tokens,
+     don't restate the numbers. */
   --r-sm: 8px;
-  --r-md: 12px;
-  --r-lg: 16px;
+  --r-md: 10px;
+  --r-lg: 12px;
   position: fixed;
   inset: 0;
   z-index: 200;
   background: var(--bg);
   color: var(--label-1);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
 }
@@ -53,20 +58,28 @@
 .gp-root * { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* Buttons */
-.gp-root .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; transition: opacity .15s, transform .1s; text-decoration: none; }
+.gp-root .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--r-sm); font-size: 14px; font-weight: 500; border: none; cursor: pointer; transition: opacity .15s, transform .1s; text-decoration: none; }
 .gp-root .btn:active { transform: scale(.97); }
 .gp-root .btn-primary { background: var(--blue); color: #fff; }
 .gp-root .btn-primary:hover { opacity: .85; }
-.gp-root .btn-secondary { background: var(--bg-3); color: var(--label-1); border: 1px solid var(--sep-o); }
-.gp-root .btn-secondary:hover { background: var(--bg-4); }
+.gp-root .btn-secondary { background: var(--bg-2); color: var(--label-1); border: 1px solid var(--sep-o); }
+.gp-root .btn-secondary:hover { background: var(--bg-3); }
 .gp-root .btn-sm { padding: 5px 12px; font-size: 13px; }
-.gp-root .btn-icon { padding: 6px; background: var(--bg-3); border: 1px solid var(--sep-o); border-radius: 8px; color: var(--label-2); cursor: pointer; }
+.gp-root .btn-icon { padding: 6px; background: var(--bg-3); border: 1px solid var(--sep-o); border-radius: var(--r-sm); color: var(--label-2); cursor: pointer; }
 .gp-root .btn-icon:hover { color: var(--label-1); }
 .gp-root .btn-danger { background: rgba(255,59,48,.12); color: var(--red); border: 1px solid rgba(255,59,48,.2); }
 .gp-root .btn-danger:hover { background: rgba(255,59,48,.2); }
+/* Small text action for table rows (Approve / Reject / Delete...), replacing
+   the old .btn-icon-with-inline-color misuse. Color via the modifiers only. */
+.gp-root .btn-text { background: none; border: none; padding: 4px 6px; font-size: 12px; font-weight: 600; color: var(--label-2); cursor: pointer; border-radius: var(--r-sm); transition: background .12s; }
+.gp-root .btn-text:hover { background: rgba(60,50,30,.06); }
+.gp-root .btn-text-danger  { color: var(--red); }
+.gp-root .btn-text-success { color: var(--green); }
+.gp-root .btn-text-accent  { color: var(--blue); }
 
 /* Form inputs */
-.gp-root .input { background: var(--bg-2); border: 1px solid var(--sep-o); border-radius: 8px; color: var(--label-1); font-size: 14px; padding: 9px 12px; outline: none; transition: border-color .15s; font-family: inherit; }
+.gp-root .input { background: var(--bg-2); border: 1px solid var(--sep-o); border-radius: var(--r-sm); color: var(--label-1); font-size: 14px; padding: 9px 12px; outline: none; transition: border-color .15s; font-family: inherit; }
+.gp-root .input-sm { font-size: 12px; padding: 7px 10px; }
 .gp-root .input:focus { border-color: var(--blue); }
 .gp-root .input::placeholder { color: var(--label-4); }
 .gp-root select.input { cursor: pointer; }
@@ -93,7 +106,7 @@
 .gp-root .sb-brand-name { font-size: 13px; font-weight: 700; color: var(--label-1); }
 .gp-root .sb-brand-sub { font-size: 10px; color: var(--label-4); letter-spacing: .04em; margin-top: 1px; }
 .gp-root .sb-nav { flex: 1; overflow-y: auto; padding: 8px 8px; }
-.gp-root .sb-section { font-size: 10px; color: var(--label-4); letter-spacing: .1em; text-transform: uppercase; padding: 10px 8px 4px; font-family: monospace; }
+.gp-root .sb-section { font-size: 10px; color: var(--label-4); letter-spacing: .1em; text-transform: uppercase; padding: 10px 8px 4px; }
 .gp-root .sb-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; cursor: pointer; color: var(--label-2); font-size: 13.5px; transition: background .12s, color .12s; }
 .gp-root .sb-item:hover { background: rgba(0,0,0,.05); color: var(--label-1); }
 .gp-root .sb-item.active { background: rgba(0,122,255,.12); color: var(--blue); }
@@ -120,6 +133,22 @@
 
 /* Cards */
 .gp-root .card { background: var(--bg-2); border: 1px solid var(--sep); border-radius: var(--r-lg); padding: 20px; }
+/* Clickable card: hover border shifts to the accent (replaces the old JS
+   onMouseEnter borderColor swapping). */
+.gp-root .card-link { cursor: pointer; transition: border-color .15s; }
+.gp-root .card-link:hover { border-color: var(--chart-accent); }
+
+/* ── Typography idioms ───────────────────────────────────────────────────────
+   One convention each for page headers, card headings, uppercase labels, and
+   metric numerals; pages use these instead of restating inline styles. */
+.gp-root .page-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: var(--label-1); }
+.gp-root .page-sub { font-size: 12px; color: var(--label-3); }
+.gp-root .section-title { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--label-1); }
+.gp-root .section-label { font-size: 11px; color: var(--label-3); letter-spacing: .08em; text-transform: uppercase; }
+/* Metric numerals: values wear ink in the mono stack; labels stay sans. */
+.gp-root .stat-value { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 24px; font-weight: 700; color: var(--label-1); letter-spacing: -.02em; }
+.gp-root .stat-value-sm { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 700; color: var(--label-1); letter-spacing: -.02em; }
+.gp-root .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 /* Table */
 .gp-root .tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -132,18 +161,18 @@
 
 /* Confirm dialog */
 .gp-confirm-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1100; display: flex; align-items: center; justify-content: center; }
-.gp-confirm-box { background: var(--bg-2); border: 1px solid var(--sep-o); border-radius: 12px; padding: 20px; width: 380px; max-width: 90vw; box-shadow: var(--s-md); }
+.gp-confirm-box { background: var(--bg-2); border: 1px solid var(--sep-o); border-radius: var(--r-md); padding: 20px; width: 380px; max-width: 90vw; box-shadow: var(--s-md); }
 .gp-confirm-msg { font-size: 13px; color: var(--label-1); line-height: 1.5; white-space: pre-line; margin-bottom: 18px; }
 .gp-confirm-actions { display: flex; justify-content: flex-end; gap: 8px; }
 /* Form-hosting modal (Modal.tsx). Wider than the confirm box since it hosts
    inputs, not just a message. */
 .gp-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1100; display: flex; align-items: center; justify-content: center; padding: 20px; }
-.gp-modal-box { background: var(--bg-2); border: 1px solid var(--sep-o); border-radius: 12px; width: 480px; max-width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--s-md); }
+.gp-modal-box { background: var(--bg-2); border: 1px solid var(--sep-o); border-radius: var(--r-md); width: 480px; max-width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--s-md); }
 .gp-modal-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--sep); }
 .gp-modal-title { font-size: 14px; font-weight: 700; color: var(--label-1); }
 .gp-modal-body { padding: 20px; }
 
-.gp-root .gp-toast { display: flex; align-items: flex-start; gap: 10px; background: var(--bg-3); border: 1px solid var(--sep-o); border-left: 3px solid var(--blue); border-radius: 10px; padding: 11px 14px; box-shadow: var(--s-md); cursor: pointer; animation: gp-toast-in .25s cubic-bezier(.2,.9,.3,1.2); }
+.gp-root .gp-toast { display: flex; align-items: flex-start; gap: 10px; background: var(--bg-3); border: 1px solid var(--sep-o); border-left: 3px solid var(--blue); border-radius: var(--r-md); padding: 11px 14px; box-shadow: var(--s-md); cursor: pointer; animation: gp-toast-in .25s cubic-bezier(.2,.9,.3,1.2); }
 .gp-root .gp-toast-ico { font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 .gp-root .gp-toast-msg { font-size: 12.5px; color: var(--label-1); line-height: 1.45; }
 .gp-root .gp-toast-code { font-size: 10px; color: var(--label-4); font-family: monospace; margin-top: 3px; letter-spacing: .04em; }
