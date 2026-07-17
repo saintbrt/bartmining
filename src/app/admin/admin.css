@@ -162,6 +162,18 @@
 .gp-root .stat-value-sm { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 700; color: var(--label-1); letter-spacing: -.02em; }
 .gp-root .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
+/* Chart control row: a segmented range picker + toggle chips, sitting above
+   or beside a chart title. */
+.gp-root .seg { display: inline-flex; background: var(--bg-3); border: 1px solid var(--sep-o); border-radius: var(--r-sm); padding: 2px; gap: 2px; }
+.gp-root .seg-btn { border: none; background: none; cursor: pointer; font-size: 12px; font-weight: 600; color: var(--label-3); padding: 4px 10px; border-radius: 6px; font-family: inherit; transition: background .12s, color .12s; }
+.gp-root .seg-btn:hover { color: var(--label-1); }
+.gp-root .seg-btn.active { background: var(--bg-2); color: var(--label-1); box-shadow: var(--s-xs); }
+.gp-root .chip-toggle { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--sep-o); background: var(--bg-2); border-radius: var(--r-sm); padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--label-3); cursor: pointer; font-family: inherit; transition: border-color .12s, color .12s; }
+.gp-root .chip-toggle:hover { color: var(--label-1); }
+.gp-root .chip-toggle.on { border-color: var(--chart-accent); color: var(--chart-accent); }
+.gp-root .chip-toggle .dot { width: 14px; height: 0; border-top: 2px dashed var(--label-4); }
+.gp-root .chip-toggle.on .dot { border-top-color: var(--chart-accent); }
+
 /* Table */
 .gp-root .tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
 .gp-root .tbl th { background: var(--bg-2); color: var(--label-3); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--sep); position: sticky; top: 0; }
