@@ -115,6 +115,43 @@ export type ChartGoldOverlay = {
 /** Very light gold — context only, never competes with the primary accent. */
 export const GOLD_OVERLAY = '#E8D5A3'
 
+/**
+ * Fit Y domain to finite plotted values (sales + optional co-series).
+ * - Ignores null/undefined (sparse sales vertices are not TSh 0).
+ * - Pads ~8% so lines aren't glued to the edge.
+ * - If all samples ≥ 0, never invents negative ticks (false "below zero").
+ * - Does NOT always pin min to 0 when data is high — zooms to the data band.
+ */
+export function computeYDomain(
+  series: readonly (readonly (number | null | undefined)[])[],
+  padFrac = 0.08,
+): [number, number] {
+  let dataMin = Infinity
+  let dataMax = -Infinity
+  for (const arr of series) {
+    for (const v of arr) {
+      if (typeof v !== 'number' || !Number.isFinite(v)) continue
+      if (v < dataMin) dataMin = v
+      if (v > dataMax) dataMax = v
+    }
+  }
+  if (!Number.isFinite(dataMin) || !Number.isFinite(dataMax)) return [0, 1]
+
+  if (dataMin === dataMax) {
+    const abs = Math.abs(dataMin)
+    const eps = abs > 0 ? abs * 0.05 : 1
+    dataMin -= eps
+    dataMax += eps
+  }
+
+  const pad = (dataMax - dataMin) * padFrac
+  let lo = dataMin - pad
+  let hi = dataMax + pad
+  if (dataMin >= 0) lo = Math.max(0, lo)
+  if (lo >= hi) hi = lo + 1
+  return [lo, hi]
+}
+
 function EmptyState({ label = 'No data yet.' }: { label?: string }) {
   return <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '28px 0', textAlign: 'center' }}>{label}</div>
 }
@@ -123,7 +160,9 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
    title names the series. Straight segments, faint gradient wash, mono ticks.
    Optional gold overlay: denser weekly path (linear polyline), same opacity/fill
    as before. Sales may use sparse vertices (null between months) + connectNulls
-   so month-to-month legs stay linear without stepping. */
+   so month-to-month legs stay linear without stepping.
+   Y domain is explicit (data-fit) so Area baseline-to-0 does not zoom out or
+   invent a false negative floor under non-negative sales. */
 export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
   data: { label: string; value: number | null; salesTooltip?: number }[]
   gold?: ChartGoldOverlay | null
@@ -143,6 +182,11 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
   const goldName = gold?.name ?? 'Gold (market)'
   const goldFillId = `gp-gold-fill-${goldColor.replace('#', '')}`
   const sparseSales = data.some(d => d.value == null)
+  const yDomain = computeYDomain([
+    data.map(d => d.value),
+    gold?.values ?? [],
+  ])
+  const [domainLo] = yDomain
   const rows = data.map((d, i) => ({
     ...d,
     gold: gold?.values[i] ?? null,
@@ -172,17 +216,27 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
           interval="preserveStartEnd"
           minTickGap={sparseSales ? 20 : 8}
         />
-        <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
+        <YAxis
+          domain={yDomain}
+          allowDataOverflow={false}
+          tickFormatter={compact}
+          tickLine={false}
+          axisLine={false}
+          width={44}
+          tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }}
+        />
         <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
         {hasGold && (
-          /* linear = TV-style polyline kinks (not monotone smooth). Opacity/fill left as-is. */
+          /* baseValue=domainLo: fill under gold inside the fitted band, not forced to absolute 0 */
           <Area type="linear" dataKey="gold" name={goldName} stroke={goldColor} strokeWidth={1.5}
             strokeOpacity={goldOpacity} fill={`url(#${goldFillId})`}
+            baseValue={domainLo}
             dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: goldOpacity }}
             isAnimationActive={false} connectNulls />
         )}
         <Area type="linear" dataKey="value" name={valueName} stroke={color} strokeWidth={2}
           fill={sparseSales ? 'none' : `url(#${gradId})`}
+          baseValue={domainLo}
           dot={false} activeDot={{ r: 4 }} isAnimationActive={false}
           connectNulls={sparseSales} />
       </AreaChart>
