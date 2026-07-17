@@ -76,30 +76,38 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="sb-nav">
             <div className="sb-section">Navigation</div>
             {NAV.map(item => {
-              const isOperations = item.id === 'operations'
               const isActive = curSection === item.id
-              return (
-                <div key={item.id}>
-                  <div className={`sb-item${isActive ? ' active' : ''}`}
-                    onClick={() => (isOperations ? setOperationsOpen(o => !o) : router.push('/admin/' + item.id))}>
-                    <span className="ico">{item.ico}</span>
-                    <span className="sb-label">{item.label}</span>
-                    {isOperations && (
-                      <span style={{ marginLeft: 'auto', fontSize: 9, opacity: 0.5 }}>{operationsOpen ? '▲' : '▼'}</span>
+              if (item.id === 'operations') {
+                // Accordion group: the parent only toggles, so it never wears
+                // the solid active pill (that's reserved for the current leaf).
+                // A left rail groups the children beneath it.
+                return (
+                  <div key={item.id}>
+                    <div className={`sb-item${isActive ? ' sb-parent-active' : ''}`}
+                      onClick={() => setOperationsOpen(o => !o)}>
+                      <span className="ico">{item.ico}</span>
+                      <span className="sb-label">{item.label}</span>
+                      <span className="sb-caret">{operationsOpen ? '▾' : '▸'}</span>
+                    </div>
+                    {operationsOpen && (
+                      <div className="sb-subnav">
+                        {OPERATIONS_SUBTABS.map(sub => (
+                          <div key={sub.id}
+                            className={`sb-subitem${isActive && curSubSection === sub.id ? ' active' : ''}`}
+                            onClick={() => router.push('/admin/operations/' + sub.id)}>
+                            {sub.label}
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </div>
-                  {isOperations && operationsOpen && (
-                    <div style={{ paddingLeft: 20 }}>
-                      {OPERATIONS_SUBTABS.map(sub => (
-                        <div key={sub.id}
-                          className={`sb-item${curSection === 'operations' && curSubSection === sub.id ? ' active' : ''}`}
-                          style={{ fontSize: 12, paddingLeft: 12 }}
-                          onClick={() => router.push('/admin/operations/' + sub.id)}>
-                          <span className="sb-label">{sub.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                )
+              }
+              return (
+                <div key={item.id} className={`sb-item${isActive ? ' active' : ''}`}
+                  onClick={() => router.push('/admin/' + item.id)}>
+                  <span className="ico">{item.ico}</span>
+                  <span className="sb-label">{item.label}</span>
                 </div>
               )
             })}
