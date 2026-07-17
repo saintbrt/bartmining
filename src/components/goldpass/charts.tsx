@@ -22,7 +22,7 @@ const WARN = '#B8770A'
    presentation attributes, which don't resolve CSS custom properties. */
 export const ACCENT = '#2A78D6'
 export const SERIES_COLORS = ['#2A78D6', '#0D8F5F', '#B8770A', '#4A3AA7', '#D63A39', '#C85018']
-const GRID = 'rgba(52,50,47,.08)'
+const GRID = 'rgba(0,0,0,.06)'
 const AXIS = '#98989E'
 /* Numerals wear the mono stack (mirrors --font-mono in admin.css). */
 const MONO = 'ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace'
@@ -152,7 +152,7 @@ export function BarCompareChart({ data, prefix = '', color = ACCENT, height = 20
         <CartesianGrid vertical={false} stroke={GRID} />
         <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
-        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ fill: 'rgba(52,50,47,.04)' }} />
+        <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ fill: 'rgba(0,0,0,.04)' }} />
         <Bar dataKey="value" name="Value" fill={color} radius={[4, 4, 0, 0]} maxBarSize={40} isAnimationActive={false} />
       </BarChart>
     </ResponsiveContainer>
