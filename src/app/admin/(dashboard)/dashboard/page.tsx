@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   getOperationsKpis, getFinancialSummary, projectNextMonthProfit,
-  getTanks, getLatestTankColors, getLeachingPeriods, getPits, getPitMachinery,
-  getExpansionSignal, getFaultFlags,
+  getTanks, getLatestTankColors, getTankRoundStatus, getPits, getPitMachinery,
+  getExpansionSignal, getRoundFaultFlags,
   type OperationsKpis, type FinancialSummaryRow, type TankRow, type TankLatestColor,
-  type LeachingPeriodRow, type PitRow, type PitMachineryRow, type ExpansionSignalRow, type FaultFlagRow,
+  type TankRoundStatusRow, type PitRow, type PitMachineryRow, type ExpansionSignalRow, type RoundFaultFlagRow,
 } from '@/lib/goldpass/erp'
 import { MultiLineChart, StatTile } from '@/components/goldpass/charts'
 
@@ -30,23 +30,23 @@ export default function DashboardPage() {
 
   const [tanks, setTanks] = useState<TankRow[]>([])
   const [tankColors, setTankColors] = useState<Record<string, TankLatestColor>>({})
-  const [periods, setPeriods] = useState<LeachingPeriodRow[]>([])
+  const [roundStatus, setRoundStatus] = useState<TankRoundStatusRow[]>([])
   const [pits, setPits] = useState<PitRow[]>([])
   const [pitMachinery, setPitMachinery] = useState<PitMachineryRow[]>([])
 
   const [expansionSignal, setExpansionSignal] = useState<ExpansionSignalRow | null>(null)
-  const [faultFlags, setFaultFlags] = useState<FaultFlagRow[]>([])
+  const [faultFlags, setFaultFlags] = useState<RoundFaultFlagRow[]>([])
 
   useEffect(() => {
     let alive = true
     Promise.all([
       getOperationsKpis(), getFinancialSummary(6),
-      getTanks(), getLatestTankColors(), getLeachingPeriods(), getPits(), getPitMachinery(),
-      getExpansionSignal(), getFaultFlags(),
-    ]).then(([k, f, tk, tc, per, pt, pm, es, ff]) => {
+      getTanks(), getLatestTankColors(), getTankRoundStatus(), getPits(), getPitMachinery(),
+      getExpansionSignal(), getRoundFaultFlags(),
+    ]).then(([k, f, tk, tc, rs, pt, pm, es, ff]) => {
       if (!alive) return
       setOpsKpis(k); setOpsFinancials(f)
-      setTanks(tk); setTankColors(tc); setPeriods(per); setPits(pt); setPitMachinery(pm)
+      setTanks(tk); setTankColors(tc); setRoundStatus(rs); setPits(pt); setPitMachinery(pm)
       setExpansionSignal(es); setFaultFlags(ff)
     })
     return () => { alive = false }
@@ -69,11 +69,13 @@ export default function DashboardPage() {
   const clearCount = tanks.filter(t => tankColors[t.id]?.result === 'clear').length
   const greyCount = tanks.filter(t => tankColors[t.id]?.result === 'grey').length
   const blackCount = tanks.filter(t => tankColors[t.id]?.result === 'black').length
-  const openPeriod = periods.find(p => p.status === 'open')
+  const openRoundCount = roundStatus.filter(r => r.round_id).length
 
   const machineryCount = pitMachinery.length
 
-  const overdueFault = faultFlags.find(f => f.is_overdue)
+  const overdueFault = faultFlags.length > 0
+    ? faultFlags.reduce((worst, f) => f.days_open > worst.days_open ? f : worst, faultFlags[0])
+    : null
 
   return (
     <div className="content content-pad">
@@ -84,19 +86,20 @@ export default function DashboardPage() {
 
       {overdueFault && (
         <div className="card" style={{ marginBottom: 20, borderColor: 'var(--orange)', cursor: 'pointer' }}
-          onClick={() => router.push('/admin/plant')}>
+          onClick={() => router.push('/admin/plant/overview')}>
           <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--orange)' }}>Round taking too long</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
-            The open leaching period (started {overdueFault.period_start}) has run {overdueFault.days_open} days,
-            past the {overdueFault.threshold_days.toFixed(0)} day threshold
-            {overdueFault.avg_closed_period_days ? ` (average closed period: ${overdueFault.avg_closed_period_days.toFixed(0)} days)` : ''}.
+            {overdueFault.tank_code} round {overdueFault.round_number} (started {overdueFault.start_date}) has run{' '}
+            {overdueFault.days_open} days, past the {overdueFault.threshold_days.toFixed(0)} day threshold
+            {overdueFault.avg_closed_round_days ? ` (average closed round: ${overdueFault.avg_closed_round_days.toFixed(0)} days)` : ''}
+            {faultFlags.length > 1 ? ` — ${faultFlags.length} tanks overdue.` : '.'}
           </div>
         </div>
       )}
 
       {expansionSignal?.signal && (
         <div className="card" style={{ marginBottom: 20, borderColor: 'var(--green)', cursor: 'pointer' }}
-          onClick={() => router.push('/admin/plant')}>
+          onClick={() => router.push('/admin/plant/overview')}>
           <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--green)' }}>Room to expand</div>
           <div style={{ fontSize: 12, color: 'var(--label-3)', marginTop: 4 }}>
             {expansionSignal.utilization_pct}% of tanks are actively leaching and cost per gram recovered
@@ -129,18 +132,18 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid-2" style={{ marginBottom: 24 }}>
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant/overview')}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Plant status</div>
           {tanks.length === 0 ? (
             <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No tanks configured yet.</div>
           ) : (
             <div style={{ fontSize: 12, color: 'var(--label-3)', lineHeight: 1.6 }}>
               {clearCount} clear · {greyCount} grey · {blackCount} black of {tanks.length} tanks.
-              {openPeriod ? ` Leaching period open since ${openPeriod.period_start}.` : ' No open leaching period.'}
+              {' '}{openRoundCount} round{openRoundCount === 1 ? '' : 's'} in progress.
             </div>
           )}
         </div>
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant')}>
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => router.push('/admin/plant/overview')}>
           <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Pit status</div>
           {pits.length === 0 ? (
             <div style={{ fontSize: 12, color: 'var(--label-4)', lineHeight: 1.6 }}>No pits registered yet.</div>
