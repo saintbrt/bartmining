@@ -3,9 +3,9 @@
 import { useEffect } from 'react'
 
 /* Generic form-hosting overlay, generalizing GpConfirm's backdrop pattern
-   for wider content (a form, not just a yes/no message). Every "button
-   opens a small form" interaction on the Plant subtabs uses this instead
-   of a permanently-stacked card. */
+   for wider content (a form, not just a yes/no message). Used for the
+   Plant page's structural setup (add pit / assign machinery), so it opens
+   as a button-triggered form instead of a permanently-stacked card. */
 export function Modal({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
   useEffect(() => {
     function onKey(e: KeyboardEvent) { if (e.key === 'Escape') onClose() }
