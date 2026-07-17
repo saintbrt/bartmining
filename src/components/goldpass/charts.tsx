@@ -118,12 +118,11 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
 /* Single-series line (e.g. revenue trend). One accent, no legend: the card
    title names the series. Straight segments (not a spline), a faint gradient
    wash under the line, hairline recessive grid, mono ticks, dashed cursor.
-   Optional `gold` overlays market gold as a very light, low-opacity line
-   (scaled into the primary domain for geometry; raw TSh/g in tooltip).
-   Dense weekly/daily gold uses many more points than monthly sales — primary
-   is stepped (same month value) while gold zigzags. */
+   Optional `gold` overlays market gold as a very light line + solid fill
+   under the path (scaled into the primary domain; raw TSh/g in tooltip).
+   Primary sales/revenue stays monthly linear — gold does not rewrite that axis. */
 export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
-  data: { label: string; value: number; tick?: boolean }[]
+  data: { label: string; value: number }[]
   gold?: ChartGoldOverlay | null
   valueName?: string
   prefix?: string
@@ -139,7 +138,6 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
   /* Solid wash under the gold path: same gold, 60% less than full opacity → 0.4 */
   const goldFillOpacity = 0.4
   const goldName = gold?.name ?? 'Gold (market)'
-  const dense = data.length > 14
   const goldFillId = `gp-gold-fill-${goldColor.replace('#', '')}`
   const rows = data.map((d, i) => ({
     ...d,
@@ -162,16 +160,7 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
           </linearGradient>
         </defs>
         <CartesianGrid vertical={false} stroke={GRID} />
-        <XAxis
-          dataKey="label"
-          tickLine={false}
-          axisLine={{ stroke: GRID }}
-          tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }}
-          /* Dense weekly series only labels month starts (empty string elsewhere);
-             minTickGap skips the blanks so ticks stay readable. */
-          interval="preserveStartEnd"
-          minTickGap={dense ? 24 : 8}
-        />
+        <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
         {hasGold && (
@@ -180,8 +169,8 @@ export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', c
             dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: 1 }}
             isAnimationActive={false} connectNulls />
         )}
-        {/* stepAfter: monthly financials held flat across dense gold buckets */}
-        <Area type={dense ? 'stepAfter' : 'linear'} dataKey="value" name={valueName} stroke={color} strokeWidth={2}
+        {/* Primary: always monthly linear — same as pre-gold dashboard chart */}
+        <Area type="linear" dataKey="value" name={valueName} stroke={color} strokeWidth={2}
           fill={`url(#${gradId})`} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
       </AreaChart>
     </ResponsiveContainer>

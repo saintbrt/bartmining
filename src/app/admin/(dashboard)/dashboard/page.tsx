@@ -10,7 +10,12 @@ import {
   type TankRoundStatusRow, type PitRow, type PitMachineryRow, type ExpansionSignalRow, type RoundFaultFlagRow,
 } from '@/lib/goldpass/erp'
 import { LineTrendChart, MetricStrip, GOLD_OVERLAY, type MetricStripItem, type ChartGoldOverlay } from '@/components/goldpass/charts'
-import { buildDenseHeroSeries, scaleToPrimaryBand, type GoldPricePoint } from '@/lib/goldpass/goldPrice'
+import { alignGoldToMonths, scaleToPrimaryBand, type GoldPricePoint } from '@/lib/goldpass/goldPrice'
+
+function monthLabel(month: string): string {
+  // month is 'YYYY-MM' from the RPC; anchor to day 01 for a stable short label.
+  return new Date(month + '-01T00:00:00').toLocaleDateString(undefined, { month: 'short' })
+}
 
 function pctDelta(series: number[]): number | undefined {
   if (series.length < 2) return undefined
@@ -84,8 +89,7 @@ export default function DashboardPage() {
         if (session?.access_token) {
           headers.Authorization = `Bearer ${session.access_token}`
         }
-        /* Fetch weekly series for the full 12M window (daily would be huge).
-           Client slices by range; 3M still uses weekly points (enough wiggle). */
+        /* Monthly rollup for overlay (sales axis stays one point per month). */
         const res = await fetch('/api/gold/history?months=12', {
           headers,
           credentials: 'same-origin',
@@ -96,8 +100,8 @@ export default function DashboardPage() {
         }
         const body = await res.json() as { points?: GoldPricePoint[]; months?: GoldPricePoint[] }
         if (!alive) return
-        /* Prefer dense points; fall back to monthly rollup if an older deploy. */
-        setGoldPoints(body.points?.length ? body.points : (body.months ?? []))
+        /* Prefer monthly series so gold aligns 1:1 with sales months. */
+        setGoldPoints(body.months?.length ? body.months : (body.points ?? []))
         setGoldError(null)
       } catch (err) {
         if (!alive) return
@@ -121,33 +125,20 @@ export default function DashboardPage() {
 
   const valueName = METRIC_LABELS[activeMetric] ?? 'Sales'
 
-  /* Dense hero when gold is on: weekly gold + stepped monthly sales.
-     With gold off, keep a simple one-point-per-month series. */
-  const heroBuilt = useMemo(() => {
-    const field = metricField[activeMetric] ?? metricField.revenue
-    const financials = opsFinancials.map(f => ({ month: f.month, value: field(f) }))
-    if (!goldOn || goldPoints.length === 0) {
-      const start = Math.max(0, financials.length - rangeMonths)
-      return financials.slice(start).map(f => ({
-        label: new Date(f.month + '-01T00:00:00').toLocaleDateString(undefined, { month: 'short' }),
-        value: f.value,
-        goldRaw: null as number | null,
-        tick: true,
-      }))
-    }
-    return buildDenseHeroSeries(financials, goldPoints, rangeMonths)
-  }, [opsFinancials, goldPoints, rangeMonths, activeMetric, goldOn])
-
-  const heroData = useMemo(
-    () => heroBuilt.map(r => ({ label: r.label, value: r.value, tick: r.tick })),
-    [heroBuilt],
-  )
+  /* Sales/revenue/cost/profit: one point per month — unchanged from pre-gold chart. */
+  const windowStart = Math.max(0, opsFinancials.length - rangeMonths)
+  const activeRows = opsFinancials.slice(windowStart)
+  const heroData = activeRows.map(f => ({ label: monthLabel(f.month), value: pick(f) }))
 
   const goldOverlay: ChartGoldOverlay | null = useMemo(() => {
-    if (!goldOn || heroBuilt.length === 0) return null
-    const raw = heroBuilt.map(r => r.goldRaw)
+    if (!goldOn || goldPoints.length === 0 || opsFinancials.length === 0) return null
+    const start = Math.max(0, opsFinancials.length - rangeMonths)
+    const rows = opsFinancials.slice(start)
+    if (rows.length === 0) return null
+    const field = metricField[activeMetric] ?? metricField.revenue
+    const raw = alignGoldToMonths(rows.map(r => r.month), goldPoints, 'price_tsh_g')
     if (!raw.some(v => v != null)) return null
-    const primary = heroBuilt.map(r => r.value)
+    const primary = rows.map(field)
     const scaled = scaleToPrimaryBand(primary, raw)
     return {
       values: scaled,
@@ -156,7 +147,7 @@ export default function DashboardPage() {
       color: GOLD_OVERLAY,
       strokeOpacity: 0.42,
     }
-  }, [goldOn, heroBuilt])
+  }, [goldOn, goldPoints, opsFinancials, rangeMonths, activeMetric])
 
   const heroMetrics: MetricStripItem[] = [
     { key: 'revenue', label: 'Revenue (this month)', value: compactTsh(current?.revenue_tsh ?? 0), delta: pctDelta(revSeries), goodWhenUp: true },
@@ -240,7 +231,7 @@ export default function DashboardPage() {
         {goldOn && (
           <div style={{ fontSize: 11, color: 'var(--label-4)', marginTop: 8 }}>
             {goldOverlay
-              ? 'Gold: weekly market TSh/g (scaled · sales held monthly as steps · hover for real values)'
+              ? 'Gold: market avg TSh/g (scaled onto chart · hover for real values)'
               : goldError
                 ? `Gold price unavailable: ${goldError}`
                 : 'Loading gold price…'}
