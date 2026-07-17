@@ -1,14 +1,14 @@
 .gp-root {
   /* ── Light theme (default) ──
-     Essentially neutral grays with only the faintest warm whisper (the
-     current warmth reduced a further ~60%); cards stay pure white so
-     charts keep their validated surface. */
-  --bg:     #F1F1F0;
+     Canvas sits ~2% off white (near-white neutral); cards are pure white
+     and their borders keep them distinct from it. Raised grays (hover,
+     chips) stay a touch deeper so interactive surfaces still read. */
+  --bg:     #FAFAFA;
   --bg-2:   #FFFFFF;
-  --bg-3:   #E7E6E5;
-  --bg-4:   #D3D3D1;
-  --sep-o:  rgba(52,50,47,.12);
-  --sep:    #E0E0DE;
+  --bg-3:   #EFEFEF;
+  --bg-4:   #E2E2E2;
+  --sep-o:  rgba(0,0,0,.08);
+  --sep:    #ECECEC;
   --blue:   #007AFF;
   --green:  #34C759;
   --orange: #FF9500;
@@ -28,7 +28,7 @@
      The chart components mirror these as JS constants (Recharts sets SVG
      attributes, which don't resolve CSS vars), keep the two in sync. */
   --chart-accent: #2A78D6;
-  --chart-grid:   rgba(52,50,47,.08);
+  --chart-grid:   rgba(0,0,0,.06);
   --chart-axis:   #98989E;
   --series-1: #2A78D6;
   --series-2: #0D8F5F;
@@ -73,7 +73,7 @@
 /* Small text action for table rows (Approve / Reject / Delete...), replacing
    the old .btn-icon-with-inline-color misuse. Color via the modifiers only. */
 .gp-root .btn-text { background: none; border: none; padding: 4px 6px; font-size: 12px; font-weight: 600; color: var(--label-2); cursor: pointer; border-radius: var(--r-sm); transition: background .12s; }
-.gp-root .btn-text:hover { background: rgba(52,50,47,.06); }
+.gp-root .btn-text:hover { background: rgba(0,0,0,.05); }
 .gp-root .btn-text-danger  { color: var(--red); }
 .gp-root .btn-text-success { color: var(--green); }
 .gp-root .btn-text-accent  { color: var(--blue); }
