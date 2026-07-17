@@ -449,10 +449,11 @@ export type ColorTestRow = {
   tank_id: string
   result: 'black' | 'grey' | 'clear'
   notes: string | null
+  round_id: string | null
 }
 
 export async function getColorTests(tankId?: string): Promise<ColorTestRow[]> {
-  let q = sb().from('color_tests').select('id, test_date, tank_id, result, notes').order('test_date', { ascending: false })
+  let q = sb().from('color_tests').select('id, test_date, tank_id, result, notes, round_id').order('test_date', { ascending: false })
   if (tankId) q = q.eq('tank_id', tankId)
   const { data, error } = await q
   if (error) { gpError('GP-2650', error.message); return [] }
@@ -488,6 +489,112 @@ export async function getLeachingPeriodCost(periodId: string): Promise<PeriodCos
   const { data, error } = await sb().rpc('get_leaching_period_cost', { p_period_id: periodId })
   if (error) { gpError('GP-2653', error.message); return [] }
   return (data ?? []) as PeriodCostRow[]
+}
+
+/* PLANT: LEACHING ROUNDS (0022_leaching_rounds.sql). Replaces the phase B
+   global leaching_periods concept: each tank runs its own round(s), with
+   its own start date, clearing (end) date, and day count. */
+export type LeachingRoundRow = {
+  id: string
+  tank_id: string
+  round_number: number
+  start_date: string
+  end_date: string | null
+  status: 'open' | 'closed'
+  closed_by: string | null
+  notes: string | null
+}
+
+export async function getLeachingRounds(tankId?: string): Promise<LeachingRoundRow[]> {
+  let q = sb().from('leaching_rounds').select('*').order('start_date', { ascending: false })
+  if (tankId) q = q.eq('tank_id', tankId)
+  const { data, error } = await q
+  if (error) { gpError('GP-2664', error.message); return [] }
+  return (data ?? []) as LeachingRoundRow[]
+}
+
+export async function startRound(tankId: string, startDate: string, notes?: string): Promise<string | null> {
+  const { data, error } = await sb().rpc('start_leaching_round', {
+    p_tank_id: tankId, p_start_date: startDate, p_notes: notes ?? null,
+  })
+  if (error) { gpError('GP-2665', error.message); return null }
+  return data as string
+}
+
+export async function endRound(roundId: string, endDate: string, notes?: string): Promise<boolean> {
+  const { data: auth } = await sb().auth.getUser()
+  const { error } = await sb().from('leaching_rounds')
+    .update({ status: 'closed', end_date: endDate, closed_by: auth.user?.id ?? null, ...(notes ? { notes } : {}) })
+    .eq('id', roundId)
+  if (error) { gpError('GP-2666', error.message); return false }
+  return true
+}
+
+export type TankRoundStatusRow = {
+  tank_id: string
+  tank_code: string
+  line: 'A' | 'B' | 'C'
+  sort_order: number
+  round_id: string | null
+  round_number: number | null
+  start_date: string | null
+  days_open: number | null
+  latest_color: 'black' | 'grey' | 'clear' | null
+  latest_test_date: string | null
+  days_since_last_test: number | null
+  avg_closed_round_days: number | null
+  threshold_days: number
+  is_overdue: boolean
+}
+
+export async function getTankRoundStatus(): Promise<TankRoundStatusRow[]> {
+  const { data, error } = await sb().rpc('get_tank_round_status')
+  if (error) { gpError('GP-2667', error.message); return [] }
+  return (data ?? []) as TankRoundStatusRow[]
+}
+
+export type RoundTimelineRow = {
+  tank_id: string
+  tank_code: string
+  line: 'A' | 'B' | 'C'
+  sort_order: number
+  round_id: string
+  round_number: number
+  start_date: string
+  end_date: string
+  status: 'open' | 'closed'
+}
+
+export async function getRoundTimeline(days = 90): Promise<RoundTimelineRow[]> {
+  const { data, error } = await sb().rpc('get_leaching_rounds_timeline', { p_days: days })
+  if (error) { gpError('GP-2668', error.message); return [] }
+  return (data ?? []) as RoundTimelineRow[]
+}
+
+export type RoundCycleTimeRow = { month: string; avg_days: number | null; rounds_closed: number }
+
+export async function getRoundCycleTimes(months = 6): Promise<RoundCycleTimeRow[]> {
+  const { data, error } = await sb().rpc('get_round_cycle_times', { p_months: months })
+  if (error) { gpError('GP-2669', error.message); return [] }
+  return (data ?? []) as RoundCycleTimeRow[]
+}
+
+export type RoundFaultFlagRow = {
+  tank_id: string
+  tank_code: string
+  round_id: string
+  round_number: number
+  start_date: string
+  days_open: number
+  avg_closed_round_days: number | null
+  threshold_days: number
+  is_overdue: boolean
+}
+
+export async function getRoundFaultFlags(): Promise<RoundFaultFlagRow[]> {
+  const { data, error } = await sb().rpc('get_round_fault_flags')
+  if (error) { gpError('GP-2670', error.message); return [] }
+  return (data ?? []) as RoundFaultFlagRow[]
 }
 
 /* PITS + MACHINERY (0018_pits_machinery.sql). */

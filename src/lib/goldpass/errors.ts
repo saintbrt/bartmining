@@ -111,6 +111,13 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2661': 'Recovery reconciliation failed to load.',
   'GP-2662': 'Expansion signal failed to load.',
   'GP-2663': 'Fault flags failed to load.',
+  'GP-2664': 'Leaching rounds failed to load.',
+  'GP-2665': 'Failed to start leaching round.',
+  'GP-2666': 'Failed to end leaching round.',
+  'GP-2667': 'Tank round status failed to load.',
+  'GP-2668': 'Leaching round timeline failed to load.',
+  'GP-2669': 'Round cycle times failed to load.',
+  'GP-2670': 'Round fault flags failed to load.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */
