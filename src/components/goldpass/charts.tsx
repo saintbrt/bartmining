@@ -35,12 +35,40 @@ function compact(n: number): string {
   return String(Math.round(n))
 }
 
-type TooltipEntry = { dataKey?: string | number; name?: string; value?: number; color?: string }
+type TooltipEntry = { dataKey?: string | number; name?: string; value?: number; color?: string; payload?: Record<string, unknown> }
 
 function ChartTooltip({ active, payload, label, prefix = '' }: {
   active?: boolean; payload?: TooltipEntry[]; label?: string; prefix?: string
 }) {
   if (!active || !payload?.length) return null
+  /* Prefer primary series values; gold overlay uses raw TSh from row payload
+     (scaled geometry must never appear in the tooltip). */
+  const row = payload[0]?.payload
+  const primaryEntry = payload.find(p => p.dataKey === 'value') ?? payload[0]
+  const goldRaw = row && typeof row.goldRaw === 'number' ? row.goldRaw as number : null
+  const primaryName = (primaryEntry?.name && primaryEntry.name !== 'Value') ? String(primaryEntry.name) : 'Sales'
+  const goldLabel = typeof row?.goldLabel === 'string' ? row.goldLabel as string : 'Gold'
+
+  if (goldRaw != null) {
+    return (
+      <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 'var(--r-sm)', padding: '8px 12px', boxShadow: 'var(--s-sm)', minWidth: 160 }}>
+        <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 6 }}>{label}</div>
+        <div style={{ marginBottom: 6 }}>
+          <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 1 }}>{primaryName}</div>
+          <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--label-1)', fontFamily: MONO, fontVariantNumeric: 'tabular-nums' }}>
+            {prefix}{Math.round(primaryEntry?.value ?? 0).toLocaleString()}
+          </div>
+        </div>
+        <div style={{ borderTop: '1px solid var(--sep)', paddingTop: 6 }}>
+          <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 1 }}>{goldLabel}</div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--label-2)', fontFamily: MONO, fontVariantNumeric: 'tabular-nums' }}>
+            TSh {Math.round(goldRaw).toLocaleString()}/g
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   /* Single series: small gray label over one big mono value. Multi-series:
      the label plus a swatch-name-value row per series, values in mono. */
   if (payload.length === 1) {
@@ -57,7 +85,7 @@ function ChartTooltip({ active, payload, label, prefix = '' }: {
   return (
     <div style={{ background: 'var(--bg-2)', border: '1px solid var(--sep)', borderRadius: 'var(--r-sm)', padding: '8px 12px', boxShadow: 'var(--s-sm)', fontSize: 12 }}>
       <div style={{ fontSize: 11, color: 'var(--label-3)', marginBottom: 6 }}>{label}</div>
-      {payload.map(p => (
+      {payload.filter(p => p.dataKey !== 'gold').map(p => (
         <div key={String(p.dataKey)} style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 150 }}>
           <span style={{ width: 8, height: 8, borderRadius: 2, background: p.color, flexShrink: 0 }} />
           <span style={{ color: 'var(--label-2)' }}>{p.name}</span>
@@ -70,6 +98,19 @@ function ChartTooltip({ active, payload, label, prefix = '' }: {
   )
 }
 
+/** Faint market-gold overlay. `values` are scaled for drawing; `rawValues` are
+    real TSh/g for the tooltip. */
+export type ChartGoldOverlay = {
+  values: (number | null)[]
+  rawValues: (number | null)[]
+  name?: string
+  color?: string
+  strokeOpacity?: number
+}
+
+/** Very light gold — context only, never competes with the primary accent. */
+export const GOLD_OVERLAY = '#E8D5A3'
+
 function EmptyState({ label = 'No data yet.' }: { label?: string }) {
   return <div style={{ fontSize: 12, color: 'var(--label-4)', padding: '28px 0', textAlign: 'center' }}>{label}</div>
 }
@@ -77,12 +118,12 @@ function EmptyState({ label = 'No data yet.' }: { label?: string }) {
 /* Single-series line (e.g. revenue trend). One accent, no legend: the card
    title names the series. Straight segments (not a spline), a faint gradient
    wash under the line, hairline recessive grid, mono ticks, dashed cursor.
-   Optional `compare` overlays the previous period as a muted dashed line
-   (aligned to `data` by index) so the current window reads against it. */
-export function LineTrendChart({ data, compare, compareName = 'Previous', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
+   Optional `gold` overlays market gold as a very light, low-opacity line
+   (scaled into the primary domain for geometry; raw TSh/g in tooltip). */
+export function LineTrendChart({ data, gold, valueName = 'Sales', prefix = '', color = ACCENT, height = 220, emptyLabel }: {
   data: { label: string; value: number }[]
-  compare?: (number | null)[]
-  compareName?: string
+  gold?: ChartGoldOverlay | null
+  valueName?: string
   prefix?: string
   color?: string
   height?: number
@@ -90,8 +131,16 @@ export function LineTrendChart({ data, compare, compareName = 'Previous', prefix
 }) {
   if (data.length === 0) return <EmptyState label={emptyLabel} />
   const gradId = `gp-trend-${color.replace('#', '')}`
-  const hasCompare = !!compare && compare.some(v => v != null)
-  const rows = data.map((d, i) => ({ ...d, compare: compare?.[i] ?? null }))
+  const hasGold = !!gold && gold.values.some(v => v != null)
+  const goldColor = gold?.color ?? GOLD_OVERLAY
+  const goldOpacity = gold?.strokeOpacity ?? 0.42
+  const goldName = gold?.name ?? 'Gold (market)'
+  const rows = data.map((d, i) => ({
+    ...d,
+    gold: gold?.values[i] ?? null,
+    goldRaw: gold?.rawValues[i] ?? null,
+    goldLabel: goldName,
+  }))
   return (
     <ResponsiveContainer width="100%" height={height}>
       <AreaChart data={rows} margin={{ top: 12, right: 16, bottom: 4, left: 4 }}>
@@ -105,11 +154,12 @@ export function LineTrendChart({ data, compare, compareName = 'Previous', prefix
         <XAxis dataKey="label" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <YAxis tickFormatter={compact} tickLine={false} axisLine={false} width={44} tick={{ fontSize: 11, fill: AXIS, fontFamily: MONO }} />
         <Tooltip content={<ChartTooltip prefix={prefix} />} cursor={{ stroke: AXIS, strokeDasharray: '3 3' }} />
-        {hasCompare && (
-          <Area type="linear" dataKey="compare" name={compareName} stroke={AXIS} strokeWidth={1.5}
-            strokeDasharray="4 3" fill="none" dot={false} activeDot={{ r: 3 }} isAnimationActive={false} connectNulls />
+        {hasGold && (
+          <Area type="linear" dataKey="gold" name={goldName} stroke={goldColor} strokeWidth={1.5}
+            strokeOpacity={goldOpacity} fill="none" dot={false} activeDot={{ r: 3, fill: goldColor, strokeOpacity: 1 }}
+            isAnimationActive={false} connectNulls />
         )}
-        <Area type="linear" dataKey="value" name="Value" stroke={color} strokeWidth={2}
+        <Area type="linear" dataKey="value" name={valueName} stroke={color} strokeWidth={2}
           fill={`url(#${gradId})`} dot={false} activeDot={{ r: 4 }} isAnimationActive={false} />
       </AreaChart>
     </ResponsiveContainer>

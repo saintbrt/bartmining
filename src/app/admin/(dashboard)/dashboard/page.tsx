@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   getOperationsKpis, getFinancialSummary, projectNextMonthProfit,
@@ -9,7 +9,8 @@ import {
   type OperationsKpis, type FinancialSummaryRow, type TankRow, type TankLatestColor,
   type TankRoundStatusRow, type PitRow, type PitMachineryRow, type ExpansionSignalRow, type RoundFaultFlagRow,
 } from '@/lib/goldpass/erp'
-import { LineTrendChart, MetricStrip, type MetricStripItem } from '@/components/goldpass/charts'
+import { LineTrendChart, MetricStrip, GOLD_OVERLAY, type MetricStripItem, type ChartGoldOverlay } from '@/components/goldpass/charts'
+import { alignGoldToMonths, scaleToPrimaryBand, type GoldMonthPrice } from '@/lib/goldpass/goldPrice'
 
 function monthLabel(month: string): string {
   // month is 'YYYY-MM' from the RPC; anchor to day 01 for a stable short label.
@@ -33,13 +34,22 @@ function compactTsh(n: number): string {
 
 const RANGES = [{ id: 3, label: '3M' }, { id: 6, label: '6M' }, { id: 12, label: '12M' }] as const
 
+const METRIC_LABELS: Record<string, string> = {
+  revenue: 'Sales',
+  cost: 'Cost',
+  profit: 'Profit',
+  projected: 'Profit',
+}
+
 export default function DashboardPage() {
   const router = useRouter()
   const [opsKpis, setOpsKpis] = useState<OperationsKpis | null>(null)
   const [opsFinancials, setOpsFinancials] = useState<FinancialSummaryRow[]>([])
   const [activeMetric, setActiveMetric] = useState('revenue')
   const [rangeMonths, setRangeMonths] = useState<number>(6)
-  const [compareOn, setCompareOn] = useState(false)
+  const [goldOn, setGoldOn] = useState(true)
+  const [goldMonths, setGoldMonths] = useState<GoldMonthPrice[]>([])
+  const [goldError, setGoldError] = useState<string | null>(null)
 
   const [tanks, setTanks] = useState<TankRow[]>([])
   const [tankColors, setTankColors] = useState<Record<string, TankLatestColor>>({})
@@ -65,6 +75,31 @@ export default function DashboardPage() {
     return () => { alive = false }
   }, [])
 
+  /* Fetch 12 months of market gold once; slice client-side for 3M/6M/12M.
+     Server caches heavily (free tier is 10 req/hour). */
+  useEffect(() => {
+    let alive = true
+    fetch('/api/gold/history?months=12')
+      .then(async res => {
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({})) as { error?: string }
+          throw new Error(body.error || `Gold history ${res.status}`)
+        }
+        return res.json() as Promise<{ months: GoldMonthPrice[] }>
+      })
+      .then(body => {
+        if (!alive) return
+        setGoldMonths(body.months ?? [])
+        setGoldError(null)
+      })
+      .catch(err => {
+        if (!alive) return
+        setGoldMonths([])
+        setGoldError(err instanceof Error ? err.message : 'Gold price unavailable')
+      })
+    return () => { alive = false }
+  }, [])
+
   const current = opsFinancials[opsFinancials.length - 1]
   const revSeries = opsFinancials.map(f => f.revenue_tsh)
   const costSeries = opsFinancials.map(f => f.cost_tsh)
@@ -76,19 +111,30 @@ export default function DashboardPage() {
   }
   const pick = metricField[activeMetric] ?? metricField.revenue
 
-  /* The active window is the last `rangeMonths` rows; "compare" is the window
-     immediately before it, aligned onto the active window's positions as a
-     muted dashed line. */
   const windowStart = Math.max(0, opsFinancials.length - rangeMonths)
   const activeRows = opsFinancials.slice(windowStart)
-  const prevRows = opsFinancials.slice(Math.max(0, windowStart - rangeMonths), windowStart)
   const heroData = activeRows.map(f => ({ label: monthLabel(f.month), value: pick(f) }))
-  const compareArr = compareOn
-    ? activeRows.map((_, i) => {
-        const p = prevRows[prevRows.length - activeRows.length + i]
-        return p ? pick(p) : null
-      })
-    : undefined
+  const valueName = METRIC_LABELS[activeMetric] ?? 'Sales'
+
+  const goldOverlay: ChartGoldOverlay | null = useMemo(() => {
+    if (!goldOn || goldMonths.length === 0 || opsFinancials.length === 0) return null
+    const start = Math.max(0, opsFinancials.length - rangeMonths)
+    const rows = opsFinancials.slice(start)
+    if (rows.length === 0) return null
+    const field = metricField[activeMetric] ?? metricField.revenue
+    const monthKeys = rows.map(r => r.month)
+    const raw = alignGoldToMonths(monthKeys, goldMonths, 'price_tsh_g')
+    if (!raw.some(v => v != null)) return null
+    const primary = rows.map(field)
+    const scaled = scaleToPrimaryBand(primary, raw)
+    return {
+      values: scaled,
+      rawValues: raw,
+      name: 'Gold',
+      color: GOLD_OVERLAY,
+      strokeOpacity: 0.42,
+    }
+  }, [goldOn, goldMonths, opsFinancials, rangeMonths, activeMetric])
 
   const heroMetrics: MetricStripItem[] = [
     { key: 'revenue', label: 'Revenue (this month)', value: compactTsh(current?.revenue_tsh ?? 0), delta: pctDelta(revSeries), goodWhenUp: true },
@@ -142,8 +188,8 @@ export default function DashboardPage() {
       )}
 
       {/* Hero: one trend chart, the KPI metrics attached below as tabs.
-          Clicking a metric switches the charted series. Range + compare
-          controls scope the window and overlay the previous period. */}
+          Clicking a metric switches the charted series. Gold overlays market
+          price (TSh/g, proportionally scaled) as a faint context line. */}
       <div className="card" style={{ marginBottom: 20, paddingBottom: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12, flexWrap: 'wrap' }}>
           <div className="section-title" style={{ marginBottom: 0, flex: 1 }}>Performance trend</div>
@@ -152,13 +198,32 @@ export default function DashboardPage() {
               <button key={r.id} className={`seg-btn${rangeMonths === r.id ? ' active' : ''}`} onClick={() => setRangeMonths(r.id)}>{r.label}</button>
             ))}
           </div>
-          <button className={`chip-toggle${compareOn ? ' on' : ''}`} onClick={() => setCompareOn(v => !v)}>
-            <span className="dot" /> Compare
+          <button
+            className={`chip-toggle${goldOn ? ' on' : ''}`}
+            onClick={() => setGoldOn(v => !v)}
+            title={goldError ?? 'Overlay market gold price (TSh/g, scaled)'}
+          >
+            <span className="dot" style={goldOn ? { background: GOLD_OVERLAY } : undefined} /> Gold
           </button>
           <button className="btn-text" onClick={() => router.push('/admin/operations/overview')}>View Operations →</button>
         </div>
-        <LineTrendChart data={heroData} compare={compareArr} compareName="Previous period" prefix="TSh " height={260}
-          emptyLabel="No financial data yet, run the operations financial summary migration to populate this." />
+        <LineTrendChart
+          data={heroData}
+          gold={goldOverlay}
+          valueName={valueName}
+          prefix="TSh "
+          height={260}
+          emptyLabel="No financial data yet, run the operations financial summary migration to populate this."
+        />
+        {goldOn && (
+          <div style={{ fontSize: 11, color: 'var(--label-4)', marginTop: 8 }}>
+            {goldOverlay
+              ? 'Gold: market avg TSh/g (scaled onto chart · hover for real values)'
+              : goldError
+                ? `Gold price unavailable: ${goldError}`
+                : 'Loading gold price…'}
+          </div>
+        )}
         <div style={{ margin: '12px -20px 0' }}>
           <MetricStrip metrics={heroMetrics} active={activeMetric} onSelect={setActiveMetric} />
         </div>
