@@ -3,14 +3,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
-  getOperationsKpis, getFinancialSummary, projectNextMonthProfit,
+  getOperationsKpis, getFinancialSummary, getSalesRegister, projectNextMonthProfit,
   getTanks, getLatestTankColors, getTankRoundStatus, getPits, getPitMachinery,
   getExpansionSignal, getRoundFaultFlags,
-  type OperationsKpis, type FinancialSummaryRow, type TankRow, type TankLatestColor,
+  type OperationsKpis, type FinancialSummaryRow, type SalesRegisterRow, type TankRow, type TankLatestColor,
   type TankRoundStatusRow, type PitRow, type PitMachineryRow, type ExpansionSignalRow, type RoundFaultFlagRow,
 } from '@/lib/goldpass/erp'
 import { LineTrendChart, MetricStrip, GOLD_OVERLAY, type MetricStripItem, type ChartGoldOverlay } from '@/components/goldpass/charts'
-import { buildGoldDenseSeries, scaleToPrimaryBand, type GoldPricePoint } from '@/lib/goldpass/goldPrice'
+import { buildGoldDenseSeries, scaleToPrimaryBand, type GoldPricePoint, type SaleEvent } from '@/lib/goldpass/goldPrice'
 
 function monthLabel(month: string): string {
   // month is 'YYYY-MM' from the RPC; anchor to day 01 for a stable short label.
@@ -45,6 +45,8 @@ export default function DashboardPage() {
   const router = useRouter()
   const [opsKpis, setOpsKpis] = useState<OperationsKpis | null>(null)
   const [opsFinancials, setOpsFinancials] = useState<FinancialSummaryRow[]>([])
+  /** Real sales rows (sale_date + price_tsh) for chart villages — not monthly rollups. */
+  const [salesRows, setSalesRows] = useState<SalesRegisterRow[]>([])
   const [activeMetric, setActiveMetric] = useState('revenue')
   const [rangeMonths, setRangeMonths] = useState<number>(6)
   const [goldOn, setGoldOn] = useState(true)
@@ -63,12 +65,12 @@ export default function DashboardPage() {
   useEffect(() => {
     let alive = true
     Promise.all([
-      getOperationsKpis(), getFinancialSummary(12),
+      getOperationsKpis(), getFinancialSummary(12), getSalesRegister({ months: 12, limit: 500 }),
       getTanks(), getLatestTankColors(), getTankRoundStatus(), getPits(), getPitMachinery(),
       getExpansionSignal(), getRoundFaultFlags(),
-    ]).then(([k, f, tk, tc, rs, pt, pm, es, ff]) => {
+    ]).then(([k, f, sales, tk, tc, rs, pt, pm, es, ff]) => {
       if (!alive) return
-      setOpsKpis(k); setOpsFinancials(f)
+      setOpsKpis(k); setOpsFinancials(f); setSalesRows(sales)
       setTanks(tk); setTankColors(tc); setRoundStatus(rs); setPits(pt); setPitMachinery(pm)
       setExpansionSignal(es); setFaultFlags(ff)
     })
@@ -125,13 +127,48 @@ export default function DashboardPage() {
 
   const valueName = METRIC_LABELS[activeMetric] ?? 'Sales'
 
-  /* Gold off: classic monthly sales chart.
-     Gold on: continuous market river (unique dates) + sparse sales villages
-     edge-pinned to the range (linear connectNulls — not stepped). */
+  /* Sales villages from real sale_date (v_sales_register), not month rollups. */
+  const saleEvents: SaleEvent[] = useMemo(() => {
+    if (activeMetric !== 'revenue') return []
+    const start = Math.max(0, opsFinancials.length - rangeMonths)
+    const firstMonth = opsFinancials[start]?.month
+    const lastMonth = opsFinancials[opsFinancials.length - 1]?.month
+    return salesRows
+      .filter(r => {
+        const d = String(r.sale_date).slice(0, 10)
+        const m = d.slice(0, 7)
+        if (firstMonth && m < firstMonth) return false
+        if (lastMonth && m > lastMonth) return false
+        return Number.isFinite(r.price_tsh)
+      })
+      .map(r => ({ saleDate: String(r.sale_date).slice(0, 10), value: r.price_tsh }))
+  }, [salesRows, opsFinancials, rangeMonths, activeMetric])
+
+  /* Gold off + revenue: plot actual sale_date points when available.
+     Gold on: market river + villages on real sale_date (nearest gold bucket).
+     Cost/profit: still monthly financial summary (no sale_date on those). */
   const heroBuilt = useMemo(() => {
     const field = metricField[activeMetric] ?? metricField.revenue
     const financials = opsFinancials.map(f => ({ month: f.month, value: field(f) }))
+    const useSaleDates = activeMetric === 'revenue' && saleEvents.length > 0
+
     if (!goldOn || goldPoints.length === 0) {
+      if (useSaleDates) {
+        const byDay = new Map<string, number>()
+        for (const s of saleEvents) {
+          byDay.set(s.saleDate, (byDay.get(s.saleDate) ?? 0) + s.value)
+        }
+        return [...byDay.entries()]
+          .sort((a, b) => a[0].localeCompare(b[0]))
+          .map(([d, v]) => ({
+            xKey: d,
+            label: new Date(d + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+            tooltipLabel: new Date(d + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }),
+            value: v as number | null,
+            salesTooltip: v as number | null,
+            goldRaw: null as number | null,
+          }))
+      }
       const start = Math.max(0, financials.length - rangeMonths)
       return financials.slice(start).map(f => ({
         xKey: f.month,
@@ -142,8 +179,13 @@ export default function DashboardPage() {
         goldRaw: null as number | null,
       }))
     }
-    return buildGoldDenseSeries(financials, goldPoints, rangeMonths)
-  }, [opsFinancials, goldPoints, rangeMonths, activeMetric, goldOn])
+    return buildGoldDenseSeries(
+      financials,
+      goldPoints,
+      rangeMonths,
+      useSaleDates ? saleEvents : undefined,
+    )
+  }, [opsFinancials, goldPoints, rangeMonths, activeMetric, goldOn, saleEvents])
 
   const heroData = useMemo(
     () => heroBuilt.map(r => ({
@@ -160,11 +202,13 @@ export default function DashboardPage() {
     if (!goldOn || heroBuilt.length === 0) return null
     const raw = heroBuilt.map(r => r.goldRaw)
     if (!raw.some(v => v != null)) return null
-    /* Band from monthly sales totals only (not sparse nulls). */
+    /* Band from real sale amounts when available; else monthly primary series. */
     const field = metricField[activeMetric] ?? metricField.revenue
     const start = Math.max(0, opsFinancials.length - rangeMonths)
     const monthlyPrimary = opsFinancials.slice(start).map(field)
-    const scaled = scaleToPrimaryBand(monthlyPrimary, raw)
+    const salePrimary = saleEvents.map(s => s.value)
+    const primary = salePrimary.length > 0 && activeMetric === 'revenue' ? salePrimary : monthlyPrimary
+    const scaled = scaleToPrimaryBand(primary, raw)
     return {
       values: scaled,
       rawValues: raw,
@@ -172,7 +216,7 @@ export default function DashboardPage() {
       color: GOLD_OVERLAY,
       strokeOpacity: 0.42,
     }
-  }, [goldOn, heroBuilt, opsFinancials, rangeMonths, activeMetric])
+  }, [goldOn, heroBuilt, opsFinancials, rangeMonths, activeMetric, saleEvents])
 
   const heroMetrics: MetricStripItem[] = [
     { key: 'revenue', label: 'Revenue (this month)', value: compactTsh(current?.revenue_tsh ?? 0), delta: pctDelta(revSeries), goodWhenUp: true },
@@ -256,7 +300,7 @@ export default function DashboardPage() {
         {goldOn && (
           <div style={{ fontSize: 11, color: 'var(--label-4)', marginTop: 8 }}>
             {goldOverlay
-              ? 'Gold: continuous market path (TSh/g, scaled) · sales villages monthly · hover any week for real gold'
+              ? 'Gold: continuous market path (TSh/g, scaled) · sales villages on real sale_date · hover any week for gold'
               : goldError
                 ? `Gold price unavailable: ${goldError}`
                 : 'Loading gold price…'}
