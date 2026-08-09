@@ -194,6 +194,17 @@ img { display: block; max-width: 100%; }
   background: #DDE3E5;
   border-color: #DDE3E5;
 }
+/* Ghost buttons default to ink text, which is the same value as --slate.
+   Scope them for dark grounds too, or they render invisible at 1:1. */
+.on-dark .btn-ghost {
+  color: #FFFFFF;
+  border-color: rgba(255,255,255,.35);
+}
+.on-dark .btn-ghost:hover {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  background: rgba(255,255,255,.08);
+}
 .on-dark .eyebrow, .cta-block .eyebrow, .stats-band .eyebrow { color: var(--gold-2); }
 .on-dark .eyebrow::before, .cta-block .eyebrow::before, .stats-band .eyebrow::before { background: var(--gold-2); }
 

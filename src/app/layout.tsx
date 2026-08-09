@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Sora, Manrope, Space_Mono } from 'next/font/google'
 import './globals.css'
 import SiteChrome from '@/components/layout/SiteChrome'
+import JsonLd from '@/components/seo/JsonLd'
+import { organizationSchema, websiteSchema } from '@/lib/seo'
 
 const sora = Sora({
   subsets: ['latin'],
@@ -46,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sora.variable} ${manrope.variable} ${spaceMono.variable}`}>
       <body>
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
