@@ -131,7 +131,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <div style={{ position: 'relative' }}>
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Work with Bart Mining</p>
                 <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Ready to start your exploration programme?</h3>
-                <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>Our geologists have operated across East and Southern Africa for decades. Tell us your project - we&apos;ll tell you how to de-risk it.</p>
+                <p style={{ color: 'rgba(255,255,255,.78)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>Our geologists have operated across East and Southern Africa for decades. Tell us your project - we&apos;ll tell you how to de-risk it.</p>
                 <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Get in touch &rarr;</a>
               </div>
             </div>

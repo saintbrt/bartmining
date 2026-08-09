@@ -202,7 +202,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
               requirement.
             </div>
 
-            <div className="on-dark" style={{ marginTop: 48, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
+            <div className="on-dark" style={{ marginTop: 56, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Request a quotation</p>
               <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Need a {item.name.toLowerCase()} specified for your site?</h3>
               <p style={{ color: 'rgba(255,255,255,.78)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
