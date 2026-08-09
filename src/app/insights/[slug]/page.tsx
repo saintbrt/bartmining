@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ARTICLES } from '@/data/insights'
 import ReadingProgress from '@/components/insights/ReadingProgress'
+import JsonLd from '@/components/seo/JsonLd'
+import { articleSchema, breadcrumbSchema } from '@/lib/seo'
 import TableOfContents from '@/components/insights/TableOfContents'
 
 export async function generateStaticParams() {
@@ -41,6 +43,23 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
+      <JsonLd
+        data={[
+          articleSchema({
+            slug: article.slug,
+            title: article.title,
+            description: article.description,
+            image: article.image,
+            datePublished: '2025-06-01',
+            section: article.category,
+          }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Insights', path: '/insights' },
+            { name: article.title, path: `/insights/${article.slug}` },
+          ]),
+        ]}
+      />
       <ReadingProgress />
 
       {/* Article hero, light, matches rest of site */}
