@@ -52,10 +52,10 @@ export default function Products() {
                   { n: '01', t: 'Spec & size', b: 'Matched to ore, throughput and recovery targets.' },
                   { n: '02', t: 'Commission', b: 'Installed, tuned and handed over to your operators.' },
                 ].map(v => (
-                  <div key={v.n} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line-2)', padding: '20px 18px', boxShadow: 'var(--shadow-sm)' }}>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold-2)', marginBottom: 8, opacity: .7 }}>{v.n}</div>
+                  <div key={v.n} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line)', padding: '20px 18px', boxShadow: 'var(--shadow-sm)' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--gold)', marginBottom: 8 }}>{v.n}</div>
                     <h4 style={{ fontSize: 15, marginBottom: 6 }}>{v.t}</h4>
-                    <p style={{ color: 'var(--ink-2)', fontSize: 13.5, lineHeight: 1.6 }}>{v.b}</p>
+                    <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>{v.b}</p>
                   </div>
                 ))}
               </div>

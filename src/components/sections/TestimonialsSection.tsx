@@ -32,14 +32,14 @@ export default function TestimonialsSection() {
             </blockquote>
             <div style={{ marginTop: 28 }}>
               <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 600, fontSize: 15, color: 'var(--ink)' }}>{t.who}</div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--ink-3)', marginTop: 4 }}>{t.role}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--ink-3)', marginTop: 4 }}>{t.role}</div>
             </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginTop: 32 }}>
             {TESTI.map((_, i) => (
               <button key={i} onClick={() => setActive(i)} style={{
                 width: i === active ? 28 : 8, height: 8,
-                borderRadius: 100, border: 'none', cursor: 'pointer',
+                borderRadius: 'var(--r-sm)', border: 'none', cursor: 'pointer',
                 background: i === active ? 'var(--gold)' : 'var(--line)',
                 transition: 'all .3s var(--ease)',
                 padding: 0,

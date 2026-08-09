@@ -15,26 +15,26 @@ export default function ServiceGrid({ showAll = false }: { showAll?: boolean }) 
         {showAll ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             {SERVICES.map((s, i) => (
-              <Reveal key={s.n} delay={i % 3} style={{
+              <Reveal key={s.n} delay={i % 3} className="svc-row" style={{
                 display: 'grid', gridTemplateColumns: '80px 1fr auto',
                 gap: 32, padding: '36px 0', borderBottom: '1px solid var(--line-2)',
                 alignItems: 'start',
               }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 28, fontWeight: 700, color: 'var(--gold-2)', opacity: .5 }}>{s.n}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)' }}>{s.n}</div>
                 <div>
                   <h3 style={{ fontSize: 22, marginBottom: 12 }}>{s.t}</h3>
                   <p style={{ color: 'var(--ink-2)', fontSize: 16, marginBottom: 18 }}>{s.long}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
                     {s.includes.map(item => (
-                      <span key={item} style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase', padding: '4px 12px', borderRadius: 100, border: '1px solid var(--line)', color: 'var(--ink-3)', background: 'var(--bg-3)' }}>
+                      <span key={item} style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.06em', textTransform: 'uppercase', padding: '4px 12px', borderRadius: 'var(--r-sm)', border: '1px solid var(--line)', color: 'var(--ink-3)', background: 'var(--bg-3)' }}>
                         {item}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                <div className="svc-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {s.tags.map(tag => (
-                    <span key={tag} style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.1em', textTransform: 'uppercase', padding: '4px 10px', borderRadius: 6, background: 'rgba(174,138,76,.1)', color: 'var(--gold-deep)', border: '1px solid rgba(174,138,76,.2)' }}>
+                    <span key={tag} style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.1em', textTransform: 'uppercase', padding: '4px 10px', borderRadius: 'var(--r-sm)', background: '#FFFFFF', color: 'var(--gold)', border: '1px solid var(--line)' }}>
                       {tag}
                     </span>
                   ))}
@@ -47,15 +47,15 @@ export default function ServiceGrid({ showAll = false }: { showAll?: boolean }) 
             {SERVICES.map((s, i) => (
               <Reveal key={s.n} delay={i % 3} style={{
                 background: 'var(--bg-3)', borderRadius: 'var(--r-lg)',
-                border: '1px solid var(--line-2)', padding: '28px 26px',
+                border: '1px solid var(--line)', padding: '28px 26px',
                 boxShadow: 'var(--shadow-sm)',
               }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700, color: 'var(--gold-2)', marginBottom: 14 }}>{s.n}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 13, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>{s.n}</div>
                 <h3 style={{ fontSize: 17, marginBottom: 10 }}>{s.t}</h3>
-                <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.6 }}>{s.d}</p>
+                <p style={{ color: 'var(--ink-2)', fontSize: 16, lineHeight: 1.6 }}>{s.d}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 16 }}>
                   {s.tags.map(tag => (
-                    <span key={tag} style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase', padding: '3px 8px', borderRadius: 100, background: 'rgba(174,138,76,.08)', color: 'var(--gold-deep)', border: '1px solid rgba(174,138,76,.15)' }}>
+                    <span key={tag} style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase', padding: '3px 8px', borderRadius: 'var(--r-sm)', background: '#FFFFFF', color: 'var(--gold)', border: '1px solid var(--line)' }}>
                       {tag}
                     </span>
                   ))}
@@ -77,6 +77,13 @@ export default function ServiceGrid({ showAll = false }: { showAll?: boolean }) 
       <style>{`
         .svc-grid-responsive { grid-template-columns: repeat(3,1fr) !important; }
         @media (max-width: 860px) { .svc-grid-responsive { grid-template-columns: 1fr !important; } }
+        /* The detail rows had no breakpoint at all: a 80px/1fr/auto grid was
+           still three columns at 390px, crushing the copy and pushing the
+           tag column off-screen. */
+        @media (max-width: 860px) {
+          .svc-row { grid-template-columns: 1fr !important; gap: 14px !important; }
+          .svc-row > .svc-tags { margin-top: 2px; }
+        }
       `}</style>
     </section>
   )

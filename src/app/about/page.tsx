@@ -43,7 +43,7 @@ export default function About() {
             <Reveal delay={1}>
               <span className="eyebrow">The founder</span>
               <h2 style={{ fontSize: 'clamp(30px,3.6vw,46px)', marginTop: 16 }}>Bartholomew Ambrose</h2>
-              <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--gold-deep)', fontSize: 13, letterSpacing: '.06em', marginTop: 10 }}>EXPLORATION MANAGER &middot; GENERAL MANAGER &middot; MINING OPERATOR</p>
+              <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--gold-deep)', fontSize: 15, letterSpacing: '.06em', marginTop: 10 }}>EXPLORATION MANAGER &middot; GENERAL MANAGER &middot; MINING OPERATOR</p>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 22 }}>
                 Bart has led exploration programs and operated producing mines for some of the industry&apos;s major names - working deposits from Brazilian rainforest to the Canadian shield, across West and Central Africa, and through the Australian outback. That breadth means he has made the hard calls in person: where to drill, when to stop, how to close responsibly.
               </p>
@@ -74,7 +74,7 @@ export default function About() {
                 <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 800, fontSize: 'clamp(36px,4vw,52px)', letterSpacing: '-0.04em', lineHeight: 1, color: s.gold ? 'var(--gold-deep)' : 'var(--ink)' }}>
                   <Counter target={s.target} suffix={s.suffix} />
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-3)', marginTop: 8 }}>{s.label}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-3)', marginTop: 8 }}>{s.label}</div>
               </Reveal>
             ))}
           </div>
@@ -89,18 +89,18 @@ export default function About() {
             <h2>Three audiences, one standard of rigour.</h2>
           </Reveal>
           <div className="value-grid">
-            <Reveal style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line-2)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
-              <div className="vn" style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold-2)', marginBottom: 14, opacity: .6 }}>01</div>
+            <Reveal style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
+              <div className="vn" style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>01</div>
               <h4 style={{ fontSize: 17, marginBottom: 8 }}>Mining Companies</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Support throughout mine development and operation - from resource definition to commissioning and production advisory.</p>
             </Reveal>
-            <Reveal delay={1} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line-2)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold-2)', marginBottom: 14, opacity: .6 }}>02</div>
+            <Reveal delay={1} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>02</div>
               <h4 style={{ fontSize: 17, marginBottom: 8 }}>Governments</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Mining advisory and development planning - balancing resource value with environmental and community outcomes.</p>
             </Reveal>
-            <Reveal delay={2} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line-2)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold-2)', marginBottom: 14, opacity: .6 }}>03</div>
+            <Reveal delay={2} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>03</div>
               <h4 style={{ fontSize: 17, marginBottom: 8 }}>Investors</h4>
               <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Technical due diligence and resource-project evaluation that survives scrutiny - so capital is committed with eyes open.</p>
             </Reveal>
@@ -121,8 +121,8 @@ export default function About() {
               { dot: '·', title: 'Safety-first', body: 'Safety corners cut: zero, always. It is the precondition, not a trade-off.' },
               { dot: '·', title: 'Responsible', body: 'The ground you mine belongs to someone. Closure is a day-one decision.' },
             ].map((v, i) => (
-              <Reveal key={v.title} delay={i} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line-2)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold-2)', marginBottom: 14, opacity: .6 }}>{v.dot}</div>
+              <Reveal key={v.title} delay={i} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>{v.dot}</div>
                 <h4 style={{ fontSize: 17, marginBottom: 8 }}>{v.title}</h4>
                 <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>{v.body}</p>
               </Reveal>

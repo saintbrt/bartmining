@@ -7,12 +7,12 @@ export default function PillarsSection() {
       {PILLARS.map((p, i) => (
         <Reveal key={p.t} delay={i} style={{
           background: 'var(--bg-3)', borderRadius: 'var(--r-lg)',
-          border: '1px solid var(--line-2)', padding: '28px 24px',
+          border: '1px solid var(--line)', padding: '28px 24px',
           boxShadow: 'var(--shadow-sm)',
         }}>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--gold-deep)', marginBottom: 14, opacity: .7 }}>{p.std}</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--gold-deep)', marginBottom: 14, opacity: .7 }}>{p.std}</div>
           <h4 style={{ fontSize: 17, marginBottom: 10 }}>{p.t}</h4>
-          <p style={{ color: 'var(--ink-2)', fontSize: 14.5, lineHeight: 1.6 }}>{p.d}</p>
+          <p style={{ color: 'var(--ink-2)', fontSize: 16, lineHeight: 1.6 }}>{p.d}</p>
         </Reveal>
       ))}
       <style>{`

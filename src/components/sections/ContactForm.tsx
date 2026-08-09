@@ -30,9 +30,9 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line-2)', padding: '52px 40px', textAlign: 'center', boxShadow: 'var(--shadow-md)' }}>
-        <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(52,199,89,.1)', border: '2px solid rgba(52,199,89,.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#34C759" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}><path d="m5 13 4 4L19 7"/></svg>
+      <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '52px 40px', textAlign: 'center' }}>
+        <div style={{ width: 56, height: 56, borderRadius: 'var(--r-sm)', background: '#FFFFFF', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2E6A4F" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}><path d="m5 13 4 4L19 7"/></svg>
         </div>
         <h3 style={{ fontSize: 22, marginBottom: 10 }}>Thank you - message received.</h3>
         <p style={{ color: 'var(--ink-2)', fontSize: 16 }}>We&apos;ll be in touch shortly. For anything urgent, message on WhatsApp: <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-deep)', fontWeight: 600 }}>+255 759 141 705</a>.</p>
@@ -42,19 +42,19 @@ export default function ContactForm() {
 
   const fieldStyle = {
     width: '100%', fontFamily: 'var(--font-manrope)', fontSize: 15,
-    padding: '12px 14px', border: '1px solid var(--line)',
+    padding: '14px 14px', border: '1px solid var(--line)',
     borderRadius: 'var(--r-sm)', background: 'var(--bg)', color: 'var(--ink)',
     outline: 'none', transition: 'border-color .2s',
   }
-  const labelStyle = { display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-2)', marginBottom: 6 }
+  const labelStyle = { display: 'block', fontSize: 15, fontWeight: 600, color: 'var(--ink-2)', marginBottom: 6 }
 
   return (
-    <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line-2)', padding: '40px', boxShadow: 'var(--shadow-md)' }}>
+    <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '40px' }} className="cf-card">
       <form onSubmit={handleSubmit} noValidate>
         <h3 style={{ fontSize: 22, marginBottom: 6 }}>Tell us about your project</h3>
         <p style={{ color: 'var(--ink-2)', fontSize: 15, marginBottom: 28 }}>We typically reply within one business day.</p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+        <div className="cf-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
           <div>
             <label style={labelStyle}>Full name <span style={{ color: 'var(--gold)' }}>*</span></label>
             <input type="text" name="name" required placeholder="Jane Mwakasa" style={fieldStyle} />
@@ -65,7 +65,7 @@ export default function ContactForm() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+        <div className="cf-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
           <div>
             <label style={labelStyle}>Organisation</label>
             <input type="text" name="org" placeholder="Company / government / fund" style={fieldStyle} />
@@ -81,7 +81,7 @@ export default function ContactForm() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+        <div className="cf-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
           <div>
             <label style={labelStyle}>Interested in</label>
             <select name="interest" style={fieldStyle}>
@@ -105,7 +105,7 @@ export default function ContactForm() {
         </div>
 
         {status === 'error' && (
-          <p style={{ color: '#c0392b', fontSize: 14, marginBottom: 16, padding: '10px 14px', background: 'rgba(192,57,43,.07)', borderRadius: 8, border: '1px solid rgba(192,57,43,.2)' }}>{errorMsg}</p>
+          <p style={{ color: '#c0392b', fontSize: 15.5, marginBottom: 16, padding: '10px 14px', background: 'rgba(192,57,43,.07)', borderRadius: 8, border: '1px solid rgba(192,57,43,.2)' }}>{errorMsg}</p>
         )}
 
         <button type="submit" className="btn btn-gold" disabled={status === 'submitting'} style={{ opacity: status === 'submitting' ? .6 : 1, cursor: status === 'submitting' ? 'not-allowed' : 'pointer' }}>
@@ -115,6 +115,13 @@ export default function ContactForm() {
           )}
         </button>
       </form>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .cf-card { padding: 26px 20px !important; }
+          .cf-row  { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   )
 }

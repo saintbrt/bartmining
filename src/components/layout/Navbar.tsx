@@ -35,28 +35,23 @@ export default function Navbar() {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: scrolled ? '13px 0' : '22px 0',
-        background: scrolled ? 'rgba(246,244,239,.72)' : 'rgba(247,246,243,.85)',
-        backdropFilter: 'blur(18px) saturate(1.4)',
-        WebkitBackdropFilter: 'blur(18px) saturate(1.4)',
-        borderBottom: scrolled ? '1px solid var(--line-2)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 8px 30px -20px rgba(27,24,19,.4)' : undefined,
-        transition: 'padding .4s var(--ease), background .4s, box-shadow .4s, border-color .4s',
+        background: '#FFFFFF',
+        borderBottom: '1px solid var(--line)',
+        transition: 'padding .3s var(--ease), background .3s',
       }}
     >
       <div className="px-site" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
         {/* Brand */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
           <div style={{
-            width: 38, height: 38, borderRadius: 11, flexShrink: 0,
-            background: 'linear-gradient(145deg, var(--slate), #161b1e)',
+            width: 38, height: 38, borderRadius: 'var(--r-sm)', flexShrink: 0,
+            background: 'var(--slate)',
             display: 'grid', placeItems: 'center',
-            boxShadow: 'var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,.06)',
           }}>
             <div style={{
               width: 15, height: 15,
-              background: 'linear-gradient(145deg, var(--gold-hi), var(--gold))',
+              background: 'var(--gold-2)',
               transform: 'rotate(45deg)',
-              boxShadow: '0 0 16px var(--glow-gold)',
             }} />
           </div>
           <div>
@@ -70,10 +65,10 @@ export default function Navbar() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="nav-desktop">
           {LINKS.map(l => (
             <Link key={l.href} href={l.href} style={{
-              fontSize: '14.5px', fontWeight: 500,
+              fontSize: '16px', fontWeight: 500,
               color: pathname === l.href ? navText : navTextMuted,
-              padding: '9px 15px', borderRadius: 100,
-              background: pathname === l.href ? 'rgba(27,24,19,.06)' : 'transparent',
+              padding: '9px 15px', borderRadius: 'var(--r-sm)',
+              background: pathname === l.href ? 'var(--paper)' : 'transparent',
               transition: 'color .4s, background .25s',
             }}>
               {l.label}
@@ -83,7 +78,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }} className="nav-desktop">
-          <Link href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ fontSize: 14, padding: '10px 20px' }}>
+          <Link href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ fontSize: 15.5, padding: '10px 20px' }}>
             Get in touch
           </Link>
         </div>
@@ -106,15 +101,15 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div ref={menuRef} style={{
         overflow: 'hidden',
-        maxHeight: open ? 400 : 0,
+        maxHeight: open ? 480 : 0,
         transition: 'max-height .35s var(--ease)',
-        background: 'rgba(246,244,239,.97)',
-        backdropFilter: 'blur(18px)',
+        background: '#FFFFFF',
+        borderTop: open ? '1px solid var(--line)' : 'none',
       }}>
         <div className="px-site" style={{ paddingTop: 12, paddingBottom: 20, display: 'flex', flexDirection: 'column', gap: 4 }}>
           {LINKS.map(l => (
             <Link key={l.href} href={l.href} style={{
-              padding: '11px 4px', fontSize: 16, fontWeight: 500, color: 'var(--ink-2)',
+              padding: '15px 4px', fontSize: 17, fontWeight: 500, color: 'var(--ink)',
               borderBottom: '1px solid var(--line-2)',
             }}>
               {l.label}

@@ -17,7 +17,7 @@ export default function EquipGrid({
 }) {
   const dark = variant === 'dark'
   return (
-    <section className="sec-gap" style={{ background: dark ? 'var(--slate)' : 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
+    <section className={`sec-gap${dark ? ' on-dark' : ''}`} style={{ background: dark ? 'var(--slate)' : 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
       {dark && (
         <div style={{ position: 'absolute', width: 520, height: 520, borderRadius: '50%', background: 'radial-gradient(circle,rgba(207,160,85,.22),transparent 65%)', top: -200, right: -160, pointerEvents: 'none' }} />
       )}
@@ -38,10 +38,10 @@ export default function EquipGrid({
               backdropFilter: dark ? 'blur(8px)' : undefined,
             }}>
               <h4 style={{ fontSize: 15, fontWeight: 700, color: dark ? '#fff' : 'var(--ink)', marginBottom: 8, lineHeight: 1.3 }}>{e.t}</h4>
-              <p style={{ fontSize: 13.5, color: dark ? 'rgba(255,255,255,.55)' : 'var(--ink-2)', lineHeight: 1.6, marginBottom: 14 }}>{e.d}</p>
+              <p style={{ fontSize: 15, color: dark ? 'rgba(255,255,255,.55)' : 'var(--ink-2)', lineHeight: 1.6, marginBottom: 14 }}>{e.d}</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                 {e.apps.map(app => (
-                  <div key={app} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12 }}>
+                  <div key={app} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}>
                     <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--gold-2)', flexShrink: 0 }} />
                     <span style={{ color: dark ? 'rgba(255,255,255,.4)' : 'var(--ink-3)' }}>{app}</span>
                   </div>

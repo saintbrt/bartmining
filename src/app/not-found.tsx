@@ -23,7 +23,7 @@ export default function NotFound() {
 
           <div style={{
             width: 48, height: 3,
-            background: 'linear-gradient(90deg, var(--gold), var(--gold-2))',
+            background: 'var(--gold)',
             borderRadius: 2, margin: '0 auto 32px',
           }} />
 
@@ -33,7 +33,7 @@ export default function NotFound() {
             fontWeight: 800,
             letterSpacing: '-0.05em',
             lineHeight: 1,
-            background: 'linear-gradient(135deg, var(--gold) 0%, var(--gold-2) 60%, var(--gold-hi) 100%)',
+            background: 'var(--gold)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -67,7 +67,7 @@ export default function NotFound() {
           </div>
 
           <div style={{ marginTop: 56, paddingTop: 32, borderTop: '1px solid var(--line)' }}>
-            <p style={{ fontSize: 12, color: 'var(--ink-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 20 }}>
+            <p style={{ fontSize: 13, color: 'var(--ink-3)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 20 }}>
               Quick links
             </p>
             <div style={{ display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -86,7 +86,7 @@ export default function NotFound() {
         </div>
       </section>
       <style>{`
-        .nf-link { font-size: 14px; color: var(--ink-3); font-weight: 500; transition: color .15s; }
+        .nf-link { font-size: 15.5px; color: var(--ink-3); font-weight: 500; transition: color .15s; }
         .nf-link:hover { color: var(--gold); }
       `}</style>
     </>

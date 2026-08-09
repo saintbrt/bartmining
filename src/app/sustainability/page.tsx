@@ -76,9 +76,9 @@ export default function Sustainability() {
                 <div style={{ aspectRatio: '4/3', overflow: 'hidden', position: 'relative' }}>
                   <Image src={c.src} alt={c.alt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 860px) 100vw, 33vw" />
                 </div>
-                <div style={{ background: 'var(--bg-3)', padding: '20px 22px', border: '1px solid var(--line-2)', borderTop: 'none' } as React.CSSProperties}>
+                <div style={{ background: 'var(--bg-3)', padding: '20px 22px', border: '1px solid var(--line)', borderTop: 'none' } as React.CSSProperties}>
                   <h4 style={{ fontSize: 18 }}>{c.title}</h4>
-                  <p style={{ color: 'var(--ink-2)', fontSize: 14.5, marginTop: 6 }}>{c.body}</p>
+                  <p style={{ color: 'var(--ink-2)', fontSize: 16, marginTop: 6 }}>{c.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -87,8 +87,8 @@ export default function Sustainability() {
       </section>
 
       {/* FPIC callout */}
-      <section className="sec-gap" style={{ background: 'var(--slate)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%,rgba(174,138,76,.18),transparent 60%)', pointerEvents: 'none' }} />
+      <section className="sec-gap on-dark" style={{ background: 'var(--slate)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'none', pointerEvents: 'none' }} />
         <div className="px-site" style={{ position: 'relative', textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
           <Reveal><span className="eyebrow center" style={{ color: 'var(--gold-2)', justifyContent: 'center' }}>Free, Prior &amp; Informed Consent</span></Reveal>
           <Reveal delay={1}><h2 style={{ color: '#fff', fontSize: 'clamp(28px,3.8vw,46px)', marginTop: 18 }}>We do not support projects without genuine community consent.</h2></Reveal>
