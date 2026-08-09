@@ -14,12 +14,12 @@ export default function RegionsSection() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }} className="regions-grid-responsive">
           {/* East Africa */}
           <Reveal>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 24 }}>East Africa</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 24 }}>East Africa</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {EAST_AFRICA.map(r => (
                 <div key={r.c} style={{ display: 'flex', gap: 16, alignItems: 'baseline' }}>
-                  <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 600, fontSize: 14, color: 'var(--gold-deep)', width: 80, flexShrink: 0 }}>{r.c}</div>
-                  <div style={{ fontSize: 13, color: 'var(--ink-3)', lineHeight: 1.7 }}>{r.cities.join(', ')}</div>
+                  <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 600, fontSize: 15.5, color: 'var(--gold-deep)', width: 80, flexShrink: 0 }}>{r.c}</div>
+                  <div style={{ fontSize: 15, color: 'var(--ink-3)', lineHeight: 1.7 }}>{r.cities.join(', ')}</div>
                 </div>
               ))}
             </div>
@@ -27,12 +27,12 @@ export default function RegionsSection() {
 
           {/* Southern Africa */}
           <Reveal delay={1}>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 24 }}>Southern Africa</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 24 }}>Southern Africa</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {SOUTHERN_AFRICA.slice(0, 8).map(r => (
                 <div key={r.c} style={{ display: 'flex', gap: 16, alignItems: 'baseline' }}>
-                  <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 600, fontSize: 14, color: 'var(--gold-deep)', width: 80, flexShrink: 0 }}>{r.c}</div>
-                  <div style={{ fontSize: 13, color: 'var(--ink-3)', lineHeight: 1.7 }}>{r.cities.join(', ')}</div>
+                  <div style={{ fontFamily: 'var(--font-sora)', fontWeight: 600, fontSize: 15.5, color: 'var(--gold-deep)', width: 80, flexShrink: 0 }}>{r.c}</div>
+                  <div style={{ fontSize: 15, color: 'var(--ink-3)', lineHeight: 1.7 }}>{r.cities.join(', ')}</div>
                 </div>
               ))}
             </div>

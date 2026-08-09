@@ -45,14 +45,14 @@ export default function TableOfContents({ html }: { html: string }) {
 
   return (
     <nav>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 12 }}>Contents</div>
+      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 12 }}>Contents</div>
       <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 2 }}>
         {allHeadings.map(h => (
           <li key={h.id} style={{ paddingLeft: h.level === 3 ? 12 : 0 }}>
             <a
               href={`#${h.id}`}
               style={{
-                fontSize: 13, color: active === h.id ? 'var(--gold-deep)' : 'var(--ink-2)',
+                fontSize: 15, color: active === h.id ? 'var(--gold-deep)' : 'var(--ink-2)',
                 textDecoration: 'none', display: 'block', padding: '4px 0',
                 borderLeft: `2px solid ${active === h.id ? 'var(--gold)' : 'transparent'}`,
                 paddingLeft: h.level === 3 ? 10 : 8,
