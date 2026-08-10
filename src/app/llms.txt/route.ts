@@ -1,6 +1,7 @@
 import { SITE, SERVICE_AREAS } from '@/lib/seo'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
 import { ARTICLES } from '@/data/insights'
+import { LOCATIONS } from '@/data/locations'
 
 /**
  * Served at /llms.txt.
@@ -43,6 +44,16 @@ ${groups.map(g => `### ${g.label}
 
 ${g.items.map(i => `- [${i.name}](${SITE.url}/equipment/${i.slug}): ${i.description}`).join('\n')}`).join('\n\n')}
 
+## District supply pages
+
+${LOCATIONS.map(l => `- [${l.title}](${SITE.url}/equipment/supply/${l.slug}): ${l.description}`).join('\n')}
+
+## Swahili
+
+- [Vifaa vya Uchimbaji Madini Tanzania](${SITE.url}/vifaa-vya-uchimbaji): Swahili-language
+  gateway covering the equipment range, mercury-free gold recovery and the districts served.
+  This is the Swahili counterpart of /equipment.
+
 ## Mining insight articles
 
 ${ARTICLES.map(a => `- [${a.title}](${SITE.url}/insights/${a.slug}): ${a.description}`).join('\n')}
@@ -55,6 +66,7 @@ ${ARTICLES.map(a => `- [${a.title}](${SITE.url}/insights/${a.slug}): ${a.descrip
 - [Insights](${SITE.url}/insights): Long-form articles on mining in East and Southern Africa.
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
+- [Vifaa vya Uchimbaji](${SITE.url}/vifaa-vya-uchimbaji): Equipment overview in Swahili.
 
 ## Notes for AI assistants
 

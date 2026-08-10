@@ -6,6 +6,7 @@ import RegionsSection from '@/components/sections/RegionsSection'
 import CtaSection from '@/components/sections/CtaSection'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
+import { LOCATIONS } from '@/data/locations'
 import { SITE, SERVICE_AREAS, itemListSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 
@@ -22,7 +23,10 @@ export const metadata: Metadata = {
   title: 'Mining Equipment Supply Tanzania: Specifications & Price Guides',
   description:
     'Mining equipment supplied across Mwanza, Kahama, Geita and Shinyanga: winches, gold processing plants, drilling rigs, pumps, safety equipment and mine management software.',
-  alternates: { canonical: `${SITE.url}/equipment` },
+  alternates: {
+    canonical: `${SITE.url}/equipment`,
+    languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/vifaa-vya-uchimbaji` },
+  },
   openGraph: {
     title: 'Mining Equipment Supply Tanzania: Specifications & Price Guides',
     description: `Specifications, applications and maintenance guides for ${EQUIPMENT.length} categories of mining equipment supplied across Tanzania.`,
@@ -143,6 +147,23 @@ export default function EquipmentHub() {
         ))}
 
         <section style={{ marginTop: 56 }}>
+          <div className="eq-grouphead"><h2>Supply by district</h2></div>
+          <p style={{ color: 'var(--ink-2)', fontSize: 16, maxWidth: 680, marginBottom: 18, lineHeight: 1.7 }}>
+            Delivery routes, local geology and the equipment each goldfield district
+            actually buys.
+          </p>
+          <div className="dist-row">
+            {LOCATIONS.map(l => (
+              <Link key={l.slug} href={`/equipment/supply/${l.slug}`} className="dist-card">
+                <span className="dist-region">{l.region}</span>
+                <span className="dist-city">{l.city}</span>
+                <span className="eq-more">Supply details &rarr;</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section style={{ marginTop: 56 }}>
           <div className="eq-grouphead"><h2>Regions we supply</h2></div>
           <p style={{ color: 'var(--ink-2)', fontSize: 16, maxWidth: 680, marginBottom: 18, lineHeight: 1.7 }}>
             Equipment is delivered nationwide from Dar es Salaam, with the heaviest coverage
@@ -151,6 +172,12 @@ export default function EquipmentHub() {
           <div className="region-chips">
             {SERVICE_AREAS.map(r => <span key={r} className="region-chip">{r}</span>)}
           </div>
+          <p style={{ marginTop: 22, fontSize: 16, color: 'var(--ink-2)' }} lang="sw">
+            Unasoma Kiswahili?{' '}
+            <Link href="/vifaa-vya-uchimbaji" style={{ color: 'var(--gold)', fontWeight: 600 }}>
+              Tazama vifaa vya uchimbaji madini kwa Kiswahili
+            </Link>
+          </p>
         </section>
       </div>
 
@@ -205,6 +232,15 @@ export default function EquipmentHub() {
         .src-n { font-family: var(--font-mono); font-size: 13px; color: var(--gold); margin-bottom: 8px; }
         .src-card h3 { font-size: 16px; margin-bottom: 6px; }
         .src-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+        .dist-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .dist-card { display: flex; flex-direction: column; gap: 6px; border: 1px solid var(--line);
+          border-radius: var(--r-lg); padding: 20px 18px; background: var(--bg-3); transition: border-color .2s; }
+        .dist-card:hover { border-color: var(--ink-3); }
+        .dist-region { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em;
+          text-transform: uppercase; color: var(--gold); }
+        .dist-city { font-size: 19px; font-weight: 700; color: var(--ink); font-family: var(--font-sora); }
+        @media (max-width: 700px) { .dist-row { grid-template-columns: 1fr; } }
 
         .region-chips { display: flex; flex-wrap: wrap; gap: 8px; }
         .region-chip { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em;
