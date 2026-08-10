@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/seo'
 import { ARTICLES } from '@/data/insights'
 import { EQUIPMENT } from '@/data/equipment-catalogue'
+import { LOCATIONS } from '@/data/locations'
 
 /**
  * Served at /sitemap.xml, generated from the same data the pages render from.
@@ -21,6 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE.url}/sustainability`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE.url}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/bei-ya-vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
   ]
 
   const equipmentPages: MetadataRoute.Sitemap = EQUIPMENT.map(e => ({
@@ -30,6 +33,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  const locationPages: MetadataRoute.Sitemap = LOCATIONS.map(l => ({
+    url: `${SITE.url}/equipment/supply/${l.slug}`,
+    lastModified: new Date(l.updated),
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  }))
+
   const articlePages: MetadataRoute.Sitemap = ARTICLES.map(a => ({
     url: `${SITE.url}/insights/${a.slug}`,
     lastModified: now,
@@ -37,5 +47,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...equipmentPages, ...articlePages]
+  return [...staticPages, ...equipmentPages, ...locationPages, ...articlePages]
 }

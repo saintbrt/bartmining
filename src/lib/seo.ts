@@ -202,6 +202,35 @@ export function articleSchema(a: {
   }
 }
 
+/** Service offered in a named place. Used by the district supply pages. */
+export function serviceSchema(x: {
+  slug: string
+  name: string
+  description: string
+  city: string
+  region: string
+}): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${SITE.url}/equipment/supply/${x.slug}#service`,
+    name: x.name,
+    description: x.description,
+    serviceType: 'Mining equipment supply',
+    provider: { '@id': `${SITE.url}/#organization` },
+    areaServed: [
+      { '@type': 'City', name: x.city },
+      { '@type': 'AdministrativeArea', name: x.region },
+      { '@type': 'Country', name: 'Tanzania' },
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `Mining equipment supplied to ${x.city}`,
+      url: `${SITE.url}/equipment`,
+    },
+  }
+}
+
 export function itemListSchema(items: { name: string; path: string }[]): Json {
   return {
     '@context': 'https://schema.org',
