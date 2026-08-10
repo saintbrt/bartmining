@@ -12,12 +12,12 @@ import CtaSection from '@/components/sections/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
-  title: 'Bart Mining - Mining Consultancy & Gold Processing Plants | Tanzania & Africa',
+  title: 'Bart Mining: Mining Consultancy & Gold Processing Plants | Tanzania & Africa',
   description: 'Bart Mining is a principal-led mining consultancy and equipment supplier in Dar es Salaam, Tanzania. Mineral exploration, geological survey, mine planning, gold processing plants and safety equipment across East & Southern Africa.',
   alternates: { canonical: 'https://www.bartmining.com/' },
   openGraph: {
     type: 'website', url: 'https://www.bartmining.com/',
-    title: 'Bart Mining - Mining Consultancy & Gold Processing Plants',
+    title: 'Bart Mining: Mining Consultancy & Gold Processing Plants',
     description: 'Principal-led mining consultancy and equipment supply across East & Southern Africa. Resource development done responsibly.',
     images: ['https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg?auto=compress&cs=tinysrgb&w=1200'],
   },
@@ -52,10 +52,10 @@ export default function Home() {
             <Reveal delay={1}>
               <span className="eyebrow">The founder</span>
               <blockquote style={{ fontFamily: 'var(--font-sora)', fontSize: 'clamp(22px,2.8vw,32px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.2, marginTop: 18, color: 'var(--ink)' }}>
-                Decades on the ground across <span className="grad">six continents</span> - exploration, operations and the hard calls between them.
+                Decades on the ground across <span className="grad">six continents</span>, exploration, operations and the hard calls between them.
               </blockquote>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 22 }}>
-                Bartholomew Ambrose has led exploration and operated mines for major producers, working deposits from Brazilian rainforest to Canadian shield. He brings that operator&apos;s judgement to every client engagement - principal-led, never delegated to a junior.
+                Bartholomew Ambrose has led exploration and operated mines for major producers, working deposits from Brazilian rainforest to Canadian shield. He brings that operator&apos;s judgement to every client engagement, principal-led and never delegated to a junior.
               </p>
               <div className="career">
                 {['Resolute Mine', 'Barrick Gold', 'Brazil', 'Liberia', 'DRC', 'Australia', 'Canada'].map(c => (
@@ -116,7 +116,7 @@ export default function Home() {
       <CtaSection
         eyebrow="Let's talk"
         heading={<>Let&apos;s build something <span className="grad">worth leaving behind.</span></>}
-        body="Whether you're proving a deposit, planning a mine, sourcing a processing plant or evaluating a project - start with a conversation with the principal."
+        body="Whether you're proving a deposit, planning a mine, sourcing a processing plant or evaluating a project, start with a conversation with the principal."
         primaryLabel="Start a project"
         primaryHref="https://wa.me/255759141705"
         secondaryLabel="View services"

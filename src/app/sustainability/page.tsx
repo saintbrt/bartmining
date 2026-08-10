@@ -20,7 +20,7 @@ export default function Sustainability() {
         <div className="px-site">
           <Reveal><div className="crumb"><Link href="/">Home</Link><span className="sep">/</span><span>Sustainability</span></div></Reveal>
           <Reveal delay={1}><h1>The ground you mine <span className="grad">belongs to someone.</span></h1></Reveal>
-          <Reveal delay={2}><p className="lead">We remember that. Responsible mining means land that recovers, water that stays clean, workers who go home healthy, and communities that are genuinely better off - long after the last truck leaves.</p></Reveal>
+          <Reveal delay={2}><p className="lead">We remember that. Responsible mining means land that recovers, water that stays clean, workers who go home healthy, and communities that are genuinely better off, long after the last truck leaves.</p></Reveal>
         </div>
       </section>
 
@@ -37,7 +37,7 @@ export default function Sustainability() {
               <span className="eyebrow">Our philosophy</span>
               <h2 style={{ fontSize: 'clamp(28px,3.4vw,42px)', marginTop: 16 }}>Closure is a day-one decision.</h2>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 18 }}>
-                Responsible mining isn&apos;t a report filed at the end - it&apos;s designed in from the first survey. That means rehabilitation planned before the first blast, water managed before it&apos;s a problem, and communities consulted before commitments are made, not after.
+                Responsible mining isn&apos;t a report filed at the end. It&apos;s designed in from the first survey. That means rehabilitation planned before the first blast, water managed before it&apos;s a problem, and communities consulted before commitments are made, not after.
               </p>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 16 }}>
                 Done well, it means land rehabilitation, clean water management, healthy workers, long-term community benefit, and a sustainable project closure that leaves a place better than a balance sheet alone would.
@@ -53,7 +53,7 @@ export default function Sustainability() {
           <Reveal className="sec-head">
             <span className="eyebrow">Four pillars</span>
             <h2>How responsibility shows up on site.</h2>
-            <p>Concrete commitments, aligned to international standards - not slogans.</p>
+            <p>Concrete commitments, aligned to international standards, not slogans.</p>
           </Reveal>
           <PillarsSection />
         </div>
@@ -92,7 +92,7 @@ export default function Sustainability() {
         <div className="px-site" style={{ position: 'relative', textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
           <Reveal><span className="eyebrow center" style={{ color: 'var(--gold-2)', justifyContent: 'center' }}>Free, Prior &amp; Informed Consent</span></Reveal>
           <Reveal delay={1}><h2 style={{ color: '#fff', fontSize: 'clamp(28px,3.8vw,46px)', marginTop: 18 }}>We do not support projects without genuine community consent.</h2></Reveal>
-          <Reveal delay={2}><p style={{ color: '#B8B0A2', fontSize: 18, marginTop: 18 }}>We assist clients through the consultation process and hold our work to ICMM Performance Expectation 09. Consent isn&apos;t a hurdle to clear - it&apos;s the foundation a responsible project is built on.</p></Reveal>
+          <Reveal delay={2}><p style={{ color: '#B8B0A2', fontSize: 18, marginTop: 18 }}>We assist clients through the consultation process and hold our work to ICMM Performance Expectation 09. Consent isn&apos;t a hurdle to clear. It&apos;s the foundation a responsible project is built on.</p></Reveal>
         </div>
       </section>
 

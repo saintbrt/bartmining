@@ -53,7 +53,7 @@ export default function EquipGrid({
 
         {showLink && (
           <Reveal style={{ marginTop: 34 }}>
-            <Link href="/products" className="btn btn-gold">
+            <Link href="/equipment" className="btn btn-gold">
               Browse the full product range
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} style={{ width: 16, height: 16 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </Link>

@@ -21,7 +21,7 @@ export default function About() {
         <div className="px-site">
           <Reveal><div className="crumb"><Link href="/">Home</Link><span className="sep">/</span><span>About</span></div></Reveal>
           <Reveal delay={1}><h1>Hands in the rock, <span className="grad">not just theory.</span></h1></Reveal>
-          <Reveal delay={2}><p className="lead">Bart Mining Consultancy advises mining companies, governments and investors across the full mine lifecycle - built on decades of real operating experience and a simple commitment: resource development done responsibly.</p></Reveal>
+          <Reveal delay={2}><p className="lead">Bart Mining Consultancy advises mining companies, governments and investors across the full mine lifecycle, built on decades of real operating experience and a simple commitment: resource development done responsibly.</p></Reveal>
         </div>
       </section>
 
@@ -45,10 +45,10 @@ export default function About() {
               <h2 style={{ fontSize: 'clamp(30px,3.6vw,46px)', marginTop: 16 }}>Bartholomew Ambrose</h2>
               <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--gold-deep)', fontSize: 15, letterSpacing: '.06em', marginTop: 10 }}>EXPLORATION MANAGER &middot; GENERAL MANAGER &middot; MINING OPERATOR</p>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 22 }}>
-                Bart has led exploration programs and operated producing mines for some of the industry&apos;s major names - working deposits from Brazilian rainforest to the Canadian shield, across West and Central Africa, and through the Australian outback. That breadth means he has made the hard calls in person: where to drill, when to stop, how to close responsibly.
+                Bart has led exploration programs and operated producing mines for some of the industry&apos;s major names, working deposits from Brazilian rainforest to the Canadian shield, across West and Central Africa, and through the Australian outback. That breadth means he has made the hard calls in person: where to drill, when to stop, how to close responsibly.
               </p>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 16 }}>
-                Bart Mining is built around that judgement. Engagements are principal-led - the person advising you is the person who has stood on the bench and signed off the plan, not a junior with a template.
+                Bart Mining is built around that judgement. Engagements are principal-led. The person advising you is the person who has stood on the bench and signed off the plan, not a junior with a template.
               </p>
               <div className="career">
                 {['Resolute Mine', 'Barrick Gold', 'Brazil', 'Liberia', 'DRC', 'Australia', 'Canada', 'Tanzania'].map(c => (
@@ -92,17 +92,17 @@ export default function About() {
             <Reveal style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
               <div className="vn" style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>01</div>
               <h4 style={{ fontSize: 17, marginBottom: 8 }}>Mining Companies</h4>
-              <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Support throughout mine development and operation - from resource definition to commissioning and production advisory.</p>
+              <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Support throughout mine development and operation, from resource definition to commissioning and production advisory.</p>
             </Reveal>
             <Reveal delay={1} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>02</div>
               <h4 style={{ fontSize: 17, marginBottom: 8 }}>Governments</h4>
-              <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Mining advisory and development planning - balancing resource value with environmental and community outcomes.</p>
+              <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Mining advisory and development planning, balancing resource value with environmental and community outcomes.</p>
             </Reveal>
             <Reveal delay={2} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 22, fontWeight: 700, color: 'var(--gold)', marginBottom: 14 }}>03</div>
               <h4 style={{ fontSize: 17, marginBottom: 8 }}>Investors</h4>
-              <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Technical due diligence and resource-project evaluation that survives scrutiny - so capital is committed with eyes open.</p>
+              <p style={{ color: 'var(--ink-2)', fontSize: 15, lineHeight: 1.6 }}>Technical due diligence and resource-project evaluation that survives scrutiny, so capital is committed with eyes open.</p>
             </Reveal>
           </div>
         </div>

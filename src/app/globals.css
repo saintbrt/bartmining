@@ -4,19 +4,19 @@
 
 /* ── Design tokens as CSS custom properties ───────────────── */
 :root {
-  /* Surfaces — flat white. No tint ladder: separation comes from hairlines. */
+  /* Surfaces - flat white. No tint ladder: separation comes from hairlines. */
   --bg:        #FFFFFF;
   --bg-2:      #FFFFFF;
   --bg-3:      #FFFFFF;
   --paper:     #F4F6F6;
 
-  /* Ink — cool neutral ramp (~200deg), deliberately off the gold's hue axis
+  /* Ink - cool neutral ramp (~200deg), deliberately off the gold's hue axis
      so the accent reads as an accent instead of tinting the whole page. */
   --ink:       #14181A;
   --ink-2:     #444C50;
-  --ink-3:     #5E686D;  /* 5.71:1 on white — was #8C857A at 3.61:1 */
+  --ink-3:     #5E686D;  /* 5.71:1 on white - was #8C857A at 3.61:1 */
 
-  /* Gold — rules, eyebrows and small marks only. Never a fill, never a glow. */
+  /* Gold - rules, eyebrows and small marks only. Never a fill, never a glow. */
   --gold:      #8A6C36;
   --gold-2:    #B9995C;  /* for dark grounds only (slate blocks, footer) */
   --gold-deep: #7A5F2F;
@@ -24,7 +24,7 @@
   --slate:     #14181A;
   --slate-2:   #1E2427;
   /* With every surface white, the hairline is the only thing separating a
-     card from the page — so it has to actually be visible. */
+     card from the page - so it has to actually be visible. */
   --line:      #D4DBDE;
   --line-2:    #E4E9EB;
 
@@ -34,7 +34,7 @@
   --shadow-lg: none;
   --shadow-gold: none;
 
-  /* Radius — present but barely. Corners should not be a visual event. */
+  /* Radius - present but barely. Corners should not be a visual event. */
   --r-sm:  2px;
   --r-md:  3px;
   --r-lg:  4px;
@@ -114,7 +114,7 @@ img { display: block; max-width: 100%; }
 
 /* ── Headline accent ─────────────────────────────────────────────
    Was a gold gradient fill. Gold is now reserved for eyebrows, rules
-   and small marks — a three-line display block in it is a fill, and
+   and small marks - a three-line display block in it is a fill, and
    fills are what made the page read amber. Headlines are one ink. */
 .grad { color: inherit; }
 
@@ -182,7 +182,7 @@ img { display: block; max-width: 100%; }
 
 /* ── On dark grounds ─────────────────────────────────────────────
    The primary button is now an ink fill, which is the same value as
-   --slate — so on a dark block it would vanish. Invert it there.
+   --slate - so on a dark block it would vanish. Invert it there.
    The eyebrow's --gold-deep only reaches 3.1:1 on --slate, so the
    lighter gold takes over. */
 .on-dark .btn-gold, .cta-block .btn-gold, .cta-block .btn-ink {
@@ -236,7 +236,7 @@ img { display: block; max-width: 100%; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* ── Decorative orbs — retired. Kept as no-ops so call sites are inert. ── */
+/* ── Decorative orbs - retired. Kept as no-ops so call sites are inert. ── */
 .orb, .orb-1, .orb-2, .orb-cta { display: none; }
 
 /* ── Marquee ─────────────────────────────────────────────────── */

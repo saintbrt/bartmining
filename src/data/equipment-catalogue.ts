@@ -1,5 +1,5 @@
 /**
- * Equipment catalogue — the source of truth for /equipment/[slug].
+ * Equipment catalogue - the source of truth for /equipment/[slug].
  *
  * SPECIFICATION POLICY
  * Figures here are industry-standard characteristics of each equipment
@@ -25,7 +25,7 @@ export interface Equipment {
   slug: string
   /** Short product name, used in listings and schema. */
   name: string
-  /** Page H1 — leads with the term buyers actually search. */
+  /** Page H1 - leads with the term buyers actually search. */
   h1: string
   /** <title>, under ~60 chars before the brand suffix where possible. */
   title: string
@@ -33,7 +33,7 @@ export interface Equipment {
   description: string
   /**
    * Answer-first lede. Two or three sentences that fully answer "what is
-   * this and what is it for" with no preamble — this is the block an AI
+   * this and what is it for" with no preamble - this is the block an AI
    * assistant is most likely to lift verbatim, so it must stand alone.
    */
   summary: string
@@ -92,7 +92,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: '1-ton-winch',
     name: '1 Tonne Electric Winch',
-    h1: '1 Ton Winch — Specifications, Uses and Maintenance',
+    h1: '1 Ton Winch: Specifications, Uses and Maintenance',
     title: '1 Ton Winch: Specs, Uses & Price Guide | Tanzania',
     description:
       '1 ton winch specifications, line speed, rope size, motor rating and maintenance schedule. Electric and manual 1 tonne winches supplied to Mwanza, Kahama, Geita and Shinyanga.',
@@ -134,11 +134,11 @@ export const EQUIPMENT: Equipment[] = [
     ],
     faqs: [
       { q: 'How much can a 1 ton winch actually lift?', a: 'The 1,000 kg rating applies to the first layer of rope on the drum. Each additional layer increases the effective drum radius and reduces available pull by roughly 10–15%, so a winch fully wound to a fourth layer may only deliver 650–750 kg. Always size on the outer-layer figure if the rope will be substantially wound out.' },
-      { q: 'What size wire rope does a 1 tonne winch use?', a: 'Typically 8–11 mm diameter in 6×19 or 6×37 independent wire rope core construction. The rope must be selected with a minimum breaking load giving at least 5:1 safety factor against the rated line pull, and 8:1 where the winch lifts personnel — which most goods winches are not certified to do.' },
+      { q: 'What size wire rope does a 1 tonne winch use?', a: 'Typically 8–11 mm diameter in 6×19 or 6×37 independent wire rope core construction. The rope must be selected with a minimum breaking load giving at least 5:1 safety factor against the rated line pull, and 8:1 where the winch lifts personnel, which most goods winches are not certified to do.' },
       { q: 'Can a 1 ton winch be used to raise people from a shaft?', a: 'No, not unless it is specifically certified as a man-riding winch. Goods-rated winches lack the redundant braking, overspeed governor and higher rope safety factor required for personnel hoisting. Using one to raise workers is a common and serious cause of fatalities in small-scale mining.' },
-      { q: 'Will a 1 tonne electric winch run on Tanzanian mains power?', a: 'Yes. Tanzania supplies 230 V single phase and 400 V three phase at 50 Hz, and both single-phase and three-phase 1 tonne winches are available for those ratings. Confirm the motor nameplate reads 50 Hz — a 60 Hz motor run at 50 Hz loses roughly 17% of its speed and can overheat under continuous load.' },
+      { q: 'Will a 1 tonne electric winch run on Tanzanian mains power?', a: 'Yes. Tanzania supplies 230 V single phase and 400 V three phase at 50 Hz, and both single-phase and three-phase 1 tonne winches are available for those ratings. Confirm the motor nameplate reads 50 Hz. A 60 Hz motor run at 50 Hz loses roughly 17% of its speed and can overheat under continuous load.' },
       { q: 'What is the difference between line pull and lifting capacity?', a: 'Line pull is the horizontal force the winch can exert, which is what most ratings quote. Vertical lifting capacity is lower because the load is carried entirely by the rope and brake with no ground friction assisting. For vertical shaft duty, derate a horizontal-rated winch or specify a hoist rated for lifting.' },
-      { q: 'How long does a wire rope last on a shaft winch?', a: 'In continuous ore-raising duty, expect 6–18 months depending on drum diameter ratio, sheave condition, lubrication and abrasive loading. Ropes must be discarded on the criteria in ISO 4309 — broken wires per lay length, diameter reduction, corrosion or core damage — not on age alone.' },
+      { q: 'How long does a wire rope last on a shaft winch?', a: 'In continuous ore-raising duty, expect 6–18 months depending on drum diameter ratio, sheave condition, lubrication and abrasive loading. Ropes must be discarded on the criteria in ISO 4309: broken wires per lay length, diameter reduction, corrosion or core damage. Age alone is not a criterion.' },
     ],
     related: ['2-ton-winch', '5-ton-mine-winch', 'wire-rope-slings-lifting-tackle'],
     image: IMG.winch,
@@ -149,7 +149,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: '2-ton-winch',
     name: '2 Tonne Electric Winch',
-    h1: '2 Ton Winch — Specifications, Duty Ratings and Selection',
+    h1: '2 Ton Winch: Specifications, Duty Ratings and Selection',
     title: '2 Ton Winch: Specs, Duty & Selection Guide | Tanzania',
     description:
       '2 ton winch specifications: 2,000 kg line pull, rope diameter, motor rating, duty cycle and maintenance. Supplied across Mwanza, Kahama, Geita and Shinyanga.',
@@ -190,7 +190,7 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Annually', task: 'Certified 125% load test; non-destructive testing of drum shaft and structural welds.' },
     ],
     faqs: [
-      { q: 'When should I move from a 1 tonne to a 2 tonne winch?', a: 'When the loaded bucket or skip plus rope weight regularly exceeds about 700 kg, or when shaft depth passes 60 m. Rope self-weight becomes significant with depth — 100 m of 12 mm rope alone weighs around 50 kg — and eats into available payload on a smaller machine.' },
+      { q: 'When should I move from a 1 tonne to a 2 tonne winch?', a: 'When the loaded bucket or skip plus rope weight regularly exceeds about 700 kg, or when shaft depth passes 60 m. Rope self-weight becomes significant with depth. A 100 m length of 12 mm rope alone weighs around 50 kg, and that eats into available payload on a smaller machine.' },
       { q: 'What foundation does a 2 ton winch need?', a: 'A reinforced concrete plinth sized so the mass is at least three times the rated line pull, with cast-in anchor bolts. Bolting a 2 tonne winch to timber sleepers or unreinforced slab is a frequent failure mode: the machine walks under cyclic load and the rope fleet angle goes out of tolerance.' },
       { q: 'What is fleet angle and why does it matter?', a: 'Fleet angle is the angle between the rope leaving the drum and a line perpendicular to the drum axis. Beyond about 1.5° the rope piles unevenly, crushes lower layers and wears fast. It is set by the distance from drum to the first sheave, which is why sheave position is a design decision, not a site convenience.' },
       { q: 'Can a 2 tonne winch run on a generator?', a: 'Yes, but size the generator for starting current, not running current. A 5.5 kW direct-on-line motor draws six to seven times full-load current at start, so a 20–30 kVA set is a realistic minimum. A soft starter or variable-frequency drive reduces that substantially and is worth the cost where generator capacity is tight.' },
@@ -205,7 +205,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: '5-ton-mine-winch',
     name: '5 Tonne Mine Winch',
-    h1: '5 Ton Mine Winch — Specifications and Shaft Hoisting Duty',
+    h1: '5 Ton Mine Winch: Specifications and Shaft Hoisting Duty',
     title: '5 Ton Mine Winch: Specs & Shaft Duty | Tanzania',
     description:
       '5 ton mine winch specifications for shaft hoisting: 5,000 kg line pull, rope sizing, motor rating, braking and statutory inspection. Supplied across Tanzania.',
@@ -224,7 +224,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Line speed', value: '15–45 m/min depending on drive' },
       { label: 'Motor rating', value: '7.5–15 kW, often VFD driven' },
       { label: 'Power supply', value: '400 V 3-phase 50 Hz' },
-      { label: 'Braking', value: 'Dual independent — service disc plus fail-safe emergency' },
+      { label: 'Braking', value: 'Dual independent: service disc plus fail-safe emergency' },
       { label: 'Drum configuration', value: 'Single or double drum' },
       { label: 'Overwind protection', value: 'Limit switches plus mechanical overwind device' },
       { label: 'Depth indication', value: 'Mechanical or encoder-driven' },
@@ -249,7 +249,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'Does a 5 ton mine winch need statutory inspection in Tanzania?', a: 'Permanent hoisting installations fall under occupational safety regulation and require periodic examination by a competent person, with records retained. Requirements are enforced by the Mining Commission and OSHA Tanzania, and specifics depend on whether the installation carries personnel. Confirm the current obligations for your licence type before commissioning.' },
       { q: 'Why do 5 tonne winches need two braking systems?', a: 'Because a single brake failure on a loaded shaft hoist is unsurvivable for anything below. Convention is a service brake used for normal stopping plus an independent fail-safe emergency brake that applies on power loss, overspeed or overwind, each independently capable of holding the full load.' },
       { q: 'Single drum or double drum?', a: 'Single drum is simpler and cheaper and suits a single conveyance with a counterweight or none. Double drum allows two conveyances in balance, roughly halving energy per tonne hoisted and doubling cycle throughput, at higher capital cost and more complex control. Below about 150 m and 100 t/day, single drum usually wins.' },
-      { q: 'What rope safety factor applies to a 5 ton mine winch?', a: 'Goods hoisting is commonly designed to 5:1 minimum against rope minimum breaking load. Personnel hoisting requires substantially higher — typically 8:1 or more, with the exact figure set by the applicable mining regulation. Rope must then be discarded on ISO 4309 criteria regardless of remaining calculated margin.' },
+      { q: 'What rope safety factor applies to a 5 ton mine winch?', a: 'Goods hoisting is commonly designed to 5:1 minimum against rope minimum breaking load. Personnel hoisting requires substantially higher, typically 8:1 or more, with the exact figure set by the applicable mining regulation. Rope must then be discarded on ISO 4309 criteria regardless of remaining calculated margin.' },
     ],
     related: ['2-ton-winch', 'mine-hoist-headframe', 'wire-rope-slings-lifting-tackle'],
     image: IMG.hoist,
@@ -317,7 +317,7 @@ export const EQUIPMENT: Equipment[] = [
     description:
       'Wire rope, chain slings, shackles and lifting tackle for mining: construction, safe working load, discard criteria under ISO 4309 and inspection intervals.',
     summary:
-      'Wire rope and lifting tackle are the consumable link between a hoist and its load, and the component most often responsible for dropped-load incidents. Mining duty normally calls for 6×19 or 6×36 construction with an independent wire rope core, selected to at least a 5:1 safety factor for goods and 8:1 or higher for personnel. Ropes are discarded on measured condition under ISO 4309 — broken wires per lay length, diameter loss, corrosion or core damage — never on age alone.',
+      'Wire rope and lifting tackle are the consumable link between a hoist and its load, and the component most often responsible for dropped-load incidents. Mining duty normally calls for 6×19 or 6×36 construction with an independent wire rope core, selected to at least a 5:1 safety factor for goods and 8:1 or higher for personnel. Ropes are discarded on measured condition under ISO 4309: broken wires per lay length, diameter loss, corrosion or core damage. Age alone is never the test.',
     category: 'hoisting',
     categoryLabel: CATEGORY_LABELS.hoisting,
     searchTerms: [
@@ -329,12 +329,12 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Common diameters', value: '8–26 mm for small to medium mining duty' },
       { label: 'Tensile grade', value: '1770 or 1960 N/mm²' },
       { label: 'Finish', value: 'Bright or galvanised; galvanised preferred in wet shafts' },
-      { label: 'Safety factor — goods', value: '5:1 minimum against minimum breaking load' },
-      { label: 'Safety factor — personnel', value: '8:1 or higher per applicable regulation' },
+      { label: 'Safety factor (goods)', value: '5:1 minimum against minimum breaking load' },
+      { label: 'Safety factor (personnel)', value: '8:1 or higher per applicable regulation' },
       { label: 'Sling types', value: 'Single, two, three and four leg; endless and eye-and-eye' },
       { label: 'Terminations', value: 'Ferrule-secured, spliced or swaged; wedge sockets for drum ends' },
       { label: 'Shackles', value: 'Bow and dee, grade 6 or higher, marked with WLL' },
-      { label: 'Discard standard', value: 'ISO 4309 — broken wires, diameter reduction, corrosion, deformation' },
+      { label: 'Discard standard', value: 'ISO 4309: broken wires, diameter reduction, corrosion, deformation' },
     ],
     applications: [
       'Winch and hoist drum rope',
@@ -351,9 +351,9 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'On any doubt', task: 'Withdraw from service immediately. Rope condition is not recoverable and there is no safe field repair for a damaged lifting rope.' },
     ],
     faqs: [
-      { q: 'When must a wire rope be discarded?', a: 'Under ISO 4309, on any of: broken wires exceeding the permitted number per lay length for the rope construction, diameter reduction beyond the allowable percentage, severe corrosion or pitting, core protrusion, kinking, birdcaging, crushing, or heat damage. Any one criterion alone is sufficient — they are not cumulative thresholds.' },
+      { q: 'When must a wire rope be discarded?', a: 'Under ISO 4309, on any of: broken wires exceeding the permitted number per lay length for the rope construction, diameter reduction beyond the allowable percentage, severe corrosion or pitting, core protrusion, kinking, birdcaging, crushing, or heat damage. Any one criterion alone is sufficient. They are not cumulative thresholds.' },
       { q: 'What does IWRC mean and do I need it?', a: 'Independent Wire Rope Core: the rope core is itself a small wire rope rather than fibre. It gives roughly 7% higher breaking load, much better crush resistance on multi-layer drums and better performance at temperature. For winch drum duty it is generally the right choice; fibre core is more flexible and suits some sling applications.' },
-      { q: 'How do I calculate safe working load for a multi-leg sling?', a: 'It depends on the angle between legs, not just leg count. As the included angle widens, tension in each leg rises sharply — at 120° each leg carries the full load, doubling the tension versus a vertical lift. Use the rated capacity table for the actual angle, and never assume two legs means double capacity.' },
+      { q: 'How do I calculate safe working load for a multi-leg sling?', a: 'It depends on the angle between legs, not just leg count. As the included angle widens, tension in each leg rises sharply. At 120° each leg carries the full load, doubling the tension versus a vertical lift. Use the rated capacity table for the actual angle, and never assume two legs means double capacity.' },
       { q: 'Can a damaged wire rope be repaired?', a: 'No. There is no acceptable field repair for a lifting rope with broken wires or core damage. Splicing is a manufacturing operation performed under controlled conditions on undamaged rope, not a site remedy. A rope meeting any discard criterion is scrap.' },
     ],
     related: ['1-ton-winch', '5-ton-mine-winch', 'fall-arrest-harness'],
@@ -367,7 +367,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'centrifugal-gold-concentrator',
     name: 'Centrifugal Gold Concentrator',
-    h1: 'Centrifugal Gold Concentrator — Specs, Recovery and Sizing',
+    h1: 'Centrifugal Gold Concentrator: Specs, Recovery and Sizing',
     title: 'Centrifugal Gold Concentrator: Specs & Recovery | Tanzania',
     description:
       'Centrifugal gold concentrator specifications, feed rates, G-force, recovery rates and sizing. Knelson and Falcon class gravity units supplied across Tanzania.',
@@ -390,7 +390,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Fluidisation water', value: '0.5–10 m³/h, clean and pressure-regulated' },
       { label: 'Drive power', value: '1.5–30 kW by size' },
       { label: 'Cycle type', value: 'Batch (timed) or continuous discharge' },
-      { label: 'Reagents required', value: 'None — water only' },
+      { label: 'Reagents required', value: 'None, water only' },
       { label: 'Typical duty', value: 'Grinding-circuit scalping or standalone alluvial plant' },
     ],
     applications: [
@@ -410,7 +410,7 @@ export const EQUIPMENT: Equipment[] = [
     faqs: [
       { q: 'How much gold does a centrifugal concentrator recover?', a: 'On liberated free gold, 85–98%. Recovery falls sharply if gold is locked in sulphides or silicates, because the machine separates by density and cannot recover what is not liberated. Grind size therefore governs recovery more than machine settings do.' },
       { q: 'Can a centrifugal concentrator replace mercury?', a: 'Yes, and that is its most valuable application in Tanzania. It recovers a comparable or higher proportion of free gold with no mercury at all, eliminating both the health exposure and the mercury losses that amalgamation incurs. Capital cost is repaid quickly where gold prices and throughput are reasonable.' },
-      { q: 'What feed size does a centrifugal concentrator need?', a: 'Generally minus 2 mm, with larger bowls tolerating up to 6 mm. Oversize plugs the fluidisation holes and blinds the riffles. A screen ahead of the concentrator is not optional — it is what keeps the unit working.' },
+      { q: 'What feed size does a centrifugal concentrator need?', a: 'Generally minus 2 mm, with larger bowls tolerating up to 6 mm. Oversize plugs the fluidisation holes and blinds the riffles. A screen ahead of the concentrator is not optional. It is what keeps the unit working.' },
       { q: 'How much water does it need?', a: '0.5–10 m³/h of clean fluidisation water depending on bowl size, at regulated pressure. Water quality matters: silt-laden water blocks the fluidisation holes and quietly destroys recovery over a few shifts. Many recovery complaints on site trace back to water, not the machine.' },
       { q: 'Batch or continuous discharge?', a: 'Batch units stop to flush concentrate and suit lower-grade, lower-throughput duty where interruption is acceptable. Continuous units discharge concentrate without stopping and suit higher grades or circuits that cannot pause. Batch is cheaper and simpler; continuous fits production plants.' },
     ],
@@ -423,7 +423,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'gold-elution-electrowinning-plant',
     name: 'Elution & Electrowinning Plant',
-    h1: 'Gold Elution and Electrowinning Plant — Process and Specs',
+    h1: 'Gold Elution and Electrowinning Plant: Process and Specs',
     title: 'Gold Elution & Electrowinning Plant Specs | Tanzania',
     description:
       'Gold elution and electrowinning plant specifications: Zadra and AARL circuits, batch sizes, temperatures, cycle times and cathode handling. Supplied in Tanzania.',
@@ -464,7 +464,7 @@ export const EQUIPMENT: Equipment[] = [
     ],
     faqs: [
       { q: 'What is the difference between Zadra and AARL elution?', a: 'Zadra circulates hot caustic cyanide continuously through the carbon and directly through the electrowinning cell, making it simpler but slower. AARL uses a separate acid wash then a soak-and-displace sequence with clean water, producing a smaller volume of much higher-grade eluate in a shorter cycle. AARL suits higher throughput; Zadra suits simpler, smaller plants.' },
-      { q: 'How long does an elution cycle take?', a: '8–24 hours. Pressure Zadra typically runs 12–24 h, AARL commonly 8–14 h. Cycle time is set by carbon loading, temperature and eluant flow — running colder to save fuel lengthens the cycle and usually costs more than it saves.' },
+      { q: 'How long does an elution cycle take?', a: '8–24 hours. Pressure Zadra typically runs 12–24 h, AARL commonly 8–14 h. Cycle time is set by carbon loading, temperature and eluant flow. Running colder to save fuel lengthens the cycle and usually costs more than it saves.' },
       { q: 'What safety controls does an elution plant need?', a: 'Cyanide handling procedures, HCN gas detection with alarms, forced ventilation, emergency eyewash and shower, pressure vessel certification, and controlled access. Elution combines cyanide, caustic, heat and pressure in one place, so it is the highest-hazard area in a typical gold plant.' },
       { q: 'How is gold recovered from the cathodes?', a: 'Steel wool cathodes are acid-digested or directly smelted with fluxes; stainless mesh cathodes are pressure-washed to release a gold sludge which is filtered, dried and smelted. The result is doré bullion, which is then refined further off-site.' },
     ],
@@ -477,7 +477,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'cil-cip-plant',
     name: 'CIL & CIP Gold Plants',
-    h1: 'CIL and CIP Gold Plants — Process, Sizing and Specifications',
+    h1: 'CIL and CIP Gold Plants: Process, Sizing and Specifications',
     title: 'CIL & CIP Gold Plant: Process & Sizing | Tanzania',
     description:
       'CIL and CIP gold plant specifications: tank sizing, residence time, carbon concentration, leach chemistry and recovery. Plants supplied across Tanzania.',
@@ -532,7 +532,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'modular-gold-plant',
     name: 'Modular Gold Processing Plant',
-    h1: 'Modular Gold Processing Plants — Containerised Plant Specs',
+    h1: 'Modular Gold Processing Plants: Containerised Plant Specs',
     title: 'Modular Gold Processing Plant: Specs & Sizing | Tanzania',
     description:
       'Modular and containerised gold processing plants: throughput ranges, footprint, power and water demand, installation time and transport to remote Tanzanian sites.',
@@ -573,7 +573,7 @@ export const EQUIPMENT: Equipment[] = [
     faqs: [
       { q: 'How long does a modular gold plant take to commission?', a: 'Typically 3–10 weeks from arrival on site, against six months or more for a conventional built-in-place plant. The saving comes from the modules being pre-assembled, wired and tested at the fabricator, so site work is largely positioning, connecting and commissioning.' },
       { q: 'What power supply does a modular plant need?', a: '80–800 kW depending on capacity, at 400 V three phase 50 Hz. Grid connection is preferable where available in Geita or Mwanza; otherwise size a diesel genset with at least 25% headroom above calculated running load to absorb mill starting current and load swings.' },
-      { q: 'How much water does a modular gold plant use?', a: '0.5–1.5 m³ per tonne of ore with a functioning recycle circuit, and far more without one. In water-constrained districts a thickener and return-water system is not an optional extra — it usually determines whether the site is viable at all.' },
+      { q: 'How much water does a modular gold plant use?', a: '0.5–1.5 m³ per tonne of ore with a functioning recycle circuit, and far more without one. In water-constrained districts a thickener and return-water system is not an optional extra. It usually determines whether the site is viable at all.' },
       { q: 'Can a modular plant be moved to another site?', a: 'Yes, that is a core design intent. Modules unbolt, load onto standard transport and redeploy. This suits operations working a series of small deposits, and it protects capital where an orebody is smaller than expected.' },
     ],
     related: ['cil-cip-plant', 'centrifugal-gold-concentrator', 'jaw-crusher'],
@@ -585,7 +585,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'ball-mill-gold-ore',
     name: 'Ball Mill for Gold Ore',
-    h1: 'Ball Mill for Gold Ore — Sizing, Power and Liner Selection',
+    h1: 'Ball Mill for Gold Ore: Sizing, Power and Liner Selection',
     title: 'Ball Mill for Gold Ore: Sizing & Specs | Tanzania',
     description:
       'Ball mill specifications for gold ore: diameter and length, critical speed, ball charge, power draw, liner selection and grind size. Supplied across Tanzania.',
@@ -640,7 +640,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'jaw-crusher',
     name: 'Jaw Crusher',
-    h1: 'Jaw Crusher — Feed Size, Capacity and Setting Guide',
+    h1: 'Jaw Crusher: Feed Size, Capacity and Setting Guide',
     title: 'Jaw Crusher: Capacity, CSS & Specs | Tanzania Supply',
     description:
       'Jaw crusher specifications: feed opening, closed side setting, throughput, motor power and jaw plate wear. Primary crushers supplied across Tanzania.',
@@ -677,10 +677,10 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Weekly', task: 'Grease eccentric shaft bearings; inspect toggle plate and seat for wear; check drive belt tension.' },
       { interval: 'Monthly', task: 'Measure jaw plate profile against new dimensions; inspect frame for cracking around the pitman.' },
       { interval: 'Quarterly', task: 'Bearing temperature and vibration survey; flywheel and pulley alignment.' },
-      { interval: 'On wear', task: 'Reverse or replace jaw plates — most plates are symmetrical and can be turned once for roughly double the life.' },
+      { interval: 'On wear', task: 'Reverse or replace jaw plates. Most plates are symmetrical and can be turned once for roughly double the life.' },
     ],
     faqs: [
-      { q: 'What size jaw crusher do I need?', a: 'Set it by the largest rock you will feed and the tonnage you need. Feed size must stay at or below 80% of the opening width, so a 400 mm maximum lump requires at least a 500 mm opening. Then confirm the throughput at your intended CSS — capacity falls steeply as CSS tightens.' },
+      { q: 'What size jaw crusher do I need?', a: 'Set it by the largest rock you will feed and the tonnage you need. Feed size must stay at or below 80% of the opening width, so a 400 mm maximum lump requires at least a 500 mm opening. Then confirm the throughput at your intended CSS, because capacity falls steeply as CSS tightens.' },
       { q: 'What is closed side setting?', a: 'The narrowest gap between the jaws at the bottom of the stroke. It sets both product size and capacity: a tighter CSS gives finer product but lower tonnes per hour and faster wear. It is the primary operating adjustment on the machine.' },
       { q: 'Why does my jaw crusher keep bridging?', a: 'Almost always oversize feed, wet sticky fines, or a feed rate that surges rather than staying steady. Fit a grizzly ahead of the crusher to remove both oversize and fines, and feed with a controlled feeder rather than tipping directly from a loader bucket.' },
       { q: 'How long do jaw plates last?', a: 'From a few hundred hours in highly abrasive quartz-rich ore to several thousand in softer material. Most plates are symmetrical and can be turned end-for-end once. Track tonnes per set rather than calendar time so you can forecast the spend.' },
@@ -695,7 +695,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'shaking-table-gold',
     name: 'Gold Shaking Table',
-    h1: 'Gold Shaking Table — Capacity, Deck Setup and Recovery',
+    h1: 'Gold Shaking Table: Capacity, Deck Setup and Recovery',
     title: 'Gold Shaking Table: Capacity & Setup | Tanzania',
     description:
       'Gold shaking table specifications: deck size, capacity, feed size, water use, stroke and slope adjustment. Concentrating tables supplied across Tanzania.',
@@ -718,7 +718,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Deck slope', value: '0–10°, adjustable in two axes' },
       { label: 'Motor power', value: '0.75–1.5 kW' },
       { label: 'Deck surface', value: 'Fibreglass or rubber-covered timber with riffles' },
-      { label: 'Concentrate grade', value: 'High — often directly smeltable after cleaning' },
+      { label: 'Concentrate grade', value: 'High, often directly smeltable after cleaning' },
       { label: 'Recovery range', value: '60–90% depending on liberation and desliming' },
     ],
     applications: [
@@ -752,7 +752,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'rc-drilling-rig',
     name: 'Reverse Circulation (RC) Drilling Rig',
-    h1: 'RC Drilling Rig — Specifications, Depth and Sample Quality',
+    h1: 'RC Drilling Rig: Specifications, Depth and Sample Quality',
     title: 'RC Drilling Rig: Specs, Depth & Costs | Tanzania',
     description:
       'Reverse circulation drilling rig specifications: depth capacity, hole diameter, compressor requirement, penetration rates and sample quality for gold exploration.',
@@ -775,7 +775,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Rig mounting', value: 'Truck, track or trailer' },
       { label: 'Sample splitting', value: 'Cone or riffle splitter, 1–3 kg per metre' },
       { label: 'Crew size', value: '3–5 per shift' },
-      { label: 'Water requirement', value: 'Low — dust suppression and wet-ground injection only' },
+      { label: 'Water requirement', value: 'Low. Dust suppression and wet-ground injection only' },
       { label: 'Best suited to', value: 'Resource definition, grade control, oxide and transitional ore' },
     ],
     applications: [
@@ -792,9 +792,9 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Per contract', task: 'Third-party mechanical inspection and certification before mobilisation.' },
     ],
     faqs: [
-      { q: 'RC or diamond core drilling — which should I use?', a: 'RC is faster and roughly a third of the cost per metre, and gives ample sample for assay, so it suits resource definition and grade control. Diamond core gives an intact cylinder allowing oriented structural measurement, geotechnical logging and precise contact definition. Most programmes use RC for tonnage and core for structure and confirmation.' },
+      { q: 'RC or diamond core drilling: which should I use?', a: 'RC is faster and roughly a third of the cost per metre, and gives ample sample for assay, so it suits resource definition and grade control. Diamond core gives an intact cylinder allowing oriented structural measurement, geotechnical logging and precise contact definition. Most programmes use RC for tonnage and core for structure and confirmation.' },
       { q: 'How deep can an RC rig drill?', a: 'Commonly 150–500 m. Depth is limited less by the rig than by air: as the hole deepens, the compressor must lift cuttings against a taller column, so a booster is usually needed beyond about 200 m, and beyond roughly 500 m sample quality degrades and core becomes the better option.' },
-      { q: 'What compressor does an RC rig need?', a: 'Typically 900–1,150 cfm at 350–500 psi, often with a booster. Under-supplying air is the most common cause of poor sample recovery and stuck rods — the compressor specification is part of the drilling method, not an accessory.' },
+      { q: 'What compressor does an RC rig need?', a: 'Typically 900–1,150 cfm at 350–500 psi, often with a booster. Under-supplying air is the most common cause of poor sample recovery and stuck rods. The compressor specification is part of the drilling method, not an accessory.' },
       { q: 'Is RC sample quality good enough for a JORC resource?', a: 'Yes, RC is widely used for JORC and NI 43-101 compliant resources provided recovery is monitored, samples are split consistently, and QAQC protocols with standards, blanks and duplicates are followed. Wet samples and poor recovery zones must be flagged, as they carry real grade bias risk.' },
     ],
     related: ['diamond-core-drilling-rig', 'air-compressor-mining', 'portable-xrf-analyser'],
@@ -806,12 +806,12 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'diamond-core-drilling-rig',
     name: 'Diamond Core Drilling Rig',
-    h1: 'Diamond Core Drilling Rig — Core Sizes, Depth and Recovery',
+    h1: 'Diamond Core Drilling Rig: Core Sizes, Depth and Recovery',
     title: 'Diamond Core Drilling Rig: Core Sizes & Depth | Tanzania',
     description:
       'Diamond core drilling rig specifications: BQ, NQ, HQ and PQ core sizes, depth capacity, recovery targets, core orientation and cost drivers in Tanzania.',
     summary:
-      'A diamond core drilling rig cuts an intact cylinder of rock using a diamond-impregnated annular bit, producing the highest-quality geological sample available. Core sizes run from PQ at 85 mm down to BQ at 36.5 mm, with depth capacity increasing as diameter decreases — an NQ hole can reach 600–1,200 metres. Core is the only method that supports oriented structural measurement, geotechnical logging and reliable density determination, which is why resource estimates depend on it even when most metres are drilled by RC.',
+      'A diamond core drilling rig cuts an intact cylinder of rock using a diamond-impregnated annular bit, producing the highest-quality geological sample available. Core sizes run from PQ at 85 mm down to BQ at 36.5 mm, with depth capacity increasing as diameter decreases, so an NQ hole can reach 600–1,200 metres. Core is the only method that supports oriented structural measurement, geotechnical logging and reliable density determination, which is why resource estimates depend on it even when most metres are drilled by RC.',
     category: 'exploration',
     categoryLabel: CATEGORY_LABELS.exploration,
     searchTerms: [
@@ -848,7 +848,7 @@ export const EQUIPMENT: Equipment[] = [
     ],
     faqs: [
       { q: 'Which core size should I specify?', a: 'HQ is the usual default for gold resource drilling: enough sample mass for assay, good recovery in variable ground, and reasonable depth capacity. NQ goes deeper and costs less per metre but yields less sample. PQ is reserved for metallurgical bulk samples and poor ground where hole stability is the concern.' },
-      { q: 'Why is diamond drilling more expensive than RC?', a: 'It is slower — 15–40 m per shift versus 30–60 for RC — and consumes expensive diamond bits, uses more water, and requires more careful handling of the core itself. The premium buys geological information that RC physically cannot produce.' },
+      { q: 'Why is diamond drilling more expensive than RC?', a: 'It is slower, 15–40 m per shift versus 30–60 for RC, and consumes expensive diamond bits, uses more water, and requires more careful handling of the core itself. The premium buys geological information that RC physically cannot produce.' },
       { q: 'What core recovery should I expect?', a: 'At least 95% in competent rock. Persistently lower recovery indicates broken ground, poor drilling practice or an unsuitable barrel configuration, and it introduces sample bias that can invalidate a resource estimate. Recovery must be measured and recorded per run, not estimated per hole.' },
       { q: 'How does core orientation work?', a: 'A digital orientation tool is run inside the core barrel and records the down-hole direction at the moment the run stops, letting the geologist mark a bottom-of-hole line on the core. Structures can then be measured as true dip and dip direction rather than only as angles to the core axis. Typical accuracy is around ±5°.' },
       { q: 'How much water does core drilling need?', a: '3–12 m³ per shift. In dry districts this is a genuine logistical constraint and often dictates the drilling programme schedule. Recirculation through settling tanks reduces demand substantially and is standard practice on remote Tanzanian sites.' },
@@ -862,7 +862,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'portable-xrf-analyser',
     name: 'Portable XRF Analyser',
-    h1: 'Portable XRF Analyser — Detection Limits and Field Use',
+    h1: 'Portable XRF Analyser: Detection Limits and Field Use',
     title: 'Portable XRF Analyser: Detection Limits & Use | Tanzania',
     description:
       'Portable XRF analyser specifications: elements detected, detection limits, measurement time, calibration and correct field use in mineral exploration.',
@@ -877,7 +877,7 @@ export const EQUIPMENT: Equipment[] = [
     specs: [
       { label: 'Element range', value: 'Mg (12) to U (92) depending on model' },
       { label: 'Detection limits', value: '1–500 ppm by element and matrix' },
-      { label: 'Gold detection limit', value: 'Typically 10–20 ppm — well above exploration cut-offs' },
+      { label: 'Gold detection limit', value: 'Typically 10–20 ppm, well above exploration cut-offs' },
       { label: 'Measurement time', value: '10–90 seconds per reading' },
       { label: 'Detector', value: 'Silicon drift detector (SDD)' },
       { label: 'X-ray tube', value: 'Rh or Ag anode, 40–50 kV' },
@@ -885,7 +885,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Battery life', value: '6–10 hours of typical field use' },
       { label: 'Mass', value: '1.3–1.7 kg with battery' },
       { label: 'Calibration', value: 'Factory empirical plus site-specific matrix correction' },
-      { label: 'Licensing', value: 'Radiation source — registration and operator training required' },
+      { label: 'Licensing', value: 'Radiation source: registration and operator training required' },
       { label: 'Ingress protection', value: 'IP54–IP65' },
     ],
     applications: [
@@ -903,10 +903,10 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Ongoing', task: 'Maintain the radiation source register and operator dosimetry records required by the national regulator.' },
     ],
     faqs: [
-      { q: 'Can a portable XRF detect gold?', a: 'Only at concentrations far above exploration interest — typically 10–20 ppm and up. Since gold cut-off grades are usually 0.3–1 ppm, XRF cannot be used to assay gold. Its exploration value is in pathfinder elements such as arsenic, antimony, bismuth, copper and zinc that vector towards gold mineralisation.' },
+      { q: 'Can a portable XRF detect gold?', a: 'Only at concentrations far above exploration interest, typically 10–20 ppm and up. Since gold cut-off grades are usually 0.3–1 ppm, XRF cannot be used to assay gold. Its exploration value is in pathfinder elements such as arsenic, antimony, bismuth, copper and zinc that vector towards gold mineralisation.' },
       { q: 'How accurate is portable XRF against laboratory assay?', a: 'For many base metals and pathfinders it correlates well, provided readings are taken on prepared, homogeneous, dry material and site-specific matrix corrections are applied. Readings taken on rough rock faces or wet soil are indicative only. It is a screening and vectoring tool, not a replacement for accredited assay.' },
       { q: 'Does a portable XRF need a licence in Tanzania?', a: 'It contains an X-ray tube and is treated as a radiation-emitting device, so it requires registration with the national radiation authority, trained and designated operators, and dose monitoring records. Confirm current requirements with the Tanzania Atomic Energy Commission before importing or operating one.' },
-      { q: 'How do I get reliable pXRF results in the field?', a: 'Prepare the sample — dry, homogenise and present a flat surface, ideally a pressed pellet from a pulp. Use consistent measurement times, insert certified reference materials into the reading sequence, and record every standard result so drift is visible before it corrupts a dataset.' },
+      { q: 'How do I get reliable pXRF results in the field?', a: 'Prepare the sample. Dry it, homogenise it and present a flat surface, ideally a pressed pellet from a pulp. Use consistent measurement times, insert certified reference materials into the reading sequence, and record every standard result so drift is visible before it corrupts a dataset.' },
     ],
     related: ['rc-drilling-rig', 'diamond-core-drilling-rig', 'magnetometer-geophysical-survey'],
     image: IMG.lab,
@@ -959,7 +959,7 @@ export const EQUIPMENT: Equipment[] = [
     faqs: [
       { q: 'What line spacing should a magnetic survey use?', a: 'For reconnaissance across a licence, 50–100 m is common. To resolve drill-scale structure, tighten to 12.5–25 m. The rule of thumb is that line spacing should be no more than about half the width of the smallest feature you need to detect, or it will fall between lines.' },
       { q: 'Why does a magnetic survey need a base station?', a: 'The earth field varies through the day by tens of nanotesla, which is larger than many targets of interest. A stationary base station records that diurnal variation so it can be subtracted from the roving readings. Without it, time-of-day noise is indistinguishable from geology.' },
-      { q: 'Does magnetics find gold directly?', a: 'No. Gold itself is not magnetic. Magnetics maps the geology and structure that host gold — banded iron formation, magnetite alteration, shear zones and dyke offsets — so it is a targeting tool that narrows where to drill, not a detector of gold.' },
+      { q: 'Does magnetics find gold directly?', a: 'No. Gold itself is not magnetic. Magnetics maps the geology and structure that host gold: banded iron formation, magnetite alteration, shear zones and dyke offsets. It is a targeting tool that narrows where to drill, not a detector of gold.' },
       { q: 'When is induced polarisation worth the cost?', a: 'When mineralisation is associated with disseminated sulphides that magnetics cannot see, and when targets sit deep enough that geochemistry is unreliable. IP is several times slower and costlier per line kilometre than magnetics, so it is normally deployed on already-narrowed targets rather than as a first pass.' },
     ],
     related: ['portable-xrf-analyser', 'rc-drilling-rig', 'gold-metal-detector'],
@@ -971,7 +971,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'gold-metal-detector',
     name: 'Gold Prospecting Metal Detector',
-    h1: 'Gold Metal Detectors — VLF vs Pulse Induction for Prospecting',
+    h1: 'Gold Metal Detectors: VLF vs Pulse Induction for Prospecting',
     title: 'Gold Metal Detector: VLF vs PI Guide | Tanzania',
     description:
       'Gold prospecting metal detectors: VLF and pulse induction technology, operating frequency, depth, ground balance and use in Tanzanian lateritic soils.',
@@ -986,8 +986,8 @@ export const EQUIPMENT: Equipment[] = [
     specs: [
       { label: 'VLF frequency range', value: '18–71 kHz for gold-specific machines' },
       { label: 'PI pulse delay', value: '5–25 µs; shorter delay finds smaller gold' },
-      { label: 'Detection depth — small nugget', value: '5–25 cm depending on size and soil' },
-      { label: 'Detection depth — large nugget', value: 'Up to 1 m or more on PI machines' },
+      { label: 'Detection depth, small nugget', value: '5–25 cm depending on size and soil' },
+      { label: 'Detection depth, large nugget', value: 'Up to 1 m or more on PI machines' },
       { label: 'Ground balance', value: 'Automatic tracking or manual; essential in laterite' },
       { label: 'Discrimination', value: 'Available on VLF; minimal on PI by design' },
       { label: 'Coil types', value: 'Concentric, double-D, mono; 15–45 cm diameter' },
@@ -1012,7 +1012,7 @@ export const EQUIPMENT: Equipment[] = [
     faqs: [
       { q: 'VLF or pulse induction for Tanzanian conditions?', a: 'Pulse induction, in most cases. The lateritic and iron-rich soils across the Lake Victoria Goldfields are heavily mineralised, and VLF machines lose depth and stability in that ground. VLF still wins for very small near-surface gold in mild soil and where trash discrimination matters.' },
       { q: 'How deep will a gold detector find a nugget?', a: 'Depth scales with target size, not detector price alone. A one-gram nugget may be detectable at 10–20 cm; a several-hundred-gram nugget can be found at a metre or more with a PI machine and a large coil. Soil mineralisation reduces all these figures.' },
-      { q: 'Can a metal detector find a gold reef or vein?', a: 'Not directly — detectors respond to metallic gold, not to gold locked in sulphides or fine gold in quartz. Their exploration value is in tracing eluvial nuggets uphill to the hard-rock source, which is a legitimate and frequently productive targeting technique.' },
+      { q: 'Can a metal detector find a gold reef or vein?', a: 'Not directly. Detectors respond to metallic gold, not to gold locked in sulphides or fine gold in quartz. Their exploration value is in tracing eluvial nuggets uphill to the hard-rock source, which is a legitimate and frequently productive targeting technique.' },
       { q: 'Do I need a licence to prospect with a detector in Tanzania?', a: 'Prospecting for minerals requires the appropriate licence from the Mining Commission, and detecting on someone else\'s licence area or on protected land is an offence. Detector ownership is not the issue; the right to prospect a given piece of ground is. Confirm licence status before working an area.' },
     ],
     related: ['magnetometer-geophysical-survey', 'portable-xrf-analyser', 'centrifugal-gold-concentrator'],
@@ -1026,7 +1026,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'slurry-pump',
     name: 'Slurry Pump',
-    h1: 'Slurry Pump — Sizing, Wear Materials and Duty Selection',
+    h1: 'Slurry Pump: Sizing, Wear Materials and Duty Selection',
     title: 'Slurry Pump: Sizing, Wear Parts & Specs | Tanzania',
     description:
       'Slurry pump specifications for mining: flow and head ranges, impeller and liner materials, solids handling, wear life and correct duty point selection.',
@@ -1081,12 +1081,12 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'submersible-dewatering-pump',
     name: 'Submersible Dewatering Pump',
-    h1: 'Submersible Dewatering Pump — Sizing for Mine Water Control',
+    h1: 'Submersible Dewatering Pump: Sizing for Mine Water Control',
     title: 'Submersible Dewatering Pump: Sizing & Specs | Tanzania',
     description:
       'Submersible dewatering pump specifications for mines: flow, head, solids handling, motor protection and staging for deep shafts. Supplied across Tanzania.',
     summary:
-      'A submersible dewatering pump sits in the water it is removing, which eliminates priming problems and suction lift limits — the two things that defeat surface pumps in a flooding shaft. Mining units handle 5–500 cubic metres per hour against 10–120 metres of head, pass small solids without blocking, and use motor designs cooled by the pumped water. In a shaft deeper than about 80 metres, pumps are staged in series with intermediate sumps rather than fighting the full head in one lift.',
+      'A submersible dewatering pump sits in the water it is removing, which eliminates priming problems and suction lift limits, the two things that defeat surface pumps in a flooding shaft. Mining units handle 5–500 cubic metres per hour against 10–120 metres of head, pass small solids without blocking, and use motor designs cooled by the pumped water. In a shaft deeper than about 80 metres, pumps are staged in series with intermediate sumps rather than fighting the full head in one lift.',
     category: 'pumping',
     categoryLabel: CATEGORY_LABELS.pumping,
     searchTerms: [
@@ -1117,14 +1117,14 @@ export const EQUIPMENT: Equipment[] = [
     maintenance: [
       { interval: 'Every shift', task: 'Confirm the pump is running and discharging expected flow; check the strainer is not blinded by silt or debris.' },
       { interval: 'Weekly', task: 'Inspect the power cable full length for damage, especially at the gland and any hanging points.' },
-      { interval: 'Monthly', task: 'Check seal chamber oil for water contamination — milky oil means the outer seal has failed and the motor is next.' },
+      { interval: 'Monthly', task: 'Check seal chamber oil for water contamination. Milky oil means the outer seal has failed and the motor is next.' },
       { interval: 'Quarterly', task: 'Measure motor insulation resistance; inspect impeller and wear ring clearance.' },
       { interval: 'Annually', task: 'Full strip, seal replacement and electrical test before the wet season.' },
     ],
     faqs: [
       { q: 'How do I size a dewatering pump for a shaft?', a: 'Measure or estimate the inflow rate, add margin for wet-season peaks, then calculate total head as vertical lift plus pipe friction losses. Friction is routinely underestimated: a long small-bore hose can add more head than the shaft depth itself. Size on total head, never on depth alone.' },
       { q: 'Can one pump dewater a deep shaft?', a: 'Rarely beyond about 80 m. Beyond that, staging pumps in series with intermediate sumps is more reliable and far more energy-efficient, and it means a single failure floods one stage rather than the whole shaft. Staging also lets you use smaller, more easily handled units.' },
-      { q: 'What does milky oil in the seal chamber mean?', a: 'Water has passed the outer mechanical seal. The inner seal is still protecting the motor, but it is now the only barrier. Change the oil and seals at that point — continuing to run reliably ends in a burnt-out motor and a much larger bill.' },
+      { q: 'What does milky oil in the seal chamber mean?', a: 'Water has passed the outer mechanical seal. The inner seal is still protecting the motor, but it is now the only barrier. Change the oil and seals at that point. Continuing to run reliably ends in a burnt-out motor and a much larger bill.' },
       { q: 'Can a submersible pump handle muddy water with sand?', a: 'Yes within limits, but sand accelerates wear enormously. For persistently sandy water, specify a high-chrome wet end and an agitator model designed for slurry, and accept a shorter service interval. A standard clean-water submersible in sandy sump duty may last only weeks.' },
     ],
     related: ['slurry-pump', 'borehole-water-pump', 'diesel-generator-mining'],
@@ -1141,7 +1141,7 @@ export const EQUIPMENT: Equipment[] = [
     description:
       'Borehole water pump specifications for mine sites: flow, head, borehole diameter, solar and generator options, and water supply planning in Tanzania.',
     summary:
-      'A borehole water pump supplies process and potable water to a mine site from a drilled well, and on most remote Tanzanian operations it is the component that determines whether the site can run at all. Units are sized to the borehole diameter — typically 4 or 6 inch — and deliver 1–50 cubic metres per hour from depths of 20–250 metres. Solar-driven systems are now routinely cheaper over their life than diesel-pumped supply where daytime pumping into storage is acceptable.',
+      'A borehole water pump supplies process and potable water to a mine site from a drilled well, and on most remote Tanzanian operations it is the component that determines whether the site can run at all. Units are sized to the borehole diameter, typically 4 or 6 inch, and deliver 1–50 cubic metres per hour from depths of 20–250 metres. Solar-driven systems are now routinely cheaper over their life than diesel-pumped supply where daytime pumping into storage is acceptable.',
     category: 'pumping',
     categoryLabel: CATEGORY_LABELS.pumping,
     searchTerms: [
@@ -1174,12 +1174,12 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Monthly', task: 'Check dry-run protection is functioning; inspect the wellhead seal and cable entry.' },
       { interval: 'Quarterly', task: 'Measure static and dynamic water level; test motor insulation resistance from surface.' },
       { interval: 'Annually', task: 'Water quality testing; inspect the rising main for corrosion and joint integrity.' },
-      { interval: 'Solar systems', task: 'Clean panels monthly — dust accumulation in the dry season can cut output by a quarter or more.' },
+      { interval: 'Solar systems', task: 'Clean panels monthly. Dust accumulation in the dry season can cut output by a quarter or more.' },
     ],
     faqs: [
       { q: 'How do I size a borehole pump?', a: 'You need the borehole yield from the drillers pumping test, the dynamic water level under pumping, the vertical lift to storage and the friction loss in the rising main. Oversizing a pump beyond borehole yield causes it to draw the level down to the intake and dry-run, which destroys the motor.' },
       { q: 'Is a solar borehole pump worth it in Tanzania?', a: 'Usually yes for remote sites. Solar irradiance is high and consistent, there is no fuel logistics or theft exposure, and maintenance is minimal. The trade-off is that pumping only happens in daylight, so storage must be sized for a full day of demand plus contingency.' },
-      { q: 'What causes borehole pumps to fail early?', a: 'Dry running, sand ingress and electrical supply problems, in roughly that order. Dry-run protection, correct setting depth above the well screen, and stable voltage — particularly on generator supply — prevent the large majority of premature failures.' },
+      { q: 'What causes borehole pumps to fail early?', a: 'Dry running, sand ingress and electrical supply problems, in roughly that order. Dry-run protection, correct setting depth above the well screen, and stable voltage, particularly on generator supply, prevent the large majority of premature failures.' },
       { q: 'How deep can a borehole pump lift water?', a: 'Multistage submersibles reach 250 m and beyond by adding stages. Because the pump pushes rather than sucks, there is no suction-lift limit; the constraint is motor power and rising main pressure rating, both of which are selected for the depth.' },
     ],
     related: ['submersible-dewatering-pump', 'diesel-generator-mining', 'slurry-pump'],
@@ -1193,12 +1193,12 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'mining-safety-helmet-cap-lamp',
     name: 'Mining Safety Helmet & Cap Lamp',
-    h1: 'Mining Safety Helmets and Cap Lamps — Standards and Selection',
+    h1: 'Mining Safety Helmets and Cap Lamps: Standards and Selection',
     title: 'Mining Helmet & Cap Lamp: Standards & Specs | Tanzania',
     description:
       'Mining safety helmet and cap lamp specifications: EN 397 and ANSI Z89.1 standards, lumen output, battery life, IP rating and ATEX certification for underground use.',
     summary:
-      'A mining safety helmet protects against falling rock and impact, and carries the cap lamp that is the primary light source underground. Helmets should meet EN 397 or ANSI Z89.1 with a chinstrap and lamp bracket; cap lamps should deliver 8,000–20,000 lux at one metre with 12–16 hours of runtime on a single charge. For gassy workings, the lamp must additionally carry intrinsic safety certification — an uncertified lamp is a potential ignition source.',
+      'A mining safety helmet protects against falling rock and impact, and carries the cap lamp that is the primary light source underground. Helmets should meet EN 397 or ANSI Z89.1 with a chinstrap and lamp bracket; cap lamps should deliver 8,000–20,000 lux at one metre with 12–16 hours of runtime on a single charge. For gassy workings, the lamp must additionally carry intrinsic safety certification, because an uncertified lamp is a potential ignition source.',
     category: 'safety',
     categoryLabel: CATEGORY_LABELS.safety,
     searchTerms: [
@@ -1231,12 +1231,12 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Daily', task: 'Return lamps to the charging rack; log any lamp failing to charge and withdraw it from issue.' },
       { interval: 'Weekly', task: 'Clean lamp lens and contacts; inspect cable and strain relief where a corded lamp is used.' },
       { interval: 'Monthly', task: 'Inspect helmet harness webbing and ratchet; replace any harness showing wear.' },
-      { interval: '3–5 years', task: 'Replace helmets by manufacture date regardless of appearance — UV and heat degrade the shell invisibly.' },
+      { interval: '3–5 years', task: 'Replace helmets by manufacture date regardless of appearance. UV and heat degrade the shell invisibly.' },
     ],
     faqs: [
       { q: 'How often must mining helmets be replaced?', a: 'Every three to five years from the date of manufacture moulded inside the shell, and immediately after any significant impact even if no damage is visible. Ultraviolet exposure and heat embrittle the polymer progressively, so a helmet that looks fine can have lost much of its impact performance.' },
-      { q: 'What cap lamp runtime do I need?', a: 'At least the full shift plus a substantial reserve for emergency egress — 12–16 hours covers a typical shift with real margin. A lamp that dies underground is not an inconvenience, it is the start of an incident.' },
-      { q: 'Does a cap lamp need intrinsic safety certification?', a: 'In any working where flammable gas may accumulate, yes — look for Ex ia I Ma marking. Even in workings believed to be non-gassy, certified lamps are cheap insurance, since gas ingress is not always predictable and the consequence of ignition is catastrophic.' },
+      { q: 'What cap lamp runtime do I need?', a: 'At least the full shift plus a substantial reserve for emergency egress. A 12 to 16 hour lamp covers a typical shift with real margin. A lamp that dies underground is not an inconvenience, it is the start of an incident.' },
+      { q: 'Does a cap lamp need intrinsic safety certification?', a: 'In any working where flammable gas may accumulate, yes. Look for Ex ia I Ma marking. Even in workings believed to be non-gassy, certified lamps are cheap insurance, since gas ingress is not always predictable and the consequence of ignition is catastrophic.' },
       { q: 'Are chinstraps really necessary?', a: 'Yes. A helmet that leaves the head during a fall or is knocked off by a low back provides no protection at all. Chinstraps are mandatory underground and for work at height in most safety regimes, and their absence is among the most commonly cited findings in mine inspections.' },
     ],
     related: ['self-contained-self-rescuer', 'gas-detection-monitor', 'fall-arrest-harness'],
@@ -1248,7 +1248,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'self-contained-self-rescuer',
     name: 'Self-Contained Self-Rescuer (SCSR)',
-    h1: 'Self-Contained Self-Rescuers — Duration, Standards and Deployment',
+    h1: 'Self-Contained Self-Rescuers: Duration, Standards and Deployment',
     title: 'Self-Contained Self-Rescuer (SCSR): Specs | Tanzania',
     description:
       'Self-contained self-rescuer specifications: oxygen duration, chemical oxygen generation, standards, storage, inspection and cache planning for underground mines.',
@@ -1264,7 +1264,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Rated duration', value: '10, 30 or 60 minutes' },
       { label: 'Oxygen source', value: 'Potassium superoxide (KO₂) chemical generation' },
       { label: 'Activation', value: 'Manual pull-start; begins generating on first breath' },
-      { label: 'Protection type', value: 'Closed circuit — independent of ambient atmosphere' },
+      { label: 'Protection type', value: 'Closed circuit, independent of ambient atmosphere' },
       { label: 'Standards', value: 'EN 13794, MSHA 42 CFR Part 84 or equivalent' },
       { label: 'Mass', value: '2.0–3.5 kg worn' },
       { label: 'Carrying', value: 'Belt-worn pouch or cached in stations' },
@@ -1289,7 +1289,7 @@ export const EQUIPMENT: Equipment[] = [
     ],
     faqs: [
       { q: 'How long does a self-rescuer actually last?', a: 'The rating assumes a moderate walking pace. Heavy exertion, panic or climbing consumes oxygen faster and can cut a 60-minute unit to well under half that. Escape route planning should assume the realistic figure under stress, not the nameplate rating.' },
-      { q: 'Can a self-rescuer be reused after activation?', a: 'No. The chemical oxygen bed is consumed on use and the unit is single-shot. Any activated unit — even briefly, even accidentally — must be removed from service and replaced.' },
+      { q: 'Can a self-rescuer be reused after activation?', a: 'No. The chemical oxygen bed is consumed on use and the unit is single-shot. Any activated unit, even briefly, even accidentally, must be removed from service and replaced.' },
       { q: 'Why does a self-rescuer get hot when used?', a: 'Chemical oxygen generation is exothermic, so the breathing air feels hot and dry, sometimes alarmingly so. This is normal and expected. Training matters here specifically because untrained users have removed working units in panic, which is fatal in an irrespirable atmosphere.' },
       { q: 'Do filter self-rescuers work in the same situations?', a: 'No, and the distinction is critical. A filter self-rescuer only converts carbon monoxide and needs breathable oxygen present. In an oxygen-deficient atmosphere it offers no protection at all. Self-contained units generate their own oxygen and work regardless of the ambient atmosphere.' },
     ],
@@ -1302,12 +1302,12 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'gas-detection-monitor',
     name: 'Multi-Gas Detection Monitor',
-    h1: 'Mine Gas Detection Monitors — Sensors, Alarms and Calibration',
+    h1: 'Mine Gas Detection Monitors: Sensors, Alarms and Calibration',
     title: 'Mine Gas Detector: Sensors & Calibration | Tanzania',
     description:
       'Multi-gas detection monitor specifications for mining: oxygen, CO, H2S and LEL sensors, alarm thresholds, bump testing and calibration intervals.',
     summary:
-      'A multi-gas detection monitor continuously measures the four atmospheric hazards that account for most underground gas fatalities: oxygen deficiency or enrichment, carbon monoxide, hydrogen sulphide and combustible gas as a percentage of the lower explosive limit. Portable four-gas units alarm audibly, visually and by vibration. The instrument only protects if it is bump tested before every shift and calibrated on a defined interval — an uncalibrated detector gives false reassurance, which is worse than carrying none.',
+      'A multi-gas detection monitor continuously measures the four atmospheric hazards that account for most underground gas fatalities: oxygen deficiency or enrichment, carbon monoxide, hydrogen sulphide and combustible gas as a percentage of the lower explosive limit. Portable four-gas units alarm audibly, visually and by vibration. The instrument only protects if it is bump tested before every shift and calibrated on a defined interval. An uncalibrated detector gives false reassurance, which is worse than carrying none.',
     category: 'safety',
     categoryLabel: CATEGORY_LABELS.safety,
     searchTerms: [
@@ -1336,15 +1336,15 @@ export const EQUIPMENT: Equipment[] = [
       'Welding and hot work permit areas',
     ],
     maintenance: [
-      { interval: 'Every shift', task: 'Bump test with certified gas before use — apply gas and confirm each sensor alarms. A function self-test is not a bump test.' },
+      { interval: 'Every shift', task: 'Bump test with certified gas before use, applying gas and confirming each sensor alarms. A function self-test is not a bump test.' },
       { interval: 'Weekly', task: 'Inspect sensor ports and filters for dust blockage; check the alarm is audible in a noisy environment.' },
       { interval: 'Monthly', task: 'Full span calibration with certified gas, or more often if bump tests show drift.' },
       { interval: 'Quarterly', task: 'Download and review datalogs for exposure trends and near-miss alarms.' },
       { interval: 'Per sensor life', task: 'Replace electrochemical sensors every 2–3 years and catalytic LEL sensors every 3–5, regardless of apparent function.' },
     ],
     faqs: [
-      { q: 'What is the difference between a bump test and a calibration?', a: 'A bump test applies gas briefly to confirm the sensors respond and the alarms work — it is a pass/fail check done before every shift. A calibration adjusts the instrument reading against a known gas concentration to restore accuracy, and is done on a defined interval. Bump testing catches failure; calibration corrects drift.' },
-      { q: 'Why does oxygen have both a low and a high alarm?', a: 'Below 19.5% the atmosphere impairs judgement then consciousness. Above 23.5% is oxygen enrichment, which dramatically increases fire risk — materials that barely burn in normal air become violently combustible. Both directions are hazards.' },
+      { q: 'What is the difference between a bump test and a calibration?', a: 'A bump test applies gas briefly to confirm the sensors respond and the alarms work, a pass/fail check done before every shift. A calibration adjusts the instrument reading against a known gas concentration to restore accuracy, and is done on a defined interval. Bump testing catches failure; calibration corrects drift.' },
+      { q: 'Why does oxygen have both a low and a high alarm?', a: 'Below 19.5% the atmosphere impairs judgement then consciousness. Above 23.5% is oxygen enrichment, which dramatically increases fire risk. Materials that barely burn in normal air become violently combustible. Both directions are hazards.' },
       { q: 'Can a catalytic LEL sensor be trusted in low oxygen?', a: 'No. Catalytic bead sensors need oxygen to work and under-read in oxygen-deficient atmospheres, potentially showing a safe reading in an explosive one. Infrared LEL sensors do not have this limitation, which is why they are preferred where oxygen deficiency is plausible.' },
       { q: 'How long do gas sensors last?', a: 'Electrochemical toxic sensors typically 2–3 years and catalytic LEL sensors 3–5, from date of manufacture rather than date of installation. They degrade continuously whether used or not, so a spare instrument sitting in a store is ageing at the same rate as one in daily use.' },
     ],
@@ -1362,7 +1362,7 @@ export const EQUIPMENT: Equipment[] = [
     description:
       'Fall arrest harness specifications: EN 361 and ANSI standards, energy absorbing lanyards, fall clearance calculation, anchor strength and inspection intervals.',
     summary:
-      'A fall arrest harness distributes arrest forces across the thighs, pelvis and chest so a fall does not injure the worker it saves. A compliant system needs three elements together: an EN 361 or ANSI Z359 full-body harness, an energy-absorbing lanyard or self-retracting lifeline, and an anchor rated to at least 12 kN. The most commonly missed requirement is fall clearance — with a two-metre shock-absorbing lanyard you need roughly 6.5 metres of free space below, or the worker strikes the ground before the system arrests them.',
+      'A fall arrest harness distributes arrest forces across the thighs, pelvis and chest so a fall does not injure the worker it saves. A compliant system needs three elements together: an EN 361 or ANSI Z359 full-body harness, an energy-absorbing lanyard or self-retracting lifeline, and an anchor rated to at least 12 kN. The most commonly missed requirement is fall clearance. With a two-metre shock-absorbing lanyard you need roughly 6.5 metres of free space below, or the worker strikes the ground before the system arrests them.',
     category: 'safety',
     categoryLabel: CATEGORY_LABELS.safety,
     searchTerms: [
@@ -1381,7 +1381,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Connectors', value: 'Self-closing, self-locking, ≥22 kN gate rating' },
       { label: 'Inspection', value: 'Pre-use by wearer; formal 6-monthly by competent person' },
       { label: 'Service life', value: 'Typically 5–10 years from manufacture; sooner with UV exposure' },
-      { label: 'Rescue plan', value: 'Mandatory — suspension trauma can be fatal within 15–30 minutes' },
+      { label: 'Rescue plan', value: 'Mandatory. Suspension trauma can be fatal within 15–30 minutes' },
     ],
     applications: [
       'Shaft collar and headframe work',
@@ -1398,10 +1398,10 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'By service life', task: 'Replace at the manufacturer stated life; UV degradation of webbing is progressive and not reliably visible.' },
     ],
     faqs: [
-      { q: 'How much clearance does a fall arrest system need?', a: 'For a typical 2 m shock-absorbing lanyard: lanyard length 2 m, plus absorber deployment up to 1.75 m, plus worker height below the D-ring about 1.5 m, plus a 1 m safety margin — roughly 6.5 m of clear space below the anchor. If the drop is shorter than that, a shock-absorbing lanyard is the wrong choice and a self-retracting lifeline or restraint system is required.' },
+      { q: 'How much clearance does a fall arrest system need?', a: 'For a typical 2 m shock-absorbing lanyard: lanyard length 2 m, plus absorber deployment up to 1.75 m, plus worker height below the D-ring about 1.5 m, plus a 1 m safety margin, giving roughly 6.5 m of clear space below the anchor. If the drop is shorter than that, a shock-absorbing lanyard is the wrong choice and a self-retracting lifeline or restraint system is required.' },
       { q: 'Can a fall arrest harness be reused after a fall?', a: 'No. Once a fall has been arrested, the harness, lanyard and connectors have absorbed a large impact and their remaining strength is unknown. The whole system must be destroyed and replaced, not inspected and returned to use.' },
-      { q: 'Why is a rescue plan mandatory?', a: 'Because arresting the fall is only half the problem. A worker left suspended in a harness can develop suspension trauma — blood pooling in the legs leading to unconsciousness — within 15 to 30 minutes. If there is no means to retrieve them quickly, the fall arrest system has only changed how they die.' },
-      { q: 'What anchor strength is required?', a: 'At least 12 kN for a single user, or an anchor engineered and certified to at least twice the maximum arrest force. Improvised anchors — pipework, handrails, scaffold couplers — are a frequent and serious failure point, because they were never designed for shock loading.' },
+      { q: 'Why is a rescue plan mandatory?', a: 'Because arresting the fall is only half the problem. A worker left suspended in a harness can develop suspension trauma, blood pooling in the legs leading to unconsciousness, within 15 to 30 minutes. If there is no means to retrieve them quickly, the fall arrest system has only changed how they die.' },
+      { q: 'What anchor strength is required?', a: 'At least 12 kN for a single user, or an anchor engineered and certified to at least twice the maximum arrest force. Improvised anchors such as pipework, handrails and scaffold couplers are a frequent and serious failure point, because they were never designed for shock loading.' },
     ],
     related: ['mining-safety-helmet-cap-lamp', 'wire-rope-slings-lifting-tackle', 'gas-detection-monitor'],
     image: IMG.ppe,
@@ -1412,7 +1412,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'mine-ventilation-fan',
     name: 'Mine Ventilation Fan',
-    h1: 'Mine Ventilation Fans — Airflow Sizing and Duct Selection',
+    h1: 'Mine Ventilation Fans: Airflow Sizing and Duct Selection',
     title: 'Mine Ventilation Fan: Airflow Sizing & Specs | Tanzania',
     description:
       'Mine ventilation fan specifications: airflow, pressure, duct diameter and friction loss, auxiliary versus main fans, and airflow requirements per worker and per engine.',
@@ -1431,7 +1431,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Motor rating', value: '5.5–150 kW' },
       { label: 'Duct diameter', value: '400–1,200 mm' },
       { label: 'Duct type', value: 'Flexible layflat for forcing; rigid or reinforced for exhausting' },
-      { label: 'Duct leakage', value: 'A major loss — poorly jointed duct can lose over 40% of delivered air' },
+      { label: 'Duct leakage', value: 'A major loss. Poorly jointed duct can lose over 40% of delivered air' },
       { label: 'Air per person', value: 'Commonly 0.1 m³/s minimum, per regulation' },
       { label: 'Air per diesel kW', value: 'Commonly 0.05–0.08 m³/s, per regulation' },
       { label: 'Noise', value: '85–105 dB(A) at 1 m; silencers available' },
@@ -1447,14 +1447,14 @@ export const EQUIPMENT: Equipment[] = [
     ],
     maintenance: [
       { interval: 'Every shift', task: 'Confirm the fan is running and duct is inflated along its full length; look for tears and disconnected joints.' },
-      { interval: 'Weekly', task: 'Measure airflow at the face, not at the fan — the difference is duct leakage and it tells you what to fix.' },
+      { interval: 'Weekly', task: 'Measure airflow at the face, not at the fan. The difference is duct leakage and it tells you what to fix.' },
       { interval: 'Monthly', task: 'Inspect impeller for dust build-up and blade damage; check motor bearing temperature and vibration.' },
       { interval: 'Quarterly', task: 'Electrical inspection including cable and isolator; verify flameproof enclosure integrity where fitted.' },
       { interval: 'Annually', task: 'Full ventilation survey of the mine with airflow measurement at all key stations.' },
     ],
     faqs: [
       { q: 'How much air does an underground mine need?', a: 'Take the largest of three calculations: minimum air per person underground, air per kilowatt of operating diesel equipment, and the volume required to clear blast fumes within the planned re-entry time. Diesel equipment usually dominates and is where operators most often under-provide.' },
-      { q: 'Forcing or exhausting ventilation?', a: 'Forcing pushes fresh air to the face through duct and clears fumes back along the heading — simpler and uses cheap layflat duct, but workers travel through contaminated return air. Exhausting draws contaminated air out through rigid duct, keeping the heading clean, but costs more and the duct must resist collapse. Many operations use a forcing-exhausting overlap system.' },
+      { q: 'Forcing or exhausting ventilation?', a: 'Forcing pushes fresh air to the face through duct and clears fumes back along the heading. It is simpler and uses cheap layflat duct, but workers travel through contaminated return air. Exhausting draws contaminated air out through rigid duct, keeping the heading clean, but costs more and the duct must resist collapse. Many operations use a forcing-exhausting overlap system.' },
       { q: 'Why is my ventilation fan not delivering air at the face?', a: 'Almost always duct leakage. Torn layflat, badly made joints and crushed sections can lose over 40% of the fan output before it reaches the face. Measuring airflow at the fan tells you nothing useful; measure at the face and treat the gap as the maintenance backlog.' },
       { q: 'When are flameproof fan motors required?', a: 'Wherever flammable gas may be present. Standard motors are an ignition source. Where methane or other flammable gas has ever been detected, ventilation equipment must be certified for the hazardous zone classification of that working.' },
     ],
@@ -1469,7 +1469,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'mine-management-software',
     name: 'Mine Management Software',
-    h1: 'Mine Management Software — Modules, Deployment and Selection',
+    h1: 'Mine Management Software: Modules, Deployment and Selection',
     title: 'Mine Management Software: Modules & Cost | Tanzania',
     description:
       'Mine management software for small and medium operations: production reporting, inventory, gold reconciliation, compliance records and offline-capable deployment.',
@@ -1506,7 +1506,7 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Daily', task: 'Confirm site data has synchronised to the central database; investigate any device that failed to sync.' },
       { interval: 'Weekly', task: 'Review reconciliation variances and exception reports rather than only the summary totals.' },
       { interval: 'Monthly', task: 'Verify user accounts against the current staff list; revoke access for leavers immediately.' },
-      { interval: 'Quarterly', task: 'Test the backup restore process — an untested backup is an assumption, not a backup.' },
+      { interval: 'Quarterly', task: 'Test the backup restore process. An untested backup is an assumption, not a backup.' },
       { interval: 'Annually', task: 'Review module usage and retire what nobody uses; unused complexity drives abandonment.' },
     ],
     faqs: [
@@ -1524,7 +1524,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'fleet-management-system',
     name: 'Mining Fleet Management System',
-    h1: 'Mining Fleet Management Systems — Tracking, Fuel and Utilisation',
+    h1: 'Mining Fleet Management Systems: Tracking, Fuel and Utilisation',
     title: 'Mining Fleet Management System: Specs | Tanzania',
     description:
       'Mining fleet management systems: GPS tracking, fuel monitoring, payload measurement, utilisation reporting and connectivity options for Tanzanian mine sites.',
@@ -1540,7 +1540,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Positioning', value: 'GNSS with 2–5 m accuracy; RTK where cm precision is needed' },
       { label: 'Update interval', value: '10–60 seconds while moving' },
       { label: 'Connectivity', value: 'GSM/LTE with store-and-forward through coverage gaps' },
-      { label: 'Engine data', value: 'CAN bus J1939 — hours, load, fault codes, idle time' },
+      { label: 'Engine data', value: 'CAN bus J1939: hours, load, fault codes, idle time' },
       { label: 'Fuel monitoring', value: 'Capacitive level probe or flow meter, ±2–3%' },
       { label: 'Payload measurement', value: 'Suspension pressure or strut-based, ±3–5%' },
       { label: 'Operator identification', value: 'RFID card or PIN entry' },
@@ -1565,7 +1565,7 @@ export const EQUIPMENT: Equipment[] = [
     ],
     faqs: [
       { q: 'Will a fleet management system work where there is no mobile coverage?', a: 'Yes, if it is specified correctly. Units should log locally and upload automatically when they return to coverage, which on most sites happens each time a vehicle passes the workshop or camp. Systems requiring continuous connectivity are unsuitable for remote Tanzanian operations.' },
-      { q: 'How accurate is fuel monitoring?', a: 'Capacitive level probes typically achieve ±2–3% once calibrated to the specific tank shape. That is comfortably accurate enough to detect siphoning, which usually shows as a step change in level while the engine is off — a pattern that is unmistakable on a chart.' },
+      { q: 'How accurate is fuel monitoring?', a: 'Capacitive level probes typically achieve ±2–3% once calibrated to the specific tank shape. That is comfortably accurate enough to detect siphoning, which usually shows as a step change in level while the engine is off, a pattern that is unmistakable on a chart.' },
       { q: 'Does payload monitoring justify its cost on a small fleet?', a: 'Often yes, because it reveals chronic underloading. Trucks running consistently at 80% of capacity mean 20% more cycles, fuel and tyre wear for the same tonnes. That is usually a larger recoverable loss than the sensor cost, and it is invisible without measurement.' },
       { q: 'What is the most common cause of these systems being abandoned?', a: 'Nobody reads the reports. The technology rarely fails; the management routine does. Systems succeed where a named person reviews exceptions on a fixed schedule and acts on them, and fail where the data accumulates unread.' },
     ],
@@ -1583,7 +1583,7 @@ export const EQUIPMENT: Equipment[] = [
     description:
       'Geological modelling and resource estimation software: drillhole databases, wireframing, block modelling, grade interpolation and JORC-compliant reporting.',
     summary:
-      'Geological modelling software turns drillhole data into a three-dimensional model of an orebody and an estimate of the tonnes and grade it contains. The workflow runs from a validated drillhole database, through wireframed mineralisation envelopes, to a block model populated by grade interpolation — usually ordinary kriging or inverse distance. Output feeds mine planning and, when produced by a competent person under an accepted code, a JORC or NI 43-101 compliant resource statement.',
+      'Geological modelling software turns drillhole data into a three-dimensional model of an orebody and an estimate of the tonnes and grade it contains. The workflow runs from a validated drillhole database, through wireframed mineralisation envelopes, to a block model populated by grade interpolation, usually ordinary kriging or inverse distance. Output feeds mine planning and, when produced by a competent person under an accepted code, a JORC or NI 43-101 compliant resource statement.',
     category: 'software',
     categoryLabel: CATEGORY_LABELS.software,
     searchTerms: [
@@ -1614,11 +1614,11 @@ export const EQUIPMENT: Equipment[] = [
     maintenance: [
       { interval: 'On every data load', task: 'Run the full validation suite before modelling; unvalidated assay data is the origin of most resource errors.' },
       { interval: 'Weekly', task: 'Back up the drillhole database and model files with versioning, not overwriting.' },
-      { interval: 'Per estimate', task: 'Document every parameter — search ellipse, top cut, density, composite length — so the estimate is reproducible and auditable.' },
+      { interval: 'Per estimate', task: 'Document every parameter (search ellipse, top cut, density, composite length) so the estimate is reproducible and auditable.' },
       { interval: 'Annually', task: 'Reconcile the model against actual mined tonnes and grade; persistent bias means the estimation parameters need revisiting.' },
     ],
     faqs: [
-      { q: 'What software is used for resource estimation?', a: 'The commercial mainstays are Datamine, Micromine, Surpac, Vulcan and Leapfrog, with the open-source ecosystem around Python and GSLIB used for specialised geostatistics. Choice matters less than the competence of the estimator — all of these tools will faithfully produce a wrong answer from bad parameters.' },
+      { q: 'What software is used for resource estimation?', a: 'The commercial mainstays are Datamine, Micromine, Surpac, Vulcan and Leapfrog, with the open-source ecosystem around Python and GSLIB used for specialised geostatistics. Choice matters less than the competence of the estimator. All of these tools will faithfully produce a wrong answer from bad parameters.' },
       { q: 'Do I need software to report a JORC resource?', a: 'Practically, yes. A JORC-compliant estimate requires documented, reproducible methodology with validation, and that is not achievable in a spreadsheet for anything beyond a trivial deposit. The Competent Person signing the statement will expect a defensible modelling workflow.' },
       { q: 'What is a block model?', a: 'A three-dimensional grid of cells covering the deposit, each carrying estimated grade, density, rock type and classification. It is the numerical representation used for reporting resources and for scheduling what gets mined and when.' },
       { q: 'What causes resource estimates to be wrong most often?', a: 'Bad input data and unexamined assumptions, not the interpolation algorithm. Unvalidated assays, missing or wrong downhole surveys, inappropriate top-cutting of high grades, and density assumed rather than measured account for most large reconciliation failures.' },
@@ -1634,7 +1634,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'diesel-generator-mining',
     name: 'Diesel Generator for Mining',
-    h1: 'Diesel Generators for Mine Sites — Sizing and Fuel Planning',
+    h1: 'Diesel Generators for Mine Sites: Sizing and Fuel Planning',
     title: 'Diesel Generator for Mining: Sizing Guide | Tanzania',
     description:
       'Diesel generator sizing for mine sites: kVA calculation, motor starting current, load factor, fuel consumption, synchronising and maintenance intervals.',
@@ -1669,14 +1669,14 @@ export const EQUIPMENT: Equipment[] = [
     ],
     maintenance: [
       { interval: 'Daily', task: 'Check oil and coolant levels, fuel level and any leaks; record running hours and load.' },
-      { interval: 'Weekly', task: 'Test standby sets under load, not on no-load — a set that starts but cannot take load has not been tested.' },
+      { interval: 'Weekly', task: 'Test standby sets under load, not on no-load. A set that starts but cannot take load has not been tested.' },
       { interval: '250–500 h', task: 'Engine oil and filter change; air and fuel filter inspection.' },
       { interval: 'Monthly', task: 'Drain water from the fuel-water separator; check battery condition and charger operation.' },
       { interval: 'Annually', task: 'Coolant change, injector service, alternator insulation test and full load bank test.' },
     ],
     faqs: [
       { q: 'How do I size a generator for a mine site?', a: 'Total the running load, then check the starting requirement of the largest motor separately. A direct-on-line start draws six to seven times full-load current, and that transient sets the minimum generator size far more often than the steady-state load does. Soft starters or variable-frequency drives cut the requirement substantially.' },
-      { q: 'What happens if a generator runs lightly loaded?', a: 'Sustained running below about 30% load causes wet stacking — unburnt fuel and carbon glazing the cylinder bores and fouling the exhaust. It progressively destroys the engine. Where load is genuinely low, use a smaller set, parallel multiple sets and shut some down, or apply a load bank.' },
+      { q: 'What happens if a generator runs lightly loaded?', a: 'Sustained running below about 30% load causes wet stacking, with unburnt fuel and carbon glazing the cylinder bores and fouling the exhaust. It progressively destroys the engine. Where load is genuinely low, use a smaller set, parallel multiple sets and shut some down, or apply a load bank.' },
       { q: 'How much fuel will a generator use?', a: 'Roughly 0.25–0.30 litres per kWh generated at 75% load. For a 500 kVA set running at 75%, that is around 100 litres per hour. Over a month of continuous running the fuel bill dwarfs the capital cost of the generator, which is why load management matters so much.' },
       { q: 'Is it better to run one large generator or several smaller ones?', a: 'Several smaller sets in parallel is usually better for a mine. Load varies through the shift, so you can run only what is needed and keep each set in its efficient band; you gain redundancy; and you can service one without shutting the site down. The trade-off is more complex synchronising controls.' },
     ],
@@ -1689,7 +1689,7 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'air-compressor-mining',
     name: 'Mining Air Compressor',
-    h1: 'Mining Air Compressors — CFM, Pressure and Drilling Duty',
+    h1: 'Mining Air Compressors: CFM, Pressure and Drilling Duty',
     title: 'Mining Air Compressor: CFM & Pressure Guide | Tanzania',
     description:
       'Mining air compressor specifications: cfm and pressure for rock drills and RC drilling, screw versus piston, boosters, air receivers and maintenance intervals.',
@@ -1724,7 +1724,7 @@ export const EQUIPMENT: Equipment[] = [
     ],
     maintenance: [
       { interval: 'Daily', task: 'Drain condensate from the receiver and separators; check oil level and intake filter restriction indicator.' },
-      { interval: 'Weekly', task: 'Clean or replace intake filters — dust loading in mining environments is far higher than industrial ratings assume.' },
+      { interval: 'Weekly', task: 'Clean or replace intake filters. Dust loading in mining environments is far higher than industrial ratings assume.' },
       { interval: 'Monthly', task: 'Check for air leaks across the whole distribution system; leaks commonly waste 20–30% of compressor output.' },
       { interval: '500–2,000 h', task: 'Oil and oil-filter change, separator element replacement, belt and coupling inspection.' },
       { interval: 'Annually', task: 'Pressure vessel inspection and certification of the air receiver; safety valve test.' },
@@ -1733,7 +1733,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'What size compressor do I need for rock drills?', a: 'Allow 100–150 cfm at 6–7 bar per drill, then add for simultaneous use and pipeline losses. Four jacklegs working together need roughly 500–600 cfm at the compressor, not 400, once leakage and pressure drop are accounted for.' },
       { q: 'Why does RC drilling need such high pressure?', a: 'Because the air must lift rock cuttings from the bottom of the hole all the way to surface through the annulus of the dual-wall pipe. As the hole deepens the column of cuttings gets taller and heavier, so pressure demand rises with depth. This is why boosters become necessary past about 200 m.' },
       { q: 'Screw or piston compressor for mining?', a: 'Screw, for almost all mining duty. Piston compressors are cheaper and fine for intermittent workshop use, but they run hot on continuous duty and tolerate dust badly. Screw compressors are designed for 100% duty cycle and last far longer in mining conditions.' },
-      { q: 'How much air is lost to leaks?', a: 'Commonly 20–30% of total output on a mine air system that has never been surveyed, and sometimes more. Leak detection and repair is usually the cheapest capacity increase available — considerably cheaper than buying another compressor to feed the leaks.' },
+      { q: 'How much air is lost to leaks?', a: 'Commonly 20–30% of total output on a mine air system that has never been surveyed, and sometimes more. Leak detection and repair is usually the cheapest capacity increase available, and considerably cheaper than buying another compressor to feed the leaks.' },
     ],
     related: ['rc-drilling-rig', 'diesel-generator-mining', 'mine-ventilation-fan'],
     image: IMG.compressor,

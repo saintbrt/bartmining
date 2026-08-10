@@ -6,6 +6,7 @@ import { EQUIPMENT, EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
 import { SITE, SERVICE_AREAS, productSchema, techArticleSchema, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 import ReadingProgress from '@/components/insights/ReadingProgress'
+import { resolveEquipmentPhoto } from '@/lib/equipment-photos'
 
 export async function generateStaticParams() {
   return EQUIPMENT.map(e => ({ slug: e.slug }))
@@ -16,6 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const e = EQUIPMENT_BY_SLUG.get(slug)
   if (!e) return {}
   const url = `${SITE.url}/equipment/${e.slug}`
+  // Social cards need an absolute URL, and should show the real product
+  // photo where one has been uploaded rather than the stock fallback.
+  const photo = resolveEquipmentPhoto(e.slug)
+  const ogImage = photo ? `${SITE.url}${photo}` : e.image
   return {
     title: e.title,
     description: e.description,
@@ -26,9 +31,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url,
       title: e.title,
       description: e.description,
-      images: [{ url: e.image, alt: e.imageAlt }],
+      images: [{ url: ogImage, alt: e.imageAlt }],
     },
-    twitter: { card: 'summary_large_image', title: e.title, description: e.description, images: [e.image] },
+    twitter: { card: 'summary_large_image', title: e.title, description: e.description, images: [ogImage] },
   }
 }
 
@@ -36,6 +41,13 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
   const { slug } = await params
   const item = EQUIPMENT_BY_SLUG.get(slug)
   if (!item) notFound()
+
+  // A real uploaded photo takes precedence over the stock imagery.
+  const photo = resolveEquipmentPhoto(item.slug)
+  const heroSrc = photo ?? item.image
+  // Relative paths are valid for next/image but not for structured data,
+  // where crawlers require a resolvable absolute URL.
+  const schemaImage = photo ? `${SITE.url}${photo}` : item.image
 
   const related = item.related
     .map(s => EQUIPMENT_BY_SLUG.get(s))
@@ -46,7 +58,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       slug: item.slug,
       name: item.name,
       description: item.description,
-      image: item.image,
+      image: schemaImage,
       category: item.categoryLabel,
       specs: item.specs,
       applications: item.applications,
@@ -55,7 +67,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       slug: item.slug,
       title: item.h1,
       description: item.description,
-      image: item.image,
+      image: schemaImage,
       datePublished: item.updated,
       dateModified: item.updated,
       section: item.categoryLabel,
@@ -108,7 +120,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
 
       <div className="px-site">
         <div style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '21/9', border: '1px solid var(--line)' }}>
-          <Image src={item.image} alt={item.imageAlt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 860px) 100vw, 1240px" priority />
+          <Image src={heroSrc} alt={item.imageAlt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 860px) 100vw, 1240px" priority />
         </div>
       </div>
 
@@ -126,7 +138,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             <div className="eq-tablewrap">
               <table className="eq-table">
                 <caption className="eq-caption">
-                  Typical specification range — {item.name}
+                  Typical specification range for the {item.name}
                 </caption>
                 <thead>
                   <tr><th scope="col">Specification</th><th scope="col">Typical value</th></tr>
@@ -186,7 +198,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             <p>
               Bart Mining supplies {item.name.toLowerCase()} and related equipment to mining
               operations throughout Tanzania, with primary coverage of the Lake Victoria
-              Goldfields — Mwanza, Kahama, Geita, Shinyanga and Bukombe — alongside the Lupa
+              Goldfields (Mwanza, Kahama, Geita, Shinyanga and Bukombe), alongside the Lupa
               Goldfields around Chunya and Mbeya, and delivery nationwide from Dar es Salaam.
             </p>
             <div className="region-chips">
