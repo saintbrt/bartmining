@@ -18,6 +18,13 @@ their own as soon as a matching file exists.
 Suggested: landscape, 4:3, at least 1200px wide, product filling the frame
 on a plain background.
 
+Files ending `-alt` are spare alternates that are not wired to anything. To
+use one, rename it over the live file of the same slug. Delete them freely
+if you don't want them.
+
+Several products can share one photo: just save the same image under each
+slug. The three winches currently do this.
+
 ## Slugs
 
     1-ton-winch                       1 Tonne Electric Winch

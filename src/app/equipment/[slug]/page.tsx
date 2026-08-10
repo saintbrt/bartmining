@@ -17,6 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const e = EQUIPMENT_BY_SLUG.get(slug)
   if (!e) return {}
   const url = `${SITE.url}/equipment/${e.slug}`
+  // Social cards need an absolute URL, and should show the real product
+  // photo where one has been uploaded rather than the stock fallback.
+  const photo = resolveEquipmentPhoto(e.slug)
+  const ogImage = photo ? `${SITE.url}${photo}` : e.image
   return {
     title: e.title,
     description: e.description,
@@ -27,9 +31,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url,
       title: e.title,
       description: e.description,
-      images: [{ url: e.image, alt: e.imageAlt }],
+      images: [{ url: ogImage, alt: e.imageAlt }],
     },
-    twitter: { card: 'summary_large_image', title: e.title, description: e.description, images: [e.image] },
+    twitter: { card: 'summary_large_image', title: e.title, description: e.description, images: [ogImage] },
   }
 }
 
@@ -41,6 +45,9 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
   // A real uploaded photo takes precedence over the stock imagery.
   const photo = resolveEquipmentPhoto(item.slug)
   const heroSrc = photo ?? item.image
+  // Relative paths are valid for next/image but not for structured data,
+  // where crawlers require a resolvable absolute URL.
+  const schemaImage = photo ? `${SITE.url}${photo}` : item.image
 
   const related = item.related
     .map(s => EQUIPMENT_BY_SLUG.get(s))
@@ -51,7 +58,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       slug: item.slug,
       name: item.name,
       description: item.description,
-      image: heroSrc,
+      image: schemaImage,
       category: item.categoryLabel,
       specs: item.specs,
       applications: item.applications,
@@ -60,7 +67,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       slug: item.slug,
       title: item.h1,
       description: item.description,
-      image: heroSrc,
+      image: schemaImage,
       datePublished: item.updated,
       dateModified: item.updated,
       section: item.categoryLabel,
