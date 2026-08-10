@@ -129,14 +129,6 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 10px;
 }
-.eyebrow::before {
-  content: '';
-  width: 22px;
-  height: 1px;
-  background: var(--gold);
-  flex-shrink: 0;
-}
-.eyebrow.center::before { display: none; }
 
 /* ── Buttons ─────────────────────────────────────────────────── */
 .btn {
@@ -206,7 +198,6 @@ img { display: block; max-width: 100%; }
   background: rgba(255,255,255,.08);
 }
 .on-dark .eyebrow, .cta-block .eyebrow, .stats-band .eyebrow { color: var(--gold-2); }
-.on-dark .eyebrow::before, .cta-block .eyebrow::before, .stats-band .eyebrow::before { background: var(--gold-2); }
 
 /* ── Section header ─────────────────────────────────────────── */
 .sec-head {
