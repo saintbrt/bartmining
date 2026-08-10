@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
       // transfer the old URL's signals rather than treating it as a 404.
       { source: '/products', destination: '/equipment', permanent: true },
       { source: '/products/:path*', destination: '/equipment/:path*', permanent: true },
+      // Four products were withdrawn from the catalogue after they shipped
+      // in #34, so their URLs may already be crawled. Send them to the hub
+      // rather than leaving 404s behind.
+      { source: '/equipment/diamond-core-drilling-rig', destination: '/equipment', permanent: true },
+      { source: '/equipment/portable-xrf-analyser', destination: '/equipment', permanent: true },
+      { source: '/equipment/magnetometer-geophysical-survey', destination: '/equipment', permanent: true },
+      { source: '/equipment/borehole-water-pump', destination: '/equipment', permanent: true },
     ]
   },
   webpack: (config, { isServer }) => {

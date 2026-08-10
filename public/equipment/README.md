@@ -40,13 +40,9 @@ slug. The three winches currently do this.
     jaw-crusher                       Jaw Crusher
     shaking-table-gold                Gold Shaking Table
     rc-drilling-rig                   Reverse Circulation (RC) Drilling Rig
-    diamond-core-drilling-rig         Diamond Core Drilling Rig
-    portable-xrf-analyser             Portable XRF Analyser
-    magnetometer-geophysical-survey   Magnetometer & Geophysical Survey Equipment
     gold-metal-detector               Gold Prospecting Metal Detector
     slurry-pump                       Slurry Pump
     submersible-dewatering-pump       Submersible Dewatering Pump
-    borehole-water-pump               Borehole Water Pump
     mining-safety-helmet-cap-lamp     Mining Safety Helmet & Cap Lamp
     self-contained-self-rescuer       Self-Contained Self-Rescuer (SCSR)
     gas-detection-monitor             Multi-Gas Detection Monitor
