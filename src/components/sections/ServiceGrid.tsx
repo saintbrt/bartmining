@@ -8,7 +8,7 @@ export default function ServiceGrid({ showAll = false }: { showAll?: boolean }) 
       <div className="px-site">
         <Reveal className="sec-head">
           <span className="eyebrow">What we do</span>
-          <h2>Full-lifecycle mining expertise, under one principal.</h2>
+          <h2>Full-lifecycle mining expertise, under one principal</h2>
           <p>Five integrated capabilities that carry a deposit from the first geological hunch through to a responsibly closed mine.</p>
         </Reveal>
 

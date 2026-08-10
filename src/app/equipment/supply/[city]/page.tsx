@@ -60,7 +60,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
             <span>{loc.city}</span>
           </nav>
           <span className="eyebrow">{loc.region}</span>
-          <h1 style={{ marginTop: 14 }}>Mining equipment supply in {loc.city}.</h1>
+          <h1 style={{ marginTop: 14 }}>Mining equipment supply in {loc.city}</h1>
           <p className="lead">{loc.summary}</p>
         </div>
       </section>

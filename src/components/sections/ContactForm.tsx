@@ -34,7 +34,7 @@ export default function ContactForm() {
         <div style={{ width: 56, height: 56, borderRadius: 'var(--r-sm)', background: '#FFFFFF', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="#2E6A4F" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}><path d="m5 13 4 4L19 7"/></svg>
         </div>
-        <h3 style={{ fontSize: 22, marginBottom: 10 }}>Thank you. Message received.</h3>
+        <h3 style={{ fontSize: 22, marginBottom: 10 }}>Thank you. Message received</h3>
         <p style={{ color: 'var(--ink-2)', fontSize: 16 }}>We&apos;ll be in touch shortly. For anything urgent, message on WhatsApp: <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-deep)', fontWeight: 600 }}>+255 759 141 705</a>.</p>
       </div>
     )

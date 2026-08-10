@@ -88,7 +88,7 @@ export default function SwahiliCostPage() {
               <span>Bei</span>
             </nav>
             <span className="eyebrow">Bei na gharama</span>
-            <h1 style={{ marginTop: 14 }}>Bei ya vifaa vya uchimbaji madini.</h1>
+            <h1 style={{ marginTop: 14 }}>Bei ya vifaa vya uchimbaji madini</h1>
             <p className="lead">
               Bei unayopewa na muuzaji si gharama halisi ya kifaa. Kati ya bei ile na
               mashine inayofanya kazi eneo lako kuna usafirishaji wa baharini, ushuru wa

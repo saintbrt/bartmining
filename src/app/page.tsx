@@ -52,7 +52,7 @@ export default function Home() {
             <Reveal delay={1}>
               <span className="eyebrow">The founder</span>
               <blockquote style={{ fontFamily: 'var(--font-sora)', fontSize: 'clamp(22px,2.8vw,32px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.2, marginTop: 18, color: 'var(--ink)' }}>
-                Decades on the ground across <span className="grad">six continents</span>, exploration, operations and the hard calls between them.
+                Decades on the ground across <span className="grad">six continents</span>, exploration, operations and the hard calls between them
               </blockquote>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 22 }}>
                 Bartholomew Ambrose has led exploration and operated mines for major producers, working deposits from Brazilian rainforest to Canadian shield. He brings that operator&apos;s judgement to every client engagement, principal-led and never delegated to a junior.
@@ -80,7 +80,7 @@ export default function Home() {
             <Reveal>
               <span className="eyebrow">Sustainability &amp; ESG</span>
               <p style={{ fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 'clamp(28px,3.4vw,42px)', letterSpacing: '-0.03em', lineHeight: 1.2, marginTop: 16, color: 'var(--ink)' }}>
-                The ground you mine <span className="grad">belongs to someone.</span> We remember that.
+                The ground you mine <span className="grad">belongs to someone.</span> We remember that
               </p>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 22 }}>
                 Responsible mining means land that recovers, water that stays clean, workers who go home healthy, and communities that are better off long after the last truck leaves.
@@ -115,7 +115,7 @@ export default function Home() {
 
       <CtaSection
         eyebrow="Let's talk"
-        heading={<>Let&apos;s build something <span className="grad">worth leaving behind.</span></>}
+        heading={<>Let&apos;s build something <span className="grad">worth leaving behind</span></>}
         body="Whether you're proving a deposit, planning a mine, sourcing a processing plant or evaluating a project, start with a conversation with the principal."
         primaryLabel="Start a project"
         primaryHref="https://wa.me/255759141705"

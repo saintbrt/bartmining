@@ -56,7 +56,7 @@ export default function EquipmentHub() {
               <Link href="/">Home</Link><span className="sep">/</span><span>Equipment</span>
             </nav>
           </Reveal>
-          <Reveal delay={1}><h1 style={{ marginTop: 14 }}>Machinery, plant and safety equipment.</h1></Reveal>
+          <Reveal delay={1}><h1 style={{ marginTop: 14 }}>Machinery, plant and safety equipment</h1></Reveal>
           <Reveal delay={2}>
             <p className="lead">
               From exploration support gear to complete gold-recovery systems, we source,
@@ -92,7 +92,7 @@ export default function EquipmentHub() {
             <Reveal delay={1}>
               <span className="eyebrow">Why source through us</span>
               <h2 style={{ fontSize: 'clamp(26px,3.2vw,38px)', marginTop: 16 }}>
-                The right plant for the orebody, not the catalogue.
+                The right plant for the orebody, not the catalogue
               </h2>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 18, lineHeight: 1.7 }}>
                 Equipment decisions made on a spreadsheet fail in the field. We size and select
@@ -185,7 +185,7 @@ export default function EquipmentHub() {
 
       <CtaSection
         eyebrow="Spec a plant"
-        heading={<>Tell us your <span className="grad">throughput &amp; grade.</span></>}
+        heading={<>Tell us your <span className="grad">throughput &amp; grade</span></>}
         body="We'll come back with a recommended configuration, indicative budget and a commissioning plan."
         primaryLabel="Request a quote"
         primaryHref="https://wa.me/255759141705"

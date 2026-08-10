@@ -21,7 +21,7 @@ export default function Services() {
         <div className="orb orb-1" /><div className="orb orb-2" />
         <div className="px-site">
           <Reveal><div className="crumb"><Link href="/">Home</Link><span className="sep">/</span><span>Services</span></div></Reveal>
-          <Reveal delay={1}><h1>Five capabilities, <span className="grad">one principal.</span></h1></Reveal>
+          <Reveal delay={1}><h1>Five capabilities, <span className="grad">one principal</span></h1></Reveal>
           <Reveal delay={2}><p className="lead">Bart Mining advises across the entire mining lifecycle, from exploration to closure. Every engagement is led by the principal, with the same operator&apos;s judgement applied whether we&apos;re mapping an outcrop or commissioning a gold plant.</p></Reveal>
           <Reveal delay={3}>
             <div className="subhero-meta">
@@ -40,18 +40,18 @@ export default function Services() {
         <div className="px-site">
           <Reveal className="sec-head">
             <span className="eyebrow">Capabilities</span>
-            <h2>What we do, in detail.</h2>
+            <h2>What we do, in detail</h2>
           </Reveal>
           <ServiceGrid showAll />
         </div>
       </section>
 
-      <PhasesSection title="How an engagement actually runs." subtitle="A disciplined path from discovery to closure, every phase shipping concrete deliverables, not just reports." />
+      <PhasesSection title="How an engagement actually runs" subtitle="A disciplined path from discovery to closure, every phase shipping concrete deliverables, not just reports." />
       <RegionsSection />
 
       <CtaSection
         eyebrow="Ready when you are"
-        heading={<>Tell us about <span className="grad">your deposit.</span></>}
+        heading={<>Tell us about <span className="grad">your deposit</span></>}
         body="Share the stage, location and commodity, and we'll map the right scope and put you in front of the principal."
         primaryLabel="Start a project"
         primaryHref="/contact"
