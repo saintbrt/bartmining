@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/sustainability`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE.url}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE.url}/vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/bei-ya-vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
   ]
 
   const equipmentPages: MetadataRoute.Sitemap = EQUIPMENT.map(e => ({

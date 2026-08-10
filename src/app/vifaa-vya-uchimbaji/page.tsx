@@ -153,6 +153,18 @@ export default function SwahiliGateway() {
               kuyeyushwa moja kwa moja.
             </p>
 
+            <h2 id="bei">Bei na Gharama</h2>
+            <p>
+              Bei hutegemea kazi unayotaka kufanya na hali ya eneo lako, hivyo hatuweki bei
+              kwenye tovuti. Lakini tumeandika ukurasa unaoeleza gharama zote zinazoongezeka
+              juu ya bei ya mashine: usafirishaji, ushuru wa forodha, VAT na usafiri wa ndani.
+            </p>
+            <p>
+              <Link href="/bei-ya-vifaa-vya-uchimbaji" style={{ color: 'var(--gold)', fontWeight: 600 }}>
+                Soma kuhusu bei ya vifaa vya uchimbaji &rarr;
+              </Link>
+            </p>
+
             <h2 id="mikoa">Mikoa Tunayohudumia</h2>
             <p>
               Tunasambaza Tanzania nzima kutoka Dar es Salaam. Kwa maelezo ya kina ya kila

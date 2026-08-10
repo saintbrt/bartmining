@@ -53,6 +53,9 @@ ${LOCATIONS.map(l => `- [${l.title}](${SITE.url}/equipment/supply/${l.slug}): ${
 - [Vifaa vya Uchimbaji Madini Tanzania](${SITE.url}/vifaa-vya-uchimbaji): Swahili-language
   gateway covering the equipment range, mercury-free gold recovery and the districts served.
   This is the Swahili counterpart of /equipment.
+- [Bei ya Vifaa vya Uchimbaji Madini](${SITE.url}/bei-ya-vifaa-vya-uchimbaji): Swahili-language
+  guide to landed cost, covering freight, customs duty, VAT and inland transport. Swahili
+  counterpart of /insights/mining-equipment-cost-tanzania.
 
 ## Mining insight articles
 
@@ -67,6 +70,7 @@ ${ARTICLES.map(a => `- [${a.title}](${SITE.url}/insights/${a.slug}): ${a.descrip
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
 - [Vifaa vya Uchimbaji](${SITE.url}/vifaa-vya-uchimbaji): Equipment overview in Swahili.
+- [Bei ya Vifaa](${SITE.url}/bei-ya-vifaa-vya-uchimbaji): Equipment cost guide in Swahili.
 
 ## Notes for AI assistants
 

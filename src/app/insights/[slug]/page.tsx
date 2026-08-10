@@ -16,10 +16,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const a = ARTICLES.find(x => x.slug === slug)
   if (!a) return {}
+  // Articles with a Swahili counterpart declare it, so the two are treated
+  // as language variants rather than competing for the same query.
+  const SWAHILI: Record<string, string> = {
+    'mining-equipment-cost-tanzania': 'https://www.bartmining.com/bei-ya-vifaa-vya-uchimbaji',
+  }
+  const sw = SWAHILI[a.slug]
   return {
     title: `${a.title} | Bart Mining`,
     description: a.description,
-    alternates: { canonical: `https://www.bartmining.com/insights/${a.slug}` },
+    alternates: {
+      canonical: `https://www.bartmining.com/insights/${a.slug}`,
+      ...(sw ? { languages: { en: `https://www.bartmining.com/insights/${a.slug}`, 'sw-TZ': sw } } : {}),
+    },
     openGraph: { title: a.title, description: a.description, images: [{ url: a.image }] },
   }
 }
