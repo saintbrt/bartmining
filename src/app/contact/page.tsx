@@ -18,7 +18,7 @@ export default function Contact() {
         <div className="px-site">
           <Reveal><div className="crumb"><Link href="/">Home</Link><span className="sep">/</span><span>Contact</span></div></Reveal>
           <Reveal delay={1}><h1>Let&apos;s build something <span className="grad">worth leaving behind.</span></h1></Reveal>
-          <Reveal delay={2}><p className="lead">Whether you&apos;re proving a deposit, planning a mine, sourcing a processing plant or evaluating a project - start with a conversation directly with the principal.</p></Reveal>
+          <Reveal delay={2}><p className="lead">Whether you&apos;re proving a deposit, planning a mine, sourcing a processing plant or evaluating a project, start with a conversation directly with the principal.</p></Reveal>
         </div>
       </section>
 

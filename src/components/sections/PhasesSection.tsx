@@ -1,7 +1,7 @@
 import Reveal from '@/components/ui/Reveal'
 import { PHASES } from '@/data/phases'
 
-export default function PhasesSection({ title = 'Four phases. One principal accountable end to end.', subtitle = 'A disciplined path from discovery to closure - every phase shipping concrete deliverables, not just reports.' }: { title?: string, subtitle?: string }) {
+export default function PhasesSection({ title = 'Four phases. One principal accountable end to end.', subtitle = 'A disciplined path from discovery to closure, every phase shipping concrete deliverables, not just reports.' }: { title?: string, subtitle?: string }) {
   return (
     <section className="sec-gap" id="method" style={{ background: 'var(--paper)' }}>
       <div className="px-site">

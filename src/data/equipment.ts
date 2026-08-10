@@ -1,5 +1,5 @@
 export const EQUIP = [
-  { ic: 'centrifuge', t: 'Centrifugal Gold Concentrators', d: 'Gravity recovery of fine gold without chemicals - Knelson / Falcon class.', apps: ['Alluvial gold', 'Hard-rock gold', 'Tailings recovery'] },
+  { ic: 'centrifuge', t: 'Centrifugal Gold Concentrators', d: 'Gravity recovery of fine gold without chemicals, Knelson and Falcon class.', apps: ['Alluvial gold', 'Hard-rock gold', 'Tailings recovery'] },
   { ic: 'elution',    t: 'Elution & Electrowinning Plants', d: 'Advanced recovery that extracts gold from loaded activated carbon.', apps: ['CIL plants', 'CIP plants', 'Gold refining circuits'] },
   { ic: 'cil',        t: 'Carbon-in-Leach (CIL) Systems', d: 'Continuous leach-and-adsorb circuits engineered for high gold recovery.', apps: ['Gold processing', 'High-throughput plants', 'Refractory pre-treatment'] },
   { ic: 'cil',        t: 'Carbon-in-Pulp (CIP) Systems', d: 'Robust adsorption circuits for clarified, pre-leached slurries.', apps: ['Gold processing', 'Clarified feeds', 'Modular circuits'] },

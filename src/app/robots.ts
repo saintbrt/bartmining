@@ -9,7 +9,7 @@ import { SITE } from '@/lib/seo'
  * shipped with no robots.txt at all.
  *
  * AI crawlers are listed explicitly rather than left to the wildcard. Some
- * of them — notably Google-Extended and Applebot-Extended — are consulted
+ * of them - notably Google-Extended and Applebot-Extended - are consulted
  * as opt-in signals for AI answer surfaces, and naming them removes any
  * ambiguity about whether this content may be used in generated answers.
  */

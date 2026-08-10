@@ -155,7 +155,7 @@ export async function GET(req: NextRequest) {
   try {
     const user = await requireAdminUser(req)
     if (!user) {
-      return NextResponse.json({ error: 'Unauthorized — sign in again' }, { status: 401 })
+      return NextResponse.json({ error: 'Unauthorized. Sign in again' }, { status: 401 })
     }
 
     const months = clampMonths(req.nextUrl.searchParams.get('months'))

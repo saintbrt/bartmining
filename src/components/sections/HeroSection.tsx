@@ -18,7 +18,7 @@ export default function HeroSection() {
           </Reveal>
           <Reveal delay={2}>
             <p style={{ fontSize: 18, color: 'var(--ink-2)', marginTop: 22, lineHeight: 1.7, maxWidth: 500 }}>
-              End-to-end mining consultancy and equipment supply - principal-led from first outcrop to final rehabilitation. Hands in the rock, not just theory on a slide deck.
+              End-to-end mining consultancy and equipment supply, principal-led from first outcrop to final rehabilitation. Hands in the rock, not just theory on a slide deck.
             </p>
           </Reveal>
           <Reveal delay={3} className="hero-actions" style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
@@ -98,7 +98,7 @@ export default function HeroSection() {
           .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
           .hero-actions .btn { justify-content: center; width: 100%; }
           /* The flex row wrapped 3 stats to 2+1 and orphaned a divider.
-             Children are stat/rule/stat/rule/stat — drop the rule divs and
+             Children are stat/rule/stat/rule/stat - drop the rule divs and
              let a border carry the separation in an even 3-up. */
           .hero-stats { display: grid !important; grid-template-columns: repeat(3, 1fr);
                         gap: 0 !important; margin-top: 32px !important; }

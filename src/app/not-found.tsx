@@ -73,7 +73,7 @@ export default function NotFound() {
             <div style={{ display: 'flex', gap: 24, justifyContent: 'center', flexWrap: 'wrap' }}>
               {[
                 { label: 'Services', href: '/services' },
-                { label: 'Products', href: '/products' },
+                { label: 'Equipment', href: '/equipment' },
                 { label: 'About', href: '/about' },
                 { label: 'Insights', href: '/insights' },
                 { label: 'Sustainability', href: '/sustainability' },

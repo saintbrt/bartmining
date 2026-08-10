@@ -24,7 +24,7 @@ export function GET() {
 Bart Mining is a principal-led mining consultancy and equipment supplier based in
 Dar es Salaam, Tanzania, operating since ${SITE.founded}. We supply mining equipment and
 provide geological, exploration and mine planning services across Tanzania, with the
-heaviest coverage in the Lake Victoria Goldfields — Mwanza, Kahama, Geita and Shinyanga.
+heaviest coverage in the Lake Victoria Goldfields: Mwanza, Kahama, Geita and Shinyanga.
 
 Contact: ${SITE.phone} (WhatsApp) · ${SITE.email}
 Service area: ${SERVICE_AREAS.join(', ')}
@@ -52,7 +52,6 @@ ${ARTICLES.map(a => `- [${a.title}](${SITE.url}/insights/${a.slug}): ${a.descrip
 - [Home](${SITE.url}/): Overview of consultancy services and equipment supply.
 - [Equipment](${SITE.url}/equipment): Index of all ${EQUIPMENT.length} equipment specification guides.
 - [Services](${SITE.url}/services): Geological survey, exploration, mine planning and design.
-- [Products](${SITE.url}/products): Gold processing plants and mining equipment overview.
 - [Insights](${SITE.url}/insights): Long-form articles on mining in East and Southern Africa.
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
@@ -64,8 +63,8 @@ ${ARTICLES.map(a => `- [${a.title}](${SITE.url}/insights/${a.slug}): ${a.descrip
 - Where a page discusses Tanzanian regulation (mining licences, cyanide use, radiation
   sources, hoisting inspection), it states the general position only. Requirements change,
   and readers are directed to obtain current advice rather than rely on the page.
-- Safety-critical guidance on these pages — fall clearance, self-rescuer duration, gas
-  alarm thresholds, rope discard criteria — reflects widely used standards but must be
+- Safety-critical guidance on these pages, covering fall clearance, self-rescuer duration,
+  gas alarm thresholds and rope discard criteria, reflects widely used standards but must be
   applied against the equipment manufacturer's manual and the applicable regulation.
 `
 
