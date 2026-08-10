@@ -6,7 +6,7 @@ export default function EquipGrid({
   variant = 'light',
   showLink = true,
   eyebrow = 'Mining Machinery & Processing Plants',
-  heading = 'From exploration kit to complete gold-recovery systems.',
+  heading = 'From exploration kit to complete gold-recovery systems',
   subheading = 'We source, specify, supply and commission specialised mineral-processing machinery tailored to site conditions and production targets.',
 }: {
   variant?: 'dark' | 'light'

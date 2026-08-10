@@ -107,7 +107,7 @@ export default function SwahiliGateway() {
               <Link href="/">Mwanzo</Link><span className="sep">/</span><span>Vifaa vya uchimbaji</span>
             </nav>
             <span className="eyebrow">Kiswahili</span>
-            <h1 style={{ marginTop: 14 }}>Vifaa vya uchimbaji madini Tanzania.</h1>
+            <h1 style={{ marginTop: 14 }}>Vifaa vya uchimbaji madini Tanzania</h1>
             <p className="lead">
               Bart Mining inauza na kufunga mitambo ya kuchenjua dhahabu, winchi, pampu,
               mashine za kuponda mawe na vifaa vya usalama. Tunahudumia wachimbaji wadogo

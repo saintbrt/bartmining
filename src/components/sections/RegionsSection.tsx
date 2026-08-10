@@ -7,7 +7,7 @@ export default function RegionsSection() {
       <div className="px-site">
         <Reveal className="sec-head">
           <span className="eyebrow">Coverage</span>
-          <h2>Operating across Africa&apos;s mining belt.</h2>
+          <h2>Operating across Africa&apos;s mining belt</h2>
           <p>18 countries across East and Southern Africa, from the Geita goldfields to the Bushveld Complex.</p>
         </Reveal>
 

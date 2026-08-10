@@ -13,7 +13,7 @@ export default function HeroSection() {
         <div>
           <Reveal delay={1}>
             <h1 style={{ fontSize: 'clamp(40px,5.2vw,68px)' }}>
-              Responsible <span className="grad">resource<br />development.</span>
+              Responsible <span className="grad">resource<br />development</span>
             </h1>
           </Reveal>
           <Reveal delay={2}>

@@ -20,7 +20,7 @@ export default function About() {
         <div className="orb orb-1" /><div className="orb orb-2" />
         <div className="px-site">
           <Reveal><div className="crumb"><Link href="/">Home</Link><span className="sep">/</span><span>About</span></div></Reveal>
-          <Reveal delay={1}><h1>Hands in the rock, <span className="grad">not just theory.</span></h1></Reveal>
+          <Reveal delay={1}><h1>Hands in the rock, <span className="grad">not just theory</span></h1></Reveal>
           <Reveal delay={2}><p className="lead">Bart Mining Consultancy advises mining companies, governments and investors across the full mine lifecycle, built on decades of real operating experience and a simple commitment: resource development done responsibly.</p></Reveal>
         </div>
       </section>
@@ -86,7 +86,7 @@ export default function About() {
         <div className="px-site">
           <Reveal className="sec-head">
             <span className="eyebrow">Who we work with</span>
-            <h2>Three audiences, one standard of rigour.</h2>
+            <h2>Three audiences, one standard of rigour</h2>
           </Reveal>
           <div className="value-grid">
             <Reveal style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)' }}>
@@ -113,7 +113,7 @@ export default function About() {
         <div className="px-site">
           <Reveal className="sec-head">
             <span className="eyebrow">What we stand for</span>
-            <h2>Principles we don&apos;t bend.</h2>
+            <h2>Principles we don&apos;t bend</h2>
           </Reveal>
           <div className="value-grid">
             {[
@@ -133,7 +133,7 @@ export default function About() {
 
       <CtaSection
         eyebrow="Work with the principal"
-        heading={<>Let&apos;s build something <span className="grad">worth leaving behind.</span></>}
+        heading={<>Let&apos;s build something <span className="grad">worth leaving behind</span></>}
         body="Start with a direct conversation about your project, your stage and what responsible looks like for your site."
         primaryLabel="Get in touch"
         primaryHref="https://wa.me/255759141705"

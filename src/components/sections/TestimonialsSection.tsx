@@ -18,7 +18,7 @@ export default function TestimonialsSection() {
       <div className="px-site">
         <Reveal className="sec-head center">
           <span className="eyebrow center">Trusted by</span>
-          <h2>Mining companies, governments and investors.</h2>
+          <h2>Mining companies, governments and investors</h2>
         </Reveal>
         <Reveal delay={1} style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
           <div key={active} style={{ animation: 'fadeIn .4s ease' }}>
