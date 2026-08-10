@@ -25,6 +25,26 @@ if you don't want them.
 Several products can share one photo: just save the same image under each
 slug. The three winches currently do this.
 
+## Also used as article covers
+
+Ten insight articles point their cover image at a file in this folder, set in
+`src/data/insights.ts`. Renaming or deleting one of these leaves the article
+with a broken hero, and no placeholder catches it — the article covers have no
+fallback the way the product cards do:
+
+    modular-gold-plant.jpg          gold-plant-setup-cost
+    cil-cip-plant.jpg               cil-vs-cip-vs-heap-leach
+    centrifugal-gold-concentrator.jpg  gravity-vs-cyanide-gold-recovery
+    shaking-table-gold.jpg          plant-test-work-guide
+    diesel-generator-mining.jpg     off-grid-mine-power
+    rc-drilling-rig.jpg             drilling-services-tanzania, gold-exploration-tanzania
+    jaw-crusher.jpg                 mining-equipment-africa
+    mine-management-software.jpg    equipment-rental-tanzania
+    mine-hoist-headframe.jpg        mining-services-south-africa
+
+Swapping the file for a better photo of the same subject is fine and needs no
+code change. Changing the subject means updating `imageAlt` in the same entry.
+
 ## Slugs
 
     1-ton-winch                       1 Tonne Electric Winch

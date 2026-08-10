@@ -5,11 +5,20 @@ import Link from 'next/link'
 import { ARTICLES } from '@/data/insights'
 import ReadingProgress from '@/components/insights/ReadingProgress'
 import JsonLd from '@/components/seo/JsonLd'
-import { articleSchema, breadcrumbSchema } from '@/lib/seo'
+import { SITE, articleSchema, breadcrumbSchema } from '@/lib/seo'
 import TableOfContents from '@/components/insights/TableOfContents'
 
 export async function generateStaticParams() {
   return ARTICLES.map(a => ({ slug: a.slug }))
+}
+
+/**
+ * Cover images are either a path under public/ or a remote URL. Both work in
+ * next/image, but structured data and Open Graph need a resolvable absolute
+ * URL, so relative paths get the site origin put back in front.
+ */
+function absoluteImage(src: string): string {
+  return src.startsWith('http') ? src : `${SITE.url}${src}`
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -29,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `https://www.bartmining.com/insights/${a.slug}`,
       ...(sw ? { languages: { en: `https://www.bartmining.com/insights/${a.slug}`, 'sw-TZ': sw } } : {}),
     },
-    openGraph: { title: a.title, description: a.description, images: [{ url: a.image }] },
+    openGraph: { title: a.title, description: a.description, images: [{ url: absoluteImage(a.image) }] },
   }
 }
 
@@ -58,7 +67,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             slug: article.slug,
             title: article.title,
             description: article.description,
-            image: article.image,
+            image: absoluteImage(article.image),
             datePublished: '2025-06-01',
             section: article.category,
           }),
