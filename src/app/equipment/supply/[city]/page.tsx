@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { LOCATIONS, LOCATION_BY_SLUG } from '@/data/locations'
 import { EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
+import { LOCATIONS_SW_BY_SLUG } from '@/data/locations-sw'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
 import { SITE, serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
@@ -16,10 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const l = LOCATION_BY_SLUG.get(city)
   if (!l) return {}
   const url = `${SITE.url}/equipment/supply/${l.slug}`
+  const sw = LOCATIONS_SW_BY_SLUG.has(l.slug) ? `${SITE.url}/vifaa-vya-uchimbaji/${l.slug}` : null
   return {
     title: l.title,
     description: l.description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, ...(sw ? { languages: { en: url, 'sw-TZ': sw } } : {}) },
     openGraph: { type: 'website', url, title: l.title, description: l.description },
   }
 }
@@ -62,6 +64,11 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
           <span className="eyebrow">{loc.region}</span>
           <h1 style={{ marginTop: 14 }}>Mining equipment supply in {loc.city}</h1>
           <p className="lead">{loc.summary}</p>
+          {LOCATIONS_SW_BY_SLUG.has(loc.slug) && (
+            <p style={{ color: 'var(--ink-3)', fontSize: 15, marginTop: 14 }}>
+              <Link href={`/vifaa-vya-uchimbaji/${loc.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }} lang="sw">Soma ukurasa huu kwa Kiswahili</Link>
+            </p>
+          )}
         </div>
       </section>
 
@@ -73,6 +80,18 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
 
             <h2 id="operators">Who Operates Here</h2>
             <ul>{loc.operators.map(o => <li key={o}>{o}</li>)}</ul>
+
+            {loc.areas && loc.areas.length > 0 && (
+              <>
+                <h2 id="areas">Mining Areas Around {loc.city}</h2>
+                {loc.areas.map(a => (
+                  <div key={a.name} className="eq-faq">
+                    <h3>{a.name}</h3>
+                    <p>{a.note}</p>
+                  </div>
+                ))}
+              </>
+            )}
 
             <h2 id="delivery">Getting Equipment to {loc.city}</h2>
             <ul>{loc.logistics.map(x => <li key={x}>{x}</li>)}</ul>

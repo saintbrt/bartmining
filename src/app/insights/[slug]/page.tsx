@@ -29,10 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // as language variants rather than competing for the same query.
   const SWAHILI: Record<string, string> = {
     'mining-equipment-cost-tanzania': 'https://www.bartmining.com/bei-ya-vifaa-vya-uchimbaji',
+    'gold-plant-setup-cost': 'https://www.bartmining.com/gharama-ya-plant-ya-dhahabu',
   }
   const sw = SWAHILI[a.slug]
   return {
-    title: `${a.title} | Bart Mining`,
+    title: a.title,
     description: a.description,
     alternates: {
       canonical: `https://www.bartmining.com/insights/${a.slug}`,
