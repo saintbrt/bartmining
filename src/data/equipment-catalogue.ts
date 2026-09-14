@@ -69,7 +69,7 @@ const IMG = {
   winch: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1200&h=600&q=75',
   hoist: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&h=600&q=75',
   rope: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&h=600&q=75',
-  plant: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&h=600&q=75',
+  plant: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1200&h=600&q=75',
   gold: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1200&h=600&q=75',
   mill: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1200&h=600&q=75',
   crusher: 'https://images.unsplash.com/photo-1578319439584-104c94d37305?auto=format&fit=crop&w=1200&h=600&q=75',

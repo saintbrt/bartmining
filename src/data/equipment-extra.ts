@@ -16,7 +16,7 @@ const IMG = {
   crane: 'https://images.pexels.com/photos/224924/pexels-photo-224924.jpeg?auto=compress&cs=tinysrgb&w=1200',
   mill: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1200&h=600&q=75',
   crusher: 'https://images.unsplash.com/photo-1578319439584-104c94d37305?auto=format&fit=crop&w=1200&h=600&q=75',
-  plant: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&h=600&q=75',
+  plant: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1200&h=600&q=75',
   drill: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&h=600&q=75',
   genset: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&w=1200&h=600&q=75',
 } as const
