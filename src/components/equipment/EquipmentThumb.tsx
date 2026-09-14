@@ -16,6 +16,14 @@ const STROKE = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.25, stroke
 
 function CategoryMark({ category }: { category: EquipCategory }) {
   switch (category) {
+    case 'earthmoving': // excavator boom and bucket
+      return (
+        <g {...STROKE}>
+          <rect x="8" y="28" width="22" height="10" rx="1.5" />
+          <circle cx="14" cy="40" r="4" /><circle cx="26" cy="40" r="4" />
+          <path d="M28 30l10-8 6 2" /><path d="M44 24l-4 8 6 1-2-9" />
+        </g>
+      )
     case 'hoisting': // drum, rope and hook
       return (
         <g {...STROKE}>

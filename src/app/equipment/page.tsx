@@ -22,7 +22,7 @@ import JsonLd from '@/components/seo/JsonLd'
 export const metadata: Metadata = {
   title: 'Mining Equipment Supply Tanzania: Specifications & Price Guides',
   description:
-    'Mining equipment supplied across Mwanza, Kahama, Geita and Shinyanga: winches, gold processing plants, drilling rigs, pumps, safety equipment and mine management software.',
+    'Mining and construction equipment supplied across Mwanza, Kahama, Geita and Shinyanga: excavators, dump trucks, crushers, gold plants, drills, pumps, safety gear and mine software.',
   alternates: {
     canonical: `${SITE.url}/equipment`,
     languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/vifaa-vya-uchimbaji` },
@@ -59,9 +59,10 @@ export default function EquipmentHub() {
           <Reveal delay={1}><h1 style={{ marginTop: 14 }}>Machinery, plant and safety equipment</h1></Reveal>
           <Reveal delay={2}>
             <p className="lead">
-              From exploration support gear to complete gold-recovery systems, we source,
-              specify, supply and commission mining equipment across Tanzania. Every item
-              below has a specification page so you can scope a requirement before you enquire.
+              From excavators and dump trucks to crushers, gold-recovery plants and site
+              lighting, we source, specify, supply and commission mining and construction
+              equipment across Tanzania. Every item below has a specification page so you
+              can scope a requirement before you enquire.
             </p>
           </Reveal>
           <Reveal delay={3}>

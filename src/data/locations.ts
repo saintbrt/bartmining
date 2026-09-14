@@ -61,7 +61,7 @@ export const LOCATIONS: Location[] = [
       'Numerous licensed small mines working shaft and adit operations on vein and BIF-hosted gold',
       'Regional workshops, fabricators and freight operators serving the wider goldfield',
     ],
-    buys: ['centrifugal-gold-concentrator', 'shaking-table-gold', 'ball-mill-gold-ore', '1-ton-winch', 'submersible-dewatering-pump', 'mining-safety-helmet-cap-lamp'],
+    buys: ['centrifugal-gold-concentrator', 'shaking-table-gold', 'wet-pan-mill', '1-ton-winch', 'submersible-dewatering-pump', 'hydraulic-excavator'],
     buysNote:
       'Mwanza buying is dominated by small gravity plants and shaft equipment rather than large process trains. Because most operations here work shallow shafts on vein and BIF gold, the recurring purchases are one and two tonne winches, dewatering pumps for shafts that flood in the wet season, and gravity recovery equipment that replaces mercury amalgamation.',
     faqs: [
@@ -95,7 +95,7 @@ export const LOCATIONS: Location[] = [
       'A large licensed small-scale sector working the same belt on adjacent ground',
       'Contractors, drilling companies and service providers based around the mine',
     ],
-    buys: ['jaw-crusher', 'ball-mill-gold-ore', 'cil-cip-plant', 'centrifugal-gold-concentrator', 'modular-gold-plant', 'slurry-pump'],
+    buys: ['jaw-crusher', 'cone-crusher', 'hydraulic-excavator', 'centrifugal-gold-concentrator', 'modular-gold-plant', 'dump-truck'],
     buysNote:
       'Geita ore is competent and abrasive, so comminution specification matters more here than in districts working softer oxide material. Undersized crushers and thin mill liners fail quickly on this ore. The district also has enough grade and tonnage in places to justify leach circuits, so Geita sees more CIL enquiries than anywhere else we supply.',
     areas: [

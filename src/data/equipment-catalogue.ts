@@ -13,8 +13,10 @@
  * phase / 400 V three phase at 50 Hz.
  */
 
+import { EXTRA_EQUIPMENT } from './equipment-extra'
+
 export type EquipCategory =
-  | 'hoisting' | 'processing' | 'exploration'
+  | 'earthmoving' | 'hoisting' | 'processing' | 'exploration'
   | 'pumping' | 'safety' | 'software' | 'power'
 
 export interface SpecRow { label: string; value: string }
@@ -53,6 +55,7 @@ export interface Equipment {
 }
 
 export const CATEGORY_LABELS: Record<EquipCategory, string> = {
+  earthmoving: 'Earthmoving & Construction',
   hoisting: 'Hoisting & Lifting',
   processing: 'Gold Processing & Recovery',
   exploration: 'Exploration & Drilling',
@@ -88,6 +91,8 @@ const IMG = {
 const UPDATED = '2026-08-09'
 
 export const EQUIPMENT: Equipment[] = [
+  ...EXTRA_EQUIPMENT,
+
   // ─────────────────────────── HOISTING & LIFTING ───────────────────────────
   {
     slug: '1-ton-winch',
@@ -630,7 +635,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'How much water does a modular gold plant use?', a: '0.5–1.5 m³ per tonne of ore with a functioning recycle circuit, and far more without one. In water-constrained districts a thickener and return-water system is not an optional extra. It usually determines whether the site is viable at all.' },
       { q: 'Can a modular plant be moved to another site?', a: 'Yes, that is a core design intent. Modules unbolt, load onto standard transport and redeploy. This suits operations working a series of small deposits, and it protects capital where an orebody is smaller than expected.' },
     ],
-    related: ['cil-cip-plant', 'centrifugal-gold-concentrator', 'jaw-crusher'],
+    related: ['cil-cip-plant', 'belt-conveyor', 'jaw-crusher'],
     image: IMG.plant,
     imageAlt: 'Containerised modular gold processing plant on a remote site',
     updated: UPDATED,
@@ -685,7 +690,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'How much grinding media does a ball mill consume?', a: '0.3–1.2 kg per tonne of ore, driven by ore abrasiveness, grind size and ball quality. Media is often the second largest consumable cost after power, so it belongs in the operating cost model from the start rather than being treated as a minor spare.' },
       { q: 'Can a ball mill run on a diesel generator?', a: 'Yes, but starting current is the constraint. A large mill motor started direct-on-line draws six to seven times full-load current, which can stall a marginally sized genset. Specify a soft starter or variable-frequency drive, and size the generator with substantial headroom.' },
     ],
-    related: ['jaw-crusher', 'centrifugal-gold-concentrator', 'modular-gold-plant'],
+    related: ['jaw-crusher', 'wet-pan-mill', 'hydrocyclone'],
     image: IMG.mill,
     imageAlt: 'Ball mill grinding circuit in a gold processing plant',
     updated: UPDATED,
@@ -740,7 +745,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'How long do jaw plates last?', a: 'From a few hundred hours in highly abrasive quartz-rich ore to several thousand in softer material. Most plates are symmetrical and can be turned end-for-end once. Track tonnes per set rather than calendar time so you can forecast the spend.' },
       { q: 'What is the toggle plate for?', a: 'It transmits the crushing force and is deliberately the weakest component, designed to break if uncrushable tramp metal enters. Replacing a toggle plate is cheap; replacing a cracked pitman or frame is not. Never substitute a stronger toggle plate than specified.' },
     ],
-    related: ['ball-mill-gold-ore', 'modular-gold-plant', 'shaking-table-gold'],
+    related: ['ball-mill-gold-ore', 'cone-crusher', 'vibrating-feeder'],
     image: IMG.crusher,
     imageAlt: 'Primary jaw crusher processing run-of-mine gold ore',
     updated: UPDATED,
@@ -795,7 +800,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'How do I adjust a shaking table?', a: 'Three controls interact: deck slope, stroke length and wash water. Increase slope or water to push more material to tailings and raise concentrate grade; reduce them to raise recovery at lower grade. Change one variable at a time and let the deck stabilise for several minutes before judging.' },
       { q: 'Can a shaking table replace mercury?', a: 'Yes, for the final concentration step. Combined with a centrifugal concentrator upstream, a table produces a concentrate clean enough to smelt directly, removing any need for amalgamation. This pairing is the standard mercury-free route for small-scale operations.' },
     ],
-    related: ['centrifugal-gold-concentrator', 'modular-gold-plant', 'ball-mill-gold-ore'],
+    related: ['centrifugal-gold-concentrator', 'wet-pan-mill', 'trommel-screen'],
     image: IMG.gold,
     imageAlt: 'Gold concentrating shaking table with riffled deck',
     updated: UPDATED,
@@ -851,7 +856,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'What compressor does an RC rig need?', a: 'Typically 900–1,150 cfm at 350–500 psi, often with a booster. Under-supplying air is the most common cause of poor sample recovery and stuck rods. The compressor specification is part of the drilling method, not an accessory.' },
       { q: 'Is RC sample quality good enough for a JORC resource?', a: 'Yes, RC is widely used for JORC and NI 43-101 compliant resources provided recovery is monitored, samples are split consistently, and QAQC protocols with standards, blanks and duplicates are followed. Wet samples and poor recovery zones must be flagged, as they carry real grade bias risk.' },
     ],
-    related: ['air-compressor-mining', 'gold-metal-detector', 'diesel-generator-mining'],
+    related: ['air-compressor-mining', 'pneumatic-rock-drill', 'diesel-generator-mining'],
     image: IMG.drill,
     imageAlt: 'Reverse circulation drilling rig on a gold exploration programme',
     updated: UPDATED,
@@ -1514,7 +1519,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'How much fuel will a generator use?', a: 'Roughly 0.25–0.30 litres per kWh generated at 75% load. For a 500 kVA set running at 75%, that is around 100 litres per hour. Over a month of continuous running the fuel bill dwarfs the capital cost of the generator, which is why load management matters so much.' },
       { q: 'Is it better to run one large generator or several smaller ones?', a: 'Several smaller sets in parallel is usually better for a mine. Load varies through the shift, so you can run only what is needed and keep each set in its efficient band; you gain redundancy; and you can service one without shutting the site down. The trade-off is more complex synchronising controls.' },
     ],
-    related: ['air-compressor-mining', 'submersible-dewatering-pump', 'modular-gold-plant'],
+    related: ['air-compressor-mining', 'lighting-tower', 'modular-gold-plant'],
     image: IMG.genset,
     imageAlt: 'Containerised diesel generator set supplying a mine site',
     updated: UPDATED,
@@ -1569,7 +1574,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'Screw or piston compressor for mining?', a: 'Screw, for almost all mining duty. Piston compressors are cheaper and fine for intermittent workshop use, but they run hot on continuous duty and tolerate dust badly. Screw compressors are designed for 100% duty cycle and last far longer in mining conditions.' },
       { q: 'How much air is lost to leaks?', a: 'Commonly 20–30% of total output on a mine air system that has never been surveyed, and sometimes more. Leak detection and repair is usually the cheapest capacity increase available, and considerably cheaper than buying another compressor to feed the leaks.' },
     ],
-    related: ['rc-drilling-rig', 'diesel-generator-mining', 'mine-ventilation-fan'],
+    related: ['rc-drilling-rig', 'pneumatic-rock-drill', 'mine-ventilation-fan'],
     image: IMG.compressor,
     imageAlt: 'Portable rotary screw air compressor on a mining site',
     updated: UPDATED,
@@ -1581,7 +1586,7 @@ export const EQUIPMENT: Equipment[] = [
 export const EQUIPMENT_BY_SLUG = new Map(EQUIPMENT.map(e => [e.slug, e]))
 
 export function equipmentByCategory(): { category: EquipCategory; label: string; items: Equipment[] }[] {
-  const order: EquipCategory[] = ['hoisting', 'processing', 'exploration', 'pumping', 'safety', 'software', 'power']
+  const order: EquipCategory[] = ['earthmoving', 'hoisting', 'processing', 'exploration', 'pumping', 'safety', 'software', 'power']
   return order.map(category => ({
     category,
     label: CATEGORY_LABELS[category],

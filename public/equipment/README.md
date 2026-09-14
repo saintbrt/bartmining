@@ -73,3 +73,23 @@ code change. Changing the subject means updating `imageAlt` in the same entry.
     geological-modelling-software     Geological Modelling & Resource Software
     diesel-generator-mining           Diesel Generator for Mining
     air-compressor-mining             Mining Air Compressor
+    hydraulic-excavator               Hydraulic Excavator
+    wheel-loader                      Wheel Loader
+    dump-truck                        Dump Truck
+    bulldozer                         Bulldozer
+    motor-grader                      Motor Grader
+    backhoe-loader                    Backhoe Loader
+    vibratory-roller                  Vibratory Roller
+    tower-crane                       Tower Crane
+    concrete-mixer                    Concrete Mixer Truck
+    cone-crusher                      Cone Crusher
+    hammer-mill                       Hammer Mill
+    wet-pan-mill                      Wet Pan Mill
+    vibrating-screen                  Vibrating Screen
+    trommel-screen                    Trommel Screen
+    belt-conveyor                     Belt Conveyor
+    hydrocyclone                      Hydrocyclone
+    filter-press                      Filter Press
+    vibrating-feeder                  Vibrating Feeder
+    pneumatic-rock-drill              Pneumatic Rock Drill (Jackleg)
+    lighting-tower                    Lighting Tower
