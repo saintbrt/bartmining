@@ -20,7 +20,7 @@ const URL = `${SITE.url}/bei-ya-vifaa-vya-uchimbaji`
 const EN = `${SITE.url}/insights/mining-equipment-cost-tanzania`
 
 export const metadata: Metadata = {
-  title: 'Bei ya Vifaa vya Uchimbaji Madini Tanzania | Bart Mining',
+  title: 'Bei ya Vifaa vya Uchimbaji Madini Tanzania',
   description:
     'Bei ya vifaa vya uchimbaji madini Tanzania: gharama za usafirishaji, ushuru wa forodha, VAT, kutoa mzigo bandarini Dar es Salaam na usafiri hadi Mwanza, Geita na Kahama.',
   alternates: {

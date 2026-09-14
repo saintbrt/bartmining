@@ -7,6 +7,7 @@ import { SITE, SERVICE_AREAS, productSchema, techArticleSchema, faqSchema, bread
 import JsonLd from '@/components/seo/JsonLd'
 import ReadingProgress from '@/components/insights/ReadingProgress'
 import { resolveEquipmentPhoto } from '@/lib/equipment-photos'
+import { LOCATIONS } from '@/data/locations'
 
 export async function generateStaticParams() {
   return EQUIPMENT.map(e => ({ slug: e.slug }))
@@ -52,6 +53,9 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
   const related = item.related
     .map(s => EQUIPMENT_BY_SLUG.get(s))
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
+
+  // Districts whose supply page lists this item as a typical purchase.
+  const buyingDistricts = LOCATIONS.filter(l => l.buys.includes(item.slug))
 
   const schemas = [
     productSchema({
@@ -204,6 +208,18 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             <div className="region-chips">
               {SERVICE_AREAS.map(r => <span key={r} className="region-chip">{r}</span>)}
             </div>
+            {buyingDistricts.length > 0 && (
+              <p>
+                Commonly supplied to:{' '}
+                {buyingDistricts.map((l, i) => (
+                  <span key={l.slug}>
+                    {i > 0 && ', '}
+                    <Link href={`/equipment/supply/${l.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>{l.city}</Link>
+                  </span>
+                ))}
+                .
+              </p>
+            )}
 
             <div className="art-callout">
               <strong>Specification note.</strong> The values on this page are

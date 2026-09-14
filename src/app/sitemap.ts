@@ -3,6 +3,8 @@ import { SITE } from '@/lib/seo'
 import { ARTICLES } from '@/data/insights'
 import { EQUIPMENT } from '@/data/equipment-catalogue'
 import { LOCATIONS } from '@/data/locations'
+import { LOCATIONS_SW } from '@/data/locations-sw'
+import { MARKETS } from '@/data/markets'
 
 /**
  * Served at /sitemap.xml, generated from the same data the pages render from.
@@ -24,7 +26,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE.url}/vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/bei-ya-vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
+    { url: `${SITE.url}/bei-ya-mashine-ya-kusaga-mawe`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/jinsi-ya-kupata-leseni-ya-pml`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/gharama-ya-plant-ya-dhahabu`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/mrabaha-na-kodi-za-dhahabu`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ]
+
+  const marketPages: MetadataRoute.Sitemap = MARKETS.map(m => ({
+    url: `${SITE.url}/soko-la-madini/${m.slug}`,
+    lastModified: now,
+    changeFrequency: 'daily',
+    priority: 0.8,
+  }))
+
+  const swahiliTownPages: MetadataRoute.Sitemap = LOCATIONS_SW.map(l => ({
+    url: `${SITE.url}/vifaa-vya-uchimbaji/${l.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
 
   const equipmentPages: MetadataRoute.Sitemap = EQUIPMENT.map(e => ({
     url: `${SITE.url}/equipment/${e.slug}`,
@@ -47,5 +68,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...equipmentPages, ...locationPages, ...articlePages]
+  return [...staticPages, ...equipmentPages, ...locationPages, ...swahiliTownPages, ...marketPages, ...articlePages]
 }

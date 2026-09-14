@@ -2,6 +2,8 @@ import { SITE, SERVICE_AREAS } from '@/lib/seo'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
 import { ARTICLES } from '@/data/insights'
 import { LOCATIONS } from '@/data/locations'
+import { LOCATIONS_SW } from '@/data/locations-sw'
+import { MARKETS } from '@/data/markets'
 
 /**
  * Served at /llms.txt.
@@ -56,6 +58,23 @@ ${LOCATIONS.map(l => `- [${l.title}](${SITE.url}/equipment/supply/${l.slug}): ${
 - [Bei ya Vifaa vya Uchimbaji Madini](${SITE.url}/bei-ya-vifaa-vya-uchimbaji): Swahili-language
   guide to landed cost, covering freight, customs duty, VAT and inland transport. Swahili
   counterpart of /insights/mining-equipment-cost-tanzania.
+- [Bei ya Dhahabu Leo Tanzania](${SITE.url}/bei-ya-dhahabu-leo): Swahili-language gold price
+  page, refreshed hourly, showing the international spot price per gram and ounce in Tanzanian
+  shillings by karat, with an explanation of Mining Commission indicative prices and royalties.
+  The figure shown is spot converted to TZS, not the Mining Commission's indicative price.
+- [Bei ya Mashine ya Kusaga Mawe](${SITE.url}/bei-ya-mashine-ya-kusaga-mawe): Swahili guide to
+  ball mill, hammer mill and jaw crusher prices for small-scale gold miners.
+- [Jinsi ya Kupata Leseni ya PML](${SITE.url}/jinsi-ya-kupata-leseni-ya-pml): Swahili guide to
+  applying for a Primary Mining Licence and the obligations that follow.
+- [Gharama ya Plant ya Dhahabu](${SITE.url}/gharama-ya-plant-ya-dhahabu): Swahili counterpart of
+  /insights/gold-plant-setup-cost.
+- [Mrabaha na Kodi za Dhahabu](${SITE.url}/mrabaha-na-kodi-za-dhahabu): Swahili guide to gold
+  royalty rates, inspection fee, levies and the 20% domestic sale requirement.
+${LOCATIONS_SW.map(l => `- [${l.title}](${SITE.url}/vifaa-vya-uchimbaji/${l.slug}): Swahili counterpart of /equipment/supply/${l.slug}.`).join('\n')}
+
+## Mineral market pages (Swahili)
+
+${MARKETS.map(m => `- [${m.title}](${SITE.url}/soko-la-madini/${m.slug}): ${m.description}`).join('\n')}
 
 ## Mining insight articles
 

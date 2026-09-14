@@ -3,6 +3,8 @@ import Link from 'next/link'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
 import { EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
 import { LOCATIONS } from '@/data/locations'
+import { LOCATIONS_SW_BY_SLUG } from '@/data/locations-sw'
+import { MARKETS } from '@/data/markets'
 import { SITE, faqSchema, breadcrumbSchema, serviceSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 
@@ -28,7 +30,7 @@ import JsonLd from '@/components/seo/JsonLd'
 const URL = `${SITE.url}/vifaa-vya-uchimbaji`
 
 export const metadata: Metadata = {
-  title: 'Vifaa vya Uchimbaji Madini Tanzania | Bart Mining',
+  title: 'Vifaa vya Uchimbaji Madini Tanzania',
   description:
     'Tunauza vifaa vya uchimbaji madini Tanzania: mitambo ya kuchenjua dhahabu, winchi, pampu, mashine za kuponda mawe na vifaa vya usalama. Mwanza, Geita, Kahama na Dar es Salaam.',
   alternates: {
@@ -47,6 +49,7 @@ export const metadata: Metadata = {
 const KITS = [
   { slug: 'centrifugal-gold-concentrator', sw: 'Mashine ya kuchenjua dhahabu', note: 'Hutenganisha dhahabu kwa mzunguko wa kasi. Haitumii zebaki wala kemikali.' },
   { slug: 'shaking-table-gold', sw: 'Meza ya kutingisha', note: 'Husafisha dhahabu iliyochenjuliwa hadi kufikia hatua ya kuyeyusha.' },
+  { slug: 'leaching-tank', sw: 'Tanki la kuchenjua dhahabu (CIP)', note: 'Tanki lenye mota ya kukoroga tope la mawe ili dhahabu iyeyuke na kunaswa na kaboni.' },
   { slug: 'ball-mill-gold-ore', sw: 'Kinu cha kusaga mawe', note: 'Husaga mawe ili dhahabu iachiliwe kabla ya kuchenjua.' },
   { slug: 'jaw-crusher', sw: 'Mashine ya kuponda mawe', note: 'Huponda mawe makubwa kuwa madogo tayari kwa kusagwa.' },
   { slug: '1-ton-winch', sw: 'Winchi ya tani moja', note: 'Hupandisha ndoo za mawe kutoka shimoni. Ina breki ya usalama.' },
@@ -165,6 +168,32 @@ export default function SwahiliGateway() {
               </Link>
             </p>
 
+            <h2 id="miongozo">Miongozo kwa Wachimbaji</h2>
+            <ul>
+              {[
+                ['/bei-ya-dhahabu-leo', 'Bei ya dhahabu leo'],
+                ['/bei-ya-mashine-ya-kusaga-mawe', 'Bei ya mashine ya kusaga mawe'],
+                ['/gharama-ya-plant-ya-dhahabu', 'Gharama ya kujenga plant ya dhahabu'],
+                ['/jinsi-ya-kupata-leseni-ya-pml', 'Jinsi ya kupata leseni ya PML'],
+                ['/mrabaha-na-kodi-za-dhahabu', 'Mrabaha na kodi za dhahabu'],
+              ].map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} style={{ color: 'var(--gold)', fontWeight: 600 }}>{label}</Link>
+                </li>
+              ))}
+            </ul>
+
+            <h2 id="masoko">Masoko ya Madini</h2>
+            <ul>
+              {MARKETS.map(m => (
+                <li key={m.slug}>
+                  <Link href={`/soko-la-madini/${m.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>
+                    Soko la madini {m.town}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
             <h2 id="mikoa">Mikoa Tunayohudumia</h2>
             <p>
               Tunasambaza Tanzania nzima kutoka Dar es Salaam. Kwa maelezo ya kina ya kila
@@ -173,7 +202,10 @@ export default function SwahiliGateway() {
             <ul>
               {LOCATIONS.map(l => (
                 <li key={l.slug}>
-                  <Link href={`/equipment/supply/${l.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>
+                  <Link
+                    href={LOCATIONS_SW_BY_SLUG.has(l.slug) ? `/vifaa-vya-uchimbaji/${l.slug}` : `/equipment/supply/${l.slug}`}
+                    style={{ color: 'var(--gold)', fontWeight: 600 }}
+                  >
                     Vifaa vya uchimbaji {l.city}
                   </Link>
                 </li>
