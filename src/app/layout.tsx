@@ -3,7 +3,7 @@ import { Sora, Manrope, Space_Mono } from 'next/font/google'
 import './globals.css'
 import SiteChrome from '@/components/layout/SiteChrome'
 import JsonLd from '@/components/seo/JsonLd'
-import { organizationSchema, websiteSchema } from '@/lib/seo'
+import { SITE, organizationSchema, websiteSchema } from '@/lib/seo'
 
 const sora = Sora({
   subsets: ['latin'],
@@ -27,7 +27,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.bartmining.com'),
+  metadataBase: new URL(SITE.url),
   title: {
     default: 'Bart Mining',
     template: '%s | Bart Mining',

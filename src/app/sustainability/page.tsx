@@ -4,11 +4,12 @@ import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import PillarsSection from '@/components/sections/PillarsSection'
 import CtaSection from '@/components/sections/CtaSection'
+import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Sustainability & ESG in Mining | Bart Mining, Africa',
+  title: 'Sustainability & ESG in Mining, Africa',
   description: 'Responsible mining across East & Southern Africa: land & water stewardship, local schools, local hiring, and Free, Prior & Informed Consent aligned to ICMM PE-09. The ground you mine belongs to someone.',
-  alternates: { canonical: 'https://www.bartmining.com/sustainability' },
+  alternates: { canonical: `${SITE.url}/sustainability` },
 }
 
 export default function Sustainability() {

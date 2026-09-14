@@ -8,10 +8,12 @@
  */
 
 export const SITE = {
-  url: 'https://www.bartmining.com',
+  // Apex, not www: Vercel serves bartmining.com as the 200 and 301s www to
+  // it, so canonicals, sitemap and JSON-LD must name the same host.
+  url: 'https://bartmining.com',
   name: 'Bart Mining',
   legalName: 'Bart Mining Consultancy Ltd',
-  logo: 'https://www.bartmining.com/logo.png',
+  logo: 'https://bartmining.com/logo.png',
   phone: '+255759141705',
   email: 'info@bartmining.com',
   street: 'Dar es Salaam',

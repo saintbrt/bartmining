@@ -8,14 +8,22 @@ interface Props {
   className?: string
 }
 
+/**
+ * Server HTML carries the real number, so crawlers and no-JS readers never see
+ * "0+". The count-up only runs for counters that start below the fold; one
+ * already on screen at mount keeps its value rather than flashing back to 0.
+ */
 export default function Counter({ target, suffix = '', className = '' }: Props) {
-  const [val, setVal] = useState(0)
+  const [val, setVal] = useState(target)
   const ref = useRef<HTMLSpanElement>(null)
   const started = useRef(false)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight && rect.bottom > 0) return
+    setVal(0)
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !started.current) {
         started.current = true

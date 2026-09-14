@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import ContactForm from '@/components/sections/ContactForm'
+import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Contact Bart Mining | Mining Consultancy & Equipment, Dar es Salaam',
+  // absolute: the brand already leads, so skip the '%s | Bart Mining' template.
+  title: { absolute: 'Contact Bart Mining | Mining Consultancy & Equipment, Dar es Salaam' },
   description: 'Contact Bart Mining in Dar es Salaam, Tanzania for mining consultancy, mineral exploration, gold processing plants and safety equipment across East & Southern Africa. WhatsApp +255 759 141 705.',
-  alternates: { canonical: 'https://www.bartmining.com/contact' },
+  alternates: { canonical: `${SITE.url}/contact` },
 }
 
 export default function Contact() {

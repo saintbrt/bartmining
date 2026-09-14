@@ -2,7 +2,7 @@
 
 Marketing website and internal data platform for Bart Mining, a principal-led mining consultancy and equipment supplier based in Dar es Salaam, Tanzania, operating across East & Southern Africa.
 
-**Live site:** [bartmining.com](https://www.bartmining.com)
+**Live site:** [bartmining.com](https://bartmining.com)
 
 ---
 

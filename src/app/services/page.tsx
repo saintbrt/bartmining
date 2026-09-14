@@ -5,12 +5,13 @@ import ServiceGrid from '@/components/sections/ServiceGrid'
 import PhasesSection from '@/components/sections/PhasesSection'
 import RegionsSection from '@/components/sections/RegionsSection'
 import CtaSection from '@/components/sections/CtaSection'
+import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Mining & Exploration Services in Tanzania & Africa | Bart Mining',
+  title: 'Mining & Exploration Services in Tanzania & Africa',
   description: 'Mining services across East & Southern Africa: geological survey, mineral exploration, drilling, mine planning & design, processing plants and safety equipment. Principal-led, JORC-compliant, ICMM-aligned.',
-  alternates: { canonical: 'https://www.bartmining.com/services' },
-  openGraph: { type: 'website', url: 'https://www.bartmining.com/services', title: 'Mining & Exploration Services in Tanzania & Africa | Bart Mining', description: 'Geological survey, exploration, mine planning, processing plants and safety equipment across East & Southern Africa.' },
+  alternates: { canonical: `${SITE.url}/services` },
+  openGraph: { type: 'website', url: `${SITE.url}/services`, title: 'Mining & Exploration Services in Tanzania & Africa | Bart Mining', description: 'Geological survey, exploration, mine planning, processing plants and safety equipment across East & Southern Africa.' },
 }
 
 export default function Services() {

@@ -12,25 +12,29 @@ import { MARKETS } from '@/data/markets'
  * Replaces the hand-maintained sitemap.xml at the repository root, which was
  * never served (it sat outside /public) and in any case listed .html URLs
  * from a previous version of the site that now 404.
+ *
+ * lastModified is only set where it is true: the content's own `updated`
+ * date, or request time for the gold-price pages that revalidate hourly.
+ * Pages with no tracked edit date omit it rather than claiming to be fresh.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${SITE.url}/`, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
-    { url: `${SITE.url}/equipment`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
-    { url: `${SITE.url}/services`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE.url}/insights`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${SITE.url}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE.url}/sustainability`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE.url}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE.url}/vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
-    { url: `${SITE.url}/bei-ya-vifaa-vya-uchimbaji`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/`, changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${SITE.url}/equipment`, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${SITE.url}/services`, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${SITE.url}/insights`, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE.url}/about`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE.url}/sustainability`, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE.url}/contact`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/vifaa-vya-uchimbaji`, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/bei-ya-vifaa-vya-uchimbaji`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
-    { url: `${SITE.url}/bei-ya-mashine-ya-kusaga-mawe`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE.url}/jinsi-ya-kupata-leseni-ya-pml`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE.url}/gharama-ya-plant-ya-dhahabu`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE.url}/mrabaha-na-kodi-za-dhahabu`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/bei-ya-mashine-ya-kusaga-mawe`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/jinsi-ya-kupata-leseni-ya-pml`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/gharama-ya-plant-ya-dhahabu`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/mrabaha-na-kodi-za-dhahabu`, changeFrequency: 'monthly', priority: 0.8 },
   ]
 
   const marketPages: MetadataRoute.Sitemap = MARKETS.map(m => ({
@@ -42,7 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const swahiliTownPages: MetadataRoute.Sitemap = LOCATIONS_SW.map(l => ({
     url: `${SITE.url}/vifaa-vya-uchimbaji/${l.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,
   }))
@@ -63,7 +66,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articlePages: MetadataRoute.Sitemap = ARTICLES.map(a => ({
     url: `${SITE.url}/insights/${a.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.7,
   }))

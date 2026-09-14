@@ -4,12 +4,13 @@ import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import Counter from '@/components/ui/Counter'
 import CtaSection from '@/components/sections/CtaSection'
+import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'About & Founder Bartholomew Ambrose | Bart Mining, Tanzania',
+  title: 'About & Founder Bartholomew Ambrose, Tanzania',
   description: 'Bart Mining is a principal-led mining consultancy founded by Bartholomew Ambrose, with 25+ years across 6 continents including Resolute Mine and Barrick Gold. Based in Dar es Salaam, serving East & Southern Africa.',
-  alternates: { canonical: 'https://www.bartmining.com/about' },
-  openGraph: { type: 'website', url: 'https://www.bartmining.com/about', title: 'About & Founder | Bart Mining', description: 'Principal-led mining consultancy built on decades of real operating experience across East & Southern Africa.' },
+  alternates: { canonical: `${SITE.url}/about` },
+  openGraph: { type: 'website', url: `${SITE.url}/about`, title: 'About & Founder | Bart Mining', description: 'Principal-led mining consultancy built on decades of real operating experience across East & Southern Africa.' },
 }
 
 export default function About() {

@@ -10,13 +10,14 @@ import RegionsSection from '@/components/sections/RegionsSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import CtaSection from '@/components/sections/CtaSection'
 import Reveal from '@/components/ui/Reveal'
+import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Bart Mining: Mining Consultancy & Gold Processing Plants | Tanzania & Africa',
   description: 'Bart Mining is a principal-led mining consultancy and equipment supplier in Dar es Salaam, Tanzania. Mineral exploration, geological survey, mine planning, gold processing plants and safety equipment across East & Southern Africa.',
-  alternates: { canonical: 'https://www.bartmining.com/' },
+  alternates: { canonical: `${SITE.url}/` },
   openGraph: {
-    type: 'website', url: 'https://www.bartmining.com/',
+    type: 'website', url: `${SITE.url}/`,
     title: 'Bart Mining: Mining Consultancy & Gold Processing Plants',
     description: 'Principal-led mining consultancy and equipment supply across East & Southern Africa. Resource development done responsibly.',
     images: ['https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg?auto=compress&cs=tinysrgb&w=1200'],
