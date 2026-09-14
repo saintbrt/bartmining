@@ -3,6 +3,8 @@ import Link from 'next/link'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
 import { EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
 import { LOCATIONS } from '@/data/locations'
+import { LOCATIONS_SW_BY_SLUG } from '@/data/locations-sw'
+import { MARKETS } from '@/data/markets'
 import { SITE, faqSchema, breadcrumbSchema, serviceSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 
@@ -166,6 +168,32 @@ export default function SwahiliGateway() {
               </Link>
             </p>
 
+            <h2 id="miongozo">Miongozo kwa Wachimbaji</h2>
+            <ul>
+              {[
+                ['/bei-ya-dhahabu-leo', 'Bei ya dhahabu leo'],
+                ['/bei-ya-mashine-ya-kusaga-mawe', 'Bei ya mashine ya kusaga mawe'],
+                ['/gharama-ya-plant-ya-dhahabu', 'Gharama ya kujenga plant ya dhahabu'],
+                ['/jinsi-ya-kupata-leseni-ya-pml', 'Jinsi ya kupata leseni ya PML'],
+                ['/mrabaha-na-kodi-za-dhahabu', 'Mrabaha na kodi za dhahabu'],
+              ].map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} style={{ color: 'var(--gold)', fontWeight: 600 }}>{label}</Link>
+                </li>
+              ))}
+            </ul>
+
+            <h2 id="masoko">Masoko ya Madini</h2>
+            <ul>
+              {MARKETS.map(m => (
+                <li key={m.slug}>
+                  <Link href={`/soko-la-madini/${m.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>
+                    Soko la madini {m.town}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
             <h2 id="mikoa">Mikoa Tunayohudumia</h2>
             <p>
               Tunasambaza Tanzania nzima kutoka Dar es Salaam. Kwa maelezo ya kina ya kila
@@ -174,7 +202,10 @@ export default function SwahiliGateway() {
             <ul>
               {LOCATIONS.map(l => (
                 <li key={l.slug}>
-                  <Link href={`/equipment/supply/${l.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>
+                  <Link
+                    href={LOCATIONS_SW_BY_SLUG.has(l.slug) ? `/vifaa-vya-uchimbaji/${l.slug}` : `/equipment/supply/${l.slug}`}
+                    style={{ color: 'var(--gold)', fontWeight: 600 }}
+                  >
                     Vifaa vya uchimbaji {l.city}
                   </Link>
                 </li>
