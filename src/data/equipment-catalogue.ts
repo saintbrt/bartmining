@@ -100,7 +100,7 @@ export const EQUIPMENT: Equipment[] = [
     h1: '1 Ton Winch: Specifications, Uses and Maintenance',
     title: '1 Ton Winch: Specs, Uses & Price Guide | Tanzania',
     description:
-      '1 ton winch specifications, line speed, rope size, motor rating and maintenance schedule. Electric and manual 1 tonne winches supplied to Mwanza, Kahama, Geita and Shinyanga.',
+      '1 ton winch specifications: line speed, rope size, motor rating and maintenance. Electric and manual winches supplied to Mwanza, Kahama, Geita and Shinyanga.',
     summary:
       'A 1 ton winch is a drum-and-motor hoisting machine rated to pull or lift 1,000 kg on the first rope layer. In small-scale and artisanal gold mining it is the standard unit for raising ore buckets from shafts under about 60 metres, hauling equipment up inclines and recovering bogged vehicles. A typical electric 1 tonne winch runs an 8–11 mm wire rope at 8–15 m/min from a 1.5–3.0 kW motor on a 400 V three-phase supply, with a fail-safe electromagnetic brake that holds at least 125% of rated load.',
     category: 'hoisting',
@@ -372,8 +372,8 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'centrifugal-gold-concentrator',
     name: 'Centrifugal Gold Concentrator',
-    h1: 'Centrifugal Gold Concentrator: Specs, Recovery and Sizing',
-    title: 'Centrifugal Gold Concentrator: Specs & Recovery | Tanzania',
+    h1: 'Centrifugal Concentrator for Gold Recovery: Specs and Sizing',
+    title: 'Centrifugal Concentrator for Gold Recovery | Tanzania',
     description:
       'Centrifugal gold concentrator specifications, feed rates, G-force, recovery rates and sizing. Knelson and Falcon class gravity units supplied across Tanzania.',
     summary:
@@ -381,7 +381,7 @@ export const EQUIPMENT: Equipment[] = [
     category: 'processing',
     categoryLabel: CATEGORY_LABELS.processing,
     searchTerms: [
-      'centrifugal gold concentrator', 'Knelson concentrator Tanzania',
+      'centrifugal gold concentrator', 'centrifugal concentrator gold recovery', 'Knelson concentrator Tanzania',
       'gravity gold recovery', 'gold concentrator price', 'mercury free gold recovery',
     ],
     specs: [
@@ -422,23 +422,24 @@ export const EQUIPMENT: Equipment[] = [
     related: ['shaking-table-gold', 'gold-elution-electrowinning-plant', 'ball-mill-gold-ore'],
     image: IMG.gold,
     imageAlt: 'Centrifugal gravity gold concentrator bowl in a processing plant',
-    updated: UPDATED,
-    readTime: '9 min read',
+    // Guide sections added (content/equipment), so the page genuinely changed.
+    updated: '2026-09-15',
+    readTime: '14 min read',
   },
   {
     slug: 'gold-elution-electrowinning-plant',
     name: 'Elution & Electrowinning Plant',
-    h1: 'Gold Elution and Electrowinning Plant: Process and Specs',
-    title: 'Gold Elution & Electrowinning Plant Specs | Tanzania',
+    h1: 'Gold Elution Process and Electrowinning Plant: AARL, Zadra and Specs',
+    title: 'Gold Elution Process & Electrowinning Plant | Tanzania',
     description:
-      'Gold elution and electrowinning plant specifications: Zadra and AARL circuits, batch sizes, temperatures, cycle times and cathode handling. Supplied in Tanzania.',
+      'The gold elution process explained: AARL vs Zadra circuits, batch sizes, temperatures, cycle times and electrowinning. Elution plants supplied in Tanzania.',
     summary:
       'An elution and electrowinning plant strips gold from loaded activated carbon and deposits it onto cathodes as the final step before smelting. Carbon is eluted in a heated pressure vessel with caustic cyanide solution at 110–140 °C, and the resulting pregnant eluate is passed through an electrowinning cell where gold plates onto steel wool or stainless cathodes. Batch sizes for small to medium Tanzanian plants typically run 0.5–10 tonnes of carbon per cycle.',
     category: 'processing',
     categoryLabel: CATEGORY_LABELS.processing,
     searchTerms: [
-      'elution plant gold', 'electrowinning cell', 'gold desorption plant',
-      'AARL elution circuit', 'Zadra elution Tanzania',
+      'gold elution process', 'elution plant', 'electrowinning cell', 'gold desorption plant',
+      'AARL vs Zadra elution', 'Zadra elution Tanzania',
     ],
     specs: [
       { label: 'Carbon batch size', value: '0.5–10 t per cycle' },
@@ -446,7 +447,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Operating temperature', value: '110–140 °C' },
       { label: 'Operating pressure', value: '150–350 kPa for pressure Zadra' },
       { label: 'Eluant', value: '1–2% NaOH with 0.1–2% NaCN, per method' },
-      { label: 'Cycle time', value: '8–24 h depending on method and loading' },
+      { label: 'Cycle time', value: '8–14 h AARL; 12–24 h pressure Zadra; 48–72 h atmospheric Zadra' },
       { label: 'Heating', value: 'Diesel or electric boiler with heat exchanger' },
       { label: 'Electrowinning cathodes', value: 'Steel wool or stainless mesh' },
       { label: 'Cell current density', value: '10–40 A/m² typical' },
@@ -476,22 +477,23 @@ export const EQUIPMENT: Equipment[] = [
     related: ['cil-cip-plant', 'centrifugal-gold-concentrator', 'modular-gold-plant'],
     image: IMG.plant,
     imageAlt: 'Elution column and electrowinning cells in a gold plant',
-    updated: UPDATED,
-    readTime: '9 min read',
+    // Guide sections added (content/equipment), so the page genuinely changed.
+    updated: '2026-09-15',
+    readTime: '14 min read',
   },
   {
     slug: 'cil-cip-plant',
     name: 'CIL & CIP Gold Plants',
-    h1: 'CIL and CIP Gold Plants: Process, Sizing and Specifications',
-    title: 'CIL & CIP Gold Plant: Process & Sizing | Tanzania',
+    h1: 'CIP and CIL Gold Plant Design: Process, Sizing and Specifications',
+    title: 'CIP Plant Design & CIL Gold Plants | Tanzania',
     description:
-      'CIL and CIP gold plant specifications: tank sizing, residence time, carbon concentration, leach chemistry and recovery. Plants supplied across Tanzania.',
+      'CIP plant and CIL gold plant design: tank sizing, residence time, carbon concentration, leach chemistry and recovery. Plants supplied across Tanzania.',
     summary:
       'Carbon-in-Leach (CIL) and Carbon-in-Pulp (CIP) plants dissolve gold in a cyanide solution and adsorb it onto activated carbon in a series of agitated tanks. CIL leaches and adsorbs simultaneously in the same tanks; CIP leaches first, then adsorbs in a separate train. Both typically achieve 88–95% recovery on free-milling ore with 18–36 hours total residence time, and are the standard route once ore grade and tonnage outgrow gravity recovery alone.',
     category: 'processing',
     categoryLabel: CATEGORY_LABELS.processing,
     searchTerms: [
-      'CIL plant gold', 'CIP plant Tanzania', 'carbon in leach plant',
+      'CIP plant', 'CIP plant design', 'CIL plant gold', 'CIP plant Tanzania', 'carbon in leach plant',
       'gold leaching plant cost', 'cyanide leach plant Africa',
     ],
     specs: [
@@ -522,6 +524,8 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Annually', task: 'Tank internal inspection and relining as needed; full cyanide management review against the International Cyanide Management Code.' },
     ],
     faqs: [
+      { q: 'What is a CIP plant?', a: 'A CIP (carbon-in-pulp) plant is a gold processing plant that dissolves gold from finely milled ore with dilute cyanide in agitated tanks, then captures the dissolved gold on activated carbon in a following set of tanks. The loaded carbon is stripped in an elution plant and the gold is recovered by electrowinning and smelting.' },
+      { q: 'What does CIL mean in gold processing?', a: 'CIL stands for carbon-in-leach. Activated carbon is added to the leach tanks themselves, so gold is dissolved by cyanide and adsorbed onto carbon in the same tanks at the same time. It uses fewer tanks than CIP and is the usual choice for small and medium plants.' },
       { q: 'What is the difference between CIL and CIP?', a: 'In CIL, leaching and carbon adsorption happen simultaneously in the same tanks. In CIP, the ore is leached to completion first and carbon adsorption happens in a following train. CIL uses fewer tanks and lower capital cost and suits ore with preg-robbing carbonaceous material; CIP gives cleaner control of each step and slightly better carbon management.' },
       { q: 'What recovery should a CIL plant achieve?', a: '88–95% on free-milling ore. Refractory ore where gold is locked in sulphides or associated with carbon can drop well below that without pre-treatment such as flotation, roasting or pressure oxidation. Diagnostic leach test work before plant design is essential, not optional.' },
       { q: 'Is cyanide use legal for gold processing in Tanzania?', a: 'Yes, under permit and subject to environmental regulation administered by NEMC and the Mining Commission, with requirements covering storage, tailings containment, monitoring and emergency response. Many operators additionally align with the International Cyanide Management Code. Obtain current legal advice and permits before procuring a plant.' },
@@ -531,8 +535,9 @@ export const EQUIPMENT: Equipment[] = [
     related: ['gold-elution-electrowinning-plant', 'modular-gold-plant', 'ball-mill-gold-ore'],
     image: IMG.plant,
     imageAlt: 'Carbon-in-leach agitated tank train at a gold processing plant',
-    updated: UPDATED,
-    readTime: '10 min read',
+    // Guide sections added (content/equipment), so the page genuinely changed.
+    updated: '2026-09-15',
+    readTime: '15 min read',
   },
   {
     slug: 'leaching-tank',
@@ -594,7 +599,7 @@ export const EQUIPMENT: Equipment[] = [
     h1: 'Modular Gold Processing Plants: Containerised Plant Specs',
     title: 'Modular Gold Processing Plant: Specs & Sizing | Tanzania',
     description:
-      'Modular and containerised gold processing plants: throughput ranges, footprint, power and water demand, installation time and transport to remote Tanzanian sites.',
+      'Modular and containerised gold plants: throughput, footprint, power and water demand, installation time and transport to remote Tanzanian sites.',
     summary:
       'A modular gold processing plant is a pre-engineered, skid or container-mounted circuit that arrives largely assembled and can be commissioned in weeks rather than months. Typical units run 10–500 tonnes per day and combine crushing, milling, gravity recovery and often a leach circuit on a compact footprint. For remote sites in Geita, Chunya or Kahama, the decisive advantage is that the plant travels on standard trucks and needs minimal civil works.',
     category: 'processing',
@@ -811,16 +816,16 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'rc-drilling-rig',
     name: 'Reverse Circulation (RC) Drilling Rig',
-    h1: 'RC Drilling Rig: Specifications, Depth and Sample Quality',
-    title: 'RC Drilling Rig: Specs, Depth & Costs | Tanzania',
+    h1: 'RC Drilling Rig Specifications: Depth, Diameter and Sample Quality',
+    title: 'RC Drilling Rig Specifications: Depth & Cost | Tanzania',
     description:
-      'Reverse circulation drilling rig specifications: depth capacity, hole diameter, compressor requirement, penetration rates and sample quality for gold exploration.',
+      'RC drilling rig specifications: depth capacity, hole diameter, compressor requirement, penetration rate and sample quality for gold exploration.',
     summary:
       'A reverse circulation (RC) drilling rig cuts rock with a hammer and returns cuttings up the inside of a dual-wall drill pipe, delivering a dry, uncontaminated sample at the surface. RC is the workhorse of gold resource definition because it drills 30–60 metres per shift to depths of 150–500 metres at roughly a third of the cost per metre of diamond core. It cannot give oriented structural measurements, so most programmes pair RC with a smaller amount of core drilling.',
     category: 'exploration',
     categoryLabel: CATEGORY_LABELS.exploration,
     searchTerms: [
-      'RC drilling rig', 'reverse circulation drilling Tanzania', 'exploration drilling cost per metre',
+      'RC drilling rig specifications', 'RC drilling rig', 'reverse circulation drilling Tanzania', 'exploration drilling cost per metre',
       'RC drilling contractor Geita', 'gold exploration drilling rig',
     ],
     specs: [
@@ -865,16 +870,17 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'gold-metal-detector',
     name: 'Gold Prospecting Metal Detector',
-    h1: 'Gold Metal Detectors: VLF vs Pulse Induction for Prospecting',
-    title: 'Gold Metal Detector: VLF vs PI Guide | Tanzania',
+    h1: 'PI vs VLF Gold Detectors: Pulse Induction or VLF for Prospecting',
+    title: 'PI vs VLF Gold Detector: Which to Choose | Tanzania',
     description:
-      'Gold prospecting metal detectors: VLF and pulse induction technology, operating frequency, depth, ground balance and use in Tanzanian lateritic soils.',
+      'PI vs VLF gold detectors compared: depth, mineralised ground, small-gold sensitivity, coils and technique, with a buying checklist for Tanzanian laterite.',
     summary:
       'Gold prospecting metal detectors fall into two families. VLF (very low frequency) detectors run at 18–71 kHz and excel at small nuggets near surface, with discrimination to reject trash. Pulse induction (PI) detectors ignore ground mineralisation almost entirely and find larger nuggets much deeper, which matters greatly in the highly mineralised lateritic soils common across Tanzanian goldfields where VLF machines struggle to stay stable.',
     category: 'exploration',
     categoryLabel: CATEGORY_LABELS.exploration,
     searchTerms: [
-      'gold metal detector Tanzania', 'gold detector price', 'pulse induction gold detector',
+      'PI gold detector', 'VLF gold detector', 'pulse induction vs VLF',
+      'gold metal detector Tanzania', 'gold detector price',
       'nugget detector Africa', 'kifaa cha kutafuta dhahabu',
     ],
     specs: [
@@ -912,8 +918,9 @@ export const EQUIPMENT: Equipment[] = [
     related: ['rc-drilling-rig', 'centrifugal-gold-concentrator', 'shaking-table-gold'],
     image: IMG.survey,
     imageAlt: 'Prospector using a pulse induction gold metal detector',
-    updated: UPDATED,
-    readTime: '7 min read',
+    // Guide sections added (content/equipment), so the page genuinely changed.
+    updated: '2026-09-15',
+    readTime: '12 min read',
   },
 
   // ──────────────────────── PUMPS & DEWATERING ────────────────────────
@@ -1035,7 +1042,7 @@ export const EQUIPMENT: Equipment[] = [
     h1: 'Mining Safety Helmets and Cap Lamps: Standards and Selection',
     title: 'Mining Helmet & Cap Lamp: Standards & Specs | Tanzania',
     description:
-      'Mining safety helmet and cap lamp specifications: EN 397 and ANSI Z89.1 standards, lumen output, battery life, IP rating and ATEX certification for underground use.',
+      'Mining helmet and cap lamp specifications: EN 397 and ANSI Z89.1, lumen output, battery life, IP rating and ATEX certification for underground use.',
     summary:
       'A mining safety helmet protects against falling rock and impact, and carries the cap lamp that is the primary light source underground. Helmets should meet EN 397 or ANSI Z89.1 with a chinstrap and lamp bracket; cap lamps should deliver 8,000–20,000 lux at one metre with 12–16 hours of runtime on a single charge. For gassy workings, the lamp must additionally carry intrinsic safety certification, because an uncertified lamp is a potential ignition source.',
     category: 'safety',
@@ -1087,16 +1094,16 @@ export const EQUIPMENT: Equipment[] = [
   {
     slug: 'self-contained-self-rescuer',
     name: 'Self-Contained Self-Rescuer (SCSR)',
-    h1: 'Self-Contained Self-Rescuers: Duration, Standards and Deployment',
-    title: 'Self-Contained Self-Rescuer (SCSR): Specs | Tanzania',
+    h1: 'SCSR Self-Contained Self-Rescuers: Duration, Standards and Deployment',
+    title: 'SCSR Self-Contained Self-Rescuer: Duration & Specs',
     description:
-      'Self-contained self-rescuer specifications: oxygen duration, chemical oxygen generation, standards, storage, inspection and cache planning for underground mines.',
+      'SCSR self-contained self-rescuer specifications: oxygen duration, standards, storage, inspection and cache planning for underground mines.',
     summary:
       'A self-contained self-rescuer is a portable emergency breathing device that generates its own oxygen chemically, allowing a miner to escape an irrespirable atmosphere after a fire or gas inrush. Units provide 10, 30 or 60 minutes of rated duration, though real escape time varies with exertion. Because rated duration assumes a walking escape, mines size cache locations so that no worker is ever further from a refuge or fresh-air base than the rated duration allows at a realistic pace.',
     category: 'safety',
     categoryLabel: CATEGORY_LABELS.safety,
     searchTerms: [
-      'self contained self rescuer', 'SCSR mining', 'emergency escape breathing apparatus',
+      'SCSR', 'self contained self rescuer', 'miners self rescuer', 'SCSR mining', 'emergency escape breathing apparatus',
       'self rescuer price', 'mine escape respirator',
     ],
     specs: [
@@ -1254,7 +1261,7 @@ export const EQUIPMENT: Equipment[] = [
     h1: 'Mine Ventilation Fans: Airflow Sizing and Duct Selection',
     title: 'Mine Ventilation Fan: Airflow Sizing & Specs | Tanzania',
     description:
-      'Mine ventilation fan specifications: airflow, pressure, duct diameter and friction loss, auxiliary versus main fans, and airflow requirements per worker and per engine.',
+      'Mine ventilation fan specifications: airflow, pressure, duct size and friction loss, auxiliary vs main fans, and airflow needed per worker and engine.',
     summary:
       'A mine ventilation fan supplies the fresh air that dilutes blasting fumes, diesel exhaust, dust and naturally occurring gases to safe concentrations. Auxiliary fans for small workings move 1–20 cubic metres per second through flexible or rigid ducting; main surface fans handle far more. Airflow requirements are set by regulation and typically driven by the largest of three figures: air per person underground, air per kilowatt of diesel equipment, and the volume needed to clear blast fumes within the re-entry period.',
     category: 'safety',
@@ -1311,7 +1318,7 @@ export const EQUIPMENT: Equipment[] = [
     h1: 'Mine Management Software: Modules, Deployment and Selection',
     title: 'Mine Management Software: Modules & Cost | Tanzania',
     description:
-      'Mine management software for small and medium operations: production reporting, inventory, gold reconciliation, compliance records and offline-capable deployment.',
+      'Mine management software for small and medium mines: production reporting, inventory, gold reconciliation, compliance records and offline use.',
     summary:
       'Mine management software replaces the spreadsheets and paper books that most small and medium operations still run on, giving one record of production, inventory, equipment, sales and compliance. For Tanzanian operations the decisive requirement is usually offline capability: connectivity at site in Kahama or Chunya is intermittent, so a system that only works online will be abandoned within weeks. The strongest return normally comes from gold reconciliation and consumables tracking, where unmeasured losses are largest.',
     category: 'software',

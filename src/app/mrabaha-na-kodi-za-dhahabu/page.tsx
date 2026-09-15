@@ -21,8 +21,9 @@ const URL = `${SITE.url}/mrabaha-na-kodi-za-dhahabu`
 export const metadata: Metadata = {
   title: 'Mrabaha na Kodi za Dhahabu Tanzania 2026',
   description:
-    'Mrabaha wa dhahabu Tanzania 2026: asilimia 6, 4 kwa Benki Kuu na 2 kwa viwanda vya kusafisha, ada ya ukaguzi, tozo ya UKIMWI, sharti la asilimia 20 kuuzwa nchini, na mfano wa hesabu.',
-  alternates: { canonical: URL, languages: { 'sw-TZ': URL } },
+    'Mrabaha wa dhahabu Tanzania 2026: asilimia 6, ada ya ukaguzi, tozo ya UKIMWI, sharti la asilimia 20 kuuzwa nchini, na mfano wa hesabu.',
+  // No English counterpart, so no hreflang: a self-only annotation does nothing.
+  alternates: { canonical: URL },
   openGraph: { type: 'article', url: URL, locale: 'sw_TZ', title: 'Mrabaha na Kodi za Dhahabu Tanzania' },
 }
 

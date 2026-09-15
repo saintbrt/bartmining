@@ -16,10 +16,10 @@ import SwahiliArticle, { type SwFaq } from '@/components/sw/SwahiliArticle'
 const URL = `${SITE.url}/bei-ya-mashine-ya-kusaga-mawe`
 
 export const metadata: Metadata = {
-  title: 'Bei ya Mashine ya Kusaga Mawe ya Dhahabu (Ball Mill) Tanzania',
+  title: 'Bei ya Mashine ya Kusaga Mawe (Ball Mill) Tanzania',
   description:
-    'Bei ya mashine ya kusaga mawe ya dhahabu Tanzania: ball mill, jaw crusher na hammer mill. Kinachoamua bei, ukubwa sahihi kwa kiasi cha mawe yako, na gharama za kuendesha.',
-  alternates: { canonical: URL, languages: { 'sw-TZ': URL, en: `${SITE.url}/equipment/ball-mill-gold-ore` } },
+    'Bei ya mashine ya kusaga mawe ya dhahabu Tanzania: ball mill, jaw crusher na hammer mill, kinachoamua bei, ukubwa sahihi na gharama za kuendesha.',
+  alternates: { canonical: URL, languages: { 'sw-TZ': URL, en: `${SITE.url}/equipment/ball-mill-gold-ore`, 'x-default': `${SITE.url}/equipment/ball-mill-gold-ore` } },
   openGraph: { type: 'article', url: URL, locale: 'sw_TZ', title: 'Bei ya Mashine ya Kusaga Mawe ya Dhahabu' },
 }
 

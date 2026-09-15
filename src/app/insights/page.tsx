@@ -5,7 +5,7 @@ import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Mining Knowledge Center, East & Southern Africa',
-  description: 'Expert guides on gold, diamond, copper and platinum exploration services across Tanzania, Zambia, Botswana, Zimbabwe, South Africa and the wider African mining belt.',
+  description: 'Practical guides for miners in Tanzania and East Africa: gold processing, equipment costs, selling gold, compliance, exploration and consulting.',
   alternates: { canonical: `${SITE.url}/insights` },
 }
 

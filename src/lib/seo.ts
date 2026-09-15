@@ -7,6 +7,8 @@
  * matching these values, so divergence between pages weakens the signal.
  */
 
+import { type Author, personId } from '@/data/authors'
+
 export const SITE = {
   // Apex, not www: Vercel serves bartmining.com as the 200 and 301s www to
   // it, so canonicals, sitemap and JSON-LD must name the same host.
@@ -15,7 +17,9 @@ export const SITE = {
   legalName: 'Bart Mining Consultancy Ltd',
   logo: 'https://bartmining.com/logo.png',
   phone: '+255759141705',
-  email: 'info@bartmining.com',
+  // The monitored public inbox (confirmed Sep 2026). Contact-form
+  // notifications are routed separately, in src/app/api/contact/route.ts.
+  email: 'hello@bartmining.com',
   street: 'Dar es Salaam',
   city: 'Dar es Salaam',
   country: 'TZ',
@@ -72,7 +76,10 @@ export function organizationSchema(): Json {
   }
 }
 
-/** Website entity, enables sitelinks search box eligibility. */
+/**
+ * Website entity. Names the site for Google's site-name feature; it no longer
+ * earns a sitelinks search box (Google retired that in Nov 2024).
+ */
 export function websiteSchema(): Json {
   return {
     '@context': 'https://schema.org',
@@ -152,30 +159,21 @@ export function productSchema(p: ProductSchemaInput): Json {
   }
 }
 
-/** Long-form guide body wrapping a product page, for article-style surfaces. */
-export function techArticleSchema(a: {
-  slug: string
-  title: string
-  description: string
-  image: string
-  datePublished: string
-  dateModified: string
-  section: string
-}): Json {
+/** A named person, anchored on /about so every byline resolves to one entity. */
+export function personSchema(p: Author): Json {
   return {
     '@context': 'https://schema.org',
-    '@type': 'TechArticle',
-    '@id': `${SITE.url}/equipment/${a.slug}#article`,
-    headline: a.title,
-    description: a.description,
-    image: [a.image],
-    datePublished: a.datePublished,
-    dateModified: a.dateModified,
-    articleSection: a.section,
-    inLanguage: 'en',
-    author: { '@id': `${SITE.url}/#organization` },
-    publisher: { '@id': `${SITE.url}/#organization` },
-    mainEntityOfPage: `${SITE.url}/equipment/${a.slug}`,
+    '@type': 'Person',
+    '@id': personId(SITE.url, p.id),
+    name: p.name,
+    jobTitle: p.jobTitle,
+    description: p.bio,
+    url: `${SITE.url}/about#${p.id}`,
+    ...(p.image ? { image: `${SITE.url}${p.image}` } : {}),
+    worksFor: { '@id': `${SITE.url}/#organization` },
+    knowsAbout: p.knowsAbout,
+    ...(p.alumniOf ? { alumniOf: { '@type': 'CollegeOrUniversity', name: p.alumniOf } } : {}),
+    ...(p.sameAs.length ? { sameAs: p.sameAs } : {}),
   }
 }
 
@@ -185,7 +183,11 @@ export function articleSchema(a: {
   description: string
   image: string
   datePublished: string
+  /** Only when the body actually changed; defaults to datePublished. */
+  dateModified?: string
   section: string
+  /** Named author. Falls back to the organisation for pages without one. */
+  author?: Author
 }): Json {
   return {
     '@context': 'https://schema.org',
@@ -195,10 +197,12 @@ export function articleSchema(a: {
     description: a.description,
     image: [a.image],
     datePublished: a.datePublished,
-    dateModified: a.datePublished,
+    dateModified: a.dateModified ?? a.datePublished,
     articleSection: a.section,
     inLanguage: 'en',
-    author: { '@id': `${SITE.url}/#organization` },
+    author: a.author
+      ? { '@type': 'Person', '@id': personId(SITE.url, a.author.id), name: a.author.name, url: `${SITE.url}/about#${a.author.id}` }
+      : { '@id': `${SITE.url}/#organization` },
     publisher: { '@id': `${SITE.url}/#organization` },
     mainEntityOfPage: `${SITE.url}/insights/${a.slug}`,
   }

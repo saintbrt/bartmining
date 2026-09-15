@@ -44,7 +44,7 @@ export const LOCATIONS: Location[] = [
     region: 'Mwanza Region',
     title: 'Mining Equipment Supply in Mwanza, Tanzania',
     description:
-      'Mining equipment supplied to Mwanza and the surrounding Sukumaland goldfields: gravity plants, mills, crushers, pumps, winches and safety equipment, delivered from Dar es Salaam.',
+      'Mining equipment for Mwanza and the Sukumaland goldfields: gravity plants, mills, crushers, pumps, winches and safety equipment, delivered from Dar es Salaam.',
     summary:
       'Mwanza is the commercial base of the Lake Victoria Goldfields and the natural staging point for equipment reaching Sengerema, Misungwi, Buchosa, Kwimba and Magu. As Tanzania’s second city it has the workshops, freight handling and skilled trades that outlying districts do not, which is why most equipment bound for the goldfields is consolidated, cleared or repaired here before it moves on.',
     logistics: [
@@ -78,7 +78,7 @@ export const LOCATIONS: Location[] = [
     region: 'Geita Region',
     title: 'Mining Equipment Supply in Geita, Tanzania',
     description:
-      'Mining equipment supplied to Geita: gravity recovery plants, crushers, mills, pumps and safety equipment for small-scale operations alongside Tanzania’s largest gold mine.',
+      'Mining equipment supplied to Geita: gravity plants, crushers, mills, pumps and safety equipment for small-scale miners beside Tanzania’s largest gold mine.',
     summary:
       'Geita has the highest concentration of gold mining activity in Tanzania, anchored by Geita Gold Mine, one of the largest gold operations in Africa, and surrounded by an unusually dense small-scale sector working the same greenstone belt. That combination gives the district a two-tier equipment market: contractor and consumable supply serving a major operation, and complete small plants serving licensed small mines nearby.',
     logistics: [
@@ -119,7 +119,7 @@ export const LOCATIONS: Location[] = [
     region: 'Shinyanga Region',
     title: 'Mining Equipment Supply in Kahama, Tanzania',
     description:
-      'Mining equipment supplied to Kahama and Msalala: underground winches, ventilation fans, dewatering pumps and safety equipment, delivered via the Central Corridor and Isaka.',
+      'Mining equipment for Kahama and Msalala: underground winches, ventilation fans, dewatering pumps and safety equipment, delivered via Isaka.',
     summary:
       'Kahama is the underground mining centre of the Tanzanian goldfields and the best-connected of the three for freight, because it sits on the Central Corridor with the Isaka inland container depot nearby. Bulyanhulu, one of the country’s major underground gold mines, sits in Msalala district, and the surrounding small-scale sector works deeper shafts than is typical elsewhere in the region.',
     logistics: [
@@ -157,7 +157,7 @@ export const LOCATIONS: Location[] = [
     region: 'Mbeya Region',
     title: 'Mining Equipment Supply in Chunya, Tanzania',
     description:
-      'Mining equipment supplied to Chunya, Makongolosi and the Lupa Goldfield: crushers, ball mills, concentrators, CIP leaching tanks and elution plants, delivered via Mbeya.',
+      'Mining equipment for Chunya, Makongolosi and the Lupa Goldfield: crushers, ball mills, concentrators, CIP tanks and elution plants, delivered via Mbeya.',
     summary:
       'Chunya is the centre of the Lupa Goldfield, one of Tanzania’s oldest gold mining districts and now one of its most active small-scale processing areas. Around Makongolosi, Matundasi and Itumbi, licensed small miners run complete processing plants with crushers, ball mills, gravity concentrators, CIP tanks and elution units, and Chunya hosts a government mineral market. It is served from Mbeya on the southern TAZARA corridor rather than through the Lake Zone.',
     logistics: [
@@ -196,7 +196,7 @@ export const LOCATIONS: Location[] = [
     region: 'Mara Region',
     title: 'Mining Equipment Supply in Tarime and Nyamongo, Tanzania',
     description:
-      'Mining equipment supplied to Tarime, Nyamongo and the North Mara goldfield: gravity plants, ball mills, crushers, leach tanks and pumps for newly licensed small-scale miners.',
+      'Mining equipment for Tarime, Nyamongo and the North Mara goldfield: gravity plants, ball mills, crushers, leach tanks and pumps for small-scale miners.',
     summary:
       'Tarime District in Mara Region is home to North Mara Gold Mine and to Nyamongo, one of Tanzania’s best-known small-scale gold areas since its boom of the 1970s and 1980s. In 2025 the government, working with the mine operator, formally licensed around 2,000 small-scale miners in 48 youth groups around Nyamongo, creating a large new base of legal operations that need their first equipment.',
     logistics: [
@@ -232,7 +232,7 @@ export const LOCATIONS: Location[] = [
     region: 'Shinyanga Region',
     title: 'Mining Equipment Supply in Shinyanga, Tanzania',
     description:
-      'Mining equipment supplied to Shinyanga and Mwakitolyo: ball mills, concentrators, shaking tables, shaft winches, pumps and generators for small-scale gold miners.',
+      'Mining equipment for Shinyanga and Mwakitolyo: ball mills, concentrators, shaking tables, shaft winches, pumps and generators for small-scale gold miners.',
     summary:
       'Shinyanga Region combines Tanzania’s diamond heartland at Mwadui with an active small-scale gold sector around Mwakitolyo and the rural districts west of Shinyanga town. The government has announced a Mineral Processing Center at Mwakitolyo to expand local value addition, which reflects how central small-scale gold has become to the region.',
     logistics: [
@@ -268,7 +268,7 @@ export const LOCATIONS: Location[] = [
     region: 'Singida Region',
     title: 'Mining Equipment Supply in Singida, Tanzania',
     description:
-      'Mining equipment supplied to Singida, Sekenke, Iramba and Ikungi: crushers, ball mills, concentrators, compressors and generators for gold miners in central Tanzania.',
+      'Mining equipment for Singida, Sekenke, Iramba and Ikungi: crushers, ball mills, concentrators, compressors and generators for central Tanzania gold miners.',
     summary:
       'Singida is central Tanzania’s gold region, worked since 1909 when the Sekenke mine opened, and revived by discoveries at Londoni, Sambaru and Mang’onyi in 2004. Small-scale mining has been semi-mechanised since the early 2000s, and the Singida Gold Mine in Ikungi District reached commercial production in 2023. It is closer to Dar es Salaam than any Lake Zone goldfield.',
     logistics: [
@@ -303,7 +303,7 @@ export const LOCATIONS: Location[] = [
     region: 'Tabora Region',
     title: 'Mining Equipment Supply in Nzega and Igunga, Tabora',
     description:
-      'Mining equipment supplied to Nzega, Igunga and Tabora Region: ball mills, concentrators, shaking tables, shaft winches and generators for small-scale gold miners on the Nzega greenstone belt.',
+      'Mining equipment for Nzega, Igunga and Tabora: ball mills, concentrators, shaking tables, shaft winches and generators for small-scale gold miners.',
     summary:
       'Nzega is where Tanzania’s modern gold industry began. Golden Pride at Lusu, 18 km north of Nzega town, was the first modern commercial gold mine built in the country, producing over 2.2 million ounces between 1998 and 2013. Since its closure, small-scale miners across Nzega and neighbouring Igunga, at sites such as Mwashiku, have become the backbone of Tabora Region’s gold production.',
     logistics: [
@@ -338,7 +338,7 @@ export const LOCATIONS: Location[] = [
     region: 'Mara Region',
     title: 'Mining Equipment Supply in Musoma and Butiama, Mara',
     description:
-      'Mining equipment supplied to Musoma, Butiama, Kiabakari and Buhemba: shaft winches, pumps, safety equipment, mills and concentrators for gold miners on the Musoma-Mara greenstone belt.',
+      'Mining equipment for Musoma, Butiama, Kiabakari and Buhemba: shaft winches, pumps, safety gear, mills and concentrators on the Musoma-Mara belt.',
     summary:
       'Musoma is the Lake Victoria port town of Mara Region and the base for gold mining in Butiama District, home to the historic Kiabakari and Buhemba mines. Buhemba shows both the potential and the risk of the district: after a collapse there trapped small-scale miners, mining was suspended and the site was mapped for handover to licensed groups. Safe underground working is as central to buying here as recovery.',
     logistics: [
@@ -373,7 +373,7 @@ export const LOCATIONS: Location[] = [
     region: 'Katavi Region',
     title: 'Mining Equipment Supply in Mpanda, Katavi',
     description:
-      'Mining equipment supplied to Mpanda and the Mpanda Mineral Field: ball mills, concentrators, leach tanks and elution for small-scale gold miners at Ibindi, Kapanda and Katuma.',
+      'Mining equipment for Mpanda and the Mpanda Mineral Field: ball mills, concentrators, leach tanks and elution for gold miners at Ibindi, Kapanda and Katuma.',
     summary:
       'Mpanda is the centre of the Mpanda Mineral Field in western Tanzania, where small-scale miners at Ibindi, Kapanda and Katuma run vat leaching plants. Research on those plants found average recovery below 57 percent, which means much of the gold mined in Katavi is lost. The region has mineral markets in Mpanda Municipality and at Karema, and the Katavi mineral market has handled tens of billions of shillings of gold.',
     logistics: [
@@ -408,7 +408,7 @@ export const LOCATIONS: Location[] = [
     region: 'Tanga Region',
     title: 'Mining Equipment Supply in Handeni, Tanga',
     description:
-      'Mining equipment supplied to Handeni and the Magambazi gold field: crushers, ball mills, concentrators, compressors and pumps, with the shortest delivery from Dar es Salaam or Tanga port.',
+      'Mining equipment for Handeni and the Magambazi gold field: crushers, ball mills, concentrators, compressors and pumps, close to Dar es Salaam and Tanga port.',
     summary:
       'Handeni is the closest goldfield to a seaport in Tanzania. Gold discovered by local people at Magambazi in 2003 set off a rush of alluvial and hard-rock mining, and exploration later confirmed a significant quartz vein deposit. For equipment buyers, the defining advantage is distance: Handeni is a day’s drive from Dar es Salaam and close to Tanga port, compared with three days or more to the Lake Zone.',
     logistics: [
@@ -439,9 +439,9 @@ export const LOCATIONS: Location[] = [
     slug: 'dar-es-salaam',
     city: 'Dar es Salaam',
     region: 'Dar es Salaam Region',
-    title: 'Mining Equipment Supply in Dar es Salaam: Import and Port Clearance',
+    title: 'Mining Equipment in Dar es Salaam: Import & Clearance',
     description:
-      'Mining equipment imported through Dar es Salaam: port clearance, landed cost, consolidating shipments, and onward delivery to Geita, Chunya, Kahama, Singida and every goldfield in Tanzania.',
+      'Mining equipment imported through Dar es Salaam: port clearance, landed cost, consolidated shipments and delivery to every goldfield in Tanzania.',
     summary:
       'Dar es Salaam is where almost every piece of imported mining equipment enters Tanzania and where Bart Mining is based. For buyers anywhere in the country, the quality of what happens at the port, from customs classification to consolidation and onward transport, decides whether a plant arrives on time and on budget. This page covers what matters at the Dar es Salaam end of the supply chain.',
     logistics: [
@@ -474,9 +474,9 @@ export const LOCATIONS: Location[] = [
     slug: 'mererani',
     city: 'Mererani',
     region: 'Manyara Region',
-    title: 'Mining Equipment Supply in Mererani and Arusha: Tanzanite Mining',
+    title: 'Tanzanite Mining Equipment, Mererani & Arusha',
     description:
-      'Underground mining equipment for Mererani tanzanite mines near Arusha: shaft winches and hoists, ventilation fans, compressors, dewatering pumps, gas detectors and self-rescuers.',
+      'Underground equipment for Mererani tanzanite mines near Arusha: shaft winches, ventilation fans, compressors, pumps, gas detectors and self-rescuers.',
     summary:
       'Mererani, in Simanjiro District near Arusha, is the only place in the world where tanzanite is mined commercially. The mining area covers less than 17 square kilometres and is worked mainly by small-scale and artisanal operators through deep, narrow shafts. That makes Mererani the most demanding underground environment in the Tanzanian small-scale sector, and its equipment needs centre on hoisting, ventilation and safety rather than processing.',
     logistics: [

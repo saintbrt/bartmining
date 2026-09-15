@@ -12,21 +12,24 @@ export default function HeroSection() {
         {/* Copy */}
         <div>
           <Reveal delay={1}>
-            <h1 style={{ fontSize: 'clamp(40px,5.2vw,68px)' }}>
-              Responsible <span className="grad">resource<br />development</span>
+            {/* The H1 names the job a searcher came for (consultancy + gold
+                equipment, Tanzania) so it agrees with the page title. */}
+            <h1 style={{ fontSize: 'clamp(34px,4.4vw,56px)' }}>
+              Mining consultancy &amp; <span className="grad">gold processing equipment</span> in Tanzania
             </h1>
           </Reveal>
           <Reveal delay={2}>
             <p style={{ fontSize: 18, color: 'var(--ink-2)', marginTop: 22, lineHeight: 1.7, maxWidth: 500 }}>
-              End-to-end mining consultancy and equipment supply, principal-led from first outcrop to final rehabilitation. Hands in the rock, not just theory on a slide deck.
+              Technical consulting, resource estimation and gold plants, winches and mine safety equipment supplied across East &amp; Southern Africa. Principal-led from first outcrop to final rehabilitation.
             </p>
           </Reveal>
           <Reveal delay={3} className="hero-actions" style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
-            <Link href="/services" className="btn btn-gold">
-              Explore our services
+            <Link href="/equipment" className="btn btn-gold">
+              Browse equipment
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </Link>
-            <Link href="#method" className="btn btn-ghost">How we work</Link>
+            <Link href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">WhatsApp for a quote</Link>
+            <Link href="/insights/mining-consulting-africa" className="btn btn-ghost">Consulting services</Link>
           </Reveal>
           <Reveal delay={4} className="hero-stats" style={{ display: 'flex', alignItems: 'center', gap: 28, marginTop: 40, flexWrap: 'wrap' }}>
             <div>

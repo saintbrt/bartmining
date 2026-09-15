@@ -16,10 +16,10 @@ const URL = `${SITE.url}/gharama-ya-plant-ya-dhahabu`
 const EN = `${SITE.url}/insights/gold-plant-setup-cost`
 
 export const metadata: Metadata = {
-  title: 'Gharama ya Kujenga Plant ya Dhahabu Tanzania (CIP na Elution)',
+  title: 'Gharama ya Kujenga Plant ya Dhahabu Tanzania',
   description:
-    'Gharama ya kujenga plant ya dhahabu Tanzania: plant ya concentrator, CIP/CIL na elution kwa tani 10 hadi 100 kwa siku, gharama zilizo nje ya bei ya mashine, na gharama za kuendesha.',
-  alternates: { canonical: URL, languages: { 'sw-TZ': URL, en: EN } },
+    'Gharama ya kujenga plant ya dhahabu Tanzania: concentrator, CIP/CIL na elution kwa tani 10 hadi 100 kwa siku, gharama nje ya bei ya mashine na za kuendesha.',
+  alternates: { canonical: URL, languages: { 'sw-TZ': URL, en: EN, 'x-default': EN } },
   openGraph: { type: 'article', url: URL, locale: 'sw_TZ', title: 'Gharama ya Kujenga Plant ya Dhahabu' },
 }
 

@@ -1,5 +1,19 @@
 import Link from 'next/link'
-import { EAST_AFRICA, SOUTHERN_AFRICA } from '@/data/regions'
+import { LOCATIONS } from '@/data/locations'
+
+const SW_LINKS = [
+  { href: '/vifaa-vya-uchimbaji', label: 'Vifaa vya uchimbaji' },
+  { href: '/bei-ya-vifaa-vya-uchimbaji', label: 'Bei ya vifaa' },
+  { href: '/bei-ya-dhahabu-leo', label: 'Bei ya dhahabu leo' },
+  { href: '/jinsi-ya-kupata-leseni-ya-pml', label: 'Leseni ya PML' },
+  { href: '/gharama-ya-plant-ya-dhahabu', label: 'Gharama ya plant' },
+  { href: '/mrabaha-na-kodi-za-dhahabu', label: 'Mrabaha na kodi' },
+]
+
+const COVERAGE = ['Tanzania', 'Kenya', 'Uganda', 'Rwanda', 'DRC', 'Zambia', 'Zimbabwe', 'Mozambique', 'South Africa', 'Namibia', 'Botswana', 'Ethiopia']
+
+const headStyle = { fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,.62)', marginBottom: 18 } as const
+const linkStyle = { display: 'block', fontSize: 15, color: 'rgba(255,255,255,.75)', marginBottom: 9, transition: 'color .2s' } as const
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -45,38 +59,39 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* East Africa */}
+          {/* Equipment supply by town. Every name links to a real district
+              page; plain city lists read as a keyword block. */}
           <div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,.62)', marginBottom: 18 }}>East Africa</div>
-            {EAST_AFRICA.map(r => (
-              <div key={r.c} style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,.72)', marginBottom: 2 }}>{r.c}</div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,.62)', lineHeight: 1.7 }}>{r.cities.join(' · ')}</div>
-              </div>
-            ))}
+            <div style={headStyle}>Equipment supply, Tanzania</div>
+            <div style={{ columnCount: 2, columnGap: 16 }}>
+              {LOCATIONS.map(l => (
+                <Link key={l.slug} href={`/equipment/supply/${l.slug}`} style={linkStyle}>
+                  {l.city}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Southern Africa */}
-          <div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,.62)', marginBottom: 18 }}>Southern Africa</div>
-            {SOUTHERN_AFRICA.slice(0, 8).map(r => (
-              <div key={r.c} style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,.72)', marginBottom: 2 }}>{r.c}</div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,.62)', lineHeight: 1.7 }}>{r.cities.join(' · ')}</div>
-              </div>
+          {/* Kiswahili */}
+          <div lang="sw">
+            <div style={headStyle}>Kwa Kiswahili</div>
+            {SW_LINKS.map(l => (
+              <Link key={l.href} href={l.href} hrefLang="sw" style={linkStyle}>
+                {l.label}
+              </Link>
             ))}
           </div>
         </div>
 
         {/* Bottom bar */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 28, flexWrap: 'wrap', gap: 12 }}>
-          <div style={{ fontSize: 13.5, color: 'rgba(255,255,255,.62)' }}>
-            &copy; {year} Bart Mining Consultancy Ltd. All rights reserved.
+          <div style={{ fontSize: 13.5, color: 'rgba(255,255,255,.62)', display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+            <span>&copy; {year} Bart Mining Consultancy Ltd. All rights reserved.</span>
+            <Link href="/privacy" style={{ color: 'rgba(255,255,255,.75)' }}>Privacy</Link>
+            <Link href="/terms" style={{ color: 'rgba(255,255,255,.75)' }}>Terms</Link>
           </div>
-          <div style={{ display: 'flex', gap: 24 }}>
-            {['Privacy', 'Terms'].map(l => (
-              <span key={l} style={{ fontSize: 13.5, color: 'rgba(255,255,255,.62)' }}>{l}</span>
-            ))}
+          <div style={{ fontSize: 13.5, color: 'rgba(255,255,255,.62)' }}>
+            Working across {COVERAGE.join(' · ')}
           </div>
         </div>
       </div>

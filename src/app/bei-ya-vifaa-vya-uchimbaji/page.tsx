@@ -22,10 +22,10 @@ const EN = `${SITE.url}/insights/mining-equipment-cost-tanzania`
 export const metadata: Metadata = {
   title: 'Bei ya Vifaa vya Uchimbaji Madini Tanzania',
   description:
-    'Bei ya vifaa vya uchimbaji madini Tanzania: gharama za usafirishaji, ushuru wa forodha, VAT, kutoa mzigo bandarini Dar es Salaam na usafiri hadi Mwanza, Geita na Kahama.',
+    'Bei ya vifaa vya uchimbaji Tanzania: usafirishaji, ushuru wa forodha, VAT, kutoa mzigo bandarini Dar es Salaam na usafiri hadi Mwanza, Geita na Kahama.',
   alternates: {
     canonical: URL,
-    languages: { 'sw-TZ': URL, en: EN },
+    languages: { 'sw-TZ': URL, en: EN, 'x-default': EN },
   },
   openGraph: {
     type: 'article', url: URL, locale: 'sw_TZ',

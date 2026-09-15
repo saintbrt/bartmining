@@ -3,14 +3,24 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { EQUIPMENT, EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
-import { SITE, SERVICE_AREAS, productSchema, techArticleSchema, faqSchema, breadcrumbSchema } from '@/lib/seo'
+import { SITE, SERVICE_AREAS, productSchema, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 import ReadingProgress from '@/components/insights/ReadingProgress'
 import { resolveEquipmentPhoto } from '@/lib/equipment-photos'
 import { LOCATIONS } from '@/data/locations'
+import { EQUIPMENT_GUIDES } from '@/content/equipment'
 
 export async function generateStaticParams() {
   return EQUIPMENT.map(e => ({ slug: e.slug }))
+}
+
+/**
+ * Product pages with a Kiswahili counterpart. hreflang must be declared on
+ * both sides of a pair or Google ignores it, so this mirrors the `en` link
+ * the Swahili page already gives.
+ */
+const SWAHILI_COUNTERPART: Record<string, string> = {
+  'ball-mill-gold-ore': '/bei-ya-mashine-ya-kusaga-mawe',
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -22,11 +32,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // photo where one has been uploaded rather than the stock fallback.
   const photo = resolveEquipmentPhoto(e.slug)
   const ogImage = photo ? `${SITE.url}${photo}` : e.image
+  const sw = SWAHILI_COUNTERPART[e.slug]
   return {
     title: e.title,
     description: e.description,
     keywords: e.searchTerms,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      ...(sw ? { languages: { en: url, 'sw-TZ': `${SITE.url}${sw}`, 'x-default': url } } : {}),
+    },
     openGraph: {
       type: 'article',
       url,
@@ -57,6 +71,8 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
   // Districts whose supply page lists this item as a typical purchase.
   const buyingDistricts = LOCATIONS.filter(l => l.buys.includes(item.slug))
 
+  const guide = EQUIPMENT_GUIDES[item.slug] ?? []
+
   const schemas = [
     productSchema({
       slug: item.slug,
@@ -66,15 +82,6 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       category: item.categoryLabel,
       specs: item.specs,
       applications: item.applications,
-    }),
-    techArticleSchema({
-      slug: item.slug,
-      title: item.h1,
-      description: item.description,
-      image: schemaImage,
-      datePublished: item.updated,
-      dateModified: item.updated,
-      section: item.categoryLabel,
     }),
     faqSchema(item.faqs),
     breadcrumbSchema([
@@ -132,6 +139,14 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
         <div className="eq-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 56, alignItems: 'start' }}>
           <article className="art-body">
 
+            {/* ── Guide sections (only pages with an entry in content/equipment) ── */}
+            {guide.map(s => (
+              <section key={s.id}>
+                <h2 id={s.id}>{s.title}</h2>
+                <div dangerouslySetInnerHTML={{ __html: s.html }} />
+              </section>
+            ))}
+
             {/* ── Specifications ── */}
             <h2 id="specifications">{item.name} Specifications</h2>
             <p>
@@ -159,7 +174,8 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             </div>
 
             {/* ── Applications ── */}
-            <h2 id="applications">What a {item.name} Is Used For</h2>
+            {/* Phrased to read correctly for singular, plural and vowel-initial names. */}
+            <h2 id="applications">{item.name}: Uses and Applications</h2>
             <ul>
               {item.applications.map(a => <li key={a}>{a}</li>)}
             </ul>
@@ -250,6 +266,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>On this page</div>
               <nav style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                 {[
+                  ...guide.map(s => [s.id, s.title]),
                   ['specifications', 'Specifications'],
                   ['applications', 'Applications'],
                   ['maintenance', 'Maintenance'],
@@ -299,7 +316,12 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
           .eq-layout aside { display: none !important; }
         }
         .art-body h2 { font-size: clamp(20px,2.2vw,26px); font-weight: 700; margin: 44px 0 14px; color: var(--ink); line-height: 1.3; }
-        .art-body h2:first-child { margin-top: 0; }
+        .art-body h2:first-child, .art-body > section:first-child h2 { margin-top: 0; }
+        .art-body ol { margin: 0 0 18px; padding-left: 22px; }
+        .art-body a { color: var(--gold-deep); text-decoration: underline; text-decoration-color: var(--line); }
+        .eq-table-3 th[scope="row"] { width: 26%; }
+        .eq-figure { margin: 8px 0 28px; padding: 20px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg-3); color: var(--ink); }
+        .eq-figure figcaption { font-size: 14px; color: var(--ink-3); margin-top: 12px; line-height: 1.6; }
         .art-body h3 { font-size: clamp(16px,1.6vw,19px); font-weight: 700; margin: 26px 0 8px; color: var(--ink); }
         .art-body p { font-size: 16px; line-height: 1.75; color: var(--ink-2); margin-bottom: 18px; }
         .art-body ul { margin: 0 0 18px; padding-left: 20px; }

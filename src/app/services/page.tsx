@@ -9,7 +9,7 @@ import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Mining & Exploration Services in Tanzania & Africa',
-  description: 'Mining services across East & Southern Africa: geological survey, mineral exploration, drilling, mine planning & design, processing plants and safety equipment. Principal-led, JORC-compliant, ICMM-aligned.',
+  description: 'Mining services across East & Southern Africa: geological survey, exploration, drilling, mine planning, processing plants and safety equipment. JORC-compliant.',
   alternates: { canonical: `${SITE.url}/services` },
   openGraph: { type: 'website', url: `${SITE.url}/services`, title: 'Mining & Exploration Services in Tanzania & Africa | Bart Mining', description: 'Geological survey, exploration, mine planning, processing plants and safety equipment across East & Southern Africa.' },
 }
@@ -44,6 +44,44 @@ export default function Services() {
             <h2>What we do, in detail</h2>
           </Reveal>
           <ServiceGrid showAll />
+        </div>
+      </section>
+
+      {/* Technical consulting. The detailed page is the site's largest
+          impression source, so it gets a direct, descriptive link here. */}
+      <section className="sec-gap" style={{ background: 'var(--paper)' }}>
+        <div className="px-site">
+          <div className="split2" style={{ alignItems: 'center' }}>
+            <Reveal>
+              <span className="eyebrow">Technical consulting</span>
+              <h2 style={{ marginTop: 16 }}>Due diligence, resource estimation and mining studies</h2>
+              <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 18 }}>
+                Independent technical advice for owners, investors and lenders: JORC and NI 43-101 resource estimates signed by a Competent Person, scoping to feasibility studies, technical due diligence, and underground and coal mining advisory.
+              </p>
+              <div style={{ marginTop: 26 }}>
+                <Link href="/insights/mining-consulting-africa" className="btn btn-ink">
+                  Mining technical consulting
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} style={{ width: 16, height: 16 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal delay={1}>
+              <ul style={{ display: 'grid', gap: 10, listStyle: 'none', padding: 0, margin: 0 }}>
+                {[
+                  'Technical due diligence for investors and acquirers',
+                  'JORC and NI 43-101 resource estimation',
+                  'Scoping, pre-feasibility and feasibility studies',
+                  'Underground and coal mining advisory',
+                  'Exploration programme design and management',
+                ].map(t => (
+                  <li key={t} style={{ display: 'flex', gap: 10, alignItems: 'center', background: 'var(--bg-3)', border: '1px solid var(--line)', borderRadius: 'var(--r-sm)', padding: '12px 16px', fontSize: 15.5, color: 'var(--ink-2)' }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gold)', flexShrink: 0 }} />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
         </div>
       </section>
 

@@ -159,8 +159,9 @@ Create a `.env.local` file:
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON=your_supabase_anon_key
 RESEND_API_KEY=your_resend_api_key
-CONTACT_EMAIL=hello@bartmining.com
 ```
+
+Contact-form enquiries are delivered to the inbox set in `ENQUIRY_INBOX` at the top of `src/app/api/contact/route.ts`. The public address shown on the site is `SITE.email` in `src/lib/seo.ts` (hello@bartmining.com).
 
 ### Run Locally
 

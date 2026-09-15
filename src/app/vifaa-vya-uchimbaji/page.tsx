@@ -32,10 +32,10 @@ const URL = `${SITE.url}/vifaa-vya-uchimbaji`
 export const metadata: Metadata = {
   title: 'Vifaa vya Uchimbaji Madini Tanzania',
   description:
-    'Tunauza vifaa vya uchimbaji madini Tanzania: mitambo ya kuchenjua dhahabu, winchi, pampu, mashine za kuponda mawe na vifaa vya usalama. Mwanza, Geita, Kahama na Dar es Salaam.',
+    'Vifaa vya uchimbaji madini Tanzania: mitambo ya kuchenjua dhahabu, winchi, pampu, mashine za kuponda mawe na vifaa vya usalama, Mwanza, Geita na Kahama.',
   alternates: {
     canonical: URL,
-    languages: { 'sw-TZ': URL, en: `${SITE.url}/equipment` },
+    languages: { 'sw-TZ': URL, en: `${SITE.url}/equipment`, 'x-default': `${SITE.url}/equipment` },
   },
   openGraph: {
     type: 'website',

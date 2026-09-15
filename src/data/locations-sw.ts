@@ -30,7 +30,7 @@ export const LOCATIONS_SW: LocationSw[] = [
     region: 'Mkoa wa Geita',
     title: 'Vifaa vya Uchimbaji Madini Geita',
     description:
-      'Vifaa vya uchimbaji madini Geita: mashine za kuponda na kusaga mawe, concentrator, matanki ya CIP na pampu kwa wachimbaji wa Nyarugusu, Mgusu, Rwamgasa na Katente.',
+      'Vifaa vya uchimbaji Geita: mashine za kuponda na kusaga mawe, concentrator, matanki ya CIP na pampu kwa wachimbaji wa Nyarugusu, Mgusu, Rwamgasa na Katente.',
     summary:
       'Geita ndiyo yenye shughuli nyingi zaidi za dhahabu Tanzania. Kuna Mgodi wa Dhahabu wa Geita, mmoja wa mikubwa Afrika, na maelfu ya wachimbaji wadogo wanaofanya kazi kwenye ukanda ule ule wa mawe ya dhahabu. Soko la kwanza la madini nchini lilifunguliwa hapa mwaka 2019.',
     jiolojia:
@@ -78,7 +78,7 @@ export const LOCATIONS_SW: LocationSw[] = [
     region: 'Mkoa wa Mbeya',
     title: 'Vifaa vya Uchimbaji Madini Chunya',
     description:
-      'Vifaa vya uchimbaji madini Chunya, Makongolosi na Matundasi: matanki ya CIP, plant za elution, ball mill, concentrator na jenereta kwa uwanja wa dhahabu wa Lupa.',
+      'Vifaa vya uchimbaji Chunya, Makongolosi na Matundasi: matanki ya CIP, plant za elution, ball mill, concentrator na jenereta kwa uwanja wa dhahabu wa Lupa.',
     summary:
       'Chunya ni kitovu cha uwanja wa dhahabu wa Lupa, mojawapo ya maeneo ya zamani zaidi ya dhahabu Tanzania. Wachimbaji wadogo wa Makongolosi, Matundasi na Itumbi wanaendesha plant kamili zenye mashine za kuponda, kusaga, concentrator, matanki ya CIP na elution. Chunya ilikuwa soko la pili la madini kufunguliwa nchini.',
     jiolojia:
@@ -103,7 +103,7 @@ export const LOCATIONS_SW: LocationSw[] = [
     region: 'Mkoa wa Mwanza',
     title: 'Vifaa vya Uchimbaji Madini Mwanza',
     description:
-      'Vifaa vya uchimbaji madini Mwanza: winchi, pampu za kutoa maji, concentrator, meza za kutingisha na mashine za kusaga kwa wachimbaji wa Sengerema, Misungwi, Buchosa na Kwimba.',
+      'Vifaa vya uchimbaji Mwanza: winchi, pampu za maji, concentrator, meza za kutingisha na mashine za kusaga kwa wachimbaji wa Sengerema, Misungwi na Kwimba.',
     summary:
       'Mwanza ni kituo kikuu cha biashara cha Kanda ya Ziwa na mahali ambapo vifaa vingi vya migodi hukusanywa, kutolewa na kutengenezwa kabla ya kwenda Sengerema, Misungwi, Buchosa, Kwimba na Magu. Kama mji wa pili kwa ukubwa nchini, una karakana, mafundi na huduma za usafirishaji ambazo wilaya za pembezoni hazina.',
     jiolojia:
@@ -153,7 +153,7 @@ export const LOCATIONS_SW: LocationSw[] = [
     region: 'Mkoa wa Shinyanga',
     title: 'Vifaa vya Uchimbaji Madini Shinyanga',
     description:
-      'Vifaa vya uchimbaji madini Shinyanga na Mwakitolyo: kinu cha kusaga, concentrator, meza za kutingisha, winchi, pampu na jenereta kwa wachimbaji wadogo wa dhahabu.',
+      'Vifaa vya uchimbaji Shinyanga na Mwakitolyo: kinu cha kusaga, concentrator, meza za kutingisha, winchi, pampu na jenereta kwa wachimbaji wadogo wa dhahabu.',
     summary:
       'Mkoa wa Shinyanga una almasi ya Mwadui na sekta hai ya wachimbaji wadogo wa dhahabu kuzunguka Mwakitolyo na wilaya za vijijini. Serikali imetangaza kujenga Kituo cha Kuchakata Madini Mwakitolyo ili kuongeza thamani ya madini na ushiriki wa wananchi, jambo linaloonyesha umuhimu wa dhahabu kwa mkoa huu.',
     jiolojia:

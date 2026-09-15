@@ -19,8 +19,9 @@ const URL = `${SITE.url}/jinsi-ya-kupata-leseni-ya-pml`
 export const metadata: Metadata = {
   title: 'Jinsi ya Kupata Leseni ya Uchimbaji Mdogo (PML) Tanzania',
   description:
-    'Hatua kwa hatua jinsi ya kupata leseni ya uchimbaji mdogo wa madini (PML) Tanzania: nani anastahili, nyaraka zinazohitajika, kuomba kwenye Mining Cadastre Portal, na masharti baada ya kupata leseni.',
-  alternates: { canonical: URL, languages: { 'sw-TZ': URL } },
+    'Jinsi ya kupata leseni ya uchimbaji mdogo (PML) Tanzania hatua kwa hatua: nani anastahili, nyaraka, kuomba kwenye Mining Cadastre Portal na masharti.',
+  // No English counterpart, so no hreflang: a self-only annotation does nothing.
+  alternates: { canonical: URL },
   openGraph: { type: 'article', url: URL, locale: 'sw_TZ', title: 'Jinsi ya Kupata Leseni ya PML Tanzania' },
 }
 

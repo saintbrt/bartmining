@@ -30,9 +30,9 @@ export const MARKETS: Market[] = [
     town: 'Geita',
     region: 'Mkoa wa Geita',
     supplySlug: 'geita',
-    title: 'Soko la Madini Geita: Bei ya Dhahabu Leo na Vituo vya Ununuzi',
+    title: 'Soko la Madini Geita: Bei ya Dhahabu Leo',
     description:
-      'Soko la madini Geita: bei ya dhahabu leo kwa gramu, vituo vya ununuzi Bukombe, Chato, Mbogwe na Nyang’hwale, jinsi ya kuuza dhahabu kihalali na mrabaha unaokatwa.',
+      'Soko la madini Geita: bei ya dhahabu leo kwa gramu, vituo vya ununuzi Bukombe, Chato, Mbogwe na Nyang’hwale, jinsi ya kuuza kihalali na mrabaha.',
     summary:
       'Geita ndilo soko la kwanza la madini Tanzania, lililofunguliwa tarehe 17 Machi 2019. Ni kitovu cha biashara ya dhahabu kwa wachimbaji wadogo wa mkoa wenye shughuli nyingi zaidi za dhahabu nchini, likisaidiwa na vituo vidogo vya ununuzi katika wilaya zote za mkoa.',
     facts: [
@@ -55,7 +55,7 @@ export const MARKETS: Market[] = [
     town: 'Chunya',
     region: 'Mkoa wa Mbeya',
     supplySlug: 'chunya',
-    title: 'Soko la Madini Chunya: Bei ya Dhahabu Leo na Vituo vya Ununuzi',
+    title: 'Soko la Madini Chunya: Bei ya Dhahabu Leo',
     description:
       'Soko la madini Chunya: bei ya dhahabu leo kwa gramu, vituo vya ununuzi Makongolosi, Matundasi, Itumbi na Sangambi, jinsi ya kuuza dhahabu kihalali na mrabaha.',
     summary:
@@ -80,9 +80,9 @@ export const MARKETS: Market[] = [
     town: 'Kahama',
     region: 'Mkoa wa Shinyanga',
     supplySlug: 'kahama',
-    title: 'Soko la Madini Kahama: Bei ya Dhahabu Leo na Jinsi ya Kuuza',
+    title: 'Soko la Madini Kahama: Bei ya Dhahabu Leo',
     description:
-      'Soko la madini Kahama: bei ya dhahabu leo kwa gramu, jinsi wachimbaji wadogo wa Kahama na Msalala wanavyouza dhahabu kihalali, nyaraka zinazohitajika na mrabaha.',
+      'Soko la madini Kahama: bei ya dhahabu leo kwa gramu, jinsi wachimbaji wadogo wa Kahama na Msalala wanavyouza dhahabu kihalali, nyaraka na mrabaha.',
     summary:
       'Kahama ina soko la madini linalohudumia wachimbaji wadogo wa wilaya za Kahama na Msalala, eneo la migodi ya chini ya ardhi ya mkoa wa Shinyanga. Katika wiki za mwanzo baada ya kufunguliwa, zaidi ya gramu 30,000 za dhahabu zenye thamani ya karibu shilingi bilioni 2.9 ziliuzwa kupitia soko hili.',
     facts: [
@@ -103,9 +103,9 @@ export const MARKETS: Market[] = [
     town: 'Mwanza',
     region: 'Mkoa wa Mwanza',
     supplySlug: 'mwanza',
-    title: 'Soko la Madini Mwanza: Bei ya Dhahabu Leo na Jinsi ya Kuuza',
+    title: 'Soko la Madini Mwanza: Bei ya Dhahabu Leo',
     description:
-      'Soko la madini Mwanza: bei ya dhahabu leo kwa gramu, jinsi wachimbaji wa Sengerema, Misungwi, Buchosa na Kwimba wanavyouza dhahabu kihalali, kiwanda cha kusafisha dhahabu Mwanza na mrabaha.',
+      'Soko la madini Mwanza: bei ya dhahabu leo, jinsi wachimbaji wa Sengerema, Misungwi, Buchosa na Kwimba wanavyouza kihalali, kiwanda cha kusafisha na mrabaha.',
     summary:
       'Mwanza ni mji mkuu wa biashara wa Kanda ya Ziwa na kitovu cha wachimbaji wadogo wa Sengerema, Misungwi, Buchosa, Kwimba na Magu. Mbali na soko la madini, Mwanza ina kiwanda cha kusafisha dhahabu, jambo linalowapa wachimbaji wa eneo hili fursa ya kuuza kwa mnunuzi anayelipa mrabaha wa kiwango cha chini.',
     facts: [
@@ -126,9 +126,9 @@ export const MARKETS: Market[] = [
     town: 'Songwe',
     region: 'Mkoa wa Songwe',
     supplySlug: 'chunya',
-    title: 'Soko la Madini Songwe: Bei ya Dhahabu Leo, Mkwajuni na Saza',
+    title: 'Soko la Madini Songwe: Bei ya Dhahabu Leo',
     description:
-      'Soko la madini Songwe: bei ya dhahabu leo kwa gramu, vituo vya ununuzi Mkwajuni na Saza, leseni mpya za wachimbaji wadogo Saza, na jinsi ya kuuza dhahabu kihalali.',
+      'Soko la madini Songwe: bei ya dhahabu leo kwa gramu, vituo vya ununuzi Mkwajuni na Saza, leseni mpya za wachimbaji Saza na jinsi ya kuuza kihalali.',
     summary:
       'Wilaya ya Songwe iko kwenye uwanja ule ule wa dhahabu wa Lupa unaopakana na Chunya, na uchimbaji wa madini huchangia zaidi ya asilimia 70 ya mapato ya wilaya. Vituo vya ununuzi vya Mkwajuni na Saza vinawahudumia wachimbaji wadogo, ambao idadi yao imeongezeka baada ya Serikali kugawa leseni ndogo mpya eneo la Saza.',
     facts: [
@@ -149,9 +149,9 @@ export const MARKETS: Market[] = [
     town: 'Katavi (Mpanda)',
     region: 'Mkoa wa Katavi',
     supplySlug: 'mpanda',
-    title: 'Soko la Madini Katavi (Mpanda): Bei ya Dhahabu Leo na Jinsi ya Kuuza',
+    title: 'Soko la Madini Katavi (Mpanda): Bei ya Dhahabu Leo',
     description:
-      'Soko la madini Katavi: bei ya dhahabu leo kwa gramu, masoko ya Mpanda na Karema, wachimbaji wa Ibindi, Kapanda na Katuma, na jinsi ya kuongeza dhahabu inayopatikana.',
+      'Soko la madini Katavi: bei ya dhahabu leo kwa gramu, masoko ya Mpanda na Karema, wachimbaji wa Ibindi, Kapanda na Katuma, na kuongeza dhahabu inayopatikana.',
     summary:
       'Mkoa wa Katavi una masoko mawili ya madini, katika Manispaa ya Mpanda na Karema, yanayohudumia wachimbaji wadogo wa uwanja wa madini wa Mpanda. Soko la madini Katavi limeuza dhahabu yenye thamani ya makumi ya mabilioni ya shilingi. Changamoto kubwa ya eneo hili ni kiasi kidogo cha dhahabu kinachopatikana kwenye plant za vat.',
     facts: [

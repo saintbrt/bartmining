@@ -7,7 +7,7 @@ import { SITE } from '@/lib/seo'
 export const metadata: Metadata = {
   // absolute: the brand already leads, so skip the '%s | Bart Mining' template.
   title: { absolute: 'Contact Bart Mining | Mining Consultancy & Equipment, Dar es Salaam' },
-  description: 'Contact Bart Mining in Dar es Salaam, Tanzania for mining consultancy, mineral exploration, gold processing plants and safety equipment across East & Southern Africa. WhatsApp +255 759 141 705.',
+  description: 'Contact Bart Mining in Dar es Salaam for mining consultancy, gold processing plants and mining equipment across East Africa. WhatsApp +255 759 141 705.',
   alternates: { canonical: `${SITE.url}/contact` },
 }
 
@@ -77,7 +77,61 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* What to send. Gives the page real substance and gets enquiries that
+          can be quoted on the first reply. No hours or response-time promises
+          here until the team confirms them. */}
+      <section className="sec-gap" style={{ background: 'var(--paper)' }}>
+        <div className="px-site">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Before you write</span>
+            <h2>What to send us</h2>
+            <p>The more of this you include, the more useful our first reply will be.</p>
+          </Reveal>
+          <div className="contact-send-grid">
+            {[
+              {
+                t: 'Equipment and plant quotes',
+                items: [
+                  'The equipment or plant you need, and the job it has to do',
+                  'Throughput (tonnes per day or hour), shaft depth or load, as relevant',
+                  'Ore type and any test work or assay results you have',
+                  'Power available: TANESCO grid, generator size, or none yet',
+                  'Delivery site: town, district and road access',
+                ],
+                link: { href: '/equipment', label: 'Browse the equipment catalogue' },
+              },
+              {
+                t: 'Consulting and technical studies',
+                items: [
+                  'Project stage: exploration, resource definition, study, construction or operation',
+                  'Commodity, location and licence type (PML, ML or SML)',
+                  'The decision the work has to support, and who it is for (board, investor, lender, regulator)',
+                  'Data available: drilling, assays, geological model, previous reports',
+                  'Timeline you are working to',
+                ],
+                link: { href: '/insights/mining-consulting-africa', label: 'About our technical consulting' },
+              },
+            ].map((c, i) => (
+              <Reveal key={c.t} delay={i} style={{ background: 'var(--bg-3)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '26px 24px' }}>
+                <h3 style={{ fontSize: 19, marginBottom: 14 }}>{c.t}</h3>
+                <ul style={{ paddingLeft: 20, margin: 0 }}>
+                  {c.items.map(x => <li key={x} style={{ fontSize: 15.5, color: 'var(--ink-2)', lineHeight: 1.65, marginBottom: 6 }}>{x}</li>)}
+                </ul>
+                <Link href={c.link.href} style={{ display: 'inline-block', marginTop: 14, fontSize: 15, fontWeight: 600, color: 'var(--gold)' }}>{c.link.label} &rarr;</Link>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal style={{ marginTop: 28 }}>
+            <p style={{ fontSize: 16, color: 'var(--ink-2)', lineHeight: 1.7, maxWidth: 760 }}>
+              Prefer email? Write to <a href={`mailto:${SITE.email}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>{SITE.email}</a>. For quick questions, WhatsApp <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', fontWeight: 600 }}>+255 759 141 705</a> works best. We supply and advise across Tanzania from Dar es Salaam, including <Link href="/equipment/supply/geita" style={{ color: 'var(--gold)' }}>Geita</Link>, <Link href="/equipment/supply/mwanza" style={{ color: 'var(--gold)' }}>Mwanza</Link>, <Link href="/equipment/supply/kahama" style={{ color: 'var(--gold)' }}>Kahama</Link> and <Link href="/equipment/supply/chunya" style={{ color: 'var(--gold)' }}>Chunya</Link>. Kwa Kiswahili, tazama <Link href="/vifaa-vya-uchimbaji" hrefLang="sw" style={{ color: 'var(--gold)' }}>vifaa vya uchimbaji</Link>.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       <style>{`
+        .contact-send-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+        @media (max-width: 760px) { .contact-send-grid { grid-template-columns: 1fr; } }
         .contact-grid-responsive { grid-template-columns: 1fr 380px !important; }
         @media (max-width: 860px) { .contact-grid-responsive { grid-template-columns: 1fr !important; } }
       `}</style>

@@ -31,7 +31,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     h1: 'Hydraulic Excavator: Bucket Size, Reach and Mine Duty',
     title: 'Hydraulic Excavator: Specs & Sizing | Tanzania',
     description:
-      'Hydraulic excavator specifications for mining and construction: operating weight, bucket capacity, reach, fuel burn and matching to dump trucks. Supplied across Tanzania.',
+      'Hydraulic excavator specifications for mining and construction: operating weight, bucket size, reach, fuel burn and truck matching. Supplied in Tanzania.',
     summary:
       'A hydraulic excavator is the primary digging and loading machine on open pits, quarries and civil sites, using a boom, stick and bucket driven by a diesel-hydraulic system. The 20-tonne class (about 0.8–1.2 m³ bucket) is the workhorse of Tanzanian small mines and contractors; 30–40 tonne machines match 20–30 tonne dump trucks on production pits. Digging force, reach and cycle time matter more than nameplate weight, and the excavator must be matched to the trucks it loads or the fleet idles.',
     category: 'earthmoving',
@@ -138,7 +138,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     h1: 'Dump Truck: Payload, Body Volume and Haul Road Duty',
     title: 'Dump Truck: Payload & Specs | Tanzania Mining',
     description:
-      'Mining and construction dump truck specifications: payload, body volume, gradeability, fuel use and matching to excavators. Rigid and articulated trucks supplied in Tanzania.',
+      'Dump truck specifications for mining and construction: payload, body volume, gradeability, fuel use and excavator matching. Rigid and articulated, Tanzania.',
     summary:
       'A dump truck hauls ore, waste and construction fill from the face to the crusher, dump or fill. Tanzanian small mines and contractors typically run 10–30 tonne rigid trucks or 25–40 tonne articulated dump trucks (ADTs). Payload must match the loading excavator: a truck that takes more than five to six bucket passes is too big for the loader, and a truck that fills in two passes is cycling half-empty. Haul-road quality governs speed, tyre life and fuel more than the truck brochure does.',
     category: 'earthmoving',
@@ -395,7 +395,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     h1: 'Tower Crane: Capacity, Jib Length and Site Erection',
     title: 'Tower Crane: Capacity & Specs | Tanzania Construction',
     description:
-      'Tower crane specifications for construction and plant erection: lifting capacity, jib length, hook height and foundation loads. Supplied and erected in Tanzania.',
+      'Tower crane specifications for construction and plant erection: lifting capacity, jib length, hook height and foundation loads. Supplied in Tanzania.',
     summary:
       'A tower crane is a top-slewing crane used to lift steel, concrete, plant modules and formwork on construction and mine-infrastructure sites. Flat-top and hammerhead cranes with 5–12 tonne tip capacity and 40–70 m jibs cover most Tanzanian building and plant-erection work. The crane is only as good as its foundation and its erection plan: under-designed bases and rushed climbs are the usual causes of incidents, not the crane mechanism itself.',
     category: 'earthmoving',
@@ -648,7 +648,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     h1: 'Vibrating Screen: Deck Count, Aperture and Capacity',
     title: 'Vibrating Screen: Specs & Sizing | Tanzania',
     description:
-      'Vibrating screen specifications for mining plants: single, double and triple deck, aperture, capacity, stroke and when to close-circuit a crusher. Supplied in Tanzania.',
+      'Vibrating screen specifications: single, double and triple deck, aperture, capacity, stroke and when to close-circuit a crusher. Supplied in Tanzania.',
     summary:
       'A vibrating screen sizes crushed rock by passing it over a vibrating mesh or polyurethane deck so oversize returns to the crusher and undersize goes forward. Almost every crushing circuit needs one: without it the cone or jaw is either making too much oversize or crushing material that is already fine enough. Single, double and triple-deck machines of 1.2–2.4 m width cover Tanzanian gold and quarry plants. Screening efficiency, not crusher CSS alone, is what actually sets product size.',
     category: 'processing',
@@ -848,7 +848,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     h1: 'Filter Press: Tailings Dewatering and Concentrate Filtration',
     title: 'Filter Press: Dewatering Specs | Tanzania',
     description:
-      'Filter press specifications for gold plants: plate size, cake moisture, cycle time and dry-stack tailings duty. Chamber and membrane presses supplied in Tanzania.',
+      'Filter press specifications for gold plants: plate size, cake moisture, cycle time and dry-stack tailings. Chamber and membrane presses supplied in Tanzania.',
     summary:
       'A filter press dewaters slurry by pumping it into chambers between filter plates so water passes the cloth and solids stay as a cake. On gold plants it is used for concentrate, for elution residues and, increasingly, for tailings when a wet dam is not acceptable. Chamber presses of 630–1,500 mm plates serve small to mid Tanzanian plants. Cake moisture of 12–20% is typical; that is dry enough to stack, truck or reprocess, which is the point.',
     category: 'processing',
@@ -999,7 +999,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     h1: 'Lighting Tower: Mobile Site Lighting for Mines and Construction',
     title: 'Lighting Tower: Specs for Mine Sites | Tanzania',
     description:
-      'Mobile lighting tower specifications: mast height, lamp output, runtime, fuel and why night works on Tanzanian mines need designed light, not vehicle headlights.',
+      'Mobile lighting tower specifications: mast height, lamp output, runtime and fuel, and why night work on Tanzanian mines needs designed lighting.',
     summary:
       'A lighting tower is a trailer-mounted mast with a diesel generator and a cluster of floodlights, used to light pits, pads, pours and night-shift construction. Typical units raise a 7–9 m mast with 4 × 400–1000 W lamps (or equivalent LED) and run 50–150 hours on a tank. Night loading, pouring and maintenance without designed lighting is how people and machines collide. LED towers cut fuel roughly in half versus metal halide and are the current specification.',
     category: 'power',

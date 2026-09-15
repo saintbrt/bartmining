@@ -4,11 +4,13 @@ import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import Counter from '@/components/ui/Counter'
 import CtaSection from '@/components/sections/CtaSection'
-import { SITE } from '@/lib/seo'
+import JsonLd from '@/components/seo/JsonLd'
+import { SITE, personSchema } from '@/lib/seo'
+import { AUTHORS } from '@/data/authors'
 
 export const metadata: Metadata = {
   title: 'About & Founder Bartholomew Ambrose, Tanzania',
-  description: 'Bart Mining is a principal-led mining consultancy founded by Bartholomew Ambrose, with 25+ years across 6 continents including Resolute Mine and Barrick Gold. Based in Dar es Salaam, serving East & Southern Africa.',
+  description: 'Principal-led mining consultancy founded by Bartholomew Ambrose: 25+ years including Resolute Mine and Barrick Gold. Based in Dar es Salaam, serving Africa.',
   alternates: { canonical: `${SITE.url}/about` },
   openGraph: { type: 'website', url: `${SITE.url}/about`, title: 'About & Founder | Bart Mining', description: 'Principal-led mining consultancy built on decades of real operating experience across East & Southern Africa.' },
 }
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
+      <JsonLd data={Object.values(AUTHORS).map(personSchema)} />
       {/* Subhero */}
       <section className="subhero">
         <div className="orb orb-1" /><div className="orb orb-2" />
@@ -34,7 +37,7 @@ export default function About() {
               <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', width: '100%', height: '100%', boxShadow: 'var(--shadow-lg)', position: 'relative' }}>
                 <Image
                   src="https://images.pexels.com/photos/2892618/pexels-photo-2892618.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Bartholomew Ambrose on an exploration site"
+                  alt="Exploration site in the field"
                   fill style={{ objectFit: 'cover' }}
                   sizes="(max-width: 860px) 100vw, 50vw"
                 />
@@ -56,9 +59,57 @@ export default function About() {
                   <span key={c} className="c">{c}</span>
                 ))}
               </div>
+              <div style={{ marginTop: 24 }}>
+                <Link href="/insights/mining-consulting-africa" className="btn btn-ghost">
+                  Mining technical consulting services
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} style={{ width: 16, height: 16 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </Link>
+              </div>
             </Reveal>
           </div>
         </div>
+      </section>
+
+      {/* Management. Anchors match the article bylines (/about#<author-id>). */}
+      <section className="sec-gap" id="management" style={{ paddingTop: 0 }}>
+        <div className="px-site">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Management</span>
+            <h2>The people behind the advice</h2>
+            <p>Every guide on this site is written by a named member of the team, so you know whose judgement you are relying on.</p>
+          </Reveal>
+          <div className="mgmt-grid">
+            {Object.values(AUTHORS).map((p, i) => (
+              <Reveal key={p.id} delay={i} id={p.id} style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)', padding: '28px 26px', boxShadow: 'var(--shadow-sm)', scrollMarginTop: 110 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                  {p.image ? (
+                    <Image src={p.image} alt={p.name} width={64} height={64} style={{ borderRadius: '50%', objectFit: 'cover', objectPosition: 'top' }} />
+                  ) : (
+                    <span aria-hidden style={{ width: 64, height: 64, borderRadius: '50%', background: 'var(--slate)', color: '#fff', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 20, flexShrink: 0 }}>{p.initials}</span>
+                  )}
+                  <div>
+                    <h3 style={{ fontSize: 20, lineHeight: 1.2 }}>{p.name}</h3>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12.5, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--gold-deep)', marginTop: 4 }}>{p.jobTitle}</div>
+                  </div>
+                </div>
+                <p style={{ color: 'var(--ink-2)', fontSize: 15.5, lineHeight: 1.65 }}>{p.bio}</p>
+                {p.sameAs.length > 0 && (
+                  <div style={{ display: 'flex', gap: 14, marginTop: 14 }}>
+                    {p.sameAs.map(u => (
+                      <a key={u} href={u} target="_blank" rel="noopener noreferrer me" style={{ fontSize: 14, fontWeight: 600, color: 'var(--gold)' }}>
+                        {u.includes('linkedin') ? 'LinkedIn' : u.includes('x.com') ? 'X' : 'Profile'}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <style>{`
+          .mgmt-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+          @media (max-width: 760px) { .mgmt-grid { grid-template-columns: 1fr; } }
+        `}</style>
       </section>
 
       {/* Stats */}

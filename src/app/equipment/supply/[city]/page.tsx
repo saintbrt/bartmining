@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   return {
     title: l.title,
     description: l.description,
-    alternates: { canonical: url, ...(sw ? { languages: { en: url, 'sw-TZ': sw } } : {}) },
+    alternates: { canonical: url, ...(sw ? { languages: { en: url, 'sw-TZ': sw, 'x-default': url } } : {}) },
     openGraph: { type: 'website', url, title: l.title, description: l.description },
   }
 }

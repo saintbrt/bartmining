@@ -23,7 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ town: str
   return {
     title: m.title,
     description: m.description,
-    alternates: { canonical: url, languages: { 'sw-TZ': url } },
+    // No English counterpart, so no hreflang: a self-only annotation does nothing.
+    alternates: { canonical: url },
     openGraph: { type: 'website', url, locale: 'sw_TZ', title: m.title, description: m.description },
   }
 }

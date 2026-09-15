@@ -20,15 +20,15 @@ import JsonLd from '@/components/seo/JsonLd'
  */
 
 export const metadata: Metadata = {
-  title: 'Mining Equipment Supply Tanzania: Specifications & Price Guides',
+  title: 'Mining Equipment Supply Tanzania: Specs & Price Guides',
   description:
-    'Mining and construction equipment supplied across Mwanza, Kahama, Geita and Shinyanga: excavators, dump trucks, crushers, gold plants, drills, pumps, safety gear and mine software.',
+    'Mining and construction equipment for Mwanza, Kahama, Geita and Shinyanga: excavators, trucks, crushers, gold plants, drills, pumps and safety gear.',
   alternates: {
     canonical: `${SITE.url}/equipment`,
-    languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/vifaa-vya-uchimbaji` },
+    languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/vifaa-vya-uchimbaji`, 'x-default': `${SITE.url}/equipment` },
   },
   openGraph: {
-    title: 'Mining Equipment Supply Tanzania: Specifications & Price Guides',
+    title: 'Mining Equipment Supply Tanzania: Specs & Price Guides',
     description: `Specifications, applications and maintenance guides for ${EQUIPMENT.length} categories of mining equipment supplied across Tanzania.`,
     url: `${SITE.url}/equipment`,
   },

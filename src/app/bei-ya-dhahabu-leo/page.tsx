@@ -27,7 +27,8 @@ export const metadata: Metadata = {
   title: 'Bei ya Dhahabu Leo Tanzania kwa Gramu',
   description:
     'Bei ya dhahabu leo Tanzania kwa gramu na kwa aunsi, kwa shilingi na dola. Karati 24, 22 na 18, pamoja na maelezo ya bei elekezi ya Tume ya Madini na mrabaha.',
-  alternates: { canonical: URL, languages: { 'sw-TZ': URL } },
+  // No English counterpart, so no hreflang: a self-only annotation does nothing.
+  alternates: { canonical: URL },
   openGraph: {
     type: 'website', url: URL, locale: 'sw_TZ',
     title: 'Bei ya Dhahabu Leo Tanzania',

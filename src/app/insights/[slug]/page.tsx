@@ -7,6 +7,20 @@ import ReadingProgress from '@/components/insights/ReadingProgress'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE, articleSchema, breadcrumbSchema } from '@/lib/seo'
 import TableOfContents from '@/components/insights/TableOfContents'
+import { authorForArticle } from '@/data/authors'
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+/**
+ * Articles record the month they were published ('June 2025'). Schema needs
+ * an ISO date, so the month is pinned to its first day rather than inventing
+ * a more precise date than the content actually has.
+ */
+function isoFromMonth(label: string): string {
+  const [month, year] = label.split(' ')
+  const m = MONTHS.indexOf(month)
+  return m >= 0 && /^\d{4}$/.test(year) ? `${year}-${String(m + 1).padStart(2, '0')}-01` : label
+}
 
 export async function generateStaticParams() {
   return ARTICLES.map(a => ({ slug: a.slug }))
@@ -37,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: a.description,
     alternates: {
       canonical: `${SITE.url}/insights/${a.slug}`,
-      ...(sw ? { languages: { en: `${SITE.url}/insights/${a.slug}`, 'sw-TZ': sw } } : {}),
+      ...(sw ? { languages: { en: `${SITE.url}/insights/${a.slug}`, 'sw-TZ': sw, 'x-default': `${SITE.url}/insights/${a.slug}` } } : {}),
     },
     openGraph: { title: a.title, description: a.description, images: [{ url: absoluteImage(a.image) }] },
   }
@@ -59,6 +73,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const content = await getContent(slug)
   const related = ARTICLES.filter(a => article.related.includes(a.slug)).slice(0, 3)
+  const author = authorForArticle(article.slug)
 
   return (
     <>
@@ -69,8 +84,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             title: article.title,
             description: article.description,
             image: absoluteImage(article.image),
-            datePublished: '2025-06-01',
+            datePublished: isoFromMonth(article.date),
+            ...(article.updated ? { dateModified: isoFromMonth(article.updated) } : {}),
             section: article.category,
+            author,
           }),
           breadcrumbSchema([
             { name: 'Home', path: '/' },
@@ -112,12 +129,21 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <p style={{ color: 'var(--ink-2)', fontSize: 17, maxWidth: 640, lineHeight: 1.65, marginBottom: 24 }}>
             {article.description}
           </p>
-          <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--ink-3)' }}>
-            <span>{article.date}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+            {author.image ? (
+              <Image src={author.image} alt={author.name} width={40} height={40} style={{ borderRadius: '50%', objectFit: 'cover', objectPosition: 'top' }} />
+            ) : (
+              <span aria-hidden style={{ width: 40, height: 40, borderRadius: '50%', background: 'var(--slate)', color: '#fff', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-sora)', fontWeight: 700, fontSize: 14 }}>{author.initials}</span>
+            )}
+            <div>
+              <Link href={`/about#${author.id}`} rel="author" style={{ fontWeight: 700, color: 'var(--ink)', fontSize: 15.5 }}>{author.name}</Link>
+              <div style={{ fontSize: 13.5, color: 'var(--ink-3)' }}>{author.credential}</div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--ink-3)', flexWrap: 'wrap' }}>
+            <span>{article.updated ? `Updated ${article.updated}` : article.date}</span>
             <span>·</span>
             <span>{article.readTime}</span>
-            <span>·</span>
-            <span>Bart Mining Editorial</span>
           </div>
         </div>
       </section>

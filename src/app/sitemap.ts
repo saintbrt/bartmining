@@ -28,6 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/about`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE.url}/sustainability`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE.url}/contact`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/privacy`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
+    { url: `${SITE.url}/terms`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/vifaa-vya-uchimbaji`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/bei-ya-vifaa-vya-uchimbaji`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },

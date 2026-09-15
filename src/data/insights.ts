@@ -3,7 +3,10 @@ export interface ArticleMeta {
   title: string
   description: string
   tags: string[]
+  /** Month first published, e.g. 'June 2025'. */
   date: string
+  /** Month of the last substantial rewrite. Omit unless the body changed. */
+  updated?: string
   readTime: string
   image: string
   imageAlt: string
@@ -14,8 +17,8 @@ export interface ArticleMeta {
 export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mining-commission-compliance-2026',
-    title: 'Mining Commission Compliance Checklist for Small Mines (2026)',
-    description: 'What the 2026 Mining Commission inspections of 128 small-scale projects found, and a checklist of the environmental, CSR, technology transfer, mining and mine opening plans you need.',
+    title: 'Mining Commission Compliance Checklist 2026',
+    description: 'What the 2026 Mining Commission inspections of 128 small mines found, with a checklist of the environmental, CSR, mining and mine opening plans you need.',
     tags: ['compliance', 'regulation', 'pml', 'tanzania'],
     date: 'September 2026', readTime: '9 min read',
     image: '/equipment/mining-safety-helmet-cap-lamp.jpg',
@@ -25,8 +28,8 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'selling-gold-tanzania',
-    title: 'Selling Gold in Tanzania: Markets, the BoT Programme and the 20% Rule',
-    description: 'How small-scale miners sell gold legally in Tanzania: mineral markets and buying centres, brokers and dealers, the Bank of Tanzania purchase programme, the 20% domestic set-aside and royalties.',
+    title: 'Selling Gold in Tanzania: Markets, BoT and the 20% Rule',
+    description: 'How small-scale miners sell gold legally in Tanzania: mineral markets, buying centres, dealers, the Bank of Tanzania programme, the 20% rule and royalties.',
     tags: ['gold', 'trading', 'royalty', 'tanzania'],
     date: 'September 2026', readTime: '9 min read',
     image: '/equipment/shaking-table-gold.jpg',
@@ -36,8 +39,8 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'small-miner-financing',
-    title: 'Financing for Small-Scale Miners in Tanzania: Loans, Leases and STAMICO',
-    description: 'Where small-scale miners in Tanzania can find finance in 2026: bank lending arrangements with CRDB, NMB, KCB and NBC, STAMICO drilling, what banks look for, and what to borrow for.',
+    title: 'Small-Scale Miner Financing in Tanzania: Loans & Leases',
+    description: 'Where small-scale miners in Tanzania find finance in 2026: CRDB, NMB, KCB and NBC lending, STAMICO drilling, what banks look for and what to borrow for.',
     tags: ['finance', 'loans', 'stamico', 'tanzania'],
     date: 'September 2026', readTime: '9 min read',
     image: '/equipment/rc-drilling-rig.jpg',
@@ -47,8 +50,8 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'mercury-free-gold-recovery',
-    title: 'Mercury-Free Gold Recovery for Small-Scale Miners in Tanzania',
-    description: 'Replacing mercury amalgamation with a gravity circuit: why amalgamation loses gold, the crusher, mill, concentrator and shaking table flowsheet, and how Tanzanian miners make the switch.',
+    title: 'Mercury-Free Gold Recovery for Small Miners, Tanzania',
+    description: 'Replacing mercury with a gravity circuit: why amalgamation loses gold, the mill, concentrator and shaking table flowsheet, and how Tanzanian miners switch.',
     tags: ['mercury-free', 'gravity', 'gold', 'tanzania'],
     date: 'September 2026', readTime: '9 min read',
     image: '/equipment/centrifugal-gold-concentrator.jpg',
@@ -59,7 +62,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'gold-elution-plant-price',
     title: 'Gold Elution Plant Price in Tanzania: What It Costs',
-    description: 'What a gold elution and electrowinning plant costs in Tanzania: indicative prices by carbon batch size, what a complete plant includes, running costs, and toll elution.',
+    description: 'What a gold elution and electrowinning plant costs in Tanzania: prices by carbon batch size, what a complete plant includes, running costs and toll elution.',
     tags: ['cost', 'elution', 'gold', 'tanzania'],
     date: 'September 2026', readTime: '9 min read',
     image: '/equipment/gold-elution-electrowinning-plant.jpg',
@@ -70,7 +73,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'small-cip-plant-guide',
     title: 'Small CIP and CIL Gold Plants: Tanks, Carbon and Cyanide',
-    description: 'A practical guide to small CIP and CIL gold plants in Tanzania: what the plant includes, CIL vs CIP at small scale, sizing leach tanks, consumables per tonne and permits.',
+    description: 'A practical guide to small CIP and CIL gold plants in Tanzania: what the plant includes, CIL vs CIP, sizing leach tanks, consumables per tonne and permits.',
     tags: ['cip', 'cil', 'gold', 'tanzania'],
     date: 'September 2026', readTime: '10 min read',
     image: '/equipment/cil-cip-plant.jpg',
@@ -81,7 +84,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'activated-carbon-cyanide-tanzania',
     title: 'Activated Carbon and Sodium Cyanide Supply in Tanzania',
-    description: 'Buying activated carbon and sodium cyanide for gold plants in Tanzania: what to specify, where supply comes from, legal requirements, safe storage and avoiding shortages.',
+    description: 'Buying activated carbon and sodium cyanide for gold plants in Tanzania: specifications, supply sources, legal requirements, safe storage and shortages.',
     tags: ['consumables', 'cyanide', 'carbon', 'tanzania'],
     date: 'September 2026', readTime: '9 min read',
     image: '/equipment/cil-cip-plant.jpg',
@@ -125,7 +128,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'plant-test-work-guide',
     title: 'Test Work to Do Before You Buy a Gold Plant',
-    description: 'Metallurgical test work explained: sampling, Bond Work Index, abrasion index, gravity recoverable gold, bottle roll and diagnostic leach, and what each one changes.',
+    description: 'Metallurgical test work explained: sampling, Bond Work Index, abrasion index, gravity recoverable gold, bottle roll and diagnostic leach tests.',
     tags: ['test work', 'metallurgy', 'gold', 'plant design'],
     date: 'August 2026', readTime: '11 min read',
     image: '/equipment/shaking-table-gold.jpg',
@@ -158,7 +161,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'gold-plant-setup-cost',
     title: 'What It Costs to Set Up a Small Gold Processing Plant',
-    description: 'Capital and operating cost of a small gold processing plant: indicative bands at 10, 50 and 100 tonnes per day, plus the costs that sit outside the equipment price.',
+    description: 'Capital and operating cost of a small gold plant: indicative bands at 10, 50 and 100 tonnes per day, plus costs outside the equipment price.',
     tags: ['cost', 'gold', 'processing', 'tanzania'],
     date: 'August 2026', readTime: '11 min read',
     image: '/equipment/modular-gold-plant.jpg',
@@ -168,10 +171,10 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'cil-vs-cip-vs-heap-leach',
-    title: 'CIL vs CIP vs Heap Leach: Which Gold Circuit to Build',
-    description: 'CIL, CIP and heap leach compared on recovery, capital cost, time to gold, footprint and preg-robbing ore, with guidance on choosing for your orebody.',
+    title: 'Difference Between CIP and CIL, and When Heap Leach Fits',
+    description: 'The difference between CIP and CIL explained: recovery, tanks, capital cost, time to gold and preg-robbing ore, plus when heap leach is the better choice.',
     tags: ['comparison', 'gold', 'processing', 'cil'],
-    date: 'August 2026', readTime: '9 min read',
+    date: 'August 2026', updated: 'September 2026', readTime: '10 min read',
     image: '/equipment/cil-cip-plant.jpg',
     imageAlt: 'Carbon in leach tank train at a gold plant',
     category: 'Comparison \u00b7 Gold Processing',
@@ -179,7 +182,7 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'gravity-vs-cyanide-gold-recovery',
-    title: 'Gravity vs Cyanide Gold Recovery, and When Gravity Is Enough',
+    title: 'Gravity vs Cyanide Gold Recovery: When Gravity Is Enough',
     description: 'Gravity and cyanide gold recovery compared: recovery rates, liberation limits, cost, regulation, and using gravity to replace mercury amalgamation.',
     tags: ['comparison', 'gold', 'gravity', 'mercury-free'],
     date: 'August 2026', readTime: '9 min read',
@@ -278,7 +281,7 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'environmental-compliance-mining',
-    title: 'Environmental Compliance for Mining in East & Southern Africa',
+    title: 'Environmental Compliance for Mining in Africa',
     description: 'Navigating NEMC, NEMA, ZEMA and DEAT permitting frameworks for mine environmental clearances.',
     tags: ['environment', 'consulting', 'east-africa', 'southern-africa'],
     date: 'June 2025', readTime: '11 min read',
@@ -333,10 +336,10 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'geological-mapping',
-    title: 'Geological Mapping & Structural Analysis Services Across Southern Africa',
-    description: 'Remote sensing, field mapping, structural interpretation and 3D geological modelling for mineral exploration.',
-    tags: ['exploration', 'geophysics', 'consulting', 'southern-africa', 'east-africa'],
-    date: 'June 2025', readTime: '10 min read',
+    title: 'Geological Mapping & Structural Analysis in Africa',
+    description: 'Geological mapping for mineral exploration: mapping scales, remote sensing, mapping through Tanzanian cover, structural controls on gold and drill targeting.',
+    tags: ['exploration', 'geology', 'consulting', 'tanzania', 'east-africa'],
+    date: 'June 2025', updated: 'September 2026', readTime: '12 min read',
     image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=800&h=400&q=75',
     imageAlt: 'Aerial geological terrain mapping',
     category: 'Geology · Africa',
@@ -366,14 +369,14 @@ export const ARTICLES: ArticleMeta[] = [
   },
   {
     slug: 'mining-consulting-africa',
-    title: 'Mining Consulting Services Across Africa',
-    description: 'Independent consulting from project generation and target selection through to resource estimation and financing.',
-    tags: ['consulting', 'exploration', 'east-africa', 'southern-africa'],
-    date: 'June 2025', readTime: '10 min read',
+    title: 'Mining Technical Consulting & Advisory Services',
+    description: 'Independent mining technical consulting: due diligence, JORC and NI 43-101 resource estimation, scoping to feasibility studies, underground and coal advisory.',
+    tags: ['consulting', 'feasibility', 'resource-estimation', 'east-africa'],
+    date: 'June 2025', updated: 'September 2026', readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&h=400&q=75',
-    imageAlt: 'Mining consulting professionals Africa',
+    imageAlt: 'Mining technical consulting team reviewing project data',
     category: 'Consulting · Africa',
-    related: ['mine-planning-feasibility', 'junior-mining-company', 'environmental-compliance-mining'],
+    related: ['mine-planning-feasibility', 'geological-mapping', 'plant-test-work-guide'],
   },
   {
     slug: 'community-csr-mining',

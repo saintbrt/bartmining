@@ -8,7 +8,7 @@ import { SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Sustainability & ESG in Mining, Africa',
-  description: 'Responsible mining across East & Southern Africa: land & water stewardship, local schools, local hiring, and Free, Prior & Informed Consent aligned to ICMM PE-09. The ground you mine belongs to someone.',
+  description: 'Responsible mining across East & Southern Africa: land and water stewardship, local schools, local hiring, and Free, Prior & Informed Consent (ICMM PE-09).',
   alternates: { canonical: `${SITE.url}/sustainability` },
 }
 

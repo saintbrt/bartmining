@@ -9,6 +9,22 @@ const content = `<div class="art-stats"><div class="art-stat"><div class="art-st
 </ul>
 <p>For most small and medium Tanzanian hard-rock operations, CIL is the default. CIP earns its extra tanks on higher-grade ore where carbon management matters. Heap leach only makes sense on large tonnages of low-grade ore that will not pay for grinding.</p>
 
+<h2>Difference Between CIP and CIL at a Glance</h2>
+<table>
+<thead><tr><th></th><th>CIL (carbon in leach)</th><th>CIP (carbon in pulp)</th><th>Heap leach</th></tr></thead>
+<tbody>
+<tr><td>Where gold is adsorbed</td><td>In the leach tanks, at the same time as leaching</td><td>In separate tanks after leaching is complete</td><td>In carbon columns fed by solution draining from the heap</td></tr>
+<tr><td>Tanks</td><td>Fewer (5–8 total)</td><td>More (leach train plus adsorption train)</td><td>None; a lined pad and ponds</td></tr>
+<tr><td>Grinding</td><td>Fine, about 80% passing 75–150 µm</td><td>Fine, about 80% passing 75–150 µm</td><td>Crush only</td></tr>
+<tr><td>Recovery on free-milling ore</td><td>88–95%</td><td>88–95%</td><td>60–80%</td></tr>
+<tr><td>Capital cost</td><td>Medium</td><td>Highest of the three</td><td>Lowest</td></tr>
+<tr><td>Time to gold</td><td>18–36 h in tanks</td><td>18–36 h in tanks</td><td>Weeks to months per lift</td></tr>
+<tr><td>Preg-robbing (carbonaceous) ore</td><td>Best: carbon competes for gold immediately</td><td>Weak</td><td>Weak</td></tr>
+<tr><td>Best fit</td><td>Most small and medium Tanzanian plants</td><td>Higher-grade, clean ore needing tight control</td><td>Large tonnage, low grade, coarse-leachable ore</td></tr>
+</tbody>
+</table>
+<p>Planning the plant itself? Tank sizing, design parameters and tank maintenance are covered on the <a href="/equipment/cil-cip-plant">CIP and CIL gold plant design</a> page.</p>
+
 <h2>Side by Side</h2>
 <h3>Recovery</h3>
 <p>CIL and CIP both reach 88 to 95 percent on free-milling ore, and the gap between them is small enough that recovery alone rarely decides the choice. Heap leach typically returns 60 to 80 percent because the ore is only crushed rather than ground, so a proportion of the gold is never liberated and solution never reaches it. On a high-grade orebody that difference is decisive. On a very low-grade one, recovering 70 percent cheaply beats recovering 92 percent at a cost the ore cannot carry.</p>
