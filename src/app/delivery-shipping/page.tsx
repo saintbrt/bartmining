@@ -130,7 +130,7 @@ export default function DeliveryShippingPage() {
                 <li><strong>Port clearance.</strong> Customs clearance and inland transport to your site follow, on top of the domestic route time shown above.</li>
               </ul>
               <p style={{ color: 'var(--ink-2)', fontSize: 15.5, marginTop: 16 }}>
-                We give a specific lead time with every quotation once we have confirmed stock and sailing schedules with the supplier — general shipping timetables are not a substitute for that confirmed date.
+                We give a specific lead time with every quotation once we have confirmed stock and sailing schedules with the supplier. General shipping timetables are not a substitute for that confirmed date.
               </p>
             </Reveal>
             <Reveal delay={1}>

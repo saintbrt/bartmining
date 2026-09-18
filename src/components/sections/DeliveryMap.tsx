@@ -1,12 +1,16 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
-import { DELIVERY_STOPS, DELIVERY_STOP_BY_SLUG, CARGO_CLASSES, BUFFER, ORIGINS, type RouteTime } from '@/data/delivery-routes'
+import { useMemo, useState } from 'react'
+import {
+  DELIVERY_STOPS, DELIVERY_STOP_BY_SLUG, CARGO_CLASSES, BUFFER, ORIGINS,
+  MAP_VIEWBOX, project, TZ_OUTLINE, LAKE_VICTORIA_OUTLINE, ZANZIBAR_OUTLINES,
+  type RouteTime,
+} from '@/data/delivery-routes'
 
 const BASIS_LABEL: Record<RouteTime['basis'], { label: string; color: string }> = {
   confirmed: { label: 'Confirmed figure', color: 'var(--gold-deep)' },
   computed: { label: 'Computed from confirmed legs', color: 'var(--gold)' },
-  estimate: { label: 'Estimate — to be confirmed', color: 'var(--ink-3)' },
+  estimate: { label: 'Estimate, to be confirmed', color: 'var(--ink-3)' },
 }
 
 const fmt = (n: number) => (Number.isInteger(n) ? n.toString() : n.toFixed(1))
@@ -15,96 +19,130 @@ const fmtDays = (h: number) => {
   return d < 1 ? `${fmt(h)}h` : `${fmt(d)} day${d >= 1.5 ? 's' : ''}`
 }
 
+/** [lon,lat] ring -> a closed SVG path, projected to the map's viewBox. */
+function ringPath(ring: readonly (readonly [number, number])[]): string {
+  return ring.map((p, i) => {
+    const [x, y] = project(p as [number, number])
+    return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)} ${y.toFixed(1)}`
+  }).join(' ') + ' Z'
+}
+
 /**
- * A loose, decorative outline of mainland Tanzania — a backdrop for the
- * route diagram, not a geographic reference. It shares the map's coordinate
- * space so the town markers roughly sit "inside" it, but the coastline and
- * borders are hand-drawn approximations, not traced data.
+ * A gently arced path between two points, the way a flight- or shipping-
+ * route line is usually drawn rather than a ruled straight line: offset the
+ * midpoint perpendicular to the line by a fraction of its length.
  */
-const TZ_SILHOUETTE = 'M120,20 C170,10 230,40 260,80 C300,70 340,60 380,90 C420,60 460,80 470,120 C500,150 520,190 500,230 C540,260 560,320 555,390 C560,430 545,470 555,510 C540,530 500,535 480,520 C450,510 430,500 400,480 C360,510 300,520 260,545 C210,555 160,545 140,510 C120,480 130,450 110,420 C80,400 60,360 70,320 C55,290 60,250 90,230 C70,190 75,150 100,120 C90,80 95,45 120,20 Z'
+function routeArc(from: [number, number], to: [number, number]): string {
+  const [x1, y1] = from
+  const [x2, y2] = to
+  const dx = x2 - x1
+  const dy = y2 - y1
+  const len = Math.max(1, Math.hypot(dx, dy))
+  const bulge = Math.min(60, len * 0.16)
+  const mx = (x1 + x2) / 2 - (dy / len) * bulge
+  const my = (y1 + y2) / 2 + (dx / len) * bulge
+  return `M${x1} ${y1} Q${mx.toFixed(1)} ${my.toFixed(1)} ${x2} ${y2}`
+}
 
 export default function DeliveryMap() {
   const [origin, setOrigin] = useState<string>('dar-es-salaam')
-  const [selected, setSelected] = useState<string>('mwanza')
+  const [selected, setSelected] = useState<string>('')
   const [cargo, setCargo] = useState<string>('medium')
 
-  // A destination can't be its own origin.
-  useEffect(() => {
-    if (selected === origin) {
-      setSelected(ORIGINS.find(o => o.id !== origin)?.id ?? origin)
-    }
-  }, [origin, selected])
-
   const originStop = DELIVERY_STOP_BY_SLUG.get(origin)!
-  const stop = DELIVERY_STOP_BY_SLUG.get(selected) ?? DELIVERY_STOPS[0]
+  const stop = selected ? DELIVERY_STOP_BY_SLUG.get(selected) : undefined
   const cls = CARGO_CLASSES.find(c => c.id === cargo) ?? CARGO_CLASSES[1]
-  const route = origin === 'mwanza' ? stop.fromMwanza : stop.fromDar
+  const route = stop ? (origin === 'mwanza' ? stop.fromMwanza : stop.fromDar) : undefined
 
   const range = useMemo(() => {
-    if (stop.slug === origin || cls.multiplier === null) return null
+    if (!route || !stop || stop.slug === origin || cls.multiplier === null) return null
     const [lo, hi] = route.hours
     const loAdj = lo * cls.multiplier
     const hiAdj = hi * cls.multiplier
     return { loBuf: loAdj * (1 + BUFFER.low), hiBuf: hiAdj * (1 + BUFFER.high) }
   }, [stop, origin, route, cls])
 
+  function pick(slug: string) {
+    setSelected(slug === origin ? '' : slug)
+  }
+
   return (
     <div className="dmap-wrap">
       {/* Map */}
       <div className="dmap-card">
-        <svg viewBox="0 0 670 560" role="img" aria-label="Simplified diagram of Bart Mining delivery routes across Tanzania" className="dmap-svg">
-          <path d={TZ_SILHOUETTE} className="dmap-silhouette" />
+        <svg viewBox={`0 0 ${MAP_VIEWBOX.w} ${MAP_VIEWBOX.h}`} role="img" aria-label="Map of Tanzania with Bart Mining delivery routes" className="dmap-svg">
+          <defs>
+            <marker id="dmap-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="var(--gold)" />
+            </marker>
+          </defs>
 
-          {stop.slug !== origin && (
-            <line x1={originStop.x} y1={originStop.y} x2={stop.x} y2={stop.y} stroke="var(--gold)" strokeWidth={2.5} strokeLinecap="round" />
+          {/* Decorative backdrop only — a simplified outline, not a reference map. */}
+          <path d={ringPath(TZ_OUTLINE)} className="dmap-country" />
+          <path d={ringPath(LAKE_VICTORIA_OUTLINE)} className="dmap-lake" />
+          {ZANZIBAR_OUTLINES.map((ring, i) => <path key={i} d={ringPath(ring)} className="dmap-country" />)}
+
+          {stop && stop.slug !== origin && (
+            <path
+              d={routeArc(project(originStop.lonLat), project(stop.lonLat))}
+              fill="none" stroke="var(--gold)" strokeWidth={2.25} strokeLinecap="round"
+              markerEnd="url(#dmap-arrow)"
+            />
           )}
 
           {DELIVERY_STOPS.map(s => {
+            const [x, y] = project(s.lonLat)
             const isOrigin = s.slug === origin
             const isOtherOrigin = ORIGINS.some(o => o.id === s.slug) && !isOrigin
             const active = s.slug === selected
             const big = isOrigin || active
             return (
-              <g key={s.slug} transform={`translate(${s.x},${s.y})`} onClick={() => setSelected(s.slug)} style={{ cursor: 'pointer' }} role="button" aria-pressed={active} tabIndex={0}
-                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setSelected(s.slug) }}>
+              <g key={s.slug} transform={`translate(${x.toFixed(1)},${y.toFixed(1)})`} onClick={() => pick(s.slug)} style={{ cursor: 'pointer' }} role="button" aria-pressed={active} tabIndex={0}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') pick(s.slug) }}>
+                <circle r={14} fill="transparent" />
                 <circle
-                  r={isOrigin ? 9 : active ? 8 : 5.5}
-                  fill={isOrigin ? 'var(--ink)' : active ? 'var(--gold)' : 'var(--bg-3)'}
+                  r={isOrigin ? 9 : active ? 8 : 5}
+                  fill={isOrigin ? 'var(--ink)' : active ? 'var(--gold)' : 'var(--bg)'}
                   stroke={isOrigin ? 'var(--ink)' : 'var(--gold)'}
                   strokeWidth={isOrigin ? 0 : 1.5}
                   opacity={isOtherOrigin ? 0.55 : 1}
                 />
-                <text
-                  x={0} y={big ? -14 : -11}
-                  textAnchor="middle"
-                  fontSize={big ? 13 : 11}
-                  fontWeight={big ? 700 : 500}
-                  fill="var(--ink)"
-                  opacity={isOtherOrigin ? 0.6 : 1}
-                  style={{ fontFamily: 'var(--font-sora)' }}
-                >
-                  {s.town}{isOtherOrigin ? ' (base)' : ''}
-                </text>
+                {(big || isOtherOrigin) && (
+                  <text
+                    x={0} y={-14}
+                    textAnchor="middle"
+                    fontSize={big ? 13 : 11}
+                    fontWeight={big ? 700 : 500}
+                    fill="var(--ink)"
+                    opacity={isOtherOrigin ? 0.65 : 1}
+                    style={{ fontFamily: 'var(--font-sora)' }}
+                  >
+                    {s.town}{isOtherOrigin ? ' (base)' : ''}
+                  </text>
+                )}
               </g>
             )
           })}
         </svg>
-        <p className="dmap-caption">Simplified route diagram, not to scale. Click or tap a town, or use the dropdown, to see its delivery time.</p>
+        <p className="dmap-caption">
+          {selected ? 'Click another town, or the same one, to change the destination.' : 'Click a town on the map, or use the dropdown, to see a delivery estimate.'}
+        </p>
       </div>
 
       {/* Controls + result */}
       <div className="dmap-panel">
         <label className="dmap-label" htmlFor="dmap-origin">Shipping from</label>
-        <select id="dmap-origin" className="dmap-select" value={origin} onChange={e => setOrigin(e.target.value)}>
+        <select id="dmap-origin" className="dmap-select" value={origin} onChange={e => { setOrigin(e.target.value); if (e.target.value === selected) setSelected('') }}>
           {ORIGINS.map(o => (
-            <option key={o.id} value={o.id}>{o.label} — {o.sub}</option>
+            <option key={o.id} value={o.id}>{o.label} · {o.sub}</option>
           ))}
         </select>
 
         <label className="dmap-label" htmlFor="dmap-town">Delivering to</label>
         <select id="dmap-town" className="dmap-select" value={selected} onChange={e => setSelected(e.target.value)}>
+          <option value="">Choose a town…</option>
           {DELIVERY_STOPS.filter(s => s.slug !== origin).map(s => (
-            <option key={s.slug} value={s.slug}>{s.town} — {s.region}</option>
+            <option key={s.slug} value={s.slug}>{s.town} · {s.region}</option>
           ))}
         </select>
 
@@ -117,7 +155,9 @@ export default function DeliveryMap() {
         <p className="dmap-example">{cls.example}</p>
 
         <div className="dmap-result">
-          {cls.multiplier === null ? (
+          {!stop || !route ? (
+            <p className="dmap-result-empty">Pick a destination to see an estimated delivery time.</p>
+          ) : cls.multiplier === null ? (
             <>
               <div className="dmap-result-figure">3+ days</div>
               <p className="dmap-result-sub">{cls.fixedNote}</p>
@@ -133,11 +173,13 @@ export default function DeliveryMap() {
           ) : null}
         </div>
 
-        <div className="dmap-basis">
-          <span className="dmap-basis-dot" style={{ background: BASIS_LABEL[route.basis].color }} />
-          <span>{BASIS_LABEL[route.basis].label}</span>
-          {route.note && <span className="dmap-basis-note">— {route.note}</span>}
-        </div>
+        {stop && route && (
+          <div className="dmap-basis">
+            <span className="dmap-basis-dot" style={{ background: BASIS_LABEL[route.basis].color }} />
+            <span>{BASIS_LABEL[route.basis].label}</span>
+            {route.note && <span className="dmap-basis-note">· {route.note}</span>}
+          </div>
+        )}
 
         <p className="dmap-fineprint">
           Planning figures, not a delivery promise. Every quotation states the actual transit time for that consignment and route once it is confirmed.
@@ -148,14 +190,16 @@ export default function DeliveryMap() {
         .dmap-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: start; }
         .dmap-card { background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 16px; }
         .dmap-svg { width: 100%; height: auto; display: block; }
-        .dmap-silhouette { fill: var(--ink); opacity: 0.05; stroke: none; }
+        .dmap-country { fill: var(--ink); fill-opacity: 0.05; stroke: var(--ink); stroke-opacity: 0.12; stroke-width: 1; }
+        .dmap-lake { fill: var(--gold); fill-opacity: 0.08; stroke: none; }
         .dmap-caption { font-size: 13px; color: var(--ink-3); margin-top: 10px; text-align: center; }
         .dmap-panel { background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; display: flex; flex-direction: column; gap: 6px; }
         .dmap-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: 14px; }
         .dmap-label:first-child { margin-top: 0; }
         .dmap-select { width: 100%; font-size: 15.5px; padding: 10px 12px; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--bg); color: var(--ink); margin-top: 6px; }
         .dmap-example { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
-        .dmap-result { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; margin-top: 18px; }
+        .dmap-result { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px; margin-top: 18px; min-height: 26px; }
+        .dmap-result-empty { font-size: 14.5px; color: var(--ink-3); }
         .dmap-result-figure { font-family: var(--font-sora); font-weight: 800; font-size: 30px; letter-spacing: -0.02em; color: var(--gold-deep); }
         .dmap-result-sub { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; margin-top: 8px; }
         .dmap-basis { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); margin-top: 14px; }
