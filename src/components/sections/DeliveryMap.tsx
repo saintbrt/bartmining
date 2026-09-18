@@ -1,81 +1,109 @@
 'use client'
 
-import { useMemo, useState } from 'react'
-import { DELIVERY_STOPS, DELIVERY_STOP_BY_SLUG, CARGO_CLASSES, BUFFER, type DeliveryStop } from '@/data/delivery-routes'
+import { useEffect, useMemo, useState } from 'react'
+import { DELIVERY_STOPS, DELIVERY_STOP_BY_SLUG, CARGO_CLASSES, BUFFER, ORIGINS, type RouteTime } from '@/data/delivery-routes'
 
-const BASIS_LABEL: Record<DeliveryStop['basis'], { label: string; color: string }> = {
+const BASIS_LABEL: Record<RouteTime['basis'], { label: string; color: string }> = {
   confirmed: { label: 'Confirmed figure', color: 'var(--gold-deep)' },
   computed: { label: 'Computed from confirmed legs', color: 'var(--gold)' },
   estimate: { label: 'Estimate — to be confirmed', color: 'var(--ink-3)' },
 }
 
 const fmt = (n: number) => (Number.isInteger(n) ? n.toString() : n.toFixed(1))
-
 const fmtDays = (h: number) => {
   const d = h / 24
   return d < 1 ? `${fmt(h)}h` : `${fmt(d)} day${d >= 1.5 ? 's' : ''}`
 }
 
+/**
+ * A loose, decorative outline of mainland Tanzania — a backdrop for the
+ * route diagram, not a geographic reference. It shares the map's coordinate
+ * space so the town markers roughly sit "inside" it, but the coastline and
+ * borders are hand-drawn approximations, not traced data.
+ */
+const TZ_SILHOUETTE = 'M120,20 C170,10 230,40 260,80 C300,70 340,60 380,90 C420,60 460,80 470,120 C500,150 520,190 500,230 C540,260 560,320 555,390 C560,430 545,470 555,510 C540,530 500,535 480,520 C450,510 430,500 400,480 C360,510 300,520 260,545 C210,555 160,545 140,510 C120,480 130,450 110,420 C80,400 60,360 70,320 C55,290 60,250 90,230 C70,190 75,150 100,120 C90,80 95,45 120,20 Z'
+
 export default function DeliveryMap() {
+  const [origin, setOrigin] = useState<string>('dar-es-salaam')
   const [selected, setSelected] = useState<string>('mwanza')
   const [cargo, setCargo] = useState<string>('medium')
 
+  // A destination can't be its own origin.
+  useEffect(() => {
+    if (selected === origin) {
+      setSelected(ORIGINS.find(o => o.id !== origin)?.id ?? origin)
+    }
+  }, [origin, selected])
+
+  const originStop = DELIVERY_STOP_BY_SLUG.get(origin)!
   const stop = DELIVERY_STOP_BY_SLUG.get(selected) ?? DELIVERY_STOPS[0]
   const cls = CARGO_CLASSES.find(c => c.id === cargo) ?? CARGO_CLASSES[1]
+  const route = origin === 'mwanza' ? stop.fromMwanza : stop.fromDar
 
   const range = useMemo(() => {
-    if (stop.slug === 'dar-es-salaam') return null
-    const [lo, hi] = stop.hours
-    if (cls.multiplier === null) return null // abnormal load: fixed note, not a multiplier
+    if (stop.slug === origin || cls.multiplier === null) return null
+    const [lo, hi] = route.hours
     const loAdj = lo * cls.multiplier
     const hiAdj = hi * cls.multiplier
-    const loBuf = loAdj * (1 + BUFFER.low)
-    const hiBuf = hiAdj * (1 + BUFFER.high)
-    return { loAdj, hiAdj, loBuf, hiBuf }
-  }, [stop, cls])
-
-  const dar = DELIVERY_STOP_BY_SLUG.get('dar-es-salaam')!
+    return { loBuf: loAdj * (1 + BUFFER.low), hiBuf: hiAdj * (1 + BUFFER.high) }
+  }, [stop, origin, route, cls])
 
   return (
     <div className="dmap-wrap">
       {/* Map */}
       <div className="dmap-card">
-        <svg viewBox="0 0 620 560" role="img" aria-label="Simplified diagram of Bart Mining delivery routes across Tanzania" className="dmap-svg">
-          {DELIVERY_STOPS.filter(s => s.slug !== 'dar-es-salaam').map(s => (
-            <line key={s.slug} x1={dar.x} y1={dar.y} x2={s.x} y2={s.y} stroke="var(--line)" strokeWidth={1} />
-          ))}
-          {stop.slug !== 'dar-es-salaam' && (
-            <line x1={dar.x} y1={dar.y} x2={stop.x} y2={stop.y} stroke="var(--gold)" strokeWidth={2.5} />
+        <svg viewBox="0 0 670 560" role="img" aria-label="Simplified diagram of Bart Mining delivery routes across Tanzania" className="dmap-svg">
+          <path d={TZ_SILHOUETTE} className="dmap-silhouette" />
+
+          {stop.slug !== origin && (
+            <line x1={originStop.x} y1={originStop.y} x2={stop.x} y2={stop.y} stroke="var(--gold)" strokeWidth={2.5} strokeLinecap="round" />
           )}
+
           {DELIVERY_STOPS.map(s => {
+            const isOrigin = s.slug === origin
+            const isOtherOrigin = ORIGINS.some(o => o.id === s.slug) && !isOrigin
             const active = s.slug === selected
-            const isDar = s.slug === 'dar-es-salaam'
+            const big = isOrigin || active
             return (
               <g key={s.slug} transform={`translate(${s.x},${s.y})`} onClick={() => setSelected(s.slug)} style={{ cursor: 'pointer' }} role="button" aria-pressed={active} tabIndex={0}
                 onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setSelected(s.slug) }}>
-                <circle r={isDar ? 9 : active ? 8 : 5.5} fill={isDar ? 'var(--ink)' : active ? 'var(--gold)' : 'var(--bg-3)'} stroke={isDar ? 'var(--ink)' : 'var(--gold)'} strokeWidth={isDar ? 0 : 1.5} />
+                <circle
+                  r={isOrigin ? 9 : active ? 8 : 5.5}
+                  fill={isOrigin ? 'var(--ink)' : active ? 'var(--gold)' : 'var(--bg-3)'}
+                  stroke={isOrigin ? 'var(--ink)' : 'var(--gold)'}
+                  strokeWidth={isOrigin ? 0 : 1.5}
+                  opacity={isOtherOrigin ? 0.55 : 1}
+                />
                 <text
-                  x={0} y={isDar ? -16 : active ? -14 : -11}
+                  x={0} y={big ? -14 : -11}
                   textAnchor="middle"
-                  fontSize={isDar || active ? 13 : 11}
-                  fontWeight={isDar || active ? 700 : 500}
+                  fontSize={big ? 13 : 11}
+                  fontWeight={big ? 700 : 500}
                   fill="var(--ink)"
+                  opacity={isOtherOrigin ? 0.6 : 1}
                   style={{ fontFamily: 'var(--font-sora)' }}
                 >
-                  {s.town}
+                  {s.town}{isOtherOrigin ? ' (base)' : ''}
                 </text>
               </g>
             )
           })}
         </svg>
-        <p className="dmap-caption">Simplified route diagram — not to scale. Click or tap a town, or use the dropdown, to see its delivery time.</p>
+        <p className="dmap-caption">Simplified route diagram, not to scale. Click or tap a town, or use the dropdown, to see its delivery time.</p>
       </div>
 
       {/* Controls + result */}
       <div className="dmap-panel">
+        <label className="dmap-label" htmlFor="dmap-origin">Shipping from</label>
+        <select id="dmap-origin" className="dmap-select" value={origin} onChange={e => setOrigin(e.target.value)}>
+          {ORIGINS.map(o => (
+            <option key={o.id} value={o.id}>{o.label} — {o.sub}</option>
+          ))}
+        </select>
+
         <label className="dmap-label" htmlFor="dmap-town">Delivering to</label>
         <select id="dmap-town" className="dmap-select" value={selected} onChange={e => setSelected(e.target.value)}>
-          {DELIVERY_STOPS.filter(s => s.slug !== 'dar-es-salaam').map(s => (
+          {DELIVERY_STOPS.filter(s => s.slug !== origin).map(s => (
             <option key={s.slug} value={s.slug}>{s.town} — {s.region}</option>
           ))}
         </select>
@@ -98,7 +126,7 @@ export default function DeliveryMap() {
             <>
               <div className="dmap-result-figure">{fmtDays(range.loBuf)} – {fmtDays(range.hiBuf)}</div>
               <p className="dmap-result-sub">
-                Light-vehicle baseline {fmt(stop.hours[0])}–{fmt(stop.hours[1])}h, &times;{cls.multiplier} for {cls.label.toLowerCase()},
+                Light-vehicle baseline {fmt(route.hours[0])}–{fmt(route.hours[1])}h from {originStop.town}, &times;{cls.multiplier} for {cls.label.toLowerCase()},
                 plus a {Math.round(BUFFER.low * 100)}–{Math.round(BUFFER.high * 100)}% buffer for checkpoints, weather and loading.
               </p>
             </>
@@ -106,9 +134,9 @@ export default function DeliveryMap() {
         </div>
 
         <div className="dmap-basis">
-          <span className="dmap-basis-dot" style={{ background: BASIS_LABEL[stop.basis].color }} />
-          <span>{BASIS_LABEL[stop.basis].label}</span>
-          {stop.note && <span className="dmap-basis-note">— {stop.note}</span>}
+          <span className="dmap-basis-dot" style={{ background: BASIS_LABEL[route.basis].color }} />
+          <span>{BASIS_LABEL[route.basis].label}</span>
+          {route.note && <span className="dmap-basis-note">— {route.note}</span>}
         </div>
 
         <p className="dmap-fineprint">
@@ -120,6 +148,7 @@ export default function DeliveryMap() {
         .dmap-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: start; }
         .dmap-card { background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 16px; }
         .dmap-svg { width: 100%; height: auto; display: block; }
+        .dmap-silhouette { fill: var(--ink); opacity: 0.05; stroke: none; }
         .dmap-caption { font-size: 13px; color: var(--ink-3); margin-top: 10px; text-align: center; }
         .dmap-panel { background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; display: flex; flex-direction: column; gap: 6px; }
         .dmap-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: 14px; }

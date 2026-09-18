@@ -78,9 +78,17 @@ export default function DeliveryShippingPage() {
           <Reveal className="sec-head">
             <span className="eyebrow">Route planner</span>
             <h2>Estimated delivery time to your district</h2>
-            <p>A planning tool, not a quotation. Pick your district and cargo type for a realistic range.</p>
+            <p>We ship from two points: our Dar es Salaam yard and our Mwanza base near the Lake Victoria goldfields. Pick whichever applies to your order, your district and your cargo type for a realistic range.</p>
           </Reveal>
           <Reveal delay={1}><DeliveryMap /></Reveal>
+          <Reveal delay={2}>
+            <p style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 18, lineHeight: 1.7 }}>
+              Confirmed figures are Allan&apos;s own. Estimates use general road knowledge and, where available, published road distances (Sep 2026):{' '}
+              <a href="https://www.latra.go.tz/uploads/documents/sw-1654672494-MWANZA%20BUS%20FARES.pdf" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>LATRA Mwanza bus-fare distances</a>,{' '}
+              <a href="https://distancebetween2.com/mwanza/dar_es_salaam" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>distancebetween2.com</a>,{' '}
+              <a href="https://www.travelmath.com/drive-distance/from/Dar+es+Salaam,+Tanzania/to/Mbeya,+Tanzania" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>travelmath.com</a>. None of these are Bart Mining&apos;s own measured times.
+            </p>
+          </Reveal>
         </div>
       </section>
 
