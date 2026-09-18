@@ -419,7 +419,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'How much water does it need?', a: '0.5–10 m³/h of clean fluidisation water depending on bowl size, at regulated pressure. Water quality matters: silt-laden water blocks the fluidisation holes and quietly destroys recovery over a few shifts. Many recovery complaints on site trace back to water, not the machine.' },
       { q: 'Batch or continuous discharge?', a: 'Batch units stop to flush concentrate and suit lower-grade, lower-throughput duty where interruption is acceptable. Continuous units discharge concentrate without stopping and suit higher grades or circuits that cannot pause. Batch is cheaper and simpler; continuous fits production plants.' },
     ],
-    related: ['shaking-table-gold', 'gold-elution-electrowinning-plant', 'ball-mill-gold-ore'],
+    related: ['shaking-table-gold', 'alluvial-gold-wash-plant', 'sluice-box-gold-jig', 'gold-elution-electrowinning-plant'],
     image: IMG.gold,
     imageAlt: 'Centrifugal gravity gold concentrator bowl in a processing plant',
     // Guide sections added (content/equipment), so the page genuinely changed.
