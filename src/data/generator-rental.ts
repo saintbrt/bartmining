@@ -5,7 +5,8 @@
  * Facts confirmed by Allan (3 Oct 2026): sizes 300 to 2,500 kVA; every hire
  * includes delivery and collection, installation and commissioning, an
  * operator or technician, and servicing during the hire; prices are quoted
- * per enquiry and not published. Units are supplied through partner fleets,
+ * per enquiry and not published. Fuel is supplied by the customer. Minimum
+ * hire: one week for industrial and site work, two days for events. Units are supplied through partner fleets,
  * so copy says "we rent generators" and never claims units in stock or a
  * fleet size.
  *
@@ -47,6 +48,12 @@ export const INCLUDED: { title: string; text: string }[] = [
   { title: 'Servicing during the hire', text: 'Oil, filters and routine service on schedule, and breakdown response while the set is on hire.' },
 ]
 
+/** Hire terms shown under "Included in every hire". */
+export const HIRE_TERMS: { title: string; text: string }[] = [
+  { title: 'Fuel', text: 'Supplied by you, the customer using the generator. We estimate the fuel use from your running hours so you can plan deliveries to site.' },
+  { title: 'Minimum hire', text: 'One week for industrial, mining and construction work. Two days for events.' },
+]
+
 export interface Faq { q: string; a: string }
 
 export const RENTAL_FAQS: Faq[] = [
@@ -61,6 +68,14 @@ export const RENTAL_FAQS: Faq[] = [
   {
     q: 'What is included in the hire?',
     a: 'Every hire includes delivery and collection, installation and commissioning, an operator or technician, and servicing during the hire period.',
+  },
+  {
+    q: 'Who supplies the fuel?',
+    a: 'The customer using the generator supplies the fuel. Tell us how many hours a day it will run and we will estimate the consumption, so you can plan deliveries to site.',
+  },
+  {
+    q: 'What is the minimum hire period?',
+    a: 'One week for industrial, mining and construction work, and two days for events.',
   },
   {
     q: 'How much does it cost to rent a generator?',
@@ -140,7 +155,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     ],
     faqs: [
       { q: 'Where can I rent a large generator in Dar es Salaam?', a: 'We rent generators from 300 kVA to 2,500 kVA in Dar es Salaam, delivered and installed, with an operator and servicing included. Call or WhatsApp us with the size or your load list for a quote.' },
-      { q: 'Can I rent a generator for an event?', a: 'Yes. Tell us the event dates, the location and what will be powered, such as lighting, sound and catering, and we will size the set and deliver it before the event.' },
+      { q: 'Can I rent a generator for an event?', a: 'Yes, with a two-day minimum hire. Tell us the event dates, the location and what will be powered, such as lighting, sound and catering, and we will size the set and deliver it before the event.' },
       { q: 'Can you install a generator to take over automatically during power cuts?', a: 'Yes. For standby hires the set is connected so it takes over when the grid fails and hands back when supply returns.' },
     ],
     supplyPage: '/equipment/supply/dar-es-salaam',
@@ -165,7 +180,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     faqs: [
       { q: 'What size generator does a gold processing plant in Geita need?', a: 'It depends on the plant, but mills and crushers started direct on line often push the requirement to 500 kVA or more. Send us the motor list and how each motor starts, and we will recommend a size.' },
       { q: 'Can you supply a generator to a site outside Geita town?', a: 'Yes, including Nyang’hwale, Mbogwe, Chato and Bukombe. Tell us the site location and road access when you ask for a quote.' },
-      { q: 'How long can I rent a generator for?', a: 'From short hires during commissioning or a breakdown to months of continuous prime power. Tell us how long you need it when you ask for a quote.' },
+      { q: 'How long can I rent a generator for?', a: 'From one week, the minimum for mining and industrial work, to months of continuous prime power. Tell us how long you need it when you ask for a quote.' },
     ],
     supplyPage: '/equipment/supply/geita',
   },

@@ -564,6 +564,10 @@ img { display: block; max-width: 100%; }
 .gr-grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 @media (max-width: 1000px) { .gr-grid4 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .gr-grid4 { grid-template-columns: 1fr; } }
+.gr-terms { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--line-2); max-width: 900px; }
+.gr-terms dt { font-weight: 600; color: var(--ink); font-size: 15.5px; }
+.gr-terms dd { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+@media (max-width: 760px) { .gr-terms { grid-template-columns: 1fr; } }
 .gr-towns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .gr-town { display: block; height: 100%; padding: 22px; border: 1px solid var(--line); border-radius: var(--r-lg); text-decoration: none; background: var(--bg-3); }
 .gr-town:hover { border-color: var(--ink); }

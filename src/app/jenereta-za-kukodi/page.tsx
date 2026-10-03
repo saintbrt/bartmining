@@ -41,6 +41,8 @@ const INCLUDED = [
 const FAQS = [
   { q: 'Mna jenereta za ukubwa gani za kukodi?', a: 'Tunakodisha jenereta kuanzia kVA 300 hadi kVA 2,500. Kwa mzigo mkubwa zaidi, jenereta mbili au zaidi hufanya kazi pamoja kama chanzo kimoja cha umeme.' },
   { q: 'Nitajuaje ukubwa wa jenereta ninaohitaji?', a: 'Jumlisha mzigo wote, kisha angalia mota kubwa zaidi na jinsi inavyowashwa. Mota inayowashwa direct on line huvuta umeme mara sita hadi saba ya kawaida kwa sekunde chache, na mvuto huo mara nyingi ndio unaoamua ukubwa wa jenereta. Tumia kikokotoo kilicho kwenye ukurasa huu, kisha tutumie orodha ya mizigo tukuthibitishie.' },
+  { q: 'Nani analeta mafuta?', a: 'Mafuta yanaletwa na mteja anayetumia jenereta. Tuambie itafanya kazi saa ngapi kwa siku, tutakadiria matumizi ya mafuta ili upange jinsi ya kuyafikisha eneo la kazi.' },
+  { q: 'Muda wa chini wa kukodi ni upi?', a: 'Wiki moja kwa kazi za viwanda, migodi na ujenzi, na siku mbili kwa matukio (events).' },
   { q: 'Bei ya kukodi jenereta ni kiasi gani?', a: 'Inategemea ukubwa, muda wa kukodi, eneo la kazi na saa ngapi kwa siku itafanya kazi. Hatuweki bei kwenye tovuti kwa sababu kila kazi ni tofauti. Tutumie ukubwa au orodha ya mizigo, eneo na tarehe kwa simu au WhatsApp, tutakupa bei kamili.' },
   { q: 'Nini kimejumuishwa kwenye kukodi?', a: 'Kila ukodishaji unajumuisha kuleta na kurudisha jenereta, kuifunga na kuiwasha, mwendeshaji au fundi, na matengenezo kwa muda wote wa kukodi.' },
   { q: 'Mnaleta jenereta nje ya Dar es Salaam na Mwanza?', a: 'Ndiyo, popote Tanzania, ikiwemo Geita, Kahama, Shinyanga, Chunya na Mbeya. Tuambie eneo la kazi na hali ya barabara unapoomba bei.' },
@@ -127,6 +129,10 @@ export default function JeneretaZaKukodiPage() {
                 <Reveal key={x.t} delay={i % 3} className="gr-card"><h3>{x.t}</h3><p>{x.d}</p></Reveal>
               ))}
             </div>
+            <dl className="gr-terms">
+              <div><dt>Mafuta</dt><dd>Yanaletwa na wewe, mteja anayetumia jenereta. Tunakadiria matumizi ya mafuta kulingana na saa za kazi ili upange jinsi ya kuyafikisha eneo la kazi.</dd></div>
+              <div><dt>Muda wa chini wa kukodi</dt><dd>Wiki moja kwa kazi za viwanda, migodi na ujenzi. Siku mbili kwa matukio.</dd></div>
+            </dl>
           </div>
         </section>
 

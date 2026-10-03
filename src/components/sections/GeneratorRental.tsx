@@ -1,5 +1,5 @@
 import Reveal from '@/components/ui/Reveal'
-import { INCLUDED, PHONE_DISPLAY, PHONE_HREF, SIZE_BANDS, whatsappLink, type Faq } from '@/data/generator-rental'
+import { HIRE_TERMS, INCLUDED, PHONE_DISPLAY, PHONE_HREF, SIZE_BANDS, whatsappLink, type Faq } from '@/data/generator-rental'
 
 /** Blocks shared by /generator-rental and its town pages. */
 
@@ -29,6 +29,7 @@ export function SizeBands() {
 
 export function Included() {
   return (
+    <>
     <div className="gr-grid4">
       {INCLUDED.map((x, i) => (
         <Reveal key={x.title} delay={i % 3} className="gr-card">
@@ -37,14 +38,18 @@ export function Included() {
         </Reveal>
       ))}
     </div>
+    <dl className="gr-terms">
+      {HIRE_TERMS.map(x => <div key={x.title}><dt>{x.title}</dt><dd>{x.text}</dd></div>)}
+    </dl>
+    </>
   )
 }
 
 export function QuoteSteps() {
   const steps = [
     { n: '01', t: 'Tell us the load', d: 'The size you need, or your load list: each motor’s kW and how it starts. The calculator above gives a first figure.' },
-    { n: '02', t: 'Tell us the site and dates', d: 'Where the generator goes, road access, the start date, how long you need it and how many hours a day it runs.' },
-    { n: '03', t: 'Get a quote', d: 'We confirm the size and come back with a price for the whole hire, including delivery, installation, operator and servicing.' },
+    { n: '02', t: 'Tell us the site and dates', d: 'Where the generator goes, road access, the start date, how long you need it (minimum one week, or two days for events) and how many hours a day it runs.' },
+    { n: '03', t: 'Get a quote', d: 'We confirm the size and come back with a price for the whole hire, including delivery, installation, operator and servicing. Fuel is supplied by you.' },
   ]
   return (
     <ol className="gr-steps">

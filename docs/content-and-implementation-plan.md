@@ -36,12 +36,11 @@ Update the status marks and the [change log](#change-log) as work lands, so noth
 | 2026-10-03 | Plant page lives at `/alluvial` (shorter than `/alluvial-plant-proposal`). |
 | 2026-10-03 | Generator rental is the top SEO priority (live demand: a caller asked for 200–2,500 kVA). |
 | 2026-10-03 | Town pages for generator rental use `/generator-rental/<town>`, not `/generator-rental-<town>`. |
-| 2026-10-03 | Generator rental facts (D1–D5): public wording is "we rent generators" (units come from partners, so never claim a fleet or stock); sizes 300–2,500 kVA; every hire includes delivery and collection, installation and commissioning, an operator or technician, and servicing; no published rates, call or WhatsApp for a quote; enquiries go to +255 759 141 705. |
+| 2026-10-03 | Generator rental facts (D1–D5): public wording is "we rent generators" (units come from partners, so never claim a fleet or stock); sizes 300–2,500 kVA; every hire includes delivery and collection, installation and commissioning, an operator or technician, and servicing; no published rates, call or WhatsApp for a quote; enquiries go to +255 759 141 705. Fuel is supplied by the customer; minimum hire is one week for industrial work and two days for events. |
 
 ### Open
 | # | Question | Owner | Blocks |
 |---|---|---|---|
-| D1–D5 | Answered 2026-10-03 (see Made). Still open: who supplies fuel, and a minimum hire period. Neither is stated on the pages yet. | Allan | Nothing blocked |
 | D6 | Wash plant articles: rounded price ranges, or no prices? | Allan | 1.3, 1.4 |
 | D7 | Can article 1.3 open with an anonymous case study ("a recent proposal for a clay-rich deposit in the Southern Highlands")? | Allan | 1.3 |
 | D8 | Which equipment we source in Tanzania vs import (the planner's current ticks are guesses) | Allan | 2.3, planner |
@@ -71,7 +70,7 @@ Update the status marks and the [change log](#change-log) as work lands, so noth
 - [x] Size bands 300–500, 500–1,000 and 1,000–2,500 kVA, with what each typically powers
 - [x] Prime vs standby rating, explained simply
 - [x] Synchronised sets for large loads; site access for big sets
-- [x] What's included, delivery area (minimum hire and fuel left out until confirmed)
+- [x] What's included, fuel (customer supplies), minimum hire (one week industrial, two days events), delivery area
 - [x] **"What size do I need" calculator** (English and Swahili): loads with starting method, recommends a standard rental size, sends the load list on WhatsApp
 - [x] Call and WhatsApp buttons above the fold, with a pre-filled WhatsApp message per page
 - [x] FAQ (7 questions) with FAQ structured data
