@@ -95,31 +95,36 @@ export default async function GeneratorRentalTownPage({ params }: { params: Prom
               </Reveal>
             ))}
           </div>
+
+          <Reveal className="gr-delivery">
+            <span className="eyebrow">Getting it there</span>
+            <h3>Delivery to sites in and around {t.town}</h3>
+          </Reveal>
+          <div className="gr-delivery-grid">
+            {t.logistics.map((l, i) => (
+              <Reveal key={l} delay={i} className="gr-delivery-item">
+                <span className="gr-step-n">{String(i + 1).padStart(2, '0')}</span>
+                <p>{l}</p>
+              </Reveal>
+            ))}
+          </div>
+          {t.supplyPage && (
+            <p style={{ color: 'var(--ink-2)', fontSize: 15.5, marginTop: 20 }}>
+              We also supply mining equipment in {t.supplyLabel ?? t.town}: see{' '}
+              <Link href={t.supplyPage} style={{ color: 'var(--gold)' }}>mining equipment in {t.supplyLabel ?? t.town}</Link>.
+            </p>
+          )}
         </div>
       </section>
 
       <section className="sec-gap" style={{ background: 'var(--paper)' }}>
         <div className="px-site">
-          <div className="split2" style={{ alignItems: 'flex-start' }}>
-            <Reveal>
-              <span className="eyebrow">Getting it there</span>
-              <h2 style={{ marginTop: 16 }}>Delivery to sites in and around {t.town}</h2>
-              <ul className="gr-list">
-                {t.logistics.map(l => <li key={l}>{l}</li>)}
-              </ul>
-              {t.supplyPage && (
-                <p style={{ color: 'var(--ink-2)', fontSize: 15.5, marginTop: 16 }}>
-                  We also supply mining equipment in {t.supplyLabel ?? t.town}: see{' '}
-                  <Link href={t.supplyPage} style={{ color: 'var(--gold)' }}>mining equipment in {t.supplyLabel ?? t.town}</Link>.
-                </p>
-              )}
-            </Reveal>
-            <Reveal delay={1}>
-              <span className="eyebrow">Sizes</span>
-              <h2 style={{ marginTop: 16 }}>300 to 2,500 kVA</h2>
-              <SizeBands />
-            </Reveal>
-          </div>
+          <Reveal className="sec-head">
+            <span className="eyebrow">Sizes</span>
+            <h2>300 to 2,500 kVA</h2>
+            <p>Generators are sized on the total running load and on the largest motor and how it starts. The calculator below gives a figure for your own loads.</p>
+          </Reveal>
+          <Reveal delay={1}><SizeBands /></Reveal>
         </div>
       </section>
 

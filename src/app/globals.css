@@ -578,6 +578,12 @@ img { display: block; max-width: 100%; }
 .gr-band-img { position: relative; aspect-ratio: 4 / 3; border-radius: var(--r-lg); overflow: hidden; background: var(--paper); }
 .gr-bands figcaption { font-size: 14px; font-weight: 600; margin-top: 8px; }
 @media (max-width: 760px) { .gr-bands { grid-template-columns: 1fr; } }
+.gr-delivery { margin-top: 56px; }
+.gr-delivery h3 { font-size: clamp(22px, 2.2vw, 28px); margin-top: 12px; }
+.gr-delivery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.gr-delivery-item { border-top: 1px solid var(--ink); padding-top: 14px; }
+.gr-delivery-item p { color: var(--ink-2); font-size: 15.5px; line-height: 1.6; margin-top: 6px; }
+@media (max-width: 760px) { .gr-delivery-grid { grid-template-columns: 1fr; } }
 .gr-towns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .gr-town { display: block; height: 100%; padding: 22px; border: 1px solid var(--line); border-radius: var(--r-lg); text-decoration: none; background: var(--bg-3); }
 .gr-town:hover { border-color: var(--ink); }
