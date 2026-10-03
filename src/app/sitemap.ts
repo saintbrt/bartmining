@@ -5,6 +5,7 @@ import { EQUIPMENT } from '@/data/equipment-catalogue'
 import { LOCATIONS } from '@/data/locations'
 import { LOCATIONS_SW } from '@/data/locations-sw'
 import { MARKETS } from '@/data/markets'
+import { RENTAL_TOWNS } from '@/data/generator-rental'
 
 /**
  * Served at /sitemap.xml, generated from the same data the pages render from.
@@ -28,6 +29,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/about`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE.url}/sustainability`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE.url}/contact`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/generator-rental`, changeFrequency: 'monthly', priority: 0.9 },
+    ...RENTAL_TOWNS.map(t => ({ url: `${SITE.url}/generator-rental/${t.slug}`, changeFrequency: 'monthly' as const, priority: 0.85 })),
+    { url: `${SITE.url}/jenereta-za-kukodi`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/privacy`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/terms`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/delivery-shipping`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.75 },

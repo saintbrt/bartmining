@@ -549,3 +549,55 @@ img { display: block; max-width: 100%; }
   .pf-controls { grid-template-columns: 1fr; gap: 12px; }
   .pf-detail { grid-template-columns: 1fr; gap: 40px; }
 }
+
+/* ── Generator rental (/generator-rental, /jenereta-za-kukodi) ─ */
+.gr-contact { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.gr-table-wrap { overflow-x: auto; }
+.gr-table { width: 100%; border-collapse: collapse; font-size: 15.5px; margin-top: 8px; }
+.gr-table th { text-align: left; font-size: 13px; font-weight: 600; color: var(--ink-3); padding: 10px 14px 10px 0; border-bottom: 1px solid var(--ink); }
+.gr-table td { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--line-2); vertical-align: top; color: var(--ink-2); line-height: 1.6; }
+.gr-table td.gr-strong { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.gr-card { background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px 24px; }
+.gr-card h3 { font-size: 17px; margin-bottom: 8px; }
+.gr-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+.gr-list { margin-top: 18px; padding-left: 20px; color: var(--ink-2); font-size: 15.5px; line-height: 1.8; }
+.gr-grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 1000px) { .gr-grid4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .gr-grid4 { grid-template-columns: 1fr; } }
+.gr-towns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gr-town { display: block; height: 100%; padding: 22px; border: 1px solid var(--line); border-radius: var(--r-lg); text-decoration: none; background: var(--bg-3); }
+.gr-town:hover { border-color: var(--ink); }
+.gr-town-name { display: block; font-weight: 600; color: var(--ink); font-size: 17px; }
+.gr-town-text { display: block; color: var(--ink-2); font-size: 14px; margin-top: 8px; line-height: 1.6; }
+.gr-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.gr-steps li { border-top: 1px solid var(--ink); padding-top: 16px; }
+.gr-step-n { font-family: var(--font-mono), monospace; font-size: 13px; color: var(--gold); }
+.gr-steps h3 { font-size: 17px; margin: 8px 0; }
+.gr-steps p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+/* Sizing calculator */
+.gs { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; max-width: 920px; }
+.gs-row { display: grid; grid-template-columns: minmax(0, 2fr) 96px 72px minmax(0, 2fr) 32px; gap: 8px; align-items: center; margin-bottom: 8px; }
+.gs-head { font-size: 12.5px; color: var(--ink-3); font-weight: 600; margin-bottom: 4px; }
+.gs-row input, .gs-row select { width: 100%; font: inherit; font-size: 15px; padding: 9px 10px; border: 1px solid var(--line-2); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); min-width: 0; }
+.gs-row input:focus, .gs-row select:focus { outline: 2px solid var(--ink); outline-offset: -1px; }
+.gs-remove { border: 0; background: none; font-size: 20px; color: var(--ink-3); cursor: pointer; }
+.gs-remove:hover { color: var(--ink); }
+.gs-add { border: 1px dashed var(--line-2); background: none; padding: 8px 14px; border-radius: var(--r-sm); font: inherit; font-size: 14px; color: var(--ink-2); cursor: pointer; margin-top: 4px; }
+.gs-result { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 24px 0 8px; padding-top: 18px; border-top: 1px solid var(--line-2); }
+.gs-result dt { font-size: 12.5px; color: var(--ink-3); }
+.gs-result dd { margin: 4px 0 0; font-family: var(--font-sora), sans-serif; font-size: 20px; font-weight: 600; }
+.gs-pick dd { color: var(--gold); font-size: 24px; }
+.gs-note { font-size: 14px; margin-top: 10px; line-height: 1.6; color: var(--ink-2); }
+.gs-note.muted { color: var(--ink-3); }
+.gs-send { margin-top: 18px; display: inline-flex; }
+@media (max-width: 760px) {
+  .gr-towns, .gr-steps { grid-template-columns: 1fr; }
+  .gs { padding: 16px; }
+  .gs-row { grid-template-columns: minmax(0, 1fr) 72px 56px 28px; }
+  .gs-row select { grid-column: 1 / -1; grid-row: 2; }
+  .gs-row { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .gs-head { border-bottom: 0; padding-bottom: 0; }
+  .gs-head span:nth-child(4) { display: none; }
+  .gs-result { grid-template-columns: 1fr 1fr; }
+}

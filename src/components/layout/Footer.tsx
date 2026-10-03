@@ -7,6 +7,7 @@ const SW_LINKS = [
   { href: '/bei-ya-dhahabu-leo', label: 'Bei ya dhahabu leo' },
   { href: '/jinsi-ya-kupata-leseni-ya-pml', label: 'Leseni ya PML' },
   { href: '/gharama-ya-plant-ya-dhahabu', label: 'Gharama ya plant' },
+  { href: '/jenereta-za-kukodi', label: 'Jenereta za kukodi' },
   { href: '/mrabaha-na-kodi-za-dhahabu', label: 'Mrabaha na kodi' },
 ]
 
@@ -50,6 +51,7 @@ export default function Footer() {
               { href: '/services', label: 'Services' },
               { href: '/equipment', label: 'Equipment' },
               { href: '/delivery-shipping', label: 'Delivery & Shipping' },
+              { href: '/generator-rental', label: 'Generator Rental' },
               { href: '/sustainability', label: 'Sustainability' },
               { href: '/insights', label: 'Insights' },
               { href: '/contact', label: 'Contact' },

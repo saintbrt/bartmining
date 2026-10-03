@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { RENTAL_TOWNS } from '@/data/generator-rental'
 import { LOCATIONS, LOCATION_BY_SLUG } from '@/data/locations'
 import { EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
 import { LOCATIONS_SW_BY_SLUG } from '@/data/locations-sw'
@@ -119,6 +120,18 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
               </Link>{' '}
               for winches, processing plant, pumps, safety equipment, software and power.
             </p>
+            {(loc.buys.includes('diesel-generator-mining') || RENTAL_TOWNS.some(t => t.slug === loc.slug)) && (
+              <p>
+                Need power on site for a few weeks or months? We rent generators from 300 kVA to 2,500 kVA, delivered,
+                installed and serviced, to {loc.city}:{' '}
+                <Link
+                  href={RENTAL_TOWNS.some(t => t.slug === loc.slug) ? `/generator-rental/${loc.slug}` : '/generator-rental'}
+                  style={{ color: 'var(--gold)', fontWeight: 600 }}
+                >
+                  generator rental{RENTAL_TOWNS.some(t => t.slug === loc.slug) ? ` in ${loc.city}` : ''}
+                </Link>.
+              </p>
+            )}
 
             <h2 id="faq">Frequently Asked Questions</h2>
             {loc.faqs.map(f => (

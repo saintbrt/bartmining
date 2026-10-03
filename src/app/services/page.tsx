@@ -85,6 +85,46 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Generator rental: a separate, high-intent service with its own pages. */}
+      <section className="sec-gap">
+        <div className="px-site">
+          <div className="split2" style={{ alignItems: 'center' }}>
+            <Reveal>
+              <span className="eyebrow">Generator rental</span>
+              <h2 style={{ marginTop: 16 }}>Generators for hire, 300 to 2,500 kVA</h2>
+              <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 18 }}>
+                Diesel generators for mines, processing plants, construction sites, factories and standby power, delivered
+                anywhere in Tanzania. Every hire includes installation and commissioning, an operator or technician, and
+                servicing while the set is on hire.
+              </p>
+              <div style={{ marginTop: 26 }}>
+                <Link href="/generator-rental" className="btn btn-ink">
+                  Generator rental
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} style={{ width: 16, height: 16 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal delay={1}>
+              <ul style={{ display: 'grid', gap: 10, listStyle: 'none', padding: 0, margin: 0 }}>
+                {[
+                  { t: 'Generator rental in Mwanza', h: '/generator-rental/mwanza' },
+                  { t: 'Generator rental in Dar es Salaam', h: '/generator-rental/dar-es-salaam' },
+                  { t: 'Generator rental in Geita', h: '/generator-rental/geita' },
+                  { t: 'Jenereta za kukodi (Kiswahili)', h: '/jenereta-za-kukodi' },
+                ].map(x => (
+                  <li key={x.h}>
+                    <Link href={x.h} style={{ display: 'flex', gap: 10, alignItems: 'center', background: 'var(--bg-3)', border: '1px solid var(--line)', borderRadius: 'var(--r-sm)', padding: '12px 16px', fontSize: 15.5, color: 'var(--ink-2)', textDecoration: 'none' }}>
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gold)', flexShrink: 0 }} />
+                      {x.t}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       <PhasesSection title="How an engagement actually runs" subtitle="A disciplined path from discovery to closure, every phase shipping concrete deliverables, not just reports." />
       <RegionsSection />
 

@@ -118,6 +118,13 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
           <p style={{ color: 'var(--ink-2)', fontSize: 18, maxWidth: 720, lineHeight: 1.7, marginBottom: 24 }}>
             {item.summary}
           </p>
+          {item.slug === 'diesel-generator-mining' && (
+            <p style={{ color: 'var(--ink-2)', fontSize: 16, maxWidth: 720, lineHeight: 1.7, margin: '-8px 0 24px', paddingLeft: 14, borderLeft: '2px solid var(--gold)' }}>
+              Need one for weeks or months rather than for good? We rent generators from 300 kVA to 2,500 kVA, delivered,
+              installed and serviced, with an operator included.{' '}
+              <Link href="/generator-rental" style={{ color: 'var(--gold)', fontWeight: 600 }}>Generator rental</Link>
+            </p>
+          )}
 
           <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--ink-3)', flexWrap: 'wrap' }}>
             <span>{item.categoryLabel}</span>

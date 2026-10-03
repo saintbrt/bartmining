@@ -58,6 +58,8 @@ const content = `<div class="art-stats"><div class="art-stat"><div class="art-st
 
 <div class="art-callout"><strong>Tell us the duty before you decide.</strong> Give us the job, the duration and the site conditions and we will tell you plainly whether renting or buying is the better economics for that specific case, and help you source either. If the answer is that you should hire for four months rather than buy, that is what we will say.</div>
 
+<p>Power is a common short-term need on mine sites. We <a href="/generator-rental">rent generators from 300 kVA to 2,500 kVA</a> with delivery, installation, an operator and servicing included, so the availability risk sits with us, as in the wet hire described above.</p>
+
 <h2>Regions We Serve</h2>
 <div class="region-chips"><span class="region-chip">Mwanza</span><span class="region-chip">Geita</span><span class="region-chip">Kahama</span><span class="region-chip">Shinyanga</span><span class="region-chip">Bukombe</span><span class="region-chip">Tabora</span><span class="region-chip">Chunya</span><span class="region-chip">Mbeya</span><span class="region-chip">Dodoma</span><span class="region-chip">Dar es Salaam</span></div>
 

@@ -18,7 +18,7 @@ import { SITE } from '@/lib/seo'
 const URL = `${SITE.url}/alluvial`
 
 export const metadata: Metadata = {
-  title: 'Alluvial Gold Plant Proposal | Bart Mining',
+  title: 'Alluvial Gold Plant Proposal',
   description: 'How the proposed clay-bearing alluvial gold plant for Mbeya Region works, from the feed hopper to the gold room.',
   alternates: { canonical: URL },
   robots: { index: false, follow: false },

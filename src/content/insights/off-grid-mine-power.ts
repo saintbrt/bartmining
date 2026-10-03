@@ -66,6 +66,8 @@ const content = `<div class="art-stats"><div class="art-stat"><div class="art-st
 
 <div class="art-callout"><strong>Send us your load list and we will size the supply.</strong> Tell us the equipment, the duty cycles and the site location. We will come back with a generation recommendation, the starting arrangement your largest motor needs, and an indicative fuel cost per tonne of ore, which is usually the number that matters most.</div>
 
+<p>If you need generation for a few weeks or months, during commissioning, a breakdown or while a permanent set is on order, we also <a href="/generator-rental">rent generators from 300 kVA to 2,500 kVA</a>, delivered, installed and serviced, with an operator included.</p>
+
 <h2>Regions We Serve</h2>
 <div class="region-chips"><span class="region-chip">Mwanza</span><span class="region-chip">Geita</span><span class="region-chip">Kahama</span><span class="region-chip">Shinyanga</span><span class="region-chip">Bukombe</span><span class="region-chip">Chunya</span><span class="region-chip">Mbeya</span><span class="region-chip">Tabora</span><span class="region-chip">Dodoma</span><span class="region-chip">Kigoma</span></div>
 
