@@ -56,11 +56,11 @@ Update the status marks and the [change log](#change-log) as work lands, so noth
 
 | # | Status | Page | Address | Title | Target searches | Owner |
 |---|---|---|---|---|---|---|
-| 0.1 | `[~]` | Main service page | `/generator-rental` | Generator Rental in Tanzania: 300 to 2,500 kVA | generator rental Tanzania, generator hire Tanzania, 500 kVA generator for rent, 1000 kVA generator hire | Dev |
-| 0.2 | `[~]` | Town page | `/generator-rental/mwanza` | Generator Rental in Mwanza | generator rental Mwanza, generator hire Mwanza | Dev |
-| 0.3 | `[~]` | Town page | `/generator-rental/dar-es-salaam` | Generator Rental in Dar es Salaam | generator rental Dar es Salaam, generator hire Dar | Dev |
-| 0.4 | `[~]` | Town page | `/generator-rental/geita` | Generator Rental in Geita | generator rental Geita | Dev |
-| 0.5 | `[~]` | Swahili page | `/jenereta-za-kukodi` | Jenereta za Kukodi Tanzania: kVA 300 hadi 2,500 | jenereta za kukodi, kukodi jenereta | Dev |
+| 0.1 | `[x]` | Main service page | `/generator-rental` | Generator Rental in Tanzania: 300 to 2,500 kVA | generator rental Tanzania, generator hire Tanzania, 500 kVA generator for rent, 1000 kVA generator hire | Dev |
+| 0.2 | `[x]` | Town page | `/generator-rental/mwanza` | Generator Rental in Mwanza | generator rental Mwanza, generator hire Mwanza | Dev |
+| 0.3 | `[x]` | Town page | `/generator-rental/dar-es-salaam` | Generator Rental in Dar es Salaam | generator rental Dar es Salaam, generator hire Dar | Dev |
+| 0.4 | `[x]` | Town page | `/generator-rental/geita` | Generator Rental in Geita | generator rental Geita | Dev |
+| 0.5 | `[x]` | Swahili page | `/jenereta-za-kukodi` | Jenereta za Kukodi Tanzania: kVA 300 hadi 2,500 | jenereta za kukodi, kukodi jenereta | Dev |
 | 0.6 | `[ ]` | Article | `/insights/what-size-generator-do-i-need` | What Size Generator Do I Need? kVA Guide for Mines and Sites | what size generator do I need, generator size calculator, kVA calculation | Dev |
 | 0.7 | — | Article: dropped for now (rates are not published) | `/insights/generator-rental-price-tanzania` | Generator Rental Price in Tanzania: Daily and Monthly Rates | generator rental price, generator hire cost | Dev |
 | 0.8 | `[ ]` | Google Business Profile | (off-site) | Add the "Generator rental service" category, services list and description | generator rental near me | Allan / Team |
@@ -187,11 +187,11 @@ For each new page, record impressions, clicks and average position, and the top 
 
 | Page | Live date | Wk 1 | Wk 2 | Wk 4 | Wk 8 | Top queries |
 |---|---|---|---|---|---|---|
-| `/generator-rental` | | | | | | |
-| `/generator-rental/mwanza` | | | | | | |
-| `/generator-rental/dar-es-salaam` | | | | | | |
-| `/generator-rental/geita` | | | | | | |
-| `/jenereta-za-kukodi` | | | | | | |
+| `/generator-rental` | 2026-10-03 | | | | | |
+| `/generator-rental/mwanza` | 2026-10-03 | | | | | |
+| `/generator-rental/dar-es-salaam` | 2026-10-03 | | | | | |
+| `/generator-rental/geita` | 2026-10-03 | | | | | |
+| `/jenereta-za-kukodi` | 2026-10-03 | | | | | |
 | `/alluvial` | | | | | | |
 | `/insights/gold-trommel-sluice-box` | | | | | | |
 | `/insights/small-vs-full-gold-wash-plant` | | | | | | |
@@ -235,4 +235,4 @@ Check monthly: searches, calls and direction requests, especially for "generator
 | Date | Change |
 |---|---|
 | 2026-10-03 | Plan created: generator rental (Phase 0), wash plant content (Phases 1–3), trommel offer (Track B), planner backlog (Track C), tracking. |
-| 2026-10-03 | Phase 0 built: `/generator-rental`, three town pages, `/jenereta-za-kukodi`, sizing calculator, site links, sitemap. Checked on desktop and phone. Waiting for Allan's go-ahead to push. Also fixed the doubled "Bart Mining" in the `/alluvial` title. |
+| 2026-10-03 | Phase 0 live (commits `c8ce24e`, `17b1371`, `bc3aa2a`): FAQs 10 / 7 / 7 / 7 / 10, fuel and minimum hire terms. Earlier entry: Phase 0 built: `/generator-rental`, three town pages, `/jenereta-za-kukodi`, sizing calculator, site links, sitemap. Checked on desktop and phone. Waiting for Allan's go-ahead to push. Also fixed the doubled "Bart Mining" in the `/alluvial` title. |
