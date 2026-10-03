@@ -19,7 +19,7 @@ const HERO = heroImage()
 
 const URL = `${SITE.url}/jenereta-za-kukodi`
 const TITLE = 'Jenereta za Kukodi Tanzania: kVA 300 hadi 2,500'
-const DESCRIPTION = 'Jenereta za kukodi Tanzania kuanzia kVA 300 hadi 2,500. Tunaleta, tunafunga na kuwasha, pamoja na mwendeshaji na huduma ya matengenezo. Piga simu au WhatsApp upate bei.'
+const DESCRIPTION = 'Jenereta za kukodi Tanzania, kVA 300 hadi 2,500. Tunaleta, tunafunga na kuwasha, pamoja na mwendeshaji na matengenezo. Piga simu au WhatsApp upate bei.'
 const MESSAGE = 'Habari Bart Mining, naomba bei ya kukodi jenereta. Ukubwa au mzigo: ... Eneo: ... Tarehe: ...'
 
 export const metadata: Metadata = {

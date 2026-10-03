@@ -194,7 +194,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'gold-exploration-tanzania',
     title: 'Gold Exploration Services in Tanzania',
-    description: 'Complete guide to Tanzania\'s gold exploration landscape: geology, regulations, drilling methods and regional coverage.',
+    description: 'Gold exploration in Tanzania: the main gold belts by region, exploration methods that work, the Mining Act 2010 and its amendments, and assay and lab support.',
     tags: ['exploration', 'gold', 'tanzania', 'east-africa'],
     date: 'June 2025', readTime: '12 min read',
     image: '/equipment/rc-drilling-rig.jpg',
@@ -205,7 +205,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'diamond-mining-botswana',
     title: 'Diamond Mining Services in Botswana',
-    description: 'Kimberlite pipe exploration, bulk sampling and ore characterisation across the world\'s top diamond producer.',
+    description: 'Diamond exploration in Botswana: the geology of its kimberlite fields, how kimberlite pipes are found and bulk sampled, and the Mines and Minerals Act rules.',
     tags: ['exploration', 'diamond', 'southern-africa', 'botswana'],
     date: 'June 2025', readTime: '11 min read',
     image: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&h=400&q=75',
@@ -216,7 +216,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'copper-mining-zambia',
     title: 'Copper Mining Exploration in Zambia',
-    description: 'Exploration strategies, geology and services for Zambia\'s world-class Copperbelt Province.',
+    description: 'Copper exploration on Zambia\'s Copperbelt: Katanga Supergroup geology, structural controls, mapping, geochemistry, geophysics, drilling and cobalt potential.',
     tags: ['exploration', 'copper', 'southern-africa', 'zambia'],
     date: 'June 2025', readTime: '11 min read',
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&h=400&q=75',
@@ -227,7 +227,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'platinum-zimbabwe',
     title: 'Platinum Group Metals Exploration in Zimbabwe',
-    description: 'PGM deposit geology, exploration methodology and services across Zimbabwe\'s Great Dyke intrusion.',
+    description: 'PGM exploration on Zimbabwe\'s Great Dyke: Main Sulphide Zone geology, aeromagnetic and gravity surveys, core drilling and the Mines and Minerals Act explained.',
     tags: ['exploration', 'platinum', 'pgm', 'southern-africa', 'zimbabwe'],
     date: 'June 2025', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&h=400&q=75',
@@ -238,7 +238,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'coal-mining-mozambique',
     title: 'Coal Mining Services in Mozambique',
-    description: 'Exploration and development services for Mozambique\'s Karoo-age coal basins, from Maputo to Tete.',
+    description: 'Coal exploration in Mozambique\'s Tete Province: Moatize-Minjova basin geology, coal quality, seismic surveys, rotary and core drilling, and getting coal out.',
     tags: ['exploration', 'coal', 'southern-africa', 'mozambique'],
     date: 'June 2025', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&h=400&q=75',
@@ -249,7 +249,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mineral-survey-kenya',
     title: 'Mineral Survey & Exploration Services in Kenya',
-    description: 'Titanium, gold, fluorspar and soda ash exploration, survey methodologies and regional geology across Kenya.',
+    description: 'Mineral surveys in Kenya: gold, titanium, fluorspar and soda ash by region, the survey methods that suit each, and how the Mining Act 2016 licensing works.',
     tags: ['exploration', 'surveying', 'east-africa', 'kenya'],
     date: 'June 2025', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=800&h=400&q=75',
@@ -260,7 +260,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'geophysical-surveys-east-africa',
     title: 'Geophysical Survey Services in East Africa',
-    description: 'How airborne magnetics, IP, gravity and EM surveys are used to vector in on mineralisation across East Africa.',
+    description: 'Geophysical surveys in East Africa: how airborne magnetics, gravity, IP and EM surveys find mineralisation, plus ground and borehole methods for drilling.',
     tags: ['geophysics', 'exploration', 'east-africa'],
     date: 'June 2025', readTime: '12 min read',
     image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&h=400&q=75',
@@ -271,7 +271,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'drilling-services-tanzania',
     title: 'Diamond & RC Drilling Services in Tanzania',
-    description: 'Core and reverse-circulation drilling programmes, QA/QC protocols and sample management across Tanzania.',
+    description: 'Diamond core and RC drilling in Tanzania: which method suits which target, sample management and QA/QC, choosing a drilling contractor, and site logistics.',
     tags: ['drilling', 'exploration', 'tanzania', 'east-africa'],
     date: 'June 2025', readTime: '11 min read',
     image: '/equipment/rc-drilling-rig.jpg',
@@ -282,7 +282,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'environmental-compliance-mining',
     title: 'Environmental Compliance for Mining in Africa',
-    description: 'Navigating NEMC, NEMA, ZEMA and DEAT permitting frameworks for mine environmental clearances.',
+    description: 'Environmental compliance for mines in Tanzania, Kenya, Zambia and South Africa: NEMC, NEMA and ZEMA permits, the EIA process, baseline studies and monitoring.',
     tags: ['environment', 'consulting', 'east-africa', 'southern-africa'],
     date: 'June 2025', readTime: '11 min read',
     image: 'https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?auto=format&fit=crop&w=800&h=400&q=75',
@@ -293,7 +293,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mining-equipment-africa',
     title: 'Mining Equipment & Technology in Sub-Saharan Africa',
-    description: 'Drill rigs, geophysical instruments, lab equipment and mine-planning software suited to African conditions.',
+    description: 'Mining and exploration equipment for African conditions: drill rigs, geophysical instruments, lab and sample prep gear, planning software and remote power.',
     tags: ['equipment', 'drilling', 'geophysics', 'africa'],
     date: 'June 2025', readTime: '10 min read',
     image: '/equipment/jaw-crusher.jpg',
@@ -304,7 +304,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mineral-exploration-drc',
     title: 'Mineral Exploration Services in the DRC',
-    description: 'Operating in Africa\'s most mineralised country: geology, regulations and logistics for DRC exploration.',
+    description: 'Mineral exploration in the DRC, Africa\'s most mineralised country: its key geological terrains and mineral systems, and the practical realities on the ground.',
     tags: ['exploration', 'cobalt', 'copper', 'east-africa', 'drc'],
     date: 'June 2025', readTime: '12 min read',
     image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&h=400&q=75',
@@ -315,7 +315,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mining-services-south-africa',
     title: 'Mining Services in South Africa',
-    description: 'Gold, platinum and coal exploration across the Witwatersrand Basin and Bushveld Complex.',
+    description: 'Mining services in South Africa: Witwatersrand gold geology, Bushveld Complex platinum and chrome, and the MPRDA and NEMA rules that govern exploration permits.',
     tags: ['exploration', 'gold', 'platinum', 'southern-africa', 'south-africa'],
     date: 'June 2025', readTime: '11 min read',
     image: '/equipment/mine-hoist-headframe.jpg',
@@ -326,7 +326,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mining-exploration-namibia',
     title: 'Mining Exploration Services in Namibia',
-    description: 'Diamonds, uranium, copper and gold exploration across Namibia\'s diverse geological terrains.',
+    description: 'Mining exploration in Namibia: alluvial diamonds on the Orange River coast, Erongo uranium, Otavi copper, lead and zinc, and how the Minerals Act licences work.',
     tags: ['exploration', 'uranium', 'diamond', 'southern-africa', 'namibia'],
     date: 'June 2025', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&h=400&q=75',
@@ -348,7 +348,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mine-planning-feasibility',
     title: 'Mine Planning & Feasibility Studies in East Africa',
-    description: 'Resource estimation, mine design, financial modelling and JORC/NI 43-101 reporting for African projects.',
+    description: 'Mine planning and feasibility studies in East Africa: the study sequence, JORC resource estimation, open pit vs underground design and financial modelling.',
     tags: ['consulting', 'exploration', 'east-africa', 'southern-africa'],
     date: 'June 2025', readTime: '11 min read',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=400&q=75',
@@ -359,7 +359,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'assay-laboratory-tanzania',
     title: 'Assay & Laboratory Services in Tanzania',
-    description: 'Sample preparation, analytical methods, QA/QC program design and assay data management for Tanzanian projects.',
+    description: 'Assay and laboratory services in Tanzania: sample preparation, fire assay and other gold methods, QA/QC programme design and choosing a laboratory you trust.',
     tags: ['drilling', 'exploration', 'tanzania', 'east-africa'],
     date: 'June 2025', readTime: '9 min read',
     image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&h=400&q=75',
@@ -381,7 +381,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'community-csr-mining',
     title: 'Community Relations & CSR in African Mining',
-    description: 'FPIC, community development programmes, grievance mechanisms and social impact management across Africa.',
+    description: 'Community relations and CSR for African mines: the social licence, free, prior and informed consent, development agreements, grievance mechanisms and impacts.',
     tags: ['environment', 'consulting', 'east-africa', 'southern-africa'],
     date: 'June 2025', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=800&h=400&q=75',
@@ -392,7 +392,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'junior-mining-company',
     title: 'Services for Junior Mining Companies in Africa',
-    description: 'How junior explorers can maximise limited budgets with outsourced geological, drilling and reporting services.',
+    description: 'Services for junior mining companies in Africa: outsourced exploration management, data and modelling, JORC and NI 43-101 reports, and making budgets go far.',
     tags: ['consulting', 'exploration', 'east-africa', 'southern-africa'],
     date: 'June 2025', readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&h=400&q=75',
@@ -403,7 +403,7 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'future-mining-east-africa',
     title: 'The Future of Mining in East Africa 2025-2030',
-    description: 'Lithium, nickel, cobalt and graphite, how East Africa\'s critical-mineral endowment is reshaping investment flows.',
+    description: 'The future of mining in East Africa to 2030: lithium, cobalt, nickel and graphite, the technology changing African mines, and where investment is heading.',
     tags: ['consulting', 'east-africa', 'southern-africa'],
     date: 'June 2025', readTime: '13 min read',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=400&q=75',

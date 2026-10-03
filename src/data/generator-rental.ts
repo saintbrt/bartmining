@@ -130,7 +130,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Mwanza',
     region: 'Mwanza Region',
     title: 'Generator Rental in Mwanza: 300 to 2,500 kVA',
-    description: 'Generator rental in Mwanza from 300 kVA to 2,500 kVA, delivered and installed, with an operator and servicing included. For Lake Zone mines, plants, factories and sites.',
+    description: 'Generator rental in Mwanza and the Lake Zone, 300 to 2,500 kVA, for mines, plants, factories and construction. Delivered, installed, operator on site.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Mwanza and across the Lake Zone. Every hire is delivered, installed and commissioned, with an operator on site and servicing included for the whole hire.',
     demand: [
       { title: 'Lake Zone gold mines and plants', text: 'Sites in Sengerema, Misungwi, Buchosa, Kwimba and Magu, and further out in Geita and Kahama, are mostly beyond reliable grid supply. Mills, concentrators and pumps there need prime power sized for motor starting.' },
@@ -217,7 +217,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Arusha',
     region: 'Arusha Region',
     title: 'Generator Rental in Arusha: 300 to 2,500 kVA',
-    description: 'Generator rental in Arusha from 300 kVA to 2,500 kVA for lodges, hotels, events, farms, construction and Mererani mining, delivered, installed, with an operator on site.',
+    description: 'Generator rental in Arusha, 300 to 2,500 kVA, for lodges, events, farms, construction and Mererani mining. Delivered, installed, with an operator on site.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Arusha and across northern Tanzania, for hotels and lodges, conferences and events, flower and horticulture farms, construction and the tanzanite mines at Mererani. Every hire is delivered, installed and commissioned, with an operator on site and servicing included.',
     demand: [
       { title: 'Hotels, lodges and conferences', text: 'Standby power for hotels and safari lodges, and temporary power for conferences and events, where a power cut in front of guests is not an option.' },
@@ -245,7 +245,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Dodoma',
     region: 'Dodoma Region',
     title: 'Generator Rental in Dodoma: 300 to 2,500 kVA',
-    description: 'Generator rental in Dodoma from 300 kVA to 2,500 kVA for construction, government and office buildings, conferences and standby power, delivered, installed, with an operator on site.',
+    description: 'Generator rental in Dodoma, 300 to 2,500 kVA, for construction, offices, institutions and conferences. Delivered, installed, with an operator on site.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Dodoma, for construction projects, offices and institutions, conferences and events, and standby during power cuts. Every hire is delivered, installed and commissioned, with an operator on site and servicing included.',
     demand: [
       { title: 'Construction in the capital', text: 'New government, institutional and residential buildings across Dodoma need site power for cranes, hoists, mixers and welding, often for months before the permanent supply is connected.' },
@@ -270,7 +270,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Mbeya',
     region: 'Mbeya Region',
     title: 'Generator Rental in Mbeya: 300 to 2,500 kVA',
-    description: 'Generator rental in Mbeya from 300 kVA to 2,500 kVA for Chunya and Songwe gold mines, processing plants, agro-processing and construction, delivered, installed, with an operator on site.',
+    description: 'Generator rental in Mbeya, 300 to 2,500 kVA, for Chunya and Songwe gold mines, agro-processing and construction. Delivered, installed, operator on site.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Mbeya and the Southern Highlands, for gold mines and processing plants in Chunya and Songwe, agro-processing, and construction. Every hire is delivered, installed and commissioned, with an operator on site and servicing included.',
     demand: [
       { title: 'Chunya and Songwe gold mining', text: 'Mills, crushers, pumps and leach plants on the Lupa goldfield are large motor loads, and many sites are beyond reliable grid supply.' },
@@ -297,7 +297,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Morogoro',
     region: 'Morogoro Region',
     title: 'Generator Rental in Morogoro: 300 to 2,500 kVA',
-    description: 'Generator rental in Morogoro from 300 kVA to 2,500 kVA for agro-processing, sugar and industrial plants, construction and standby power, delivered, installed, with an operator on site.',
+    description: 'Generator rental in Morogoro, 300 to 2,500 kVA, for agro-processing, industry and construction. Delivered, installed, with an operator and full servicing.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Morogoro, for agro-processing and industrial plants, sugar and estate operations, construction along the central corridor, and standby during power cuts. Every hire is delivered, installed and commissioned, with an operator on site and servicing included.',
     demand: [
       { title: 'Agro-processing and estates', text: 'Sugar, grain and fruit processing in Morogoro Region runs on large motor loads during the season, when an outage stops the whole line.' },
@@ -322,7 +322,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Tanga',
     region: 'Tanga Region',
     title: 'Generator Rental in Tanga: 300 to 2,500 kVA',
-    description: 'Generator rental in Tanga from 300 kVA to 2,500 kVA for port and industrial sites, agro-processing, construction and Handeni gold mining, delivered, installed, with an operator on site.',
+    description: 'Generator rental in Tanga, 300 to 2,500 kVA, for port and industrial sites, agro-processing and Handeni mines. Delivered, installed, operator on site.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Tanga and across Tanga Region, for the port and industrial sites, sisal and fruit processing, construction, and gold mining around Handeni. Every hire is delivered, installed and commissioned, with an operator on site and servicing included.',
     demand: [
       { title: 'Port and industry', text: 'Standby and continuous power for industrial plants, warehouses and port-side operations in and around Tanga.' },
@@ -349,7 +349,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Kahama',
     region: 'Shinyanga Region',
     title: 'Generator Rental in Kahama: 300 to 2,500 kVA',
-    description: 'Generator rental in Kahama from 300 kVA to 2,500 kVA for gold mines, processing plants and contractors, delivered, installed, with an operator on site and servicing included.',
+    description: 'Generator rental in Kahama, 300 to 2,500 kVA, for gold mines, processing plants and contractors. Delivered, installed, with an operator and servicing.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Kahama, one of Tanzania’s main gold mining districts, for mines, processing plants, mining contractors and construction. Every hire is delivered, installed and commissioned, with an operator on site and servicing included.',
     demand: [
       { title: 'Gold mines and processing plants', text: 'Mills, crushers, CIL and CIP circuits and dewatering pumps across the Kahama goldfields, where outlying sites rely on generation.' },
@@ -375,7 +375,7 @@ export const RENTAL_TOWNS: RentalTown[] = [
     town: 'Mtwara',
     region: 'Mtwara Region',
     title: 'Generator Rental in Mtwara: 300 to 2,500 kVA',
-    description: 'Generator rental in Mtwara from 300 kVA to 2,500 kVA for industrial and energy projects, cashew processing, the port and construction, delivered, installed, with an operator on site.',
+    description: 'Generator rental in Mtwara, 300 to 2,500 kVA, for industrial and energy projects, cashew processing and construction. Delivered, installed, operator on site.',
     summary: 'We rent generators from 300 kVA to 2,500 kVA in Mtwara and southern Tanzania, for industrial and energy projects, cashew processing, the port and construction. Every hire is delivered, installed and commissioned, with an operator on site and servicing included.',
     demand: [
       { title: 'Industrial and energy projects', text: 'Construction and maintenance work on industrial plants and the energy sector in the south, where temporary power runs for weeks or months.' },
