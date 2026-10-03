@@ -467,3 +467,85 @@ img { display: block; max-width: 100%; }
 /* ── Reading progress (insights) ────────────────────────────── */
 .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--line); z-index: 200; }
 .read-bar { height: 100%; background: var(--gold); width: 0%; transition: width .1s linear; }
+
+/* ── Plant flow (/alluvial-plant-proposal) ──────────────────── */
+.pf-top { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.pf-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: var(--r-md); padding: 2px; gap: 2px; }
+.pf-toggle button { border: 0; background: none; padding: 8px 18px; border-radius: var(--r-sm); cursor: pointer; color: var(--ink-2); font: inherit; font-size: 15px; }
+.pf-toggle button.on { background: var(--ink); color: #fff; }
+.pf-summary { color: var(--ink-2); font-size: 16px; margin: 0; }
+.pf-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 32px 0 40px; border-top: 1px solid var(--line); }
+.pf-stats > div { padding: 16px 20px 0 0; }
+.pf-stats dt { font-size: 13px; color: var(--ink-3); }
+.pf-stats dd { margin: 4px 0 0; font-family: var(--font-sora), sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.pf-controls { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; min-height: 64px; margin-bottom: 20px; }
+.pf-buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+.pf-btn { border: 1px solid var(--line); background: var(--bg); border-radius: var(--r-md); padding: 9px 16px; cursor: pointer; font: inherit; font-size: 14px; color: var(--ink); white-space: nowrap; }
+.pf-btn:hover:not(:disabled) { border-color: var(--ink); }
+.pf-btn:disabled { color: var(--ink-3); cursor: default; }
+.pf-btn.primary { background: var(--ink); border-color: var(--ink); color: #fff; }
+.pf-btn.ghost { border-color: transparent; color: var(--ink-2); }
+.pf-caption { margin: 0; font-size: 15px; max-width: 720px; line-height: 1.6; }
+.pf-step-no { display: block; font-size: 12px; color: var(--ink-3); }
+.pf-muted { color: var(--ink-3); }
+.pf-scroll { overflow-x: auto; }
+.pf-svg { display: block; width: 100%; min-width: 760px; height: auto; overflow: visible; }
+.pf-svg text { font-family: var(--font-manrope), sans-serif; }
+.pf-band-label { font-size: 11px; font-weight: 600; letter-spacing: .12em; fill: var(--ink-3); }
+.pf-band-rule { stroke: var(--line-2); }
+.pf-node rect { fill: var(--bg); stroke: var(--ink); stroke-width: 1.2; }
+.pf-node.accent rect { stroke: var(--gold); stroke-width: 2; fill: #F5F0E6; }
+.pf-node.muted rect { stroke: var(--line); stroke-dasharray: 4 3; }
+.pf-node-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+.pf-node.muted .pf-node-label { font-size: 12px; font-weight: 500; fill: var(--ink-2); }
+.pf-node-sub { font-size: 11px; fill: var(--ink-2); }
+.pf-node, .pf-edge { transition: opacity .35s; }
+.pf-node.dim, .pf-edge.dim { opacity: .18; }
+.pf-edge path { fill: none; }
+.pf-line { stroke-width: 1.6; }
+.pf-edge-ore .pf-line { stroke: var(--ink); }
+.pf-edge-gold .pf-line { stroke: var(--gold); stroke-width: 2.4; }
+.pf-edge-water .pf-line { stroke: var(--ink-3); stroke-dasharray: 5 4; }
+.pf-edge-waste .pf-line { stroke: var(--line); stroke-width: 1.4; }
+.pf-arrow-ore { fill: var(--ink); }
+.pf-arrow-gold { fill: var(--gold); }
+.pf-arrow-water { fill: var(--ink-3); }
+.pf-arrow-waste { fill: var(--line); }
+.pf-flow { stroke-width: 3; stroke-dasharray: 2 14; stroke-linecap: round; animation: pf-flow .9s linear infinite; }
+.pf-edge-ore .pf-flow { stroke: var(--ink); }
+.pf-edge-gold .pf-flow { stroke: var(--gold); stroke-width: 4; }
+.pf-edge-water .pf-flow, .pf-edge-waste .pf-flow { stroke: var(--ink-3); }
+.pf-edge-waste .pf-flow { opacity: .6; }
+@keyframes pf-flow { to { stroke-dashoffset: -16; } }
+.pf-dot-ore { fill: var(--ink); }
+.pf-dot-gold { fill: var(--gold); }
+.pf-edge-label { font-size: 11px; fill: var(--ink-2); }
+.pf-legend { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; color: var(--ink-2); margin-top: 16px; }
+.pf-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.pf-legend-ore { stroke: var(--ink); stroke-width: 2; }
+.pf-legend-gold { stroke: var(--gold); stroke-width: 3; }
+.pf-legend-water { stroke: var(--ink-3); stroke-width: 2; stroke-dasharray: 5 4; }
+.pf-legend-waste { stroke: var(--line); stroke-width: 2; }
+.pf-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; margin-top: 64px; }
+.pf-detail h3 { font-size: 18px; margin-bottom: 16px; }
+.pf-steps { margin: 0; padding-left: 20px; }
+.pf-steps li { padding: 12px 0 12px 6px; border-bottom: 1px solid var(--line-2); }
+.pf-steps button { border: 0; background: none; padding: 0; font: inherit; font-weight: 600; color: var(--ink); cursor: pointer; text-align: left; }
+.pf-steps button:hover { text-decoration: underline; }
+.pf-steps li.on button { color: var(--gold); }
+.pf-steps p { margin: 2px 0 0; color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+.pf-specs { width: 100%; border-collapse: collapse; font-size: 15px; }
+.pf-specs th, .pf-specs td { text-align: left; padding: 11px 12px 11px 0; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+.pf-specs th { font-weight: 400; color: var(--ink-2); width: 48%; }
+@media (prefers-reduced-motion: reduce) { .pf-flow { animation: none; } }
+/* Phone layout of the diagram (see FLOW_NODES_MOBILE) */
+.pf-svg.pf-mobile { min-width: 0; max-width: 460px; margin: 0 auto; }
+.pf-mobile .pf-node-label { font-size: 12px; }
+.pf-mobile .pf-node-sub { font-size: 9.5px; }
+.pf-mobile .pf-node.muted .pf-node-label { font-size: 9.5px; }
+.pf-mobile .pf-edge-label, .pf-mobile .pf-band-label { font-size: 9.5px; }
+@media (max-width: 900px) {
+  .pf-stats { grid-template-columns: 1fr 1fr; }
+  .pf-controls { grid-template-columns: 1fr; gap: 12px; }
+  .pf-detail { grid-template-columns: 1fr; gap: 40px; }
+}

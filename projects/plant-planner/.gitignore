@@ -1,0 +1,5 @@
+node_modules/
+dist/
+# Project files hold supplier costs and commission. The repo is public, so
+# they never get committed. Back them up somewhere private.
+data/

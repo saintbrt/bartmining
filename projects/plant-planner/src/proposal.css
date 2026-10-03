@@ -1,0 +1,158 @@
+/*
+ * The client proposal: on screen as a page preview, on paper as A4.
+ * Black and greys only. The single colour is the gold-concentrate line in
+ * the process diagram, where it carries meaning.
+ */
+
+.proposal-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 56px; max-width: 1240px; margin: 0 auto; align-items: start; }
+.proposal-tools { position: sticky; top: 92px; display: grid; gap: 28px; }
+.proposal-tools h3 { font-size: 13px; margin-bottom: 8px; }
+.proposal-tools .check { padding: 3px 0; }
+.proposal-tools .hint { margin: -16px 0 0; }
+.proposal-tools .safe { margin: 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.tool-group { display: grid; gap: 2px; }
+@media (max-width: 1000px) { .proposal-layout { grid-template-columns: 1fr; } .proposal-tools { position: static; } }
+
+.doc { max-width: 820px; font-size: 15px; line-height: 1.65; color: var(--ink); }
+.doc p { margin: 0 0 14px; color: var(--ink-2); }
+.doc ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+.doc li { margin: 4px 0; }
+.doc h3 { font-size: 15px; margin-bottom: 8px; }
+.doc .small { font-size: 13px; color: var(--ink-3); margin-top: 14px; }
+
+/* Cover */
+.doc-cover { padding-bottom: 24px; }
+.doc-brand { font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: 0.02em; margin-bottom: 72px; }
+.doc-kicker { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.doc-cover h1 { font-size: 36px; line-height: 1.15; margin: 14px 0 36px; max-width: 700px; }
+.doc-meta { display: flex; flex-wrap: wrap; gap: 14px 40px; margin: 0 0 36px; padding: 18px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+.doc-meta dt { font-size: 12px; color: var(--ink-3); }
+.doc-meta dd { margin: 0; font-weight: 600; }
+.doc .doc-intro { font-size: 16px; max-width: 720px; color: var(--ink); }
+.doc-contents { margin-top: 56px; }
+.doc-contents h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 12px; }
+.doc-contents ol { list-style: none; margin: 0; padding: 0; }
+.doc-contents li { display: flex; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.doc-contents-no { width: 20px; color: var(--ink-3); }
+
+/* Chapters and sections */
+.doc-chapter { padding-top: 72px; }
+.doc-chapter-head { padding-bottom: 18px; margin-bottom: 8px; border-bottom: 1px solid var(--ink); }
+.doc-chapter-no { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+.doc-chapter-head h2 { font-size: 28px; }
+.doc-sec { padding-top: 32px; }
+.doc .doc-sec-title { font-size: 17px; margin-bottom: 14px; display: flex; gap: 14px; align-items: baseline; }
+.doc-no { font-size: 13px; font-weight: 600; color: var(--ink-3); min-width: 28px; }
+
+/* Tables */
+.doc-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+.doc-table th { text-align: left; font-size: 12px; font-weight: 600; color: var(--ink-2); padding: 8px 10px 8px 0; border-bottom: 1px solid var(--ink); }
+.doc-table tr.sub th { border-bottom-color: var(--line-2); color: var(--ink-3); font-weight: 500; }
+.doc-table td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.doc-table td:first-child { color: var(--ink-2); }
+.doc-table .n { text-align: right; white-space: nowrap; padding-right: 0; padding-left: 14px; }
+.doc-table th.n { white-space: normal; vertical-align: bottom; }
+.doc-table tr.total td { font-weight: 700; color: var(--ink); border-top: 1px solid var(--ink); border-bottom: 0; padding-top: 12px; }
+.doc-table .tag { white-space: nowrap; color: var(--ink-3); font-size: 13px; }
+.doc-table.equipment td:nth-child(2) { color: var(--ink); }
+.doc-table .opt { color: var(--ink-3); }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; }
+
+/* Plant */
+.flow-tools { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.flow-tools .flow-controls { flex: 1; min-width: 300px; }
+.flow-steps { margin: 0; padding-left: 20px; font-size: 14px; color: var(--ink-2); }
+.flow-steps li { break-inside: avoid; margin: 0 0 12px; padding-left: 4px; }
+.flow-steps strong { color: var(--ink); }
+
+/* Next steps */
+.next-steps { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.next-steps li { border-top: 1px solid var(--ink); padding-top: 14px; }
+.step-k { font-size: 12px; font-weight: 600; color: var(--ink-3); }
+.next-steps h3 { margin: 6px 0; }
+.next-steps p { font-size: 14px; }
+
+
+/* Images: photos carry the character; the page itself stays black and grey. */
+.doc-cover-image { display: block; width: 100%; height: 300px; object-fit: cover; margin: -32px 0 40px; }
+.doc-chapter-image { display: block; width: 100%; height: 220px; object-fit: cover; margin: 20px 0 8px; }
+.photo-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 4px 0 20px; }
+.photo-strip img { width: 100%; height: 120px; object-fit: cover; display: block; background: var(--soft); }
+
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 14px 24px; margin: 20px 0; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.figures dt { font-size: 12px; color: var(--ink-3); }
+.figures dd { margin: 0; font-weight: 600; }
+.doc-table td.strong, .doc-table td:first-child.strong { color: var(--ink); font-weight: 600; }
+.doc-table.spaced { margin-top: 24px; }
+
+.doc-gantt { font-size: 13px; }
+.doc-gantt-row { display: grid; grid-template-columns: 42% 1fr; gap: 16px; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--line); }
+.doc-gantt-label { color: var(--ink-2); }
+.doc-gantt-track { position: relative; height: 12px; }
+.doc-gantt-bar { position: absolute; top: 1px; height: 10px; background: var(--ink-2); }
+.doc-gantt-axis { border-bottom: 0; color: var(--ink-3); font-size: 11px; }
+.doc-gantt-axis .doc-gantt-track span { position: absolute; transform: translateX(-50%); }
+
+.pick { display: grid; gap: 2px; font-size: 13px; padding: 3px 0; }
+.pick select { border: 1px solid var(--line-2); padding: 4px 6px; font-size: 13px; }
+
+/* Edit mode */
+.area.edit-h1 { font: 600 30px/1.2 var(--head); letter-spacing: -0.02em; margin: 14px 0 36px; }
+.area.edit-h3 { font-weight: 600; }
+.area.edit-list { margin: 4px 0; }
+.area.edit-span { display: inline-block; width: 100%; margin-top: 6px; }
+.doc .area { margin-bottom: 12px; color: var(--ink); }
+
+@media screen and (max-width: 760px) {
+  .two, .next-steps { grid-template-columns: 1fr; }
+  .doc-cover h1 { font-size: 28px; }
+}
+
+/* Paper: cover on its own page, every chapter starts a new page. */
+@page {
+  size: A4;
+  margin: 18mm 16mm 20mm;
+  @bottom-left { content: "Bart Mining  ·  Proposal"; font: 8pt 'Manrope', sans-serif; color: #8c969b; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8pt 'Manrope', sans-serif; color: #8c969b; }
+}
+@page :first {
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+@media print {
+  body { font-size: 10pt; }
+  .no-print, .topbar { display: none !important; }
+  .main { padding: 0; }
+  .proposal-layout { display: block; max-width: none; }
+  .doc { max-width: none; font-size: 10pt; }
+  .doc-cover { break-after: page; }
+  .doc-brand { margin-bottom: 8mm; }
+  .doc-contents { margin-top: 8mm; }
+  .doc-contents li { padding: 4px 0; font-size: 9.5pt; }
+  .doc-cover h1 { font-size: 26pt; }
+  .doc-chapter { break-before: page; padding-top: 0; }
+  .doc-sec.new-page { break-before: page; padding-top: 0; }
+  .doc-cover-image { height: 48mm; margin: 0 0 7mm; }
+  .doc-cover h1 { margin: 8px 0 20px; }
+  .doc-meta { margin-bottom: 20px; padding: 12px 0; }
+  .doc-cover .doc-intro { font-size: 10.5pt; }
+  .doc-chapter-image { height: 36mm; margin: 4mm 0 2mm; }
+  .doc-contents ol { columns: 2; column-gap: 10mm; }
+  .doc-contents li { break-inside: avoid; }
+  .doc-table.spaced { break-inside: avoid; }
+  .doc-sec > ul, .doc-table.keep { break-inside: avoid; }
+  .photo-strip img { height: 28mm; }
+  .photo-strip, .doc-gantt, .figures { break-inside: avoid; }
+  .doc-chapter-head h2 { font-size: 20pt; }
+  .doc-sec { padding-top: 22px; }
+  .doc-sec-title { break-after: avoid; }
+  .doc-table tr, .next-steps li, .flow, .two > div { break-inside: avoid; }
+  .doc-table thead { display: table-header-group; }
+  .edge-flow, .dot-ore, .dot-gold { display: none; }
+  .node.dim, .edge.dim { opacity: 1; }
+  .print-only { display: block; }
+  .print-blocked { font: 14pt var(--sans); padding: 40mm 0; text-align: center; }
+  .app:not(.tab-proposal) .main { display: none; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

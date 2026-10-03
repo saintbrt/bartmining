@@ -39,6 +39,8 @@
     "goldpass",
     "supabase/functions",
     "apps/mobile",
-    "packages"
+    "packages",
+    "tools",
+    "projects"
   ]
 }
