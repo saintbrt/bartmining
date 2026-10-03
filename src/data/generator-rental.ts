@@ -6,7 +6,10 @@
  * includes delivery and collection, installation and commissioning, an
  * operator or technician, and servicing during the hire; prices are quoted
  * per enquiry and not published. Fuel is supplied by the customer. Minimum
- * hire: one week for industrial and site work, two days for events. Units are supplied through partner fleets,
+ * hire: one week for industrial and site work, two days for events.
+ * Smaller sets are open-frame, larger sets containerised (no size cut-off
+ * given, so copy says "smaller" and "larger"). Fuel figures use 0.25 to
+ * 0.30 litres per kWh, as on the diesel generator product page. Units are supplied through partner fleets,
  * so copy says "we rent generators" and never claims units in stock or a
  * fleet size.
  *
@@ -68,6 +71,10 @@ export const RENTAL_FAQS: Faq[] = [
   {
     q: 'What is included in the hire?',
     a: 'Every hire includes delivery and collection, installation and commissioning, an operator or technician, and servicing during the hire period.',
+  },
+  {
+    q: 'Are the generators open or containerised?',
+    a: 'Smaller sets are supplied open-frame. Larger sets come in a container, which protects them from dust and rain, keeps the noise down and makes them easier to secure on site.',
   },
   {
     q: 'Who supplies the fuel?',
@@ -133,6 +140,10 @@ export const RENTAL_TOWNS: RentalTown[] = [
       { q: 'Do you have generators for rent in Mwanza?', a: 'Yes. We rent generators from 300 kVA to 2,500 kVA in Mwanza and across the Lake Zone, delivered from our Mwanza base and installed on site.' },
       { q: 'Can you supply a generator to a mine outside Mwanza town?', a: 'Yes, including sites in Sengerema, Misungwi, Geita and Kahama. Tell us the site location and road access, and we will plan delivery and installation around it.' },
       { q: 'Can a generator back up my factory during power cuts?', a: 'Yes. For standby use we size the set on the loads that must keep running, such as refrigeration or a production line, and connect it so it takes over when the grid fails.' },
+      { q: 'How quickly can a generator reach my site in the Lake Zone?', a: 'It depends on the distance and the size of the set. Sites around Mwanza are supplied from our Mwanza base, so they do not wait for a truck from Dar es Salaam. The route planner on our delivery page gives realistic road times by district, and we confirm the delivery date with the quote.' },
+      { q: 'Can you deliver a generator to an island or lakeshore site?', a: 'Yes, with planning. For island sites the practical route is often Lake Victoria shipping rather than road. Tell us the exact location and the landing point, and we will plan the delivery and installation around it.' },
+      { q: 'What size generator does a fish processing plant or cold store need?', a: 'Refrigeration compressors are motors, so the size depends on how they start as much as on the total load. List the compressors, pumps and lighting with their kW, or use the calculator on this page, and we will confirm a size that carries the plant through a power cut.' },
+      { q: 'Do you rent generators in Kahama and Shinyanga?', a: 'Yes. Kahama, Shinyanga, Geita and Musoma are supplied from our Mwanza base. The same terms apply: a one-week minimum for industrial and mining work, with delivery, installation, an operator and servicing included.' },
     ],
     supplyPage: '/equipment/supply/mwanza',
   },
@@ -157,6 +168,10 @@ export const RENTAL_TOWNS: RentalTown[] = [
       { q: 'Where can I rent a large generator in Dar es Salaam?', a: 'We rent generators from 300 kVA to 2,500 kVA in Dar es Salaam, delivered and installed, with an operator and servicing included. Call or WhatsApp us with the size or your load list for a quote.' },
       { q: 'Can I rent a generator for an event?', a: 'Yes, with a two-day minimum hire. Tell us the event dates, the location and what will be powered, such as lighting, sound and catering, and we will size the set and deliver it before the event.' },
       { q: 'Can you install a generator to take over automatically during power cuts?', a: 'Yes. For standby hires the set is connected so it takes over when the grid fails and hands back when supply returns.' },
+      { q: 'What size generator does a construction site need?', a: 'It depends on the biggest machines on site, usually a tower crane, hoists, concrete pumps and welding sets. A tower crane motor starting under load is often what sets the size, so list the machines with their kW and use the calculator, or send the list and we will size it.' },
+      { q: 'What size generator for a hotel, office or hospital on standby?', a: 'Size it on everything that must keep running during a power cut. Air conditioning and lifts are usually the largest loads; lighting, IT and kitchens are smaller. If only essential circuits are backed up, a smaller set will do. Send us the loads or a recent electricity bill showing peak demand, and we will recommend a size.' },
+      { q: 'What do I need on site for a large generator?', a: 'Firm, level ground or a concrete base, access for the delivery truck, and room for a crane or forklift to place larger sets. You also need a safe cable route to your distribution board and a place to store fuel. We check access before delivery.' },
+      { q: 'Are the generators open or containerised?', a: 'Smaller sets are supplied open-frame. Larger sets come in a container, which keeps the noise down and protects the set, which matters in town, at events and next to offices or hotels.' },
     ],
     supplyPage: '/equipment/supply/dar-es-salaam',
   },
@@ -181,6 +196,10 @@ export const RENTAL_TOWNS: RentalTown[] = [
       { q: 'What size generator does a gold processing plant in Geita need?', a: 'It depends on the plant, but mills and crushers started direct on line often push the requirement to 500 kVA or more. Send us the motor list and how each motor starts, and we will recommend a size.' },
       { q: 'Can you supply a generator to a site outside Geita town?', a: 'Yes, including Nyang’hwale, Mbogwe, Chato and Bukombe. Tell us the site location and road access when you ask for a quote.' },
       { q: 'How long can I rent a generator for?', a: 'From one week, the minimum for mining and industrial work, to months of continuous prime power. Tell us how long you need it when you ask for a quote.' },
+      { q: 'What size generator for a ball mill?', a: 'Size it on the mill motor and how it starts. Started direct on line, a mill motor needs roughly 3 kVA of generator per kW of motor, so a 132 kW mill needs a set of about 400 kVA or more before anything else is added. With a soft starter the requirement drops a lot, often by close to half.' },
+      { q: 'What size generator for a CIL or CIP plant?', a: 'A CIL or CIP plant runs a mill, agitators on every tank, pumps and an elution circuit, so the total load is large and the mill sets the starting surge. Plants of this kind commonly need 500 kVA to over 1,000 kVA. Send the motor list and we will size it, often as two synchronised sets.' },
+      { q: 'Can two generators run together for a big plant?', a: 'Yes. Two or more sets can run synchronised as one supply. They share the load, one can be serviced while the others keep the plant running, and capacity can be added later.' },
+      { q: 'How much fuel does a 500 kVA generator use?', a: 'Diesel generators use roughly 0.25 to 0.30 litres per kWh. A 500 kVA set at about three-quarters load produces around 300 kW, so it burns roughly 75 to 90 litres an hour, or 1,500 to 1,800 litres over a 20-hour day. Fuel is supplied by you, so plan deliveries to site around this.' },
     ],
     supplyPage: '/equipment/supply/geita',
   },
