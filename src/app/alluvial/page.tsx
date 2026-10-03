@@ -15,7 +15,7 @@ import { SITE } from '@/lib/seo'
  * Data: src/data/alluvial-plant.ts (a snapshot of projects/plant-planner).
  */
 
-const URL = `${SITE.url}/alluvial-plant-proposal`
+const URL = `${SITE.url}/alluvial`
 
 export const metadata: Metadata = {
   title: 'Alluvial Gold Plant Proposal | Bart Mining',

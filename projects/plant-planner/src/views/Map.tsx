@@ -56,7 +56,7 @@ const NODES: MapNode[] = [
   { id: 'pShip', col: 'show', label: 'Proposal: shipping and sourcing' },
   { id: 'pProd', col: 'show', label: 'Proposal: production potential' },
   { id: 'pTerms', col: 'show', label: 'Proposal: commercial terms' },
-  { id: 'web', col: 'show', label: 'Website page /alluvial-plant-proposal', manual: true },
+  { id: 'web', col: 'show', label: 'Website page /alluvial', manual: true },
 ]
 
 const EDGES: [string, string][] = [

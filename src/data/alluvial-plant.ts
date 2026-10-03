@@ -1,5 +1,5 @@
 /**
- * Data for /alluvial-plant-proposal: the animated process flow of the
+ * Data for /alluvial: the animated process flow of the
  * clay-bearing alluvial gold plant proposed for Mbeya Region.
  *
  * This is a public snapshot of the internal plant planner

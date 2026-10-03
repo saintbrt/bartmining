@@ -468,7 +468,7 @@ img { display: block; max-width: 100%; }
 .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--line); z-index: 200; }
 .read-bar { height: 100%; background: var(--gold); width: 0%; transition: width .1s linear; }
 
-/* ── Plant flow (/alluvial-plant-proposal) ──────────────────── */
+/* ── Plant flow (/alluvial) ──────────────────── */
 .pf-top { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .pf-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: var(--r-md); padding: 2px; gap: 2px; }
 .pf-toggle button { border: 0; background: none; padding: 8px 18px; border-radius: var(--r-sm); cursor: pointer; color: var(--ink-2); font: inherit; font-size: 15px; }
