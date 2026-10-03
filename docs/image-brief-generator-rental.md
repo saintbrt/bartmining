@@ -43,7 +43,7 @@
 ### Size bands (shown above the size table)
 | File | Shows |
 |---|---|
-| `band-300-500.jpg` | An **open-frame** diesel generator of around 400 kVA (engine and alternator on a skid, no enclosure) beside a small alluvial wash plant. |
+| `band-300-500.jpg` | A **fully enclosed containerised** diesel generator of around 400 kVA beside a small alluvial wash plant. Securely mounted on a continuous level concrete plinth, with closed service doors, ventilation grilles and neatly routed power cables to a distribution cabinet. |
 | `band-500-1000.jpg` | A **single containerised generator** of around 800 kVA beside a crushing and milling circuit. |
 | `band-1000-2500.jpg` | **Two or three containerised generators in a row**, with a synchronising panel, at a large processing plant. |
 

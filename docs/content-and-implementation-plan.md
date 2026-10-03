@@ -218,6 +218,9 @@ Also ask every caller "How did you find us?" and log it:
 |---|---|---|---|---|---|---|
 | 2026-10-0? | Call | Generator rental | 200–2,500 kVA | | | Triggered Phase 0 |
 
+### IndexNow (Bing, Copilot, ChatGPT search)
+Key file: `public/eca3ee9f25478f46b75983cf8d5327f5.txt` (public by design). After any deploy that adds or changes pages, run `npm run indexnow` (whole sitemap) or `npm run indexnow -- generator-rental` (matching URLs). Google ignores IndexNow; use Search Console for Google. Add the site in Bing Webmaster Tools too (Allan).
+
 ### Google Business Profile
 Check monthly: searches, calls and direction requests, especially for "generator rental" queries after 0.8.
 

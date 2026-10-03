@@ -40,7 +40,7 @@ export const heroImage = () =>
 export const townImage = (slug: string, alt: string) => findRentalImage(`town-${slug}`, alt)
 
 export const BAND_IMAGES = [
-  { file: 'band-300-500', alt: 'Open-frame diesel generator of around 400 kVA on a wash plant site' },
+  { file: 'band-300-500', alt: 'Enclosed diesel generator of around 400 kVA on a concrete plinth beside a small wash plant' },
   { file: 'band-500-1000', alt: 'Containerised diesel generator of around 800 kVA beside a crushing and milling circuit' },
   { file: 'band-1000-2500', alt: 'Two containerised generators running synchronised at a large processing plant' },
 ]
