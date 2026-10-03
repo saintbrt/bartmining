@@ -60,11 +60,11 @@ Update the status marks and the [change log](#change-log) as work lands, so noth
 | 0.2 | `[x]` | Town page | `/generator-rental/mwanza` | Generator Rental in Mwanza | generator rental Mwanza, generator hire Mwanza | Dev |
 | 0.3 | `[x]` | Town page | `/generator-rental/dar-es-salaam` | Generator Rental in Dar es Salaam | generator rental Dar es Salaam, generator hire Dar | Dev |
 | 0.4 | `[x]` | Town page | `/generator-rental/geita` | Generator Rental in Geita | generator rental Geita | Dev |
-| 0.4b | `[~]` | Town pages (added 2026-10-03) | `/generator-rental/arusha`, `/dodoma`, `/mbeya`, `/morogoro`, `/tanga`, `/kahama`, `/mtwara` | Generator Rental in <Town>: 300 to 2,500 kVA | generator rental <town> | Dev |
+| 0.4b | `[x]` | Town pages (added 2026-10-03) | `/generator-rental/arusha`, `/dodoma`, `/mbeya`, `/morogoro`, `/tanga`, `/kahama`, `/mtwara` | Generator Rental in <Town>: 300 to 2,500 kVA | generator rental <town> | Dev |
 | 0.5 | `[x]` | Swahili page | `/jenereta-za-kukodi` | Jenereta za Kukodi Tanzania: kVA 300 hadi 2,500 | jenereta za kukodi, kukodi jenereta | Dev |
 | 0.6 | `[ ]` | Article | `/insights/what-size-generator-do-i-need` | What Size Generator Do I Need? kVA Guide for Mines and Sites | what size generator do I need, generator size calculator, kVA calculation | Dev |
 | 0.7 | — | Article: dropped for now (rates are not published) | `/insights/generator-rental-price-tanzania` | Generator Rental Price in Tanzania: Daily and Monthly Rates | generator rental price, generator hire cost | Dev |
-| 0.9 | `[~]` | Images | `public/generator-rental/` | Hero (home-page style) on every rental page, size band pictures. Brief for Codex: [image-brief-generator-rental.md](image-brief-generator-rental.md). Stand-in hero in place. | — | Codex / Dev |
+| 0.9 | `[x]` | Images | `public/generator-rental/` | Hero (home-page style) on every rental page, size band pictures. Brief for Codex: [image-brief-generator-rental.md](image-brief-generator-rental.md). 14 generated images live (`9408d3f`). | — | Codex / Dev |
 | 0.8 | `[ ]` | Google Business Profile | (off-site) | Add the "Generator rental service" category, services list and description | generator rental near me | Allan / Team |
 
 ### 0.1 Main service page: content checklist
@@ -194,6 +194,7 @@ For each new page, record impressions, clicks and average position, and the top 
 | `/generator-rental/dar-es-salaam` | 2026-10-03 | | | | | |
 | `/generator-rental/geita` | 2026-10-03 | | | | | |
 | `/jenereta-za-kukodi` | 2026-10-03 | | | | | |
+| `/generator-rental/arusha`, `/dodoma`, `/mbeya`, `/morogoro`, `/tanga`, `/kahama`, `/mtwara` | 2026-10-03 | | | | | |
 | `/alluvial` | | | | | | |
 | `/insights/gold-trommel-sluice-box` | | | | | | |
 | `/insights/small-vs-full-gold-wash-plant` | | | | | | |
