@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RENTAL_TOWNS } from '@/data/generator-rental'
 import Reveal from '@/components/ui/Reveal'
 import ServiceGrid from '@/components/sections/ServiceGrid'
 import PhasesSection from '@/components/sections/PhasesSection'
@@ -107,9 +108,7 @@ export default function Services() {
             <Reveal delay={1}>
               <ul style={{ display: 'grid', gap: 10, listStyle: 'none', padding: 0, margin: 0 }}>
                 {[
-                  { t: 'Generator rental in Mwanza', h: '/generator-rental/mwanza' },
-                  { t: 'Generator rental in Dar es Salaam', h: '/generator-rental/dar-es-salaam' },
-                  { t: 'Generator rental in Geita', h: '/generator-rental/geita' },
+                  ...RENTAL_TOWNS.map(t => ({ t: `Generator rental in ${t.town}`, h: `/generator-rental/${t.slug}` })),
                   { t: 'Jenereta za kukodi (Kiswahili)', h: '/jenereta-za-kukodi' },
                 ].map(x => (
                   <li key={x.h}>

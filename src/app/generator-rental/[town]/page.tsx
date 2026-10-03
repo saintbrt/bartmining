@@ -4,10 +4,11 @@ import { notFound } from 'next/navigation'
 import Reveal from '@/components/ui/Reveal'
 import CtaSection from '@/components/sections/CtaSection'
 import GeneratorSizer from '@/components/sections/GeneratorSizer'
-import { Faqs, Included, QuoteSteps, RentalContact, SizeBands } from '@/components/sections/GeneratorRental'
+import { Faqs, Included, QuoteSteps, RentalContact, RentalHero, SizeBands } from '@/components/sections/GeneratorRental'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE, breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo'
 import { RENTAL_TOWNS, whatsappLink } from '@/data/generator-rental'
+import { heroImage, townImage } from '@/lib/rental-images'
 
 /**
  * Generator rental in one town. Only towns in RENTAL_TOWNS get a page, and
@@ -26,11 +27,12 @@ export async function generateMetadata({ params }: { params: Promise<{ town: str
   const t = find((await params).town)
   if (!t) return {}
   const url = `${SITE.url}/generator-rental/${t.slug}`
+  const img = townImage(t.slug, t.imageAlt) ?? heroImage()
   return {
     title: t.title,
     description: t.description,
     alternates: { canonical: url },
-    openGraph: { type: 'website', url, title: t.title, description: t.description },
+    openGraph: { type: 'website', url, title: t.title, description: t.description, ...(img ? { images: [{ url: img.src, alt: img.alt }] } : {}) },
   }
 }
 
@@ -71,9 +73,11 @@ export default async function GeneratorRentalTownPage({ params }: { params: Prom
               <span>{t.town}</span>
             </div>
           </Reveal>
-          <Reveal delay={1}><h1>{t.title}</h1></Reveal>
-          <Reveal delay={2}><p className="lead">{t.summary}</p></Reveal>
-          <Reveal delay={3}><RentalContact message={message} /></Reveal>
+          <RentalHero image={townImage(t.slug, t.imageAlt) ?? heroImage()}>
+            <Reveal delay={1}><h1>{t.title}</h1></Reveal>
+            <Reveal delay={2}><p className="lead">{t.summary}</p></Reveal>
+            <Reveal delay={3}><RentalContact message={message} /></Reveal>
+          </RentalHero>
         </div>
       </section>
 
@@ -105,8 +109,8 @@ export default async function GeneratorRentalTownPage({ params }: { params: Prom
               </ul>
               {t.supplyPage && (
                 <p style={{ color: 'var(--ink-2)', fontSize: 15.5, marginTop: 16 }}>
-                  We also supply mining equipment in {t.town}: see{' '}
-                  <Link href={t.supplyPage} style={{ color: 'var(--gold)' }}>mining equipment in {t.town}</Link>.
+                  We also supply mining equipment in {t.supplyLabel ?? t.town}: see{' '}
+                  <Link href={t.supplyPage} style={{ color: 'var(--gold)' }}>mining equipment in {t.supplyLabel ?? t.town}</Link>.
                 </p>
               )}
             </Reveal>
@@ -163,7 +167,7 @@ export default async function GeneratorRentalTownPage({ params }: { params: Prom
             <Link href="/generator-rental" style={{ color: 'var(--gold)' }}>generator rental in Tanzania</Link>. Also in{' '}
             {others.map((o, i) => (
               <span key={o.slug}>
-                {i > 0 && ' and '}
+                {i > 0 && (i === others.length - 1 ? ' and ' : ', ')}
                 <Link href={`/generator-rental/${o.slug}`} style={{ color: 'var(--gold)' }}>{o.town}</Link>
               </span>
             ))}.

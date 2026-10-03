@@ -1,7 +1,28 @@
+import Image from 'next/image'
 import Reveal from '@/components/ui/Reveal'
+import { BAND_IMAGES, findRentalImage, type RentalImage } from '@/lib/rental-images'
 import { HIRE_TERMS, INCLUDED, PHONE_DISPLAY, PHONE_HREF, SIZE_BANDS, whatsappLink, type Faq } from '@/data/generator-rental'
 
 /** Blocks shared by /generator-rental and its town pages. */
+
+/**
+ * Hero layout like the home page: copy on the left, image on the right.
+ * Until the slot's file exists in public/generator-rental, the copy runs
+ * full width and no empty image box is shown.
+ */
+export function RentalHero({ image: img, children }: { image: RentalImage | null; children: React.ReactNode }) {
+  if (!img) return <>{children}</>
+  return (
+    <div className="gr-hero">
+      <div>{children}</div>
+      <Reveal delay={2}>
+        <div className="gr-hero-img">
+          <Image src={img.src} alt={img.alt} fill priority sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+        </div>
+      </Reveal>
+    </div>
+  )
+}
 
 export function RentalContact({ message, center }: { message: string; center?: boolean }) {
   return (
@@ -12,8 +33,21 @@ export function RentalContact({ message, center }: { message: string; center?: b
   )
 }
 
+
 export function SizeBands() {
+  const pics = BAND_IMAGES.map(b => ({ slot: b.file, img: findRentalImage(b.file, b.alt) }))
   return (
+    <>
+    {pics.some(p => p.img) && (
+      <div className="gr-bands">
+        {pics.map((p, i) => p.img && (
+          <figure key={p.slot}>
+            <div className="gr-band-img"><Image src={p.img.src} alt={p.img.alt} fill sizes="(max-width: 760px) 100vw, 33vw" style={{ objectFit: 'cover' }} /></div>
+            <figcaption>{SIZE_BANDS[i].range}</figcaption>
+          </figure>
+        ))}
+      </div>
+    )}
     <div className="gr-table-wrap">
       <table className="gr-table">
         <thead><tr><th>Size</th><th>Typically powers</th><th>Good to know</th></tr></thead>
@@ -24,6 +58,7 @@ export function SizeBands() {
         </tbody>
       </table>
     </div>
+    </>
   )
 }
 

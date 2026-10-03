@@ -3,10 +3,13 @@ import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import CtaSection from '@/components/sections/CtaSection'
 import GeneratorSizer from '@/components/sections/GeneratorSizer'
-import { Faqs, Included, QuoteSteps, RentalContact, SizeBands } from '@/components/sections/GeneratorRental'
+import { Faqs, Included, QuoteSteps, RentalContact, RentalHero, SizeBands } from '@/components/sections/GeneratorRental'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE, breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo'
 import { RENTAL_FAQS, RENTAL_TOWNS, whatsappLink } from '@/data/generator-rental'
+import { heroImage } from '@/lib/rental-images'
+
+const HERO = heroImage()
 
 /**
  * Generator rental, 300 to 2,500 kVA. Content and confirmed facts live in
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: URL, languages: { en: URL, 'sw-TZ': `${SITE.url}/jenereta-za-kukodi`, 'x-default': URL } },
-  openGraph: { type: 'website', url: URL, title: TITLE, description: DESCRIPTION },
+  openGraph: { type: 'website', url: URL, title: TITLE, description: DESCRIPTION, ...(HERO ? { images: [{ url: HERO.src, alt: HERO.alt }] } : {}) },
 }
 
 export default function GeneratorRentalPage() {
@@ -48,12 +51,13 @@ export default function GeneratorRentalPage() {
         <div className="orb orb-1" /><div className="orb orb-2" />
         <div className="px-site">
           <Reveal><div className="crumb"><Link href="/">Home</Link><span className="sep">/</span><span>Generator Rental</span></div></Reveal>
+          <RentalHero image={HERO}>
           <Reveal delay={1}><h1>{TITLE}</h1></Reveal>
           <Reveal delay={2}>
             <p className="lead">
               We rent diesel generators from 300 kVA to 2,500 kVA anywhere in Tanzania, for mines, processing plants,
               construction sites, factories, events and standby during power cuts. Every hire includes delivery,
-              installation and commissioning, an operator or technician, and servicing for as long as the set is on hire.
+              installation and commissioning, an operator who stays with the generator on site, and servicing for as long as the set is on hire.
             </p>
           </Reveal>
           <Reveal delay={3}><RentalContact message={MESSAGE} /></Reveal>
@@ -63,9 +67,10 @@ export default function GeneratorRentalPage() {
               <div className="div" />
               <div><div className="num">Installed</div><div className="lbl">And commissioned on site</div></div>
               <div className="div" />
-              <div><div className="num">Operator</div><div className="lbl">And servicing included</div></div>
+              <div><div className="num">Operator</div><div className="lbl">On site for the whole hire</div></div>
             </div>
           </Reveal>
+          </RentalHero>
         </div>
       </section>
 

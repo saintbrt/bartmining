@@ -568,6 +568,16 @@ img { display: block; max-width: 100%; }
 .gr-terms dt { font-weight: 600; color: var(--ink); font-size: 15.5px; }
 .gr-terms dd { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; line-height: 1.6; }
 @media (max-width: 760px) { .gr-terms { grid-template-columns: 1fr; } }
+.gr-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.gr-hero .lead { max-width: none; }
+.gr-hero h1 { font-size: clamp(34px, 4.2vw, 54px); }
+.gr-hero-img { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
+@media (max-width: 900px) { .gr-hero { grid-template-columns: 1fr; gap: 32px; } }
+.gr-bands { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 8px 0 24px; }
+.gr-bands figure { margin: 0; }
+.gr-band-img { position: relative; aspect-ratio: 4 / 3; border-radius: var(--r-lg); overflow: hidden; background: var(--paper); }
+.gr-bands figcaption { font-size: 14px; font-weight: 600; margin-top: 8px; }
+@media (max-width: 760px) { .gr-bands { grid-template-columns: 1fr; } }
 .gr-towns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .gr-town { display: block; height: 100%; padding: 22px; border: 1px solid var(--line); border-radius: var(--r-lg); text-decoration: none; background: var(--bg-3); }
 .gr-town:hover { border-color: var(--ink); }

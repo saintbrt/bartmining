@@ -4,8 +4,12 @@ import Reveal from '@/components/ui/Reveal'
 import CtaSection from '@/components/sections/CtaSection'
 import GeneratorSizer from '@/components/sections/GeneratorSizer'
 import JsonLd from '@/components/seo/JsonLd'
+import { RentalHero } from '@/components/sections/GeneratorRental'
 import { SITE, breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo'
 import { PHONE_DISPLAY, PHONE_HREF, whatsappLink } from '@/data/generator-rental'
+import { heroImage } from '@/lib/rental-images'
+
+const HERO = heroImage()
 
 /**
  * Jenereta za kukodi: the Swahili counterpart of /generator-rental, cross-linked
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: URL, languages: { 'sw-TZ': URL, en: `${SITE.url}/generator-rental`, 'x-default': `${SITE.url}/generator-rental` } },
-  openGraph: { type: 'website', url: URL, title: TITLE, description: DESCRIPTION, locale: 'sw_TZ' },
+  openGraph: { type: 'website', url: URL, title: TITLE, description: DESCRIPTION, locale: 'sw_TZ', ...(HERO ? { images: [{ url: HERO.src, alt: HERO.alt }] } : {}) },
 }
 
 const SIZES = [
@@ -34,7 +38,7 @@ const SIZES = [
 const INCLUDED = [
   { t: 'Kuleta na kurudisha', d: 'Tunaleta jenereta hadi eneo lako na kuichukua kukodi kukiisha, popote Tanzania.' },
   { t: 'Kufunga na kuwasha', d: 'Tunaifunga kwenye ubao wako wa umeme na kuijaribu ikiwa na mzigo kabla ya kukukabidhi.' },
-  { t: 'Mwendeshaji au fundi', d: 'Mtu anayeijua jenereta anaiendesha au kuikagua, ili hitilafu zigundulike mapema.' },
+  { t: 'Mwendeshaji eneo la kazi', d: 'Mwendeshaji anabaki na jenereta muda wote wa kukodi, akiiendesha na kuikagua ili hitilafu zigundulike mapema.' },
   { t: 'Matengenezo wakati wa kukodi', d: 'Oili, filta na huduma za kawaida kwa ratiba, pamoja na msaada jenereta ikiharibika.' },
 ]
 
@@ -76,12 +80,13 @@ export default function JeneretaZaKukodiPage() {
           <div className="orb orb-1" /><div className="orb orb-2" />
           <div className="px-site">
             <Reveal><div className="crumb"><Link href="/">Nyumbani</Link><span className="sep">/</span><span>Jenereta za Kukodi</span></div></Reveal>
+            <RentalHero image={HERO}>
             <Reveal delay={1}><h1>{TITLE}</h1></Reveal>
             <Reveal delay={2}>
               <p className="lead">
                 Tunakodisha jenereta za dizeli kuanzia kVA 300 hadi 2,500 popote Tanzania, kwa migodi, mitambo ya kuchenjua,
                 maeneo ya ujenzi, viwanda, matukio na umeme wa akiba wakati wa kukatika kwa umeme. Kila ukodishaji unajumuisha
-                kuleta, kufunga na kuwasha jenereta, mwendeshaji au fundi, na matengenezo kwa muda wote wa kukodi.
+                kuleta, kufunga na kuwasha jenereta, mwendeshaji anayebaki na jenereta eneo la kazi, na matengenezo kwa muda wote wa kukodi.
               </p>
             </Reveal>
             <Reveal delay={3}>
@@ -90,6 +95,7 @@ export default function JeneretaZaKukodiPage() {
                 <a className="btn btn-ghost" href={PHONE_HREF}>Piga {PHONE_DISPLAY}</a>
               </div>
             </Reveal>
+            </RentalHero>
           </div>
         </section>
 

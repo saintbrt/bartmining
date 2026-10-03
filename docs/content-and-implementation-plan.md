@@ -60,9 +60,11 @@ Update the status marks and the [change log](#change-log) as work lands, so noth
 | 0.2 | `[x]` | Town page | `/generator-rental/mwanza` | Generator Rental in Mwanza | generator rental Mwanza, generator hire Mwanza | Dev |
 | 0.3 | `[x]` | Town page | `/generator-rental/dar-es-salaam` | Generator Rental in Dar es Salaam | generator rental Dar es Salaam, generator hire Dar | Dev |
 | 0.4 | `[x]` | Town page | `/generator-rental/geita` | Generator Rental in Geita | generator rental Geita | Dev |
+| 0.4b | `[~]` | Town pages (added 2026-10-03) | `/generator-rental/arusha`, `/dodoma`, `/mbeya`, `/morogoro`, `/tanga`, `/kahama`, `/mtwara` | Generator Rental in <Town>: 300 to 2,500 kVA | generator rental <town> | Dev |
 | 0.5 | `[x]` | Swahili page | `/jenereta-za-kukodi` | Jenereta za Kukodi Tanzania: kVA 300 hadi 2,500 | jenereta za kukodi, kukodi jenereta | Dev |
 | 0.6 | `[ ]` | Article | `/insights/what-size-generator-do-i-need` | What Size Generator Do I Need? kVA Guide for Mines and Sites | what size generator do I need, generator size calculator, kVA calculation | Dev |
 | 0.7 | — | Article: dropped for now (rates are not published) | `/insights/generator-rental-price-tanzania` | Generator Rental Price in Tanzania: Daily and Monthly Rates | generator rental price, generator hire cost | Dev |
+| 0.9 | `[~]` | Images | `public/generator-rental/` | Hero (home-page style) on every rental page, size band pictures. Brief for Codex: [image-brief-generator-rental.md](image-brief-generator-rental.md). Stand-in hero in place. | — | Codex / Dev |
 | 0.8 | `[ ]` | Google Business Profile | (off-site) | Add the "Generator rental service" category, services list and description | generator rental near me | Allan / Team |
 
 ### 0.1 Main service page: content checklist
@@ -235,4 +237,5 @@ Check monthly: searches, calls and direction requests, especially for "generator
 | Date | Change |
 |---|---|
 | 2026-10-03 | Plan created: generator rental (Phase 0), wash plant content (Phases 1–3), trommel offer (Track B), planner backlog (Track C), tracking. |
+| 2026-10-03 | Generator rental is nationwide (partners ship anywhere, operator always on site): seven more town pages (no Zanzibar), "Mwanza base" wording removed, operator wording strengthened, home-page style hero with image slots, image brief for Codex. |
 | 2026-10-03 | Phase 0 live (commits `c8ce24e`, `17b1371`, `bc3aa2a`): FAQs 10 / 7 / 7 / 7 / 10, fuel and minimum hire terms. Earlier entry: Phase 0 built: `/generator-rental`, three town pages, `/jenereta-za-kukodi`, sizing calculator, site links, sitemap. Checked on desktop and phone. Waiting for Allan's go-ahead to push. Also fixed the doubled "Bart Mining" in the `/alluvial` title. |
