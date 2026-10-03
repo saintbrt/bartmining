@@ -20,6 +20,9 @@
 
 import { SITE } from '@/lib/seo'
 
+/** Last real content change to the rental pages. Used as the sitemap lastModified; bump it when the copy changes. */
+export const RENTAL_UPDATED = '2026-10-03'
+
 export const RENTAL_MIN_KVA = 300
 export const RENTAL_MAX_KVA = 2500
 
