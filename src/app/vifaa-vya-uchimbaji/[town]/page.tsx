@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { LOCATIONS_SW, LOCATIONS_SW_BY_SLUG } from '@/data/locations-sw'
 import { LOCATION_BY_SLUG } from '@/data/locations'
 import { MARKET_BY_SLUG } from '@/data/markets'
-import { EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
+import { EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue-sw'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
 import { SITE, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
@@ -42,15 +42,15 @@ export default async function SwahiliTownPage({ params }: { params: Promise<{ to
   return (
     <>
       <JsonLd data={[
-        faqSchema(l.faqs),
+        faqSchema(l.faqs, 'sw'),
         breadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: 'Vifaa vya Uchimbaji', path: '/vifaa-vya-uchimbaji' },
+          { name: 'Mwanzo', path: '/' },
+          { name: 'Vifaa vya Uchimbaji', path: '/equipments-swahili' },
           { name: l.town, path: `/vifaa-vya-uchimbaji/${l.slug}` },
         ]),
       ]} />
       <SwahiliArticle
-        crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Vifaa vya uchimbaji', href: '/vifaa-vya-uchimbaji' }, { name: l.town }]}
+        crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Vifaa vya uchimbaji', href: '/equipments-swahili' }, { name: l.town }]}
         eyebrow={l.region}
         h1={`Vifaa vya uchimbaji madini ${l.town}`}
         lead={l.summary}
@@ -69,8 +69,8 @@ export default async function SwahiliTownPage({ params }: { params: Promise<{ to
         <p>{l.manunuzi}</p>
         <div className="loc-grid">
           {kit.map(item => (
-            <Link key={item.slug} href={`/equipment/${item.slug}`} className="eq-card">
-              <EquipmentThumb slug={item.slug} alt={item.name} category={item.category} sizes="(max-width: 640px) 50vw, 30vw" />
+            <Link key={item.slug} href={`/equipments-swahili/${item.slug}`} className="eq-card">
+              <EquipmentThumb slug={item.slug} language="sw" alt={item.name} category={item.category} sizes="(max-width: 640px) 50vw, 30vw" />
               <div className="eq-cardbody">
                 <h3>{item.name}</h3>
                 <span className="eq-more">Tazama maelezo &rarr;</span>

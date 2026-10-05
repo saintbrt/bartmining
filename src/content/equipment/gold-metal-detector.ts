@@ -15,6 +15,7 @@ const box = (x: number, y: number, w: number, lines: string[], strong = false) =
   lines.map((l, i) => `<text x="${x + w / 2}" y="${y + 26 + i * 18}" font-size="13.5"${i === 0 && !strong ? ' font-weight="700"' : strong ? ' font-weight="700"' : ''}>${l}</text>`).join('')
 
 const decision = `<figure class="eq-figure">
+<div class="eq-diagram" tabindex="0" role="region" aria-label="Diagram; scroll sideways to read all labels">
 <svg viewBox="0 0 720 360" role="img" aria-labelledby="det-title det-desc" style="width:100%;height:auto;display:block">
 <title id="det-title">Choosing between PI and VLF gold detectors</title>
 <desc id="det-desc">If the ground is heavily mineralised, such as red laterite or ironstone, choose a pulse induction detector: a large coil for bigger, deeper nuggets or a smaller coil for smaller gold. If the ground is mild and the gold is mostly small and shallow among trash, choose a high-frequency VLF detector; otherwise a multi-frequency detector is a good all-rounder.</desc>
@@ -37,7 +38,8 @@ ${box(370, 240, 160, ['High-frequency VLF', '40–71 kHz'], true)}
 ${box(545, 240, 160, ['Multi-frequency', 'all-round choice'], true)}
 </g>
 </svg>
-<figcaption>Most ground across the Lake Victoria and Lupa goldfields is mineralised, which is why pulse induction is the usual answer in Tanzania. Test on your own ground with a known target before buying.</figcaption>
+</div>
+<figcaption><span class="eq-diagram-hint">Scroll the diagram sideways to read all the labels.</span>Most ground across the Lake Victoria and Lupa goldfields is mineralised, which is why pulse induction is the usual answer in Tanzania. Test on your own ground with a known target before buying.</figcaption>
 </figure>`
 
 export const sections: GuideSection[] = [

@@ -3,7 +3,7 @@ import { LOCATIONS } from '@/data/locations'
 
 const SW_LINKS = [
   { href: '/insights-swahili', label: 'Makala za uchimbaji' },
-  { href: '/vifaa-vya-uchimbaji', label: 'Vifaa vya uchimbaji' },
+  { href: '/equipments-swahili', label: 'Vifaa vya uchimbaji' },
   { href: '/bei-ya-vifaa-vya-uchimbaji', label: 'Bei ya vifaa' },
   { href: '/bei-ya-dhahabu-leo', label: 'Bei ya dhahabu leo' },
   { href: '/jinsi-ya-kupata-leseni-ya-pml', label: 'Leseni ya PML' },

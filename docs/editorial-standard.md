@@ -52,6 +52,8 @@ Separate equipment supply, delivery, import taxes, site construction and utiliti
 
 Every number must belong to one of these clearly identified categories:
 
+Choose teaching assumptions from a documented, relevant basis rather than inventing large amounts to demonstrate that startup costs can exceed equipment prices. If a package scope or site cost is unknown, show the known subtotal and name the unpriced work. An equipment-and-transport subtotal must not be labelled complete startup funding. Do not attach a capacity or a CIP/CIL configuration to a general equipment estimate without a matching equipment list.
+
 | Category | How to present it |
 | --- | --- |
 | Current quotation | Identify its date, scope, delivery basis and validity. Do not imply a universal price. |
@@ -89,6 +91,7 @@ An article does not need a decorative image in every section. Visuals should red
 - English insight bodies live in `src/content/insights/`.
 - All five standalone Kiswahili guide bodies live in `src/content/sw/`. `src/data/article-library.ts` supplies their metadata and the language-specific article inventories.
 - `/insights` lists English articles. `/insights-swahili` lists Kiswahili guides and uses the same searchable collection format. Link the Kiswahili collection in the footer, without adding it to the main navigation. Keep the existing guide URLs; a separate collection does not require moving them.
+- `/equipment` and `/equipments-swahili` use matching equipment directory and product-page formats. Kiswahili product copy lives in `src/data/equipment-catalogue-sw.json`, with its catalogue adapter in `src/data/equipment-catalogue-sw.ts`; extended guides live in `src/content/equipment/sw/`. Translate every current product, keeping slugs, photos, technical values and related identities aligned. Link the directory in the footer. The legacy overview redirects to it; existing town URLs stay available.
 - `src/data/insights.ts` carries titles, summaries, dates, covers and any topic-specific contact message.
 - `src/data/plant-cost-examples.ts` is the public shared basis for the cost examples. Update both languages by updating this data and checking the prose assumptions too.
 - `ArticleLayout` owns the hero, byline, language link, responsive contents, reading width, tables and contact block. `SwInsight` renders the standalone Kiswahili articles, while `SwahiliArticle` adapts other existing JSX guides. Do not add another article layout or per-route typography overrides.

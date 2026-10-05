@@ -11,11 +11,18 @@ export const CHUNYA_EXAMPLES = [
   { id: 'scrubber-150', date: '2026-10-03', capacityM3h: 150, equipment: 227280, execution: 274358, total: 501638, weeks: 26.5, categories: [30892, 40250, 65000, 60775, 28500, 24000, 24942] },
 ] as const
 
-/** Worked teaching scenarios; these are assumptions, not quotations. */
-export const HARD_ROCK_EXAMPLES = [
-  { id: 'gravity', tonnesPerDay: 30, equipment: 120000, delivery: 30000, civilsUtilities: 45000, engineeringStartup: 20000, contingency: 21500, workingCapital: 41000 },
-  { id: 'cil', tonnesPerDay: 50, equipment: 600000, delivery: 120000, civilsUtilities: 180000, engineeringStartup: 60000, contingency: 96000, workingCapital: 94000 },
-] as const
+/**
+ * Bart Mining's preliminary equipment and transport reference, supplied on
+ * 5 October 2026. Not a scoped quotation or a guaranteed transport ceiling.
+ * Capacity, recovery route and package inclusions still need confirmation.
+ * Do not infer a CIP/CIL price or manufacture a complete startup total.
+ */
+export const HARD_ROCK_PLANNING_REFERENCE = {
+  date: '2026-10-05',
+  equipment: 90000,
+  domesticTransport: 10000,
+  internationalTransport: 20000,
+} as const
 
 export const MONTHLY_OPERATING_EXAMPLES = [
   { id: 'alluvial', throughput: 150 * 20 * 26 * 0.75, unit: 'm³', costs: [120 * 0.27 * 1.2 * 20 * 26, 15000, 5000, 3000, 3500] },

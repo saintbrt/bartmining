@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { SITE } from '@/lib/seo'
 import { ARTICLE_LIBRARY } from '@/data/article-library'
 import { EQUIPMENT } from '@/data/equipment-catalogue'
+import { EQUIPMENT as EQUIPMENT_SW } from '@/data/equipment-catalogue-sw'
 import { LOCATIONS } from '@/data/locations'
 import { LOCATIONS_SW } from '@/data/locations-sw'
 import { MARKETS } from '@/data/markets'
@@ -36,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/privacy`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/terms`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/delivery-shipping`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.75 },
-    { url: `${SITE.url}/vifaa-vya-uchimbaji`, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/equipments-swahili`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
   ]
 
@@ -60,6 +61,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  const swahiliEquipmentPages: MetadataRoute.Sitemap = EQUIPMENT_SW.map(e => ({
+    url: `${SITE.url}/equipments-swahili/${e.slug}`,
+    lastModified: new Date(e.updated),
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }))
+
   const locationPages: MetadataRoute.Sitemap = LOCATIONS.map(l => ({
     url: `${SITE.url}/equipment/supply/${l.slug}`,
     lastModified: new Date(l.updated),
@@ -74,5 +82,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...equipmentPages, ...locationPages, ...swahiliTownPages, ...marketPages, ...articlePages]
+  return [...staticPages, ...equipmentPages, ...swahiliEquipmentPages, ...locationPages, ...swahiliTownPages, ...marketPages, ...articlePages]
 }

@@ -172,7 +172,7 @@ export default function JeneretaZaKukodiPage() {
           primaryLabel="WhatsApp upate bei"
           primaryHref={whatsappLink(MESSAGE)}
           secondaryLabel="Vifaa vya uchimbaji"
-          secondaryHref="/vifaa-vya-uchimbaji"
+          secondaryHref="/equipments-swahili"
         />
       </div>
     </>

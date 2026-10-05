@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { EQUIPMENT, EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue'
+import { EQUIPMENT, EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue-sw'
 import { SITE, SERVICE_AREAS, productSchema, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 import ReadingProgress from '@/components/insights/ReadingProgress'
 import { resolveEquipmentPhoto } from '@/lib/equipment-photos'
 import { LOCATIONS } from '@/data/locations'
-import { EQUIPMENT_GUIDES } from '@/content/equipment'
+import { LOCATIONS_SW } from '@/data/locations-sw'
+import { EQUIPMENT_GUIDES } from '@/content/equipment/sw'
 
 export async function generateStaticParams() {
   return EQUIPMENT.map(e => ({ slug: e.slug }))
@@ -18,22 +19,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const e = EQUIPMENT_BY_SLUG.get(slug)
   if (!e) return {}
-  const url = `${SITE.url}/equipment/${e.slug}`
+  const url = `${SITE.url}/equipments-swahili/${e.slug}`
   // Social cards need an absolute URL, and should show the real product
   // photo where one has been uploaded rather than the stock fallback.
   const photo = resolveEquipmentPhoto(e.slug)
   const ogImage = photo ? `${SITE.url}${photo}` : e.image
-  const sw = `/equipments-swahili/${e.slug}`
+  const en = `${SITE.url}/equipment/${e.slug}`
   return {
     title: e.title,
     description: e.description,
     keywords: e.searchTerms,
     alternates: {
       canonical: url,
-      languages: { en: url, 'sw-TZ': `${SITE.url}${sw}`, 'x-default': url },
+      languages: { en, 'sw-TZ': url, 'x-default': en },
     },
     openGraph: {
       type: 'article',
+      locale: 'sw_TZ',
       url,
       title: e.title,
       description: e.description,
@@ -60,21 +62,27 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
 
   // Districts whose supply page lists this item as a typical purchase.
-  const buyingDistricts = LOCATIONS.filter(l => l.buys.includes(item.slug))
+  const buyingDistricts = LOCATIONS.filter(l => l.buys.includes(item.slug) && LOCATIONS_SW.some(sw => sw.slug === l.slug))
 
   const guide = EQUIPMENT_GUIDES[item.slug] ?? []
+  const words = [item.summary, ...item.specs.flatMap(row => [row.label, row.value]), ...item.applications,
+    ...item.maintenance.flatMap(row => [row.interval, row.task]), ...item.faqs.flatMap(row => [row.q, row.a]),
+    ...guide.map(section => `${section.title} ${section.html.replace(/<[^>]*>/g, ' ')}`),
+  ].join(' ').trim().split(/\s+/).length
+  const readingTime = `Dakika ${Math.ceil((words + 300) / 200)} za kusoma`
 
   const references: Record<string, { href: string; label: string }[]> = {
-    "gas-detection-monitor": [{"href": "https://www.osha.gov/publications/shib093013", "label": "Gas monitor testing guidance"}],
-    "fall-arrest-harness": [{"href": "https://www.petzl.com/INT/en/Professional/How-and-why-use-a-fall-arrest-lanyard-?ActivityName=Energy-and-Networks", "label": "Petzl fall-clearance guidance"}],
-    "cil-cip-plant": [{"href": "https://cyanidecode.org/the-cyanide-code/", "label": "Cyanide Code scope"}, {"href": "https://www.tumemadini.go.tz/pages/licenseservice/", "label": "Mining Commission licence services"}],
-    "gold-elution-electrowinning-plant": [{"href": "https://cyanidecode.org/the-cyanide-code/", "label": "Cyanide Code scope"}],
-    "gold-metal-detector": [{"href": "https://www.tumemadini.go.tz/pages/licenseservice/", "label": "Mining Commission licence services"}],
+    "gas-detection-monitor": [{"href": "https://www.osha.gov/publications/shib093013", "label": "Mwongozo wa kupima gas monitors"}],
+    "fall-arrest-harness": [{"href": "https://www.petzl.com/INT/en/Professional/How-and-why-use-a-fall-arrest-lanyard-?ActivityName=Energy-and-Networks", "label": "Mwongozo wa Petzl wa nafasi ya kuanguka"}],
+    "cil-cip-plant": [{"href": "https://cyanidecode.org/the-cyanide-code/", "label": "Wigo wa Cyanide Code"}, {"href": "https://www.tumemadini.go.tz/pages/licenseservice/", "label": "Huduma za leseni za Tume ya Madini"}],
+    "gold-elution-electrowinning-plant": [{"href": "https://cyanidecode.org/the-cyanide-code/", "label": "Wigo wa Cyanide Code"}],
+    "gold-metal-detector": [{"href": "https://www.tumemadini.go.tz/pages/licenseservice/", "label": "Huduma za leseni za Tume ya Madini"}],
   }
 
   const schemas = [
     productSchema({
       slug: item.slug,
+      path: `/equipments-swahili/${item.slug}`,
       name: item.name,
       description: item.description,
       image: schemaImage,
@@ -82,25 +90,25 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       specs: item.specs,
       applications: item.applications,
     }),
-    faqSchema(item.faqs),
+    faqSchema(item.faqs, 'sw'),
     breadcrumbSchema([
-      { name: 'Home', path: '/' },
-      { name: 'Equipment', path: '/equipment' },
-      { name: item.name, path: `/equipment/${item.slug}` },
+      { name: 'Mwanzo', path: '/' },
+      { name: 'Vifaa vya uchimbaji', path: '/equipments-swahili' },
+      { name: item.name, path: `/equipments-swahili/${item.slug}` },
     ]),
   ]
 
   return (
-    <>
+    <div lang="sw">
       <JsonLd data={schemas} />
       <ReadingProgress />
 
       <section className="subhero" style={{ paddingBottom: 40 }}>
         <div className="px-site" style={{ position: 'relative' }}>
-          <nav className="crumb" style={{ marginBottom: 24 }} aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
+          <nav className="crumb" style={{ marginBottom: 24 }} aria-label="Njia ya ukurasa">
+            <Link href="/">Mwanzo</Link>
             <span className="sep">/</span>
-            <Link href="/equipment">Equipment</Link>
+            <Link href="/equipments-swahili">Vifaa vya uchimbaji</Link>
             <span className="sep">/</span>
             <span>{item.categoryLabel}</span>
           </nav>
@@ -119,20 +127,20 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
           </p>
           {item.slug === 'diesel-generator-mining' && (
             <p style={{ color: 'var(--ink-2)', fontSize: 16, maxWidth: 720, lineHeight: 1.7, margin: '-8px 0 24px', paddingLeft: 14, borderLeft: '2px solid var(--gold)' }}>
-              Need one for weeks or months rather than for good? We rent generators from 300 kVA to 2,500 kVA, delivered,
-              installed and serviced, with an operator included.{' '}
-              <Link href="/generator-rental" style={{ color: 'var(--gold)', fontWeight: 600 }}>Generator rental</Link>
+              Ikiwa unahitaji umeme kwa muda, tuna huduma ya kukodisha jenereta za 300 kVA hadi 2,500 kVA,
+              pamoja na kufikisha, kufunga, kuhudumia na mwendeshaji kulingana na makubaliano.{' '}
+              <Link href="/jenereta-za-kukodi" style={{ color: 'var(--gold)', fontWeight: 600 }}>Kukodisha jenereta</Link>
             </p>
           )}
 
           <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--ink-3)', flexWrap: 'wrap' }}>
             <span>{item.categoryLabel}</span>
             <span>·</span>
-            <span>{item.readTime}</span>
+            <span>{readingTime}</span>
             <span>·</span>
-            <span>Updated {item.updated}</span>
+            <span>Ilihaririwa {item.updated}</span>
           </div>
-          <p style={{ marginTop: 20 }} lang="sw"><Link href={`/equipments-swahili/${item.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>Soma maelezo ya kifaa hiki kwa Kiswahili &rarr;</Link></p>
+          <p style={{ marginTop: 20 }} lang="en"><Link href={`/equipment/${item.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>Read this equipment guide in English &rarr;</Link></p>
         </div>
       </section>
 
@@ -155,19 +163,20 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             ))}
 
             {/* ── Specifications ── */}
-            <h2 id="specifications">{item.name} Specifications</h2>
+            <h2 id="specifications">{item.name}: vipimo</h2>
             <p>
-              The figures below describe typical industry specifications for this class of
-              equipment rather than a single fixed model. Use them to scope a requirement,
-              then confirm exact figures against the supplied unit before purchase.
+              Vipimo vifuatavyo vinaonyesha makundi ya kawaida ya aina hii ya kifaa.
+              Vitumie kueleza mahitaji ya mradi, kisha thibitisha uwezo na masharti
+              ya modeli itakayotolewa kabla ya kununua. Havielezi kifaa kimoja
+              kilichopo stoo wala dhamana ya matokeo kwenye eneo lako.
             </p>
             <div className="eq-tablewrap">
               <table className="eq-table">
                 <caption className="eq-caption">
-                  Typical specification range for the {item.name}
+                  Vipimo vya kawaida: {item.name}
                 </caption>
                 <thead>
-                  <tr><th scope="col">Specification</th><th scope="col">Typical value</th></tr>
+                  <tr><th scope="col">Kipimo</th><th scope="col">Kiwango cha kawaida</th></tr>
                 </thead>
                 <tbody>
                   {item.specs.map(s => (
@@ -182,23 +191,24 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
 
             {/* ── Applications ── */}
             {/* Phrased to read correctly for singular, plural and vowel-initial names. */}
-            <h2 id="applications">{item.name}: Uses and Applications</h2>
+            <h2 id="applications">{item.name}: matumizi</h2>
             <ul>
               {item.applications.map(a => <li key={a}>{a}</li>)}
             </ul>
 
             {/* ── Maintenance ── */}
-            <h2 id="maintenance">Maintenance Schedule</h2>
+            <h2 id="maintenance">Ratiba ya matengenezo</h2>
             <p>
-              Most premature failures in this equipment class trace back to a missed routine
-              check rather than a design fault. The intervals below are a practical starting
-              schedule; adjust them to your duty cycle and the manufacturer manual.
+              Ukaguzi wa mara kwa mara husaidia kutambua uchakavu na hitilafu kabla ya
+              kusimamisha kazi. Ratiba ifuatayo ni msingi wa kupanga; ilinganishe
+              na saa za kazi, mazingira na mwongozo wa mtengenezaji. Kwa programu,
+              zingatia pia taarifa, watumiaji na uwezo wa kurejesha nakala.
             </p>
             <div className="eq-tablewrap">
               <table className="eq-table">
-                <caption className="eq-caption">Recommended maintenance intervals</caption>
+                <caption className="eq-caption">Vipindi vya kupanga matengenezo</caption>
                 <thead>
-                  <tr><th scope="col">Interval</th><th scope="col">Task</th></tr>
+                  <tr><th scope="col">Kipindi</th><th scope="col">Kazi</th></tr>
                 </thead>
                 <tbody>
                   {item.maintenance.map(m => (
@@ -212,7 +222,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             </div>
 
             {/* ── FAQ. Mirrors the FAQPage schema above, visible on the page. ── */}
-            <h2 id="faq">Frequently Asked Questions</h2>
+            <h2 id="faq">Maswali yanayoulizwa mara kwa mara</h2>
             {item.faqs.map(f => (
               <div key={f.q} className="eq-faq">
                 <h3>{f.q}</h3>
@@ -221,23 +231,23 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             ))}
 
             {/* ── Supply coverage ── */}
-            <h2 id="supply">Supply and Delivery Across Tanzania</h2>
+            <h2 id="supply">Usambazaji na kufikisha vifaa Tanzania</h2>
             <p>
-              Bart Mining supplies {item.name.toLowerCase()} and related equipment to mining
-              operations throughout Tanzania, with primary coverage of the Lake Victoria
-              Goldfields (Mwanza, Kahama, Geita, Shinyanga and Bukombe), alongside the Lupa
-              Goldfields around Chunya and Mbeya, and delivery nationwide from Dar es Salaam.
+              Bart Mining husaidia kupata na kufikisha vifaa hivi kwenye maeneo ya
+              uchimbaji Tanzania, yakiwemo Mwanza, Kahama, Geita, Shinyanga na
+              Bukombe katika Kanda ya Ziwa, pamoja na Chunya na Mbeya. Usafirishaji
+              hupangwa kutoka Dar es Salaam kwa ukubwa wa mzigo na hali ya eneo.
             </p>
             <div className="region-chips">
               {SERVICE_AREAS.map(r => <span key={r} className="region-chip">{r}</span>)}
             </div>
             {buyingDistricts.length > 0 && (
               <p>
-                Commonly supplied to:{' '}
+                Soma kuhusu usambazaji katika:{' '}
                 {buyingDistricts.map((l, i) => (
                   <span key={l.slug}>
                     {i > 0 && ', '}
-                    <Link href={`/equipment/supply/${l.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>{l.city}</Link>
+                    <Link href={`/vifaa-vya-uchimbaji/${l.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>{l.city}</Link>
                   </span>
                 ))}
                 .
@@ -245,52 +255,52 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             )}
 
             <div className="art-callout">
-              <strong>Specification note.</strong> The values on this page are
-              industry-standard ranges for the equipment category, published so buyers can
-              scope requirements before enquiring. They are not a quotation and do not
-              describe a specific stocked model. Contact us with your duty, site conditions
-              and power supply for a specification and quotation against your actual
-              requirement.
+              <strong>Kuchagua kifaa kinachofaa.</strong> Linganisha kazi unayotaka
+              kufanya na uwezo, huduma na matengenezo yaliyoelezwa hapa. Vipimo vya
+              kundi havitoshi kuthibitisha modeli au bei. Hatua inayofuata ni kuandaa
+              mahitaji ya kazi, hali ya eneo na umeme uliopo, kisha kupata vipimo
+              na nukuu ya kifaa inayolingana na mradi wako.
             </div>
 
             {references[item.slug] && (
               <p style={{ fontSize: 14, color: 'var(--ink-3)' }}>
-                Safety and scope references:{' '}
+                Rejea za masharti na usalama:{' '}
                 {references[item.slug].map((reference, i) => (
                   <span key={reference.href}>
                     {i > 0 && ' · '}
-                    <a href={reference.href}>{reference.label}</a>
+                    <a href={reference.href}>{reference.label} (kwa Kiingereza)</a>
                   </span>
                 ))}
               </p>
             )}
 
             <div className="on-dark" style={{ marginTop: 56, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Request a quotation</p>
-              <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Need a {item.name.toLowerCase()} specified for your site?</h3>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Omba makadirio ya bei</p>
+              <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Unapanga kununua kifaa hiki kwa eneo lako?</h3>
               <p style={{ color: 'rgba(255,255,255,.78)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
-                Tell us your duty, depth or throughput and available power supply. We will
-                come back with a specification and price, and flag anything on site that
-                needs to change to make it work.
+                Tuambie eneo, kazi inayohitajika, kina au kiasi cha kuchakata na
+                umeme uliopo. Tutasaidia kubainisha modeli, wigo wa vifaa na bei,
+                pamoja na maandalizi yanayohitajika kwenye eneo. Kwa programu,
+                eleza pia data, watumiaji na mifumo unayotaka kuunganisha.
               </p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">WhatsApp us &rarr;</a>
-                <Link href="/contact" className="btn btn-ghost">Send an enquiry</Link>
+                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Tuma ujumbe WhatsApp &rarr;</a>
+                <Link href="/contact" className="btn btn-ghost">Tuma maombi</Link>
               </div>
             </div>
           </article>
 
           <aside style={{ position: 'sticky', top: 96, display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line)', padding: '20px 18px' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>On this page</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>Yaliyomo kwenye ukurasa</div>
               <nav style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
                 {[
                   ...guide.map(s => [s.id, s.title]),
-                  ['specifications', 'Specifications'],
-                  ['applications', 'Applications'],
-                  ['maintenance', 'Maintenance'],
-                  ['faq', 'FAQ'],
-                  ['supply', 'Supply in Tanzania'],
+                  ['specifications', 'Vipimo'],
+                  ['applications', 'Matumizi'],
+                  ['maintenance', 'Matengenezo'],
+                  ['faq', 'Maswali na majibu'],
+                  ['supply', 'Usambazaji Tanzania'],
                 ].map(([id, label]) => (
                   <a key={id} href={`#${id}`} style={{ fontSize: 15, color: 'var(--ink-2)' }}>{label}</a>
                 ))}
@@ -298,19 +308,19 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             </div>
 
             <div style={{ background: 'var(--slate)', borderRadius: 'var(--r-md)', padding: '20px 18px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 10 }}>Get a price</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 10 }}>Pata bei</p>
               <p style={{ color: 'rgba(255,255,255,.75)', fontSize: 15.5, lineHeight: 1.6, marginBottom: 16 }}>
-                We quote against your duty and site conditions, not a catalogue line.
+                Nukuu huandaliwa kwa kazi na hali ya eneo lako pamoja na wigo wa vifaa vinavyohitajika.
               </p>
               <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--gold-2)' }}>+255 759 141 705 &rarr;</a>
             </div>
 
             {related.length > 0 && (
               <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line)', padding: '20px 18px' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>Related equipment</div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>Vifaa vinavyohusiana</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {related.map(r => (
-                    <Link key={r.slug} href={`/equipment/${r.slug}`} style={{ display: 'block' }}>
+                    <Link key={r.slug} href={`/equipments-swahili/${r.slug}`} style={{ display: 'block' }}>
                       <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 3 }}>{r.categoryLabel}</div>
                       <p style={{ fontSize: 15, color: 'var(--ink)', fontWeight: 600, lineHeight: 1.35 }}>{r.name}</p>
                     </Link>
@@ -381,6 +391,6 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
           .eq-table td { font-size: 15px; }
         }
       `}</style>
-    </>
+    </div>
   )
 }

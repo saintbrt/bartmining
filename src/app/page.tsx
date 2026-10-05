@@ -52,7 +52,7 @@ const MOST_REQUESTED: { href: string; t: string; d: string; also?: { href: strin
 ]
 
 const SW_PAGES = [
-  { href: '/vifaa-vya-uchimbaji', t: 'Vifaa vya uchimbaji', d: 'Mashine na vifaa vya migodi Tanzania' },
+  { href: '/equipments-swahili', t: 'Vifaa vya uchimbaji', d: 'Mashine na vifaa vya migodi Tanzania' },
   { href: '/bei-ya-vifaa-vya-uchimbaji', t: 'Bei ya vifaa vya uchimbaji', d: 'Gharama za mashine na usafirishaji' },
   { href: '/jinsi-ya-kupata-leseni-ya-pml', t: 'Leseni ya PML', d: 'Jinsi ya kupata leseni ya uchimbaji mdogo' },
   { href: '/gharama-ya-plant-ya-dhahabu', t: 'Gharama ya plant ya dhahabu', d: 'Bei ya kujenga plant ndogo ya dhahabu' },

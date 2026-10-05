@@ -13,6 +13,7 @@ import type { GuideSection } from './index'
  */
 
 const bowl = `<figure class="eq-figure">
+<div class="eq-diagram" tabindex="0" role="region" aria-label="Diagram; scroll sideways to read all labels">
 <svg viewBox="0 0 720 370" role="img" aria-labelledby="ccon-title ccon-desc" style="width:100%;height:auto;display:block">
 <title id="ccon-title">How a centrifugal gold concentrator works</title>
 <desc id="ccon-desc">Slurry is fed down a central pipe into the base of a spinning conical bowl. Centrifugal force drives the slurry up the bowl walls, where dense gold particles are trapped in concentrate rings. Fluidisation water is injected through the bowl wall from an outer jacket to keep the bed loose, and lighter material overflows the top rim as tailings.</desc>
@@ -41,7 +42,8 @@ const bowl = `<figure class="eq-figure">
 <text x="360" y="362" text-anchor="middle">bowl spins at 60–200 G</text>
 </g>
 </svg>
-<figcaption>Cross-section of a centrifugal concentrator bowl. Concentrate builds up in the rings during a cycle and is flushed out when the bowl stops (batch units) or bled off continuously (continuous units).</figcaption>
+</div>
+<figcaption><span class="eq-diagram-hint">Scroll the diagram sideways to read all the labels.</span>Cross-section of a centrifugal concentrator bowl. Concentrate builds up in the rings during a cycle and is flushed out when the bowl stops (batch units) or bled off continuously (continuous units).</figcaption>
 </figure>`
 
 export const sections: GuideSection[] = [

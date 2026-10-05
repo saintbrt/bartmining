@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Replace the partial overview; the six town routes retain their URLs.
+      { source: '/vifaa-vya-uchimbaji', destination: '/equipments-swahili', permanent: true },
       // /products was folded into /equipment. Permanent so search engines
       // transfer the old URL's signals rather than treating it as a 404.
       { source: '/products', destination: '/equipment', permanent: true },

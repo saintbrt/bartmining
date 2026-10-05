@@ -422,8 +422,8 @@ export const EQUIPMENT: Equipment[] = [
     related: ['shaking-table-gold', 'alluvial-gold-wash-plant', 'sluice-box-gold-jig', 'gold-elution-electrowinning-plant'],
     image: IMG.gold,
     imageAlt: 'Centrifugal gravity gold concentrator bowl in a processing plant',
-    // Guide sections added (content/equipment), so the page genuinely changed.
-    updated: '2026-09-15',
+    // Tank-sizing example and safe-entry guidance revised in the extended guide.
+    updated: '2026-10-05',
     readTime: '14 min read',
   },
   {
@@ -582,7 +582,7 @@ export const EQUIPMENT: Equipment[] = [
       { interval: 'Annually', task: 'Drain and inspect internals; repair lining and replace impellers and screen mesh as needed.' },
     ],
     faqs: [
-      { q: 'What size leaching tank do I need?', a: 'Tank volume comes from your daily tonnage, slurry density and the residence time your ore needs, then split across the number of tanks. As an illustration, a 50 tonne per day plant at 45% solids and 24 hours residence needs roughly 90–100 m³ of total working volume, for example six tanks of about 17–20 m³. Leach test work on your ore sets the residence time.' },
+      { q: 'What size leaching tank do I need?', a: 'Tank volume comes from your daily tonnage, slurry density and the residence time your ore needs, then split across the number of tanks. As a worked assumption, 50 tonnes per day at 45% solids by mass, ore density 2.7 t/m³, water density 1 t/m³ and 24 hours residence needs about 79.6 m³ of working volume. Adding 10% of that volume for planning gives about 87.6 m³ total, or six tanks of about 14.6 m³; confirm actual freeboard and geometry in the design. Leach test work on your ore sets the residence time.' },
       { q: 'What happens if the agitator stops?', a: 'The solids settle to the tank floor within minutes and can pack hard enough that the agitator cannot restart under load. Plants need standby power or a restart procedure, and tanks should not sit settled for long. This is one reason generator sizing matters on off-grid sites.' },
       { q: 'Should tanks be bolted or welded?', a: 'For remote Tanzanian sites, bolted panel tanks are often the better choice because they ship flat in containers and are assembled on site. Welded tanks need fabrication on site or oversized road transport. Both work if the lining and sealing are done properly.' },
       { q: 'Can I use leaching tanks with an existing vat leach site?', a: 'Yes. Operators commonly add a regrind mill and a short tank train to treat material that vats leach poorly. The fine gold locked in particles only dissolves after grinding, which is why agitated leaching often recovers gold that vats leave behind.' },
@@ -590,7 +590,7 @@ export const EQUIPMENT: Equipment[] = [
     related: ['cil-cip-plant', 'gold-elution-electrowinning-plant', 'slurry-pump'],
     image: IMG.plant,
     imageAlt: 'Row of agitated gold leaching tanks at a CIL plant',
-    updated: '2026-09-13',
+    updated: '2026-10-05',
     readTime: '7 min read',
   },
   {
@@ -1184,7 +1184,7 @@ export const EQUIPMENT: Equipment[] = [
     maintenance: [
       { interval: 'Every shift', task: 'Bump test with certified gas before use, applying gas and confirming each sensor alarms. A function self-test is not a bump test.' },
       { interval: 'Weekly', task: 'Inspect sensor ports and filters for dust blockage; check the alarm is audible in a noisy environment.' },
-      { interval: 'Monthly', task: 'Full span calibration with certified gas, or more often if bump tests show drift.' },
+      { interval: 'Per calibration schedule', task: 'Calibration with certified gas at the manufacturer-specified interval, and following a failed bump test or calibration check before reuse.' },
       { interval: 'Quarterly', task: 'Download and review datalogs for exposure trends and near-miss alarms.' },
       { interval: 'Per sensor life', task: 'Replace electrochemical sensors every 2–3 years and catalytic LEL sensors every 3–5, regardless of apparent function.' },
     ],
@@ -1197,7 +1197,7 @@ export const EQUIPMENT: Equipment[] = [
     related: ['self-contained-self-rescuer', 'mine-ventilation-fan', 'mining-safety-helmet-cap-lamp'],
     image: IMG.gas,
     imageAlt: 'Portable four-gas detection monitor used for underground entry',
-    updated: UPDATED,
+    updated: '2026-10-05',
     readTime: '8 min read',
   },
   {
@@ -1224,7 +1224,7 @@ export const EQUIPMENT: Equipment[] = [
       { label: 'Energy absorber deployment', value: 'Up to 1.75 m extension' },
       { label: 'Required fall clearance', value: '≈6.5 m for a 2 m shock-absorbing lanyard' },
       { label: 'Anchor point strength', value: '≥12 kN, or engineered to 2× maximum arrest force' },
-      { label: 'Connectors', value: 'Self-closing, self-locking, ≥22 kN gate rating' },
+      { label: 'Connectors', value: 'Self-closing and self-locking; verify marked strength, loading axis and the applicable system standard. Gate strength is a separate rating.' },
       { label: 'Inspection', value: 'Pre-use by wearer; formal 6-monthly by competent person' },
       { label: 'Service life', value: 'Typically 5–10 years from manufacture; sooner with UV exposure' },
       { label: 'Rescue plan', value: 'Mandatory. Suspension trauma can be fatal within 15–30 minutes' },
@@ -1252,7 +1252,7 @@ export const EQUIPMENT: Equipment[] = [
     related: ['mining-safety-helmet-cap-lamp', 'wire-rope-slings-lifting-tackle', 'gas-detection-monitor'],
     image: IMG.ppe,
     imageAlt: 'Full body fall arrest harness with energy absorbing lanyard',
-    updated: UPDATED,
+    updated: '2026-10-05',
     readTime: '8 min read',
   },
   {
@@ -1412,13 +1412,13 @@ export const EQUIPMENT: Equipment[] = [
     faqs: [
       { q: 'Will a fleet management system work where there is no mobile coverage?', a: 'Yes, if it is specified correctly. Units should log locally and upload automatically when they return to coverage, which on most sites happens each time a vehicle passes the workshop or camp. Systems requiring continuous connectivity are unsuitable for remote Tanzanian operations.' },
       { q: 'How accurate is fuel monitoring?', a: 'Capacitive level probes typically achieve ±2–3% once calibrated to the specific tank shape. That is comfortably accurate enough to detect siphoning, which usually shows as a step change in level while the engine is off, a pattern that is unmistakable on a chart.' },
-      { q: 'Does payload monitoring justify its cost on a small fleet?', a: 'Often yes, because it reveals chronic underloading. Trucks running consistently at 80% of capacity mean 20% more cycles, fuel and tyre wear for the same tonnes. That is usually a larger recoverable loss than the sensor cost, and it is invisible without measurement.' },
+      { q: 'Does payload monitoring justify its cost on a small fleet?', a: 'Often yes, because it reveals chronic underloading. Trucks running consistently at 80% of the intended payload require 25% more trips to move the same tonnes than trucks carrying 100%; the fuel and tyre effect depends on route and operation. That is usually a larger recoverable loss than the sensor cost, and it is invisible without measurement.' },
       { q: 'What is the most common cause of these systems being abandoned?', a: 'Nobody reads the reports. The technology rarely fails; the management routine does. Systems succeed where a named person reviews exceptions on a fixed schedule and acts on them, and fail where the data accumulates unread.' },
     ],
     related: ['mine-management-software', 'diesel-generator-mining', 'geological-modelling-software'],
     image: IMG.fleet,
     imageAlt: 'Fleet management telematics screen tracking mining vehicles',
-    updated: UPDATED,
+    updated: '2026-10-05',
     readTime: '8 min read',
   },
   {
@@ -1523,13 +1523,13 @@ export const EQUIPMENT: Equipment[] = [
     faqs: [
       { q: 'How do I size a generator for a mine site?', a: 'Total the running load, then check the starting requirement of the largest motor separately. A direct-on-line start draws six to seven times full-load current, and that transient sets the minimum generator size far more often than the steady-state load does. Soft starters or variable-frequency drives cut the requirement substantially.' },
       { q: 'What happens if a generator runs lightly loaded?', a: 'Sustained running below about 30% load causes wet stacking, with unburnt fuel and carbon glazing the cylinder bores and fouling the exhaust. It progressively destroys the engine. Where load is genuinely low, use a smaller set, parallel multiple sets and shut some down, or apply a load bank.' },
-      { q: 'How much fuel will a generator use?', a: 'Roughly 0.25–0.30 litres per kWh generated at 75% load. For a 500 kVA set running at 75%, that is around 100 litres per hour. Over a month of continuous running the fuel bill dwarfs the capital cost of the generator, which is why load management matters so much.' },
+      { q: 'How much fuel will a generator use?', a: 'Roughly 0.25–0.30 litres per kWh generated at 75% load. As a worked assumption, a 500 kVA set at power factor 0.8 and 75% load delivers 300 kW, giving about 75–90 litres per hour at that fuel rate. Confirm the actual model fuel curve before budgeting. Over a month of continuous running the fuel bill dwarfs the capital cost of the generator, which is why load management matters so much.' },
       { q: 'Is it better to run one large generator or several smaller ones?', a: 'Several smaller sets in parallel is usually better for a mine. Load varies through the shift, so you can run only what is needed and keep each set in its efficient band; you gain redundancy; and you can service one without shutting the site down. The trade-off is more complex synchronising controls.' },
     ],
     related: ['air-compressor-mining', 'lighting-tower', 'modular-gold-plant'],
     image: IMG.genset,
     imageAlt: 'Containerised diesel generator set supplying a mine site',
-    updated: UPDATED,
+    updated: '2026-10-05',
     readTime: '8 min read',
   },
   {

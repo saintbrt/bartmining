@@ -88,7 +88,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     description:
       'Wheel loader specifications for mines and construction: bucket size, operating load, dump height, tyre choice and fuel use. Supplied across Tanzania.',
     summary:
-      'A wheel loader is a front-bucket machine on rubber tyres used to load trucks, feed crushers and move stockpiles faster than a tracked excavator on level ground. Mid-size loaders of 3–5 m³ bucket and 10–18 tonnes operating load are the standard on Tanzanian quarries and plant feed. They need decent roads and a well-prepared pad; in deep mud or on steep pit faces an excavator is the better tool.',
+      'A wheel loader is a front-bucket machine on rubber tyres used to load trucks, feed crushers and move stockpiles faster than a tracked excavator on level ground. Mid-size loaders with 3–5 m³ buckets are common on quarry and plant-feed duties; confirm operating load at full turn against the actual model, not bucket volume alone. They need decent roads and a well-prepared pad; in deep mud or on steep pit faces an excavator is the better tool.',
     category: 'earthmoving',
     categoryLabel: 'Earthmoving & Construction',
     searchTerms: [
@@ -129,7 +129,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     related: ['hydraulic-excavator', 'dump-truck', 'jaw-crusher', 'belt-conveyor'],
     image: IMG.loader,
     imageAlt: 'Yellow wheel loader with a full bucket on a mine and construction pad',
-    updated: UPDATED,
+    updated: '2026-10-05',
     readTime: '7 min read',
   },
   {
@@ -397,7 +397,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     description:
       'Tower crane specifications for construction and plant erection: lifting capacity, jib length, hook height and foundation loads. Supplied in Tanzania.',
     summary:
-      'A tower crane is a top-slewing crane used to lift steel, concrete, plant modules and formwork on construction and mine-infrastructure sites. Flat-top and hammerhead cranes with 5–12 tonne tip capacity and 40–70 m jibs cover most Tanzanian building and plant-erection work. The crane is only as good as its foundation and its erection plan: under-designed bases and rushed climbs are the usual causes of incidents, not the crane mechanism itself.',
+      'A tower crane is a top-slewing crane used to lift steel, concrete, plant modules and formwork on construction and mine-infrastructure sites. Flat-top and hammerhead cranes with 40–70 m jibs cover a range of building and plant-erection duties. Capacity falls with radius; select the actual load chart rather than treating the maximum rating as tip capacity. The crane is only as good as its foundation and its erection plan: under-designed bases and rushed climbs are the usual causes of incidents, not the crane mechanism itself.',
     category: 'earthmoving',
     categoryLabel: 'Earthmoving & Construction',
     searchTerms: [
@@ -437,7 +437,7 @@ export const EXTRA_EQUIPMENT: Equipment[] = [
     related: ['concrete-mixer', 'backhoe-loader', 'wire-rope-slings-lifting-tackle', 'fall-arrest-harness'],
     image: IMG.crane,
     imageAlt: 'Tower cranes on a multi-storey construction site',
-    updated: UPDATED,
+    updated: '2026-10-05',
     readTime: '7 min read',
   },
   {

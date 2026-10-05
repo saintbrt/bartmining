@@ -178,9 +178,9 @@ export const ARTICLES: ArticleMeta[] = [
   {
     slug: 'mining-equipment-cost-tanzania',
     title: 'Gold Plant and Mining Equipment Costs in Tanzania',
-    description: 'Compare alluvial, crusher-and-ball-mill and CIL/CIP plant budgets in Tanzania, with Chunya proposal prices and worked setup and operating-cost examples.',
+    description: 'Alluvial proposal prices, a preliminary hard-rock equipment and transport estimate, and worked operating costs for planning a gold plant in Tanzania.',
     tags: ['cost', 'procurement', 'tanzania', 'equipment'],
-    date: 'August 2026', updated: 'October 2026', updatedDate: '2026-10-05', readTime: '11 min read',
+    date: 'August 2026', updated: 'October 2026', updatedDate: '2026-10-05', readTime: '12 min read',
     image: '/equipment/alluvial-gold-wash-plant.jpg',
     imageAlt: 'Alluvial gold washing and recovery equipment from the Bart Mining catalogue',
     imageCaption: 'Equipment reference from our catalogue, not a photograph of an installed Chunya plant. The proposal scope is explained in the article.',

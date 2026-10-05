@@ -31,7 +31,11 @@ Covers use existing local catalogue assets with honest equipment-reference capti
 
 The public snapshot in `src/data/plant-cost-examples.ts` contains authorised client-facing scope and prices from the Chunya proposals dated 3 and 5 October 2026. Supplier costs, commissions, margins, reserves, private attachments and client-identifying details remain outside public content. Proposal allowances are distinguished from completed-project costs.
 
-Alluvial examples explain equipment versus execution, schedule dependencies, owner exclusions and operating cash. Hard-rock gravity and CIL budgets are labelled illustrative because the available Chunya proposals price alluvial processing. Operating examples state throughput, hours, availability, fuel and other assumptions; they are not measured Chunya operating results. No current fuel tariff, universal recovery rate or guaranteed production is inferred from those examples.
+Alluvial examples explain equipment versus execution, schedule dependencies, owner exclusions and operating cash. The available Chunya proposals price alluvial processing. Following the owner's review on 5 October 2026, the unsupported hard-rock equipment assumptions of USD 120,000 and USD 600,000, transport assumptions of USD 30,000 and USD 120,000, civil-work and startup allowances, and complete totals of USD 277,500 and USD 1,150,000 were removed from both languages.
+
+Their replacement uses the owner's preliminary reference of about USD 90,000 for equipment, with USD 10,000 domestic or USD 20,000 international transport planning allowances. The respective USD 100,000 and USD 110,000 values are equipment-and-transport subtotals only. Capacity, package inclusions, the delivery route and the inclusion of CIP/CIL and carbon recovery remain unconfirmed. Site works, commissioning, taxes, contingency and operating cash are separate open budget items. The owner did not provide a scoped hard-rock quotation, and the reviewed JXSC case pages do not publish comparable package prices.
+
+Operating examples state throughput, hours, availability, fuel and other assumptions; they are not measured Chunya operating results. The 30 t/day and 50 t/day examples do not establish the throughput or operating cost of the USD 90,000 package. No current fuel tariff, universal recovery rate or guaranteed production is inferred from those examples.
 
 ## Validation
 
@@ -43,13 +47,15 @@ The editorial audit checks all 43 rendered bodies for contextual openings, concl
 - Discovery: the served sitemap contains unique URLs and the new collection. `llms.txt` includes it, and both translated article pairs have reciprocal language alternates.
 - `git diff --check` passed.
 
+After the hard-rock pricing correction, both language versions passed the editorial audit and subtotal checks (USD 100,000 domestic; USD 110,000 international), TypeScript and a fresh production build. The two affected articles passed at 390px and 1365px with the revised three-row table, preserved heading links, no page overflow and no JavaScript errors. The old equipment, transport and complete-startup amounts no longer appear in either article body.
+
 The automated audit checks publishing structure and reference presence. It cannot certify a laboratory result, field performance, regulatory approval or transaction-specific tax treatment. Substantial Kiswahili wording should still receive the fluent-editor review required by the editorial standard before publication, especially technical and financial terms.
 
 ## Reviewed inventory
 
 | Article | Language | Body words | Reading time | Basis |
 | --- | --- | ---: | --- | --- |
-| [Bei ya vifaa na gharama za kuanzisha plant ya dhahabu Tanzania](/bei-ya-vifaa-vya-uchimbaji) | Kiswahili | 2195 | 11 min | Client-facing proposals and labelled planning assumptions; supporting primary references |
+| [Bei ya vifaa na gharama za kuanzisha plant ya dhahabu Tanzania](/bei-ya-vifaa-vya-uchimbaji) | Kiswahili | 2386 | 12 min | Client-facing alluvial proposals; preliminary hard-rock equipment/transport reference; labelled operating assumptions |
 | [Gharama ya kuanzisha plant ya dhahabu Tanzania](/gharama-ya-plant-ya-dhahabu) | Kiswahili | 1612 | 9 min | Client-facing proposals and labelled planning assumptions; supporting primary references |
 | [Bei ya mashine ya kusaga mawe ya dhahabu](/bei-ya-mashine-ya-kusaga-mawe) | Kiswahili | 662 | 4 min | Primary references; worked examples labelled where used |
 | [Jinsi ya kupata leseni ya uchimbaji mdogo (PML)](/jinsi-ya-kupata-leseni-ya-pml) | Kiswahili | 735 | 4 min | Primary references; worked examples labelled where used |
@@ -66,7 +72,7 @@ The automated audit checks publishing structure and reference presence. It canno
 | [Buying used mining equipment in Tanzania](/insights/used-mining-equipment-tanzania) | English | 605 | 4 min | Primary references; worked examples labelled where used |
 | [Test work before buying a gold plant](/insights/plant-test-work-guide) | English | 633 | 4 min | Primary references; worked examples labelled where used |
 | [Off-grid mine power: loads, supply options and operating cost](/insights/off-grid-mine-power) | English | 626 | 4 min | Primary references; worked examples labelled where used |
-| [Gold Plant and Mining Equipment Costs in Tanzania](/insights/mining-equipment-cost-tanzania) | English | 2141 | 11 min | Client-facing proposals and labelled planning assumptions; supporting primary references |
+| [Gold Plant and Mining Equipment Costs in Tanzania](/insights/mining-equipment-cost-tanzania) | English | 2335 | 12 min | Client-facing alluvial proposals; preliminary hard-rock equipment/transport reference; labelled operating assumptions |
 | [What It Costs to Open a Gold Processing Plant in Tanzania](/insights/gold-plant-setup-cost) | English | 1603 | 9 min | Client-facing proposals and labelled planning assumptions; supporting primary references |
 | [CIP, CIL and heap leaching: choosing a gold process](/insights/cil-vs-cip-vs-heap-leach) | English | 684 | 4 min | Primary references; worked examples labelled where used |
 | [Gravity and cyanide gold recovery: choosing a tested route](/insights/gravity-vs-cyanide-gold-recovery) | English | 608 | 4 min | Primary references; worked examples labelled where used |

@@ -5,32 +5,26 @@ import Reveal from '@/components/ui/Reveal'
 import RegionsSection from '@/components/sections/RegionsSection'
 import CtaSection from '@/components/sections/CtaSection'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
-import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
-import { LOCATIONS } from '@/data/locations'
+import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue-sw'
+import { LOCATIONS_SW } from '@/data/locations-sw'
 import { SITE, SERVICE_AREAS, itemListSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 
-/**
- * Single catalogue section for everything Bart Mining supplies.
- *
- * This absorbed the former /products page, which covered the same intent in
- * different words. /products now permanently redirects here (see
- * next.config.ts) so there is one canonical URL per product concept and no
- * split ranking signal between two competing sections.
- */
+/** Kiswahili copy of the English directory, preserving its catalogue format. */
 
 export const metadata: Metadata = {
-  title: 'Mining Equipment Supply Tanzania: Specs & Price Guides',
+  title: 'Vifaa vya uchimbaji Tanzania: vipimo na matumizi',
   description:
-    'Mining and construction equipment for Mwanza, Kahama, Geita and Shinyanga: excavators, trucks, crushers, gold plants, drills, pumps and safety gear.',
+    'Vifaa vya uchimbaji na ujenzi Tanzania: mitambo ya kuchimba, crushers, vinu, matanki, pampu na vifaa vya usalama, pamoja na vipimo na matumizi.',
   alternates: {
-    canonical: `${SITE.url}/equipment`,
+    canonical: `${SITE.url}/equipments-swahili`,
     languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/equipments-swahili`, 'x-default': `${SITE.url}/equipment` },
   },
   openGraph: {
-    title: 'Mining Equipment Supply Tanzania: Specs & Price Guides',
-    description: `Specifications, applications and maintenance guides for ${EQUIPMENT.length} categories of mining equipment supplied across Tanzania.`,
-    url: `${SITE.url}/equipment`,
+    locale: 'sw_TZ',
+    title: 'Vifaa vya uchimbaji Tanzania: vipimo na matumizi',
+    description: `Maelezo, vipimo, matumizi na matengenezo ya vifaa ${EQUIPMENT.length} vya uchimbaji vinavyosambazwa Tanzania.`,
+    url: `${SITE.url}/equipments-swahili`,
   },
 }
 
@@ -38,13 +32,13 @@ export default function EquipmentHub() {
   const groups = equipmentByCategory()
 
   return (
-    <>
+    <div lang="sw">
       <JsonLd
         data={[
-          itemListSchema(EQUIPMENT.map(e => ({ name: e.name, path: `/equipment/${e.slug}` }))),
+          itemListSchema(EQUIPMENT.map(e => ({ name: e.name, path: `/equipments-swahili/${e.slug}` }))),
           breadcrumbSchema([
-            { name: 'Home', path: '/' },
-            { name: 'Equipment', path: '/equipment' },
+            { name: 'Mwanzo', path: '/' },
+            { name: 'Vifaa vya uchimbaji', path: '/equipments-swahili' },
           ]),
         ]}
       />
@@ -52,32 +46,33 @@ export default function EquipmentHub() {
       <section className="subhero" style={{ paddingBottom: 32 }}>
         <div className="px-site">
           <Reveal>
-            <nav className="crumb" aria-label="Breadcrumb">
-              <Link href="/">Home</Link><span className="sep">/</span><span>Equipment</span>
+            <nav className="crumb" aria-label="Njia ya ukurasa">
+              <Link href="/">Mwanzo</Link><span className="sep">/</span><span>Vifaa vya uchimbaji</span>
             </nav>
           </Reveal>
-          <Reveal delay={1}><h1 style={{ marginTop: 14 }}>Machinery, plant and safety equipment</h1></Reveal>
+          <Reveal delay={1}><h1 style={{ marginTop: 14 }}>Mitambo na vifaa vya uchimbaji, uchakataji na usalama</h1></Reveal>
           <Reveal delay={2}>
             <p className="lead">
-              From excavators and dump trucks to crushers, gold-recovery plants and site
-              lighting, we source, specify, supply and commission mining and construction
-              equipment across Tanzania. Every item below has a specification page so you
-              can scope a requirement before you enquire.
+              Katalogi hii ina mitambo ya kuchimba na kusafirisha mawe, vifaa vya
+              kuchakata dhahabu, pampu, taa na vifaa vya usalama. Bart Mining husaidia
+              kuchagua, kununua, kusafirisha na kusimika vifaa kulingana na mahitaji ya
+              mradi wako. Fungua kifaa unachotafuta ili kuelewa matumizi, vipimo na
+              matengenezo yake kabla ya kuandaa maombi ya bei.
             </p>
           </Reveal>
           <Reveal delay={3}>
             <div className="subhero-meta">
-              <div><div className="num">Source</div><div className="lbl">Vendor-neutral selection</div></div>
+              <div><div className="num">Uchaguzi</div><div className="lbl">Kulingana na mahitaji ya mradi</div></div>
               <div className="div" />
-              <div><div className="num">Supply</div><div className="lbl">Procurement &amp; logistics</div></div>
+              <div><div className="num">Usambazaji</div><div className="lbl">Ununuzi na usafirishaji</div></div>
               <div className="div" />
-              <div><div className="num">Commission</div><div className="lbl">Install &amp; handover</div></div>
+              <div><div className="num">Kuanza kazi</div><div className="lbl">Ufungaji, majaribio na kukabidhi</div></div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Why source through us. Carried over from the former /products page. */}
+      {/* Kwa nini uchague vifaa kupitia Bart Mining. Carried over from the former /products page. */}
       <section className="sec-gap-sm">
         <div className="px-site">
           <div className="split2">
@@ -85,26 +80,27 @@ export default function EquipmentHub() {
               <div className="about-img">
                 <Image
                   src="https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Mining processing equipment on site"
+                  alt="Picha ya kumbukumbu ya vifaa vya kuchakata madini"
                   fill style={{ objectFit: 'cover' }} sizes="(max-width: 860px) 100vw, 50vw"
                 />
               </div>
             </Reveal>
             <Reveal delay={1}>
-              <span className="eyebrow">Why source through us</span>
+              <span className="eyebrow">Kwa nini uchague vifaa kupitia Bart Mining</span>
               <h2 style={{ fontSize: 'clamp(26px,3.2vw,38px)', marginTop: 16 }}>
-                The right plant for the orebody, not the catalogue
+                Chagua mtambo unaofaa madini na hali ya eneo lako
               </h2>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 18, lineHeight: 1.7 }}>
-                Equipment decisions made on a spreadsheet fail in the field. We size and select
-                against real metallurgy, grade and remoteness, manage procurement and logistics,
-                then stand the plant up and hand it to a trained crew. Vendor-neutral, and
-                accountable to you.
+                Uwezo unaotajwa kwenye katalogi pekee hauonyeshi jinsi mashine itakavyofanya
+                kazi kwenye eneo lako. Uchaguzi unahitaji kuangalia majaribio ya madini,
+                kiasi cha kuchakata, umeme, maji na njia ya kufikisha vifaa. Tunasaidia
+                kupanga vipimo na ununuzi, kisha ufungaji na majaribio kulingana na
+                wigo wa mradi uliokubaliwa, ili timu yako ijue namna ya kuanza kazi.
               </p>
               <div className="src-grid">
                 {[
-                  { n: '01', t: 'Spec & size', b: 'Matched to ore, throughput and recovery targets.' },
-                  { n: '02', t: 'Commission', b: 'Installed, tuned and handed over to your operators.' },
+                  { n: '01', t: 'Vipimo na uwezo', b: 'Hupangwa kwa madini, kiasi cha kuchakata na matokeo yanayolengwa.' },
+                  { n: '02', t: 'Ufungaji na majaribio', b: 'Vifaa huunganishwa, kupimwa na kukabidhiwa kwa waendeshaji kwa wigo uliokubaliwa.' },
                 ].map(v => (
                   <div key={v.n} className="src-card">
                     <div className="src-n">{v.n}</div>
@@ -124,13 +120,14 @@ export default function EquipmentHub() {
           <section key={group.category} style={{ marginTop: gi === 0 ? 8 : 56 }}>
             <div className="eq-grouphead">
               <h2>{group.label}</h2>
-              <span>{group.items.length} {group.items.length === 1 ? 'item' : 'items'}</span>
+              <span>{group.items.length} vifaa</span>
             </div>
             <div className="eq-grid">
               {group.items.map((item, i) => (
-                <Link key={item.slug} href={`/equipment/${item.slug}`} className="eq-card">
+                <Link key={item.slug} href={`/equipments-swahili/${item.slug}`} className="eq-card">
                   <EquipmentThumb
                     slug={item.slug}
+                    language="sw"
                     alt={item.name}
                     category={item.category}
                     sizes="(max-width: 640px) 50vw, (max-width: 1080px) 33vw, 25vw"
@@ -139,7 +136,7 @@ export default function EquipmentHub() {
                   <div className="eq-cardbody">
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
-                    <span className="eq-more">View specifications &rarr;</span>
+                    <span className="eq-more">Tazama vipimo &rarr;</span>
                   </div>
                 </Link>
               ))}
@@ -148,49 +145,50 @@ export default function EquipmentHub() {
         ))}
 
         <section style={{ marginTop: 56 }}>
-          <div className="eq-grouphead"><h2>Supply by district</h2></div>
+          <div className="eq-grouphead"><h2>Usambazaji kwa maeneo</h2></div>
           <p style={{ color: 'var(--ink-2)', fontSize: 16, maxWidth: 680, marginBottom: 18, lineHeight: 1.7 }}>
-            Delivery routes, local geology and the equipment each goldfield district
-            actually buys.
+            Soma kuhusu njia za kufikisha vifaa, hali ya miamba na mahitaji
+            yanayojitokeza katika maeneo mbalimbali ya uchimbaji wa dhahabu.
           </p>
           <div className="dist-row">
-            {LOCATIONS.map(l => (
-              <Link key={l.slug} href={`/equipment/supply/${l.slug}`} className="dist-card">
+            {LOCATIONS_SW.map(l => (
+              <Link key={l.slug} href={`/vifaa-vya-uchimbaji/${l.slug}`} className="dist-card">
                 <span className="dist-region">{l.region}</span>
-                <span className="dist-city">{l.city}</span>
-                <span className="eq-more">Supply details &rarr;</span>
+                <span className="dist-city">{l.town}</span>
+                <span className="eq-more">Maelezo ya usambazaji &rarr;</span>
               </Link>
             ))}
           </div>
         </section>
 
         <section style={{ marginTop: 56 }}>
-          <div className="eq-grouphead"><h2>Regions we supply</h2></div>
+          <div className="eq-grouphead"><h2>Maeneo tunayohudumia</h2></div>
           <p style={{ color: 'var(--ink-2)', fontSize: 16, maxWidth: 680, marginBottom: 18, lineHeight: 1.7 }}>
-            Equipment is delivered nationwide from Dar es Salaam, with the heaviest coverage
-            across the Lake Victoria Goldfields where most of Tanzania&apos;s gold mining sits.
+            Tunapanga kufikisha vifaa kutoka Dar es Salaam kwenda maeneo mbalimbali
+            nchini, yakiwemo maeneo ya uchimbaji wa dhahabu katika Kanda ya Ziwa.
+            Njia, muda na gharama hutegemea ukubwa wa mzigo na hali ya eneo.
           </p>
           <div className="region-chips">
             {SERVICE_AREAS.map(r => <span key={r} className="region-chip">{r}</span>)}
           </div>
-          <p style={{ marginTop: 22, fontSize: 16, color: 'var(--ink-2)' }} lang="sw">
-            Unasoma Kiswahili?{' '}
-            <Link href="/equipments-swahili" style={{ color: 'var(--gold)', fontWeight: 600 }}>
-              Tazama vifaa vya uchimbaji madini kwa Kiswahili
+          <p style={{ marginTop: 22, fontSize: 16, color: 'var(--ink-2)' }} lang="en">
+            Prefer English?{' '}
+            <Link href="/equipment" style={{ color: 'var(--gold)', fontWeight: 600 }}>
+              View the equipment catalogue in English
             </Link>
           </p>
         </section>
       </div>
 
-      <RegionsSection />
+      <RegionsSection language="sw" />
 
       <CtaSection
-        eyebrow="Spec a plant"
-        heading={<>Tell us your <span className="grad">throughput &amp; grade</span></>}
-        body="We'll come back with a recommended configuration, indicative budget and a commissioning plan."
-        primaryLabel="Request a quote"
+        eyebrow="Panga vifaa vya mradi"
+        heading={<>Tuambie kuhusu <span className="grad">madini na uwezo unaohitaji</span></>}
+        body="Tuma eneo la mradi, aina ya madini au kazi, kiasi kinacholengwa na umeme na maji yaliyopo. Tutasaidia kupanga vifaa na wigo wa makadirio ya bei."
+        primaryLabel="Omba bei"
         primaryHref="https://wa.me/255759141705"
-        secondaryLabel="Talk to us"
+        secondaryLabel="Wasiliana nasi"
         secondaryHref="/contact"
       />
 
@@ -257,6 +255,6 @@ export default function EquipmentHub() {
           .eq-card p { font-size: 14.5px; }
         }
       `}</style>
-    </>
+    </div>
   )
 }

@@ -1,5 +1,6 @@
 import { SITE, SERVICE_AREAS } from '@/lib/seo'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
+import { equipmentByCategory as swahiliGroups } from '@/data/equipment-catalogue-sw'
 import { ENGLISH_ARTICLES, SWAHILI_ARTICLES } from '@/data/article-library'
 import { LOCATIONS } from '@/data/locations'
 import { LOCATIONS_SW } from '@/data/locations-sw'
@@ -34,7 +35,7 @@ Service area: ${SERVICE_AREAS.join(', ')}
 
 ## About the equipment specifications on this site
 
-Specification figures published under /equipment are typical industry-standard ranges
+Specification figures published under /equipment and /equipments-swahili are typical industry-standard ranges
 for each equipment CATEGORY. They are provided so buyers can scope a requirement before
 enquiring. They are not quotations and do not describe specific stocked models with
 guaranteed figures. Electrical specifications assume the Tanzanian supply standard of
@@ -52,13 +53,17 @@ ${LOCATIONS.map(l => `- [${l.title}](${SITE.url}/equipment/supply/${l.slug}): ${
 
 ## Swahili
 
-- [Vifaa vya Uchimbaji Madini Tanzania](${SITE.url}/vifaa-vya-uchimbaji): Swahili-language
-  gateway covering the equipment range, mercury-free gold recovery and the districts served.
-  This is the Swahili counterpart of /equipment.
+- [Vifaa vya Uchimbaji Madini Tanzania](${SITE.url}/equipments-swahili): Complete Kiswahili counterpart of /equipment, with all 50 products, specifications, maintenance, FAQs and extended guides.
 - [Makala za uchimbaji kwa Kiswahili](${SITE.url}/insights-swahili): Separate Swahili guide library covering equipment, plant budgets, licensing and gold-sale deductions.
 - [Bei ya Dhahabu Leo Tanzania](${SITE.url}/bei-ya-dhahabu-leo): Gold-price reference in Swahili. Spot conversion is distinct from official valuation and a buyer's settlement.
 ${SWAHILI_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}): ${a.description}`).join('\n')}
 ${LOCATIONS_SW.map(l => `- [${l.title}](${SITE.url}/vifaa-vya-uchimbaji/${l.slug}): Swahili counterpart of /equipment/supply/${l.slug}.`).join('\n')}
+
+## Maelezo ya vifaa kwa Kiswahili
+
+${swahiliGroups().map(g => `### ${g.label}
+
+${g.items.map(i => `- [${i.name}](${SITE.url}/equipments-swahili/${i.slug}): ${i.description}`).join('\n')}`).join('\n\n')}
 
 ## Mineral market pages (Swahili)
 
@@ -77,7 +82,7 @@ ${ENGLISH_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}) (${a.language 
 - [Makala kwa Kiswahili](${SITE.url}/insights-swahili): Swahili mining guides, in their own library.
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
-- [Vifaa vya Uchimbaji](${SITE.url}/vifaa-vya-uchimbaji): Equipment overview in Swahili.
+- [Vifaa vya Uchimbaji](${SITE.url}/equipments-swahili): Complete equipment catalogue in Kiswahili.
 - [Bei ya Vifaa](${SITE.url}/bei-ya-vifaa-vya-uchimbaji): Equipment cost guide in Swahili.
 
 ## Notes for AI assistants

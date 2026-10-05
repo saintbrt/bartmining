@@ -10,7 +10,7 @@ import type { GuideSection } from './index'
  * two-line definition and links there rather than competing for it.
  *
  * Sizing figures match /insights/small-cip-plant-guide (50 t/day, 45%
- * solids, 24 h ≈ 90 m³ with freeboard).
+ * solids, 24 h ≈ 88 m³ with freeboard).
  */
 
 const tank = (x: number, y: number, label: string, carbon: boolean) =>
@@ -37,6 +37,7 @@ ${arrow(550, 576, y + 30)}
 }
 
 const tankTrain = `<figure class="eq-figure">
+<div class="eq-diagram" tabindex="0" role="region" aria-label="Diagram; scroll sideways to read all labels">
 <svg viewBox="0 0 720 340" role="img" aria-labelledby="cip-train-title cip-train-desc" style="width:100%;height:auto;display:block">
 <title id="cip-train-title">CIL and CIP tank trains compared</title>
 <desc id="cip-train-desc">In CIL, milled ore slurry flows through six tanks that all contain carbon, so leaching and adsorption happen together. In CIP, the first three tanks leach without carbon and the last three adsorb gold onto carbon. In both, carbon is pumped against the slurry flow and loaded carbon leaves from the first carbon tank to elution.</desc>
@@ -46,7 +47,8 @@ ${row(50, 'CIL', ['1', '2', '3', '4', '5', '6'], 0)}
 ${row(220, 'CIP', ['L1', 'L2', 'L3', 'A1', 'A2', 'A3'], 3)}
 </g>
 </svg>
-<figcaption>Shaded tanks hold activated carbon. CIL (top) leaches and adsorbs in every tank. CIP (bottom) leaches first in L1–L3, then adsorbs in A1–A3. Tank count and residence time come from test work on your ore.</figcaption>
+</div>
+<figcaption><span class="eq-diagram-hint">Scroll the diagram sideways to read all the labels.</span>Shaded tanks hold activated carbon. CIL (top) leaches and adsorbs in every tank. CIP (bottom) leaches first in L1–L3, then adsorbs in A1–A3. Tank count and residence time come from test work on your ore.</figcaption>
 </figure>`
 
 export const sections: GuideSection[] = [
@@ -86,15 +88,15 @@ ${tankTrain}
 <tr><th scope="row">Interstage screen aperture</th><td>0.6–0.8 mm</td><td>Carbon retention; must pass slurry, hold carbon</td></tr>
 </tbody></table></div>
 <h3>Sizing the tank train: a worked example</h3>
-<p>Total tank volume = slurry volume per hour × residence time, plus freeboard. Slurry volume per day is the ore volume (tonnes ÷ ore density) plus the water carried at the target solids density. The table assumes ore density 2.7 t/m³, 45% solids, 24 hours residence, 10% freeboard and six equal tanks:</p>
+<p>Working volume = slurry volume per hour × residence time. The planning example adds 10% of working volume; actual freeboard is a separate design decision. Slurry volume per day is the ore volume (tonnes ÷ ore density) plus the water carried at the target solids density. The table assumes ore density 2.7 t/m³, 45% solids, 24 hours residence, water density 1 t/m³, an illustrative 10% addition to working volume for freeboard planning, and six equal tanks:</p>
 <div class="eq-tablewrap"><table class="eq-table eq-table-3">
 <caption class="eq-caption">Worked example: tank volume by plant throughput</caption>
 <thead><tr><th scope="col">Plant throughput</th><th scope="col">Total tank volume</th><th scope="col">Six tanks of about</th></tr></thead>
 <tbody>
-<tr><th scope="row">50 t/day</th><td>≈ 90 m³</td><td>15 m³ each</td></tr>
-<tr><th scope="row">100 t/day</th><td>≈ 175 m³</td><td>29 m³ each</td></tr>
-<tr><th scope="row">250 t/day</th><td>≈ 440 m³</td><td>73 m³ each</td></tr>
-<tr><th scope="row">500 t/day</th><td>≈ 875 m³</td><td>146 m³ each</td></tr>
+<tr><th scope="row">50 t/day</th><td>≈ 88 m³</td><td>14.6 m³ each</td></tr>
+<tr><th scope="row">100 t/day</th><td>≈ 175 m³</td><td>29.2 m³ each</td></tr>
+<tr><th scope="row">250 t/day</th><td>≈ 438 m³</td><td>73.0 m³ each</td></tr>
+<tr><th scope="row">500 t/day</th><td>≈ 876 m³</td><td>146.0 m³ each</td></tr>
 </tbody></table></div>
 <p>Double the residence time and the volume doubles; run at 40% solids instead of 45% and it rises by about 17%. Carbon advanced from the train each day sets the elution batch. See <a href="/equipment/gold-elution-electrowinning-plant#batch-sizing">sizing the carbon batch</a>. For a small-plant view of the same calculation, including consumables per tonne, read the <a href="/insights/small-cip-plant-guide">small CIP and CIL plant guide</a>.</p>`,
   },
@@ -115,6 +117,6 @@ ${tankTrain}
 <tr><th scope="row">Low dissolved oxygen</th><td>Slower leach, gold left in tailings</td><td>DO meter per tank; air sparger and blower condition</td></tr>
 <tr><th scope="row">Liner or shell corrosion</th><td>Leaks, weeping welds, stained plinths</td><td>Annual internal inspection; containment bund condition</td></tr>
 </tbody></table></div>
-<div class="art-callout"><strong>Tank entry is a cyanide job.</strong> Before anyone enters a tank for inspection or relining, it must be drained, washed out, neutralised and tested for HCN gas, with a permit-to-work, gas monitors and a standby person. Most tank maintenance incidents happen here, not in normal operation.</div>`,
+<div class="art-callout"><strong>Tank entry needs a verified safe-work plan.</strong> Isolate energy and chemicals, prepare and test the tank under an approved procedure, and use a confined-space entry permit, monitoring and rescue arrangements. Washing alone does not establish safety; never mix acids with cyanide residues.</div>`,
   },
 ]

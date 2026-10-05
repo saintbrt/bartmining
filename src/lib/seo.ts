@@ -105,10 +105,11 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]): Json 
   }
 }
 
-export function faqSchema(faqs: { q: string; a: string }[]): Json {
+export function faqSchema(faqs: { q: string; a: string }[], language?: 'en' | 'sw'): Json {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    ...(language ? { inLanguage: language } : {}),
     mainEntity: faqs.map(f => ({
       '@type': 'Question',
       name: f.q,
@@ -119,6 +120,8 @@ export function faqSchema(faqs: { q: string; a: string }[]): Json {
 
 export interface ProductSchemaInput {
   slug: string
+  /** Actual translated product route; defaults to the English catalogue. */
+  path?: string
   name: string
   description: string
   image: string
@@ -136,10 +139,12 @@ export interface ProductSchemaInput {
  * once real catalogue pricing exists.
  */
 export function productSchema(p: ProductSchemaInput): Json {
+  const url = `${SITE.url}${p.path ?? `/equipment/${p.slug}`}`
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    '@id': `${SITE.url}/equipment/${p.slug}#product`,
+    '@id': `${url}#product`,
+    url,
     name: p.name,
     description: p.description,
     image: [p.image],

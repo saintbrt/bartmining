@@ -9,6 +9,7 @@ import type { GuideSection } from './index'
  */
 
 const flowDiagram = `<figure class="eq-figure">
+<div class="eq-diagram" tabindex="0" role="region" aria-label="Diagram; scroll sideways to read all labels">
 <svg viewBox="0 0 720 300" role="img" aria-labelledby="elution-flow-title elution-flow-desc" style="width:100%;height:auto;display:block">
 <title id="elution-flow-title">Gold elution process flow</title>
 <desc id="elution-flow-desc">Loaded carbon moves through acid wash, elution, electrowinning and carbon regeneration. Gold sludge from the electrowinning cell goes to smelting to make doré, and regenerated carbon returns to the leach tanks.</desc>
@@ -33,7 +34,8 @@ const flowDiagram = `<figure class="eq-figure">
 <text x="110" y="132" font-size="12.5" opacity=".7">back to leach tanks</text>
 </g>
 </svg>
-<figcaption>Batch elution circuit. Pregnant eluate from step 3 feeds the electrowinning cell; in a Zadra circuit it circulates continuously between the column and the cell.</figcaption>
+</div>
+<figcaption><span class="eq-diagram-hint">Scroll the diagram sideways to read all the labels.</span>Batch elution circuit. Pregnant eluate from step 3 feeds the electrowinning cell; in a Zadra circuit it circulates continuously between the column and the cell.</figcaption>
 </figure>`
 
 export const sections: GuideSection[] = [

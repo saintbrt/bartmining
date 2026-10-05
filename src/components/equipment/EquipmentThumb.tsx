@@ -83,13 +83,14 @@ function CategoryMark({ category }: { category: EquipCategory }) {
 }
 
 export default function EquipmentThumb({
-  slug, alt, category, sizes = '(max-width: 640px) 100vw, 33vw', priority = false,
+  slug, alt, category, sizes = '(max-width: 640px) 100vw, 33vw', priority = false, language = 'en',
 }: {
   slug: string
   alt: string
   category: EquipCategory
   sizes?: string
   priority?: boolean
+  language?: 'en' | 'sw'
 }) {
   const photo = resolveEquipmentPhoto(slug)
 
@@ -102,7 +103,7 @@ export default function EquipmentThumb({
   }
 
   return (
-    <div className="eq-thumb eq-thumb-empty" role="img" aria-label={`${alt}. Photograph to follow`}>
+    <div className="eq-thumb eq-thumb-empty" role="img" aria-label={`${alt}. ${language === 'sw' ? 'Picha itaongezwa' : 'Photograph to follow'}`}>
       <svg viewBox="0 0 48 56" aria-hidden="true" focusable="false">
         <CategoryMark category={category} />
       </svg>

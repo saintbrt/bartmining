@@ -11,10 +11,10 @@ export const SWAHILI_ARTICLES: LibraryArticle[] = [
   {
     slug: 'bei-ya-vifaa-vya-uchimbaji', path: '/bei-ya-vifaa-vya-uchimbaji', language: 'sw', englishSlug: 'mining-equipment-cost-tanzania',
     title: 'Bei ya vifaa na gharama za kuanzisha plant ya dhahabu Tanzania',
-    description: 'Linganisha alluvial, crusher na ball mill, na CIL/CIP kwa bei za mapendekezo ya Chunya na mifano ya bajeti ya kuanzisha na kuendesha.',
+    description: 'Bei za alluvial za Chunya, makadirio ya awali ya vifaa na usafirishaji wa mawe magumu, na mifano ya gharama za kuendesha plant ya dhahabu.',
     cta: { title: 'Andaa bajeti ya plant yako', body: 'Tutumie eneo, taarifa za malighafi, matokeo ya sampuli na majaribio, uwezo unaolengwa na taarifa za maji na umeme. Tutajadili wigo wa vifaa, kufikisha na kazi za eneo.' },
     category: 'Gharama · Tanzania', tags: ['cost', 'equipment', 'gold', 'processing', 'tanzania', 'bei', 'gharama', 'vifaa'],
-    date: 'August 2026', updated: 'October 2026', updatedDate: '2026-10-05', readTime: 'Dakika 11 za kusoma',
+    date: 'August 2026', updated: 'October 2026', updatedDate: '2026-10-05', readTime: 'Dakika 12 za kusoma',
     image: '/equipment/alluvial-gold-wash-plant.jpg', imageAlt: 'Vifaa vya kuosha na kutenganisha dhahabu ya alluvial kwenye katalogi ya Bart Mining',
     imageCaption: 'Picha ya rejea kutoka kwenye katalogi; si picha ya plant iliyofungwa Chunya.',
     related: ['gharama-ya-plant-ya-dhahabu', 'bei-ya-mashine-ya-kusaga-mawe'],
