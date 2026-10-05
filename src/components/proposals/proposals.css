@@ -1,0 +1,142 @@
+/*
+ * Projects tab: board, tracking tiles, project header, deal tabs, forms,
+ * and the print pages. GoldPass tokens (--label-*, --sep, --r-*) for the
+ * admin chrome; the documents use the planner styles in planner.css.
+ */
+
+/* ── Page and board ───────────────────────────────────────────────────────── */
+.gp-root .bm-page { max-width: 1480px; }
+.gp-root .bm-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.gp-root .bm-head .page-sub { max-width: 620px; }
+.gp-root .bm-head-actions { display: flex; gap: 10px; align-items: center; }
+
+.gp-root .bm-tiles { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; margin-bottom: 24px; }
+.gp-root .bm-tile { padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.gp-root .bm-tile .section-label { font-size: 10.5px; }
+.gp-root .bm-tile-sub { font-size: 12px; color: var(--label-3); line-height: 1.35; }
+.gp-root .bm-tile.alert { border-color: rgba(255, 59, 48, .45); }
+.gp-root .bm-tile.alert .stat-value-sm { color: var(--red); }
+@media (max-width: 1280px) { .gp-root .bm-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 860px) { .gp-root .bm-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.gp-root .bm-board { display: grid; grid-template-columns: repeat(6, minmax(190px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 8px; align-items: start; }
+.gp-root .bm-col { background: var(--bg-3); border-radius: var(--r-lg); padding: 10px; display: grid; gap: 10px; min-height: 120px; align-content: start; }
+.gp-root .bm-col-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 12.5px; font-weight: 700; color: var(--label-2); padding: 2px 4px; }
+.gp-root .bm-col-count { font-weight: 500; color: var(--label-3); font-size: 11.5px; white-space: nowrap; }
+.gp-root .bm-col-empty { font-size: 12px; color: var(--label-4); padding: 4px; }
+@media (max-width: 860px) {
+  .gp-root .bm-board { grid-template-columns: 1fr; overflow: visible; }
+  .gp-root .bm-col { min-height: 0; }
+}
+
+.gp-root .bm-card { padding: 14px; display: grid; gap: 5px; }
+.gp-root .bm-card-name { font-size: 13.5px; font-weight: 700; line-height: 1.3; color: var(--label-1); }
+.gp-root .bm-card-client { font-size: 12px; color: var(--label-3); }
+.gp-root .bm-card-value { font-size: 15px; font-weight: 700; color: var(--label-1); margin-top: 2px; }
+.gp-root .bm-card-line { font-size: 11.5px; color: var(--label-2); }
+.gp-root .bm-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.gp-root .bm-chips:empty { display: none; }
+.gp-root .bm-card-foot { font-size: 11px; color: var(--label-4); margin-top: 2px; }
+.gp-root .bm-empty { margin-top: 16px; }
+.gp-root .bm-empty p { font-size: 13px; color: var(--label-3); }
+
+.gp-root .bm-contacts { display: grid; gap: 16px; }
+.gp-root .bm-self { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.gp-root .bm-table-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--sep); }
+
+/* ── Project header and tabs ──────────────────────────────────────────────── */
+.gp-root .bm-project-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.gp-root .bm-project-title { flex: 1; min-width: 240px; }
+.gp-root .bm-save { font-size: 12px; color: var(--label-3); display: flex; gap: 6px; align-items: center; }
+.gp-root .bm-save-error, .gp-root .bm-save-conflict { color: var(--red); font-weight: 600; }
+
+.gp-root .bm-deal { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: flex-end; margin: 16px 0 6px; padding: 12px 14px; background: var(--bg-2); border: 1px solid var(--sep); border-radius: var(--r-lg); }
+.gp-root .bm-deal label { display: grid; gap: 4px; font-size: 11px; color: var(--label-3); text-transform: uppercase; letter-spacing: .06em; }
+.gp-root .bm-deal select { min-width: 180px; text-transform: none; letter-spacing: 0; }
+.gp-root .bm-delete { margin-left: auto; }
+
+.gp-root .bm-tabs { display: flex; gap: 2px; overflow-x: auto; border-bottom: 1px solid var(--sep); margin: 14px 0 28px; }
+.gp-root .bm-tabs button { position: relative; border: 0; background: none; padding: 12px 14px 11px; cursor: pointer; font: inherit; font-size: 13.5px; color: var(--label-3); border-bottom: 2px solid transparent; white-space: nowrap; }
+.gp-root .bm-tabs button:hover { color: var(--label-1); }
+.gp-root .bm-tabs button.on { color: var(--label-1); border-bottom-color: var(--label-1); font-weight: 600; }
+.gp-root .bm-dot { position: absolute; top: 9px; right: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+/* Planner views sit on the GoldPass canvas. */
+.gp-root .bm-pp { background: transparent; }
+.gp-root .bm-pp:empty { display: none; }
+.gp-root .pp .proposal-tools { top: 0; }
+.gp-root .bm-pp .doc { background: #fff; padding: 48px 56px; border: 1px solid var(--sep); border-radius: var(--r-sm); box-shadow: var(--s-xs); }
+@media (max-width: 760px) { .gp-root .bm-pp .doc { padding: 24px 18px; } }
+.gp-root .pp .pick strong { font-size: 13px; padding: 4px 0; }
+.gp-root .pp .doc-table .doc-sub, .gp-root .pp .doc-sub { display: block; font-size: 11.5px; color: var(--ink-3); font-weight: 400; }
+.gp-root .bm-prop-actions { display: grid; gap: 10px; }
+.gp-root .bm-prop-actions .hint { margin: 0; }
+.gp-root .bm-issued { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.gp-root .bm-issued-top { display: flex; justify-content: space-between; align-items: center; }
+.gp-root .bm-issued-date { color: var(--ink-3); font-size: 12px; }
+.gp-root .bm-issued-links { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 4px; }
+.gp-root .bm-issued-links .link { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+
+/* ── Deal tabs ────────────────────────────────────────────────────────────── */
+.gp-root .bm-tab { max-width: 1240px; }
+.gp-root .bm-tab-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.gp-root .bm-tab-head .page-sub { max-width: 720px; margin-top: 4px; line-height: 1.5; }
+.gp-root .bm-presets { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.gp-root .bm-cell-sub { font-size: 11.5px; color: var(--label-3); margin-top: 2px; }
+.gp-root .bm-tab .badge, .gp-root .bm-tab td strong { white-space: nowrap; }
+.gp-root .tbl th.r, .gp-root .tbl td.r { text-align: right; }
+.gp-root .bm-schedule td { vertical-align: middle; padding: 6px 8px; }
+.gp-root .bm-schedule .input-sm { width: 100%; min-width: 90px; }
+.gp-root .bm-schedule td:nth-child(1) .input-sm { min-width: 150px; }
+.gp-root .bm-schedule td:nth-child(2) .input-sm { min-width: 190px; }
+.gp-root .bm-schedule td:nth-child(3) .input-sm, .gp-root .bm-schedule td:nth-child(4) .input-sm { min-width: 160px; }
+.gp-root .bm-schedule tr.bm-internal td { background: rgba(175, 82, 222, .05); }
+.gp-root .bm-num { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--label-3); }
+.gp-root .bm-num .input-sm { width: 76px; min-width: 0; text-align: right; }
+.gp-root .bm-schedule-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 14px; border-top: 1px solid var(--sep); }
+.gp-root .bm-warn { font-size: 12.5px; color: var(--orange); font-weight: 600; }
+.gp-root .bm-msg-body td { background: var(--bg-3); }
+.gp-root .bm-msg-body pre { white-space: pre-wrap; font: 13px/1.55 inherit; font-family: inherit; color: var(--label-1); padding: 6px 2px; }
+
+/* ── Forms in modals ──────────────────────────────────────────────────────── */
+.gp-modal-box:has(.bm-form) { width: 620px; }
+.gp-root .bm-form { display: grid; gap: 12px; }
+.gp-root .bm-form label, .gp-root .bm-form .bm-radio { display: grid; gap: 5px; font-size: 12px; color: var(--label-3); }
+.gp-root .bm-form label > span:first-child, .gp-root .bm-radio > span { font-weight: 600; }
+.gp-root .bm-form .input { width: 100%; }
+.gp-root .bm-form textarea.input { resize: vertical; line-height: 1.5; }
+.gp-root .bm-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gp-root .bm-form .bm-check, .gp-root .bm-radio label { display: flex; align-items: center; gap: 8px; color: var(--label-2); font-size: 13px; font-weight: 400; }
+.gp-root .bm-attach { font-size: 12.5px; color: var(--label-2); background: var(--bg-3); padding: 8px 10px; border-radius: var(--r-sm); }
+.gp-root .bm-note { font-size: 12px; color: var(--label-3); }
+.gp-root .bm-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+@media (max-width: 600px) { .gp-root .bm-form-row { grid-template-columns: 1fr; } }
+
+/* ── Print pages ──────────────────────────────────────────────────────────── */
+/* The GoldPass shell is a fixed, clipped frame; a print page must flow. */
+.gp-root:has(.pp-print) { position: static; overflow: visible; height: auto; inset: auto; background: #fff; }
+.gp-root .pp-print { background: #fff; min-height: 100vh; }
+@media screen { .gp-root .pp-print .doc { max-width: 820px; margin: 0 auto; padding: 48px 24px 96px; } }
+@media print { .gp-root .gp-toasts { display: none; } }
+.gp-root .bm-print-msg { padding: 40px; font-size: 14px; }
+
+/* Pro forma */
+.gp-root .pp .pf .doc-masthead { margin-bottom: 28px; }
+.gp-root .pp .pf-behalf { font-size: 14px; color: var(--ink); background: var(--soft); border-left: 2px solid var(--accent); padding: 10px 14px; margin: 0 0 24px; }
+.gp-root .pp .pf-parties { margin: 8px 0 28px; }
+.gp-root .pp .pf-parties h3, .gp-root .pp .pf-bank h3, .gp-root .pp .pf-notes h3 { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+.gp-root .pp .pf-parties p { color: var(--ink); line-height: 1.55; }
+.gp-root .pp .pf-lines td { padding-top: 12px; padding-bottom: 12px; }
+.gp-root .pp .pf-lines td:first-child { color: var(--ink); }
+.gp-root .pp .pf-bank { margin-top: 32px; padding: 16px 18px; border: 1px solid var(--line-2); break-inside: avoid; }
+.gp-root .pp .pf-bank pre { font: 14px/1.6 var(--sans); color: var(--ink); white-space: pre-wrap; margin: 0 0 8px; }
+.gp-root .pp .pf-notes { margin-top: 24px; }
+@media print {
+  .gp-root .pp .pf .doc-masthead { margin-bottom: 8mm; }
+  .gp-root .pp .pf-behalf { font-size: 10pt; margin-bottom: 6mm; }
+  .gp-root .pp .pf-parties { margin: 0 0 6mm; }
+  .gp-root .pp .pf-parties p { font-size: 10pt; }
+  .gp-root .pp .pf-bank { margin-top: 8mm; }
+  .gp-root .pp .pf-bank pre { font-size: 10pt; }
+  .gp-root .pp .pf-notes { margin-top: 6mm; }
+}

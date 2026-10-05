@@ -13,6 +13,7 @@ import { notify } from './notify'
    24xx: AI (gold-ai edge function)
    25xx: outputs / export
    26xx: Operations/ERP oversight (expenses, inventory, goldpass-field schema)
+   27xx: Projects tab and proposal studio (bm_ tables, 0024)
 */
 export const GP_ERRORS: Record<string, string> = {
   'GP-2314': 'Supabase is not connected: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON are missing or invalid.',
@@ -118,6 +119,34 @@ export const GP_ERRORS: Record<string, string> = {
   'GP-2668': 'Leaching round timeline failed to load.',
   'GP-2669': 'Round cycle times failed to load.',
   'GP-2670': 'Round fault flags failed to load.',
+
+  'GP-2701': 'Projects failed to load (has supabase/0024_bm_projects.sql been run?).',
+  'GP-2702': 'Project failed to load.',
+  'GP-2703': 'Project failed to create.',
+  'GP-2704': 'Project failed to save.',
+  'GP-2705': 'Project details failed to save.',
+  'GP-2706': 'Project failed to delete.',
+  'GP-2711': 'Contacts failed to load.',
+  'GP-2712': 'Contact failed to save.',
+  'GP-2713': 'Contact failed to delete (it may still be used on a project or pro forma).',
+  'GP-2721': 'Proposals failed to load.',
+  'GP-2722': 'Proposal status failed to save.',
+  'GP-2731': 'Supplier requests failed to load.',
+  'GP-2732': 'Supplier request failed to save.',
+  'GP-2733': 'Supplier request failed to delete.',
+  'GP-2741': 'Pro formas failed to load.',
+  'GP-2742': 'Pro forma failed to save.',
+  'GP-2743': 'Pro forma failed to delete.',
+  'GP-2751': 'Payments failed to load.',
+  'GP-2752': 'Payment failed to save.',
+  'GP-2753': 'Payment failed to delete.',
+  'GP-2761': 'Sent email failed to load.',
+  'GP-2771': 'Could not get the next document number.',
+  'GP-2772': 'Could not record the imported proposal number.',
+  'GP-2781': 'File failed to upload.',
+  'GP-2782': 'File link could not be created.',
+  'GP-2791': 'PDF could not be made.',
+  'GP-2792': 'Email could not be sent.',
 }
 
 /** Log + toast a coded error. Returns the human-readable meaning. */

@@ -1,6 +1,14 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  // Admin PDFs (src/lib/proposals/server.ts) print with headless Chromium.
+  // Both packages stay out of the bundle, and the Chromium binary, which is
+  // only read at runtime, is traced into the two routes that launch it.
+  serverExternalPackages: ['puppeteer-core', '@sparticuz/chromium'],
+  outputFileTracingIncludes: {
+    '/api/admin/pdf': ['./node_modules/@sparticuz/chromium/bin/**'],
+    '/api/admin/send': ['./node_modules/@sparticuz/chromium/bin/**'],
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.pexels.com' },

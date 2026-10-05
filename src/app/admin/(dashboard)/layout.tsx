@@ -10,6 +10,7 @@ const NAV = [
   { id: 'maxgold',    ico: '◆', label: 'Max Gold' },
   { id: 'operations', ico: '▤', label: 'Operations' },
   { id: 'plant',      ico: '⚗', label: 'Plant' },
+  { id: 'projects',   ico: '◇', label: 'Projects' },
   { id: 'settings',   ico: '⚙', label: 'Settings' },
 ]
 const OPERATIONS_SUBTABS = [
