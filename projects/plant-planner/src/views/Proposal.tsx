@@ -2,7 +2,8 @@ import { useState, type ReactNode } from 'react'
 import { aboutMonths, CATEGORY_LABEL, num, pct, production, usd, type ProjectModel } from '../model'
 import type { CostCategory, Package, Project, ProposalDetail, ProposalText } from '../types'
 import { FlowControls, FlowDiagram, flowsheetFor, useFlowPlayer } from '../components/FlowDiagram'
-import { Area } from '../components/Fields'
+import { Area, Num, Text } from '../components/Fields'
+import { BrandMark } from '../components/BrandMark'
 import { IMAGES, IMAGE_KEYS, imageLabel } from '../images'
 import type { ViewProps } from './shared'
 
@@ -84,6 +85,16 @@ function chapterList(options: ClientOption[]): ChapterDef[] {
   ]
 }
 
+/** Printed on the cover and in the contact block. */
+const COMPANY = {
+  name: 'Bart Mining',
+  line: 'Mining equipment, plant and services',
+  city: 'Dar es Salaam, Tanzania',
+  phone: '+255 759 141 705',
+  email: 'hello@bartmining.com',
+  web: 'bartmining.com',
+}
+
 const DETAILS: { key: keyof ProposalDetail; label: string }[] = [
   { key: 'equipmentPrices', label: 'Prices in equipment lists' },
   { key: 'equipmentPhotos', label: 'Equipment photos' },
@@ -109,6 +120,17 @@ export function Proposal({ project, model, update, onExport }: ViewProps & { onE
         <p className="hint">Opens the print dialog. Choose Save as PDF, paper size A4, and turn off headers and footers.</p>
 
         <label className="check"><input type="checkbox" checked={edit} onChange={e => setEdit(e.target.checked)} /> Edit text</label>
+
+        <div className="tool-group">
+          <h3>Document</h3>
+          <label className="pick"><span>Proposal no.</span><Text value={project.meta.proposalNo ?? ''} placeholder="BM-P-2026-001" onChange={v => update(d => { d.meta.proposalNo = v })} /></label>
+          <label className="pick"><span>Revision</span><Text value={project.meta.revision ?? ''} placeholder="A" onChange={v => update(d => { d.meta.revision = v.toUpperCase() })} /></label>
+          <label className="pick"><span>Client</span><Text value={project.meta.client} onChange={v => update(d => { d.meta.client = v })} /></label>
+          <label className="pick"><span>Site</span><Text value={project.meta.site} onChange={v => update(d => { d.meta.site = v })} /></label>
+          <label className="pick"><span>Date</span><input type="date" className="text-field" value={project.meta.date} onChange={e => update(d => { d.meta.date = e.target.value })} /></label>
+          <label className="pick"><span>Valid for (days)</span><Num align="left" value={project.meta.validityDays} onChange={v => update(d => { d.meta.validityDays = v })} /></label>
+          <label className="pick"><span>Prepared by</span><Text value={project.meta.preparedBy} onChange={v => update(d => { d.meta.preparedBy = v })} /></label>
+        </div>
 
         <div className="tool-group">
           <h3>Options</h3>
@@ -212,15 +234,32 @@ function Document({ project, options, expansion, chapters, edit, update }: {
     ...(modular ? [modular] : []),
   ]
 
+  const ref = reference(meta.proposalNo, meta.revision)
+
   return (
     <article className="doc">
+      <PageFurniture title={tx.title} reference={ref} />
       <header className="doc-cover">
-        <div className="doc-brand">Bart Mining</div>
+        <div className="doc-masthead">
+          <div className="doc-brand">
+            <BrandMark size={44} />
+            <div>
+              <div className="doc-brand-name">{COMPANY.name}</div>
+              <div className="doc-brand-line">{COMPANY.line}</div>
+            </div>
+          </div>
+          {ref && (
+            <div className="doc-ref">
+              <span>Proposal</span>
+              <strong>{ref}</strong>
+            </div>
+          )}
+        </div>
         {img('cover') && <img className="doc-cover-image" src={img('cover')} alt="" />}
         <T edit={edit} value={tx.kicker} onChange={setTx('kicker')} className="doc-kicker" />
         <T edit={edit} value={tx.title} onChange={setTx('title')} as="h1" />
         <dl className="doc-meta">
-          {meta.client && <div><dt>Client</dt><dd>{meta.client}</dd></div>}
+          {meta.client && <div><dt>Prepared for</dt><dd>{meta.client}</dd></div>}
           <div><dt>Site</dt><dd>{meta.site}</dd></div>
           <div><dt>Date</dt><dd>{longDate(meta.date)}</dd></div>
           <div><dt>Valid until</dt><dd>{longDate(addDays(meta.date, meta.validityDays))}</dd></div>
@@ -231,6 +270,13 @@ function Document({ project, options, expansion, chapters, edit, update }: {
           <h2>Contents</h2>
           <ol>{visible.map(c => <li key={c.id}><span className="doc-contents-no">{c.no}</span>{c.title}</li>)}</ol>
         </nav>
+        <footer className="doc-cover-foot">
+          <p>
+            Confidential. Prepared {meta.client ? `for ${meta.client}` : 'for the client named above'} and not to be shared with third parties without
+            the written consent of {COMPANY.name}.
+          </p>
+          <p className="doc-cover-contact">{COMPANY.name} · {COMPANY.city} · {COMPANY.phone} · {COMPANY.email} · {COMPANY.web}</p>
+        </footer>
       </header>
 
       {on('overview') && (
@@ -533,10 +579,50 @@ function Document({ project, options, expansion, chapters, edit, update }: {
           <Sec no={`${no('nextSteps')}.2`} title="Basis of this proposal">
             <p>Valid for {meta.validityDays} days from {longDate(meta.date)}. <T edit={edit} value={tx.basis} onChange={setTx('basis')} as="span" /></p>
           </Sec>
+          <Sec no={`${no('nextSteps')}.3`} title="Contact">
+            <div className="doc-contact">
+              <BrandMark size={36} />
+              <dl>
+                {meta.preparedBy && <div><dt>Your contact</dt><dd>{meta.preparedBy}</dd></div>}
+                <div><dt>Phone and WhatsApp</dt><dd>{COMPANY.phone}</dd></div>
+                <div><dt>Email</dt><dd>{COMPANY.email}</dd></div>
+                <div><dt>Office</dt><dd>{COMPANY.city}</dd></div>
+                <div><dt>Web</dt><dd>{COMPANY.web}</dd></div>
+              </dl>
+            </div>
+          </Sec>
         </Chapter>
       )}
     </article>
   )
+}
+
+/** "BM-P-2026-001, Rev A"; empty until a number is set. */
+function reference(no?: string, rev?: string) {
+  const n = no?.trim()
+  if (!n) return ''
+  return rev?.trim() ? `${n}, Rev ${rev.trim()}` : n
+}
+
+/**
+ * Running header and footer on every printed page after the cover. Chrome
+ * draws @page margin boxes but has no string-set, so the text is written
+ * into a style element here. Chrome lets a later @page rule override
+ * :first, so the cover is cleared again after it.
+ */
+function PageFurniture({ title, reference: ref }: { title: string; reference: string }) {
+  const q = (s: string) => `"${s.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ')}"`
+  const css = `@page {
+  @top-left { content: ${q(COMPANY.name)}; }
+  @top-right { content: ${q(ref ? `${ref}  ·  Confidential` : 'Confidential')}; }
+  @bottom-left { content: ${q(title)}; }
+}
+@page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+}`
+  return <style>{css}</style>
 }
 
 const SHIPPING_LEGS = [

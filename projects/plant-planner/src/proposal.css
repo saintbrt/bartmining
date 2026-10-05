@@ -22,7 +22,21 @@
 
 /* Cover */
 .doc-cover { padding-bottom: 24px; }
-.doc-brand { font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: 0.02em; margin-bottom: 72px; }
+.doc-masthead { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 20px; margin-bottom: 56px; border-bottom: 1px solid var(--line); }
+.doc-brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark { display: block; flex-shrink: 0; }
+.doc-brand-name { font-family: var(--head); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; line-height: 1.1; color: var(--ink); }
+.doc-brand-line { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.doc-ref { text-align: right; display: grid; gap: 2px; }
+.doc-ref span { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.doc-ref strong { font-size: 14px; font-weight: 600; white-space: nowrap; }
+.doc-cover-foot { margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line); }
+.doc .doc-cover-foot p { font-size: 12px; color: var(--ink-3); margin: 0 0 4px; }
+.doc .doc-cover-foot .doc-cover-contact { color: var(--ink-2); }
+.doc-contact { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-top: 1px solid var(--ink); }
+.doc-contact dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px 28px; margin: 0; flex: 1; }
+.doc-contact dt { font-size: 12px; color: var(--ink-3); }
+.doc-contact dd { margin: 0; font-weight: 600; }
 .doc-kicker { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
 .doc-cover h1 { font-size: 36px; line-height: 1.15; margin: 14px 0 36px; max-width: 700px; }
 .doc-meta { display: flex; flex-wrap: wrap; gap: 14px 40px; margin: 0 0 36px; padding: 18px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
@@ -106,17 +120,24 @@
 
 @media screen and (max-width: 760px) {
   .two, .next-steps { grid-template-columns: 1fr; }
+  .doc-masthead { flex-wrap: wrap; }
+  .doc-ref { text-align: left; }
   .doc-cover h1 { font-size: 28px; }
 }
 
 /* Paper: cover on its own page, every chapter starts a new page. */
 @page {
   size: A4;
-  margin: 18mm 16mm 20mm;
-  @bottom-left { content: "Bart Mining  ·  Proposal"; font: 8pt 'Manrope', sans-serif; color: #8c969b; }
-  @bottom-right { content: counter(page) " / " counter(pages); font: 8pt 'Manrope', sans-serif; color: #8c969b; }
+  margin: 20mm 16mm 20mm;
+  /* Text for the boxes on the left and top right comes from PageFurniture in Proposal.tsx. */
+  @top-left { content: "Bart Mining"; font: 600 8pt 'Sora', sans-serif; color: #50595e; vertical-align: bottom; padding-bottom: 4mm; }
+  @top-right { content: "Confidential"; font: 8pt 'Manrope', sans-serif; color: #8c969b; vertical-align: bottom; padding-bottom: 4mm; }
+  @bottom-left { content: "Proposal"; font: 8pt 'Manrope', sans-serif; color: #8c969b; vertical-align: top; padding-top: 4mm; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8pt 'Manrope', sans-serif; color: #8c969b; vertical-align: top; padding-top: 4mm; }
 }
 @page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
   @bottom-left { content: none; }
   @bottom-right { content: none; }
 }
@@ -127,14 +148,18 @@
   .proposal-layout { display: block; max-width: none; }
   .doc { max-width: none; font-size: 10pt; }
   .doc-cover { break-after: page; }
-  .doc-brand { margin-bottom: 8mm; }
-  .doc-contents { margin-top: 8mm; }
+  .doc-masthead { margin-bottom: 6mm; padding-bottom: 3mm; }
+  .doc-cover .doc-meta { gap: 8px 28px; }
+  .doc-cover-foot { margin-top: 6mm; padding-top: 3mm; break-inside: avoid; }
+  .doc .doc-cover-foot p { font-size: 7.5pt; }
+  .doc-contact { break-inside: avoid; }
+  .doc-contents { margin-top: 6mm; }
   .doc-contents li { padding: 4px 0; font-size: 9.5pt; }
   .doc-cover h1 { font-size: 26pt; }
   .doc-chapter { break-before: page; padding-top: 0; }
   .doc-sec.new-page { break-before: page; padding-top: 0; }
-  .doc-cover-image { height: 48mm; margin: 0 0 7mm; }
-  .doc-cover h1 { margin: 8px 0 20px; }
+  .doc-cover-image { height: 42mm; margin: 0 0 6mm; }
+  .doc-cover h1 { margin: 6px 0 14px; }
   .doc-meta { margin-bottom: 20px; padding: 12px 0; }
   .doc-cover .doc-intro { font-size: 10.5pt; }
   .doc-chapter-image { height: 36mm; margin: 4mm 0 2mm; }

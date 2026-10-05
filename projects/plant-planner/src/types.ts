@@ -19,6 +19,10 @@ export interface Meta {
   date: string            // ISO yyyy-mm-dd
   validityDays: number
   preparedBy: string
+  /** Proposal reference, e.g. BM-P-2026-001. */
+  proposalNo?: string
+  /** Revision letter: A for the first issue, B for the next. */
+  revision?: string
 }
 
 /** Rates shared by every package. Fractions are 0-1 (0.3 = 30%). */
