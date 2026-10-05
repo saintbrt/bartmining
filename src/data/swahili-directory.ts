@@ -34,7 +34,7 @@ export const SWAHILI_DIRECTORY: HubEntry[] = [
     image: resolveEquipmentPhoto('shaking-table-gold')!, imageAlt: 'Meza ya kutenganisha dhahabu kutoka kwenye katalogi ya Bart Mining',
   })),
   {
-    path: '/equipments-swahili', language: 'sw',
+    path: '/equipment-swahili', language: 'sw',
     title: 'Katalogi kamili ya vifaa kwa Kiswahili',
     description: 'Fungua maelezo ya vifaa 50, yakiwemo crushers, ball mills, pampu, winchi na vifaa vya usalama, pamoja na vipimo, matumizi na matengenezo.',
     category: 'Katalogi ya vifaa', tags: ['catalogue', 'vifaa', 'equipment', 'crusher', 'ball mill', 'pampu', 'winchi'],

@@ -61,7 +61,7 @@ export const sections: GuideSection[] = [
 <tr><th scope="row">Mabaki na mawe kwenye meza ya kuchambua</th><td>Coil ndogo ya VLF au pinpointer; jaribu athari za metali nyingi</td></tr>
 <tr><th scope="row">Kufuata dhahabu kuelekea chanzo</th><td>Detector inayofaa udongo, pamoja na GPS na kumbukumbu za kila kipande</td></tr>
 </tbody></table></div>
-<p>Detector haitoi njia kamili ya kutenganisha dhahabu laini ndani ya changarawe au mawe yaliyosagwa. Tathmini <a href="/equipments-swahili/shaking-table-gold">meza ya kutikisa</a> au <a href="/equipments-swahili/centrifugal-gold-concentrator">concentrator</a> kwa kazi ya kuchakata.</p>`,
+<p>Detector haitoi njia kamili ya kutenganisha dhahabu laini ndani ya changarawe au mawe yaliyosagwa. Tathmini <a href="/equipment-swahili/shaking-table-gold">meza ya kutikisa</a> au <a href="/equipment-swahili/centrifugal-gold-concentrator">concentrator</a> kwa kazi ya kuchakata.</p>`,
   },
   {
     id: "coils-technique",
@@ -72,7 +72,7 @@ export const sections: GuideSection[] = [
 <li>Chunguza ishara inayojirudia; dhahabu ndogo au ya kina inaweza kutoa ishara hafifu.</li>
 <li>Pima shimo na udongo uliotolewa tofauti ili kujua lengo lilipo.</li>
 <li>Rekodi GPS na kina cha kila kipande ili kuona makundi na mistari.</li>
-<li>Fuatilia mwelekeo wa chanzo kwa jiolojia; dhahabu ya eluvial inaweza kusogea chini ya mteremko, lakini kuthibitisha mwamba kunahitaji <a href="/insights/gold-exploration-tanzania">utafiti wa madini (kwa Kiingereza)</a>, sampuli au <a href="/equipments-swahili/rc-drilling-rig">RC drilling</a>.</li>
+<li>Fuatilia mwelekeo wa chanzo kwa jiolojia; dhahabu ya eluvial inaweza kusogea chini ya mteremko, lakini kuthibitisha mwamba kunahitaji <a href="/insights/gold-exploration-tanzania">utafiti wa madini (kwa Kiingereza)</a>, sampuli au <a href="/equipment-swahili/rc-drilling-rig">RC drilling</a>.</li>
 </ol><div class="art-callout"><strong>Thibitisha haki ya kufanya kazi kwanza.</strong> Kumiliki detector hakutoi ruhusa ya kutafuta madini eneo lolote. Thibitisha leseni na ruhusa zinazohitajika kwa eneo na shughuli kwa mamlaka husika. Soma <a href="/insights-swahili/jinsi-ya-kupata-leseni-ya-pml">mwongozo wa PML</a> na <a href="/insights/selling-gold-tanzania">kuuza dhahabu Tanzania (kwa Kiingereza)</a>.</div>`,
   },
   {

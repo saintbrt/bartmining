@@ -1,5 +1,7 @@
 # Consolidated Kiswahili directory — 5 October 2026
 
+Subsequent route correction: the catalogue now uses `/equipment-swahili` (singular). The former `/equipments-swahili` directory and every product URL permanently redirect to the matching singular route. The plural paths below record the original migration; current links, metadata and sitemap use the singular spelling.
+
 The current instruction is to put Kiswahili pages in their directory rather than leave separate root URLs. This migration moves all 19 non-product content pages beneath `/insights-swahili/`, keeps the 50 equipment products beneath `/equipments-swahili/`, and makes the central Kiswahili directory the entry point for all of them.
 
 ## Directory and URL structure

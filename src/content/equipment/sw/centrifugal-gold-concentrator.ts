@@ -44,7 +44,7 @@ export const sections: GuideSection[] = [
 <li><strong>Fluidisation.</strong> Maji safi huingia kupitia matundu madogo ili tabaka lisishikamane. Dhahabu nzito inaweza kuchukua nafasi ya chembe nyepesi badala ya pete kujazwa kwa mchanga mgumu.</li>
 <li><strong>Kutoa mabaki.</strong> Nyenzo nyepesi hupita juu ya pete na kutoka kwenye ukingo wa juu.</li>
 <li><strong>Kutoa mkusanyiko.</strong> Batch husimama na kuosha pete kwa ratiba; mfumo wa continuous hutumia njia ya kutoa bila kusimama.</li>
-</ol><p>Uwiano wa mfano wa kukusanya ni 500:1 hadi 2,000:1 kwa uzito. Mkusanyiko bado unaweza kuwa na mchanga mzito na sulphides, hivyo mara nyingi husafishwa kwa <a href="/equipments-swahili/shaking-table-gold">meza ya kutikisa</a> kabla ya kutathmini kuyeyusha.</p>`,
+</ol><p>Uwiano wa mfano wa kukusanya ni 500:1 hadi 2,000:1 kwa uzito. Mkusanyiko bado unaweza kuwa na mchanga mzito na sulphides, hivyo mara nyingi husafishwa kwa <a href="/equipment-swahili/shaking-table-gold">meza ya kutikisa</a> kabla ya kutathmini kuyeyusha.</p>`,
   },
   {
     id: "recovery-by-size",
@@ -57,7 +57,7 @@ export const sections: GuideSection[] = [
 <tr><th scope="row">20 – 38 µm</th><td>Hupungua</td><td>Nguvu, maji na chembe laini sana zinahitaji udhibiti.</td></tr>
 <tr><th scope="row">Chini ya 20 µm</th><td>Unaweza kuwa mdogo</td><td>Chembe hufuata maji zaidi; pima kama njia nyingine inafaa.</td></tr>
 </tbody></table></div>
-<p>Usagaji na majaribio ndiyo hatua zinazounganisha jedwali hili na mradi wako. Dhahabu iliyofungwa inaweza kwenda kwenye mabaki hata kama mashine imepangwa vizuri. <a href="/equipments-swahili/ball-mill-gold-ore">Ball mill</a> inaweza kuachia zaidi kwa gharama ya nishati, hivyo usisage zaidi bila kulinganisha faida.</p>
+<p>Usagaji na majaribio ndiyo hatua zinazounganisha jedwali hili na mradi wako. Dhahabu iliyofungwa inaweza kwenda kwenye mabaki hata kama mashine imepangwa vizuri. <a href="/equipment-swahili/ball-mill-gold-ore">Ball mill</a> inaweza kuachia zaidi kwa gharama ya nishati, hivyo usisage zaidi bila kulinganisha faida.</p>
 <p>Jaribio la gravity recoverable gold, GRG, linaonyesha sehemu inayoweza kupatikana kwa gravity kwenye usagaji fulani. Sehemu iliyobaki itathminiwe badala ya kudhani kuwa yote inahitaji leaching. Soma <a href="/insights/plant-test-work-guide">mwongozo wa majaribio (kwa Kiingereza)</a> na <a href="/insights/gravity-vs-cyanide-gold-recovery">ulinganisho wa gravity na sianidi (kwa Kiingereza)</a>.</p>`,
   },
   {
@@ -79,12 +79,12 @@ export const sections: GuideSection[] = [
   {
     id: "installation-sizing",
     title: "Kusimika na kupanga uwezo wa concentrator",
-    html: `<h3>Mahali pa kuweka kwenye mtambo</h3><p>Kwa mawe magumu, kifaa kinaweza kutibu bidhaa ya kinu au sehemu ya mkondo wa chini wa <a href="/equipments-swahili/hydrocyclone">hydrocyclone</a>. Kwa alluvial, kiwe baada ya kuosha na kuchuja kwa <a href="/equipments-swahili/trommel-screen">trommel</a> au <a href="/equipments-swahili/vibrating-screen">vibrating screen</a>, pamoja na kichujio cha mwisho kinachofikia kikomo cha bakuli. Mabaki ya zamani yanaweza kutayarishwa tena baada ya tathmini ya madini na uchafu uliopo, kabla ya kuunganisha gravity na <a href="/equipments-swahili/cil-cip-plant">CIL</a> au njia nyingine.</p>
+    html: `<h3>Mahali pa kuweka kwenye mtambo</h3><p>Kwa mawe magumu, kifaa kinaweza kutibu bidhaa ya kinu au sehemu ya mkondo wa chini wa <a href="/equipment-swahili/hydrocyclone">hydrocyclone</a>. Kwa alluvial, kiwe baada ya kuosha na kuchuja kwa <a href="/equipment-swahili/trommel-screen">trommel</a> au <a href="/equipment-swahili/vibrating-screen">vibrating screen</a>, pamoja na kichujio cha mwisho kinachofikia kikomo cha bakuli. Mabaki ya zamani yanaweza kutayarishwa tena baada ya tathmini ya madini na uchafu uliopo, kabla ya kuunganisha gravity na <a href="/equipment-swahili/cil-cip-plant">CIL</a> au njia nyingine.</p>
 <h3>Kuhesabu kiasi kinachopita</h3><p>Chagua kwa <strong>tani za yabisi kwa saa</strong> kwenye mkondo unaotibiwa. Mtambo wa 100 t/day unaofanya saa 20 hupokea 5 t/h. Ikiwa concentrator inatibu sehemu ya mzunguko wa kinu tu, tumia kiasi cha sehemu hiyo na ongezeko la nyenzo zinazozunguka tena. Kifaa kidogo kinaweza kuzidiwa, na kikubwa bila sababu huongeza gharama na maji.</p>
 <h3>Mambo ya kuthibitisha eneo la kazi</h3><ul><li><strong>Kuchuja:</strong> ondoa mawe yanayozidi kikomo kabla ya bakuli.</li>
 <li><strong>Maji:</strong> tumia maji safi, kichujio na shinikizo thabiti kwa mahitaji ya modeli.</li>
 <li><strong>Muda wa batch:</strong> ratiba ndefu inaweza kujaza pete; fupi kupita kiasi huongeza mapumziko. Rekebisha kwa assay za mabaki.</li>
-<li><strong>Umeme:</strong> mota za 1.5–30 kW zilinganishwe na chanzo halisi. Panga <a href="/equipments-swahili/diesel-generator-mining">jenereta</a> kwa kinu, pampu na concentrator pamoja.</li>
+<li><strong>Umeme:</strong> mota za 1.5–30 kW zilinganishwe na chanzo halisi. Panga <a href="/equipment-swahili/diesel-generator-mining">jenereta</a> kwa kinu, pampu na concentrator pamoja.</li>
 <li><strong>Mkusanyiko:</strong> dhibiti njia ya kutoa, watu wanaohusika na kumbukumbu za kila batch.</li>
 </ul><p>Uchaguzi mzuri unaunganisha majaribio ya madini, kiasi halisi cha mkondo na huduma za eneo. Andaa taarifa hizo kabla ya kuomba modeli na nukuu ya bei.</p>`,
   },

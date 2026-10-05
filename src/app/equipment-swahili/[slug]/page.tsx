@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const e = EQUIPMENT_BY_SLUG.get(slug)
   if (!e) return {}
-  const url = `${SITE.url}/equipments-swahili/${e.slug}`
+  const url = `${SITE.url}/equipment-swahili/${e.slug}`
   // Social cards need an absolute URL, and should show the real product
   // photo where one has been uploaded rather than the stock fallback.
   const photo = resolveEquipmentPhoto(e.slug)
@@ -82,7 +82,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
   const schemas = [
     productSchema({
       slug: item.slug,
-      path: `/equipments-swahili/${item.slug}`,
+      path: `/equipment-swahili/${item.slug}`,
       name: item.name,
       description: item.description,
       image: schemaImage,
@@ -94,8 +94,8 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
     breadcrumbSchema([
       { name: 'Mwanzo', path: '/' },
             { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
-      { name: 'Vifaa vya uchimbaji', path: '/equipments-swahili' },
-      { name: item.name, path: `/equipments-swahili/${item.slug}` },
+      { name: 'Vifaa vya uchimbaji', path: '/equipment-swahili' },
+      { name: item.name, path: `/equipment-swahili/${item.slug}` },
     ]),
   ]
 
@@ -111,7 +111,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             <span className="sep">/</span>
             <Link href="/insights-swahili">Kurasa kwa Kiswahili</Link>
             <span className="sep">/</span>
-            <Link href="/equipments-swahili">Vifaa vya uchimbaji</Link>
+            <Link href="/equipment-swahili">Vifaa vya uchimbaji</Link>
             <span className="sep">/</span>
             <span>{item.categoryLabel}</span>
           </nav>
@@ -323,7 +323,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>Vifaa vinavyohusiana</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {related.map(r => (
-                    <Link key={r.slug} href={`/equipments-swahili/${r.slug}`} style={{ display: 'block' }}>
+                    <Link key={r.slug} href={`/equipment-swahili/${r.slug}`} style={{ display: 'block' }}>
                       <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gold)', letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 3 }}>{r.categoryLabel}</div>
                       <p style={{ fontSize: 15, color: 'var(--ink)', fontWeight: 600, lineHeight: 1.35 }}>{r.name}</p>
                     </Link>

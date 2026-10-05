@@ -69,7 +69,7 @@ export default async function SwahiliTownPage({ params }: { params: Promise<{ to
         <p>{l.manunuzi}</p>
         <div className="loc-grid">
           {kit.map(item => (
-            <Link key={item.slug} href={`/equipments-swahili/${item.slug}`} className="eq-card">
+            <Link key={item.slug} href={`/equipment-swahili/${item.slug}`} className="eq-card">
               <EquipmentThumb slug={item.slug} language="sw" alt={item.name} category={item.category} sizes="(max-width: 640px) 50vw, 30vw" />
               <div className="eq-cardbody">
                 <h3>{item.name}</h3>

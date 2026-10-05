@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // photo where one has been uploaded rather than the stock fallback.
   const photo = resolveEquipmentPhoto(e.slug)
   const ogImage = photo ? `${SITE.url}${photo}` : e.image
-  const sw = `/equipments-swahili/${e.slug}`
+  const sw = `/equipment-swahili/${e.slug}`
   return {
     title: e.title,
     description: e.description,
@@ -132,7 +132,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             <span>·</span>
             <span>Updated {item.updated}</span>
           </div>
-          <p style={{ marginTop: 20 }} lang="sw"><Link href={`/equipments-swahili/${item.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>Soma maelezo ya kifaa hiki kwa Kiswahili &rarr;</Link></p>
+          <p style={{ marginTop: 20 }} lang="sw"><Link href={`/equipment-swahili/${item.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>Soma maelezo ya kifaa hiki kwa Kiswahili &rarr;</Link></p>
         </div>
       </section>
 

@@ -3,7 +3,7 @@ import { LOCATIONS } from '@/data/locations'
 
 const SW_LINKS = [
   { href: '/insights-swahili', label: 'Kurasa zote kwa Kiswahili' },
-  { href: '/equipments-swahili', label: 'Vifaa vya uchimbaji' },
+  { href: '/equipment-swahili', label: 'Vifaa vya uchimbaji' },
 ]
 
 const COVERAGE = ['Tanzania', 'Kenya', 'Uganda', 'Rwanda', 'DRC', 'Zambia', 'Zimbabwe', 'Mozambique', 'South Africa', 'Namibia', 'Botswana', 'Ethiopia']

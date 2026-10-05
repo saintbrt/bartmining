@@ -96,7 +96,7 @@ export const sections: GuideSection[] = [
     html: `<p>Thibitisha mfumo wa umeme wa vifaa, kwa mfano 400 V wa awamu tatu, 50 Hz na 230 V kwa baadhi ya controls. Kupasha joto ni mzigo mkubwa wa nishati, kwa sababu myeyusho unahitaji kufikia na kudumisha joto la mchakato.</p>
 <ul><li><strong>Joto la dizeli:</strong> linaweza kufaa nje ya gridi, kwa sababu kutumia jenereta kutengeneza umeme kisha joto huongeza hatua za upotevu wa nishati.</li>
 <li><strong>Joto la umeme:</strong> linganisha ikiwa gridi ina uwezo na uthabiti unaohitajika, pamoja na tariff na control ya mfumo.</li>
-<li><strong>Jenereta:</strong> hesabu pampu, rectifier, blower, taa, feni na vipima gesi pamoja na kuanzisha mota. Soma kuhusu <a href="/equipments-swahili/diesel-generator-mining">jenereta ya mgodi</a> na <a href="/insights/off-grid-mine-power">umeme nje ya gridi (kwa Kiingereza)</a>.</li>
+<li><strong>Jenereta:</strong> hesabu pampu, rectifier, blower, taa, feni na vipima gesi pamoja na kuanzisha mota. Soma kuhusu <a href="/equipment-swahili/diesel-generator-mining">jenereta ya mgodi</a> na <a href="/insights/off-grid-mine-power">umeme nje ya gridi (kwa Kiingereza)</a>.</li>
 <li><strong>Huduma za usalama:</strong> vipima gesi na uingizaji hewa vihifadhiwe kwa mpango wa nguvu unaolingana na tathmini ya hatari, hata mfumo mwingine unapozidiwa.</li>
 </ul><p>Upatikanaji wa kemikali na kaboni pia ni sehemu ya mpango. Soma <a href="/insights/activated-carbon-cyanide-tanzania">kaboni hai na kemikali za mtambo (kwa Kiingereza)</a> kwa maelezo ya ununuzi.</p>
 <p>Mtambo unaofaa huunganisha batch iliyohesabiwa, njia ya elution, huduma na usalama. Andaa kiasi na daraja la kaboni, ratiba ya strip na hali ya eneo ili nukuu itoe wigo unaoweza kukaguliwa.</p>`,

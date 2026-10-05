@@ -5,7 +5,7 @@ export const sections: GuideSection[] = [
   {
     id: "how-it-works",
     title: "Jinsi mtambo wa CIL au CIP unavyofanya kazi",
-    html: `<p>CIL na CIP zinaweza kutibu dhahabu ambayo gravity haiwezi kupata kwa kiwango cha kiuchumi, ikiwa madini yanafaa leaching. Mawe husagwa kuwa tope, dhahabu huyeyushwa kwenye mchakato wa sianidi uliodhibitiwa na kaboni hai huishika. Kaboni yenye dhahabu hupelekwa kwenye <a href="/equipments-swahili/gold-elution-electrowinning-plant">elution na electrowinning</a>. Mfumo huu unahitaji usanifu wa kemikali, wafanyakazi waliofunzwa na mpango wa mabaki.</p>
+    html: `<p>CIL na CIP zinaweza kutibu dhahabu ambayo gravity haiwezi kupata kwa kiwango cha kiuchumi, ikiwa madini yanafaa leaching. Mawe husagwa kuwa tope, dhahabu huyeyushwa kwenye mchakato wa sianidi uliodhibitiwa na kaboni hai huishika. Kaboni yenye dhahabu hupelekwa kwenye <a href="/equipment-swahili/gold-elution-electrowinning-plant">elution na electrowinning</a>. Mfumo huu unahitaji usanifu wa kemikali, wafanyakazi waliofunzwa na mpango wa mabaki.</p>
 <figure class="eq-figure">
 <div class="eq-diagram" tabindex="0" role="region" aria-label="Mchoro; sogeza pembeni kusoma maelezo yote">
 <svg viewBox="0 0 720 340" role="img" aria-labelledby="cip-train-title cip-train-desc" style="width:100%;height:auto;display:block">
@@ -46,9 +46,9 @@ export const sections: GuideSection[] = [
 </figure>
 <p><strong>CIL</strong> huweka kaboni kwenye matanki ya leaching, na <strong>CIP</strong> hutenganisha matanki ya kuyeyusha na ya kushika dhahabu. Mchoro unaonyesha kanuni, si idadi inayopaswa kununuliwa. Soma <a href="/insights/cil-vs-cip-vs-heap-leach">ulinganisho wa CIL, CIP na heap leach (kwa Kiingereza)</a> kwa uchaguzi mpana.</p>
 <p>Mtambo kamili unaunganisha hatua zinazofuata, kila moja ikipangwa kwa majaribio na masharti ya eneo:</p>
-<ol><li><strong>Kuponda na kusaga:</strong> mfano wa 80% kupita 75–150 µm, na <a href="/equipments-swahili/centrifugal-gold-concentrator">gravity concentrator</a> ikiwa dhahabu huru inahalalisha hatua hiyo.</li>
+<ol><li><strong>Kuponda na kusaga:</strong> mfano wa 80% kupita 75–150 µm, na <a href="/equipment-swahili/centrifugal-gold-concentrator">gravity concentrator</a> ikiwa dhahabu huru inahalalisha hatua hiyo.</li>
 <li><strong>Kuongeza msongamano:</strong> mfano wa yabisi 40–50% unaathiri ujazo na nishati ya kuchanganya.</li>
-<li><strong>Leaching na adsorption:</strong> matanki 5–8 ya <a href="/equipments-swahili/leaching-tank">kuchanganya</a> ni mfano wa mfululizo; pH 10.5–11.5 na oksijeni 6–10 ppm ni viwango vya usanifu vinavyohitaji uthibitisho, si maelekezo ya kemikali ya kila mradi.</li>
+<li><strong>Leaching na adsorption:</strong> matanki 5–8 ya <a href="/equipment-swahili/leaching-tank">kuchanganya</a> ni mfano wa mfululizo; pH 10.5–11.5 na oksijeni 6–10 ppm ni viwango vya usanifu vinavyohitaji uthibitisho, si maelekezo ya kemikali ya kila mradi.</li>
 <li><strong>Vichujio:</strong> tope hupita wakati kaboni inabaki katika hatua inayotakiwa.</li>
 <li><strong>Kuhamisha kaboni:</strong> kaboni husogezwa kinyume na tope kulingana na mpangilio.</li>
 <li><strong>Elution, electrowinning na regeneration:</strong> dhahabu hutolewa na uwezo wa kaboni kurejeshwa.</li>
@@ -78,7 +78,7 @@ export const sections: GuideSection[] = [
 <tr><th scope="row">500 t/day</th><td>≈ 876 m³</td><td>≈ 146.0 m³</td></tr>
 </tbody></table></div>
 <p>Kwa 50 t/day, mawe yana takribani 18.5 m³ na maji 61.1 m³ kwa siku, hivyo working volume ya saa 24 ni karibu 79.6 m³ kabla ya nyongeza. Huu ni mfano wa hesabu, si usanifu uliokamilika. Muda ukiongezeka mara mbili, ujazo unaongezeka mara mbili; yabisi ikishuka hadi 40%, ujazo wa mfano unaongezeka karibu 17%.</p>
-<p>Kaboni inayohamishwa kila siku huamua <a href="/equipments-swahili/gold-elution-electrowinning-plant#batch-sizing">ukubwa wa batch ya elution</a>. Soma pia <a href="/insights/small-cip-plant-guide">mwongozo wa mtambo mdogo wa CIP na CIL (kwa Kiingereza)</a> kwa hesabu za consumables.</p>`,
+<p>Kaboni inayohamishwa kila siku huamua <a href="/equipment-swahili/gold-elution-electrowinning-plant#batch-sizing">ukubwa wa batch ya elution</a>. Soma pia <a href="/insights/small-cip-plant-guide">mwongozo wa mtambo mdogo wa CIP na CIL (kwa Kiingereza)</a> kwa hesabu za consumables.</p>`,
   },
   {
     id: "tank-maintenance",

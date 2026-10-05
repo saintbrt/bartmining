@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/privacy`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/terms`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/delivery-shipping`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.75 },
-    { url: `${SITE.url}/equipments-swahili`, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/equipment-swahili`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/insights-swahili/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
   ]
 
@@ -62,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const swahiliEquipmentPages: MetadataRoute.Sitemap = EQUIPMENT_SW.map(e => ({
-    url: `${SITE.url}/equipments-swahili/${e.slug}`,
+    url: `${SITE.url}/equipment-swahili/${e.slug}`,
     lastModified: new Date(e.updated),
     changeFrequency: 'monthly',
     priority: 0.9,

@@ -53,7 +53,7 @@ const MOST_REQUESTED: { href: string; t: string; d: string; also?: { href: strin
 
 const SW_PAGES = [
   { href: '/insights-swahili', t: 'Kurasa zote kwa Kiswahili', d: 'Miongozo, maeneo, masoko na huduma kwa mradi wako' },
-  { href: '/equipments-swahili', t: 'Vifaa vya uchimbaji', d: 'Mashine na vifaa vya migodi Tanzania' },
+  { href: '/equipment-swahili', t: 'Vifaa vya uchimbaji', d: 'Mashine na vifaa vya migodi Tanzania' },
   { href: '/insights-swahili/bei-ya-vifaa-vya-uchimbaji', t: 'Bei ya vifaa vya uchimbaji', d: 'Gharama za mashine na usafirishaji' },
   { href: '/insights-swahili/jinsi-ya-kupata-leseni-ya-pml', t: 'Leseni ya PML', d: 'Jinsi ya kupata leseni ya uchimbaji mdogo' },
   { href: '/insights-swahili/gharama-ya-plant-ya-dhahabu', t: 'Gharama ya plant ya dhahabu', d: 'Bei ya kujenga plant ndogo ya dhahabu' },

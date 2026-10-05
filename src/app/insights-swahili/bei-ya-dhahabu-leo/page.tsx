@@ -192,7 +192,7 @@ export default async function GoldPriceTodayPage() {
               Bei ya dhahabu ikiwa juu, kila gramu inayopotea kwenye mabaki (marudio) ni
               hasara kubwa zaidi. Mashine sahihi za kusaga, kutenganisha dhahabu na
               kuchenjua zinaongeza kiasi unachopata kutoka kwenye mawe yale yale. Tazama{' '}
-              <Link href="/equipments-swahili" style={{ color: 'var(--gold)', fontWeight: 600 }}>vifaa vya uchimbaji</Link>,{' '}
+              <Link href="/equipment-swahili" style={{ color: 'var(--gold)', fontWeight: 600 }}>vifaa vya uchimbaji</Link>,{' '}
               <Link href="/equipment/centrifugal-gold-concentrator" style={{ color: 'var(--gold)', fontWeight: 600 }}>concentrator</Link>{' '}
               na{' '}
               <Link href="/equipment/leaching-tank" style={{ color: 'var(--gold)', fontWeight: 600 }}>matanki ya kuchenjua</Link>.

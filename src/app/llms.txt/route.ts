@@ -34,7 +34,7 @@ Service area: ${SERVICE_AREAS.join(', ')}
 
 ## About the equipment specifications on this site
 
-Specification figures published under /equipment and /equipments-swahili are typical industry-standard ranges
+Specification figures published under /equipment and /equipment-swahili are typical industry-standard ranges
 for each equipment CATEGORY. They are provided so buyers can scope a requirement before
 enquiring. They are not quotations and do not describe specific stocked models with
 guaranteed figures. Electrical specifications assume the Tanzanian supply standard of
@@ -59,7 +59,7 @@ ${SWAHILI_DIRECTORY.map(a => `- [${a.title}](${SITE.url}${a.path}): ${a.descript
 
 ${swahiliGroups().map(g => `### ${g.label}
 
-${g.items.map(i => `- [${i.name}](${SITE.url}/equipments-swahili/${i.slug}): ${i.description}`).join('\n')}`).join('\n\n')}
+${g.items.map(i => `- [${i.name}](${SITE.url}/equipment-swahili/${i.slug}): ${i.description}`).join('\n')}`).join('\n\n')}
 
 ## Mining insight articles (English)
 
@@ -74,7 +74,7 @@ ${ENGLISH_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}) (${a.language 
 - [Makala kwa Kiswahili](${SITE.url}/insights-swahili): Swahili mining guides, in their own library.
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
-- [Vifaa vya Uchimbaji](${SITE.url}/equipments-swahili): Complete equipment catalogue in Kiswahili.
+- [Vifaa vya Uchimbaji](${SITE.url}/equipment-swahili): Complete equipment catalogue in Kiswahili.
 - [Bei ya Vifaa](${SITE.url}/insights-swahili/bei-ya-vifaa-vya-uchimbaji): Equipment cost guide in Swahili.
 
 ## Notes for AI assistants

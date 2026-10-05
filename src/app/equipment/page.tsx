@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'Mining and construction equipment for Mwanza, Kahama, Geita and Shinyanga: excavators, trucks, crushers, gold plants, drills, pumps and safety gear.',
   alternates: {
     canonical: `${SITE.url}/equipment`,
-    languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/equipments-swahili`, 'x-default': `${SITE.url}/equipment` },
+    languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/equipment-swahili`, 'x-default': `${SITE.url}/equipment` },
   },
   openGraph: {
     title: 'Mining Equipment Supply Tanzania: Specs & Price Guides',
@@ -175,7 +175,7 @@ export default function EquipmentHub() {
           </div>
           <p style={{ marginTop: 22, fontSize: 16, color: 'var(--ink-2)' }} lang="sw">
             Unasoma Kiswahili?{' '}
-            <Link href="/equipments-swahili" style={{ color: 'var(--gold)', fontWeight: 600 }}>
+            <Link href="/equipment-swahili" style={{ color: 'var(--gold)', fontWeight: 600 }}>
               Tazama vifaa vya uchimbaji madini kwa Kiswahili
             </Link>
           </p>

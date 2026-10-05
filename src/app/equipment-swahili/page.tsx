@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   description:
     'Vifaa vya uchimbaji na ujenzi Tanzania: mitambo ya kuchimba, crushers, vinu, matanki, pampu na vifaa vya usalama, pamoja na vipimo na matumizi.',
   alternates: {
-    canonical: `${SITE.url}/equipments-swahili`,
-    languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/equipments-swahili`, 'x-default': `${SITE.url}/equipment` },
+    canonical: `${SITE.url}/equipment-swahili`,
+    languages: { en: `${SITE.url}/equipment`, 'sw-TZ': `${SITE.url}/equipment-swahili`, 'x-default': `${SITE.url}/equipment` },
   },
   openGraph: {
     locale: 'sw_TZ',
     title: 'Vifaa vya uchimbaji Tanzania: vipimo na matumizi',
     description: `Maelezo, vipimo, matumizi na matengenezo ya vifaa ${EQUIPMENT.length} vya uchimbaji vinavyosambazwa Tanzania.`,
-    url: `${SITE.url}/equipments-swahili`,
+    url: `${SITE.url}/equipment-swahili`,
   },
 }
 
@@ -35,11 +35,11 @@ export default function EquipmentHub() {
     <div lang="sw">
       <JsonLd
         data={[
-          itemListSchema(EQUIPMENT.map(e => ({ name: e.name, path: `/equipments-swahili/${e.slug}` }))),
+          itemListSchema(EQUIPMENT.map(e => ({ name: e.name, path: `/equipment-swahili/${e.slug}` }))),
           breadcrumbSchema([
             { name: 'Mwanzo', path: '/' },
             { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
-            { name: 'Vifaa vya uchimbaji', path: '/equipments-swahili' },
+            { name: 'Vifaa vya uchimbaji', path: '/equipment-swahili' },
           ]),
         ]}
       />
@@ -125,7 +125,7 @@ export default function EquipmentHub() {
             </div>
             <div className="eq-grid">
               {group.items.map((item, i) => (
-                <Link key={item.slug} href={`/equipments-swahili/${item.slug}`} className="eq-card">
+                <Link key={item.slug} href={`/equipment-swahili/${item.slug}`} className="eq-card">
                   <EquipmentThumb
                     slug={item.slug}
                     language="sw"
