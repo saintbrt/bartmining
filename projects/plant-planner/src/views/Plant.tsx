@@ -1,5 +1,5 @@
 import { num } from '../model'
-import { FLOW_STEPS, FlowControls, FlowDiagram, useFlowPlayer } from '../components/FlowDiagram'
+import { FlowControls, FlowDiagram, flowsheetFor, useFlowPlayer } from '../components/FlowDiagram'
 import { Section, Stat } from '../components/Fields'
 import { useLocal } from '../store'
 import { production } from '../model'
@@ -8,7 +8,8 @@ import { PageHead, usePackagePick, type ViewProps } from './shared'
 export function Plant({ project, model }: Omit<ViewProps, 'update'>) {
   const { pkg, index, picker } = usePackagePick(project)
   const m = model.packages[index]
-  const player = useFlowPlayer()
+  const fs = flowsheetFor(pkg)
+  const player = useFlowPlayer(fs.steps.length)
   const [live, setLive] = useLocal('flowLive', true)
   const out = production(project, pkg.capacity)
 
@@ -31,14 +32,14 @@ export function Plant({ project, model }: Omit<ViewProps, 'update'>) {
           </label>
         }
       >
-        <FlowControls player={player} />
+        <FlowControls player={player} flowsheet={fs} />
         <FlowDiagram pkg={pkg} animate={live || player.playing || player.step !== null} step={player.step} />
       </Section>
 
       <div className="two-col">
         <Section title="The process, step by step">
           <ol className="steps-list">
-            {FLOW_STEPS.map((s, k) => (
+            {fs.steps.map((s, k) => (
               <li key={s.title} className={player.step === k ? 'on' : ''}>
                 <button className="link" onClick={() => player.go(player.step === k ? null : k)}>{s.title}</button>
                 <p>{s.text}</p>

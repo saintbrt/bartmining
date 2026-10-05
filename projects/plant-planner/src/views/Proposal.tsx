@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { aboutMonths, CATEGORY_LABEL, num, pct, production, usd, type ProjectModel } from '../model'
 import type { CostCategory, Package, Project, ProposalDetail, ProposalText } from '../types'
-import { FLOW_STEPS, FlowControls, FlowDiagram, useFlowPlayer } from '../components/FlowDiagram'
+import { FlowControls, FlowDiagram, flowsheetFor, useFlowPlayer } from '../components/FlowDiagram'
 import { Area } from '../components/Fields'
 import { IMAGES, IMAGE_KEYS, imageLabel } from '../images'
 import type { ViewProps } from './shared'
@@ -72,7 +72,8 @@ function chapterList(options: ClientOption[]): ChapterDef[] {
   return [
     { id: 'overview', title: 'Project overview' },
     ...options.map(o => ({ id: `option:${o.pkg.id}`, title: o.pkg.name })),
-    { id: 'comparison', title: 'Comparing the options' },
+    // Only when there is something to compare; otherwise the contents would list a chapter that never prints.
+    ...(options.length > 1 ? [{ id: 'comparison', title: 'Comparing the options' }] : []),
     { id: 'costs', title: 'Project costs' },
     { id: 'execution', title: 'Execution and schedule' },
     { id: 'team', title: 'Project team' },
@@ -187,6 +188,8 @@ function Document({ project, options, expansion, chapters, edit, update }: {
   const base = options.find(o => o.pkg.id === tx.expansionBaseId)
   const full = options.find(o => o.pkg.id !== tx.expansionBaseId)
   const multi = options.length > 1
+  // Shown when there is text: the modular start (Mbeya) or a Phase 2 note.
+  const hasAlt = !!tx.alternative?.trim() && (!!base || !!tx.alternativeTitle)
   const n = (o: ClientOption) => o.pkg.short
   const img = (id: string) => (detail.images ? IMAGES[tx.images[id] ?? ''] : undefined)
 
@@ -235,12 +238,12 @@ function Document({ project, options, expansion, chapters, edit, update }: {
           <Sec no={`${no('overview')}.1`} title="The project">
             <T edit={edit} value={tx.overview} onChange={setTx('overview')} as="p" />
           </Sec>
-          {base && (
-            <Sec no={`${no('overview')}.2`} title="Where sampling is limited: a modular start">
+          {hasAlt && (
+            <Sec no={`${no('overview')}.2`} title={tx.alternativeTitle || 'Where sampling is limited: a modular start'}>
               <T edit={edit} value={tx.alternative} onChange={setTx('alternative')} as="p" />
             </Sec>
           )}
-          <Sec no={`${no('overview')}.${base ? 3 : 2}`} title={multi ? 'The options at a glance' : 'The plant at a glance'}>
+          <Sec no={`${no('overview')}.${hasAlt ? 3 : 2}`} title={multi ? 'The options at a glance' : 'The plant at a glance'}>
             <table className="doc-table">
               <thead><tr><th>Option</th><th>Capacity</th><th>Approach</th><th>First gold</th>{detail.equipmentPrices && <th className="n">Equipment</th>}</tr></thead>
               <tbody>
@@ -421,7 +424,7 @@ function Document({ project, options, expansion, chapters, edit, update }: {
               <tbody>
                 {SHIPPING_LEGS.map(leg => (
                   <tr key={leg.id}>
-                    <td className="strong">{leg.title}</td>
+                    <td className="strong">{options[0]?.schedule.find(x => x.id === leg.id)?.label ?? leg.title}</td>
                     <td>{leg.route}</td>
                     {options.map(o => {
                       const t = o.schedule.find(x => x.id === leg.id)
@@ -437,7 +440,9 @@ function Document({ project, options, expansion, chapters, edit, update }: {
               <thead><tr><th />{options.map(o => <th key={o.pkg.id}>{n(o)}</th>)}{expansion && base && <th>{expansion.pkg.short}</th>}</tr></thead>
               <tbody>
                 <tr><td>40 ft high-cube containers</td>{options.map(o => <td key={o.pkg.id}>{o.containers}</td>)}{expansion && base && <td>{expansion.containers}</td>}</tr>
-                <tr><td>Flat rack, out of gauge ({oogNames(options, expansion).join(', ').toLowerCase() || 'none'})</td>{options.map(o => <td key={o.pkg.id}>{o.oogUnits}</td>)}{expansion && base && <td>{expansion.oogUnits}</td>}</tr>
+                {(options.some(o => o.oogUnits > 0) || (expansion && base && expansion.oogUnits > 0)) && (
+                  <tr><td>Flat rack, out of gauge ({oogNames(options, expansion).join(', ').toLowerCase() || 'none'})</td>{options.map(o => <td key={o.pkg.id}>{o.oogUnits}</td>)}{expansion && base && <td>{expansion.oogUnits}</td>}</tr>
+                )}
               </tbody>
             </table>
             <p className="small">Only imported equipment ships. Container counts are estimates and are confirmed by the packing list once the equipment is built.</p>
@@ -553,7 +558,8 @@ function OptionChapter({ no, o, image, detail, photos, expansion, full, edit, se
   setPkg: (id: string, fn: (p: Package) => void) => void
   tradeoff: ReactNode
 }) {
-  const player = useFlowPlayer()
+  const fs = flowsheetFor(o.pkg)
+  const player = useFlowPlayer(fs.steps.length)
   const shown = photos.map(k => IMAGES[k]).filter(Boolean)
   const s = (k: number) => `${no}.${k}`
   return (
@@ -572,13 +578,13 @@ function OptionChapter({ no, o, image, detail, photos, expansion, full, edit, se
 
       <Sec no={s(2)} title="Process flow" newPage>
         <p>The numbers on the diagram match the steps in {s(3)}.</p>
-        <div className="no-print flow-tools"><FlowControls player={player} compact /></div>
+        <div className="no-print flow-tools"><FlowControls player={player} flowsheet={fs} compact /></div>
         <FlowDiagram pkg={o.pkg} step={player.step} animate={player.playing || player.step !== null} numbered />
       </Sec>
 
       <Sec no={s(3)} title="How it works, step by step">
         <ol className="flow-steps">
-          {FLOW_STEPS.map(st => <li key={st.title}><strong>{st.title}.</strong> {st.text}</li>)}
+          {fs.steps.map(st => <li key={st.title}><strong>{st.title}.</strong> {st.text}</li>)}
         </ol>
       </Sec>
 
@@ -650,7 +656,7 @@ function EquipmentTable({ o, prices }: { o: ClientOption; prices: boolean }) {
             <td>{l.qty}</td>
             <td>{l.kw}</td>
             <td>{l.source === 'local' ? 'Tanzania' : 'Imported'}</td>
-            {prices && <td className="n">{num(l.price)}</td>}
+            {prices && <td className="n">{l.price ? num(l.price) : 'Included'}</td>}
           </tr>
         ))}
         {prices && <tr className="total"><td /><td>Total, {o.pkg.short}</td><td /><td /><td /><td className="n">{usd(o.price)}</td></tr>}

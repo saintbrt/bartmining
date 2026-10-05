@@ -143,7 +143,17 @@ export interface Package {
   fitIf: string[]
   specs: Spec[]
   flow: Record<string, { label?: string; sub?: string; hidden?: boolean }>
+  /** Which process diagram to draw. Defaults to the scrubber plant. */
+  flowsheet?: 'scrubber' | 'washSluice'
   equipment: EquipmentLine[]
+  /**
+   * Supplier cost quoted for the whole package when the supplier gives one
+   * price and no line breakdown. Lines can then carry 0 and show "Included".
+   * Treated as imported and containerised.
+   */
+  packageCost?: number
+  /** Internal note on where the package price comes from (supplier, quote no.). */
+  packageBasis?: string
   params: PackageParams
   team: Record<string, number[]>   // role id -> allocation per month
   schedule: ScheduleTask[]
@@ -194,6 +204,8 @@ export interface ProposalText {
   basis: string
   overview: string            // the project, in general
   alternative: string         // why and how the modular start works
+  /** Heading for the alternative section. Defaults to the modular-start heading. */
+  alternativeTitle?: string
   costsIntro: string
   executionIntro: string
   teamIntro: string

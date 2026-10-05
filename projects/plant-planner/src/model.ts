@@ -115,10 +115,13 @@ export function packageModel(project: Project, pkg: Package): PackageModel {
     client: e.supplierCost * (1 + i.commission),
     reserve: e.supplierCost * i.riskReserve,
   }))
-  const fob = sum(pkg.equipment.map(e => e.supplierCost))
-  const commission = sum(lines.map(l => l.commission))
-  const clientEquipment = sum(lines.map(l => l.client))
-  const reserve = sum(lines.map(l => l.reserve))
+  // A package price (one supplier figure for the whole set) sits on top of
+  // the lines and is treated like an imported, containerised line.
+  const pc = pkg.packageCost ?? 0
+  const fob = sum(pkg.equipment.map(e => e.supplierCost)) + pc
+  const commission = sum(lines.map(l => l.commission)) + pc * i.commission
+  const clientEquipment = sum(lines.map(l => l.client)) + pc * (1 + i.commission)
+  const reserve = sum(lines.map(l => l.reserve)) + pc * i.riskReserve
 
   const team = teamModel(pkg, project.teamRoles, i)
 
@@ -126,13 +129,13 @@ export function packageModel(project: Project, pkg: Package): PackageModel {
   // are out of gauge go on flat racks, and the containers scale with the
   // imported share of the containerised equipment value.
   const imported = pkg.equipment.map((e, k) => ({ e, k })).filter(x => (x.e.source ?? 'import') === 'import')
-  const importFob = sum(imported.map(x => x.e.supplierCost))
-  const importClient = sum(imported.map(x => lines[x.k].client))
-  const boxedFob = sum(pkg.equipment.filter(e => !e.oog).map(e => e.supplierCost))
-  const boxedImportFob = sum(imported.filter(x => !x.e.oog).map(x => x.e.supplierCost))
+  const importFob = sum(imported.map(x => x.e.supplierCost)) + pc
+  const importClient = sum(imported.map(x => lines[x.k].client)) + pc * (1 + i.commission)
+  const boxedFob = sum(pkg.equipment.filter(e => !e.oog).map(e => e.supplierCost)) + pc
+  const boxedImportFob = sum(imported.filter(x => !x.e.oog).map(x => x.e.supplierCost)) + pc
   const containers = boxedFob > 0 ? Math.ceil(p.containers * (boxedImportFob / boxedFob) - 1e-9) : 0
   const oogUnits = imported.filter(x => x.e.oog).length
-  const shipments = imported.length > 0 ? 1 : 0
+  const shipments = imported.length > 0 || pc > 0 ? 1 : 0
 
   const units = containers + oogUnits
   const ocean = containers * i.oceanFreightPer40

@@ -104,6 +104,24 @@ function Equipment({ project, model, update, pkgIndex }: PkgProps) {
                 </td>
               </tr>
             ))}
+            {(pkg.packageCost ?? 0) > 0 || !clientView ? (
+              <tr className="package-row">
+                <td colSpan={7}>
+                  <strong>Package price</strong>
+                  <span className="cell-note">One supplier price for the whole package, when lines aren&apos;t priced separately. Lines at 0 show as &ldquo;Included&rdquo; in the proposal.</span>
+                </td>
+                {!clientView && (
+                  <td className="n">
+                    <Num label="Package price" value={pkg.packageCost ?? 0} onChange={v => update(p => { p.packages[pkgIndex].packageCost = v || undefined })} />
+                  </td>
+                )}
+                {!clientView && <td className="n muted">{usd((pkg.packageCost ?? 0) * project.inputs.commission)}</td>}
+                <td className="n">{usd((pkg.packageCost ?? 0) * (1 + project.inputs.commission))}</td>
+                {!clientView && <td className="n muted">{usd((pkg.packageCost ?? 0) * project.inputs.riskReserve)}</td>}
+                {!clientView && <td><Text label="Package price basis" value={pkg.packageBasis ?? ''} placeholder="Supplier, quote number, terms" onChange={v => update(p => { p.packages[pkgIndex].packageBasis = v || undefined })} /></td>}
+                <td colSpan={2} />
+              </tr>
+            ) : null}
             <tr className="total">
               <td colSpan={7}>Total</td>
               {!clientView && <td className="n">{usd(m.fob)}</td>}
@@ -125,7 +143,7 @@ function Equipment({ project, model, update, pkgIndex }: PkgProps) {
         proposal all follow these ticks.
       </p>
       <p className="hint">
-        Supplier cost is the line total: FOB for imported items, delivered to site for items bought in Tanzania.
+        Supplier cost is the line total: FOB or EXW for imported items (EXW: the factory-to-port cost sits in the origin fee), delivered to site for items bought in Tanzania.
         Client price = supplier cost × (1 + {pct(project.inputs.commission)} commission).
       </p>
     </Section>

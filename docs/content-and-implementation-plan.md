@@ -149,9 +149,9 @@ Source material: the plant planner (`projects/plant-planner`), the animated diag
 
 A client wants only a gold washing machine: a trommel or scrubber with sluice boxes, no full plant. This is a separate offer.
 
-- [ ] **B1.** New project in the planner (its own file in `projects/plant-planner/data/`)
-- [ ] **B2.** A simpler flow diagram for this machine: hopper, trommel with spray bars, oversize out, fines over the sluice boxes, concentrate clean-up
-- [ ] **B3.** Proposal: the machine, its sluices, specs, price, delivery, terms. No plant chapters (team, civils, ponds).
+- [x] **B1.** New project in the planner: `data/washing-sluice-phase1.json` (2026-10-05), from GongYi quote GY-BART-150PH1-20261005: 150 m³/h vibrating washing screen + 6 sluice boxes, USD 51,000 EXW China (supplier price, internal)
+- [x] **B2.** Wash-and-sluice flow diagram (`flowsheet: 'washSluice'`): screen, distribution box, sluices with mats, clean-up, tailings, water pump
+- [~] **B3.** Proposal drafted in the planner (16 pages). Waiting on Allan's review and the open technical points (pump starting on the 200 kW generator, clay content)
 - [ ] **B4.** Export the PDF and send
 
 **Blocked by D9. Needs from Allan:**

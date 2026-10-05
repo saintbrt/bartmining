@@ -1,15 +1,17 @@
 import { useEffect, useId, useState } from 'react'
 import type { Package } from '../types'
 
-// One flowsheet serves every option: the layout lives here, and each package
-// only supplies its own labels (scrubber size, number of centrifuges, ...).
+// Flowsheets: the layout of each process diagram lives here, and each
+// package only supplies its own labels (equipment sizes, counts) through
+// pkg.flow. A package picks its diagram with pkg.flowsheet.
 
 type Kind = 'ore' | 'gold' | 'water' | 'waste'
 
 interface Node { id: string; x: number; y: number; w: number; h: number; label: string; sub?: string; pill?: boolean; accent?: boolean; muted?: boolean }
+interface Step { title: string; text: string; nodes: string[]; edges: string[]; anchor: string }
 interface Edge { id: string; from: string; to: string; kind: Kind; pts: [number, number][]; label?: string; lx?: number; ly?: number; anchor?: 'start' | 'end' | 'middle' }
 
-const NODES: Node[] = [
+const SCRUBBER_NODES: Node[] = [
   { id: 'rom', x: 20, y: 100, w: 140, h: 56, label: 'Run-of-mine gravel', sub: 'loader feed' },
   { id: 'oversize', x: 200, y: 30, w: 160, h: 34, label: '+80 mm to waste', muted: true },
   { id: 'hopper', x: 200, y: 100, w: 160, h: 56, label: 'Feed hopper + grizzly' },
@@ -26,7 +28,7 @@ const NODES: Node[] = [
   { id: 'clean', x: 680, y: 450, w: 170, h: 56, label: 'Clean water pond' },
 ]
 
-const EDGES: Edge[] = [
+const SCRUBBER_EDGES: Edge[] = [
   { id: 'e1', from: 'rom', to: 'hopper', kind: 'ore', pts: [[160, 128], [198, 128]] },
   { id: 'e2', from: 'hopper', to: 'oversize', kind: 'waste', pts: [[280, 100], [280, 66]] },
   { id: 'e3', from: 'hopper', to: 'feeder', kind: 'ore', pts: [[360, 128], [408, 128]] },
@@ -44,7 +46,7 @@ const EDGES: Edge[] = [
   { id: 'e15', from: 'clean', to: 'scrubber', kind: 'water', pts: [[850, 478], [955, 478], [955, 112], [852, 112]], label: 'recycled water', lx: 958, ly: 102, anchor: 'end' },
 ]
 
-export const FLOW_STEPS: { title: string; text: string; nodes: string[]; edges: string[]; anchor: string }[] = [
+const SCRUBBER_STEPS: Step[] = [
   { title: 'Feed', anchor: 'rom', nodes: ['rom', 'hopper', 'oversize'], edges: ['e1', 'e2'],
     text: 'A loader tips run-of-mine gravel into the hopper. The 80 mm grizzly bars reject boulders, which go straight to waste.' },
   { title: 'Meter', anchor: 'feeder', nodes: ['hopper', 'feeder', 'scrubber'], edges: ['e3', 'e4'],
@@ -61,11 +63,70 @@ export const FLOW_STEPS: { title: string; text: string; nodes: string[]; edges: 
     text: 'Tailings are dewatered and the water settles through the ponds. Clean water is pumped back to the scrubber, so the plant reuses most of its water.' },
 ]
 
-const BANDS = [
+const SCRUBBER_BANDS = [
   { y: 22, label: 'FEED & WASH' },
   { y: 228, label: 'RECOVERY' },
   { y: 432, label: 'WATER' },
 ]
+
+// Phase 1 wash + sluice plant: vibrating washing screen, sluice boxes with
+// gold mats, wash water pump and generator. No scrubber, no centrifuges.
+const WASH_NODES: Node[] = [
+  { id: 'rom', x: 20, y: 100, w: 150, h: 56, label: 'Run-of-mine gravel', sub: 'loader or excavator feed' },
+  { id: 'waste', x: 260, y: 30, w: 240, h: 34, label: '+20 mm gravel to waste', muted: true },
+  { id: 'screen', x: 220, y: 94, w: 320, h: 68, label: 'Vibrating washing screen' },
+  { id: 'waterbox', x: 600, y: 250, w: 190, h: 56, label: 'Distribution box' },
+  { id: 'sluices', x: 300, y: 250, w: 240, h: 56, label: 'Sluice boxes' },
+  { id: 'cleanup', x: 20, y: 250, w: 220, h: 56, label: 'Mat clean-up', accent: true },
+  { id: 'tailings', x: 300, y: 460, w: 240, h: 34, label: 'Tailings to settling area', muted: true },
+  { id: 'genset', x: 20, y: 450, w: 220, h: 56, label: 'Diesel generator' },
+  { id: 'source', x: 600, y: 450, w: 190, h: 56, label: 'Water source' },
+  { id: 'pump', x: 820, y: 450, w: 160, h: 56, label: 'Water pump' },
+]
+
+const WASH_EDGES: Edge[] = [
+  { id: 'w1', from: 'rom', to: 'screen', kind: 'ore', pts: [[170, 128], [218, 128]] },
+  { id: 'w2', from: 'screen', to: 'waste', kind: 'waste', pts: [[380, 94], [380, 66]] },
+  { id: 'w3', from: 'screen', to: 'waterbox', kind: 'ore', pts: [[540, 140], [695, 140], [695, 248]], label: '-20 mm slurry', lx: 703, ly: 200, anchor: 'start' },
+  { id: 'w4', from: 'waterbox', to: 'sluices', kind: 'ore', pts: [[600, 278], [542, 278]] },
+  { id: 'w5', from: 'sluices', to: 'cleanup', kind: 'gold', pts: [[300, 278], [242, 278]], label: 'gold on mats', lx: 271, ly: 326, anchor: 'middle' },
+  { id: 'w6', from: 'sluices', to: 'tailings', kind: 'waste', pts: [[420, 306], [420, 458]], label: 'tailings', lx: 428, ly: 390, anchor: 'start' },
+  { id: 'w7', from: 'source', to: 'pump', kind: 'water', pts: [[790, 478], [818, 478]] },
+  { id: 'w8', from: 'pump', to: 'screen', kind: 'water', pts: [[900, 450], [900, 112], [542, 112]], label: 'spray water', lx: 892, ly: 104, anchor: 'end' },
+  { id: 'w9', from: 'pump', to: 'waterbox', kind: 'water', pts: [[900, 290], [792, 290]], label: 'make-up', lx: 846, ly: 284, anchor: 'middle' },
+]
+
+const WASH_STEPS: Step[] = [
+  { title: 'Feed', anchor: 'rom', nodes: ['rom', 'screen'], edges: ['w1'],
+    text: 'A loader or excavator feeds run-of-mine gravel onto the washing screen at a steady rate.' },
+  { title: 'Wash and screen', anchor: 'screen', nodes: ['screen', 'waste', 'pump', 'source'], edges: ['w2', 'w7', 'w8'],
+    text: 'Spray pipes wash the gravel as the screen vibrates. The 40 mm top deck and 20 mm second deck send stones and coarse gravel to waste, while everything under 20 mm, with the free gold, washes through as slurry.' },
+  { title: 'Distribute', anchor: 'waterbox', nodes: ['screen', 'waterbox', 'pump'], edges: ['w3', 'w9'],
+    text: 'The slurry drops into the distribution box, which spreads it evenly across the sluice boxes, with water added to keep it flowing at the right density.' },
+  { title: 'Catch the gold', anchor: 'sluices', nodes: ['waterbox', 'sluices'], edges: ['w4'],
+    text: 'Sluice boxes lined with high-density gold mats trap the heavy gold while the lighter sand and gravel wash over.' },
+  { title: 'Tailings', anchor: 'tailings', nodes: ['sluices', 'tailings'], edges: ['w6'],
+    text: 'Washed sand and gravel leave the end of the sluices as tailings, to a settling area where the water can be reclaimed.' },
+  { title: 'Clean-up', anchor: 'cleanup', nodes: ['sluices', 'cleanup'], edges: ['w5'],
+    text: 'At set intervals the mats are lifted and washed out. The concentrate goes to final clean-up, by panning or a shaking table, and the gold is secured.' },
+]
+
+const WASH_BANDS = [
+  { y: 22, label: 'FEED & WASH' },
+  { y: 228, label: 'RECOVERY' },
+  { y: 432, label: 'WATER & POWER' },
+]
+
+export interface Flowsheet { nodes: Node[]; edges: Edge[]; steps: Step[]; bands: { y: number; label: string }[]; intro: string }
+
+const FLOWSHEETS: Record<NonNullable<Package['flowsheet']>, Flowsheet> = {
+  scrubber: { nodes: SCRUBBER_NODES, edges: SCRUBBER_EDGES, steps: SCRUBBER_STEPS, bands: SCRUBBER_BANDS,
+    intro: 'Follow the gravel from the hopper to the gold room, one step at a time.' },
+  washSluice: { nodes: WASH_NODES, edges: WASH_EDGES, steps: WASH_STEPS, bands: WASH_BANDS,
+    intro: 'Follow the gravel from the washing screen to the sluice mats, one step at a time.' },
+}
+
+export const flowsheetFor = (pkg: Package): Flowsheet => FLOWSHEETS[pkg.flowsheet ?? 'scrubber']
 
 const KIND_LEGEND: { kind: Kind; label: string }[] = [
   { kind: 'ore', label: 'Gravel / slurry' },
@@ -80,7 +141,7 @@ const len = (pts: [number, number][]) => pts.slice(1).reduce((a, [x, y], i) => a
 export function FlowDiagram({ pkg, animate = false, step = null, numbered = false, legend = true }: {
   pkg: Package
   animate?: boolean
-  /** Index into FLOW_STEPS to spotlight, or null for the whole plant. */
+  /** Index into the flowsheet's steps to spotlight, or null for the whole plant. */
   step?: number | null
   /** Show step numbers on the diagram (for print, alongside the step list). */
   numbered?: boolean
@@ -90,10 +151,11 @@ export function FlowDiagram({ pkg, animate = false, step = null, numbered = fals
   const reduced = usePrefersReducedMotion()
   const moving = animate && !reduced
 
+  const fs = flowsheetFor(pkg)
   const hidden = new Set(Object.entries(pkg.flow).filter(([, v]) => v.hidden).map(([k]) => k))
-  const nodes = NODES.filter(n => !hidden.has(n.id)).map(n => ({ ...n, ...pick(pkg.flow[n.id]) }))
-  const edges = EDGES.filter(e => !hidden.has(e.from) && !hidden.has(e.to))
-  const spot = step === null ? null : FLOW_STEPS[step]
+  const nodes = fs.nodes.filter(n => !hidden.has(n.id)).map(n => ({ ...n, ...pick(pkg.flow[n.id]) }))
+  const edges = fs.edges.filter(e => !hidden.has(e.from) && !hidden.has(e.to))
+  const spot = step === null ? null : fs.steps[step]
   const nodeOn = (id: string) => !spot || spot.nodes.includes(id)
   const edgeOn = (id: string) => !spot || spot.edges.includes(id)
 
@@ -108,7 +170,7 @@ export function FlowDiagram({ pkg, animate = false, step = null, numbered = fals
           ))}
         </defs>
 
-        {BANDS.map((b, i) => (
+        {fs.bands.map((b, i) => (
           <g key={b.label}>
             {i > 0 && <line x1="0" x2="1000" y1={b.y - 12} y2={b.y - 12} className="band-rule" />}
             <text x="0" y={b.y} className="band-label">{b.label}</text>
@@ -140,7 +202,7 @@ export function FlowDiagram({ pkg, animate = false, step = null, numbered = fals
           </g>
         ))}
 
-        {numbered && FLOW_STEPS.map((s, i) => {
+        {numbered && fs.steps.map((s, i) => {
           const n = nodes.find(x => x.id === s.anchor)
           if (!n) return null
           return (
@@ -182,7 +244,7 @@ function usePrefersReducedMotion() {
 }
 
 /** Step-through controls shared by the Plant view and the proposal preview. */
-export function useFlowPlayer() {
+export function useFlowPlayer(stepCount: number) {
   const [step, setStep] = useState<number | null>(null)
   const [playing, setPlaying] = useState(false)
   useEffect(() => {
@@ -190,12 +252,12 @@ export function useFlowPlayer() {
     const t = window.setTimeout(() => {
       setStep(s => {
         const next = s === null ? 0 : s + 1
-        if (next >= FLOW_STEPS.length) { setPlaying(false); return null }
+        if (next >= stepCount) { setPlaying(false); return null }
         return next
       })
     }, step === null ? 50 : 4200)
     return () => window.clearTimeout(t)
-  }, [playing, step])
+  }, [playing, step, stepCount])
   return {
     step, playing,
     play: () => { setStep(null); setPlaying(true) },
@@ -204,9 +266,10 @@ export function useFlowPlayer() {
   }
 }
 
-export function FlowControls({ player, compact }: { player: ReturnType<typeof useFlowPlayer>; compact?: boolean }) {
+export function FlowControls({ player, flowsheet, compact }: { player: ReturnType<typeof useFlowPlayer>; flowsheet: Flowsheet; compact?: boolean }) {
   const { step, playing, play, stop, go } = player
-  const s = step === null ? null : FLOW_STEPS[step]
+  const steps = flowsheet.steps
+  const s = step === null ? null : steps[step]
   return (
     <div className={`flow-controls ${compact ? 'compact' : ''}`}>
       <div className="flow-buttons">
@@ -214,14 +277,14 @@ export function FlowControls({ player, compact }: { player: ReturnType<typeof us
           ? <button className="btn" onClick={stop}>Stop</button>
           : <button className="btn primary" onClick={play}>▶ Show ore flow</button>}
         <button className="btn ghost" disabled={step === null || step === 0} onClick={() => go((step ?? 1) - 1)}>‹ Prev</button>
-        <button className="btn ghost" disabled={step === FLOW_STEPS.length - 1} onClick={() => go(step === null ? 0 : step + 1)}>Next ›</button>
+        <button className="btn ghost" disabled={step === steps.length - 1} onClick={() => go(step === null ? 0 : step + 1)}>Next ›</button>
         {step !== null && <button className="btn ghost" onClick={() => go(null)}>Whole plant</button>}
       </div>
       <div className="flow-caption" aria-live="polite">
         {s ? (
-          <><span className="flow-step-no">Step {step! + 1} of {FLOW_STEPS.length}</span><strong>{s.title}.</strong> {s.text}</>
+          <><span className="flow-step-no">Step {step! + 1} of {steps.length}</span><strong>{s.title}.</strong> {s.text}</>
         ) : (
-          <span className="muted">Follow the gravel from the hopper to the gold room, one step at a time.</span>
+          <span className="muted">{flowsheet.intro}</span>
         )}
       </div>
     </div>

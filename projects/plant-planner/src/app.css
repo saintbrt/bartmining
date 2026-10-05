@@ -260,3 +260,5 @@ select { cursor: pointer; }
 .map-node.manual { border-style: dashed; }
 .map-where { display: block; font-size: 12px; color: var(--ink-3); }
 @media (max-width: 900px) { .map { grid-template-columns: 1fr; } }
+
+.grid tr.package-row td { background: var(--soft); vertical-align: middle; }

@@ -4,7 +4,7 @@ import { Internal, Num, Section } from '../components/Fields'
 import { PageHead, type ViewProps } from './shared'
 
 const ROWS: { label: string; get: (s: ScopeTotals) => string; internal?: boolean; strong?: boolean; note?: string }[] = [
-  { label: 'Equipment supplier cost (FOB)', get: s => usd(s.fob), internal: true },
+  { label: 'Equipment supplier cost', get: s => usd(s.fob), internal: true },
   { label: 'Commission on equipment', get: s => usd(s.commission), internal: true },
   { label: 'Client equipment price', get: s => usd(s.clientEquipment), strong: true, note: 'Shown in the proposal' },
   { label: 'Execution costs incl. contingency', get: s => usd(s.execTotal) },
