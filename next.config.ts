@@ -17,7 +17,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Replace the partial overview; the six town routes retain their URLs.
+      // Consolidate standalone Kiswahili guides without breaking existing links.
+      ...['bei-ya-vifaa-vya-uchimbaji', 'gharama-ya-plant-ya-dhahabu', 'bei-ya-mashine-ya-kusaga-mawe', 'jinsi-ya-kupata-leseni-ya-pml', 'mrabaha-na-kodi-za-dhahabu', 'bei-ya-dhahabu-leo', 'jenereta-za-kukodi'].map(slug => ({
+        source: `/${slug}`, destination: `/insights-swahili/${slug}`, permanent: true,
+      })),
+      { source: '/vifaa-vya-uchimbaji/:town', destination: '/insights-swahili/vifaa-vya-uchimbaji/:town', permanent: true },
+      { source: '/soko-la-madini/:town', destination: '/insights-swahili/soko-la-madini/:town', permanent: true },
+      // The former partial equipment overview now opens the complete catalogue.
       { source: '/vifaa-vya-uchimbaji', destination: '/equipments-swahili', permanent: true },
       // /products was folded into /equipment. Permanent so search engines
       // transfer the old URL's signals rather than treating it as a 404.

@@ -1,5 +1,5 @@
 /**
- * Swahili district pages (/vifaa-vya-uchimbaji/[town]).
+ * Swahili district pages (/insights-swahili/vifaa-vya-uchimbaji/[town]).
  *
  * Swahili counterparts of selected /equipment/supply/[city] pages, paired by
  * hreflang. The equipment list is taken from the English entry's `buys` so

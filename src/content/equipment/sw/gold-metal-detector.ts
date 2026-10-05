@@ -73,7 +73,7 @@ export const sections: GuideSection[] = [
 <li>Pima shimo na udongo uliotolewa tofauti ili kujua lengo lilipo.</li>
 <li>Rekodi GPS na kina cha kila kipande ili kuona makundi na mistari.</li>
 <li>Fuatilia mwelekeo wa chanzo kwa jiolojia; dhahabu ya eluvial inaweza kusogea chini ya mteremko, lakini kuthibitisha mwamba kunahitaji <a href="/insights/gold-exploration-tanzania">utafiti wa madini (kwa Kiingereza)</a>, sampuli au <a href="/equipments-swahili/rc-drilling-rig">RC drilling</a>.</li>
-</ol><div class="art-callout"><strong>Thibitisha haki ya kufanya kazi kwanza.</strong> Kumiliki detector hakutoi ruhusa ya kutafuta madini eneo lolote. Thibitisha leseni na ruhusa zinazohitajika kwa eneo na shughuli kwa mamlaka husika. Soma <a href="/jinsi-ya-kupata-leseni-ya-pml">mwongozo wa PML</a> na <a href="/insights/selling-gold-tanzania">kuuza dhahabu Tanzania (kwa Kiingereza)</a>.</div>`,
+</ol><div class="art-callout"><strong>Thibitisha haki ya kufanya kazi kwanza.</strong> Kumiliki detector hakutoi ruhusa ya kutafuta madini eneo lolote. Thibitisha leseni na ruhusa zinazohitajika kwa eneo na shughuli kwa mamlaka husika. Soma <a href="/insights-swahili/jinsi-ya-kupata-leseni-ya-pml">mwongozo wa PML</a> na <a href="/insights/selling-gold-tanzania">kuuza dhahabu Tanzania (kwa Kiingereza)</a>.</div>`,
   },
   {
     id: "buying-checklist",

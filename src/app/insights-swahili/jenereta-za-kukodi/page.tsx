@@ -17,7 +17,7 @@ const HERO = heroImage()
  * delivery, installation, operator and servicing included, prices on request).
  */
 
-const URL = `${SITE.url}/jenereta-za-kukodi`
+const URL = `${SITE.url}/insights-swahili/jenereta-za-kukodi`
 const TITLE = 'Jenereta za Kukodi Tanzania: kVA 300 hadi 2,500'
 const DESCRIPTION = 'Jenereta za kukodi Tanzania, kVA 300 hadi 2,500. Tunaleta, tunafunga na kuwasha, pamoja na mwendeshaji na matengenezo. Piga simu au WhatsApp upate bei.'
 const MESSAGE = 'Habari Bart Mining, naomba bei ya kukodi jenereta. Ukubwa au mzigo: ... Eneo: ... Tarehe: ...'
@@ -61,16 +61,17 @@ export default function JeneretaZaKukodiPage() {
       <JsonLd data={[
         serviceSchema({
           slug: 'jenereta-za-kukodi',
-          path: '/jenereta-za-kukodi',
+          path: '/insights-swahili/jenereta-za-kukodi',
           name: 'Jenereta za kukodi, kVA 300 hadi 2,500',
           description: DESCRIPTION,
           serviceType: 'Generator rental',
-          catalog: { name: 'Jenereta za kukodi', path: '/jenereta-za-kukodi' },
+          catalog: { name: 'Jenereta za kukodi', path: '/insights-swahili/jenereta-za-kukodi' },
         }),
-        faqSchema(FAQS),
+        faqSchema(FAQS, 'sw'),
         breadcrumbSchema([
           { name: 'Nyumbani', path: '/' },
-          { name: 'Jenereta za Kukodi', path: '/jenereta-za-kukodi' },
+          { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
+          { name: 'Jenereta za Kukodi', path: '/insights-swahili/jenereta-za-kukodi' },
         ]),
       ]} />
 
@@ -79,7 +80,7 @@ export default function JeneretaZaKukodiPage() {
         <section className="subhero" style={{ paddingBottom: 40 }}>
           <div className="orb orb-1" /><div className="orb orb-2" />
           <div className="px-site">
-            <Reveal><div className="crumb"><Link href="/">Nyumbani</Link><span className="sep">/</span><span>Jenereta za Kukodi</span></div></Reveal>
+            <Reveal><div className="crumb"><Link href="/">Nyumbani</Link><span className="sep">/</span><Link href="/insights-swahili">Kurasa kwa Kiswahili</Link><span className="sep">/</span><span>Jenereta za Kukodi</span></div></Reveal>
             <RentalHero image={HERO}>
             <Reveal delay={1}><h1>{TITLE}</h1></Reveal>
             <Reveal delay={2}>

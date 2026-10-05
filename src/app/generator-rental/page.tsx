@@ -24,7 +24,7 @@ const MESSAGE = 'Hello Bart Mining, I am enquiring about generator rental. Size 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: URL, languages: { en: URL, 'sw-TZ': `${SITE.url}/jenereta-za-kukodi`, 'x-default': URL } },
+  alternates: { canonical: URL, languages: { en: URL, 'sw-TZ': `${SITE.url}/insights-swahili/jenereta-za-kukodi`, 'x-default': URL } },
   openGraph: { type: 'website', url: URL, title: TITLE, description: DESCRIPTION, ...(HERO ? { images: [{ url: HERO.src, alt: HERO.alt }] } : {}) },
 }
 
@@ -179,7 +179,7 @@ export default function GeneratorRentalPage() {
           </Reveal>
           <Faqs faqs={RENTAL_FAQS} />
           <p style={{ marginTop: 24, fontSize: 15 }}>
-            <Link href="/jenereta-za-kukodi" style={{ color: 'var(--gold)' }}>Soma kwa Kiswahili: Jenereta za kukodi</Link>
+            <Link href="/insights-swahili/jenereta-za-kukodi" style={{ color: 'var(--gold)' }}>Soma kwa Kiswahili: Jenereta za kukodi</Link>
           </p>
         </div>
       </section>

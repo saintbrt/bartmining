@@ -93,6 +93,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
     faqSchema(item.faqs, 'sw'),
     breadcrumbSchema([
       { name: 'Mwanzo', path: '/' },
+            { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
       { name: 'Vifaa vya uchimbaji', path: '/equipments-swahili' },
       { name: item.name, path: `/equipments-swahili/${item.slug}` },
     ]),
@@ -107,6 +108,8 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
         <div className="px-site" style={{ position: 'relative' }}>
           <nav className="crumb" style={{ marginBottom: 24 }} aria-label="Njia ya ukurasa">
             <Link href="/">Mwanzo</Link>
+            <span className="sep">/</span>
+            <Link href="/insights-swahili">Kurasa kwa Kiswahili</Link>
             <span className="sep">/</span>
             <Link href="/equipments-swahili">Vifaa vya uchimbaji</Link>
             <span className="sep">/</span>
@@ -129,7 +132,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
             <p style={{ color: 'var(--ink-2)', fontSize: 16, maxWidth: 720, lineHeight: 1.7, margin: '-8px 0 24px', paddingLeft: 14, borderLeft: '2px solid var(--gold)' }}>
               Ikiwa unahitaji umeme kwa muda, tuna huduma ya kukodisha jenereta za 300 kVA hadi 2,500 kVA,
               pamoja na kufikisha, kufunga, kuhudumia na mwendeshaji kulingana na makubaliano.{' '}
-              <Link href="/jenereta-za-kukodi" style={{ color: 'var(--gold)', fontWeight: 600 }}>Kukodisha jenereta</Link>
+              <Link href="/insights-swahili/jenereta-za-kukodi" style={{ color: 'var(--gold)', fontWeight: 600 }}>Kukodisha jenereta</Link>
             </p>
           )}
 
@@ -247,7 +250,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
                 {buyingDistricts.map((l, i) => (
                   <span key={l.slug}>
                     {i > 0 && ', '}
-                    <Link href={`/vifaa-vya-uchimbaji/${l.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>{l.city}</Link>
+                    <Link href={`/insights-swahili/vifaa-vya-uchimbaji/${l.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }}>{l.city}</Link>
                   </span>
                 ))}
                 .

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const l = LOCATION_BY_SLUG.get(city)
   if (!l) return {}
   const url = `${SITE.url}/equipment/supply/${l.slug}`
-  const sw = LOCATIONS_SW_BY_SLUG.has(l.slug) ? `${SITE.url}/vifaa-vya-uchimbaji/${l.slug}` : null
+  const sw = LOCATIONS_SW_BY_SLUG.has(l.slug) ? `${SITE.url}/insights-swahili/vifaa-vya-uchimbaji/${l.slug}` : null
   return {
     title: l.title,
     description: l.description,
@@ -67,7 +67,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
           <p className="lead">{loc.summary}</p>
           {LOCATIONS_SW_BY_SLUG.has(loc.slug) && (
             <p style={{ color: 'var(--ink-3)', fontSize: 15, marginTop: 14 }}>
-              <Link href={`/vifaa-vya-uchimbaji/${loc.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }} lang="sw">Soma ukurasa huu kwa Kiswahili</Link>
+              <Link href={`/insights-swahili/vifaa-vya-uchimbaji/${loc.slug}`} style={{ color: 'var(--gold)', fontWeight: 600 }} lang="sw">Soma ukurasa huu kwa Kiswahili</Link>
             </p>
           )}
         </div>

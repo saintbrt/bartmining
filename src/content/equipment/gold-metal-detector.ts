@@ -103,7 +103,7 @@ export const sections: GuideSection[] = [
 <li>Log every nugget with GPS and depth. Clusters and lines of finds point to where the gold came from.</li>
 <li>Work upslope from clusters. Eluvial gold sheds downhill from its source, so the trail narrows towards the reef, which then needs <a href="/insights/gold-exploration-tanzania">proper exploration</a> such as trenching or <a href="/equipment/rc-drilling-rig">RC drilling</a>.</li>
 </ol>
-<div class="art-callout"><strong>Licence first.</strong> Detecting for gold is prospecting. Work only on ground you hold a licence for, or with the written permission of the holder. See <a href="/jinsi-ya-kupata-leseni-ya-pml">how to get a PML licence</a>. Gold found must be sold through licensed channels; see <a href="/insights/selling-gold-tanzania">selling gold in Tanzania</a>.</div>`,
+<div class="art-callout"><strong>Licence first.</strong> Detecting for gold is prospecting. Work only on ground you hold a licence for, or with the written permission of the holder. See <a href="/insights-swahili/jinsi-ya-kupata-leseni-ya-pml">how to get a PML licence</a>. Gold found must be sold through licensed channels; see <a href="/insights/selling-gold-tanzania">selling gold in Tanzania</a>.</div>`,
   },
   {
     id: 'buying-checklist',

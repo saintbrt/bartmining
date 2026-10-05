@@ -109,7 +109,7 @@ export default function Services() {
               <ul style={{ display: 'grid', gap: 10, listStyle: 'none', padding: 0, margin: 0 }}>
                 {[
                   ...RENTAL_TOWNS.map(t => ({ t: `Generator rental in ${t.town}`, h: `/generator-rental/${t.slug}` })),
-                  { t: 'Jenereta za kukodi (Kiswahili)', h: '/jenereta-za-kukodi' },
+                  { t: 'Jenereta za kukodi (Kiswahili)', h: '/insights-swahili/jenereta-za-kukodi' },
                 ].map(x => (
                   <li key={x.h}>
                     <Link href={x.h} style={{ display: 'flex', gap: 10, alignItems: 'center', background: 'var(--bg-3)', border: '1px solid var(--line)', borderRadius: 'var(--r-sm)', padding: '12px 16px', fontSize: 15.5, color: 'var(--ink-2)', textDecoration: 'none' }}>

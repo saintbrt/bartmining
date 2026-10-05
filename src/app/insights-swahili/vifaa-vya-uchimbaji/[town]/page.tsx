@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ town: str
   const { town } = await params
   const l = LOCATIONS_SW_BY_SLUG.get(town)
   if (!l) return {}
-  const url = `${SITE.url}/vifaa-vya-uchimbaji/${l.slug}`
+  const url = `${SITE.url}/insights-swahili/vifaa-vya-uchimbaji/${l.slug}`
   const en = `${SITE.url}/equipment/supply/${l.slug}`
   return {
     title: l.title,
@@ -45,12 +45,12 @@ export default async function SwahiliTownPage({ params }: { params: Promise<{ to
         faqSchema(l.faqs, 'sw'),
         breadcrumbSchema([
           { name: 'Mwanzo', path: '/' },
-          { name: 'Vifaa vya Uchimbaji', path: '/equipments-swahili' },
-          { name: l.town, path: `/vifaa-vya-uchimbaji/${l.slug}` },
+          { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
+          { name: l.town, path: `/insights-swahili/vifaa-vya-uchimbaji/${l.slug}` },
         ]),
       ]} />
       <SwahiliArticle
-        crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Vifaa vya uchimbaji', href: '/equipments-swahili' }, { name: l.town }]}
+        crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Kurasa kwa Kiswahili', href: '/insights-swahili' }, { name: l.town }]}
         eyebrow={l.region}
         h1={`Vifaa vya uchimbaji madini ${l.town}`}
         lead={l.summary}
@@ -83,7 +83,7 @@ export default async function SwahiliTownPage({ params }: { params: Promise<{ to
           <>
             <h2 id="soko">Kuuza Dhahabu {l.town}</h2>
             <p>
-              Tazama <Link href={`/soko-la-madini/${market.slug}`}>soko la madini {market.town}</Link> kwa
+              Tazama <Link href={`/insights-swahili/soko-la-madini/${market.slug}`}>soko la madini {market.town}</Link> kwa
               bei ya dhahabu leo, vituo vya ununuzi na jinsi ya kuuza kihalali.
             </p>
           </>
@@ -92,7 +92,7 @@ export default async function SwahiliTownPage({ params }: { params: Promise<{ to
         <h2 id="maeneo-mengine">Maeneo Mengine</h2>
         <ul>
           {others.map(o => (
-            <li key={o.slug}><Link href={`/vifaa-vya-uchimbaji/${o.slug}`}>Vifaa vya uchimbaji {o.town}</Link></li>
+            <li key={o.slug}><Link href={`/insights-swahili/vifaa-vya-uchimbaji/${o.slug}`}>Vifaa vya uchimbaji {o.town}</Link></li>
           ))}
         </ul>
       </SwahiliArticle>

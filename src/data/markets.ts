@@ -1,5 +1,5 @@
 /**
- * Government mineral market pages (/soko-la-madini/[town]).
+ * Government mineral market pages (/insights-swahili/soko-la-madini/[town]).
  *
  * Swahili, because the people selling gold search in Swahili. Each entry
  * carries facts specific to that market; exact street locations are not

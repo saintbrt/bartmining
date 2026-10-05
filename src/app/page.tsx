@@ -52,10 +52,11 @@ const MOST_REQUESTED: { href: string; t: string; d: string; also?: { href: strin
 ]
 
 const SW_PAGES = [
+  { href: '/insights-swahili', t: 'Kurasa zote kwa Kiswahili', d: 'Miongozo, maeneo, masoko na huduma kwa mradi wako' },
   { href: '/equipments-swahili', t: 'Vifaa vya uchimbaji', d: 'Mashine na vifaa vya migodi Tanzania' },
-  { href: '/bei-ya-vifaa-vya-uchimbaji', t: 'Bei ya vifaa vya uchimbaji', d: 'Gharama za mashine na usafirishaji' },
-  { href: '/jinsi-ya-kupata-leseni-ya-pml', t: 'Leseni ya PML', d: 'Jinsi ya kupata leseni ya uchimbaji mdogo' },
-  { href: '/gharama-ya-plant-ya-dhahabu', t: 'Gharama ya plant ya dhahabu', d: 'Bei ya kujenga plant ndogo ya dhahabu' },
+  { href: '/insights-swahili/bei-ya-vifaa-vya-uchimbaji', t: 'Bei ya vifaa vya uchimbaji', d: 'Gharama za mashine na usafirishaji' },
+  { href: '/insights-swahili/jinsi-ya-kupata-leseni-ya-pml', t: 'Leseni ya PML', d: 'Jinsi ya kupata leseni ya uchimbaji mdogo' },
+  { href: '/insights-swahili/gharama-ya-plant-ya-dhahabu', t: 'Gharama ya plant ya dhahabu', d: 'Bei ya kujenga plant ndogo ya dhahabu' },
 ]
 
 const cardStyle = {
@@ -118,7 +119,7 @@ export default async function Home() {
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 18 }}>
                 Bei ya dhahabu leo, vifaa vya uchimbaji, gharama za plant na leseni ya PML, kwa lugha yako.
               </p>
-              <Link href="/bei-ya-dhahabu-leo" hrefLang="sw" style={{ ...cardStyle, marginTop: 24, background: '#FFFFFF' }}>
+              <Link href="/insights-swahili/bei-ya-dhahabu-leo" hrefLang="sw" style={{ ...cardStyle, marginTop: 24, background: '#FFFFFF' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--ink-3)' }}>
                   Bei ya dhahabu leo · gramu 1, 24K
                 </div>

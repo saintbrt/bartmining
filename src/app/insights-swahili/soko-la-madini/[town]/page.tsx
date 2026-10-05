@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ town: str
   const { town } = await params
   const m = MARKET_BY_SLUG.get(town)
   if (!m) return {}
-  const url = `${SITE.url}/soko-la-madini/${m.slug}`
+  const url = `${SITE.url}/insights-swahili/soko-la-madini/${m.slug}`
   return {
     title: m.title,
     description: m.description,
@@ -41,15 +41,16 @@ export default async function MarketPage({ params }: { params: Promise<{ town: s
   return (
     <>
       <JsonLd data={[
-        faqSchema(m.faqs),
+        faqSchema(m.faqs, 'sw'),
         breadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: 'Bei ya Dhahabu Leo', path: '/bei-ya-dhahabu-leo' },
-          { name: `Soko la Madini ${m.town}`, path: `/soko-la-madini/${m.slug}` },
+          { name: 'Mwanzo', path: '/' },
+          { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
+          { name: 'Bei ya Dhahabu Leo', path: '/insights-swahili/bei-ya-dhahabu-leo' },
+          { name: `Soko la Madini ${m.town}`, path: `/insights-swahili/soko-la-madini/${m.slug}` },
         ]),
       ]} />
       <SwahiliArticle
-        crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Bei ya dhahabu', href: '/bei-ya-dhahabu-leo' }, { name: `Soko la madini ${m.town}` }]}
+        crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Kurasa kwa Kiswahili', href: '/insights-swahili' }, { name: `Soko la madini ${m.town}` }]}
         eyebrow={m.region}
         h1={`Soko la madini ${m.town}`}
         lead={m.summary}
@@ -72,13 +73,13 @@ export default async function MarketPage({ params }: { params: Promise<{ town: s
             </div>
           </div>
         ) : (
-          <p>Bei ya leo haipatikani kwa sasa. Tazama <Link href="/bei-ya-dhahabu-leo">bei ya dhahabu leo</Link> baadaye.</p>
+          <p>Bei ya leo haipatikani kwa sasa. Tazama <Link href="/insights-swahili/bei-ya-dhahabu-leo">bei ya dhahabu leo</Link> baadaye.</p>
         )}
         <p>
           Bei ya dunia iliyo juu imebadilishwa kuwa shilingi na inasasishwa kila saa. Bei
           utakayolipwa sokoni ni bei elekezi ya Tume ya Madini, ambayo huwa chini kidogo
           kwa sababu inazingatia mrabaha na ada, pamoja na usafi wa dhahabu yako
-          unaopimwa. Soma <Link href="/mrabaha-na-kodi-za-dhahabu">mrabaha na kodi za dhahabu</Link>.
+          unaopimwa. Soma <Link href="/insights-swahili/mrabaha-na-kodi-za-dhahabu">mrabaha na kodi za dhahabu</Link>.
         </p>
 
         <h2 id="kuhusu">Kuhusu Soko la {m.town}</h2>
@@ -101,21 +102,21 @@ export default async function MarketPage({ params }: { params: Promise<{ town: s
           <li><strong>Mrabaha na ada hukatwa</strong>, na unapewa stakabadhi</li>
           <li><strong>Unalipwa</strong>, na unahifadhi stakabadhi kwa kumbukumbu zako</li>
         </ol>
-        <p>Huna leseni bado? Soma <Link href="/jinsi-ya-kupata-leseni-ya-pml">jinsi ya kupata leseni ya PML</Link>.</p>
+        <p>Huna leseni bado? Soma <Link href="/insights-swahili/jinsi-ya-kupata-leseni-ya-pml">jinsi ya kupata leseni ya PML</Link>.</p>
 
         <h2 id="vifaa">Vifaa vya Uchimbaji {m.town}</h2>
         <p>
           Dhahabu inayopotea kwenye mabaki haifiki sokoni. Tazama vifaa vinavyonunuliwa zaidi{' '}
           {swTown
-            ? <Link href={`/vifaa-vya-uchimbaji/${swTown.slug}`}>{swTown.town}</Link>
+            ? <Link href={`/insights-swahili/vifaa-vya-uchimbaji/${swTown.slug}`}>{swTown.town}</Link>
             : <Link href={`/equipment/supply/${m.supplySlug}`}>{LOCATION_BY_SLUG.get(m.supplySlug)?.city ?? m.town}</Link>}
-          , au soma <Link href="/bei-ya-mashine-ya-kusaga-mawe">bei ya mashine ya kusaga mawe</Link>.
+          , au soma <Link href="/insights-swahili/bei-ya-mashine-ya-kusaga-mawe">bei ya mashine ya kusaga mawe</Link>.
         </p>
 
         <h2 id="masoko-mengine">Masoko Mengine</h2>
         <ul>
           {others.map(o => (
-            <li key={o.slug}><Link href={`/soko-la-madini/${o.slug}`}>Soko la madini {o.town}</Link> ({o.region})</li>
+            <li key={o.slug}><Link href={`/insights-swahili/soko-la-madini/${o.slug}`}>Soko la madini {o.town}</Link> ({o.region})</li>
           ))}
         </ul>
       </SwahiliArticle>

@@ -9,7 +9,7 @@ export interface LibraryArticle extends ArticleMeta {
 
 export const SWAHILI_ARTICLES: LibraryArticle[] = [
   {
-    slug: 'bei-ya-vifaa-vya-uchimbaji', path: '/bei-ya-vifaa-vya-uchimbaji', language: 'sw', englishSlug: 'mining-equipment-cost-tanzania',
+    slug: 'bei-ya-vifaa-vya-uchimbaji', path: '/insights-swahili/bei-ya-vifaa-vya-uchimbaji', language: 'sw', englishSlug: 'mining-equipment-cost-tanzania',
     title: 'Bei ya vifaa na gharama za kuanzisha plant ya dhahabu Tanzania',
     description: 'Bei za alluvial za Chunya, makadirio ya awali ya vifaa na usafirishaji wa mawe magumu, na mifano ya gharama za kuendesha plant ya dhahabu.',
     cta: { title: 'Andaa bajeti ya plant yako', body: 'Tutumie eneo, taarifa za malighafi, matokeo ya sampuli na majaribio, uwezo unaolengwa na taarifa za maji na umeme. Tutajadili wigo wa vifaa, kufikisha na kazi za eneo.' },
@@ -20,7 +20,7 @@ export const SWAHILI_ARTICLES: LibraryArticle[] = [
     related: ['gharama-ya-plant-ya-dhahabu', 'bei-ya-mashine-ya-kusaga-mawe'],
   },
   {
-    slug: 'gharama-ya-plant-ya-dhahabu', path: '/gharama-ya-plant-ya-dhahabu', language: 'sw', englishSlug: 'gold-plant-setup-cost',
+    slug: 'gharama-ya-plant-ya-dhahabu', path: '/insights-swahili/gharama-ya-plant-ya-dhahabu', language: 'sw', englishSlug: 'gold-plant-setup-cost',
     title: 'Gharama ya kuanzisha plant ya dhahabu Tanzania',
     description: 'Kutoka sampuli hadi uzalishaji: bajeti za Chunya, vifaa, ujenzi, maji, umeme, commissioning na fedha za miezi ya kwanza.',
     cta: { title: 'Panga kazi za kufungua plant', body: 'Eleza eneo, malighafi, miundombinu iliyopo na wigo unaotaka kwenye pendekezo. Tutajadili maandalizi, ufungaji na commissioning pamoja na majukumu yako.' },
@@ -31,7 +31,7 @@ export const SWAHILI_ARTICLES: LibraryArticle[] = [
     related: ['bei-ya-vifaa-vya-uchimbaji', 'bei-ya-mashine-ya-kusaga-mawe'],
   },
   {
-    slug: 'bei-ya-mashine-ya-kusaga-mawe', path: '/bei-ya-mashine-ya-kusaga-mawe', language: 'sw',
+    slug: 'bei-ya-mashine-ya-kusaga-mawe', path: '/insights-swahili/bei-ya-mashine-ya-kusaga-mawe', language: 'sw',
     title: 'Bei ya mashine ya kusaga mawe ya dhahabu',
     description: 'Jinsi ya kuchagua ball mill au hammer mill, kuomba bei yenye wigo wazi na kupanga umeme, media na matengenezo.',
     cta: { title: 'Andaa taarifa za kuomba bei ya kinu', body: 'Tutumie eneo, tani kwa siku, saa za kazi, vipimo vya malighafi na ulaini unaolengwa, pamoja na taarifa za umeme na majaribio ya mawe.' },
@@ -42,7 +42,7 @@ export const SWAHILI_ARTICLES: LibraryArticle[] = [
     related: ['bei-ya-vifaa-vya-uchimbaji', 'gharama-ya-plant-ya-dhahabu'],
   },
   {
-    slug: 'jinsi-ya-kupata-leseni-ya-pml', path: '/jinsi-ya-kupata-leseni-ya-pml', language: 'sw',
+    slug: 'jinsi-ya-kupata-leseni-ya-pml', path: '/insights-swahili/jinsi-ya-kupata-leseni-ya-pml', language: 'sw',
     title: 'Jinsi ya kupata leseni ya uchimbaji mdogo (PML)',
     description: 'Maandalizi ya eneo, ustahiki, nyaraka na hatua za kuomba PML, pamoja na kazi za kupanga kabla ya kuanza kuchimba.',
     category: 'Leseni · Tanzania', tags: ['compliance', 'regulation', 'pml', 'tanzania', 'leseni', 'uchimbaji'],
@@ -52,7 +52,7 @@ export const SWAHILI_ARTICLES: LibraryArticle[] = [
     related: ['mrabaha-na-kodi-za-dhahabu', 'gharama-ya-plant-ya-dhahabu'],
   },
   {
-    slug: 'mrabaha-na-kodi-za-dhahabu', path: '/mrabaha-na-kodi-za-dhahabu', language: 'sw',
+    slug: 'mrabaha-na-kodi-za-dhahabu', path: '/insights-swahili/mrabaha-na-kodi-za-dhahabu', language: 'sw',
     title: 'Mrabaha na makato kwenye mauzo ya dhahabu Tanzania',
     description: 'Jinsi ya kuthibitisha mrabaha na makato, kulinganisha njia za kuuza na kuhifadhi hesabu na stakabadhi za mauzo.',
     category: 'Mauzo · Tanzania', tags: ['trading', 'royalty', 'compliance', 'gold', 'tanzania', 'mrabaha', 'kodi', 'dhahabu'],

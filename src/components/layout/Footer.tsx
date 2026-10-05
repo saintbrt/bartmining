@@ -2,14 +2,8 @@ import Link from 'next/link'
 import { LOCATIONS } from '@/data/locations'
 
 const SW_LINKS = [
-  { href: '/insights-swahili', label: 'Makala za uchimbaji' },
+  { href: '/insights-swahili', label: 'Kurasa zote kwa Kiswahili' },
   { href: '/equipments-swahili', label: 'Vifaa vya uchimbaji' },
-  { href: '/bei-ya-vifaa-vya-uchimbaji', label: 'Bei ya vifaa' },
-  { href: '/bei-ya-dhahabu-leo', label: 'Bei ya dhahabu leo' },
-  { href: '/jinsi-ya-kupata-leseni-ya-pml', label: 'Leseni ya PML' },
-  { href: '/gharama-ya-plant-ya-dhahabu', label: 'Gharama ya plant' },
-  { href: '/jenereta-za-kukodi', label: 'Jenereta za kukodi' },
-  { href: '/mrabaha-na-kodi-za-dhahabu', label: 'Mrabaha na kodi' },
 ]
 
 const COVERAGE = ['Tanzania', 'Kenya', 'Uganda', 'Rwanda', 'DRC', 'Zambia', 'Zimbabwe', 'Mozambique', 'South Africa', 'Namibia', 'Botswana', 'Ethiopia']

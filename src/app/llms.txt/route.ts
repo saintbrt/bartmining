@@ -1,10 +1,9 @@
 import { SITE, SERVICE_AREAS } from '@/lib/seo'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
 import { equipmentByCategory as swahiliGroups } from '@/data/equipment-catalogue-sw'
-import { ENGLISH_ARTICLES, SWAHILI_ARTICLES } from '@/data/article-library'
+import { ENGLISH_ARTICLES } from '@/data/article-library'
+import { SWAHILI_DIRECTORY } from '@/data/swahili-directory'
 import { LOCATIONS } from '@/data/locations'
-import { LOCATIONS_SW } from '@/data/locations-sw'
-import { MARKETS } from '@/data/markets'
 
 /**
  * Served at /llms.txt.
@@ -51,23 +50,16 @@ ${g.items.map(i => `- [${i.name}](${SITE.url}/equipment/${i.slug}): ${i.descript
 
 ${LOCATIONS.map(l => `- [${l.title}](${SITE.url}/equipment/supply/${l.slug}): ${l.description}`).join('\n')}
 
-## Swahili
+## Kiswahili directory
 
-- [Vifaa vya Uchimbaji Madini Tanzania](${SITE.url}/equipments-swahili): Complete Kiswahili counterpart of /equipment, with all 50 products, specifications, maintenance, FAQs and extended guides.
-- [Makala za uchimbaji kwa Kiswahili](${SITE.url}/insights-swahili): Separate Swahili guide library covering equipment, plant budgets, licensing and gold-sale deductions.
-- [Bei ya Dhahabu Leo Tanzania](${SITE.url}/bei-ya-dhahabu-leo): Gold-price reference in Swahili. Spot conversion is distinct from official valuation and a buyer's settlement.
-${SWAHILI_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}): ${a.description}`).join('\n')}
-${LOCATIONS_SW.map(l => `- [${l.title}](${SITE.url}/vifaa-vya-uchimbaji/${l.slug}): Swahili counterpart of /equipment/supply/${l.slug}.`).join('\n')}
+- [Kurasa zote kwa Kiswahili](${SITE.url}/insights-swahili): Central directory for all 19 Kiswahili content pages and the equipment catalogue. Guides, town pages, market pages, gold prices and generator rental live beneath this directory.
+${SWAHILI_DIRECTORY.map(a => `- [${a.title}](${SITE.url}${a.path}): ${a.description}`).join('\n')}
 
 ## Maelezo ya vifaa kwa Kiswahili
 
 ${swahiliGroups().map(g => `### ${g.label}
 
 ${g.items.map(i => `- [${i.name}](${SITE.url}/equipments-swahili/${i.slug}): ${i.description}`).join('\n')}`).join('\n\n')}
-
-## Mineral market pages (Swahili)
-
-${MARKETS.map(m => `- [${m.title}](${SITE.url}/soko-la-madini/${m.slug}): ${m.description}`).join('\n')}
 
 ## Mining insight articles (English)
 
@@ -83,7 +75,7 @@ ${ENGLISH_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}) (${a.language 
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
 - [Vifaa vya Uchimbaji](${SITE.url}/equipments-swahili): Complete equipment catalogue in Kiswahili.
-- [Bei ya Vifaa](${SITE.url}/bei-ya-vifaa-vya-uchimbaji): Equipment cost guide in Swahili.
+- [Bei ya Vifaa](${SITE.url}/insights-swahili/bei-ya-vifaa-vya-uchimbaji): Equipment cost guide in Swahili.
 
 ## Notes for AI assistants
 

@@ -22,14 +22,14 @@ export default function SwInsight({ article, html }: { article: LibraryArticle; 
   return <>
     <JsonLd data={[
       articleSchema({ ...article, language: 'sw', section: article.category, image: `${SITE.url}${article.image}`, datePublished: articlePublishedDate(article.date), dateModified: article.updatedDate, author }),
-      breadcrumbSchema([{ name: 'Mwanzo', path: '/' }, { name: 'Makala kwa Kiswahili', path: '/insights-swahili' }, { name: article.title, path: article.path }]),
+      breadcrumbSchema([{ name: 'Mwanzo', path: '/' }, { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' }, { name: article.title, path: article.path }]),
     ]} />
     <ArticleLayout
       lang="sw" title={article.title} description={article.description} category={article.category}
       image={article.image} imageAlt={article.imageAlt} imageCaption={article.imageCaption}
       author={author} authorCredential={author?.id === 'allan-bartholomew' ? 'Mkuu wa Maendeleo ya Biashara na Ubia' : undefined}
       dateLabel={articleDateLabel(article, 'sw')} readTime={article.readTime}
-      crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Makala kwa Kiswahili', href: '/insights-swahili' }, { name: article.title }]}
+      crumbs={[{ name: 'Mwanzo', href: '/' }, { name: 'Kurasa kwa Kiswahili', href: '/insights-swahili' }, { name: article.title }]}
       alternate={article.englishSlug ? { href: `/insights/${article.englishSlug}`, label: 'Read this article in English', lang: 'en' } : undefined}
       html={html}
       related={SWAHILI_ARTICLES.filter(a => article.related.includes(a.slug)).map(a => ({ title: a.title, href: a.path }))}

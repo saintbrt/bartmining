@@ -38,6 +38,7 @@ export default function EquipmentHub() {
           itemListSchema(EQUIPMENT.map(e => ({ name: e.name, path: `/equipments-swahili/${e.slug}` }))),
           breadcrumbSchema([
             { name: 'Mwanzo', path: '/' },
+            { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
             { name: 'Vifaa vya uchimbaji', path: '/equipments-swahili' },
           ]),
         ]}
@@ -47,7 +48,7 @@ export default function EquipmentHub() {
         <div className="px-site">
           <Reveal>
             <nav className="crumb" aria-label="Njia ya ukurasa">
-              <Link href="/">Mwanzo</Link><span className="sep">/</span><span>Vifaa vya uchimbaji</span>
+              <Link href="/">Mwanzo</Link><span className="sep">/</span><Link href="/insights-swahili">Kurasa kwa Kiswahili</Link><span className="sep">/</span><span>Vifaa vya uchimbaji</span>
             </nav>
           </Reveal>
           <Reveal delay={1}><h1 style={{ marginTop: 14 }}>Mitambo na vifaa vya uchimbaji, uchakataji na usalama</h1></Reveal>
@@ -152,7 +153,7 @@ export default function EquipmentHub() {
           </p>
           <div className="dist-row">
             {LOCATIONS_SW.map(l => (
-              <Link key={l.slug} href={`/vifaa-vya-uchimbaji/${l.slug}`} className="dist-card">
+              <Link key={l.slug} href={`/insights-swahili/vifaa-vya-uchimbaji/${l.slug}`} className="dist-card">
                 <span className="dist-region">{l.region}</span>
                 <span className="dist-city">{l.town}</span>
                 <span className="eq-more">Maelezo ya usambazaji &rarr;</span>

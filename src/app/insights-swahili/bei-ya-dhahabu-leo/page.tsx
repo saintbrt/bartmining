@@ -21,7 +21,7 @@ import { getGoldQuote, formatTzs, formatSwDateTime } from '@/lib/gold-spot'
 
 export const revalidate = 3600
 
-const URL = `${SITE.url}/bei-ya-dhahabu-leo`
+const URL = `${SITE.url}/insights-swahili/bei-ya-dhahabu-leo`
 
 export const metadata: Metadata = {
   title: 'Bei ya Dhahabu Leo Tanzania kwa Gramu',
@@ -77,10 +77,11 @@ export default async function GoldPriceTodayPage() {
     <>
       <JsonLd
         data={[
-          faqSchema(FAQS),
+          faqSchema(FAQS, 'sw'),
           breadcrumbSchema([
-            { name: 'Home', path: '/' },
-            { name: 'Bei ya Dhahabu Leo', path: '/bei-ya-dhahabu-leo' },
+            { name: 'Mwanzo', path: '/' },
+            { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' },
+            { name: 'Bei ya Dhahabu Leo', path: '/insights-swahili/bei-ya-dhahabu-leo' },
           ]),
         ]}
       />
@@ -90,6 +91,7 @@ export default async function GoldPriceTodayPage() {
           <div className="px-site">
             <nav className="crumb" style={{ marginBottom: 24 }} aria-label="Breadcrumb">
               <Link href="/">Mwanzo</Link><span className="sep">/</span>
+              <Link href="/insights-swahili">Kurasa kwa Kiswahili</Link><span className="sep">/</span>
               <span>Bei ya dhahabu leo</span>
             </nav>
             <span className="eyebrow">Bei ya dhahabu</span>
@@ -218,7 +220,7 @@ export default async function GoldPriceTodayPage() {
               </p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Tuma WhatsApp &rarr;</a>
-                <Link href="/bei-ya-vifaa-vya-uchimbaji" className="btn btn-ghost">Bei ya vifaa</Link>
+                <Link href="/insights-swahili/bei-ya-vifaa-vya-uchimbaji" className="btn btn-ghost">Bei ya vifaa</Link>
               </div>
             </div>
           </article>

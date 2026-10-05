@@ -33,23 +33,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/contact`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE.url}/generator-rental`, lastModified: new Date(RENTAL_UPDATED), changeFrequency: 'monthly', priority: 0.9 },
     ...RENTAL_TOWNS.map(t => ({ url: `${SITE.url}/generator-rental/${t.slug}`, lastModified: new Date(RENTAL_UPDATED), changeFrequency: 'monthly' as const, priority: 0.85 })),
-    { url: `${SITE.url}/jenereta-za-kukodi`, lastModified: new Date(RENTAL_UPDATED), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE.url}/insights-swahili/jenereta-za-kukodi`, lastModified: new Date(RENTAL_UPDATED), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/privacy`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/terms`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/delivery-shipping`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE.url}/equipments-swahili`, changeFrequency: 'monthly', priority: 0.85 },
-    { url: `${SITE.url}/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
+    { url: `${SITE.url}/insights-swahili/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
   ]
 
   const marketPages: MetadataRoute.Sitemap = MARKETS.map(m => ({
-    url: `${SITE.url}/soko-la-madini/${m.slug}`,
+    url: `${SITE.url}/insights-swahili/soko-la-madini/${m.slug}`,
     lastModified: now,
     changeFrequency: 'daily',
     priority: 0.8,
   }))
 
   const swahiliTownPages: MetadataRoute.Sitemap = LOCATIONS_SW.map(l => ({
-    url: `${SITE.url}/vifaa-vya-uchimbaji/${l.slug}`,
+    url: `${SITE.url}/insights-swahili/vifaa-vya-uchimbaji/${l.slug}`,
     changeFrequency: 'monthly',
     priority: 0.8,
   }))
