@@ -1,28 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">>100 Bt</div><div class="art-stat-l">Estimated total coal resource (Tete)</div></div><div class="art-stat"><div class="art-stat-v">~20 Mt</div><div class="art-stat-l">Annual coal export capacity</div></div><div class="art-stat"><div class="art-stat-v">2nd</div><div class="art-stat-l">Largest coking coal province in Africa</div></div></div>
-
-<h2>Mozambique's Coal Sector: Potential and Context</h2>
-<p>The Moatize Basin in Tete Province contains an estimated resource exceeding 100 billion tonnes across all categories, making it one of the premier undeveloped coal provinces globally. Vale commenced large-scale production at Moatize in 2011, with an operational capacity of approximately 22 million tonnes per annum of mixed coking (hard, semi-hard) and thermal coal. Logistical constraints. principally the capacity of the Sena and Nacala rail corridors. have been the principal bottleneck to Mozambique's coal sector realising its potential.</p>
-<p>For exploration companies, the Tete Province offers opportunities in the less-explored northern and southern extensions of the Moatize Basin, as well as in Permian-age coal occurrences in the Lugenda, Lugela and Revuboe sub-basins.</p>
-
-<h2>Coal Geology of the Tete Province</h2>
-<h3>The Moatize-Minjova Coal Basin</h3>
-<p>The Moatize-Minjova Basin is a graben-like Karoo (Permian) sedimentary basin preserved within Proterozoic basement. The principal coal measures are within the Moatize Formation (Lower Ecca), comprising a succession of fluvial sandstones, siltstones, mudstones and coal seams, at least six economically significant seams (Seams 1–6) have been identified, with cumulative thickness of 15–40 m of coal in the most productive parts of the basin. Seam 2 (the Chipanga Seam) is the principal coking coal horizon, reaching 12+ m thickness in the basin centre.</p>
-
-<h3>Coal Quality Parameters</h3>
-<p>Moatize coking coals are characterised by low sulphur (<0.5%), low ash (8–12% on air-dried basis), high vitrinite content and moderate-to-high fluidity, making them highly prized as premium hard and semi-hard coking coals for steel-making. Thermal coal seams have calorific values of 25–28 MJ/kg (air-dried). Coal rank increases with depth and proximity to post-Karoo dolerite intrusions.</p>
-
-<h2>Exploration Methodology for Coal Targets</h2>
-<h3>Seismic Reflection Profiling</h3>
-<p>Shallow seismic reflection (MASW and conventional reflection) is used to define basin geometry, identify faults that may segment coal seams, and map coal horizon depth prior to drilling. Seismic data processing and interpretation is a cost-effective tool for extending the known coal resource before committing to expensive drilling.</p>
-
-<h3>Rotary and Core Drilling</h3>
-<p>Coal resource drilling in Mozambique typically uses a combination of rotary air-blast (RAB) or tricone percussion drilling for shallow overburden, transitioning to diamond core (HQ or NQ) for in-seam sampling. Core recovery in coal seams requires experienced drillers and appropriate drilling fluids to avoid washing-out friable vitrain bands. ASTM and ISO coal quality testing. proximate analysis, ultimate analysis, Hardgrove grindability, wash characteristics, coking assays. are conducted at accredited laboratories.</p>
-
-<h2>Infrastructure and Logistics</h2>
-<p>Access to Tete Province is via Tete town (serviced by LAM and Ethiopian Airlines from Maputo and Beira) or by road from Malawi (Lilongwe) and Zimbabwe (Harare). The Sena Rail Line connects Tete to the Port of Beira; the Nacala Corridor connects to the Port of Nacala. Future development of the Zambezi River waterway as a bulk transport option has been studied. On-the-ground logistics require experienced local partners for community liaison, permits and supply-chain management.</p>
-
-<h2>Cities &amp; Regions We Serve in Mozambique</h2>
-<div class="region-chips"><span class="region-chip">Maputo</span><span class="region-chip">Tete</span><span class="region-chip">Beira</span><span class="region-chip">Nampula</span><span class="region-chip">Nacala</span><span class="region-chip">Pemba</span><span class="region-chip">Quelimane</span><span class="region-chip">Chimoio</span><span class="region-chip">Lichinga</span><span class="region-chip">Moatize</span></div>
-
-<div class="art-callout"><strong>Coal exploration specialists.</strong> Bart Mining provides seismic interpretation, drill programme management, coal quality testing coordination and resource reporting for Mozambican coal projects.</div>`
+const content = `<p>A coal project in Mozambique needs a credible product and a workable delivery route as well as geological tonnage. Seam continuity, mining conditions, preparation yield and buyer specification determine what can be sold. Transport and handling then determine whether the sale can cover the full cost.</p>
+<p>This guide explains how to connect coal exploration with quality testing and logistics, using Tete as a regional reference. The outcome should be a phased programme and a product basis, rather than an investment case built from a national resource headline.</p>
+<h2 id="regional-context">Start with local seam evidence</h2>
+<p>The <a href="https://pubs.usgs.gov/myb/vol3/2019/myb3-2019-africa-middle-east.pdf">USGS 2019 regional yearbook</a> records coal operations at Moatize in Tete Province. It is historical industry context, not evidence of present ownership, available transport capacity or resources within your licence.</p>
+<p>Compile stratigraphy, historical holes, seams, faults, weathering and overburden for the specific area. Map what is exposed and record uncertainty where cover prevents direct observation. A thick intersection in one hole does not establish a continuous mineable seam.</p>
+<h2 id="drill-plan">Collect geometry and representative coal</h2>
+<p>Plan drilling and relevant borehole measurements around seam correlation, thickness, structure and sampling quality. Preserve the records and samples needed for quality and geotechnical assessment. The programme should distinguish coal, partings and adjacent material rather than silently combining them.</p>
+<p>Agree sample handling and laboratory methods in advance. Moisture and degradation can change results, so the report needs the analytical basis, collection and preparation records. Review holes and correlations before expanding the campaign.</p>
+<h2 id="quality">Define the intended product</h2>
+<p>Thermal and metallurgical buyers ask different questions. Establish the required quality measures, reporting basis and qualification process with the laboratory and potential buyer. Parameters may include moisture, ash, sulphur, calorific value and the relevant coking properties for the proposed product.</p>
+<p>Do not compare a dry-basis laboratory value with an as-received sale specification without conversion and an agreed moisture basis. “High-quality coal” is not a product specification that can support a revenue model.</p>
+<h2 id="yield-example">Calculate saleable tonnes from raw feed</h2>
+<p>Assume a raw-coal feed of 100,000 t/year and an illustrative preparation yield of 60% to a saleable product. Product quantity is 60,000 t/year, with the remaining material requiring a managed route. At an assumed USD 100/t product price, gross product value is USD 6 million before charges and costs.</p>
+<p>These inputs are teaching assumptions. If the actual quality requires more rejection or blending, yield and price can both change. Model mining, preparation, waste, transport, handling, selling deductions and capital rather than treating raw tonnes as saleable tonnes.</p>
+<h2 id="logistics">Verify the route to market</h2>
+<p>Request written transport and handling terms for the actual road, rail and port route, including capacity, minimum commitments and delays. Check stockpile, loading and product-quality controls along the route. Do not infer bookable freight capacity from the existence of a regional corridor.</p>
+<p><a href="https://www.usgs.gov/centers/national-minerals-information-center/mozambique">USGS’s Mozambique industry page</a> provides additional dated context. Current licences, land access, environmental work, safety requirements and export arrangements require local confirmation alongside the technical study.</p>
+<h2 id="conclusion">Explore for a deliverable coal product</h2>
+<p>Establish seam geometry, obtain representative quality and yield tests, and verify the complete route to the buyer. Advance the project using saleable product and delivered cost rather than raw tonnage alone. Prepare a drill-and-quality brief and an initial logistics enquiry before committing to a development case.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>USGS references were reviewed on 5 October 2026 and retain their reporting periods. Yield and price figures are illustrative. No current rail capacity, operator ownership or coal reserve is asserted.</p>`
 export default content

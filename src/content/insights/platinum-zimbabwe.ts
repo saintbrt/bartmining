@@ -1,31 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">550 km</div><div class="art-stat-l">Length of the Great Dyke intrusion</div></div><div class="art-stat"><div class="art-stat-v">~15 Moz</div><div class="art-stat-l">Annual PGM production target</div></div><div class="art-stat"><div class="art-stat-v">2nd</div><div class="art-stat-l">Largest PGM resource globally</div></div></div>
-
-<h2>The Great Dyke: A World-Class PGM System</h2>
-<p>The Great Dyke is a 2.5 billion-year-old layered mafic-ultramafic intrusion that bisects Zimbabwe from the Mozambique border in the north-east to near Beitbridge in the south-west. It comprises four subchambers (Musengezi, Hartley, Selukwe and Wedza), each hosting a Main Sulphide Zone (MSZ). a thin (3–5 m) but laterally continuous horizon of disseminated platinum-group minerals hosted in pyroxenite at the top of the cyclic magmatic succession.</p>
-<p>The three operating mines on the Great Dyke. Zimplats (Impala Platinum), Mimosa (Implats / Sibanye-Stillwater) and Unki (Anglo American Platinum). together account for roughly 4% of global PGM supply. Significant undeveloped resource remains along strike and at depth, and several junior and mid-tier companies hold exploration licences targeting both Main Sulphide Zone extensions and deeper chromite-associated PGM horizons.</p>
-
-<h2>Geological Controls on PGM Mineralisation</h2>
-<h3>The Main Sulphide Zone (MSZ)</h3>
-<p>The MSZ occurs at the transition from the Websterite Zone to the overlying Bronzitite Zone within each cyclic unit. It is characterised by pentlandite, pyrrhotite and chalcopyrite with subordinate Pt-Pd-Rh sulphides and sulpharsenides. Grade is typically 2.5–4.0 g/t 3E (Pt+Pd+Au) over 3–4 m, but can reach 6–8 g/t in localised higher-grade shoots. Chromite seams within the pyroxenite package host additional PGM in the form of laurite and co-precipitated Ru-Ir-Os alloys.</p>
-
-<h3>Depth and Structural Complexity</h3>
-<p>The Great Dyke subchambers plunge gently and the MSZ extends to known depths of 600–800 m below surface in mined areas, with resource open at depth. Structural disruptions. dykes, faults and sinuous irregularities in the intrusion margins. create local grade variations and geotechnical challenges that are best characterised by oriented diamond core drilling.</p>
-
-<h2>Exploration Methodology for PGM Targets</h2>
-<h3>Aeromagnetic and Gravity Surveys</h3>
-<p>The Great Dyke produces a distinctive linear magnetic and Bouguer gravity anomaly visible in regional data, for extensions and satellite bodies, high-resolution aeromagnetic surveys (50 m line spacing) identify lateral disruptions, offsets and potential feeder structures. Gravity surveys help distinguish pyroxenite-dominant packages (denser) from serpentinised dunite (less dense) in the lower cyclic units.</p>
-
-<h3>Geological Mapping and MSZ Horizon Tracing</h3>
-<p>Detailed surface mapping at 1:5,000 scale, combined with soil sampling for Pd, Pt, Ni, Cu and Cr, is the standard first-pass approach for extensions of the known MSZ. Mapping the contact between the Websterite and Bronzitite zones. the host of the MSZ. is the primary structural objective.</p>
-
-<h3>Diamond Core Drilling</h3>
-<p>Oriented HQ diamond core drilling is the industry standard for MSZ resource definition. Core orientation allows measurement of foliation, joint sets and the dip of the MSZ horizon, which informs mine-design geometry. Standard hole spacings for resource estimation range from 200 m × 200 m at Inferred classification to 50 m × 50 m for Measured.</p>
-
-<h2>Regulatory Framework: Zimbabwe Mines and Minerals Act</h2>
-<p>Zimbabwe's mining sector is governed by the Mines and Minerals Act (Chapter 21:05), administered by the Ministry of Mines and Mining Development. The Zimbabwe Environmental Management Agency (ZEMA) oversees environmental compliance. Recent changes include the introduction of a 15% minimum indigenous ownership requirement (ZIMASA) and new beneficiation directives for PGMs. Political and fiscal stability has improved markedly since 2018, and major international miners have recommitted capital to Zimbabwe operations.</p>
-
-<h2>Cities &amp; Regions We Serve in Zimbabwe</h2>
-<div class="region-chips"><span class="region-chip">Harare</span><span class="region-chip">Bulawayo</span><span class="region-chip">Gweru</span><span class="region-chip">Kwekwe</span><span class="region-chip">Mutare</span><span class="region-chip">Masvingo</span><span class="region-chip">Bindura</span><span class="region-chip">Zvishavane</span><span class="region-chip">Shurugwi</span><span class="region-chip">Beitbridge</span><span class="region-chip">Victoria Falls</span></div>
-
-<div class="art-callout"><strong>PGM and chromite expertise.</strong> Bart Mining provides MSZ horizon interpretation, drill programme design, core logging, and JORC-compliant resource estimation for Great Dyke PGM projects. We also assist companies targeting Zimbabwe's substantial chromite and lithium resources.</div>`
+const content = `<p>A platinum-group metal project in Zimbabwe needs evidence about the mineralised horizon, its continuity and its metal composition. A single combined grade can hide differences that matter to processing and sales. The exploration programme should collect both geological information and representative material for process assessment.</p>
+<p>This guide explains how to frame a Great Dyke target and move from mapping to a reviewable drill and metallurgical dataset. Its practical aim is to connect the reported grade to the product and development questions that follow.</p>
+<h2 id="great-dyke">Use the mineralised horizon as a geological model</h2>
+<p><a href="https://implats-ir.co.za/reports/implats-iar-2014/implats-minerals-report-2014/the-great-dyke.php">Implats’ geological description of the Great Dyke</a> identifies the Main Sulphide Zone as a host for PGM and associated base-metal mineralisation. This is a geological reference from a dated report; it is not a current resource estimate for a new property.</p>
+<p>Compile the local stratigraphy, maps and historical holes and test where the horizon occurs, how it dips and what interrupts it. Do not transfer the thickness, grade or operating assumptions of a nearby mine into your target without evidence.</p>
+<h2 id="drilling">Design core work to test continuity</h2>
+<p>Use hole orientations and sampling intervals that can establish the mineralised package and its structural relationships. Keep collar and downhole surveys, recovery, logging, photographs and assay intervals linked. Investigate faulting, weathering and domains that may affect mining or process behaviour.</p>
+<p>Separate observed downhole lengths from interpreted true thickness. For a narrow horizon, dilution and mining selectivity can materially change the feed grade even when the geological interpretation is sound.</p>
+<h2 id="assays">Specify the metals behind the grade</h2>
+<p>State exactly which elements are included in a combined grade such as 3E, 4E or 6E, and report the component assays where needed. Naming conventions must be explained in the project report rather than assumed. Use appropriate laboratory methods and reference materials for the expected metal suite.</p>
+<p>For an illustrative assay of 2.0 g/t platinum, 1.0 g/t palladium and 0.2 g/t gold, their explicitly defined sum is 3.2 g/t. That total does not mean the three metals share the same price, recovery or payability. The values are teaching assumptions, not a Great Dyke grade prediction.</p>
+<h2 id="metallurgy">Assess recovery and payable products</h2>
+<p>Test mineralogy and the proposed concentration route on representative domains. Establish which metals enter the product and which remain in residues. Discuss concentrate quality, impurities, smelting or refining terms and qualification with suitable counterparties.</p>
+<p><a href="https://www.usgs.gov/centers/national-minerals-information-center/zimbabwe">USGS’s Zimbabwe industry page</a> provides dated PGM-sector context. Use it to understand the industry, while obtaining current commercial and product terms for the actual project. A quoted platinum price cannot be applied to all combined metal ounces.</p>
+<h2 id="development-brief">Include mine and infrastructure constraints</h2>
+<p>Evaluate horizon geometry, ground conditions, access, ventilation and water alongside power and processing requirements. Confirm the applicable mineral rights, environmental route and product movement rules through local specialists. Avoid placing one universal legal or ownership rule in an early technical brief.</p>
+<p>Request a phased report that ranks uncertainties and explains the next work: continuity drilling, geotechnical assessment, metallurgical variability or product discussions. The priorities should follow what can change the development case.</p>
+<h2 id="conclusion">Connect the horizon to a payable metal basket</h2>
+<p>Establish local geometry and component grades, test the recovery route and understand the product terms before evaluating a PGM project. Your next step is a coordinated core, assay and metallurgical brief that keeps geological continuity and metal value as separate, reviewable questions.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>Geological and industry references were reviewed on 5 October 2026. The historical geological source is dated where cited. Assays are hypothetical; no current resource, mine ownership or production target is claimed.</p>`
 export default content

@@ -1,30 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">>70%</div><div class="art-stat-l">Global cobalt supply from DRC</div></div><div class="art-stat"><div class="art-stat-v">#1</div><div class="art-stat-l">Cobalt producer globally</div></div><div class="art-stat"><div class="art-stat-v">~2,000 t</div><div class="art-stat-l">Annual gold production (artisanal + formal)</div></div></div>
-
-<h2>The DRC's Mineral Endowment: Unrivalled in Africa</h2>
-<p>The DRC's mineral wealth spans an extraordinary range of commodities: copper and cobalt (Katanga Province and Lualaba), gold (Ituri, North Kivu, Maniema, Haut-Uélé), coltan and cassiterite (North and South Kivu), diamonds (Kasai Occidental), and significant iron ore and manganese deposits in Kasai Oriental. Few countries on earth offer the breadth and scale of mineral opportunity available to well-capitalised and operationally capable exploration companies in the DRC.</p>
-
-<h2>Key Geological Terrains and Mineral Systems</h2>
-<h3>The Lufilian Arc: Copper-Cobalt Belt</h3>
-<p>The Congolese Copperbelt in Katanga/Lualaba Province is structurally and stratigraphically continuous with the Zambian Copperbelt to the south. The principal operators. Glencore (Katanga Mining, Mutanda), Ivanhoe Mines (Kamoa-Kakula), CMOC (Tenke Fungurume) and Eurasian Resources Group (Boss Mining). have collectively elevated the DRC to the top of global copper production rankings. Kamoa-Kakula alone has delineated one of the world's highest-grade, large-tonnage copper resources.</p>
-<p>Exploration targets in the Lufilian Arc include: unmapped extensions of the ore shale horizon along poorly-explored strike segments, thrust-fault-hosted mineralisation at depth, and supergene-enriched oxide caps above mixed oxide-sulphide transitions.</p>
-<div class="region-chips"><span class="region-chip">Lubumbashi</span><span class="region-chip">Kolwezi</span><span class="region-chip">Likasi</span><span class="region-chip">Fungurume</span><span class="region-chip">Lualaba Province</span><span class="region-chip">Haut-Katanga</span></div>
-
-<h3>The Kibaran Belt: Gold in Eastern DRC</h3>
-<p>Eastern DRC's gold production is dominated by the Kibali mine (Barrick / AngloGold) in Haut-Uélé, one of Africa's largest gold mines. The Kibaran Belt extends southwards through Maniema and North Kivu, hosting numerous greenstone belt-hosted and orogenic gold systems. Many of these remain at artisanal mining stage; systematic exploration is constrained by security challenges in parts of North and South Kivu.</p>
-<div class="region-chips"><span class="region-chip">Bunia</span><span class="region-chip">Butembo</span><span class="region-chip">Goma</span><span class="region-chip">Mbuji-Mayi</span><span class="region-chip">Kindu</span><span class="region-chip">Haut-Uélé</span></div>
-
-<h3>Coltan and 3T Minerals: Kivus and Maniema</h3>
-<p>The eastern DRC hosts the world's largest coltan (columbite-tantalite) resources, with production largely from artisanal and small-scale mining operations. Cassiterite (tin) and wolframite (tungsten). collectively the "3T" minerals. are also significant in the Kivus. Responsible sourcing due diligence (OECD Guidance, ITRI Tin Supply Chain Initiative) is essential for any company handling DRC 3T minerals.</p>
-
-<h2>Operational Considerations for DRC Exploration</h2>
-<h3>Regulatory Framework: DRC Mining Code</h3>
-<p>The revised DRC Mining Code (Loi n° 18/001 of 2018) significantly increased royalty rates (gold from 2.5% to 3.5%, cobalt as a strategic substance at 10%), raised the state carried interest to 10%, and introduced a "super profit" tax. Environmental requirements under the code include mandatory ESIA preparation and mine closure fund provisioning. The CAMI (Mining Cadastre Administration) manages licence applications.</p>
-
-<h3>Security and Community Relations</h3>
-<p>Security conditions vary significantly by province. Katanga and Lualaba have functional security environments; eastern DRC (North Kivu, South Kivu, Ituri) has persistent armed group activity that requires careful security risk assessment and robust community engagement protocols. Bart Mining partners with specialist security consultants for DRC engagements.</p>
-
-<h2>Cities &amp; Regions We Serve in the DRC</h2>
-<div class="region-chips"><span class="region-chip">Kinshasa</span><span class="region-chip">Lubumbashi</span><span class="region-chip">Kolwezi</span><span class="region-chip">Likasi</span><span class="region-chip">Mbuji-Mayi</span><span class="region-chip">Bunia</span><span class="region-chip">Goma</span><span class="region-chip">Bukavu</span><span class="region-chip">Kananga</span><span class="region-chip">Kisangani</span><span class="region-chip">Matadi</span></div>
-
-<div class="art-callout"><strong>DRC exploration with real operational experience.</strong> Bart Mining provides copper-cobalt project evaluation, geological mapping, due diligence reports and drill programme management for DRC exploration projects, with established logistics and community protocols.</div>`
+const content = `<p>An exploration project in the DRC needs a geological plan and an equally clear plan for rights, access, logistics and responsible operations. The country’s mineral industry provides context, but each property has its own evidence and operating conditions. A national mineral headline cannot establish the value or readiness of a particular licence.</p>
+<p>This guide helps an owner organise technical work and due diligence into a staged programme. The aim is a project file that shows what is known, what remains uncertain and which work can be undertaken responsibly next.</p>
+<h2 id="target-model">Choose a model for the specific target</h2>
+<p><a href="https://www.usgs.gov/centers/national-minerals-information-center/congo-kinshasa">USGS’s Congo (Kinshasa) industry information</a> covers copper, cobalt, gold and other commodities. For copper targets, the <a href="https://pubs.usgs.gov/sir/2010/5090/t/">Central African Copperbelt assessment</a> offers geological context. Other targets need their own model and datasets.</p>
+<p>Compile original maps, drilling, sampling and interpretation for the property. Assess whether records describe the current boundary and can be validated. Keep regional analogy separate from direct evidence of mineralisation.</p>
+<h2 id="rights-access">Verify the project’s operating basis</h2>
+<p>Use qualified local advisers to verify rights, ownership, obligations, land access and the activities permitted. Map the proposed work and transport routes and assess current conditions before mobilisation. Conditions can differ between provinces and change over time; a general description of the DRC is not a site-access assessment.</p>
+<p>Document counterparties and responsibilities, including contractors, logistics providers and sample custodians. Confirm requirements for moving samples and equipment. Keep legal and technical reviews distinct while making their findings available to the programme manager.</p>
+<h2 id="responsible-programme">Build due diligence into the programme</h2>
+<p>The <a href="https://www.oecd.org/en/publications/oecd-due-diligence-guidance-for-responsible-supply-chains-of-minerals-from-conflict-affected-and-high-risk-areas_9789264252479-en.html">OECD minerals due-diligence guidance</a> provides a risk-based framework for supply chains in conflict-affected and high-risk areas. Use appropriate specialists to assess the relevant risks and counterparties, rather than assuming an entire country is uniform or a supplier declaration settles the matter.</p>
+<p>Establish consultation, grievance and staff-management arrangements suited to the work. Review changes before adding routes or contractors. Responsible procurement and field management need continuing records and decisions.</p>
+<h2 id="field-data">Collect data that can be checked</h2>
+<p>Design mapping, sampling and any geophysics from the target hypothesis. Use located observations and laboratory instructions, with quality checks and custody records. Choose drilling from the sample and geological information required, and maintain surveys and intervals consistently.</p>
+<p>For a hypothetical initial copper target, separate oxide and sulphide observations and samples. Different domains may need different process tests later. A blended average can obscure the material that will dominate a particular production period.</p>
+<h2 id="review-gate">Use a review gate before expanding</h2>
+<p>Define what the first stage should establish: verified data, target geometry, repeatable mineralisation or a specific sample for process testing. Review technical and access findings together before committing a larger programme. If evidence is missing or conditions change, revise the scope rather than treating planned metres as an obligation to continue.</p>
+<p>Prepare a budget including supervision, transport, laboratories, permits where applicable and data interpretation. A low field-work rate that excludes the project’s logistics and management duties is not a complete cost.</p>
+<h2 id="conclusion">Advance a verified and workable programme</h2>
+<p>Build the geological case from property-level evidence and confirm that rights, access and counterparties support the proposed work. Keep due diligence and data controls active through each stage. Your next step is a combined technical and operational brief identifying the uncertainties that must be resolved before mobilisation.</p>
+<h2 id="basis">Sources and scope</h2>
+<p>USGS and OECD resources were reviewed on 5 October 2026. The copper-domain case is hypothetical. Current security, licence status and sample movement require project-specific confirmation.</p>`
 export default content

@@ -1,33 +1,24 @@
-const content = `<h2>Why Environmental Compliance Is Non-Negotiable</h2>
-<p>Across Africa, the social licence to operate. the informal permission granted by communities, governments and civil society. is increasingly as important as the formal legal licence. Environmental Impact Assessments (EIAs), Environmental and Social Management Plans (ESMPs) and ongoing environmental monitoring are the primary mechanisms through which mining companies demonstrate their commitment to responsible development. Gaps in compliance have led to significant project delays, financial penalties and community conflicts across the continent.</p>
-
-<h2>Regulatory Frameworks by Country</h2>
-<h3>Tanzania: NEMC and the Environmental Management Act</h3>
-<p>Tanzania's National Environment Management Council (NEMC) administers the Environmental Management Act 2004 and the Environmental Impact Assessment and Audit Regulations 2005. All mining projects above a minimum threshold require an Environmental Impact Statement (EIS) and NEMC approval before any ground-disturbing activity. Key requirements include a Project Brief (screening stage), an EIS for projects triggering significant impacts, community consultations, and an Environmental and Social Management Plan (ESMP). Annual environmental audits by a registered auditor are mandatory for operating mines.</p>
-<div class="region-chips"><span class="region-chip">Dar es Salaam</span><span class="region-chip">Dodoma</span><span class="region-chip">All regions</span></div>
-
-<h3>Kenya: NEMA and the Environmental Management and Coordination Act</h3>
-<p>Kenya's National Environment Management Authority (NEMA) under the Environmental Management and Coordination Act 1999 (revised 2015) regulates environmental assessments. An EIA Licence from NEMA is required before any new mining project commences. Kenya's framework includes requirements for public participation, a 30-day public comment period and post-approval environmental audits at two-year intervals.</p>
-
-<h3>Zambia: ZEMA and the Environmental Management Act</h3>
-<p>The Zambia Environmental Management Agency (ZEMA) administers the Environmental Management Act 2011. Environmental Impact Assessments are mandatory for medium-to-large scale mining operations. Zambia's framework includes specific provisions for acid mine drainage management, tailings facility design standards and closure planning. reflecting the legacy impacts of the Copperbelt's historic operations.</p>
-
-<h3>South Africa: DEAT and NEMA</h3>
-<p>South Africa has the continent's most sophisticated environmental regulatory framework, centred on the National Environmental Management Act (NEMA) 1998 and administered by the Department of Environmental Affairs and Tourism (DEAT) / DFFE. Environmental authorisation (EA) is required under NEMA's Section 24 before any listed mining activity. Water use licences are required from the Department of Water and Sanitation (DWS). Social and Labour Plans (SLPs) address community obligations. Mine closure plans with funded financial provisions are legally required.</p>
-
-<h2>Environmental Impact Assessment Process</h2>
-<h3>Scoping</h3>
-<p>The EIA process begins with a scoping phase: defining the extent of the project footprint, identifying potential receptors (communities, watercourses, protected areas, cultural heritage sites), and producing a scoping report that sets the Terms of Reference for the full EIS. Community meetings are held at this stage to identify local concerns and aspirations.</p>
-
-<h3>Baseline Studies</h3>
-<p>Baseline environmental data collection typically includes: air quality monitoring (dust, PM10, PM2.5), surface and groundwater quality sampling, noise and vibration surveys, ecological surveys (flora, fauna, sensitive habitats), and socio-economic profiles of affected communities. Baseline data collection typically requires 6–12 months to capture seasonal variation.</p>
-
-<h3>Impact Assessment and ESMP</h3>
-<p>The core EIS document assesses each identified impact against criteria of significance (magnitude, extent, duration, reversibility, probability). The ESMP specifies mitigation measures, monitoring frequency and responsible parties for each significant impact. A credible, fundable mine closure plan must be included.</p>
-
-<h2>Ongoing Monitoring and Compliance</h2>
-<p>Post-approval compliance requires: quarterly environmental monitoring reports to the regulator, annual audits, community liaison committee meetings, and a self-assessment against the ESMP annually. Bart Mining provides independent environmental auditing and ESMP implementation support for operating mines and advanced exploration projects across East and Southern Africa.</p>
-
-<h2>Countries &amp; Regions We Serve</h2>
-<div class="region-chips"><span class="region-chip">Tanzania</span><span class="region-chip">Kenya</span><span class="region-chip">Zambia</span><span class="region-chip">Zimbabwe</span><span class="region-chip">Mozambique</span><span class="region-chip">South Africa</span><span class="region-chip">Namibia</span><span class="region-chip">Botswana</span><span class="region-chip">DRC</span><span class="region-chip">Rwanda</span><span class="region-chip">Uganda</span></div>`
+const content = `<p>Environmental work becomes harder when the plant layout, water system and waste facilities have already been purchased. A better starting point is to assess those choices while the design can still change. For a mine owner, the goal is both an appropriate approval route and a set of operating measures the site can implement.</p>
+<p>This guide uses Tanzania as the main example and explains how to organise baseline studies, assessment, management and monitoring. Other jurisdictions have their own processes; a Tanzanian certificate or consultant’s report should not be treated as approval for a project elsewhere.</p>
+<h2 id="project-scope">Describe the whole project before registration</h2>
+<p>Prepare a map and description covering pits or workings, access roads, processing, chemical storage, water abstraction, power, waste facilities and accommodation where relevant. Include the production schedule and proposed expansion. Leaving a tailings area or access road outside the initial description can produce an incomplete assessment.</p>
+<p><a href="https://eia.nemc.or.tz/dev/web/home.eu">NEMC’s project-management system</a> provides developer and registered-expert workflows for environmental assessment and audit. Have an appropriately registered expert confirm the project category, required submissions and applicable approval conditions. Do this before scheduling construction on the assumption that one generic assessment route fits every mine.</p>
+<h2 id="baseline">Collect a baseline that answers the risks</h2>
+<p>Baseline work describes the conditions before the project changes them. The relevant evidence may include surface and groundwater quality, drainage, dust, noise, habitats, land use and nearby households. Plan sampling locations around the people and environments that could be affected, with coordinates, methods and laboratory records.</p>
+<p>Seasonal changes can matter. A stream observed once during a dry visit does not establish its wet-season behaviour. Agree the seasonal coverage with the specialist and regulator, rather than copying a universal duration into the schedule. Use the findings to compare sites and design options, not merely to fill an appendix.</p>
+<h2 id="design">Connect each impact to a design decision</h2>
+<p>Suppose, as an illustrative case, a proposed plant sits uphill of a village water source. The assessment should examine runoff pathways, storage and containment, failure scenarios and monitoring points. Moving the chemical area or changing drainage may be a more effective response than adding monitoring after the layout is fixed.</p>
+<p>Water balance, waste characterisation and closure planning need engineering inputs. The environmental team and plant designer should work from the same production assumptions. If one assumes dry waste and the other designs a slurry discharge, neither cost nor containment can be reviewed sensibly.</p>
+<h2 id="management-plan">Write a plan people can follow</h2>
+<p>The management plan should name the measure, owner, resources, inspection or monitoring method and action triggered by a problem. “Control dust” is less useful than identifying the haul road, the person responsible, the approved control method and how its effectiveness will be checked.</p>
+<p><a href="https://www.ifc.org/en/insights-reports/2012/ifc-performance-standard-1">IFC Performance Standard 1</a> is a useful reference for organising environmental and social management and stakeholder engagement. It is a lender standard where applicable, not a replacement for national permits. Keep the two requirements distinguishable in the project register.</p>
+<h2 id="operation">Carry approval conditions into the operating budget</h2>
+<p>Budget for sampling, laboratories, maintenance of containment, inspections, reporting and progressive rehabilitation. Record the conditions and reporting dates actually attached to your approval; do not invent a common quarterly or annual interval for all mines. Retain monitoring results and evidence of corrective actions.</p>
+<p>Changes in throughput, process chemistry or waste storage should trigger a review with the environmental expert. Ask whether the existing assessment remains valid and what notification or additional approval is required before the change proceeds.</p>
+<h2 id="next-steps">Prepare the first coordination meeting</h2>
+<p>Bring the licence map, proposed layout, process description, water sources, waste estimates and nearby land-use information. Ask the environmental expert and designer to identify missing studies, alternatives still worth evaluating and the approvals that control the construction schedule. Put the resulting work and cost into the same project plan as procurement.</p>
+<h2 id="conclusion">Make the assessment shape the mine</h2>
+<p>Start environmental preparation early enough to influence siting, water, waste and closure choices. Confirm the applicable process, gather evidence around the actual risks and translate the findings into funded responsibilities. An approval supported by an implementable management plan is the useful outcome; a report detached from the operating design is not.</p>
+<h2 id="basis">Sources and scope</h2>
+<p>The NEMC and IFC resources were reviewed on 5 October 2026. The village-water-source case is hypothetical. Project categories, permits, reporting frequency and financial provisions require project-specific confirmation.</p>`
 export default content

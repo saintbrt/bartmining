@@ -188,23 +188,27 @@ export function articleSchema(a: {
   section: string
   /** Named author. Falls back to the organisation for pages without one. */
   author?: Author
+  /** Localised guides live outside /insights and must identify their own URL. */
+  path?: string
+  language?: 'en' | 'sw'
 }): Json {
+  const path = a.path ?? `/insights/${a.slug}`
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': `${SITE.url}/insights/${a.slug}#article`,
+    '@id': `${SITE.url}${path}#article`,
     headline: a.title,
     description: a.description,
     image: [a.image],
     datePublished: a.datePublished,
     dateModified: a.dateModified ?? a.datePublished,
     articleSection: a.section,
-    inLanguage: 'en',
+    inLanguage: a.language ?? 'en',
     author: a.author
       ? { '@type': 'Person', '@id': personId(SITE.url, a.author.id), name: a.author.name, url: `${SITE.url}/about#${a.author.id}` }
       : { '@id': `${SITE.url}/#organization` },
     publisher: { '@id': `${SITE.url}/#organization` },
-    mainEntityOfPage: `${SITE.url}/insights/${a.slug}`,
+    mainEntityOfPage: `${SITE.url}${path}`,
   }
 }
 

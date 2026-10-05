@@ -1,36 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">#1</div><div class="art-stat-l">Diamond producer by value globally</div></div><div class="art-stat"><div class="art-stat-v">~24 Mt</div><div class="art-stat-l">Carats produced annually (Debswana)</div></div><div class="art-stat"><div class="art-stat-v">70%</div><div class="art-stat-l">Share of national export revenue</div></div></div>
-
-<h2>Botswana's Diamond Industry: A Global Benchmark</h2>
-<p>The Botswana diamond story begins with the Orapa discovery in 1967 and the founding of Debswana. the 50:50 joint venture between the Government of Botswana and De Beers, in 1969. Today the joint venture operates the world's two most valuable diamond mines: Orapa and Jwaneng. The success of this model, underpinned by transparent fiscal arrangements and reinvestment in social infrastructure, has made Botswana the model for resource-based development across the continent.</p>
-<p>For exploration companies, Botswana offers a compelling combination: a highly mineralised kimberlite province, a functional permitting framework, good infrastructure by regional standards, and genuine government commitment to the responsible development of mineral resources.</p>
-
-<h2>Geology of Botswana's Kimberlite Fields</h2>
-<h3>Orapa Kimberlite Field</h3>
-<p>The Orapa kimberlite cluster in the Central District contains over 100 known kimberlite bodies, of which Orapa (AK1), Letlhakane and Damtshaa are the primary producing pipes. The AK1 pipe at Orapa is one of the world's largest by surface area (~117 ha). These Group I kimberlites intruded through Archaean craton at approximately 93 million years ago and carry a diamondiferous cargo derived from lithospheric mantle keels exceeding 150 km depth.</p>
-<div class="region-chips"><span class="region-chip">Orapa</span><span class="region-chip">Letlhakane</span><span class="region-chip">Boteti</span><span class="region-chip">Central District</span></div>
-
-<h3>Jwaneng Kimberlite Field</h3>
-<p>Jwaneng in the Southern District is the world's richest diamond mine by value, with an average grade of approximately 1.25 carats per tonne and a high proportion of gem-quality stones. The mine targets three overlapping kimberlite bodies (B, C and D) and has recently extended operations to a Cut-8 pushback that extends mine life to 2035+. Exploration in the Jwaneng cluster continues to identify satellite bodies of potential economic significance.</p>
-<div class="region-chips"><span class="region-chip">Jwaneng</span><span class="region-chip">Kanye</span><span class="region-chip">Lobatse</span><span class="region-chip">Southern District</span></div>
-
-<h3>The Kalahari Sand Cover Challenge</h3>
-<p>The greatest challenge to kimberlite exploration across most of Botswana is the Kalahari Group sedimentary cover. a blanket of aeolian and fluvial sands, calcretes and lacustrine deposits typically 0–120 m thick that completely obscures the underlying bedrock geology. Standard geochemical methods are ineffective through this cover. The most successful exploration approach combines airborne EM and magnetic surveys (to detect magnetic kimberlite indicator signatures) with targeted ground geophysics (ground magnetics, gravity, vertical loop EM) and, ultimately, reverse-circulation or percussion drilling on magnetic anomalies.</p>
-
-<h2>Kimberlite Exploration Methodology</h2>
-<h3>Geophysical Vectoring</h3>
-<p>Kimberlites are typically detectable by airborne magnetics due to the elevated magnetic susceptibility of the olivine-rich phlogopite kimberlite relative to host granitic or metamorphic basement. High-resolution airborne magnetic surveys flown at 50–100 m line spacing and 30–50 m ground clearance are the first-pass exploration tool. Circular to elliptical magnetic anomalies 50–500 m in diameter are the characteristic expression of kimberlite pipes.</p>
-
-<h3>Indicator Mineral Sampling</h3>
-<p>Kimberlite indicator minerals (KIMs). G10 garnets (pyrope with high Cr₂O₃), Mg-ilmenite, chrome diopside, olivine. are resistant to weathering and are transported by alluvial and aeolian processes away from their source pipes. Sample heavy-mineral concentrates from drainage systems and deflation hollows on the Kalahari surface provide a first-pass vector towards up-ice kimberlite sources. This method has generated major discoveries across Canada and Russia, and is increasingly applied in Botswana.</p>
-
-<h3>Bulk Sampling &amp; Microdiamond Testing</h3>
-<p>Once a kimberlite body is drilled and found to have favourable indicator mineral content, bulk sampling (typically 0.5–5 tonne mini-bulk followed by 50–500 tonne macro-bulk) is conducted to determine diamond grade (carats per hundred tonnes, cpht) and diamond value (US$ per carat). Micro-diamond analysis of small drill samples provides an early-stage grade proxy before the significant capital commitment of bulk sampling.</p>
-
-<h2>Regulatory Framework: Botswana Mines and Minerals Act</h2>
-<p>The Mines and Minerals Act 1977 (revised 1999) governs mineral rights in Botswana. The Ministry of Minerals and Energy (MME) administers prospecting licences, which are granted for initial periods of three years and may be renewed twice. Environmental compliance is overseen by the Department of Environmental Affairs (DEA). Botswana's fiscal regime includes a 10% royalty on diamonds (reduced for lower-value stones), combined with corporate tax and additional profit tax provisions.</p>
-
-<h2>Cities &amp; Regions We Serve in Botswana</h2>
-<div class="region-chips"><span class="region-chip">Gaborone</span><span class="region-chip">Francistown</span><span class="region-chip">Jwaneng</span><span class="region-chip">Orapa</span><span class="region-chip">Letlhakane</span><span class="region-chip">Maun</span><span class="region-chip">Selebi-Phikwe</span><span class="region-chip">Serowe</span><span class="region-chip">Kanye</span><span class="region-chip">Lobatse</span><span class="region-chip">Tsabong</span></div>
-
-<div class="art-callout"><strong>Diamond expertise across Southern Africa.</strong> Bart Mining provides kimberlite target generation, indicator mineral sampling programmes, geophysical interpretation and drill programme management for exploration companies operating in Botswana and across the Southern African kimberlite province.</div>`
+const content = `<p>Diamond exploration must answer more than whether a possible kimberlite body exists. A development decision needs evidence that the body contains diamonds, what the size and value distribution might be, and whether that material can be mined and processed economically. Those questions are resolved in stages.</p>
+<p>This guide explains a practical progression from target generation to sampling and evaluation in Botswana. It helps an owner understand what geophysics can identify and why representative diamond recovery and valuation remain separate tasks.</p>
+<h2 id="context">Use known operations as context</h2>
+<p><a href="https://www.debswana.com/jwaneng/">Debswana’s description of Jwaneng</a> explains that its resource includes separate volcanic pipes. It is a useful example of why a kimberlite complex should not be treated as one uniform material. Its performance does not predict the value of a new target.</p>
+<p><a href="https://www.usgs.gov/centers/national-minerals-information-center/botswana">USGS’s Botswana industry information</a> provides dated sector context. Keep that context separate from licence-level evidence and verify the current rights, access and intended activity before undertaking field disturbance.</p>
+<h2 id="targets">Build and test the target hypothesis</h2>
+<p>Compile geological, geophysical and historical exploration information. Indicator-mineral work and physical anomalies may help identify targets, but the interpretation should state alternative sources and the uncertainty beneath cover. A magnetic anomaly alone does not prove a diamond-bearing pipe.</p>
+<p>Rank targets by evidence and decide what direct sampling or drilling can establish their identity and geometry. Retain coordinates, acquisition records and the underlying datasets so later work can revisit the interpretation.</p>
+<h2 id="sampling">Separate presence, grade and value questions</h2>
+<p>Early samples can investigate rock type and diamond occurrence. Larger, carefully designed samples may be needed to assess grade and the stone-size distribution relevant to economics. Discuss sampling, treatment, recovery checks and statistical limitations with specialists before deciding the mass of a programme.</p>
+<p>A small sample containing several diamonds cannot establish an average sale value for a commercial operation. Size distribution, recovery cutoff, sample origin and valuation basis can all change the meaning of the result. Document them alongside any reported carat figure.</p>
+<h2 id="value-example">Check the revenue arithmetic</h2>
+<p>Assume, solely for an illustration, 1,000 processed t at 0.5 recovered carats/t. Output is 500 carats. At an assumed realised average value of USD 100/carat, gross value is USD 50,000. Neither the grade nor value is a benchmark for Botswana or an estimate for your property.</p>
+<p>Deduct the relevant mining, processing, recovery, selling and statutory costs, and assess capital separately. A higher carat grade can still have weaker economics if its stone-value distribution is poorer. Use a defensible valuation and product-recovery basis rather than a national average.</p>
+<h2 id="controls">Plan recovery security and traceability</h2>
+<p>Define sample custody, recovery-accounting controls, laboratory or pilot-plant audits and secure storage. Keep the chain from sampled material to recovered stones and valuation intact. Agree who witnesses key steps and how reconciliation and disputes will be handled.</p>
+<p>Confirm Botswana’s applicable exploration, sampling, environmental and diamond-trading requirements with qualified local advisers and authorities. A discovery-stage exploration scope should not be assumed to authorise bulk production or sale.</p>
+<h2 id="conclusion">Advance each diamond question separately</h2>
+<p>Use indirect methods to rank targets, direct work to establish bodies and specialist sampling to investigate grade and value. Keep recovery and custody records strong enough for the resulting evaluation. Your next step is a staged sampling brief stating which uncertainty each stage can actually resolve.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>Operator and USGS references were reviewed on 5 October 2026. All revenue-example inputs are hypothetical. No sampling mass, target value or current licensing term is prescribed.</p>`
 export default content

@@ -1,82 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">88-95%</div><div class="art-stat-l">Recovery, CIL and CIP</div></div><div class="art-stat"><div class="art-stat-v">60-80%</div><div class="art-stat-l">Recovery, heap leach</div></div><div class="art-stat"><div class="art-stat-v">18-36 h</div><div class="art-stat-l">Tank residence, CIL and CIP</div></div></div>
-
-<h2>The Short Answer</h2>
-<p>All three dissolve gold in a cyanide solution. The difference is where the leaching happens and when the carbon meets the pulp.</p>
-<ul>
-<li><strong>CIL, Carbon in Leach.</strong> Leaching and carbon adsorption happen at the same time in the same tanks. Fewer tanks, lower capital, and the carbon is present to catch gold the moment it dissolves</li>
-<li><strong>CIP, Carbon in Pulp.</strong> The ore is leached to completion first, then the pulp moves to a separate train of tanks where carbon adsorbs the gold. More tanks, cleaner control of each step</li>
-<li><strong>Heap leach.</strong> Crushed ore is stacked on a lined pad and solution is trickled through it over weeks or months. No tanks, no grinding, far lower capital, materially lower recovery</li>
-</ul>
-<p>For most small and medium Tanzanian hard-rock operations, CIL is the default. CIP earns its extra tanks on higher-grade ore where carbon management matters. Heap leach only makes sense on large tonnages of low-grade ore that will not pay for grinding.</p>
-
-<h2>Difference Between CIP and CIL at a Glance</h2>
-<table>
-<thead><tr><th></th><th>CIL (carbon in leach)</th><th>CIP (carbon in pulp)</th><th>Heap leach</th></tr></thead>
-<tbody>
-<tr><td>Where gold is adsorbed</td><td>In the leach tanks, at the same time as leaching</td><td>In separate tanks after leaching is complete</td><td>In carbon columns fed by solution draining from the heap</td></tr>
-<tr><td>Tanks</td><td>Fewer (5–8 total)</td><td>More (leach train plus adsorption train)</td><td>None; a lined pad and ponds</td></tr>
-<tr><td>Grinding</td><td>Fine, about 80% passing 75–150 µm</td><td>Fine, about 80% passing 75–150 µm</td><td>Crush only</td></tr>
-<tr><td>Recovery on free-milling ore</td><td>88–95%</td><td>88–95%</td><td>60–80%</td></tr>
-<tr><td>Capital cost</td><td>Medium</td><td>Highest of the three</td><td>Lowest</td></tr>
-<tr><td>Time to gold</td><td>18–36 h in tanks</td><td>18–36 h in tanks</td><td>Weeks to months per lift</td></tr>
-<tr><td>Preg-robbing (carbonaceous) ore</td><td>Best: carbon competes for gold immediately</td><td>Weak</td><td>Weak</td></tr>
-<tr><td>Best fit</td><td>Most small and medium Tanzanian plants</td><td>Higher-grade, clean ore needing tight control</td><td>Large tonnage, low grade, coarse-leachable ore</td></tr>
-</tbody>
-</table>
-<p>Planning the plant itself? Tank sizing, design parameters and tank maintenance are covered on the <a href="/equipment/cil-cip-plant">CIP and CIL gold plant design</a> page.</p>
-
-<h2>Side by Side</h2>
-<h3>Recovery</h3>
-<p>CIL and CIP both reach 88 to 95 percent on free-milling ore, and the gap between them is small enough that recovery alone rarely decides the choice. Heap leach typically returns 60 to 80 percent because the ore is only crushed rather than ground, so a proportion of the gold is never liberated and solution never reaches it. On a high-grade orebody that difference is decisive. On a very low-grade one, recovering 70 percent cheaply beats recovering 92 percent at a cost the ore cannot carry.</p>
-
-<h3>Capital cost</h3>
-<p>Heap leach is by far the cheapest to build, because it avoids the grinding circuit, the tank train, the agitators and much of the water infrastructure. CIL is next, using fewer tanks than CIP for the same duty. CIP is the most tank-intensive of the three. Against that, heap leach needs a properly engineered and lined pad, and pad construction is a real capital item that is often underestimated.</p>
-
-<h3>Time to gold</h3>
-<p>CIL and CIP produce gold within a day or two of ore entering the plant, with total residence time of 18 to 36 hours across the tank train. Heap leach takes weeks to months per lift, and the leach curve flattens slowly, so cash is tied up in ore on the pad for a long time. For an operation that needs revenue quickly, that working capital difference matters more than the recovery difference.</p>
-
-<h3>Footprint and water</h3>
-<p>Tank plants are compact and recycle water through a thickener. Heap leach spreads over a large area and needs a solution pond system, which brings both land and containment obligations. In water-constrained districts the tank plant with a functioning recycle circuit is usually the more practical answer.</p>
-
-<h3>Preg-robbing ore</h3>
-<p>This is where CIL earns its place decisively. Some ore contains carbonaceous material that adsorbs dissolved gold from the solution, stealing it before it can be recovered. Because CIL has activated carbon in the tank competing for that gold from the moment it dissolves, it counters preg-robbing in a way that CIP, which leaches first and adsorbs later, cannot. If diagnostic test work shows preg-robbing behaviour, CIL is not a preference, it is the requirement.</p>
-
-<h2>How to Choose</h2>
-<ul>
-<li><strong>Choose CIL</strong> if you are a small to medium hard-rock operation with free-milling ore, if capital is constrained, or if the ore shows any preg-robbing tendency. This covers the large majority of Tanzanian gold projects</li>
-<li><strong>Choose CIP</strong> if grade is high enough that carbon inventory and elution scheduling justify separating the two steps, and if you want cleaner control and measurement of leach kinetics independently of adsorption</li>
-<li><strong>Choose heap leach</strong> if tonnage is large, grade is low, the ore leaches acceptably at a coarse crush, and you have the land and the containment engineering for a lined pad. Confirm all of that with column leach test work before committing</li>
-</ul>
-
-<div class="art-callout"><strong>Test work decides this, not preference.</strong> A bottle roll and a diagnostic leach on a representative sample will tell you the leach kinetics, the cyanide consumption, whether the ore is preg-robbing, and what recovery is achievable at each grind size. That test work costs a small fraction of the plant and it is the only honest basis for choosing between these three routes.</div>
-
-<h2>What All Three Share</h2>
-<p>Every one of these routes uses cyanide, and that brings the same set of obligations regardless of which you pick: permitting, secure storage, containment, pH control above 10.5 to suppress hydrogen cyanide gas, monitoring, trained operators, and an emergency response plan. Many operators additionally align with the International Cyanide Management Code. Budget for this properly. It is not an add-on to the plant, it is part of the plant.</p>
-
-<h2>Common Mistakes</h2>
-<ul>
-<li><strong>Choosing on capital cost alone.</strong> The cheapest circuit that recovers 20 percent less gold is rarely the cheaper option over the life of the orebody</li>
-<li><strong>Skipping diagnostic leach test work.</strong> Refractory or preg-robbing ore discovered after commissioning is the most expensive surprise in gold processing</li>
-<li><strong>Grinding too coarse to save power.</strong> Recovery falls faster than the power bill does</li>
-<li><strong>Underestimating the pad on heap leach.</strong> Liner, drainage, ponds and containment are a significant engineering project in themselves</li>
-<li><strong>Treating cyanide compliance as paperwork.</strong> It is the highest-hazard part of the operation and the one most likely to close it</li>
-</ul>
-
-<h2>Regions We Serve</h2>
-<div class="region-chips"><span class="region-chip">Mwanza</span><span class="region-chip">Geita</span><span class="region-chip">Kahama</span><span class="region-chip">Shinyanga</span><span class="region-chip">Bukombe</span><span class="region-chip">Chunya</span><span class="region-chip">Mbeya</span><span class="region-chip">Tabora</span><span class="region-chip">Dar es Salaam</span></div>
-
-<h2>Frequently Asked Questions</h2>
-<h3>Which is cheaper to build, CIL or CIP?</h3>
-<p>CIL, in almost all cases, because leaching and adsorption share the same tanks so fewer tanks and agitators are needed for the same residence time. The saving is meaningful at small scale, where tank count is a large share of plant cost.</p>
-
-<h3>Can I convert a CIP plant to CIL later?</h3>
-<p>Often yes, since the tanks and agitators already exist and the change is largely about where carbon is introduced and how interstage screening is arranged. Conversion in the other direction, CIL to CIP, is harder because you need additional tanks. If there is any doubt about the ore, building CIL keeps more options open.</p>
-
-<h3>Is heap leach viable in Tanzania?</h3>
-<p>It can be, on the right orebody, but the combination of high seasonal rainfall in parts of the country, land access, and containment engineering makes it a more demanding proposition than in arid jurisdictions. Column leach test work and a serious look at the water balance should come before any commitment.</p>
-
-<h3>What recovery should I expect from CIL on Lake Victoria Goldfields ore?</h3>
-<p>Free-milling banded iron formation hosted and shear-zone hosted gold from the Lake Victoria Goldfields commonly returns 88 to 95 percent through a well-designed CIL circuit at an appropriate grind. Ore with significant sulphide association or carbonaceous material can fall well below that without pre-treatment, which is exactly what diagnostic test work is for.</p>
-`
-
+const content = `<p>CIP, CIL and heap leaching are different ways to organise gold dissolution and recovery from solution. Choosing between them requires evidence about the ore and a project budget that includes water, waste, power and the time until gold can be sold. A tank count or a headline recovery percentage cannot make that decision on its own.</p>
+<p>This comparison explains the process differences and the tests that make each option credible. The aim is to narrow your choices and prepare a test-work brief, rather than assume one route is the default for every Tanzanian deposit.</p>
+<h2 id="difference">Where leaching and adsorption happen</h2>
+<p>In carbon in pulp, or CIP, leaching is followed by a separate adsorption stage, where activated carbon collects dissolved gold. In carbon in leach, or CIL, carbon is present in the leaching circuit so dissolution and adsorption occur together. Both arrangements need a route to strip loaded carbon and recover a saleable product.</p>
+<p>Heap leaching passes solution through a prepared bed of ore on an engineered pad. Solution is collected for downstream recovery. It changes the feed preparation, liquid flow and recovery schedule, so it needs more than a comparison of tanks against a pad. <a href="https://www.sgs.com/-/media/sgscorp/documents/corporate/brochures/sgs-nr-gold-processing-en.cdn.en-KZ.pdf">SGS’s gold-processing overview</a> provides a reference for these process routes.</p>
+<h2 id="compare">Compare the design questions</h2>
+<div class="tbl" tabindex="0" role="region" aria-label="Process-route comparison"><table><thead><tr><th>Route</th><th>Main design question</th><th>Evidence needed</th></tr></thead><tbody><tr><td>CIP</td><td>How should separate leaching and adsorption duties be arranged?</td><td>Leach kinetics, adsorption response and slurry properties.</td></tr><tr><td>CIL</td><td>How do simultaneous leaching and adsorption behave on this feed?</td><td>Combined tests, carbon management and screening requirements.</td></tr><tr><td>Heap leach</td><td>Can solution move through the prepared ore and recover worthwhile gold?</td><td>Column response, permeability, crush size and a site water balance.</td></tr></tbody></table></div>
+<p>The table points to the uncertainty each route must resolve. It does not establish universal capital rankings or recovery ranges. A difficult pad site can change heap economics, while a difficult ore can make either tank arrangement unsuitable without additional treatment.</p>
+<h2 id="ore">Test the ore’s behaviour</h2>
+<p>Ask the laboratory how results vary with grind or crush size, treatment time, reagent use and feed domain. Carbonaceous material can remove dissolved gold from solution, a behaviour called preg-robbing. Its presence calls for comparative testing; it does not prove that simply adding carbon will solve every loss.</p>
+<p>Keep oxide, transition and fresh ore separate where their behaviour differs. An average composite can conceal the period when harder or less responsive feed reaches the plant. Link the test selection to the mine schedule and compare gravity recovery as part of the options where relevant.</p>
+<h2 id="example">Compare gold output without confusing it with profit</h2>
+<p>Consider an assumed 1,000 t feed lot grading 1.5 g/t. It contains 1,500 g of gold. A hypothetical route recovering 70% produces 1,050 g; another recovering 90% produces 1,350 g. The difference is 300 g, but these percentages are teaching assumptions, not predictions for heap and tank plants.</p>
+<p>Value the difference using a stated selling-price basis, then subtract the additional processing costs, selling deductions and capital burden. Also model when that gold becomes payable. A route with slower release can need more working cash even if its final recovery is attractive.</p>
+<h2 id="whole-plant">Budget the whole route</h2>
+<p>Include preparation, leaching, recovery from solution, elution where used, water recycling, residue treatment, containment, laboratory support and trained operators. The <a href="https://cyanidecode.org/about-the-cyanide-code/the-cyanide-code/">International Cyanide Management Code</a> is a management reference for cyanide supply and use; it does not replace local approvals or a site operating procedure.</p>
+<p>Request a process description, equipment list, utilities, capital scope and operating model for each shortlisted route. Our <a href="/insights/plant-test-work-guide">test-work guide</a> helps prepare the evidence, and the <a href="/insights/gold-plant-setup-cost">startup guide</a> shows where owner costs and working capital belong.</p>
+<h2 id="conclusion">Select the route the evidence supports</h2>
+<p>Choose between CIP, CIL and heap leaching by comparing ore response, complete costs and cash timing under the same feed assumptions. Your next step is a representative test programme and a site assessment that resolve the main uncertainty for each option. Only then should a supplier turn the selected route into an equipment specification.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>The technical references were reviewed on 5 October 2026. The feed-and-recovery calculation is illustrative. Tank residence times, pad design and operating settings require project-specific test work and engineering.</p>`
 export default content

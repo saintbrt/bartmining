@@ -1,26 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">10%</div><div class="art-stat-l">Mining contribution to GDP</div></div><div class="art-stat"><div class="art-stat-v">#3</div><div class="art-stat-l">Uranium producer globally</div></div><div class="art-stat"><div class="art-stat-v">~1.5 Mct</div><div class="art-stat-l">Annual diamond production</div></div></div>
-
-<h2>Namibia's Mineral Endowment</h2>
-<p>Namibia's principal mineral commodities include: gem and near-gem quality alluvial and marine diamonds (Namdeb, De Beers Marine Namibia), uranium (Rössing, Husab, Langer Heinrich), copper-lead-zinc-vanadium (the Otavi Mountain Land / Tsumeb District), gold (Navachab, Ongol, B2 Gold's Otjikoto), zinc (Skorpion, Rosh Pinah) and rare earth elements (Lofdal). Namibia also has significant undeveloped lithium and graphite occurrences of increasing strategic interest.</p>
-
-<h2>Key Mineral Geological Terrains</h2>
-<h3>Namaqualand / Orange River Coast: Alluvial Diamonds</h3>
-<p>The Orange River has transported diamonds eroded from the Cretaceous Kimberley kimberlite fields southwestward for millions of years, depositing gem-quality stones in marine terraces, fluvial gravels and aeolian concentrations along Namibia's southern coastline. Namdeb's operations near Oranjemund and De Beers Marine Namibia's seabed mining off the coast together represent one of the world's most significant diamond operations by value. Onshore exploration targets include elevated ancient beach terraces and buried fluvial channels.</p>
-<div class="region-chips"><span class="region-chip">Lüderitz</span><span class="region-chip">Oranjemund</span><span class="region-chip">Aus</span><span class="region-chip">Karas Region</span></div>
-
-<h3>Erongo Region: Uranium</h3>
-<p>The Rossing Uranium Mine (Rio Tinto / China National Uranium Corporation) has operated in the Namib Desert since 1976, exploiting alaskite-hosted uranium in the Damara Metamorphic Belt. The nearby Husab Mine (Swakop Uranium / CGNPC) represents a newer, larger deposit. Uranium mineralisation is hosted in leucocratic granites and pegmatites of the Damara Orogenic Belt, providing a well-understood geological model for exploration of satellite targets.</p>
-<div class="region-chips"><span class="region-chip">Swakopmund</span><span class="region-chip">Walvis Bay</span><span class="region-chip">Arandis</span><span class="region-chip">Erongo Region</span></div>
-
-<h3>Otavi Mountain Land: Copper, Lead, Zinc, Vanadium</h3>
-<p>The Otavi Mountain Land is a Neoproterozoic carbonate-hosted base metal province centred on Tsumeb, historically one of the world's richest polymetallic mines. The Tsumeb mine has produced copper, lead, zinc, germanium, silver and cadmium from a unique suite of approximately 250 mineral species. Exploration in the broader Otavi Mountain Land targets sediment-hosted stratabound base metal and vanadium deposits in the Otavi Group carbonates.</p>
-<div class="region-chips"><span class="region-chip">Tsumeb</span><span class="region-chip">Otavi</span><span class="region-chip">Grootfontein</span><span class="region-chip">Oshikoto Region</span></div>
-
-<h2>Regulatory Framework: Minerals (Prospecting and Mining) Act</h2>
-<p>Namibia's mining sector is governed by the Minerals (Prospecting and Mining) Act 33 of 1992 and administered by the Ministry of Mines and Energy (MME). Exclusive Prospecting Licences (EPLs) are issued for two-year periods and are renewable. Namibia has a stable, transparent licensing framework and ranks consistently among Africa's top mining jurisdictions in the Fraser Institute's annual survey. Environmental compliance is managed by the Ministry of Environment, Forestry and Tourism (MEFT) under the Environmental Management Act 2007.</p>
-
-<h2>Cities &amp; Regions We Serve in Namibia</h2>
-<div class="region-chips"><span class="region-chip">Windhoek</span><span class="region-chip">Walvis Bay</span><span class="region-chip">Swakopmund</span><span class="region-chip">Lüderitz</span><span class="region-chip">Tsumeb</span><span class="region-chip">Oranjemund</span><span class="region-chip">Oshakati</span><span class="region-chip">Rundu</span><span class="region-chip">Mariental</span><span class="region-chip">Keetmanshoop</span></div>
-
-<div class="art-callout"><strong>Namibia exploration services.</strong> Bart Mining provides geological mapping, geophysical survey interpretation, EPL application support and drill programme management for mineral exploration projects across Namibia.</div>`
+const content = `<p>Exploration in Namibia needs a target-specific model and a field plan suited to the site. A uranium, gold, base-metal or diamond project will require different sampling, process and product evidence. Water, access and environmental constraints should be considered while the programme can still change.</p>
+<p>This guide helps an owner prepare a phased exploration brief and understand what belongs in a development assessment. It uses the country’s mineral industry as context while keeping current rights and site conditions subject to direct verification.</p>
+<h2 id="context">Frame the target from regional information</h2>
+<p><a href="https://www.usgs.gov/centers/national-minerals-information-center/namibia">USGS’s Namibia industry information</a> covers diamonds, uranium, gold and base metals, with stated reporting periods. Use it to understand the sector, then compile maps, historical records and observations for the particular property.</p>
+<p>Separate an industry example from your target’s evidence. An operating mine nearby does not establish the same host material, grade, recovery or available infrastructure on another licence.</p>
+<h2 id="field-scope">Match the programme to the mineral system</h2>
+<p>For a bedrock target, investigate host rocks, structures, alteration and continuity through mapping, suitable sampling and direct testing. For a sediment or gravel target, geometry, grain-size distribution and representative bulk characteristics can be more important than isolated rock specimens.</p>
+<p>Agree methods and sample masses with the relevant specialists and laboratories. Geophysics can help where an appropriate physical contrast exists, but it should produce a testable interpretation rather than a claimed resource.</p>
+<h2 id="uranium">Keep radiometric measurements distinct from chemical evidence</h2>
+<p>Where uranium is the target, a radiometric response can guide investigation but needs qualified interpretation and appropriate chemical and geological verification. The <a href="https://www.usgs.gov/special-topics/earth-mri/geophysical-mapping">USGS geophysical overview</a> gives context for mapping methods; it does not certify a uranium grade from an instrument reading.</p>
+<p>Radiation protection, sample handling and applicable authorisations require specialist planning. Do not treat a general exploration equipment list as adequate for a radioactive-material project.</p>
+<h2 id="water-logistics">Plan water and access as real duties</h2>
+<p>Establish the water source, permitted use, quality and seasonal reliability for drilling and any later process. Price transport, camps, fuel, spares and laboratory dispatch for the actual location. A road or pipeline on a map does not prove capacity or access at the required date.</p>
+<p>For an illustrative field plan, assumed drilling demand of 10 m³/day for 30 days totals 300 m³ before camp use, losses and contingency. That quantity is not a site entitlement or a recommended drilling allowance. Replace it with the contractor’s duty and an approved supply arrangement.</p>
+<h2 id="handover">Request evidence for the next study</h2>
+<p>Keep original observations, coordinates, samples, assays, surveys and quality records. Ask the report to explain the model, alternative interpretations and work that would change the decision. Preserve representative material for metallurgical assessment rather than delaying process questions until equipment procurement.</p>
+<p>Confirm mineral rights, access, environmental requirements and sample movement with the relevant Namibian authorities and qualified local advisers. The programme should state which permissions are in place and which control the schedule.</p>
+<h2 id="conclusion">Explore with a target and site basis</h2>
+<p>Select the methods from the mineral system, collect verifiable evidence and include water, logistics and specialist controls in the scope. Advance through review points that identify what the next stage can resolve. Begin with the property-data inventory and the site constraints that could prevent the field programme from working.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>USGS resources were reviewed on 5 October 2026. The water quantity is hypothetical. No national production rank, current project ownership or instrument-derived grade is asserted.</p>`
 export default content

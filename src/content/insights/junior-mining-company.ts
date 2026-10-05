@@ -1,27 +1,22 @@
-const content = `<h2>The Junior Explorer's Challenge in Africa</h2>
-<p>A junior company listed on the ASX, TSX-V, AIM or JSE AltX typically has a small technical team. perhaps one or two in-house geologists, and relies heavily on outsourced services for field-intensive work, in East Africa, this means finding reliable geological contractors, drill rig operators, assay laboratories and environmental consultants who understand the local context and can deliver to international reporting standards. Getting this wrong. poor QA/QC, non-compliant resource estimates, inadequate community engagement. can be fatal to a project's investor story and regulatory standing.</p>
-
-<h2>Exploration Programme Management and Outsourcing</h2>
-<p>Bart Mining provides resident project geologists and programme managers who serve as the junior company's eyes and ears on the ground. Our team can manage every aspect of the field programme. drill contractor tendering and supervision, geological logging and sampling, QA/QC implementation, sample dispatch, community liaison and government reporting. allowing the junior company's in-house team to focus on investor relations, corporate development and strategic decisions.</p>
-
-<h2>Data Management and Geological Modelling</h2>
-<p>Robust exploration data management is essential for juniors, both for internal decision-making and for external reporting (ASX Appendix 5A, NI 43-101 Technical Reports, JORC resource estimates). Bart Mining sets up and maintains exploration databases (Acquire, LogChief, or custom structures) for client projects, ensuring that all sampling, drilling, geophysical and geochemical data is correctly structured, QA/QC'd and audit-ready for Competent Person review.</p>
-
-<h2>JORC and NI 43-101 Reporting</h2>
-<p>Our Competent Persons (CPs) are qualified to sign off on JORC 2012 and NI 43-101 compliant Mineral Resource estimates, exploration target statements and technical reports for listed companies. We have prepared technical reports for projects in Tanzania, Zambia, Zimbabwe, Mozambique, Kenya, the DRC and Namibia. We understand the specific requirements of ASX Chapter 5, TSX-V NI 43-101 filing requirements and AIM Rule 18 compliance.</p>
-
-<h2>Budget Optimisation for Exploration</h2>
-<p>Junior budgets are finite and precious. Bart Mining applies a systematic prioritisation framework to maximise the geological return on each exploration dollar:</p>
-<ul>
-<li>Desktop data review before any fieldwork. eliminating targets from the portfolio costs nothing compared to drilling them</li>
-<li>Phased programmes with decision gates. proceed/no-proceed decisions after each phase based on defined criteria</li>
-<li>Multi-commodity exploration. targeting licences prospective for more than one commodity to spread the cost base</li>
-<li>Technology leverage. pXRF, drone magnetics and satellite geology reduce field time for equivalent data return</li>
-</ul>
-
-<h2>Investor Communication Support</h2>
-<p>Clear, accurate communication of exploration results to investors is governed by the ASX Listing Rules, the Mining Disclosure Standard and equivalent exchange rules. Bart Mining assists junior clients with ASX/TSX announcement preparation, technical review of exploration results releases, Annual Information Form preparation and investor presentation geological sections.</p>
-
-<h2>Countries We Support Junior Explorers In</h2>
-<div class="region-chips"><span class="region-chip">Tanzania</span><span class="region-chip">Kenya</span><span class="region-chip">Zambia</span><span class="region-chip">Zimbabwe</span><span class="region-chip">Mozambique</span><span class="region-chip">DRC</span><span class="region-chip">Namibia</span><span class="region-chip">Botswana</span><span class="region-chip">Uganda</span><span class="region-chip">Rwanda</span><span class="region-chip">Ethiopia</span><span class="region-chip">South Africa</span></div>`
+const content = `<p>A junior explorer needs each programme to answer a geological question while preserving enough cash to act on the result. Outsourcing can provide field capacity, but it does not remove the company’s responsibility for data quality, spending decisions or public disclosure. The programme should leave evidence that another technical team can assess.</p>
+<p>This guide explains how to scope external support, organise the data and set review points between reconnaissance and resource work. The practical outcome is a programme with clear deliverables and a decision gate, rather than a contractor instructed simply to “find more ore.”</p>
+<h2 id="decision">Begin with the next decision</h2>
+<p>Identify whether you need to rank targets, test continuity, establish metallurgy or improve confidence for a resource estimate. Each purpose implies a different sample, drilling and review programme. A campaign aimed at discovery should not be presented as though it automatically delivers the information needed for mine design.</p>
+<p>Write the technical hypothesis and the evidence that would support or weaken it. For an illustrative vein target, the question might be whether mapped mineralisation continues beneath cover. The resulting programme should test geometry and continuity, rather than only collecting additional high-grade surface samples.</p>
+<h2 id="contractors">Give contractors deliverables you can check</h2>
+<p>Separate geology, drilling, laboratories and environmental or community work into defined scopes, with someone responsible for coordinating them. Agree data formats, sample custody, daily reporting, change control and who can approve additional expenditure. A cheap drilling rate is difficult to evaluate if the sampling and survey work are excluded.</p>
+<p>Ask for staff experience relevant to the deposit and work involved. Where a public-reporting signatory is required, identify the person and applicable qualification separately. A consultancy’s general experience does not establish that a particular person can sign every type of report.</p>
+<h2 id="database">Keep a database that survives a handover</h2>
+<p>Maintain original collar, downhole-survey, geology, sample and assay records, with unique identifiers and a documented coordinate system. Retain laboratory certificates and corrections rather than replacing the original values without a trail. Backups need a tested restore procedure and clear access ownership.</p>
+<p>Prepare QA/QC rules before results arrive and document how failures are investigated. Software does not validate the geological meaning of an interval or repair an incorrectly located hole. Agree who reviews the data and when results may be used in interpretation.</p>
+<h2 id="disclosure">Arrange the reporting responsibility early</h2>
+<p>The <a href="https://www.jorc.org/docs/JORC_code_2012.pdf">JORC Code</a> requires relevant competence and accountable documentation for public reporting under that framework. Projects reporting in another jurisdiction should confirm that jurisdiction’s rules, including any Qualified Person requirements. Do not treat JORC and NI 43-101 as interchangeable badges.</p>
+<p><a href="https://www.asx.com.au/about/regulation/rules-guidance-notes-and-waivers/asx-listing-rules-guidance-notes-and-waivers">ASX listing rules and guidance</a> are a separate reference for ASX issuers. Involve the appropriate reporting adviser before a campaign whose results will be announced publicly, so material context and limitations are collected as the work proceeds.</p>
+<h2 id="review-gates">Use review gates to protect the budget</h2>
+<p>For the hypothetical covered-vein target, complete the map and initial samples, review their reliability, then decide whether the geometry justifies drilling. After the first drilling stage, update the model before committing the next stage. Define what would trigger further work, redesign or stopping.</p>
+<p>Budget for sample preparation, surveys, supervision, interpretation and reporting alongside field metres. Keep contingency for uncertainty and identify delays that could affect the company’s cash runway. An aggressive campaign that produces unusable data spends money without moving the decision forward.</p>
+<h2 id="conclusion">Buy evidence for a defined decision</h2>
+<p>Organise outsourced work around a clear technical question, controlled data and reviewable deliverables. Confirm public-reporting responsibilities and retain enough budget to respond to what the programme discovers. Before tendering, prepare a short brief stating the target hypothesis, required evidence and next decision gate.</p>
+<h2 id="basis">Sources and example basis</h2>
+<p>The reporting resources were reviewed on 5 October 2026. The vein-target sequence is illustrative and does not describe a Bart Mining discovery or claim reporting credentials for any member of staff.</p>`
 export default content

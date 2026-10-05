@@ -1,31 +1,22 @@
-const content = `<h2>The Study Sequence: From Discovery to Bankable FS</h2>
-<h3>Scoping Study (Order of Magnitude)</h3>
-<p>A scoping study is the first formal evaluation of a mineral deposit's economic potential. It is prepared at an accuracy of ±35–50% and uses Inferred and Indicated Mineral Resources as its primary input. The study tests overall viability. is there a reasonable prospect of economic extraction?, and identifies the key value drivers and risk factors that will determine subsequent study work, for East African gold projects, a scoping study typically takes 2–4 months and costs US$50,000–150,000.</p>
-
-<h3>Pre-Feasibility Study (PFS)</h3>
-<p>A Pre-Feasibility Study increases the engineering and design detail sufficiently to evaluate alternative mining methods, processing routes, production rates and capital configurations. It is prepared at ±20–25% accuracy using a combination of Indicated and Measured Mineral Resources. The PFS enables a decision between alternative development scenarios (open pit vs. underground, heap leach vs. CIL, phased vs. full-scale development) and forms the basis for seeking project financing at early stages.</p>
-
-<h3>Bankable Feasibility Study (BFS / DFS)</h3>
-<p>A Definitive Feasibility Study (DFS) or Bankable Feasibility Study is prepared to ±15% accuracy, based substantially on Measured and Indicated Mineral Resources, and must provide sufficient technical and financial detail to support a final investment decision and project financing. A DFS for a mid-size East African mine (100,000 oz/year gold) typically requires 18–24 months and a budget of US$5–15 million.</p>
-
-<h2>Mineral Resource Estimation: JORC Code</h2>
-<p>Mineral Resource and Reserve estimates for listed companies or those seeking institutional finance must comply with a recognised reporting code. most commonly the JORC Code 2012 in East Africa (Australian standard, widely accepted by African exchanges and international financiers), or NI 43-101 (Canadian standard, required for TSX and TSX-V listed companies).</p>
-<p>Key components of a JORC-compliant resource estimate include:</p>
-<ul>
-<li><strong>Database validation</strong>. collar survey, downhole survey, assay database QAQC review</li>
-<li><strong>Geological modelling</strong>. domaining, wireframing, implicit or explicit model construction</li>
-<li><strong>Geostatistical analysis</strong>. variography, grade distribution, declustering</li>
-<li><strong>Grade estimation</strong>. Ordinary Kriging (preferred), Inverse Distance or Nearest Neighbour</li>
-<li><strong>Resource classification</strong>. Measured, Indicated, Inferred based on geological continuity and data density</li>
-<li><strong>Competent Person sign-off</strong>. JORC requires a named, qualified CP with five years relevant experience</li>
-</ul>
-
-<h2>Mine Design. Open Pit vs: Underground</h2>
-<p>The choice between open-pit and underground mining is primarily driven by the depth and grade of the orebody relative to the stripping ratio that the project economics can sustain, in East Africa, most early-stage gold projects are first evaluated as open pits to the depth at which the overall stripping ratio (waste:ore) exceeds approximately 6:1–8:1. High-grade underground resources (>5 g/t Au) may justify underground development at shallower depths where the orebody geometry is suitable for long-hole stoping, cut-and-fill or drift-and-fill methods.</p>
-
-<h2>Financial Modelling and Sensitivity Analysis</h2>
-<p>A robust financial model for an East African mining project includes: capital cost estimates (pre-production capital, sustaining capital, closure costs), operating cost estimates by activity (mining, processing, G&A, royalties), revenue projections based on commodity price assumptions, DCF (discounted cash flow) valuation at a range of discount rates, sensitivity analysis against gold price, grade, recovery, capex and opex, and tax modelling (corporate tax, royalty, withholding tax) specific to the host country jurisdiction.</p>
-
-<h2>Jurisdictions We Cover for Feasibility Work</h2>
-<div class="region-chips"><span class="region-chip">Tanzania</span><span class="region-chip">Kenya</span><span class="region-chip">Zambia</span><span class="region-chip">Zimbabwe</span><span class="region-chip">Mozambique</span><span class="region-chip">DRC</span><span class="region-chip">South Africa</span><span class="region-chip">Namibia</span><span class="region-chip">Botswana</span><span class="region-chip">Uganda</span><span class="region-chip">Ethiopia</span></div>`
+const content = `<p>A mine study connects the deposit to a possible operating project: how material will be mined, processed and delivered to a market, and what that system will cost. Its detail should match the decision and the evidence available. Calling a document “bankable” does not remove uncertainty or guarantee financing.</p>
+<p>This guide explains the progression from early option assessment to feasibility work and the assumptions that need to be linked. You should finish able to scope the next study and identify what it must resolve before a development commitment.</p>
+<h2 id="study-stage">Use the study stage to define the decision</h2>
+<p>An early scoping assessment compares broad options and identifies the information worth improving. A pre-feasibility study develops a preferred technical and economic case from alternatives. A feasibility study provides more detailed support for evaluating and implementing the selected project.</p>
+<p>The <a href="https://www.jorc.org/docs/JORC_code_2012.pdf">JORC Code’s study definitions</a> distinguish these stages and the relationship to Ore Reserves under that reporting framework. Study names alone do not prescribe a universal cost accuracy, budget or duration. Agree the estimate basis and engineering maturity explicitly.</p>
+<h2 id="linked-inputs">Keep the technical assumptions connected</h2>
+<p>The geological model affects mining geometry, dilution and the production schedule. That schedule determines feed, metallurgy and plant duty. Water, power, transport, environmental measures and closure then influence both capital and operating cost. Each discipline should use compatible quantities and dates.</p>
+<p>An open-pit versus underground choice needs geometry, ground conditions, access, method, recovery and costs. It should not be made from one grade cutoff or stripping-ratio rule copied from another mine. Document the alternatives and the evidence behind the selected case.</p>
+<h2 id="resource-reserve">Distinguish mineralisation from a mining case</h2>
+<p>A Mineral Resource and an Ore Reserve are different reporting concepts. A study must apply the relevant technical, economic and other factors before treating material as a viable mining inventory under the applicable framework. Have the responsible reporting professional confirm classification and use of the data.</p>
+<p>The study brief should identify the required public-reporting standard, who is responsible for it and what supporting work remains. Software output or an attractive geological model does not replace that assessment.</p>
+<h2 id="economics-example">Expose the assumptions in the cash forecast</h2>
+<p>For an illustrative year, assume 30,000 processed t at 2 g/t and 85% overall recovery. Recovered gold is 30,000 × 2 × 0.85 = 51,000 g. At an assumed USD 70/g payable-value basis, receipts are USD 3.57 million. If assumed mine and processing outgoings total USD 2.7 million, the difference is USD 870,000 before capital, financing, tax and other omitted obligations.</p>
+<p>At an assumed 1.5 g/t with the same tonnes, recovery and price, receipts fall to USD 2.6775 million, slightly below the assumed operating outgoings. These are teaching inputs, not a forecast. The exercise shows why grade and other downside cases need to be tested together.</p>
+<h2 id="environment-social">Bring approvals and closure into the study</h2>
+<p>Include land, water, waste, community and closure work early enough to affect design and schedule. <a href="https://www.ifc.org/en/insights-reports/2012/ifc-performance-standard-1">IFC Performance Standard 1</a> is a reference for integrated environmental and social management where applicable. Local approval conditions remain a separate project responsibility.</p>
+<p>A study that excludes an unresolved water source or waste facility can understate both cost and schedule risk. Record assumptions, responsible specialists and the investigation needed to close each gap.</p>
+<h2 id="conclusion">Scope the study that reduces the next uncertainty</h2>
+<p>Select the stage from the decision, connect the disciplines and test the financial case under weaker inputs. Ask for a report that states evidence, assumptions and remaining work clearly. The next step is a study brief listing the project alternatives and the uncertainties that could change the development decision.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>Reporting and management references were reviewed on 5 October 2026. Economic figures are illustrative. No standard study price, guaranteed estimate accuracy or financing outcome is asserted.</p>`
 export default content

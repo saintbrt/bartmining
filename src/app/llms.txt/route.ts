@@ -1,6 +1,6 @@
 import { SITE, SERVICE_AREAS } from '@/lib/seo'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
-import { ARTICLES } from '@/data/insights'
+import { ENGLISH_ARTICLES, SWAHILI_ARTICLES } from '@/data/article-library'
 import { LOCATIONS } from '@/data/locations'
 import { LOCATIONS_SW } from '@/data/locations-sw'
 import { MARKETS } from '@/data/markets'
@@ -55,37 +55,26 @@ ${LOCATIONS.map(l => `- [${l.title}](${SITE.url}/equipment/supply/${l.slug}): ${
 - [Vifaa vya Uchimbaji Madini Tanzania](${SITE.url}/vifaa-vya-uchimbaji): Swahili-language
   gateway covering the equipment range, mercury-free gold recovery and the districts served.
   This is the Swahili counterpart of /equipment.
-- [Bei ya Vifaa vya Uchimbaji Madini](${SITE.url}/bei-ya-vifaa-vya-uchimbaji): Swahili-language
-  guide to landed cost, covering freight, customs duty, VAT and inland transport. Swahili
-  counterpart of /insights/mining-equipment-cost-tanzania.
-- [Bei ya Dhahabu Leo Tanzania](${SITE.url}/bei-ya-dhahabu-leo): Swahili-language gold price
-  page, refreshed hourly, showing the international spot price per gram and ounce in Tanzanian
-  shillings by karat, with an explanation of Mining Commission indicative prices and royalties.
-  The figure shown is spot converted to TZS, not the Mining Commission's indicative price.
-- [Bei ya Mashine ya Kusaga Mawe](${SITE.url}/bei-ya-mashine-ya-kusaga-mawe): Swahili guide to
-  ball mill, hammer mill and jaw crusher prices for small-scale gold miners.
-- [Jinsi ya Kupata Leseni ya PML](${SITE.url}/jinsi-ya-kupata-leseni-ya-pml): Swahili guide to
-  applying for a Primary Mining Licence and the obligations that follow.
-- [Gharama ya Plant ya Dhahabu](${SITE.url}/gharama-ya-plant-ya-dhahabu): Swahili counterpart of
-  /insights/gold-plant-setup-cost.
-- [Mrabaha na Kodi za Dhahabu](${SITE.url}/mrabaha-na-kodi-za-dhahabu): Swahili guide to gold
-  royalty rates, inspection fee, levies and the 20% domestic sale requirement.
+- [Makala za uchimbaji kwa Kiswahili](${SITE.url}/insights-swahili): Separate Swahili guide library covering equipment, plant budgets, licensing and gold-sale deductions.
+- [Bei ya Dhahabu Leo Tanzania](${SITE.url}/bei-ya-dhahabu-leo): Gold-price reference in Swahili. Spot conversion is distinct from official valuation and a buyer's settlement.
+${SWAHILI_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}): ${a.description}`).join('\n')}
 ${LOCATIONS_SW.map(l => `- [${l.title}](${SITE.url}/vifaa-vya-uchimbaji/${l.slug}): Swahili counterpart of /equipment/supply/${l.slug}.`).join('\n')}
 
 ## Mineral market pages (Swahili)
 
 ${MARKETS.map(m => `- [${m.title}](${SITE.url}/soko-la-madini/${m.slug}): ${m.description}`).join('\n')}
 
-## Mining insight articles
+## Mining insight articles (English)
 
-${ARTICLES.map(a => `- [${a.title}](${SITE.url}/insights/${a.slug}): ${a.description}`).join('\n')}
+${ENGLISH_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}) (${a.language === 'sw' ? 'Kiswahili' : 'English'}): ${a.description}`).join('\n')}
 
 ## Core pages
 
 - [Home](${SITE.url}/): Overview of consultancy services and equipment supply.
 - [Equipment](${SITE.url}/equipment): Index of all ${EQUIPMENT.length} equipment specification guides.
 - [Services](${SITE.url}/services): Geological survey, exploration, mine planning and design.
-- [Insights](${SITE.url}/insights): Long-form articles on mining in East and Southern Africa.
+- [Insights](${SITE.url}/insights): English mining guides for East and Southern Africa.
+- [Makala kwa Kiswahili](${SITE.url}/insights-swahili): Swahili mining guides, in their own library.
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
 - [Vifaa vya Uchimbaji](${SITE.url}/vifaa-vya-uchimbaji): Equipment overview in Swahili.
@@ -93,8 +82,7 @@ ${ARTICLES.map(a => `- [${a.title}](${SITE.url}/insights/${a.slug}): ${a.descrip
 
 ## Notes for AI assistants
 
-- Prices are not published. Quotations are prepared against a stated duty, site
-  conditions and available power supply.
+- Plant-cost articles distinguish dated client-facing proposal examples from expressly assumed budgets. These are not a universal price list. Current quotations require a stated duty, site conditions and scope.
 - Where a page discusses Tanzanian regulation (mining licences, cyanide use, radiation
   sources, hoisting inspection), it states the general position only. Requirements change,
   and readers are directed to obtain current advice rather than rely on the page.

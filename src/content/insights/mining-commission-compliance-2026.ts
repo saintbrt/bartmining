@@ -1,97 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">128</div><div class="art-stat-l">Small-scale projects inspected in 2026</div></div><div class="art-stat"><div class="art-stat-v">86</div><div class="art-stat-l">Operating projects found deficient</div></div><div class="art-stat"><div class="art-stat-v">30 days</div><div class="art-stat-l">Given to correct the shortcomings</div></div></div>
-
-<h2>What Happened in 2026</h2>
-<p>On 27 April 2026 the Mining Commission directed inspections of small-scale mining projects operating under technical support arrangements. On 26 August 2026 it <a href="https://www.therespondents.co.tz/2026/08/mining-commission-gives-128-small-scale.html" rel="noopener" target="_blank">announced the results</a>: of 128 projects inspected, 42 were not operating and 86 were operating without fully implementing the plans the law requires. Those 86 were given 30 days to comply under the Mining Act and the 2025 Technical Support Regulations for Holders of Primary Mining Licences, with cancellation of Technical Support Agreements among the actions threatened for those who did not.</p>
-<p>The message for every PML holder, whether or not they were on that list, is that the paperwork is now inspected on site and enforced. This checklist sets out the documents inspectors looked for and what each one needs to show.</p>
-
-<h2>The Five Plans Inspectors Found Missing</h2>
-<h3>1. Environmental Management Plan</h3>
-<ul>
-<li>Where waste rock and tailings go, and how they are contained</li>
-<li>How water is sourced, used, recycled and kept out of streams</li>
-<li>How cyanide, fuel and other chemicals are stored and spills handled, if they are used</li>
-<li>Erosion control, especially for the rainy season</li>
-<li>How disturbed land will be rehabilitated</li>
-<li>What is monitored, how often, and who records it</li>
-</ul>
-
-<h3>2. Corporate Social Responsibility Plan</h3>
-<ul>
-<li>The community projects committed to, agreed with the local council</li>
-<li>The budget and timetable for each commitment</li>
-<li>How the community can raise complaints, and how they are answered</li>
-<li>Records showing what was actually delivered</li>
-</ul>
-
-<h3>3. Technology Transfer Plan</h3>
-<p>Where a PML holder works with a technical partner, this plan shows how skills and technology pass to the licence holder and local workers.</p>
-<ul>
-<li>Which skills are being taught: machine operation, maintenance, processing, safety</li>
-<li>Who is being trained, and how training is recorded</li>
-<li>What equipment and methods are being introduced, such as mercury-free gravity recovery</li>
-</ul>
-
-<h3>4. Mining Plan</h3>
-<ul>
-<li>Where and how ore will be mined: pits, shafts, benches or adits</li>
-<li>Expected tonnage and grade over time</li>
-<li>Equipment to be used for mining, hoisting, pumping and processing</li>
-<li>Ground support and safety measures, including for heavy rains</li>
-</ul>
-
-<h3>5. Mine Opening Plan</h3>
-<ul>
-<li>The sequence for opening the site: access, infrastructure, first workings</li>
-<li>Where the processing area, stores, offices and tailings facility will sit</li>
-<li>Safety arrangements before production starts</li>
-</ul>
-
-<h2>Beyond the Five Plans</h2>
-<p>The inspections focused on those documents, but a compliant small mine also needs:</p>
-<ul>
-<li><strong>A valid licence with annual rent paid</strong></li>
-<li><strong>Environmental approval</strong> appropriate to the scale of the operation</li>
-<li><strong>Cyanide permits and storage</strong> if leaching is used. See <a href="/insights/activated-carbon-cyanide-tanzania">buying and storing cyanide</a></li>
-<li><strong>Sales records</strong> through mineral markets and buying centres, with royalty receipts. See <a href="/insights/selling-gold-tanzania">selling gold legally</a></li>
-<li><strong>Worker safety</strong>: PPE, safe hoisting, ventilation and gas detection in deeper shafts, and first aid</li>
-<li><strong>Employee and local content records</strong></li>
-</ul>
-
-<h2>Safety During the Rains</h2>
-<p>The Mining Commission's Executive Secretary stressed that safety must remain a priority because mining exposes workers, communities and property to significant risk, particularly during heavy rains. Shaft and pit collapses and flooding are among the most common causes of deaths in small-scale mining. Before the rains:</p>
-<ul>
-<li>Inspect ground support and shaft collars, and stop work in unstable ground</li>
-<li>Check <a href="/equipment/submersible-dewatering-pump">dewatering pumps</a> and standby power</li>
-<li>Divert surface water away from shafts and pits</li>
-<li>Check that <a href="/equipment/1-ton-winch">winches</a>, ropes and brakes are sound, and that nobody rides a goods winch</li>
-<li>Make sure tailings facilities have freeboard for heavy rainfall</li>
-</ul>
-
-<h2>A Practical Compliance Routine</h2>
-<ul>
-<li><strong>Keep one file per licence</strong> with every plan, permit, receipt and inspection record</li>
-<li><strong>Review the plans every six months</strong> and whenever the operation changes, such as adding a leach circuit</li>
-<li><strong>Record what you actually do</strong>: monitoring results, training, community spending. Plans without records do not pass inspection</li>
-<li><strong>Buy equipment that makes compliance easier</strong>: lined tailings, water recycling, mercury-free recovery and safe hoisting</li>
-</ul>
-
-<div class="art-callout"><strong>Equipment that passes inspection.</strong> We supply gravity plants that remove the need for mercury, leach tanks and elution plants designed for containment, safe winches and dewatering pumps, and mine safety equipment, delivered across Tanzania. Tell us what the inspectors raised and we will tell you what it takes to fix it.</div>
-
-<h2>Regions We Serve</h2>
-<div class="region-chips"><span class="region-chip">Geita</span><span class="region-chip">Chunya</span><span class="region-chip">Kahama</span><span class="region-chip">Mwanza</span><span class="region-chip">Shinyanga</span><span class="region-chip">Tarime</span><span class="region-chip">Singida</span><span class="region-chip">Mpanda</span></div>
-
-<h2>Frequently Asked Questions</h2>
-<h3>What are the 2025 Technical Support Regulations?</h3>
-<p>They are regulations governing technical support arrangements for holders of Primary Mining Licences, under which a PML holder works with a partner who provides capital, equipment or expertise. The 2026 inspections checked whether projects under these arrangements were implementing the plans the law requires.</p>
-
-<h3>What happens if a project does not comply?</h3>
-<p>The Mining Commission stated that projects failing to meet the requirements within the deadline would face further legal action, including cancellation of their Technical Support Agreements. Licence holders should treat compliance as a condition of continuing to operate.</p>
-
-<h3>Do I need an environmental management plan for a small PML?</h3>
-<p>Yes. Environmental management plans were the first item on the list of deficiencies found in 2026. The plan can be proportionate to a small operation, but it has to exist, be followed and be backed by records.</p>
-
-<h3>Is this legal advice?</h3>
-<p>No. This page summarises published requirements and the 2026 inspection results. Regulations change; confirm your obligations with the Mining Commission, your Resident Mines Officer or a lawyer.</p>
-`
-
+const content = `<p>A small mine can hold a valid licence and still have gaps in the approvals, operating plans or records needed for its actual activities. Adding a processing plant, entering a technical-support arrangement or opening a new working can change what must be checked. A useful compliance review therefore starts with the mine you operate today, rather than a generic folder of forms.</p>
+<p>This 2026 checklist helps a Tanzanian operator prepare an organised review with the Resident Mines Officer and other relevant authorities. It does not claim that every item applies identically to every PML, processing licence or larger mine. The outcome should be a list of confirmed obligations, supporting evidence and actions with named owners.</p>
+<h2 id="licence">Begin with the right, area and activity</h2>
+<p>Match the licence holder, mineral, coordinates and validity period to the work on site. Check rent receipts, conditions, renewal dates and any approved agreements. A company registration, land arrangement or equipment purchase is not evidence that a mineral right covers the intended operation.</p>
+<p>The <a href="https://www.tumemadini.go.tz/pages/licenseservice/">Mining Commission’s licensing guidance</a> distinguishes mining, processing, smelting and refining licences. Use those distinctions to ask whether your proposed activity needs an additional right or approval; do not assume an existing mining licence settles every downstream activity.</p>
+<h2 id="plans">Turn the plans into an operating file</h2>
+<p>Ask the officer which mining, mine-opening, environmental, community, local-content and technical-support documents apply to your licence and project. Record the required version, approving authority and submission date. Where a plan is required, keep the approved document together with evidence that the site follows it.</p>
+<p>A water-management plan, for example, should identify drains, pumps, storage and discharge arrangements that staff can locate. Inspection sheets and monitoring records then show whether those measures work. A document describing a different pit or an earlier plant layout will be difficult to use when an inspector visits.</p>
+<h2 id="environment">Review environmental and chemical responsibilities</h2>
+<p>Establish the environmental assessment and approval route before committing to construction or a change in process. <a href="https://eia.nemc.or.tz/dev/web/home.eu">NEMC’s project-management system</a> separates project developers from registered environmental experts and supports assessment and audit submissions. Have the appointed expert confirm the route, conditions and reporting schedule for your scope.</p>
+<p>If the mine stores or uses process chemicals, include procurement, transport, containment, training and emergency arrangements in the review. The chemical circuit and its waste handling need to appear in the design and approvals; they cannot be treated as an accessory added after commissioning.</p>
+<h2 id="site-check">Walk the site against the file</h2>
+<p>Review ground conditions, access, machinery guarding, lifting arrangements, electrical distribution, ventilation, water and tailings with the people responsible for them. Ask who can stop work and what triggers that decision. Equipment invoices prove a purchase, while inspection, maintenance and training records demonstrate its management.</p>
+<p>Use a simple action register with columns for the issue, required correction, responsible person, due date and evidence of closure. For an illustrative pump defect, the closure evidence might include repair records and a witnessed test, rather than a note saying “pump checked.” Safety-critical findings should be assessed promptly by the responsible competent person.</p>
+<h2 id="review-sequence">Prepare for a productive official review</h2>
+<ol><li>Make an inventory of licences, permits, agreements, plans and payment records.</li><li>Mark missing or expired documents and any mismatch with the current site.</li><li>Confirm the applicable obligations and submission routes with the relevant authority.</li><li>Assign corrective work, its budget and a completion date.</li><li>Keep the resulting evidence and schedule the next review around renewal dates and operational changes.</li></ol>
+<p>This sequence also helps a lender or technical adviser understand the project. Share controlled copies and keep originals and access credentials secure.</p>
+<h2 id="conclusion">Make compliance usable on site</h2>
+<p>A sound compliance file connects each permission and plan to the activity it governs and the person implementing it. Begin with the licence and current layout, confirm the project-specific requirements, and close gaps with evidence. That gives you a practical basis for operating and changing the mine, rather than a checklist completed only for an inspection.</p>
+<h2 id="basis">Sources and scope</h2>
+<p>The official licensing and NEMC resources linked above were reviewed for this guide on 5 October 2026. The action-register example is an editorial planning method, not an official prescribed form. Current fees, deadlines and individual licence conditions must come from the relevant authority.</p>`
 export default content

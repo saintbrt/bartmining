@@ -1,35 +1,24 @@
-const content = `<h2>Exploration Drill Rigs for African Conditions</h2>
-<h3>Diamond Core Rigs</h3>
-<p>The most widely used diamond core rigs in East and Southern Africa are in the 500–2,000 m depth range. Popular models include the Atlas Copco (Epiroc) CS and Christensen series, Boart Longyear LF series, and various Chinese-manufactured rigs (Jinquan, ZDY series) which have gained significant market share due to lower capital cost. Key considerations for African deployment include: diesel engine availability (Tier 3 rather than Tier 4 to avoid DEF/AdBlue constraints), mud pump capacity for deep, hot holes, and simplicity of maintenance in the field with limited spares.</p>
-<p>Skid-mounted rigs are generally preferred over truck-mounted for off-road access; modular designs that can be broken down for helicopter transport are available for fly-camp operations in remote areas.</p>
-
-<h3>Reverse Circulation (RC) Rigs</h3>
-<p>RC drilling in Africa is dominated by track-mounted multipurpose units capable of both RC and diamond core. The Sandvik DR rigs and smaller units from Edson and Massmin are commonly seen on East African gold exploration programmes. Compressor sizing is critical. undersize air supply is the single most common cause of poor RC sample quality in the field.</p>
-
-<h2>Geophysical Survey Equipment</h2>
-<h3>Magnetometers</h3>
-<p>Ground magnetometer surveys in Africa are typically conducted with caesium-vapour instruments (GEM Systems, Scintrex) due to their sensitivity and compatibility with GPS. Portable fluxgate gradiometers are used for high-density surveys in prospect-scale areas. UAV-mounted magnetometers (e.g. GEM GSMP-35U) are increasingly used to acquire sub-50 m line-spacing data at costs comparable to conventional ground surveys.</p>
-
-<h3>IP/Resistivity Systems</h3>
-<p>IP survey systems from Syscal (IRIS Instruments), Zonge and ARES are most common in East Africa. The choice between multi-electrode cable arrays and conventional dipole-dipole configurations depends on terrain, target depth and programme logistics. Remote, rugged areas favour wireless systems (e.g. Geometrics OhmMapper, AGI SuperSting) that reduce cable weight and deployment time.</p>
-
-<h2>Laboratory &amp; Sample Processing Equipment</h2>
-<h3>Field XRF</h3>
-<p>Portable X-ray fluorescence (pXRF) analysers (Olympus Vanta, Bruker S1 Titan) are now standard field equipment on East African exploration programmes. They enable rapid element screening (Zn, Cu, Pb, As, Ba, Ti, V, Cr, Ni and many others) at the rig or in core sheds, allowing real-time decisions on sample dispatching and drilling continuation. pXRF does not replace fire assay for gold but significantly improves base-metal programme efficiency.</p>
-
-<h3>Core Processing Equipment</h3>
-<p>A well-equipped core shed in Tanzania or Zambia requires: diamond blade core saws (Almonte, Almex), rock splitters for friable zones, electronic core trays with photogrammetry capability, drying ovens, and a digital photograph setup with scale and colour reference cards. Labelling and chain-of-custody documentation should be digitised from day one. paper-based systems are prone to errors and loss.</p>
-
-<h2>Mine Planning Software</h2>
-<h3>3D Geological Modelling</h3>
-<p>Seequent Leapfrog Geo is the industry standard for implicit 3D geological modelling in East and Southern Africa, widely used for resource estimation, structural interpretation and mine planning. MICROMINE and Datamine Studio RM are also common, for early-stage exploration, open-source solutions (Paraview, QGIS) combined with Python-based resource scripts provide cost-effective alternatives for junior companies.</p>
-
-<h3>Resource Estimation Software</h3>
-<p>Ordinary Kriging and Inverse Distance Weighting estimation routines in Micromine, Surpac or Leapfrog are used for JORC-compliant Mineral Resource estimates. Geostatistical analysis (variography, declustering, domaining) is typically conducted by a Competent Person with appropriate qualifications under the JORC Code or NI 43-101 standard.</p>
-
-<h2>Power Supply Solutions for Remote Operations</h2>
-<p>Reliable power supply is a persistent challenge for exploration camps in East Africa. Diesel gensets remain the primary source, but solar-diesel hybrid systems have proven cost-effective for core shed lighting, instrument charging and laboratory equipment. LiPO battery banks (100–300 kWh) charged by solar arrays can eliminate daytime diesel running entirely for light loads.</p>
-
-<h2>Regions &amp; Countries We Support</h2>
-<div class="region-chips"><span class="region-chip">Tanzania</span><span class="region-chip">Kenya</span><span class="region-chip">Zambia</span><span class="region-chip">Zimbabwe</span><span class="region-chip">Mozambique</span><span class="region-chip">DRC</span><span class="region-chip">South Africa</span><span class="region-chip">Namibia</span><span class="region-chip">Botswana</span><span class="region-chip">Rwanda</span></div>`
+const content = `<p>Equipment procurement begins with the work the machine must perform and the conditions where it will operate. Across East and Southern Africa, transport, utilities, access and maintenance support can change an otherwise suitable catalogue choice. The useful comparison is a complete duty and delivered scope, not simply a brand or nominal capacity.</p>
+<p>This guide helps owners prepare that scope for exploration, processing and mine-support equipment. It shows how to turn a project requirement into supplier questions and avoid confusing equipment selection with proof that a mine will produce economically.</p>
+<h2 id="duties">Build a duty list for the project stage</h2>
+<p>An exploration programme may require sampling tools, a drilling service, survey equipment, sample preparation and power. A producing mine adds feed handling, processing, water, lifting and safety systems. Organise the list by task and identify what is essential now, what can be hired and what depends on later evidence.</p>
+<p>Describe drilling by method, depth, ground conditions and sample requirement. Describe processing by feed characteristics, throughput and target product. A requested “gold plant” without those details leaves suppliers pricing different systems.</p>
+<h2 id="site-conditions">Give suppliers a site brief</h2>
+<p>Provide location, road and bridge constraints, unloading arrangements, elevation where relevant, water, electrical supply and the operating environment. Confirm workforce capability, maintenance access and the intended schedule. Identify unusual lifting or transport needs before fabrication or purchase.</p>
+<p><a href="https://www.cat.com/en_US/by-industry/electric-power/electric-power-resources/genset-sizing.html">Caterpillar’s generator-sizing guidance</a> distinguishes running and starting demand. It is one example of why a motor rating alone does not define the site utility requirement. Ask the equipment and electrical suppliers to work from the same load list.</p>
+<h2 id="evidence">Connect process equipment to test evidence</h2>
+<p>For crushing and grinding, provide size, hardness and product requirements backed by suitable testing. For recovery equipment, give the metallurgical response and stream duties. <a href="https://www.metso.com/globalassets/insights/ebooks/metso-crushing-and-screening-handbook-edition7-en-web.pdf">Metso’s crushing and screening handbook</a> is a technical reference for the relationship between feed, reduction, capacity and product.</p>
+<p>Ask suppliers to state the assumptions behind their selection and guarantees. A nominal capacity achieved on another material should remain a reference, not become your production forecast without assessment.</p>
+<h2 id="comparison-example">Compare two offers with equal scope</h2>
+<p>Suppose, illustratively, offer A is USD 90,000 for equipment only and offer B is USD 110,000 including delivery and startup support. If A needs assumed USD 12,000 delivery and USD 10,000 installation and support, its comparable total becomes USD 112,000. Taxes, utilities and owner works may still be outside both.</p>
+<p>The example shows how inclusions change a ranking; the amounts are not market prices. Create a line-by-line comparison with “included,” “excluded” and “unconfirmed” entries so an omission cannot disappear into a lower total.</p>
+<h2 id="support">Assess maintenance and acceptance</h2>
+<p>Identify the manufacturer and model, parts lead times, service support and essential startup spares. Agree manuals, drawings, training and commissioning duties. Use a documented acceptance test with agreed feed and operating conditions, rather than accepting delivery as proof of performance.</p>
+<p>Also decide whether rental or used equipment suits the period and uncertainty. The <a href="/insights/equipment-rental-tanzania">rental guide</a> and <a href="/insights/used-mining-equipment-tanzania">used-equipment guide</a> provide comparison sequences for those options.</p>
+<h2 id="next-step">Prepare a quotation pack</h2>
+<p>Send the duty list, site brief, available test reports, required delivery scope and commissioning expectations together. Ask for currency, validity, delivery basis and exclusions. For a plant, include an owner’s budget and working cash using the <a href="/insights/gold-plant-setup-cost">startup-budget guide</a>.</p>
+<h2 id="conclusion">Procure for a defined job</h2>
+<p>Select equipment from duty, evidence and site conditions, then compare complete offers and support arrangements. A clear quotation pack gives suppliers a common basis and makes omissions visible. Prepare that pack before using headline prices to decide what the project can afford.</p>
+<h2 id="basis">Sources and example basis</h2>
+<p>Manufacturer references were reviewed on 5 October 2026. Offer values are illustrative; no current model availability or regional market share is claimed.</p>`
 export default content

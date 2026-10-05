@@ -1,83 +1,22 @@
-const content = `<div class="art-stats"><div class="art-stat"><div class="art-stat-v">30-60%</div><div class="art-stat-l">Typical saving against new</div></div><div class="art-stat"><div class="art-stat-v">50 Hz</div><div class="art-stat-l">Tanzanian supply frequency</div></div><div class="art-stat"><div class="art-stat-v">1 test</div><div class="art-stat-l">Separates a bargain from a liability</div></div></div>
-
-<h2>Used Equipment Is a Good Idea, Badly Executed</h2>
-<p>Buying used mining equipment can save 30 to 60 percent against new, and for a small operation that difference frequently decides whether a project happens at all. Mining plant is built heavy, and a well-maintained mill or crusher has decades of life in it.</p>
-<p>The problem is not age. It is that most used equipment is bought on price and photographs, and the two things that actually determine whether it will work on your site are almost never in either: whether it suits your ore, and whether you can still get parts for it.</p>
-
-<h2>The Mistake That Costs the Most</h2>
-<p>A processing plant is designed around a specific ore. When someone sells you a complete plant that "was producing 50 tonnes a day", the number they are quoting was achieved on their ore, at their grind size, with their hardness and their liberation characteristics.</p>
-<p>Put the same plant on harder ore and the mill is undersized. The circuit will not reach nameplate at any price, because comminution is set by the ore's Bond Work Index and the installed power, and no amount of operating skill changes that. Buyers discover this after installation, when the fix is a new mill and motor, which is usually more than the whole plant cost.</p>
-<p>Before buying any used comminution equipment, get a Bond Work Index on your ore and check the installed power against it for your target tonnage and grind. That single test costs a small fraction of the purchase and it is the difference between a bargain and a stranded asset.</p>
-
-<div class="art-callout"><strong>Match the plant to your ore, not to the seller's tonnage claim.</strong> The throughput figure quoted in a used plant listing is a fact about someone else's orebody. It carries no information about what the same equipment will do on yours.</div>
-
-<h2>Electrical: The Quiet Deal-Breaker</h2>
-<p>Tanzania runs 230 V single phase and 400 V three phase at 50 Hz. Equipment built for North American or some Middle Eastern markets runs 60 Hz, often at 480 V.</p>
-<p>A 60 Hz motor run on a 50 Hz supply turns roughly 17 percent slower, which changes throughput on everything driven by it, and it can overheat under continuous load. Voltage mismatch needs transformers. Neither is fatal on its own, but both are costs the seller has not mentioned and both should come off the price.</p>
-<p>Check every motor nameplate, not just the main drive. A plant can have the right main motor and a dozen wrong auxiliaries.</p>
-
-<h2>What to Inspect, by Category</h2>
-<h3>Ball and rod mills</h3>
-<p>Shell thickness and any weld repairs, trunnion bearing condition and journal wear, girth gear and pinion tooth contact and backlash, liner bolt hole elongation, and the gearbox oil condition. Ask to see the mill turning under power. A mill that cannot be demonstrated running should be priced as scrap steel plus an unknown.</p>
-
-<h3>Crushers</h3>
-<p>Frame cracking around the pitman and the main bearing housings, which is the failure that ends a crusher's life. Jaw plate and cheek plate wear is a consumable and should not scare you. Check eccentric shaft bearings for play, toggle seat condition, and whether the adjustment mechanism still moves freely.</p>
-
-<h3>Pumps</h3>
-<p>Wet end wear is expected and cheap to remedy. What matters is the bearing housing, shaft straightness and whether liners and impellers are still manufactured for that model. A slurry pump whose wet end is obsolete is a pump you will throw away at the first rebuild.</p>
-
-<h3>Generators</h3>
-<p>Running hours and the service record, insulation resistance on the alternator, and evidence of wet stacking from prolonged light-load running, which shows as carbon glazing and a sooty exhaust. Ask for a load bank test, not a no-load start. A set that starts easily and cannot take load has not been tested at all.</p>
-
-<h3>Tanks, thickeners and structures</h3>
-<p>Corrosion at the waterline and under any insulation, weld condition, and whether the unit can be dismantled and transported without cutting. Many bargains stop being bargains once you price moving them.</p>
-
-<h2>Parts and Obsolescence</h2>
-<p>Before agreeing a price, identify the manufacturer and model and confirm that wear parts and spares are still available and at what lead time. Equipment from a manufacturer that no longer exists, or a model long out of production, can be perfectly serviceable until the first failure and then dead permanently.</p>
-<p>Chinese-manufactured equipment is very common across the Tanzanian goldfields and much of it is entirely sound, but parts availability varies enormously between makers. Establish who supports it locally before you buy, not after.</p>
-
-<h2>Documentation Worth Insisting On</h2>
-<ul>
-<li><strong>Manufacturer, model and serial number</strong> for every major item</li>
-<li><strong>General arrangement drawings</strong> and electrical schematics if they exist</li>
-<li><strong>Maintenance history</strong>, or an honest statement that there is none</li>
-<li><strong>Motor nameplate photographs</strong>, all of them</li>
-<li><strong>Proof of ownership.</strong> Equipment from a closed or distressed operation can carry disputed title, and this is a real risk in the region</li>
-<li><strong>Pressure vessel certification</strong> for anything that holds pressure, such as an elution vessel or air receiver</li>
-</ul>
-
-<h2>Where Used Equipment Comes From</h2>
-<p>The best sources are operations that closed for reasons unrelated to the equipment, such as an orebody running out, a licence lapsing, or a corporate decision to exit. Plant from an operation that failed because the plant never worked is a different proposition entirely, and it is worth asking directly why the equipment is available.</p>
-<p>Regionally, plant becomes available from closing operations across Tanzania and neighbouring countries. Import from South Africa or further afield is common. Factor cross-border clearance and inland transport into the comparison, because a cheap plant a long way away is frequently not cheap.</p>
-
-<h2>A Sensible Buying Sequence</h2>
-<ul>
-<li><strong>Test your ore first.</strong> Bond Work Index and liberation, before you look at any machine</li>
-<li><strong>Specify what you need</strong> in numbers: tonnage, grind size, installed power, head and flow</li>
-<li><strong>Then shop</strong>, and reject anything that does not meet the specification regardless of price</li>
-<li><strong>Inspect physically</strong>, or pay someone competent to. Photographs hide cracks and hide nothing else</li>
-<li><strong>Confirm parts availability</strong> before agreeing price</li>
-<li><strong>Price the total.</strong> Purchase, dismantling, transport, refurbishment, new wear parts, electrical conversion and installation</li>
-<li><strong>Compare that total against new</strong>, landed. Used sometimes wins by less than expected</li>
-</ul>
-
-<div class="art-callout"><strong>We inspect used plant against your ore.</strong> If you are considering a second-hand purchase, send us the equipment list and your assay data. We will tell you whether it suits your orebody, what it will realistically achieve, and what it needs spending on. Sometimes the answer is that new is cheaper once everything is counted.</div>
-
-<h2>Regions We Serve</h2>
-<div class="region-chips"><span class="region-chip">Mwanza</span><span class="region-chip">Geita</span><span class="region-chip">Kahama</span><span class="region-chip">Shinyanga</span><span class="region-chip">Bukombe</span><span class="region-chip">Chunya</span><span class="region-chip">Mbeya</span><span class="region-chip">Tabora</span><span class="region-chip">Dar es Salaam</span></div>
-
-<h2>Frequently Asked Questions</h2>
-<h3>How much can I save buying used mining equipment?</h3>
-<p>Typically 30 to 60 percent against new for the machine itself. That margin narrows once you add dismantling, transport, refurbishment, new wear parts and any electrical conversion, so build the total cost before concluding that used is cheaper.</p>
-
-<h3>What is the biggest risk with a used gold plant?</h3>
-<p>That it was designed for different ore. Comminution capacity is fixed by installed power against your ore's hardness, so a plant that ran well on soft oxide ore will not reach the same tonnage on hard sulphide ore no matter how it is operated. Test your ore before you buy, not after.</p>
-
-<h3>Will 60 Hz equipment work in Tanzania?</h3>
-<p>It will run on the 50 Hz supply but roughly 17 percent slower, and it can overheat under continuous load. Voltage differences need transformers. It is workable in some cases and should always reduce the price, but check every motor nameplate rather than assuming the main drive is representative.</p>
-
-<h3>Should I buy a complete plant or individual machines?</h3>
-<p>Individual machines, in most cases, unless the complete plant genuinely matches your ore and tonnage. Buying a full circuit locks you into someone else's flowsheet. Assembling the right mill, the right crusher and the right recovery equipment for your ore usually produces a better plant, even if it takes longer to source.</p>
-`
-
+const content = `<p>Used equipment can reduce the purchase outlay, but the saving matters only after the machine is matched to the job and brought into service. Condition, electrical compatibility, parts and transport can change the result substantially. A seller’s throughput claim describes a previous operating basis, not necessarily your ore or site.</p>
+<p>This guide sets out a buying sequence for a Tanzanian project and shows how to compare a used offer with a new one. The outcome should be a documented duty assessment, inspection and complete delivered budget before a deposit is paid.</p>
+<h2 id="duty">Check suitability before negotiating price</h2>
+<p>Write the required feed, throughput, product size, operating hours and utilities. For milling equipment, use appropriate grindability and process evidence rather than selecting by drum dimensions. <a href="https://www.sgs.com/-/media/sgscorp/documents/corporate/brochures/sgs-canada-inc-minerals-comminution.cdn.en-CA.pdf">SGS’s comminution guidance</a> provides a reference for the tests behind grinding selection.</p>
+<p>Ask the seller what material, feed size and product size supported the previous production claim. Have an engineer assess the installed power and circuit duties for your requirement. Even a mechanically sound machine can be the wrong purchase.</p>
+<h2 id="inspection">Commission an inspection appropriate to the asset</h2>
+<p>For a mill, inspect the shell, bearings, drivetrain, liners and repairs. For a crusher, review structural condition, bearings, adjustment and wear components. For pumps, confirm the wet-end duty and parts support. Use qualified inspectors and the manufacturer’s methods for the particular machine.</p>
+<p><a href="https://www.metso.com/products-and-services/services/grinding-mill-services/grinding-mill-inspections/">Metso’s mill-inspection service</a> identifies issues such as cracks, alignment, contamination and vibration. It illustrates why a photograph or no-load rotation is not a complete condition report. Agree what can be tested under representative load and what remains unknown.</p>
+<h2 id="compatibility">Verify electrical and installation requirements</h2>
+<p>Record every nameplate, drive, control panel and protection requirement. Have the electrical designer compare them with the actual site supply, including frequency, voltage, starting conditions and earthing. Do not assume changing one main motor makes the rest of an imported plant compatible.</p>
+<p>Check foundations, access, lifting and dismantling requirements. Identify components that cannot be safely transported or reassembled without repair. The delivery budget should include packaging, loading, freight, clearance, inland movement and unloading, with responsibilities stated.</p>
+<h2 id="cost-example">Compare the saving after repairs and delivery</h2>
+<p>Assume a used machine costs USD 40,000, with USD 2,000 inspection, USD 8,000 repairs, USD 10,000 delivery and USD 5,000 installation. The assumed ready-to-use cost is USD 65,000 before tax, operating cash and unresolved defects. A comparable new offer at an assumed USD 75,000 ready to use appears USD 10,000 higher.</p>
+<p>Now test a repair overrun and a late start. An additional USD 7,000 repair and USD 5,000 valued delay would take the used case to USD 77,000 on that assumed basis. This is an illustration of sensitivity, not a current price or a claim that used equipment is usually dearer.</p>
+<h2 id="documents">Require identity, ownership and parts support</h2>
+<ul><li>Manufacturer, model, serial number and proof the seller can transfer ownership.</li><li>Drawings, manuals, service records and details of modifications.</li><li>Inspection findings and a list of unresolved defects.</li><li>Written parts availability, lead times and initial critical-spares scope.</li><li>Contract terms for condition, testing, delivery and remedies.</li></ul>
+<p>Where records are missing, price and manage the uncertainty explicitly. Do not describe undocumented operating hours or an untested repair as verified simply because the seller gave a confident explanation.</p>
+<h2 id="conclusion">Buy the documented duty and condition</h2>
+<p>A worthwhile used purchase combines process suitability, verified condition and a supportable delivered cost. Start with the duty, inspect before commitment and compare repair and delay cases alongside the headline saving. The next step is an inspection brief and cost sheet that expose every unresolved item.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>Technical references were reviewed on 5 October 2026. Example costs are hypothetical. No universal discount, machine life or compatibility rule is asserted.</p>`
 export default content

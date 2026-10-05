@@ -1,33 +1,22 @@
-const content = `<h2>Sample Preparation: The Critical First Step</h2>
-<p>Sample preparation quality determines the reliability of assay results regardless of the analytical method used, for gold exploration samples, the standard preparation sequence is:</p>
-<ol>
-<li><strong>Coarse crush</strong>. jaw crusher to 70% passing 2 mm</li>
-<li><strong>Split</strong>. riffle splitter or rotary splitter to obtain representative sub-sample (typically 250–500 g)</li>
-<li><strong>Fine grind (pulverise)</strong>. disc mill or LM2 pulveriser to 85–90% passing 75 µm</li>
-<li><strong>Sub-sample for assay</strong>. 30–50 g aliquot weighed for fire assay</li>
-</ol>
-<p>Sample preparation introduces more variability into assay results than any other step. Thorough equipment cleaning between samples (compressed air blow-out between samples, full wet-clean periodically) is essential to prevent cross-contamination, for nugget-prone samples (coarse visible gold) a screen fire assay or metallic screen fire assay is required.</p>
-
-<h2>Analytical Methods for Gold</h2>
-<h3>Fire Assay with AAS or ICP-OES Finish</h3>
-<p>Fire assay (FA) is the industry-standard method for gold determination in exploration samples. A 30 g pulp aliquot is fused with a litharge flux, the resulting lead button is cupelled to a gold-silver dore bead, and the bead dissolved in dilute nitric acid for analysis by atomic absorption spectrometry (AAS) or ICP-OES. Detection limit is typically 0.005–0.01 g/t Au, for samples with visible gold or evidence of high nugget effect, metallic screen fire assay on a 500 g or larger aliquot is required.</p>
-
-<h3>Multi-Element ICP-MS and ICP-OES</h3>
-<p>Pathfinder element suites (As, Sb, Bi, Te, W, Mo, Cu, Pb, Zn, Ni, Co, Cr, Ti, Ba, Sr, La, Ce) are determined by ICP-MS or ICP-OES following aqua regia or four-acid digest. Multi-element packages (typically 33–51 elements) provide geochemical context for mineralisation interpretation and are essential for alteration studies and understanding deposit-style controls.</p>
-
-<h2>QA/QC Programme Design</h2>
-<h3>Certified Reference Materials (CRMs)</h3>
-<p>CRMs are independently certified pulp standards with known gold and multi-element values. They must be inserted at a frequency of at least one per 20 samples (5% of the batch), spanning the low-grade, mid-grade and high-grade range of the mineralisation. CRM results must plot within ±2σ of the certified value; failures require investigation and re-assay of the affected batch.</p>
-
-<h3>Blanks</h3>
-<p>Coarse crush blanks (barren rock of similar lithology to the samples, crushed and prepared identically) detect contamination in the sample preparation circuit. A blank result exceeding 5× the detection limit triggers a cleaning investigation. Pulp blanks detect cross-contamination within the analytical batch at the laboratory.</p>
-
-<h3>Field and Pulp Duplicates</h3>
-<p>Field duplicates (quarter-core or split-RC pairs) measure sampling precision. the reproducibility of the sampling method. Pulp duplicates (portion of the original pulp sent to a second laboratory) measure analytical precision. Duplicate datasets are assessed by HARD (Half Absolute Relative Difference) statistics; precision better than 20% HARD at all grade ranges is the target standard.</p>
-
-<h2>Laboratory Selection in Tanzania</h2>
-<p>Several internationally accredited commercial laboratories serve the Tanzanian exploration market from Dar es Salaam, with sample receipt and results turnaround of 5–10 business days. Key accreditation to look for: ISO 17025 certification for gold and multi-element methods, SANAS or UKAS accreditation, and participation in inter-laboratory proficiency testing programmes (AMIS, RockLab). Bart Mining assists clients with laboratory selection, contract negotiation and result database management.</p>
-
-<h2>Cities &amp; Regions We Cover</h2>
-<div class="region-chips"><span class="region-chip">Dar es Salaam</span><span class="region-chip">Arusha</span><span class="region-chip">Mwanza</span><span class="region-chip">Geita</span><span class="region-chip">Shinyanga</span><span class="region-chip">Dodoma</span><span class="region-chip">Mbeya</span><span class="region-chip">Morogoro</span></div>`
+const content = `<p>An assay report is useful when the sample represents the material of interest and the analytical method answers the right question. A precise number from a poorly collected sample can still lead to the wrong exploration or plant decision. The work begins before the sample reaches the laboratory.</p>
+<p>This guide helps you prepare an assay brief in Tanzania, choose appropriate methods and review the quality evidence. You should finish with a submission plan and an understanding of what the result establishes, rather than treat every gold number as a mine grade or recovery estimate.</p>
+<h2 id="sampling">Define what the sample represents</h2>
+<p>Record location, material, interval, collection method and mass. Distinguish a selected rock specimen from a systematic channel or drill sample. For stockpiles and tailings, design the coverage around variation in source, depth and treatment history. Keep identifiers unique and preserve the link between field records and laboratory certificates.</p>
+<p>A laboratory cannot reconstruct a missing location or remove collection bias by using a more precise instrument. Ask a geologist to design the sampling programme around the intended decision before choosing the analytical package.</p>
+<h2 id="preparation">Agree preparation and retention</h2>
+<p>Specify drying where appropriate, crushing, splitting, pulverising and the retained material required. Discuss coarse gold and other heterogeneity with the laboratory because a small aliquot may not reflect a coarse-gold sample reliably. Preparation settings should be selected for the material and method rather than copied as universal percentages.</p>
+<p><a href="https://www.alsglobal.com/de-ch/geochemistry/sample-preparation/sample-submission">ALS’s submission guidance</a> requires clear sample and method instructions. Request the preparation procedure, contamination controls and storage or return arrangements for residues and pulps.</p>
+<h2 id="methods">Choose the method and reporting range</h2>
+<p><a href="https://www.sgs.com/en-us/services/fire-assay-analysis">SGS’s fire-assay guidance</a> describes gold analysis and sample-size choices. Ask the laboratory which method, finish, detection limit and over-range procedure suit your expected grade. Discuss screened metallics or another appropriate approach when coarse gold is suspected; the laboratory should explain its selection.</p>
+<p>Multi-element results can help investigate mineralisation and contaminants, but the digestion and method determine what is measured. A handheld screening measurement should not silently replace the agreed gold assay or metallurgical test.</p>
+<h2 id="quality">Set quality checks before dispatch</h2>
+<p>Use appropriate reference materials, blanks and duplicates through a designed QA/QC programme. Each check addresses a different uncertainty: standards assess analytical performance, blanks help identify contamination and duplicates investigate precision at the chosen sampling or preparation stage.</p>
+<p><a href="https://www.alsglobal.com/-/media/ALSGlobal/Resources-Grid/ALS-Sample-Preparation-Quality-Control-Tech-Note.pdf">ALS’s preparation-quality note</a> explains the role of preparation duplicates. Set frequencies and failure rules with the responsible geologist and laboratory, considering the material and intended reporting use. A single universal percentage cannot establish data fitness.</p>
+<h2 id="interpretation-example">Interpret grade under a stated basis</h2>
+<p>Suppose, illustratively, a representative dry feed lot of 100 t averages 2 g/t gold. Its contained gold is 200 g. That does not mean 200 g will be sold: recovery, downstream losses, fineness and selling terms still matter. Conversely, one selected specimen at 20 g/t does not establish that the 100 t lot averages 20 g/t.</p>
+<p>Check units, sample identifiers, method codes, quality results and anomalies before using assays in a model. Investigate failed controls and retain the original and revised certificates so the decision can be traced.</p>
+<h2 id="conclusion">Commission analysis for a defined decision</h2>
+<p>Design representative sampling, specify preparation and methods, and review the quality evidence before applying the numbers. Your next step is a submission sheet linked to a field sampling plan and the question you need answered. For plant selection, follow assays with the relevant <a href="/insights/plant-test-work-guide">metallurgical tests</a>.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>Laboratory references were reviewed on 5 October 2026. The feed example is assumed. This guide does not certify individual laboratory locations, current accreditation scopes or turnaround times.</p>`
 export default content

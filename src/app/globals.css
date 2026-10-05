@@ -621,3 +621,82 @@ img { display: block; max-width: 100%; }
   .gs-head span:nth-child(4) { display: none; }
   .gs-result { grid-template-columns: 1fr 1fr; }
 }
+
+/* Shared English / Kiswahili editorial layout. */
+.article-page .article-hero { padding-bottom: 44px; }
+.article-page .crumb { flex-wrap: wrap; margin-bottom: 24px; }
+.article-page .eyebrow { margin-bottom: 16px; }
+.article-page .article-hero h1 { font-size: clamp(28px, 3.5vw, 48px); line-height: 1.2; margin: 0 0 18px; max-width: 820px; }
+.article-description { max-width: 72ch; font-size: 18px; line-height: 1.7; color: var(--ink-2); margin-bottom: 24px; }
+.article-byline { display: flex; align-items: center; gap: 12px; font-size: 15px; margin-bottom: 16px; }
+.article-byline a, .article-byline span { font-weight: 700; }
+.article-byline p { color: var(--ink-3); font-size: 13px; margin-top: 3px; }
+.article-avatar { border-radius: 50%; object-fit: cover; object-position: top; }
+.article-language { display: inline-block; color: var(--gold-deep); font-weight: 600; font-size: 15px; }
+.article-cover { margin: 0 auto; }
+.article-cover > div { position: relative; aspect-ratio: 21 / 9; border-radius: var(--r-lg); overflow: hidden; }
+.article-cover figcaption { max-width: 80ch; margin-top: 12px; font-size: 14px; line-height: 1.6; color: var(--ink-3); }
+.article-body-wrap { padding-top: 44px; padding-bottom: 80px; }
+.article-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 56px; align-items: start; }
+.article-layout article { min-width: 0; }
+.article-sidebar { position: sticky; top: 92px; display: grid; gap: 24px; max-height: calc(100dvh - 116px); overflow-y: auto; }
+.article-sidebar-card { border: 1px solid var(--line); background: var(--bg-3); border-radius: var(--r-md); padding: 22px 18px; }
+.article-sidebar-card h2, .article-contents > p { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); margin: 0 0 14px; }
+.article-sidebar-card ul { list-style: none; padding: 0; display: grid; gap: 16px; }
+.article-sidebar-card li { font-size: 15px; line-height: 1.5; }
+.article-contents ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.article-contents a { display: block; padding: 6px 0 6px 10px; font-size: 14px; line-height: 1.45; border-left: 2px solid transparent; color: var(--ink-2); }
+.article-contents a[aria-current], .article-contents a:hover { color: var(--gold-deep); border-color: var(--gold); }
+.article-mobile-contents { display: none; }
+.article-page .art-body h2 { font-size: clamp(21px, 2.2vw, 27px); font-weight: 700; margin: 44px 0 16px; line-height: 1.35; scroll-margin-top: 100px; }
+.article-page .art-body h3 { font-size: 20px; font-weight: 700; margin: 28px 0 12px; line-height: 1.4; scroll-margin-top: 100px; }
+.article-page .art-body > h2:first-child { margin-top: 0; }
+.article-page .art-body p { font-size: 17px; line-height: 1.85; color: var(--ink-2); margin: 0 0 20px; max-width: 72ch; }
+.article-page .art-body ul, .article-page .art-body ol { padding-left: 24px; margin: 0 0 24px; }
+.article-page .art-body li { font-size: 17px; line-height: 1.8; color: var(--ink-2); margin-bottom: 10px; }
+.article-page .art-body a { color: var(--gold-deep); text-decoration: underline; text-underline-offset: 3px; }
+.article-page .art-body strong { color: var(--ink); font-weight: 700; }
+.article-page .art-body blockquote { border-left: 3px solid var(--gold); padding: 18px 22px; margin: 28px 0; background: var(--bg-3); }
+.article-page .art-body blockquote p { margin: 0; }
+.article-page .art-body .tbl { overflow-x: auto; margin: 24px 0; }
+.article-page .art-body table { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; font-size: 15px; margin: 20px 0 26px; }
+.article-page .art-body .tbl table { margin: 0; }
+.article-page .art-body caption { text-align: left; font-weight: 600; color: var(--ink); padding-bottom: 12px; }
+.article-page .art-body th { background: var(--slate); color: #fff; padding: 13px 16px; text-align: left; line-height: 1.5; }
+.article-page .art-body td { padding: 13px 16px; border-bottom: 1px solid var(--line-2); color: var(--ink-2); line-height: 1.65; vertical-align: top; }
+.article-page .art-body tbody th { background: var(--bg-3); color: var(--ink); border-bottom: 1px solid var(--line-2); }
+.article-page .art-stats { display: flex; flex-wrap: wrap; gap: 24px; background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-md); padding: 24px; margin: 24px 0 36px; }
+.article-page .art-stat-v { font-family: var(--font-sora); font-size: 26px; font-weight: 700; color: var(--gold-deep); }
+.article-page .art-stat-l { font-size: 14px; color: var(--ink-3); margin-top: 4px; }
+.article-page .art-callout { padding: 22px 24px; margin: 28px 0; border-left: 3px solid var(--gold); background: var(--bg-3); color: var(--ink-2); line-height: 1.8; border-radius: 0 var(--r-md) var(--r-md) 0; }
+.article-page .art-callout p:last-child { margin-bottom: 0; }
+.article-page .region-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
+.article-page .region-chip { padding: 5px 12px; border: 1px solid var(--line); background: var(--bg-3); border-radius: var(--r-sm); font-size: 13px; }
+.article-page .art-body figure { margin: 32px 0; }
+.article-page .art-body figure img { display: block; width: 100%; height: auto; border-radius: var(--r-md); }
+.article-page .art-body figcaption { font-size: 14px; line-height: 1.65; color: var(--ink-3); margin-top: 12px; }
+.article-page .art-body .process-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 22px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg-3); list-style: none; }
+.article-page .process-flow li { margin: 0; font-size: 15px; }
+.article-page .process-flow li + li::before { content: '→'; padding-right: 8px; color: var(--gold-deep); }
+.article-cta { margin-top: 44px; padding: 32px; border-radius: var(--r-lg); background: var(--slate); }
+.article-page .article-cta .eyebrow { color: rgba(255,255,255,.7); }
+.article-cta h2 { color: #fff; font-size: 24px; line-height: 1.4; margin-bottom: 14px; }
+.article-cta > p:not(.eyebrow) { color: rgba(255,255,255,.8); font-size: 16px; line-height: 1.75; margin-bottom: 24px; }
+@media (max-width: 900px) {
+  .article-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .article-sidebar { position: static; max-height: none; }
+  .article-desktop-contents { display: none; }
+  .article-mobile-contents { display: block; padding: 18px; border: 1px solid var(--line); border-radius: var(--r-md); margin-bottom: 32px; }
+  .article-mobile-contents summary { cursor: pointer; font-weight: 600; }
+  .article-mobile-contents .article-contents { margin-top: 18px; }
+  .article-cover > div { aspect-ratio: 16 / 9; }
+  .article-body-wrap { padding-top: 32px; }
+  .article-page .art-body p, .article-page .art-body li { font-size: 16px; }
+  .article-cta { padding: 26px 22px; }
+}
+.article-page .art-body .article-table-caption { font-size: 14px; line-height: 1.6; font-weight: 600; color: var(--ink); margin-bottom: 14px; }
+.article-page .art-body .tbl:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+@media (max-width: 900px) {
+  .article-page .art-body .tbl::after { content: 'Scroll across the table to see all columns →'; display: block; font-size: 13px; color: var(--ink-3); margin-top: 12px; }
+  .article-page[lang='sw'] .art-body .tbl::after { content: 'Sogeza jedwali upande kuona safu zote →'; }
+}
