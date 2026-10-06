@@ -157,6 +157,7 @@ export default function JeneretaZaKukodiPage() {
         </section>
 
         <CtaSection
+          lang="sw"
           eyebrow="Unahitaji umeme?"
           heading={<>Tuambie mzigo wako, <span className="grad">tutakushauri ukubwa</span></>}
           body="Tutumie ukubwa au orodha ya mizigo, eneo na tarehe, tutakupa bei ya ukodishaji wote."

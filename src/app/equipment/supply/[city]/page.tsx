@@ -8,6 +8,8 @@ import { LOCATIONS_SW_BY_SLUG } from '@/data/locations-sw'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
 import { SITE, serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
+import CallCard from '@/components/ui/CallCard'
+import { supplyCallCard } from '@/data/call-cards'
 
 export async function generateStaticParams() {
   return LOCATIONS.map(l => ({ city: l.slug }))
@@ -158,22 +160,11 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
               Delivery costs and dates require a current offer for the consignment.
             </p>
 
-            <div className="on-dark" style={{ marginTop: 56, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Supply to {loc.city}</p>
-              <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Need equipment delivered to {loc.city}?</h3>
-              <p style={{ color: 'rgba(255,255,255,.78)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
-                Tell us the duty, the site conditions and your power supply. We quote landed
-                in {loc.city}, with freight, duty and inland transport included, so the figure
-                you approve is the figure you pay.
-              </p>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">WhatsApp us &rarr;</a>
-                <Link href="/contact" className="btn btn-ghost">Send an enquiry</Link>
-              </div>
-            </div>
+            <div style={{ marginTop: 56 }}><CallCard lang="en" placement="banner" {...supplyCallCard('en', loc.city)} /></div>
           </article>
 
           <aside className="loc-aside">
+            <CallCard lang="en" placement="side" {...supplyCallCard('en', loc.city)} />
             <div className="loc-card">
               <div className="loc-label">On this page</div>
               <nav style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
@@ -181,13 +172,6 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
                   <a key={id} href={`#${id}`} style={{ fontSize: 15, color: 'var(--ink-2)' }}>{label}</a>
                 ))}
               </nav>
-            </div>
-            <div style={{ background: 'var(--slate)', borderRadius: 'var(--r-md)', padding: '20px 18px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 10 }}>Get a price</p>
-              <p style={{ color: 'rgba(255,255,255,.75)', fontSize: 15.5, lineHeight: 1.6, marginBottom: 16 }}>
-                Quoted landed in {loc.city}, not ex-works.
-              </p>
-              <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--gold-2)' }}>+255 759 141 705 &rarr;</a>
             </div>
             <div className="loc-card">
               <div className="loc-label">Other districts</div>

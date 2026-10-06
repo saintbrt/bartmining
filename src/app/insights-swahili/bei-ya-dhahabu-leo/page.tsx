@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { SITE, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 import { getGoldQuote, formatTzs, formatSwDateTime } from '@/lib/gold-spot'
+import CallCard from '@/components/ui/CallCard'
 
 /**
  * Swahili "gold price today" page.
@@ -191,17 +192,15 @@ export default async function GoldPriceTodayPage() {
               Chanzo: bei ya soko la dunia ya XAU na kiwango cha kubadilisha fedha USD/TZS.
             </p>
 
-            <div className="on-dark" style={{ marginTop: 40, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Bart Mining</p>
-              <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Unahitaji mashine za kuchakata dhahabu?</h3>
-              <p style={{ color: 'rgba(255,255,255,.78)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
-                Tunasambaza ball mill, concentrator, matanki ya CIP na plant za elution hadi
-                eneo lako. Andika kwa Kiswahili au Kiingereza.
-              </p>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Tuma WhatsApp &rarr;</a>
-                <Link href="/insights-swahili/bei-ya-vifaa-vya-uchimbaji" className="btn btn-ghost">Bei ya vifaa</Link>
-              </div>
+            <div style={{ marginTop: 40 }}>
+              <CallCard
+                lang="sw"
+                eyebrow="Bart Mining"
+                title="Unahitaji mashine za kuchakata dhahabu?"
+                body="Tunasambaza ball mill, concentrator, matanki ya CIP na plant za elution hadi eneo lako. Andika kwa Kiswahili au Kiingereza, tutakusikiliza na kukusaidia kuchagua kinachokufaa."
+                message="ningependa kujua kuhusu mashine za kuchakata dhahabu."
+                secondary={{ label: 'Angalia bei ya vifaa', href: '/insights-swahili/bei-ya-vifaa-vya-uchimbaji' }}
+              />
             </div>
           </article>
         </div>

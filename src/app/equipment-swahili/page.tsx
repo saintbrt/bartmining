@@ -186,6 +186,7 @@ export default function EquipmentHub() {
       <RegionsSection language="sw" />
 
       <CtaSection
+        lang="sw"
         eyebrow="Panga vifaa vya mradi"
         heading={<>Tuambie kuhusu <span className="grad">madini na uwezo unaohitaji</span></>}
         body="Tuma eneo la mradi, aina ya madini au kazi, kiasi kinacholengwa na umeme na maji yaliyopo. Tutasaidia kupanga vifaa na wigo wa makadirio ya bei."

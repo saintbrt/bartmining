@@ -9,6 +9,8 @@ import ReadingProgress from '@/components/insights/ReadingProgress'
 import { equipmentImageAlt, resolveEquipmentPhoto } from '@/lib/equipment-photos'
 import { LOCATIONS } from '@/data/locations'
 import { EQUIPMENT_GUIDES } from '@/content/equipment'
+import CallCard from '@/components/ui/CallCard'
+import { equipmentCallCard } from '@/data/call-cards'
 
 export async function generateStaticParams() {
   return EQUIPMENT.map(e => ({ slug: e.slug }))
@@ -262,22 +264,11 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
               </p>
             )}
 
-            <div className="on-dark" style={{ marginTop: 56, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Request a quotation</p>
-              <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Need a {item.name.toLowerCase()} specified for your site?</h3>
-              <p style={{ color: 'rgba(255,255,255,.78)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
-                Tell us your duty, depth or throughput and available power supply. We will
-                come back with a specification and price, and flag anything on site that
-                needs to change to make it work.
-              </p>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">WhatsApp us &rarr;</a>
-                <Link href="/contact" className="btn btn-ghost">Send an enquiry</Link>
-              </div>
-            </div>
+            <div style={{ marginTop: 56 }}><CallCard lang="en" placement="banner" {...equipmentCallCard('en', item.name)} /></div>
           </article>
 
           <aside style={{ position: 'sticky', top: 96, display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <CallCard lang="en" placement="side" {...equipmentCallCard('en', item.name)} />
             <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line)', padding: '20px 18px' }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>On this page</div>
               <nav style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
@@ -294,13 +285,6 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
               </nav>
             </div>
 
-            <div style={{ background: 'var(--slate)', borderRadius: 'var(--r-md)', padding: '20px 18px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 10 }}>Get a price</p>
-              <p style={{ color: 'rgba(255,255,255,.75)', fontSize: 15.5, lineHeight: 1.6, marginBottom: 16 }}>
-                We quote against your duty and site conditions, not a catalogue line.
-              </p>
-              <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--gold-2)' }}>+255 759 141 705 &rarr;</a>
-            </div>
 
             {related.length > 0 && (
               <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line)', padding: '20px 18px' }}>

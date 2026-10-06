@@ -10,6 +10,8 @@ import { equipmentImageAlt, resolveEquipmentPhoto } from '@/lib/equipment-photos
 import { LOCATIONS } from '@/data/locations'
 import { LOCATIONS_SW } from '@/data/locations-sw'
 import { EQUIPMENT_GUIDES } from '@/content/equipment/sw'
+import CallCard from '@/components/ui/CallCard'
+import { equipmentCallCard } from '@/data/call-cards'
 
 export async function generateStaticParams() {
   return EQUIPMENT.map(e => ({ slug: e.slug }))
@@ -274,23 +276,11 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
               </p>
             )}
 
-            <div className="on-dark" style={{ marginTop: 56, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Omba makadirio ya bei</p>
-              <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Unapanga kununua kifaa hiki kwa eneo lako?</h3>
-              <p style={{ color: 'rgba(255,255,255,.78)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
-                Tuambie eneo, kazi inayohitajika, kina au kiasi cha kuchakata na
-                umeme uliopo. Tutasaidia kubainisha modeli, wigo wa vifaa na bei,
-                pamoja na maandalizi yanayohitajika kwenye eneo. Kwa programu,
-                eleza pia data, watumiaji na mifumo unayotaka kuunganisha.
-              </p>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" className="btn btn-gold">Tuma ujumbe WhatsApp &rarr;</a>
-                <Link href="/contact" className="btn btn-ghost">Tuma maombi</Link>
-              </div>
-            </div>
+            <div style={{ marginTop: 56 }}><CallCard lang="sw" placement="banner" {...equipmentCallCard('sw', item.name)} /></div>
           </article>
 
           <aside style={{ position: 'sticky', top: 96, display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <CallCard lang="sw" placement="side" {...equipmentCallCard('sw', item.name)} />
             <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line)', padding: '20px 18px' }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 14 }}>Yaliyomo kwenye ukurasa</div>
               <nav style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
@@ -307,13 +297,6 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
               </nav>
             </div>
 
-            <div style={{ background: 'var(--slate)', borderRadius: 'var(--r-md)', padding: '20px 18px' }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 10 }}>Pata bei</p>
-              <p style={{ color: 'rgba(255,255,255,.75)', fontSize: 15.5, lineHeight: 1.6, marginBottom: 16 }}>
-                Nukuu huandaliwa kwa kazi na hali ya eneo lako pamoja na wigo wa vifaa vinavyohitajika.
-              </p>
-              <a href="https://wa.me/255759141705" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--gold-2)' }}>+255 759 141 705 &rarr;</a>
-            </div>
 
             {related.length > 0 && (
               <div style={{ background: 'var(--bg-3)', borderRadius: 'var(--r-md)', border: '1px solid var(--line)', padding: '20px 18px' }}>
