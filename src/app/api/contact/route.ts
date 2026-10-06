@@ -83,6 +83,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 })
     }
 
+    if (phone && !/^\+?[\d\s()-]{7,25}$/.test(phone)) {
+      return NextResponse.json({ error: 'Please enter a valid phone number (digits only).' }, { status: 400 })
+    }
+
     const e = {
       name: escapeHtml(name),
       email: escapeHtml(email),

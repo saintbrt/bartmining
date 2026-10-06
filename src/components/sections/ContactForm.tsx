@@ -68,7 +68,7 @@ export default function ContactForm() {
         <div className="cf-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
           <div>
             <label style={labelStyle}>Phone number</label>
-            <input type="tel" name="phone" autoComplete="tel" placeholder="+255 7XX XXX XXX" style={fieldStyle} />
+            <input type="tel" name="phone" autoComplete="tel" inputMode="tel" maxLength={25} placeholder="+255 7XX XXX XXX" onInput={e => { e.currentTarget.value = e.currentTarget.value.replace(/[^\d+()\s-]/g, '') }} style={fieldStyle} />
           </div>
           <div>
             <label style={labelStyle}>Organisation</label>

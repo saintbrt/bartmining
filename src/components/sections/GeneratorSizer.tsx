@@ -20,7 +20,17 @@ import { RENTAL_MAX_KVA, RENTAL_MIN_KVA, RENTAL_SIZES, whatsappLink } from '@/da
  */
 
 type Start = 'dol' | 'starDelta' | 'soft' | 'vfd' | 'none'
-interface Load { name: string; kw: number; qty: number; start: Start }
+// kw and qty hold what the visitor typed, so partial input such as "7." survives.
+interface Load { name: string; kw: string; qty: string; start: Start }
+
+/** Keep digits and, when allowed, a single decimal point. */
+const digitsOnly = (v: string, decimal: boolean) => {
+  const s = v.replace(decimal ? /[^\d.]/g : /\D/g, '')
+  if (!decimal) return s
+  const dot = s.indexOf('.')
+  return dot < 0 ? s : s.slice(0, dot + 1) + s.slice(dot + 1).replace(/\./g, '')
+}
+const num = (s: string) => Number(s) || 0
 
 const START_FACTOR: Record<Start, number> = { dol: 6.5, starDelta: 2.5, soft: 3.5, vfd: 1.2, none: 1 }
 
@@ -56,18 +66,21 @@ const kva = (n: number) => `${Math.round(n).toLocaleString('en-US')} kVA`
 export default function GeneratorSizer({ lang = 'en', source = 'generator rental page' }: { lang?: 'en' | 'sw'; source?: string }) {
   const t = TEXT[lang]
   const [loads, setLoads] = useState<Load[]>([
-    { name: t.sample[0], kw: 75, qty: 1, start: 'dol' },
-    { name: t.sample[1], kw: 15, qty: 2, start: 'soft' },
-    { name: t.sample[2], kw: 10, qty: 1, start: 'none' },
+    { name: t.sample[0], kw: '75', qty: '1', start: 'dol' },
+    { name: t.sample[1], kw: '15', qty: '2', start: 'soft' },
+    { name: t.sample[2], kw: '10', qty: '1', start: 'none' },
   ])
   const set = (i: number, patch: Partial<Load>) => setLoads(ls => ls.map((l, k) => (k === i ? { ...l, ...patch } : l)))
 
-  const valid = loads.filter(l => l.kw > 0 && l.qty > 0)
-  const runKva = (l: Load) => (l.kw * l.qty) / 0.8
+  const valid = loads
+    .map(l => ({ name: l.name, kw: num(l.kw), qty: num(l.qty), start: l.start }))
+    .filter(l => l.kw > 0 && l.qty > 0)
+  type Parsed = (typeof valid)[number]
+  const runKva = (l: Parsed) => (l.kw * l.qty) / 0.8
   const totalRun = valid.reduce((a, l) => a + runKva(l), 0)
   const motors = valid.filter(l => l.start !== 'none')
   // The surge that matters is one motor starting (stagger the rest).
-  const biggest = motors.reduce<Load | null>((best, l) => {
+  const biggest = motors.reduce<Parsed | null>((best, l) => {
     const s = (l.kw / 0.8) * START_FACTOR[l.start]
     return !best || s > (best.kw / 0.8) * START_FACTOR[best.start] ? l : best
   }, null)
@@ -92,8 +105,8 @@ export default function GeneratorSizer({ lang = 'en', source = 'generator rental
         {loads.map((l, i) => (
           <div className="gs-row" role="row" key={i}>
             <input aria-label={t.load} value={l.name} onChange={e => set(i, { name: e.target.value })} />
-            <input aria-label={t.kw} inputMode="decimal" value={l.kw || ''} onChange={e => set(i, { kw: Math.max(0, Number(e.target.value) || 0) })} />
-            <input aria-label={t.qty} inputMode="numeric" value={l.qty || ''} onChange={e => set(i, { qty: Math.max(0, Math.round(Number(e.target.value) || 0)) })} />
+            <input aria-label={t.kw} inputMode="decimal" pattern="[0-9]*[.]?[0-9]*" maxLength={7} value={l.kw} onChange={e => set(i, { kw: digitsOnly(e.target.value, true) })} />
+            <input aria-label={t.qty} inputMode="numeric" pattern="[0-9]*" maxLength={3} value={l.qty} onChange={e => set(i, { qty: digitsOnly(e.target.value, false) })} />
             <select aria-label={t.start} value={l.start} onChange={e => set(i, { start: e.target.value as Start })}>
               {(Object.keys(START_FACTOR) as Start[]).map(s => <option key={s} value={s}>{t.starts[s]}</option>)}
             </select>
@@ -101,7 +114,7 @@ export default function GeneratorSizer({ lang = 'en', source = 'generator rental
           </div>
         ))}
       </div>
-      <button type="button" className="gs-add" onClick={() => setLoads(ls => [...ls, { name: '', kw: 0, qty: 1, start: 'dol' }])}>{t.add}</button>
+      <button type="button" className="gs-add" onClick={() => setLoads(ls => [...ls, { name: '', kw: '', qty: '1', start: 'dol' }])}>{t.add}</button>
 
       <dl className="gs-result" aria-live="polite">
         <div><dt>{t.running}</dt><dd>{kva(totalRun)}</dd></div>
