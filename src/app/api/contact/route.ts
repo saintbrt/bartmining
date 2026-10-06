@@ -1,4 +1,3 @@
-import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 
 /** Where contact-form enquiries are delivered (set by Allan, Sep 2026). */
@@ -31,12 +30,36 @@ function field(body: Record<string, unknown>, key: Field): string {
 /** Subject lines must stay on one line (no header injection via CR/LF). */
 const oneLine = (s: string) => s.replace(/[\r\n]+/g, ' ')
 
+const BREVO_API = 'https://api.brevo.com/v3'
+
+type Sender = { name: string; email: string }
+let cachedSender: Sender | null = null
+
+/**
+ * Brevo only accepts verified senders. BREVO_SENDER_EMAIL pins one; otherwise
+ * the first active sender on the account is used and cached per instance.
+ */
+async function resolveSender(apiKey: string): Promise<Sender> {
+  const pinned = process.env.BREVO_SENDER_EMAIL
+  if (pinned) return { name: process.env.BREVO_SENDER_NAME || 'Bart Mining', email: pinned }
+  if (cachedSender) return cachedSender
+
+  const res = await fetch(`${BREVO_API}/senders`, { headers: { 'api-key': apiKey, accept: 'application/json' } })
+  if (!res.ok) throw new Error(`Brevo senders lookup failed: ${res.status} ${await res.text()}`)
+  const { senders = [] } = (await res.json()) as { senders?: { name?: string; email: string; active?: boolean }[] }
+  const s = senders.find((x) => x.active) ?? senders[0]
+  if (!s) throw new Error('No sender configured in Brevo.')
+  cachedSender = { name: 'Bart Mining Website', email: s.email }
+  return cachedSender
+}
+
 const row = (label: string, value: string, first = false) =>
   `<tr><td style="padding:10px 0;border-bottom:1px solid rgba(28,26,22,.08);color:#8C857A;font-size:13px;${first ? 'width:140px;' : ''}">${label}</td><td style="padding:10px 0;border-bottom:1px solid rgba(28,26,22,.08);color:#1C1A16;font-size:14px;">${value}</td></tr>`
 
 export async function POST(req: NextRequest) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY)
+    const apiKey = process.env.BREVO_API_KEY
+    if (!apiKey) throw new Error('BREVO_API_KEY is not set.')
     const body = (await req.json()) as Record<string, unknown>
     if (!body || typeof body !== 'object') {
       return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
@@ -69,12 +92,16 @@ export async function POST(req: NextRequest) {
       message: escapeHtml(message),
     }
 
-    await resend.emails.send({
-      from: 'Bart Mining <noreply@bartmining.com>',
-      to: ENQUIRY_INBOX,
-      reply_to: email,
-      subject: oneLine(`New enquiry from ${name}${org ? ` (${org})` : ''}`),
-      html: `
+    const sender = await resolveSender(apiKey)
+    const res = await fetch(`${BREVO_API}/smtp/email`, {
+      method: 'POST',
+      headers: { 'api-key': apiKey, 'content-type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify({
+        sender,
+        to: [{ email: ENQUIRY_INBOX }],
+        replyTo: { email, name: oneLine(name) },
+        subject: oneLine(`New enquiry from ${name}${org ? ` (${org})` : ''}`),
+        htmlContent: `
         <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;padding:32px 24px;background:#F7F6F3;border-radius:12px;">
           <h2 style="font-size:22px;color:#1C1A16;margin:0 0 24px;">New project enquiry</h2>
           <table style="width:100%;border-collapse:collapse;">
@@ -91,8 +118,10 @@ export async function POST(req: NextRequest) {
           </div>
           <p style="margin-top:24px;font-size:12px;color:#8C857A;">Sent from bartmining.com contact form</p>
         </div>
-      `,
+        `,
+      }),
     })
+    if (!res.ok) throw new Error(`Brevo send failed: ${res.status} ${await res.text()}`)
 
     return NextResponse.json({ ok: true })
   } catch (err) {
