@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A small mine can hold a valid licence and still have gaps in the approvals, operating plans or records needed for its actual activities. Adding a processing plant, entering a technical-support arrangement or opening a new working can change what must be checked. A useful compliance review therefore starts with the mine you operate today, rather than a generic folder of forms.</p>
 <p>This 2026 checklist helps a Tanzanian operator prepare an organised review with the Resident Mines Officer and other relevant authorities. It does not claim that every item applies identically to every PML, processing licence or larger mine. The outcome should be a list of confirmed obligations, supporting evidence and actions with named owners.</p>
 <h2 id="licence">Begin with the right, area and activity</h2>
@@ -15,6 +17,7 @@ const content = `<p>A small mine can hold a valid licence and still have gaps in
 <h2 id="review-sequence">Prepare for a productive official review</h2>
 <ol><li>Make an inventory of licences, permits, agreements, plans and payment records.</li><li>Mark missing or expired documents and any mismatch with the current site.</li><li>Confirm the applicable obligations and submission routes with the relevant authority.</li><li>Assign corrective work, its budget and a completion date.</li><li>Keep the resulting evidence and schedule the next review around renewal dates and operational changes.</li></ol>
 <p>This sequence also helps a lender or technical adviser understand the project. Share controlled copies and keep originals and access credentials secure.</p>
+${renderArticleFaqs("mining-commission-compliance-2026", "en")}
 <h2 id="conclusion">Make compliance usable on site</h2>
 <p>A sound compliance file connects each permission and plan to the activity it governs and the person implementing it. Begin with the licence and current layout, confirm the project-specific requirements, and close gaps with evidence. That gives you a practical basis for operating and changing the mine, rather than a checklist completed only for an inspection.</p>
 <h2 id="basis">Sources and scope</h2>

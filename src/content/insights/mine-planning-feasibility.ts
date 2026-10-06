@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A mine study connects the deposit to a possible operating project: how material will be mined, processed and delivered to a market, and what that system will cost. Its detail should match the decision and the evidence available. Calling a document “bankable” does not remove uncertainty or guarantee financing.</p>
 <p>This guide explains the progression from early option assessment to feasibility work and the assumptions that need to be linked. You should finish able to scope the next study and identify what it must resolve before a development commitment.</p>
 <h2 id="study-stage">Use the study stage to define the decision</h2>
@@ -15,6 +17,7 @@ const content = `<p>A mine study connects the deposit to a possible operating pr
 <h2 id="environment-social">Bring approvals and closure into the study</h2>
 <p>Include land, water, waste, community and closure work early enough to affect design and schedule. <a href="https://www.ifc.org/en/insights-reports/2012/ifc-performance-standard-1">IFC Performance Standard 1</a> is a reference for integrated environmental and social management where applicable. Local approval conditions remain a separate project responsibility.</p>
 <p>A study that excludes an unresolved water source or waste facility can understate both cost and schedule risk. Record assumptions, responsible specialists and the investigation needed to close each gap.</p>
+${renderArticleFaqs("mine-planning-feasibility", "en")}
 <h2 id="conclusion">Scope the study that reduces the next uncertainty</h2>
 <p>Select the stage from the decision, connect the disciplines and test the financial case under weaker inputs. Ask for a report that states evidence, assumptions and remaining work clearly. The next step is a study brief listing the project alternatives and the uncertainties that could change the development decision.</p>
 <h2 id="basis">Sources and assumptions</h2>

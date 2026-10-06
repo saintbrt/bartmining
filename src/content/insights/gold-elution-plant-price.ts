@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>An elution plant takes gold loaded onto carbon toward a saleable product, but a quoted column price rarely covers that complete route. The useful budget includes carbon handling, stripping, electrowinning, goldroom work, utilities and the site work needed to operate the system.</p>
 <p>This guide shows what to include in a quotation and how to compare owning a facility with using a toll processor. No current model-specific elution quotation is published here. The worked budget is explicitly assumed so you can replace its lines with real offers.</p>
 <h2 id="scope">Define what the supplier is supplying</h2>
@@ -15,6 +17,7 @@ const content = `<p>An elution plant takes gold loaded onto carbon toward a sale
 <h2 id="readiness">Plan utilities, competence and acceptance</h2>
 <p>Confirm water quality, heating and power, ventilation, containment, carbon security and maintenance access in the site design. Pressurised and chemical systems need applicable inspection and operator procedures. Use the <a href="https://cyanidecode.org/about-the-cyanide-code/the-cyanide-code/">Cyanide Code</a> as a management reference where relevant, alongside local requirements and manufacturer instructions.</p>
 <p>Agree commissioning criteria for the full package, including a reconciled batch, documentation and training. Clarify who supplies startup materials and who corrects faults discovered during acceptance.</p>
+${renderArticleFaqs("gold-elution-plant-price", "en")}
 <h2 id="conclusion">Budget the route from carbon to settlement</h2>
 <p>Define carbon duty and the complete product route before comparing prices. Obtain an itemised owned-facility quote and an equally clear toll offer, then compare capital, ongoing cost, inventory and settlement timing. Your next step is a carbon-flow schedule and scope sheet that both suppliers can price.</p>
 <h2 id="basis">Sources and assumptions</h2>

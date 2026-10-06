@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Hiring equipment can help a mine complete a defined job without paying the full purchase price upfront. Whether it saves money depends on the working period, utilisation, transport and the responsibilities in the contract. A daily rate alone does not tell you what a productive hour will cost.</p>
 <p>This guide explains how to compare rental, leasing and purchase for a Tanzanian project. You should finish with a common cost basis and a contract checklist, rather than a blanket rule that every job shorter than a particular number of months should be hired.</p>
 <h2 id="job">Define the job and availability you need</h2>
@@ -15,6 +17,7 @@ const content = `<p>Hiring equipment can help a mine complete a defined job with
 <h2 id="lease">Evaluate leasing separately</h2>
 <p>A lease can spread payments and may include an ownership option, but the full contract determines deposit, total payments, maintenance, termination and default consequences. Do not treat an advertised monthly amount as the total cost of owning the machine.</p>
 <p>Use the <a href="/insights/small-miner-financing">financing guide</a> to test repayments against a weaker production month. For short power needs, our <a href="/generator-rental">generator-rental page</a> explains the information required for an equipment enquiry.</p>
+${renderArticleFaqs("equipment-rental-tanzania", "en")}
 <h2 id="conclusion">Choose from a complete job cost</h2>
 <p>Specify the duty and hours, compare full-period costs and confirm who handles downtime and maintenance. Rental can preserve cash and flexibility; ownership can suit sustained use when support and resale assumptions are credible. Obtain comparable offers and test uncertain utilisation before choosing the arrangement.</p>
 <h2 id="basis">Sources and assumptions</h2>

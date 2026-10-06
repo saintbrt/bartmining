@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A small CIP or CIL plant is a processing system, not simply a row of tanks. Prepared ore must enter at a controlled rate, gold must dissolve and reach carbon, and loaded carbon must become a saleable product. Water, residue handling, power and operator routines are part of that same system.</p>
 <p>This guide helps an owner turn daily tonnage and test results into a coherent plant brief. It explains what to specify and demonstrates a first volume calculation, without presenting a universal tank size or a minimum tonnage that makes every project profitable.</p>
 <h2 id="feed">Establish the feed before the equipment list</h2>
@@ -15,6 +17,7 @@ const content = `<p>A small CIP or CIL plant is a processing system, not simply 
 <h2 id="readiness">Resolve approvals and handover criteria</h2>
 <p>Confirm the activity’s licensing, environmental, chemical and waste requirements before construction. The <a href="https://cyanidecode.org/about-the-cyanide-code/the-cyanide-code/">Cyanide Code</a> is a useful management reference for cyanide facilities, alongside applicable national requirements and specialist procedures.</p>
 <p>Agree what commissioning will demonstrate: flow, stable operation, sampling, carbon accountability, operator training and complete documentation. Define how performance will be measured on agreed feed and how defects will be handled. A brief run without a reconciled balance is not proof of sustained recovery.</p>
+${renderArticleFaqs("small-cip-plant-guide", "en")}
 <h2 id="conclusion">Specify an operable circuit</h2>
 <p>Use feed evidence and test results to specify the complete path from prepared ore to payable gold and managed residue. Treat the preliminary volume calculation as a starting check, then have the duties engineered together. The next step is a process brief containing the feed schedule, slurry assumptions, test reports, utilities and proposed handover criteria.</p>
 <h2 id="basis">Sources and assumptions</h2>

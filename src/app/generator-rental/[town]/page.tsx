@@ -55,7 +55,7 @@ export default async function GeneratorRentalTownPage({ params }: { params: Prom
           serviceType: 'Generator rental',
           catalog: { name: 'Generator rental, 300 to 2,500 kVA', path: '/generator-rental' },
         }),
-        faqSchema(t.faqs),
+        faqSchema(t.faqs, 'en'),
         breadcrumbSchema([
           { name: 'Home', path: '/' },
           { name: 'Generator Rental', path: '/generator-rental' },

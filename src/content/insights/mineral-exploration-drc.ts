@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>An exploration project in the DRC needs a geological plan and an equally clear plan for rights, access, logistics and responsible operations. The country’s mineral industry provides context, but each property has its own evidence and operating conditions. A national mineral headline cannot establish the value or readiness of a particular licence.</p>
 <p>This guide helps an owner organise technical work and due diligence into a staged programme. The aim is a project file that shows what is known, what remains uncertain and which work can be undertaken responsibly next.</p>
 <h2 id="target-model">Choose a model for the specific target</h2>
@@ -15,6 +17,7 @@ const content = `<p>An exploration project in the DRC needs a geological plan an
 <h2 id="review-gate">Use a review gate before expanding</h2>
 <p>Define what the first stage should establish: verified data, target geometry, repeatable mineralisation or a specific sample for process testing. Review technical and access findings together before committing a larger programme. If evidence is missing or conditions change, revise the scope rather than treating planned metres as an obligation to continue.</p>
 <p>Prepare a budget including supervision, transport, laboratories, permits where applicable and data interpretation. A low field-work rate that excludes the project’s logistics and management duties is not a complete cost.</p>
+${renderArticleFaqs("mineral-exploration-drc", "en")}
 <h2 id="conclusion">Advance a verified and workable programme</h2>
 <p>Build the geological case from property-level evidence and confirm that rights, access and counterparties support the proposed work. Keep due diligence and data controls active through each stage. Your next step is a combined technical and operational brief identifying the uncertainties that must be resolved before mobilisation.</p>
 <h2 id="basis">Sources and scope</h2>

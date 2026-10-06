@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A loan helps a small mine when the funded work has a clear purpose and the business can cover repayments through an uneven production cycle. A licence and a promising sample are a starting point, but they do not establish how much feed the mine can supply or when the plant will generate cash.</p>
 <p>Before approaching a Tanzanian lender, build a project file that connects geology, equipment scope, approvals and sales to a monthly cash forecast. This guide shows what to prepare, how a loan differs from hire or leasing, and how to test whether the proposed repayment is manageable.</p>
 <h2 id="funding-purpose">Define what the money will accomplish</h2>
@@ -15,6 +17,7 @@ const content = `<p>A loan helps a small mine when the funded work has a clear p
 <h2 id="startup">Keep construction contingency and working cash separate</h2>
 <p>Contingency covers uncertainty in the project scope or cost estimate. Operating cash covers the period when the equipment is installed but receipts are delayed or production is below plan. Neither should disappear into the supplier’s deposit. Our <a href="/insights/gold-plant-setup-cost">startup-budget guide</a> shows these as separate lines.</p>
 <p>Where revenue and debt are in different currencies, model exchange-rate changes explicitly. A cheaper quoted interest rate can still leave the business with a repayment it cannot predict in its selling currency.</p>
+${renderArticleFaqs("small-miner-financing", "en")}
 <h2 id="conclusion">Finance a tested use of funds</h2>
 <p>Take lenders a defined scope, evidence of feed and recovery, and a cash forecast that survives a weaker month. Compare written offers on their complete obligations and keep enough operating cash for ramp-up. If the downside case cannot pay the instalment, revise the project size, funding structure or timetable before signing.</p>
 <h2 id="basis">Sources and assumptions</h2>

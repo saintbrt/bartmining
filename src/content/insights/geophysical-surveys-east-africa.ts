@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Geophysics measures physical properties that can help interpret rocks and structures beneath cover. It is valuable when a geological question has a measurable contrast, but an anomaly is not automatically an orebody. The method and survey design should be chosen from the target and conditions at site.</p>
 <p>This guide helps an East African project owner scope airborne or ground work, understand the limitations and request useful deliverables. The outcome should be an interpreted target with a testable explanation, rather than a survey chosen because the instrument sounds advanced.</p>
 <h2 id="method-selection">Identify the contrast you need to measure</h2>
@@ -15,6 +17,7 @@ const content = `<p>Geophysics measures physical properties that can help interp
 <h2 id="scope-cost">Price the complete programme</h2>
 <p>Request mobilisation, acquisition units, access or aviation requirements, processing, interpretation, reporting and any repeat-work terms. Define who handles permissions and site preparation. Quoting a rate per line-kilometre without the survey configuration and deliverables leaves important scope unresolved.</p>
 <p>Use the results to update the <a href="/insights/geological-mapping">geological model</a> and rank targets before <a href="/insights/drilling-services-tanzania">drilling</a>. Budget interpretation as part of the survey rather than assuming the instrument output is the final decision.</p>
+${renderArticleFaqs("geophysical-surveys-east-africa", "en")}
 <h2 id="conclusion">Survey for a testable geological explanation</h2>
 <p>Choose geophysics from the expected physical contrast, agree acquisition quality and retain the underlying data. Interpret anomalies alongside geology and define the next direct test. Prepare a brief with the target model, cover, access and decision required before requesting a survey price.</p>
 <h2 id="basis">Sources and assumptions</h2>

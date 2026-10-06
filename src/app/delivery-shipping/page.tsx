@@ -1,3 +1,4 @@
+import { DELIVERY_FAQS as FAQS } from '@/data/service-faqs'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
@@ -34,30 +35,13 @@ export const metadata: Metadata = {
   openGraph: { type: 'website', url: URL, title: 'Delivery & Shipping | Bart Mining', description: 'Route times across Tanzania, international freight, cargo insurance and after-sales support.' },
 }
 
-const FAQS = [
-  {
-    q: 'How long does delivery take from Dar es Salaam?',
-    a: 'It depends on the district and the cargo. Use the map above for a planning estimate: pick your district and the type of cargo, and it shows a realistic range including a buffer for checkpoints and weather. Confirmed dates come with your quotation.',
-  },
-  {
-    q: 'Why is heavy cargo so much slower than a passenger car?',
-    a: 'A loaded truck is heavier, stops longer at weighbridges and checkpoints, and drives slower on the sections of road that are not sealed. An abnormal load such as an excavator or dozer on a lowboy is slower again, and also needs permits and a pilot vehicle arranged before it can move.',
-  },
-  {
-    q: 'Do you insure equipment in transit?',
-    a: 'Insurance is arranged for imported equipment from the moment it leaves the supplier until it clears the port, and can be extended to cover the inland journey to your site. Ask for this to be included when you request a quotation, particularly for high-value or abnormal-load equipment.',
-  },
-  {
-    q: 'Do you supply spare parts after the sale?',
-    a: 'Yes. Tell us the equipment model and the part you need, and we will source it and confirm a lead time. For equipment we supply new, we can also advise which wear parts are worth holding on site from day one, so a routine failure does not stop production.',
-  },
-]
+
 
 export default function DeliveryShippingPage() {
   return (
     <>
       <JsonLd data={[
-        faqSchema(FAQS),
+        faqSchema(FAQS, 'en'),
         breadcrumbSchema([
           { name: 'Home', path: '/' },
           { name: 'Delivery & Shipping', path: '/delivery-shipping' },

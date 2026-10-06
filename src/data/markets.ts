@@ -44,10 +44,22 @@ export const MARKETS: Market[] = [
     ],
     buyingCentres: ['Geita Mjini', 'Bukombe', 'Chato', 'Mbogwe', 'Nyang’hwale'],
     faqs: [
-      { q: 'Soko la madini Geita liko wapi?', a: 'Soko kuu liko Geita Mjini, na kuna vituo vidogo vya ununuzi katika wilaya za Bukombe, Chato, Mbogwe na Nyang’hwale. Kwa mahali halisi na saa za kazi za sasa, wasiliana na ofisi ya Afisa Madini Mkazi Geita.' },
-      { q: 'Nahitaji nini kuuza dhahabu Geita?', a: 'Kitambulisho, na kwa mchimbaji, nakala ya leseni yako ya uchimbaji (PML) au nyaraka zinazoonyesha chanzo halali cha dhahabu. Dhahabu hupimwa uzito na usafi sokoni kabla ya bei kukubaliwa.' },
-      { q: 'Kwa nini bei ya soko ni chini ya bei ya dunia?', a: 'Bei elekezi ya Tume ya Madini huzingatia makato kama mrabaha na ada ya ukaguzi, na bei halisi hutegemea usafi uliopimwa. Kwa hiyo bei unayolipwa huwa chini kidogo ya bei ya dunia iliyobadilishwa kwa shilingi.' },
-      { q: 'Kituo cha Rwamgasa kinasaidiaje wachimbaji?', a: 'Ni kituo cha mfano cha serikali cha kuchakata dhahabu, kilichojengwa kuonyesha wachimbaji wadogo teknolojia bora ya uchenjuaji na kuwasaidia kujua thamani halisi ya dhahabu wanayochimba.' },
+      {
+        "q": "Nipateje mahali na saa za kazi za soko la madini Geita?",
+        "a": "Thibitisha taarifa za sasa kwa ofisi ya Afisa Madini Mkazi Geita au Tume ya Madini. Uliza pia kituo kinachohudumia eneo lako na kama mnunuzi ana leseni inayofaa. Orodha ya maeneo kwenye ukurasa huu ni sehemu ya kuanzia, lakini haithibitishi mahali pa kupokelea mzigo au saa za kazi za siku unayotaka kwenda."
+      },
+      {
+        "q": "Nahitaji nyaraka gani kuuza dhahabu Geita?",
+        "a": "Omba orodha inayohusu aina yako ya shughuli kabla ya kupeleka dhahabu. Andaa kitambulisho, taarifa ya haki au leseni inayohusika na kumbukumbu za chanzo halali cha mzigo kwa maelekezo ya Tume. Kitambulisho pekee hakithibitishi ruhusa ya kufanya biashara; hifadhi pia upimaji na stakabadhi za mauzo."
+      },
+      {
+        "q": "Kwa nini kiasi cha kulipwa kinaweza kutofautiana na bei ya dunia?",
+        "a": "Bei ya dunia kwa dhahabu safi na fedha za mzigo yako si vipimo vilevile. Thibitisha uzito, usafi, msingi wa bei, kiwango cha ubadilishaji na makato yanayohusika. Omba hesabu iliyoandikwa ili usitoe tena tozo ambayo tayari imejumuishwa kwenye bei elekezi inayotumika."
+      },
+      {
+        "q": "Naweza kupanga kutumia huduma za kituo cha Rwamgasa?",
+        "a": "Pata taarifa za huduma zinazotolewa sasa, malighafi inayopokelewa, gharama na nafasi iliyopo kwa mwendeshaji na mamlaka husika. Maelezo ya kituo cha mfano hayathibitishi huduma ya biashara au nafasi ya kuchakata mzigo yako. Tumia taarifa zilizothibitishwa kupanga usafiri, uchakataji na muda wa mauzo."
+      }
     ],
   },
   {
@@ -69,10 +81,22 @@ export const MARKETS: Market[] = [
     ],
     buyingCentres: ['Makongolosi', 'Matundasi', 'Itumbi', 'Chunya Mjini', 'Sangambi', 'Godima', 'Igundu', 'Shoga'],
     faqs: [
-      { q: 'Soko la madini Chunya liko wapi?', a: 'Soko kuu liko Chunya, na kuna vituo vidogo vya ununuzi Makongolosi, Matundasi, Itumbi, Chunya Mjini, Sangambi, Godima, Igundu na Shoga. Kwa mahali halisi na saa za kazi za sasa, wasiliana na ofisi ya Afisa Madini Mkazi Chunya.' },
-      { q: 'Nauza wapi dhahabu karibu na Makongolosi?', a: 'Makongolosi ina kituo cha ununuzi kilichosajiliwa kinachofanya kazi chini ya soko la madini Chunya. Kuuza nje ya masoko na vituo rasmi ni kinyume cha sheria na dhahabu inaweza kutaifishwa.' },
-      { q: 'Kwa nini wachimbaji wengi Chunya wanatumia CIP?', a: 'Uwanja wa Lupa umechimbwa tangu miaka ya 1920, na miaka mingi ya kutumia zebaki imeacha marudio yenye dhahabu. Matanki ya CIP na vat huokoa dhahabu hiyo, na kuongeza kiasi kinachouzwa sokoni.' },
-      { q: 'Kituo cha Itumbi ni cha nini?', a: 'Ni kituo cha mfano cha serikali cha kuchakata dhahabu, kinachowaonyesha wachimbaji wadogo njia bora za uchenjuaji na kupunguza matumizi ya zebaki.' },
+      {
+        "q": "Nithibitisheje kituo cha kuuza dhahabu kinachohudumia eneo langu Chunya?",
+        "a": "Wasiliana na Afisa Madini Mkazi Chunya au Tume ya Madini kuhusu soko na vituo vilivyoidhinishwa vinavyopokea mzigo za aina yako. Uliza mahali, saa za kazi na nyaraka kabla ya safari. Majina yaliyotajwa kwenye mwongozo hayachukui nafasi ya kuthibitisha hali ya sasa ya kituo na leseni ya mnunuzi."
+      },
+      {
+        "q": "Nithibitishe nini kabla ya kuuza karibu na Makongolosi?",
+        "a": "Thibitisha kituo na mnunuzi kwa Tume, pamoja na haki yako ya kuuza na nyaraka za chanzo cha dhahabu. Kubaliana namna uzito, assay, makato na malipo yatakavyorekodiwa. Kutambulishwa kwa mnunuzi wa karibu hakuthibitishi kuwa ana leseni au kwamba utaratibu wa mauzo unatimiza masharti yanayohusika."
+      },
+      {
+        "q": "Dhahabu iliyobaki kwenye marudio inaweza kuhesabiwa kama mauzo yajayo?",
+        "a": "Assay inaonyesha maudhui ya sampuli, lakini kiasi kitakachopatikana kinahitaji majaribio yanayowakilisha marudio na njia ya kupata bidhaa ya mwisho. Chunguza pia historia ya uchakataji na uchafuzi. Mabaki yenye zebaki yasichukuliwe kama malighafi ya kawaida ya sianidi; mtaalamu aweke njia inayofaa kabla ya kununua vifaa au kemikali."
+      },
+      {
+        "q": "Nithibitishe nini ikiwa nataka kutumia huduma za kituo cha Itumbi?",
+        "a": "Uliza mwendeshaji na mamlaka husika kuhusu hali ya kituo, huduma za sasa, malighafi inayopokelewa, gharama na ratiba. Kuwepo kwa kituo cha mfano hakuhakikishi nafasi ya kuchakata au malipo ya mzigo yako. Weka mpango wa mauzo kwa huduma na masharti yaliyothibitishwa."
+      }
     ],
   },
   {
@@ -93,9 +117,18 @@ export const MARKETS: Market[] = [
     ],
     buyingCentres: ['Kahama Mjini', 'Msalala'],
     faqs: [
-      { q: 'Soko la madini Kahama liko wapi?', a: 'Soko liko Kahama. Kwa mahali halisi, vituo vya ununuzi vilivyo karibu na eneo lako, na saa za kazi za sasa, wasiliana na ofisi ya Afisa Madini Mkazi Kahama.' },
-      { q: 'Nini kinatokea nikiuza dhahabu nje ya soko?', a: 'Ni kinyume cha sheria. Serikali imeonya kuwa madini yanayouzwa nje ya masoko na vituo rasmi yanaweza kutaifishwa na wahusika kufikishwa mahakamani. Kuuza sokoni pia kunakupa bei ya uwazi na stakabadhi.' },
-      { q: 'Wachimbaji wa Kahama wanahitaji vifaa gani?', a: 'Kahama ina mashimo marefu kuliko maeneo mengi ya Kanda ya Ziwa, hivyo mahitaji makuu ni winchi na hoist, feni za kuingiza hewa, pampu za kutoa maji kwa hatua, vipima gesi na vifaa vya kujiokoa.' },
+      {
+        "q": "Nipateje mahali na saa za kazi za soko la madini Kahama?",
+        "a": "Wasiliana na Afisa Madini Mkazi Kahama au Tume ya Madini kwa taarifa za sasa za soko na vituo vinavyohudumia eneo lako. Uliza nyaraka za muuzaji na leseni ya mnunuzi kabla ya kupeleka mzigo. Mwongozo huu hauchapishi mahali pa kupokelea au ratiba kama taarifa iliyothibitishwa kwa siku ya safari yako."
+      },
+      {
+        "q": "Nijueje kama njia ya mauzo ninayopewa imeidhinishwa?",
+        "a": "Thibitisha leseni ya mnunuzi, shughuli inayoruhusiwa na mahali pa kununua kwa Tume ya Madini. Masharti hutegemea pia aina ya muuzaji na nyaraka za chanzo cha dhahabu. Usichukulie kila mauzo ya nje ya jengo la soko kuwa na hali moja; pata maelekezo ya utaratibu unaohusika kabla ya kukabidhi mzigo."
+      },
+      {
+        "q": "Ni kumbukumbu gani nibaki nazo baada ya kuuza?",
+        "a": "Hifadhi kitambulisho cha mzigo, uzito, assay au kipimo cha usafi kilichotumika, uthamini, makato, taarifa za mnunuzi na stakabadhi ya malipo. Linganisha salio kwenye hesabu na fedha zilizopokelewa. Kumbukumbu hizo hukusaidia kufuatilia mauzo na kutofautisha makato ya soko na gharama za biashara yako."
+      }
     ],
   },
   {
@@ -107,18 +140,27 @@ export const MARKETS: Market[] = [
     description:
       'Soko la madini Mwanza: bei ya dhahabu leo, jinsi wachimbaji wa Sengerema, Misungwi, Buchosa na Kwimba wanavyouza kihalali, kiwanda cha kusafisha na mrabaha.',
     summary:
-      'Mwanza ni mji mkuu wa biashara wa Kanda ya Ziwa na kitovu cha wachimbaji wadogo wa Sengerema, Misungwi, Buchosa, Kwimba na Magu. Mbali na soko la madini, Mwanza ina kiwanda cha kusafisha dhahabu, jambo linalowapa wachimbaji wa eneo hili fursa ya kuuza kwa mnunuzi anayelipa mrabaha wa kiwango cha chini.',
+      'Mwanza ni kitovu cha biashara cha Kanda ya Ziwa kinachohudumia wachimbaji wa Sengerema, Misungwi, Buchosa, Kwimba na Magu. Unapolinganisha soko, kituo cha ununuzi au kiwanda cha kusafisha, thibitisha leseni ya mnunuzi na masharti ya mauzo yako. Jina la huduma pekee halithibitishi makato au kiasi kitakacholipwa.',
     facts: [
       'Mwanza ni sehemu ya mtandao wa kitaifa wa masoko ya madini na vituo vya ununuzi vilivyo chini ya Tume ya Madini',
-      'Mwanza ina kiwanda cha kusafisha dhahabu (Mwanza Precious Metals Refinery). Dhahabu inayouzwa kwa kiwanda cha kusafisha nchini hulipiwa mrabaha wa asilimia 2',
+      'Kwa mauzo yanayohusisha kiwanda cha kusafisha, thibitisha ruhusa ya mnunuzi na kiwango cha mrabaha na tozo zinazohusika kwa Tume ya Madini; usitumie kiwango kimoja kwa kila kiwanda au mauzo',
       'Wachimbaji wadogo wako Sengerema, Misungwi, Buchosa, Kwimba na Magu, wengi wakichimba mashimo mafupi',
       'Mradi mkubwa wa dhahabu wa Nyanzaga, wilayani Sengerema, unatekelezwa kwa ubia kati ya Serikali na Perseus Mining',
     ],
     buyingCentres: [],
     faqs: [
-      { q: 'Soko la madini Mwanza liko wapi?', a: 'Kwa mahali halisi pa soko, vituo vya ununuzi vilivyo karibu na eneo lako na saa za kazi za sasa, wasiliana na ofisi ya Afisa Madini Mkazi Mwanza.' },
-      { q: 'Naweza kuuza dhahabu kwa kiwanda cha kusafisha Mwanza?', a: 'Viwanda vya kusafisha dhahabu vilivyoidhinishwa hununua dhahabu, na dhahabu inayouzwa kwao hulipiwa mrabaha wa asilimia 2 badala ya asilimia 6. Thibitisha na kiwanda na Tume ya Madini masharti ya sasa ya kuuza moja kwa moja kwao.' },
-      { q: 'Wachimbaji wa Mwanza hununua vifaa gani zaidi?', a: 'Kwa sababu wengi huchimba mashimo mafupi ya dhahabu ya mishipa, mahitaji makuu ni winchi za tani moja na mbili, pampu za kutoa maji wakati wa mvua, na concentrator na meza za kutingisha zinazochukua nafasi ya zebaki.' },
+      {
+        "q": "Nipateje kituo cha kuuza dhahabu karibu na eneo langu Mwanza?",
+        "a": "Pata taarifa za sasa za soko au kituo kilichoidhinishwa kwa Afisa Madini Mkazi Mwanza au Tume ya Madini. Thibitisha leseni ya mnunuzi, mahali pa kupokelea mzigo, saa za kazi na nyaraka. Usipange safari kwa kutegemea jina la soko au taarifa za mnunuzi ambazo hazijahakikiwa."
+      },
+      {
+        "q": "Kuuza kwa kiwanda cha kusafisha Mwanza kunahakikisha makato madogo?",
+        "a": "Thibitisha ruhusa na masharti ya kiwanda hicho kwa mauzo yako, pamoja na msingi wa kiwango cha mrabaha na tozo nyingine. Jina la refinery pekee halithibitishi kiwango kinachotumika. Omba hesabu ya uzito, usafi, uthamini, makato na muda wa malipo ili kulinganisha salio halisi na njia nyingine ya mauzo."
+      },
+      {
+        "q": "Nilinganisheje mapendekezo mawili ya bei za dhahabu Mwanza?",
+        "a": "Ziwe kwenye msingi uleule wa uzito na usafi wa mzigo. Kisha linganisha assay, uthamini, makato, gharama za mnunuzi na tukio linaloanzisha malipo. Bei kubwa kwa gramu inaweza kutoa salio dogo au malipo ya baadaye, hivyo omba hesabu iliyoandikwa kwa kila pendekezo la bei kabla ya kuamua."
+      }
     ],
   },
   {
@@ -139,9 +181,18 @@ export const MARKETS: Market[] = [
     ],
     buyingCentres: ['Mkwajuni', 'Saza'],
     faqs: [
-      { q: 'Nauza wapi dhahabu Songwe?', a: 'Kwenye vituo vya ununuzi vilivyosajiliwa vya Mkwajuni na Saza, au kwenye soko la madini Chunya lililo karibu. Kwa maelezo ya sasa, wasiliana na ofisi ya Afisa Madini Mkazi.' },
-      { q: 'Leseni mpya za Saza zilitolewaje?', a: 'Serikali iligawa leseni ndogo 37 eneo la Saza kutoka leseni iliyokuwa ikishikiliwa awali na kampuni. Leseni 19 za kwanza zilitolewa Machi 2024 kwa kikundi cha wachimbaji na wachimbaji wengine wadogo, na mchakato wa kutoa leseni zaidi uliendelea.' },
-      { q: 'Wachimbaji wapya wa Saza wanahitaji vifaa gani kwanza?', a: 'Seti ya kuponda na kusaga mawe inayosaga laini vya kutosha, concentrator na meza ya kutingisha ili kupata dhahabu bila zebaki, na pampu na winchi kwa mashimo. Matanki ya CIP yanaweza kuongezwa baadaye kama majaribio yataonyesha dhahabu imebaki kwenye mabaki.' },
+      {
+        "q": "Nithibitisheje mahali pa kuuza dhahabu Songwe?",
+        "a": "Uliza Afisa Madini Mkazi au Tume kuhusu soko au kituo kilichoidhinishwa kinachohudumia eneo lako, ikiwemo taarifa za sasa za Mkwajuni na Saza. Thibitisha leseni ya mnunuzi na nyaraka za mzigo kabla ya safari. Orodha ya eneo haithibitishi kuwa kila mnunuzi anayepatikana hapo ameruhusiwa kufanya mauzo yako."
+      },
+      {
+        "q": "Taarifa ya kugawiwa leseni Saza inathibitisha haki ya mzigo yangu?",
+        "a": "Taarifa ya kihistoria inaeleza tukio la eneo, lakini mzigo yako inahitaji kumbukumbu zake za chanzo halali na haki au leseni inayohusika. Thibitisha mwenye leseni, eneo, uhalali na shughuli inayoruhusiwa kwa Tume. Usitumie tangazo la jumla kama mbadala wa nyaraka za dhahabu unayotaka kuuza."
+      },
+      {
+        "q": "Ninawezaje kuunganisha majaribio ya recovery na mpango wa mauzo?",
+        "a": "Pima malighafi na mabaki kwa namna inayowakilisha uzalishaji, kisha hesabu bidhaa ya mwisho inayoweza kupatikana na kulipwa. Linganisha thamani hiyo baada ya makato na gharama za uchakataji na malipo. Concentrate au kaboni yenye dhahabu bado si fedha zilizopatikana mpaka njia ya recovery na malipo ikamilike."
+      }
     ],
   },
   {
@@ -163,9 +214,18 @@ export const MARKETS: Market[] = [
     ],
     buyingCentres: ['Mpanda', 'Karema'],
     faqs: [
-      { q: 'Masoko ya madini Katavi yako wapi?', a: 'Kuna masoko mawili, katika Manispaa ya Mpanda na Karema. Kwa mahali halisi na saa za kazi, wasiliana na ofisi ya Afisa Madini Mkazi Katavi.' },
-      { q: 'Kwa nini plant za vat Katavi zinapata dhahabu kidogo?', a: 'Utafiti kwenye plant za Ibindi, Katuma na Kapanda ulionyesha wastani wa chini ya asilimia 57. Sababu zinaweza kuwa kusaga kusiko laini, madini ya shaba na mengine yanayotumia sianidi, na mipaka ya vat yenyewe. Kupima mawe yako kunaonyesha tatizo ni lipi.' },
-      { q: 'Ninawezaje kuongeza dhahabu ninayopata?', a: 'Pima mawe na mabaki yako, kisha fikiria kusaga laini zaidi, kuweka concentrator kabla ya kuchenjua ili kunasa dhahabu huru, na kuhamia matanki ya kukoroga badala ya vat. Kila gramu inayookolewa inaongeza kiasi unachouza sokoni.' },
+      {
+        "q": "Nipateje taarifa za sasa za masoko yanayohudumia Mpanda na Karema?",
+        "a": "Wasiliana na Afisa Madini Mkazi Katavi au Tume ya Madini kuhusu soko na vituo vinavyopokea mzigo kutoka eneo lako. Thibitisha mahali, saa za kazi, leseni ya mnunuzi na nyaraka. Panga safari kwa taarifa hizo za sasa badala ya kuchukulia orodha ya mwongozo kuwa ratiba ya huduma."
+      },
+      {
+        "q": "Takwimu za recovery za plant nyingine zinaonyesha kiasi nitakachouza?",
+        "a": "Takwimu hizo zinahusu sampuli na hali za utafiti husika. Malighafi yako inahitaji uchukuaji wa sampuli na majaribio yanayoonyesha maandalizi, namna suluhisho linavyopita kwenye vat na bidhaa ya mwisho. Tumia hesabu inayofuatilia dhahabu inayoingia na kutoka kwenye plant yako kutambua upotevu kabla ya kupanga mauzo kwa asilimia iliyopimwa kwenye eneo jingine."
+      },
+      {
+        "q": "Nihesabuje kama kuboresha recovery kutaongeza fedha zinazobaki?",
+        "a": "Linganisha dhahabu ya ziada inayoweza kulipwa baada ya makato na gharama za ziada za vifaa, umeme, kemikali, wafanyakazi, mabaki na mtaji unaofungwa. Muda wa kupata bidhaa na malipo nao uwe kwenye hesabu. Recovery kubwa inaweza kuwa faida ya kiufundi bila kuhalalisha uwekezaji kwa mzigo na ratiba yako."
+      }
     ],
   },
 ]

@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A gold leach plant needs reagents and carbon that match its process, arrive through an appropriate supply chain and can be handled reliably on site. A low price per bag is a poor comparison if the specification is unclear or the delivery leaves the plant without a critical input.</p>
 <p>This guide explains how to prepare a procurement brief for activated carbon, cyanide and supporting consumables in Tanzania. The goal is a specification and stock plan tied to test results and production, rather than a generic consumption rate or an unverified list of suppliers.</p>
 <h2 id="carbon">Specify carbon for the actual circuit</h2>
@@ -15,6 +17,7 @@ const content = `<p>A gold leach plant needs reagents and carbon that match its 
 <h2 id="quotation">Compare the complete delivered offer</h2>
 <p>Request product identity, quantity, certificates, packaging, currency, delivery basis, validity, lead time and responsibility for freight, taxes and inland transport. Have the appropriate specialist confirm approvals and shipping documents. Do not infer duty exemption from holding a mining licence.</p>
 <p>Keep reagents, carbon and spares in the <a href="/insights/gold-plant-setup-cost">startup operating-cash budget</a>. Delivery and receiving readiness must align with commissioning; materials that arrive early at an unprepared site do not improve readiness.</p>
+${renderArticleFaqs("activated-carbon-cyanide-tanzania", "en")}
 <h2 id="conclusion">Buy a defined specification with a workable stock plan</h2>
 <p>Specify consumables from the selected process, verify documentation and the permitted supply route, and calculate stock cover from production and lead time. Your next step is a procurement schedule reviewed by the process and site-management team, with acceptance criteria and storage responsibilities agreed before ordering.</p>
 <h2 id="basis">Sources and example basis</h2>

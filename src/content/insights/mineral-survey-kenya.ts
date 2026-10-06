@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A mineral survey in Kenya should begin with a target and a decision, rather than a request to scan a large area for any valuable mineral. Gold, heavy mineral sands and industrial minerals require different evidence. Selecting the wrong survey can produce data that looks detailed while leaving the commercial question unanswered.</p>
 <p>This guide explains how to scope that work, use regional information and request deliverables that can guide sampling or drilling. It also separates historical operating examples from current project opportunities.</p>
 <h2 id="context">Read regional context with its date</h2>
@@ -15,6 +17,7 @@ const content = `<p>A mineral survey in Kenya should begin with a target and a d
 <h2 id="handover">Request evidence and a ranked next programme</h2>
 <p>Require original located observations, sample records, laboratory results, raw survey data where relevant and interpretations with limitations. The report should rank targets and explain which direct test is justified next. Keep editable spatial files alongside the PDF.</p>
 <p>Have local advisers confirm the current mineral right, permitted survey activities, environmental requirements and sample movement arrangements. The technical contractor’s mobilisation plan is not itself evidence of those permissions.</p>
+${renderArticleFaqs("mineral-survey-kenya", "en")}
 <h2 id="conclusion">Survey for the target and product decision</h2>
 <p>Select methods from the mineral system, retain the underlying evidence and use results to scope a direct next test. Keep historical context separate from present opportunity and mineral content separate from a saleable product. Begin with a target brief, existing-data inventory and the intended customer or development question.</p>
 <h2 id="basis">Sources and assumptions</h2>

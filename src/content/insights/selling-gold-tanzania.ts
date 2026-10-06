@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>The price offered for a gram of gold is only one part of a sale. Weight, fineness, valuation, statutory deductions and payment timing determine what reaches your account. For a Tanzanian miner, a good sale also leaves a record of the gold’s legal origin and how the buyer calculated the settlement.</p>
 <p>This guide explains how to prepare a sale, compare a licensed buyer with the Bank of Tanzania programme, and understand the 20% allocation without treating every domestic purchase as the same transaction. Use it to request a written settlement calculation before you deliver gold.</p>
 <h2 id="buyer">Confirm who is buying and under which authority</h2>
@@ -17,6 +19,7 @@ const content = `<p>The price offered for a gram of gold is only one part of a s
 <p>Using the assumed TSh 27,000,000 value solely to practise arithmetic, a 6% deduction is TSh 1,620,000 and a separate 1% deduction is TSh 270,000. The remaining TSh 25,110,000 is before any other applicable charge. This example does not establish that those two charges are the complete or correct deductions for your sale.</p>
 <h2 id="records">Keep a sale file that reconciles</h2>
 <p>Retain the lot identifier, weight record, assay, valuation, buyer details, statutory receipts and bank-payment reference. Reconcile the receipt with the amount actually paid. A consistent record supports production accounting and helps explain sales when applying for <a href="/insights/small-miner-financing">finance</a>.</p>
+${renderArticleFaqs("selling-gold-tanzania", "en")}
 <h2 id="conclusion">Agree the settlement before the sale</h2>
 <p>Choose a verified route, understand how weight and purity become a payable value, and confirm deductions and payment triggers in writing. The useful comparison is the net amount you can document and the time needed to receive it. Prepare one lot’s records and request that calculation before committing the gold.</p>
 <h2 id="basis">Sources and example basis</h2>

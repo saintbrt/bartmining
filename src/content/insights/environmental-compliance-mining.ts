@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Environmental work becomes harder when the plant layout, water system and waste facilities have already been purchased. A better starting point is to assess those choices while the design can still change. For a mine owner, the goal is both an appropriate approval route and a set of operating measures the site can implement.</p>
 <p>This guide uses Tanzania as the main example and explains how to organise baseline studies, assessment, management and monitoring. Other jurisdictions have their own processes; a Tanzanian certificate or consultant’s report should not be treated as approval for a project elsewhere.</p>
 <h2 id="project-scope">Describe the whole project before registration</h2>
@@ -17,6 +19,7 @@ const content = `<p>Environmental work becomes harder when the plant layout, wat
 <p>Changes in throughput, process chemistry or waste storage should trigger a review with the environmental expert. Ask whether the existing assessment remains valid and what notification or additional approval is required before the change proceeds.</p>
 <h2 id="next-steps">Prepare the first coordination meeting</h2>
 <p>Bring the licence map, proposed layout, process description, water sources, waste estimates and nearby land-use information. Ask the environmental expert and designer to identify missing studies, alternatives still worth evaluating and the approvals that control the construction schedule. Put the resulting work and cost into the same project plan as procurement.</p>
+${renderArticleFaqs("environmental-compliance-mining", "en")}
 <h2 id="conclusion">Make the assessment shape the mine</h2>
 <p>Start environmental preparation early enough to influence siting, water, waste and closure choices. Confirm the applicable process, gather evidence around the actual risks and translate the findings into funded responsibilities. An approval supported by an implementable management plan is the useful outcome; a report detached from the operating design is not.</p>
 <h2 id="basis">Sources and scope</h2>

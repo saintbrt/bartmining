@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 import { CHUNYA_EXAMPLES, HARD_ROCK_PLANNING_REFERENCE, MONTHLY_OPERATING_EXAMPLES, totalCost, usd } from '@/data/plant-cost-examples'
 
 const [wash, starter, full] = CHUNYA_EXAMPLES
@@ -59,14 +61,7 @@ const content = `
 <p>Then request an itemised proposal that separates equipment, delivery, taxes, construction, commissioning and owner responsibilities. Ask how capacity and recovery will be demonstrated on your material, which spares are included, and what changes if the feed differs from the sample. Compare suppliers against the same duty and scope.</p>
 <p>Build the schedule alongside the budget. The current Chunya washing proposal models 16 weeks to production; the earlier scrubber options model 24 and 26.5 weeks. These are proposal schedules with dependencies, rather than guaranteed delivery times. Site preparation can run alongside manufacture and shipping, but water, access and approvals must be ready for commissioning.</p>
 
-<h2 id="questions">Questions when budgeting a plant</h2>
-<h3>Can I start with washing and sluices, then add recovery equipment?</h3>
-<p>That is the approach proposed for the Chunya Phase 1 project. It can make sense where the feed contains recoverable free gold and the initial circuit fits the material. Tests should show what the sluices miss, and the layout should allow a later addition such as centrifugal concentration or concentrate cleanup. Expansion is a separate budget, not a guarantee that the simplest circuit will suit every deposit.</p>
-<h3>Does the plant total include an excavator and mine development?</h3>
-<p>The Chunya figures on this page cover the stated processing equipment and execution scope. They do not price a complete mining business. Budget excavation, haulage, site ownership or access, mineral rights and operating capital separately.</p>
-<h3>Should I convert the USD figures into Tanzanian shillings now?</h3>
-<p>For your financing plan, use the exchange rate and bank charges that apply to your expected payment dates. This page keeps the figures in the proposal currency so an assumed exchange rate is not mistaken for a current one.</p>
-
+${renderArticleFaqs("mining-equipment-cost-tanzania", "en", "Questions when budgeting a plant")}
 <h2 id="conclusion">Budget for the route from feed to first production</h2>
 <p>For loose alluvial gravel, investigate washing and gravity recovery first. For hard rock, establish the crushing and grinding duty before pricing the plant, then add leaching only where test work and the economics support it. These decisions explain much more about cost than the equipment name alone.</p>
 <p>The Chunya proposals provide a practical starting reference: about ${usd(wash.total)} for the washing-and-sluice equipment and estimated execution scope, rising to different budgets for scrubber-based recovery. Your investment decision still needs taxes, owner costs and an operating reserve. Bring your site location, sample results, target feed rate, water and power information to the next discussion so those remaining items can be priced.</p>

@@ -56,6 +56,8 @@ export default async function SwahiliTownPage({ params }: { params: Promise<{ to
         lead={l.summary}
         enHref={`/equipment/supply/${l.slug}`}
         faqs={l.faqs}
+        conclusion={{ title: 'Chagua vifaa kwa kazi ya eneo lako', body: `Mahitaji ya mradi wako ${l.town} yaamuliwe na malighafi, shughuli za mgodi na miundombinu iliyopo. Pima malighafi, hakiki kazi za shimo, maji na umeme, kisha omba pendekezo linaloonyesha vifaa, vipuri na kufikisha kwenye eneo halisi. Hivyo unaweza kulinganisha wigo unaofanana badala ya kununua kwa jina la kifaa au mazoea ya eneo pekee.` }}
+        basis={<p>Majibu kuhusu uchaguzi wa vifaa yanapaswa kusomwa pamoja na <Link href="/insights/plant-test-work-guide">mwongozo wa majaribio kwa Kiingereza</Link> na <Link href="/insights/underground-air-supply">tathmini ya hewa chini ya ardhi kwa Kiingereza</Link>, yenye vyanzo vya kiufundi. Kwa haki na shughuli zinazohusika, tumia <a href="https://www.tumemadini.go.tz/pages/licenseservice/">maelezo ya leseni ya Tume ya Madini</a>. Njia, gharama na ratiba ya mzigo wako zithibitishwe kwenye pendekezo la usafirishaji.</p>}
         ctaTitle={`Unahitaji vifaa ${l.town}?`}
         ctaBody={`Tuambie kazi unayotaka kufanya, hali ya eneo na umeme uliopo. Tunakupa bei ya kufikisha ${l.town}, ikijumuisha usafirishaji, ushuru na usafiri wa ndani.`}
       >

@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A mining project changes how nearby people use roads, land, water and employment opportunities. Community work therefore begins with understanding those effects, rather than choosing a donation after construction starts. A useful plan explains who will be affected, how their concerns shape the project and how commitments will be delivered.</p>
 <p>This guide helps owners organise engagement and community-development spending alongside the technical programme. It distinguishes impact management from voluntary benefits and gives a practical way to record commitments and complaints without promising that one agreement settles every relationship.</p>
 <h2 id="affected-people">Identify the people who experience the impacts</h2>
@@ -15,6 +17,7 @@ const content = `<p>A mining project changes how nearby people use roads, land, 
 <h2 id="programme">Coordinate engagement with the mine schedule</h2>
 <p>Discuss road changes before mobilisation, water concerns before selecting abstraction points and recruitment expectations before advertising jobs. Explain which positions require particular skills and how applications will be assessed. Do not create an expectation that every nearby household will receive employment.</p>
 <p>Include liaison, meetings, agreed programmes and monitoring in the budget. When activity expands or a contractor changes, update the contact arrangements and revisit impacts. A relationship managed only during licence applications will struggle when daily operating problems appear.</p>
+${renderArticleFaqs("community-csr-mining", "en")}
 <h2 id="conclusion">Make commitments specific and reviewable</h2>
 <p>Start with the people and impacts, confirm the applicable obligations, and agree practical actions with responsibilities and funding. Keep impact management distinct from development benefits, and give people a route to raise concerns. The next step is a stakeholder map and commitment register that the mine and community can both use.</p>
 <h2 id="basis">Sources and scope</h2>

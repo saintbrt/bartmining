@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>An enquiry for underground “air supply” can mean ventilation for the working environment or compressed air for pneumatic tools. These systems serve different purposes and need separate designs. Buying a compressor does not establish suitable ventilation, and a fan does not supply the pressure a drill requires.</p>
 <p>This guide explains the distinction and the information to take to a qualified designer. The aim is a clear equipment brief and verification plan; it does not provide a universal airflow allowance, gas limit or instruction to re-enter a working.</p>
 <h2 id="two-systems">Separate the two duties</h2>
@@ -15,6 +17,7 @@ const content = `<p>An enquiry for underground “air supply” can mean ventila
 <h2 id="readiness">Plan inspection, monitoring and interruptions</h2>
 <p>Have qualified personnel assess electrical supply, fan and compressor installation, pressure systems, guarding, isolation and maintenance. Agree what happens if ventilation or power fails and who can authorise work or re-entry. A gas detector or compressed-air line does not replace a functioning ventilation system.</p>
 <p>Include surveys, calibration where relevant, training and critical spares in the operating budget. Keep records linked to the current layout so an expanding working does not continue under an obsolete equipment brief.</p>
+${renderArticleFaqs("underground-air-supply", "en")}
 <h2 id="conclusion">Specify each air system for its purpose</h2>
 <p>Separate environmental ventilation from tool air, provide the layout and equipment data, and have the complete distribution duties assessed. The next step is a site survey and design brief with documented measurement and failure-response responsibilities. Choose fans and compressors only after that basis is established.</p>
 <h2 id="basis">Sources and scope</h2>

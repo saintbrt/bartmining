@@ -46,7 +46,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
             slug: loc.slug, name: loc.title, description: loc.description,
             city: loc.city, region: loc.region,
           }),
-          faqSchema(loc.faqs),
+          faqSchema(loc.faqs, 'en'),
           breadcrumbSchema([
             { name: 'Home', path: '/' },
             { name: 'Equipment', path: '/equipment' },
@@ -141,6 +141,23 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
               </div>
             ))}
 
+            <h2 id="conclusion">Choose the duty and complete delivery scope</h2>
+            <p>
+              Use your site's operating plan, conditions and relevant tests to define each
+              equipment duty. Compare offers that cover the same machine scope, support,
+              spares and delivery responsibilities. Before ordering for {loc.city}, prepare
+              that brief and confirm the route, access and unloading arrangements for the
+              actual load; a district equipment list cannot establish the complete project.
+            </p>
+            <h2 id="faq-basis">Basis for these answers</h2>
+            <p>
+              Read our <Link href="/insights/plant-test-work-guide">plant test-work guide</Link> and{' '}
+              <Link href="/insights/underground-air-supply">underground air-supply guide</Link> for the
+              applicable technical questions and their sources. Confirm rights and activities
+              using the <a href="https://www.tumemadini.go.tz/pages/licenseservice/">Mining Commission's licensing guidance</a>.
+              Delivery costs and dates require a current offer for the consignment.
+            </p>
+
             <div className="on-dark" style={{ marginTop: 56, background: 'var(--slate)', borderRadius: 'var(--r-lg)', padding: '36px 32px' }}>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,.68)', marginBottom: 12 }}>Supply to {loc.city}</p>
               <h3 style={{ color: '#fff', fontSize: 22, marginBottom: 12 }}>Need equipment delivered to {loc.city}?</h3>
@@ -160,7 +177,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
             <div className="loc-card">
               <div className="loc-label">On this page</div>
               <nav style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                {[['geology','Geology'],['operators','Who operates here'],['delivery','Getting equipment here'],['equipment','What they buy'],['faq','FAQ']].map(([id,label]) => (
+                {[['geology','Geology'],['operators','Who operates here'],['delivery','Getting equipment here'],['equipment','What they buy'],['faq','FAQ'],['conclusion','Conclusion'],['faq-basis','Answer sources']].map(([id,label]) => (
                   <a key={id} href={`#${id}`} style={{ fontSize: 15, color: 'var(--ink-2)' }}>{label}</a>
                 ))}
               </nav>

@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Rain can change feed moisture, clay behaviour, access and the amount of water a gold plant must manage. It does not mean the ore has automatically become poorer, and a loss in recovered gold should not immediately be blamed on the concentrator. First establish whether the change is in feed quantity, grade, preparation or the process itself.</p>
 <p>This guide helps alluvial operators organise that investigation and prepare for wet conditions. The useful outcome is a feed and water-management plan supported by observations and sampling, rather than a universal instruction to add a scrubber.</p>
 <h2 id="diagnosis">Measure what changed</h2>
@@ -15,6 +17,7 @@ const content = `<p>Rain can change feed moisture, clay behaviour, access and th
 <h2 id="season-plan">Prepare equipment and the operating response</h2>
 <p>Inspect drainage, pumps, standby power, roads and stockpile arrangements before the wet period. Agree who decides to reduce feed or stop when water, ground conditions or equipment exceed the approved operating limits. Check that operators can communicate those conditions and that maintenance spares are available.</p>
 <p>Use a staged trial if the feed-preparation circuit needs modification. Record the settings, sample streams and actual throughput so the result can be compared with the previous configuration. Our <a href="/insights/mining-equipment-cost-tanzania">alluvial cost examples</a> distinguish a wash-and-sluice scope from scrubber-based proposals.</p>
+${renderArticleFaqs("recovering-gold-rainy-season", "en")}
 <h2 id="conclusion">Trace the loss before changing the plant</h2>
 <p>Measure feed consistently, investigate clay and classification, and review the water system as a whole. Select changes from representative trials and a site plan that remains workable in wet conditions. Your next step is a documented wet-season inspection and sampling programme that identifies the actual constraint.</p>
 <h2 id="basis">Sources and assumptions</h2>

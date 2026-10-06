@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A junior explorer needs each programme to answer a geological question while preserving enough cash to act on the result. Outsourcing can provide field capacity, but it does not remove the company’s responsibility for data quality, spending decisions or public disclosure. The programme should leave evidence that another technical team can assess.</p>
 <p>This guide explains how to scope external support, organise the data and set review points between reconnaissance and resource work. The practical outcome is a programme with clear deliverables and a decision gate, rather than a contractor instructed simply to “find more ore.”</p>
 <h2 id="decision">Begin with the next decision</h2>
@@ -15,6 +17,7 @@ const content = `<p>A junior explorer needs each programme to answer a geologica
 <h2 id="review-gates">Use review gates to protect the budget</h2>
 <p>For the hypothetical covered-vein target, complete the map and initial samples, review their reliability, then decide whether the geometry justifies drilling. After the first drilling stage, update the model before committing the next stage. Define what would trigger further work, redesign or stopping.</p>
 <p>Budget for sample preparation, surveys, supervision, interpretation and reporting alongside field metres. Keep contingency for uncertainty and identify delays that could affect the company’s cash runway. An aggressive campaign that produces unusable data spends money without moving the decision forward.</p>
+${renderArticleFaqs("junior-mining-company", "en")}
 <h2 id="conclusion">Buy evidence for a defined decision</h2>
 <p>Organise outsourced work around a clear technical question, controlled data and reviewable deliverables. Confirm public-reporting responsibilities and retain enough budget to respond to what the programme discovers. Before tendering, prepare a short brief stating the target hypothesis, required evidence and next decision gate.</p>
 <h2 id="basis">Sources and example basis</h2>

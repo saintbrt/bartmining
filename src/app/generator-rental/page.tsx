@@ -40,7 +40,7 @@ export default function GeneratorRentalPage() {
           serviceType: 'Generator rental',
           catalog: { name: 'Generator rental, 300 to 2,500 kVA', path: '/generator-rental' },
         }),
-        faqSchema(RENTAL_FAQS),
+        faqSchema(RENTAL_FAQS, 'en'),
         breadcrumbSchema([
           { name: 'Home', path: '/' },
           { name: 'Generator Rental', path: '/generator-rental' },

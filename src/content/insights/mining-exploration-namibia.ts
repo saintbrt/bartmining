@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Exploration in Namibia needs a target-specific model and a field plan suited to the site. A uranium, gold, base-metal or diamond project will require different sampling, process and product evidence. Water, access and environmental constraints should be considered while the programme can still change.</p>
 <p>This guide helps an owner prepare a phased exploration brief and understand what belongs in a development assessment. It uses the country’s mineral industry as context while keeping current rights and site conditions subject to direct verification.</p>
 <h2 id="context">Frame the target from regional information</h2>
@@ -15,6 +17,7 @@ const content = `<p>Exploration in Namibia needs a target-specific model and a f
 <h2 id="handover">Request evidence for the next study</h2>
 <p>Keep original observations, coordinates, samples, assays, surveys and quality records. Ask the report to explain the model, alternative interpretations and work that would change the decision. Preserve representative material for metallurgical assessment rather than delaying process questions until equipment procurement.</p>
 <p>Confirm mineral rights, access, environmental requirements and sample movement with the relevant Namibian authorities and qualified local advisers. The programme should state which permissions are in place and which control the schedule.</p>
+${renderArticleFaqs("mining-exploration-namibia", "en")}
 <h2 id="conclusion">Explore with a target and site basis</h2>
 <p>Select the methods from the mineral system, collect verifiable evidence and include water, logistics and specialist controls in the scope. Advance through review points that identify what the next stage can resolve. Begin with the property-data inventory and the site constraints that could prevent the field programme from working.</p>
 <h2 id="basis">Sources and assumptions</h2>

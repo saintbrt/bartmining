@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A platinum-group metal project in Zimbabwe needs evidence about the mineralised horizon, its continuity and its metal composition. A single combined grade can hide differences that matter to processing and sales. The exploration programme should collect both geological information and representative material for process assessment.</p>
 <p>This guide explains how to frame a Great Dyke target and move from mapping to a reviewable drill and metallurgical dataset. Its practical aim is to connect the reported grade to the product and development questions that follow.</p>
 <h2 id="great-dyke">Use the mineralised horizon as a geological model</h2>
@@ -15,6 +17,7 @@ const content = `<p>A platinum-group metal project in Zimbabwe needs evidence ab
 <h2 id="development-brief">Include mine and infrastructure constraints</h2>
 <p>Evaluate horizon geometry, ground conditions, access, ventilation and water alongside power and processing requirements. Confirm the applicable mineral rights, environmental route and product movement rules through local specialists. Avoid placing one universal legal or ownership rule in an early technical brief.</p>
 <p>Request a phased report that ranks uncertainties and explains the next work: continuity drilling, geotechnical assessment, metallurgical variability or product discussions. The priorities should follow what can change the development case.</p>
+${renderArticleFaqs("platinum-zimbabwe", "en")}
 <h2 id="conclusion">Connect the horizon to a payable metal basket</h2>
 <p>Establish local geometry and component grades, test the recovery route and understand the product terms before evaluating a PGM project. Your next step is a coordinated core, assay and metallurgical brief that keeps geological continuity and metal value as separate, reviewable questions.</p>
 <h2 id="basis">Sources and assumptions</h2>

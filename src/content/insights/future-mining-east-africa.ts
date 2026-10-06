@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Interest in battery and other industrial minerals can create exploration opportunities, but a regional demand story is not a development plan. A deposit still needs suitable mineralogy, a viable product, infrastructure and a credible buyer. The useful question is which project-level evidence converts a market theme into an investable next step.</p>
 <p>This guide explains how owners can assess mineral and technology opportunities across East Africa and connected regional supply chains. It avoids treating a demand scenario as a guaranteed price or presenting announced projects as already operating.</p>
 <h2 id="market-context">Read demand alongside supply and product</h2>
@@ -15,6 +17,7 @@ const content = `<p>Interest in battery and other industrial minerals can create
 <h2 id="technology">Adopt technology for a measured problem</h2>
 <p>Remote sensing, digital logging, geophysics and automation can improve particular tasks when the underlying data and workflow are sound. Define the performance measure before adoption: fewer transcription errors, improved coverage or better operating availability. A new instrument cannot validate a biased sample or establish a resource automatically.</p>
 <p>Trial the proposed change, keep original records and compare the outcome with the previous method. Budget training, maintenance, data ownership and integration rather than only the device purchase.</p>
+${renderArticleFaqs("future-mining-east-africa", "en")}
 <h2 id="conclusion">Turn the opportunity into a staged test</h2>
 <p>Choose the next investment from deposit evidence, product qualification and the complete route to market. Treat forecasts and announcements as dated context and define the information that could change the project case. Begin with a target brief and buyer specification, then fund the work needed to test them.</p>
 <h2 id="basis">Sources and assumptions</h2>

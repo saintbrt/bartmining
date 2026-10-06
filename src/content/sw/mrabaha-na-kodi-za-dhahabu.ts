@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Unapouza dhahabu, thamani iliyoandikwa kabla ya makato inaweza kuwa tofauti na fedha utakazopokea. Hesabu hiyo inategemea uzito, usafi wa dhahabu, bei inayotumika na makato yanayohusu njia ya mauzo. Ili kupanga fedha za mgodi, unahitaji kuelewa kila hatua ya settlement, yaani hesabu ya mwisho ya malipo.</p>
 <p>Mwongozo huu unaeleza namna ya kuthibitisha mrabaha na makato, kusoma mfano wa hesabu na kuhifadhi stakabadhi. Hauorodheshi kila kodi ya biashara, wala hautumii viwango vya kihistoria kana kwamba ni uthibitisho wa makato ya kila mauzo ya mwaka 2026.</p>
 <h2 id="thamani">Thibitisha thamani inayotumika kwenye hesabu</h2>
@@ -16,6 +18,7 @@ const content = `<p>Unapouza dhahabu, thamani iliyoandikwa kabla ya makato inawe
 <h2 id="asilimia-20">Sharti la 20% si aina ya makato</h2>
 <p><a href="https://www.bot.go.tz/Publications/Other/The%2050th%20Anniversary%20of%20Bank%20of%20Tanzania/sw/2026061710500724.pdf">Chapisho la BoT la mwaka 2026</a> linaeleza kutenga 20% ya dhahabu ya mauzo ya nje kwa ununuzi wa Benki Kuu, kwa wamiliki wa haki za madini na dealers wenye leseni chini ya kifungu cha 59. Usilitafsiri kama kodi ya 20%, au kudhani kuuza kwa mnunuzi yeyote wa ndani kunakamilisha wajibu huo.</p>
 <p>Ikiwa wewe au mnunuzi wako anasafirisha dhahabu nje, pata maelekezo ya Tume na BoT kuhusu nyaraka na utaratibu unaohusika. Kwa taarifa za njia za kuuza, soma <a href="/insights/selling-gold-tanzania">mwongozo wa mauzo kwa Kiingereza</a>.</p>
+${renderArticleFaqs("mrabaha-na-kodi-za-dhahabu", "sw")}
 <h2 id="conclusion">Panga fedha kwa malipo yanayoeleweka</h2>
 <p>Kabla ya kuuza, thibitisha uzito, usafi, valuation, makato na muda wa malipo kwa maandishi. Hifadhi assay, hesabu ya settlement, stakabadhi na kumbukumbu ya benki pamoja. Kiasi unachoweza kuthibitisha baada ya makato ndicho kinachofaa kwenye mpango wa fedha; ushahidi wa gharama za biashara utakusaidia kufikia hesabu ya faida baadaye.</p>
 <h2 id="basis">Vyanzo na msingi wa mfano</h2>

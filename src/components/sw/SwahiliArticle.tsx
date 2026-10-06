@@ -14,11 +14,12 @@ interface Props {
   image?: string
   imageAlt?: string
   conclusion?: { title: string; body: string }
+  basis?: ReactNode
   children: ReactNode
 }
 
 /** Existing JSX guides share the same renderer as English insights. */
-export default function SwahiliArticle({ crumbs, eyebrow, h1, lead, enHref, faqs, ctaTitle, ctaBody, image, imageAlt, conclusion, children }: Props) {
+export default function SwahiliArticle({ crumbs, eyebrow, h1, lead, enHref, faqs, ctaTitle, ctaBody, image, imageAlt, conclusion, basis, children }: Props) {
   return <ArticleLayout
     lang="sw"
     title={h1}
@@ -34,5 +35,6 @@ export default function SwahiliArticle({ crumbs, eyebrow, h1, lead, enHref, faqs
     {children}
     {faqs.length > 0 && <><h2 id="maswali">Maswali yanayoulizwa mara kwa mara</h2>{faqs.map(f => <section key={f.q}><h3>{f.q}</h3><p>{f.a}</p></section>)}</>}
     {conclusion && <><h2 id="hitimisho">{conclusion.title}</h2><p>{conclusion.body}</p></>}
+    {basis && <><h2 id="vyanzo">Msingi wa majibu ya maswali</h2>{basis}</>}
   </ArticleLayout>
 }

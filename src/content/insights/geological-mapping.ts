@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Geological mapping records exposed rocks, structures and alteration and uses those observations to interpret a project area. It helps an explorer decide where further sampling, geophysics or drilling can test a meaningful hypothesis. The map should show both what is observed and what remains uncertain beneath cover.</p>
 <p>This guide explains how to scope mapping for a Tanzanian project and what to request at handover. The useful outcome is a target model with supporting records, rather than a coloured map that cannot be connected to field evidence.</p>
 <h2 id="desktop">Start with existing information</h2>
@@ -15,6 +17,7 @@ const content = `<p>Geological mapping records exposed rocks, structures and alt
 <h2 id="deliverables">Request a map and a usable project dataset</h2>
 <ul><li>Map files with scale, coordinates, legend, source dates and observed versus inferred features.</li><li>Located observations, photographs and sample records linked by identifiers.</li><li>Cross-sections or interpretations needed to explain target geometry.</li><li>A ranked target list with evidence, uncertainties and proposed tests.</li><li>A report documenting methods, coverage and access limitations.</li></ul>
 <p>Keep editable spatial files and the original observations as well as a PDF. That lets the drilling and modelling team update interpretations without rebuilding the dataset from an image.</p>
+${renderArticleFaqs("geological-mapping", "en")}
 <h2 id="conclusion">Use mapping to choose the next test</h2>
 <p>Scope the survey around a project decision, preserve the observations and make uncertainty visible on the interpretation. A useful map leads to a justified next programme and identifies what would change the model. Begin with a desktop compilation and a field brief that names the geological questions.</p>
 <h2 id="basis">Sources and example basis</h2>

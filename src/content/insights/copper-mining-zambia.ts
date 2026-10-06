@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A Zambian copper target needs a model explaining where mineralisation may occur and a programme that can test it. National production and nearby operations provide context, while the project itself needs evidence of host rocks, geometry, grade and process response. Surface copper staining alone is not a development case.</p>
 <p>This guide connects Copperbelt research with a staged exploration brief and a simple metal calculation. You should finish able to define the next geological test and the information a process or investment review will need.</p>
 <h2 id="setting">Use the Copperbelt model carefully</h2>
@@ -15,6 +17,7 @@ const content = `<p>A Zambian copper target needs a model explaining where miner
 <h2 id="development">Connect the exploration case to processing and access</h2>
 <p>Test mineralogy and treatment response across the expected feed domains. Establish water, power, access, environmental work and the product route before treating the discovery model as a plant brief. Cobalt or another by-product needs its own assay, recovery and payable evidence.</p>
 <p><a href="https://www.usgs.gov/centers/national-minerals-information-center/zambia">USGS’s Zambia industry page</a> offers dated production and industry context. Use the original reporting period and verify current tenure, regulatory and commercial arrangements through the relevant local channels.</p>
+${renderArticleFaqs("copper-mining-zambia", "en")}
 <h2 id="conclusion">Test the copper model and its product route</h2>
 <p>Use regional geology to frame the target, then establish local geometry, grade and process behaviour through controlled work. Evaluate payable output under actual product terms instead of equating contained metal with revenue. Prepare a target model and phased drilling brief before advancing to a development study.</p>
 <h2 id="basis">Sources and assumptions</h2>

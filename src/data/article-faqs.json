@@ -1,0 +1,218 @@
+{
+  "en": {
+    "gold-exploration-tanzania": [
+      { "q": "Does a productive mine nearby prove that my licence contains similar gold?", "a": "It provides geological context, but your property still needs its own mapping, sampling and continuity evidence. Use the neighbouring deposit to frame a hypothesis, then test it under the actual licence and site conditions. Equipment selection and a production budget should follow that evidence rather than the neighbour's results." },
+      { "q": "When should metallurgical sampling enter an exploration programme?", "a": "Include it when representative material can help answer a process question that affects the next decision. Keep samples linked to the geological domains and record what they represent. Early process evidence can guide later work, but an isolated sample should not be treated as proof that the whole deposit suits one plant." }
+    ],
+    "diamond-mining-botswana": [
+      { "q": "Does finding diamonds in an early sample establish the project's value?", "a": "It establishes occurrence under that sampling and recovery basis. Commercial value still depends on grade, stone-size and value distributions, recovery and mining conditions. Have specialists explain the limitations and design the next sampling stage before applying an average sale value or a development budget to the target." },
+      { "q": "Should every part of a kimberlite complex be sampled as one material?", "a": "Separate geological units where the evidence suggests different characteristics. Combining them too early can hide differences in diamond occurrence, size distribution or treatment response. The sampling plan should preserve those distinctions so later grade and value work can be interpreted against the material actually mined." }
+    ],
+    "copper-mining-zambia": [
+      { "q": "Can a long copper-bearing drill interval be used directly as the mining width?", "a": "The reported interval follows the drill hole. Its relationship to the mineralised body's true width depends on hole orientation and geological geometry. Keep surveys and structural interpretation with the assays, and have the geologist establish that relationship before using the interval in a mine or volume model." },
+      { "q": "Can contained copper be valued as though all of it will be paid for?", "a": "Contained metal is an input to the assessment, while recovery, product quality and the buyer's payable terms determine saleable value. Establish a representative process response and proposed product specification, then include charges and deductions. Applying a metal price to all contained copper can overstate the revenue basis." }
+    ],
+    "platinum-zimbabwe": [
+      { "q": "Are two projects with the same combined PGM grade directly comparable?", "a": "Check which elements each reported grade includes and the component metal assays. The same combined number can represent different metal baskets, with different recoveries and payable products. Keep the stated analytical and reporting basis alongside any comparison instead of assuming that labels such as 4E describe identical value." },
+      { "q": "Is identifying the expected mineralised horizon enough to design a mine?", "a": "The horizon provides a geological model to test. Local continuity, structure, grade, ground conditions and process response still need evidence. Use the core programme to investigate those questions and preserve the records needed for later studies rather than transferring assumptions from an adjacent operation." }
+    ],
+    "coal-mining-mozambique": [
+      { "q": "Can I use raw coal tonnage as the saleable tonnage in a forecast?", "a": "First establish preparation yield and the quantity that meets the intended buyer's specification. Keep moisture and reporting bases consistent between the resource, test results and sale terms. Include rejected or off-spec material and handling costs so the forecast reflects a deliverable product rather than all excavated feed." },
+      { "q": "Does a nearby rail or port route confirm that my coal can reach a buyer?", "a": "The route needs confirmed capacity, access arrangements, handling requirements and delivered costs for your proposed schedule. Obtain evidence from the relevant providers and include approvals and infrastructure work. A corridor shown on a map is useful context, but it does not establish a transport contract or a viable net selling price." }
+    ],
+    "mineral-survey-kenya": [
+      { "q": "Can one survey package reliably answer questions about every mineral?", "a": "The evidence needed depends on the target and decision. A structural gold target, mineral sands and an industrial-mineral product require different sampling and measurements. Ask the specialist to explain how each proposed method tests your model before paying for a broad package described simply as a mineral scan." },
+      { "q": "What should I receive besides a map of survey anomalies?", "a": "Request the located observations, sample and analytical records, quality checks, coordinate system and processing history relevant to the work. The interpretation should explain alternative causes and rank follow-up tests. Those deliverables let another specialist assess the result and make the next programme usable." }
+    ],
+    "geophysical-surveys-east-africa": [
+      { "q": "Can geophysics tell me the ore grade without sampling?", "a": "Geophysics measures physical responses that help interpret the target and plan tests. An anomaly may have more than one geological or cultural explanation, so it does not establish an ore grade on its own. Combine interpretation with field observations and appropriate direct sampling before making a resource or plant decision." },
+      { "q": "How should I compare two geophysical quotations?", "a": "Compare the same target, coverage, acquisition quality, positioning, processing and interpretation deliverables. Include access, mobilisation and follow-up support where required. A lower price per kilometre can describe a different programme, so ask each provider to show how its scope answers the intended geological question." }
+    ],
+    "drilling-services-tanzania": [
+      { "q": "Should I always choose the drilling method with the lowest price per metre?", "a": "Choose the information and sample quality needed first, then compare complete campaign costs. Core and RC provide different forms of evidence, and ground or water conditions can affect results. Include supervision, surveys, sampling, laboratory work and rehabilitation so a cheaper drilling rate does not leave an incomplete programme." },
+      { "q": "What should happen if sample recovery or quality deteriorates during drilling?", "a": "Use the quality and change-control procedure agreed before mobilisation. Record the affected intervals and conditions, have the responsible geologist assess the results, and decide what corrective work is needed. Preserve the original records and flag limitations rather than treating every drilled metre as equally reliable data." }
+    ],
+    "environmental-compliance-mining": [
+      { "q": "Should an environmental assessment cover only the processing plant?", "a": "Describe the complete proposed project, including workings, access, water, chemicals, power, waste facilities and planned expansion where relevant. A plant-only description can leave important impacts outside the assessment. Have the appointed specialist confirm the applicable route using that full scope before finalising the layout." },
+      { "q": "Does receiving an environmental approval end the environmental work?", "a": "The approval's conditions must be carried into design, operating responsibilities, monitoring and records. Confirm the project's reporting and review requirements, particularly when the scope changes. Budget the staff, measurements and maintenance needed to implement the plan rather than treating approval as a document to file away." }
+    ],
+    "mining-equipment-africa": [
+      { "q": "Can I compare two machines using nominal capacity alone?", "a": "Confirm the feed, required product, operating hours, utilities and site conditions behind each rating. Then compare the complete scope, including delivery, installation, spares and acceptance. Machines with the same catalogue capacity may serve different duties or depend on assumptions your project cannot meet." },
+      { "q": "When should spare parts enter the procurement budget?", "a": "Include them when defining the equipment and support scope, rather than after the first breakdown. Ask which wear and critical parts are needed for the planned duty, their lead times and local support arrangements. Keep initial spares distinct from routine operating consumption so both funding requirements are visible." }
+    ],
+    "mineral-exploration-drc": [
+      { "q": "Can a national mineral-industry report confirm the value of my property?", "a": "It provides dated regional context. The property still needs verified rights, local geological evidence, access and an assessment of the proposed operating conditions. Use the report to frame target questions, then fund the direct work needed to test them before assigning a project value." },
+      { "q": "Should counterparty and access checks wait until a discovery is made?", "a": "Complete the checks relevant to the planned work before mobilisation and revisit them as conditions change. They affect whether a field programme can proceed responsibly and produce usable evidence. Have appropriate local and due-diligence specialists assess the actual rights, agreements, routes and counterparties rather than relying on a general country description." }
+    ],
+    "mining-services-south-africa": [
+      { "q": "Should a production shortfall automatically lead to a larger processing plant?", "a": "Trace the constraint across mining, material delivery and processing first. Development availability, water, ventilation or inconsistent feed can restrict output even when the plant has spare capacity. Scope a review around the measured shortfall so any equipment investment addresses the actual limiting duty." },
+      { "q": "Does a firm's general experience establish who can sign a technical report?", "a": "Identify the person responsible for the report and confirm the competence and reporting requirements that apply to its purpose and jurisdiction. A company profile does not establish every individual's eligibility. Agree that responsibility, scope and supporting records in the proposal before the work begins." }
+    ],
+    "mining-exploration-namibia": [
+      { "q": "Can a radiometric reading be reported directly as uranium grade?", "a": "It needs qualified interpretation and appropriate geological and chemical verification. Record the instrument and measurement basis, then design follow-up sampling around the target. Treat the response as evidence to investigate rather than a substitute for the analytical and reporting work needed to establish grade." },
+      { "q": "Should water and access be assessed only after exploration succeeds?", "a": "Assess them early enough to influence the field programme and later development options. They can affect sampling logistics, the proposed process and the cost of the next study. Document the actual site constraints and required confirmations instead of assuming national infrastructure descriptions settle local availability." }
+    ],
+    "geological-mapping": [
+      { "q": "Can a geological map establish the depth or grade of an orebody?", "a": "Mapping documents observations and supports an interpretation, including uncertainty beneath cover. Depth, grade and continuity need suitable direct tests linked to that model. Use the map to locate and explain those tests rather than treating an inferred contact or coloured area as a measured resource." },
+      { "q": "Which files should I ask for when the mapping work is handed over?", "a": "Request the map together with its coordinate system, located observations, photographs, sample identifiers and the digital project data agreed in the scope. The interpretation should distinguish observed from inferred features. A presentation image alone can be difficult to revise or combine with later drilling and survey records." }
+    ],
+    "mine-planning-feasibility": [
+      { "q": "Does a report called bankable guarantee that a lender will fund the mine?", "a": "The label does not establish financing eligibility or remove the project's uncertainties. A lender assesses its own requirements alongside the study's evidence, assumptions and remaining work. Confirm the decision the study must support and the relevant funding criteria before commissioning additional detail." },
+      { "q": "Can a feasibility study repair missing geological or metallurgical evidence?", "a": "The study can identify gaps and coordinate work to close them, but calculations cannot replace the missing observations and tests. Keep the mine schedule, process response and economic assumptions connected to their evidence. If a major input remains uncertain, scope the next investigation before treating the study as an implementation basis." }
+    ],
+    "assay-laboratory-tanzania": [
+      { "q": "Does an accurate assay prove that the sample represents the deposit?", "a": "Analytical quality and sampling representativeness are separate questions. A reliable result from a selected specimen can still mislead a production estimate. Keep the collection method, location and material basis with the certificate, and have the sampling programme designed around the decision the result must support." },
+      { "q": "What should I do when a quality-control sample gives an unexpected result?", "a": "Apply the agreed review procedure and ask the laboratory and responsible geologist to investigate the affected batch or intervals. Keep certificates, preparation records and any repeat results with an audit trail. Do not silently delete the failed check or average conflicting results into an apparently reassuring number." }
+    ],
+    "mining-consulting-africa": [
+      { "q": "How can I tell whether a consulting proposal will give me a usable answer?", "a": "Check that it states the project question, evidence to be reviewed, work to be performed, responsible specialists and deliverables. It should also name exclusions and remaining decisions. Ask how you will assess the conclusion; a list of service titles and a fee alone does not define the outcome." },
+      { "q": "Should the adviser disclose work for a seller or equipment supplier?", "a": "Ask about interests that could affect the assignment and agree how they will be managed. This is especially useful when an acquisition review or process recommendation may influence a purchase. Record the relationships and the scope of independent review so you can assess the advice with its context." }
+    ],
+    "community-csr-mining": [
+      { "q": "Can a community donation replace impact management or compensation?", "a": "Keep those responsibilities separate. A development benefit does not resolve an unaddressed project impact or establish that an affected person's entitlement has been settled. Have the relevant specialists confirm the obligations, then document voluntary benefits and their delivery alongside the required mitigation and compensation processes." },
+      { "q": "How should a community commitment be recorded so it can be followed up?", "a": "Record who the commitment serves, what will be delivered, who is responsible, the funding and timetable, and how completion will be checked. Include operation and maintenance where a facility is involved. Give affected people an accessible way to raise concerns rather than treating the construction date as proof that the benefit works." }
+    ],
+    "junior-mining-company": [
+      { "q": "Does outsourcing exploration transfer responsibility for data quality to the contractor?", "a": "The contract should assign collection and review duties, but the company still needs oversight of the evidence used for spending and disclosure decisions. Agree quality checks, custody, original data delivery and reporting responsibility. Review the results at defined gates before approving the next campaign." },
+      { "q": "Should JORC and NI 43-101 be treated as interchangeable report labels?", "a": "Confirm the framework that applies to the issuer and intended report, together with its signatory and disclosure requirements. Arrange the appropriate reporting adviser before material results are collected or announced. General experience or a reference to both frameworks does not establish that the report meets either one." }
+    ],
+    "future-mining-east-africa": [
+      { "q": "Does demand for a critical mineral make any deposit of it worth developing?", "a": "The project still needs a viable product, representative recovery and quality evidence, infrastructure and a credible route to market. Demand information provides dated context for that assessment. Build the next programme around deposit and buyer requirements rather than applying a market forecast directly to untested material." },
+      { "q": "Can an expression of interest from a buyer be counted as guaranteed revenue?", "a": "Read its actual terms and distinguish it from a binding purchase commitment. Confirm qualification, specification, payable basis, quantities and delivery conditions with the buyer. Keep off-spec material and qualification risk visible in the forecast so initial interest is not modelled as certain settlement." }
+    ],
+    "underground-air-supply": [
+      { "q": "Can a compressor provide the ventilation a working needs?", "a": "Compressed air for tools and ventilation for the underground environment are separate duties. A compressor rating does not establish airflow distribution or acceptable conditions in occupied workings. Give the mine layout and equipment schedule to the responsible specialists so each system is designed and verified for its purpose." },
+      { "q": "Does a gas detector make it safe to enter a poorly ventilated working?", "a": "A detector provides measurements within its specification and maintenance condition; it does not provide ventilation or authorise entry. Follow the site's assessed operating and re-entry procedures and the responsible person's directions. Monitoring, functioning air distribution and an agreed response to interruptions must be managed together." }
+    ],
+    "recovering-gold-rainy-season": [
+      { "q": "Does lower gold output after rain prove that the concentrator needs replacing?", "a": "First compare dry feed, grade, operating hours, preparation and the sampled loss streams. Rain can change moisture, clay, access and water management, so the apparent shortfall may have more than one cause. Use those observations to identify a trial or correction before buying a different recovery machine." },
+      { "q": "Can I restore performance simply by increasing washing water?", "a": "Check the washing, classification and downstream recovery duties together. More water can change flow without freeing gold from difficult clay or preventing losses to oversize. Trial representative wet-season feed and review the site's water balance so the proposed change improves the measured constraint within the designed operating conditions." }
+    ],
+    "mining-commission-compliance-2026": [
+      { "q": "Should I buy the processing equipment before confirming its approval requirements?", "a": "Confirm the proposed activity and approval route while the layout can still change. An equipment invoice does not establish that your existing licence covers the new plant. Take the intended process, location and supporting facilities to the relevant authorities, then use their requirements to complete the design and procurement scope." },
+      { "q": "What should I keep as evidence that an inspection finding has been resolved?", "a": "Keep evidence suited to the finding, such as the approved document, repair record, test result or training record, together with the responsible person's confirmation. A note saying that an issue was checked may not show what changed. Link each record to the action register so the next review can follow the correction." }
+    ],
+    "selling-gold-tanzania": [
+      { "q": "Can I compare two gold offers using only the price per gram?", "a": "First put both offers on the same weight and purity basis. Then compare the assay method, statutory deductions, buyer charges and payment trigger. A higher headline price may produce a lower or later settlement. Ask each buyer for a written calculation for the same lot before choosing the sale route." },
+      { "q": "What should I do if the buyer's assay differs from my result?", "a": "Use the sampling and dispute procedure agreed before delivery. Keep the lot identifier, weight records, laboratory reports and any retained-sample details together, and ask how the difference will be checked. Do not assume the highest result is correct or accept a revised settlement without understanding its measurement basis." }
+    ],
+    "small-miner-financing": [
+      { "q": "Does having a mining licence make my project eligible for a loan?", "a": "A licence is part of the project file, but it does not demonstrate repayment capacity. A lender will assess the evidence and terms relevant to its own facility. Prepare the project scope, production and sales records where available, a cash forecast and the proposed security, then request that lender's current application requirements." },
+      { "q": "Can a grace period solve a shortage of operating cash?", "a": "It may delay some repayments, but its value depends on the written terms, including interest and fees during that period. Model the time needed for installation, ramp-up and settlement alongside fuel, wages and consumables. If the cash forecast still runs short, change the funding or project schedule before signing." }
+    ],
+    "mercury-free-gold-recovery": [
+      { "q": "Does buying a concentrator guarantee that I can stop using mercury?", "a": "The concentrator must suit the feed, and its product still needs a workable cleanup and final-gold route. Test representative material and measure gold across feed, concentrate, residues and final product. That trial can establish which additional work is needed; a machine purchase alone cannot establish the complete recovery." },
+      { "q": "Can old tailings be treated in the same way as fresh ore?", "a": "Their previous treatment and contaminants need a separate assessment. In particular, mercury-bearing residues should not be sent into a cyanide circuit as though they were ordinary feed. Give the process specialist the treatment history and representative samples before selecting a reprocessing route or purchasing chemicals." }
+    ],
+    "gold-elution-plant-price": [
+      { "q": "Can I size an elution plant from the mine's daily ore tonnage?", "a": "Ore tonnage alone does not establish the carbon duty. Provide loaded-carbon quantities, assays, batch frequency, turnaround and the intended upstream circuit. The designer should check whether the facility can clear the scheduled carbon without building a backlog, including the time needed for maintenance and downstream gold handling." },
+      { "q": "When should I compare toll treatment with owning an elution facility?", "a": "Make the comparison before committing the capital, especially when carbon batches will be intermittent. Obtain terms for custody, sampling, charges, payable recovery and settlement, then compare them with the complete cost and utilisation of an owned facility. A lower operating cost per batch does not by itself justify the purchase." }
+    ],
+    "small-cip-plant-guide": [
+      { "q": "Can I use this guide's working-volume example to order tanks?", "a": "It is an initial calculation using assumed flow and residence time. It does not specify gross vessel sizes, mixing, freeboard, carbon management or operating availability. Give the engineer your actual slurry properties, test results and feed schedule so the complete circuit can be designed before equipment is ordered." },
+      { "q": "What should a plant performance test measure?", "a": "Agree the feed basis, duration, sampling, throughput and recovery measurement before commissioning. Include inventories, carbon accountability, utilities and the route to final product, rather than relying on visible gold or a brief run. The acceptance record should also identify training, documentation and any defects that remain to be resolved." }
+    ],
+    "activated-carbon-cyanide-tanzania": [
+      { "q": "Can I compare carbon offers using only the price per bag?", "a": "Compare the same product specification and quantity, including particle size, activity, abrasion resistance, certificates and delivered scope. The carbon also needs to suit the circuit's screens and handling arrangements. Ask the process team to set trial acceptance criteria before a lower purchase price becomes a larger operating loss." },
+      { "q": "How do I choose a reorder point without storing too much?", "a": "Use the production schedule, measured or tested consumption and confirmed delivery lead time to calculate stock cover. Check that the resulting quantity fits the approved storage arrangements and product conditions. Review the calculation as consumption and deliveries change; the example in this guide is not a chemical dosage or storage limit." }
+    ],
+    "vat-leaching-tailings": [
+      { "q": "Does a good bottle-roll result prove that a vat will achieve the same recovery?", "a": "It demonstrates response under that test's conditions, while a vat also depends on solution movement through the loaded material. Ask for tests representing the proposed preparation, permeability and batch cycle. Compare final-product recovery and elapsed time so the economic model does not treat an agitated laboratory result as a full-scale vat result." },
+      { "q": "Is gold on loaded carbon the same as money available to run the next batch?", "a": "Loaded carbon is an intermediate inventory until it has been treated and the gold settled. Include transport, sampling, elution charges, custody and payment timing in the batch model. Otherwise a technically successful batch may still leave too little cash for the next loading and operating cycle." }
+    ],
+    "equipment-rental-tanzania": [
+      { "q": "Does wet hire mean fuel and every maintenance cost are included?", "a": "The term commonly indicates an operated machine, but each offer must state its own inclusions. Confirm fuel, routine maintenance, consumables, insurance, breakdown response and operator arrangements separately. Ask how standby and downtime are billed so the comparison reflects the job you can actually complete." },
+      { "q": "Can I use the hire-versus-purchase example as a fixed break-even period?", "a": "No. The example uses assumed rates and mobilisation costs for one period. Your result depends on actual utilisation, contract terms, repairs, capital cost and any realistic resale value. Recalculate both options over the same job and include delays before deciding which commitment fits." }
+    ],
+    "used-mining-equipment-tanzania": [
+      { "q": "Is a seller's video enough to confirm a used machine's condition?", "a": "A video can help identify the machine and visible operation, but it does not establish wear, structural condition or performance at your intended duty. Arrange an inspection appropriate to the asset and review its identity and maintenance records. Agree any practical load test and document the repairs needed before comparing prices." },
+      { "q": "Which costs belong beside the used equipment price?", "a": "Include inspection, repairs, missing parts, transport, unloading, installation and changes needed for your site's utilities. Check availability of essential spares and service support. Compare that complete scope with a suitable alternative rather than treating the difference between two purchase prices as the final saving." }
+    ],
+    "plant-test-work-guide": [
+      { "q": "Can I send the richest sample I found to choose the plant?", "a": "A selected rich sample may help investigate mineralisation, but it can misrepresent the feed the plant will receive. Have the sampling programme cover the material types and variation relevant to production. Tell the laboratory what each sample represents and which process decision the tests must answer." },
+      { "q": "Does a laboratory recovery result guarantee the same recovery in production?", "a": "It records performance under the reported test conditions. Scale, feed variation, preparation, residence time and operator control can change the plant result. Use the report to define engineering and a further trial or acceptance plan, keeping the test's sample basis and limitations beside any recovery figure." }
+    ],
+    "off-grid-mine-power": [
+      { "q": "Can I choose a generator by adding the motor nameplate ratings?", "a": "The connected load is a starting point, but selection must also consider simultaneous operation, motor starting, the site's conditions and the generator's rating basis. Provide the full load list and operating sequence to a qualified electrical designer. A running-load total alone does not establish that the largest motor can start reliably." },
+      { "q": "Will adding solar power remove the need for backup generation?", "a": "That depends on the load schedule and the complete supply design, including storage, controls and the production you need during low solar output. Compare options against the same required service and operating assumptions. Do not value the solar system as though every unit of its output automatically replaces a unit of generator fuel." }
+    ],
+    "cil-vs-cip-vs-heap-leach": [
+      { "q": "Is heap leaching always the cheapest gold-processing route?", "a": "The answer depends on ore response and the complete site, including preparation, the pad, water management, downstream recovery and the time to settlement. Compare routes using tests and equivalent scope. A lower equipment count does not establish a lower project cost or an acceptable recovery schedule." },
+      { "q": "Can an existing CIP plant become a CIL plant just by changing where carbon is added?", "a": "Changing the process arrangement requires a review of leach and adsorption behaviour, tank duties, mixing, screens and carbon management. Have a process specialist assess the existing circuit against representative tests and the proposed feed rate. Do not treat the two names as interchangeable operating settings." }
+    ],
+    "gravity-vs-cyanide-gold-recovery": [
+      { "q": "Can I add the gravity and leach recovery percentages together?", "a": "Only compare percentages under their stated feed bases. When leaching treats gravity tailings, its recovery applies to the gold remaining after gravity, rather than to all the original gold. Use a reconciled gold balance to calculate combined recovery and distinguish intermediate extraction from the final recovered product." },
+      { "q": "Does a higher combined recovery automatically make leaching worthwhile?", "a": "Compare the additional payable gold with the additional capital, operating cost, approvals, residue management and cash tied up in the circuit. Test representative material and use the same production period for both options. A recovery increase can be real while the added route remains uneconomic for that project." }
+    ],
+    "mining-equipment-cost-tanzania": [
+      {
+        "q": "Can I start with washing and sluices, then add recovery equipment?",
+        "a": "That is the approach proposed for the Chunya Phase 1 project. It can make sense where the feed contains recoverable free gold and the initial circuit fits the material. Tests should show what the sluices miss, and the layout should allow a later addition such as centrifugal concentration or concentrate cleanup. Expansion is a separate budget, not a guarantee that the simplest circuit will suit every deposit."
+      },
+      {
+        "q": "Does the plant total include an excavator and mine development?",
+        "a": "The Chunya figures on this page cover the stated processing equipment and execution scope. They do not price a complete mining business. Budget excavation, haulage, site ownership or access, mineral rights and operating capital separately."
+      },
+      {
+        "q": "Should I convert the USD figures into Tanzanian shillings now?",
+        "a": "For your financing plan, use the exchange rate and bank charges that apply to your expected payment dates. This page keeps the figures in the proposal currency so an assumed exchange rate is not mistaken for a current one."
+      }
+    ],
+    "gold-plant-setup-cost": [
+      {
+        "q": "Is the least expensive plant the best first stage?",
+        "a": "It can be if testing supports the circuit and the project can supply the necessary feed and water. The Chunya washing-and-sluice proposal is a specific first-stage approach with later recovery additions in mind. A cheaper arrangement that cannot handle the clay or capture the relevant gold size may cost more through lost production."
+      },
+      {
+        "q": "Do I need an elution plant when I add CIP or CIL?",
+        "a": "You need a defined route for recovering gold from loaded carbon, whether on site or through a suitable service arrangement. Compare transport, batch size, security, charges and cash timing before deciding to own the equipment. Include that route in the leach-plant budget from the start."
+      },
+      {
+        "q": "What should I send to request a plant proposal?",
+        "a": "Send the site location, deposit and feed description, sample or test results, sustainable feed rate, planned hours, water-source details and power availability. State the equipment or infrastructure already on site and which services you want included. This helps the supplier quote the scope you actually need."
+      }
+    ]
+  },
+  "sw": {
+    "bei-ya-mashine-ya-kusaga-mawe": [
+      { "q": "Bei ya kinu ikionekana ndogo, ninaweza kuagiza bila kupima mawe?", "a": "Bei iwekwe pamoja na kazi ambayo kinu kinatakiwa kufanya. Thibitisha ukubwa na tabia ya mawe, ulaini unaohitajika na tani zinazoweza kuchakatwa katika saa zako halisi za kazi. Majaribio na taarifa hizi humsaidia msambazaji kueleza uchaguzi wa kinu, badala ya kukupa bei ya mashine ambayo haitimizi mahitaji ya plant." },
+      { "q": "Nilinganishe bei ya kinu pekee au gharama za kukifikisha kwenye uzalishaji?", "a": "Linganisha wigo unaofanana kwa kila pendekezo: kinu, mota na mfumo wa kuwasha, media za kusagia, vipuri, usafirishaji na kazi za kufunga zinazohusika. Ongeza gharama za umeme na matengenezo kwenye mfano wa gharama kwa tani. Bei ndogo ya kununua inaweza kuambatana na gharama kubwa za kuendesha." }
+    ],
+    "jinsi-ya-kupata-leseni-ya-pml": [
+      { "q": "Makubaliano ya kutumia ardhi yanatosha kuanza uchimbaji?", "a": "Makubaliano ya ardhi na haki ya madini ni mambo tofauti. Kabla ya kuanza kazi, thibitisha hali ya eneo, leseni inayohitajika na shughuli inayoruhusiwa na Tume ya Madini. Hifadhi pia makubaliano ya kupata eneo na masharti mengine yanayohusika; usiyachukulie kama mbadala wa leseni ya uchimbaji." },
+      { "q": "Ninaweza kutumia orodha hii kama uthibitisho kwamba maombi yangu yatakubaliwa?", "a": "Orodha inakusaidia kuandaa taarifa za kujadili na Afisa Madini Mkazi. Ustahiki, hali ya eneo, nyaraka na masharti ya ombi lako vinahitaji kuthibitishwa kwa utaratibu rasmi. Pata maelekezo ya sasa, fuatilia jalada lako na hifadhi stakabadhi badala ya kupanga tarehe ya kuanza kwa kutegemea mwongozo pekee." }
+    ],
+    "mrabaha-na-kodi-za-dhahabu": [
+      { "q": "Salio baada ya mrabaha na ada ndiyo faida yangu?", "a": "Salio hilo linaonyesha fedha baada ya makato yaliyoorodheshwa kwenye mauzo. Faida inahitaji pia hesabu ya gharama za uchimbaji, uchakataji na matumizi mengine ya biashara yanayohusika. Linganisha stakabadhi ya mauzo na kumbukumbu za gharama kabla ya kutumia kiasi kilicholipwa kama faida ya mradi." },
+      { "q": "Nitumie kiwango gani cha makato ninapolinganisha wanunuzi?", "a": "Thibitisha masharti yanayotumika kwa mnunuzi na njia ya mauzo unayotaka kutumia. Omba hesabu iliyoandikwa ya uzito, usafi, valuation, kila tozo na salio, pamoja na muda wa malipo. Kiwango kilichotajwa kwa mpango maalumu au tangazo la zamani hakithibitishi makato ya kila mauzo." }
+    ],
+    "bei-ya-vifaa-vya-uchimbaji": [
+      {
+        "q": "Naweza kuanza na washing na sluice, kisha kuongeza recovery?",
+        "a": "Hiyo ndiyo njia iliyopendekezwa kwa awamu ya kwanza Chunya. Inaweza kufaa ikiwa malighafi ina dhahabu huru inayoweza kupatikana na mfumo unalingana na malighafi hiyo. Majaribio yaonyeshe kinachopotea kwenye sluice, na layout iruhusu kuongeza centrifugal concentrator au vifaa vya kusafisha concentrate. Upanuzi unahitaji bajeti yake; mfumo rahisi hautafaa kila eneo."
+      },
+      {
+        "q": "Jumla ya plant inajumuisha excavator na kufungua mgodi?",
+        "a": "Bei za Chunya hapa zinahusu vifaa vya kuchakata na kazi za utekelezaji zilizoelezwa. Hazipangi gharama za biashara nzima ya uchimbaji. Panga uchimbaji, usafirishaji wa malighafi, haki za ardhi na madini, na mtaji wa kuendesha kando."
+      },
+      {
+        "q": "Nibadilishe USD kuwa shilingi kwa kiwango gani?",
+        "a": "Kwa mpango wako wa fedha, tumia kiwango cha ubadilishaji na gharama za benki zinazohusika kwenye tarehe za malipo. Hapa tumeacha fedha kwenye sarafu ya pendekezo ili kiwango cha mfano kisichukuliwe kuwa kiwango cha sasa."
+      }
+    ],
+    "gharama-ya-plant-ya-dhahabu": [
+      {
+        "q": "Plant ya bei ya chini ndiyo bora kuanzia?",
+        "a": "Inaweza kuwa bora ikiwa majaribio yanaunga mkono mfumo na mradi unaweza kutoa malighafi na maji yanayohitajika. Pendekezo la washing na sluice la Chunya ni njia maalumu ya awamu ya kwanza, yenye nafasi ya kuongeza recovery. Mfumo wa bei ya chini usioweza kushughulikia mfinyanzi au ukubwa wa dhahabu unaweza kuongeza gharama kwa kupoteza uzalishaji."
+      },
+      {
+        "q": "Nahitaji elution ninapoongeza CIP au CIL?",
+        "a": "Unahitaji njia iliyopangwa ya kupata dhahabu kutoka kwenye kaboni iliyobeba dhahabu, iwe eneo lako au kupitia mtoa huduma anayefaa. Linganisha usafiri, ukubwa wa batch, ulinzi, malipo na muda wa kupata fedha kabla ya kuamua kumiliki vifaa. Njia hiyo iwe kwenye bajeti ya uchenjuaji tangu mwanzo."
+      },
+      {
+        "q": "Nitume nini ili kupata pendekezo la plant?",
+        "a": "Tuma eneo, aina ya deposit na malighafi, sampuli au matokeo ya majaribio, kiasi cha malighafi unachoweza kutoa kwa muda endelevu, saa za kazi, chanzo cha maji na umeme. Eleza vifaa na miundombinu iliyopo pamoja na huduma unazotaka zijumuishwe. Hii inasaidia kupata bei ya kazi unayohitaji."
+      }
+    ]
+  }
+}

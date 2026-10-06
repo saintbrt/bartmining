@@ -41,11 +41,20 @@ export const LOCATIONS_SW: LocationSw[] = [
       'Umeme wa TANESCO upo kwenye miji mikuu; maeneo ya nje hutumia jenereta',
     ],
     manunuzi:
-      'Kwa sababu mawe ni magumu, wachimbaji wa Geita hununua zaidi mashine imara za kuponda na kusaga. Madini ya kutosha katika baadhi ya maeneo yanahalalisha matanki ya CIP, hivyo Geita ina maombi mengi ya CIP kuliko eneo lolote tunalohudumia.',
+      'Mawe magumu au yanayokwaruza yanahitaji uchaguzi wa crusher, kinu na vipuri unaotegemea majaribio na ulaini unaolengwa. Ikiwa unafikiria kuongeza uchenjuaji, pima dhahabu ya ziada inayoweza kupatikana na linganisha gharama za mfumo mzima. Maudhui ya sampuli au idadi ya plant za karibu haithibitishi kuwa matanki yanafaa kwa mradi wako.',
     faqs: [
-      { q: 'Kwa nini mashine huchakaa haraka Geita?', a: 'Mawe ya chuma yenye mikanda yanayobeba dhahabu Geita ni magumu na yanakwaruza. Meno ya jaw crusher, liners za kinu na pampu za tope huisha haraka kuliko kwenye mawe laini. Nunua vipuri vyenye chuma bora na panga bajeti ya vipuri kwa tani, si kwa mwezi.' },
-      { q: 'Plant ya CIP inafaa kwa mchimbaji mdogo Geita?', a: 'Mara nyingine, na mara nyingi zaidi Geita kuliko maeneo mengine. Pima mabaki ya concentrator yako kwanza. Kama dhahabu iliyobaki inalipa gharama ya matanki, vibali na wafanyakazi, CIP inafaa; kama sivyo, concentrator pekee ni bora.' },
-      { q: 'Nauza wapi dhahabu Geita?', a: 'Kwenye soko la madini Geita au vituo vya ununuzi vya Bukombe, Chato, Mbogwe na Nyang’hwale. Tazama ukurasa wa soko la madini Geita kwa bei ya leo na maelezo zaidi.' },
+      {
+        "q": "Kwa nini crusher na kinu vinaweza kuchakaa haraka kwenye eneo langu?",
+        "a": "Mawe magumu au yanayokwaruza yanaweza kuongeza uchakavu, lakini kasi yake hutegemea pia kazi na hali ya mashine. Pima mawe yanayowakilisha malighafi yako na kagua kumbukumbu za vipuri kabla ya kuchagua liners au meno mapya. Linganisha matumizi ya vipuri na tani pamoja na saa za kazi, badala ya kutumia kiwango kimoja kwa Geita nzima."
+      },
+      {
+        "q": "Nitajua vipi kama kuongeza CIP au CIL kunafaa kwenye plant yangu?",
+        "a": "Pima malighafi na mabaki ya hatua ya gravity, kisha linganisha thamani ya dhahabu ya ziada inayoweza kulipwa na gharama za mfumo mzima. Hesabu maji, umeme, wafanyakazi, mabaki, vibali na njia ya kupata dhahabu kutoka kwenye kaboni. Assay ya mabaki pekee haithibitishi kuwa kuongeza matanki kutalipa."
+      },
+      {
+        "q": "Nithibitishe nini kabla ya kuuza dhahabu Geita?",
+        "a": "Wasiliana na Tume ya Madini au Afisa Madini Mkazi kuhusu njia ya mauzo iliyoidhinishwa na leseni ya mnunuzi. Omba maelezo ya nyaraka zinazohusika, upimaji, makato na muda wa malipo. Hifadhi kumbukumbu za mzigo na stakabadhi; bei elekezi haithibitishi kiasi kitakacholipwa kwa dhahabu yako."
+      }
     ],
   },
   {
@@ -67,9 +76,18 @@ export const LOCATIONS_SW: LocationSw[] = [
     manunuzi:
       'Kahama ndiyo eneo pekee katika Kanda ya Ziwa ambapo vifaa vya chini ya ardhi vinaongoza. Mashimo marefu yanahitaji hoist badala ya winchi ndogo, feni za kuingiza hewa, pampu za kutoa maji kwa hatua, vipima gesi na vifaa vya kujiokoa. Vifaa vya shimo fupi la Mwanza mara nyingi si salama hapa.',
     faqs: [
-      { q: 'Bandari kavu ya Isaka inasaidiaje?', a: 'Isaka ni kituo cha reli na barabara kilomita 60 hivi kutoka Kahama. Makontena yanaweza kusafirishwa kwa reli kutoka Dar es Salaam na kuchukuliwa Isaka badala ya kusafirishwa kwa lori kilomita 1,000. Kwa mizigo mizito inaweza kupunguza gharama.' },
-      { q: 'Nahitaji kipima gesi kwa shimo dogo?', a: 'Kama watu wanashuka shimoni, ndiyo. Upungufu wa oksijeni, kaboni monoksidi baada ya kulipua, na gesi nyingine hatari haziwezi kugunduliwa bila kifaa. Kipima gesi ni miongoni mwa vifaa vya bei nafuu zaidi na kinaweza kuokoa maisha.' },
-      { q: 'Nauza wapi dhahabu Kahama?', a: 'Kwenye soko la madini Kahama au vituo vya ununuzi vilivyosajiliwa. Tazama ukurasa wa soko la madini Kahama kwa bei ya leo.' },
+      {
+        "q": "Nilinganisheje usafiri kupitia Isaka na lori la moja kwa moja?",
+        "a": "Omba bei kwa mzigo na eneo lilelile, zikionyesha huduma ya reli inayopatikana, kushughulikia mzigo, kutoa mzigo na lori la mwisho hadi eneo lako. Linganisha pia muda na majukumu ya kila upande. Ukaribu wa Isaka hauhakikishi kuwa kila mzigo utakuwa nafuu au utafika haraka zaidi kupitia huko."
+      },
+      {
+        "q": "Kuwa na kipima gesi kunatosha kuthibitisha usalama wa shimo?",
+        "a": "Kifaa lazima kifae hatari zilizotathminiwa na kitumike pamoja na ukaguzi na utunzaji wake. Vipimo havichukui nafasi ya mfumo wa hewa wala havitoi ruhusa ya kushuka. Mtaalamu anayewajibika aweke maeneo ya kupima, masharti ya kazi na hatua za kuchukua kifaa kikitoa tahadhari au hewa ikikatika."
+      },
+      {
+        "q": "Nithibitisheje mahali pa kuuza dhahabu Kahama?",
+        "a": "Pata taarifa za sasa kutoka kwa Afisa Madini Mkazi au Tume kuhusu soko au kituo kilichoidhinishwa na mnunuzi mwenye leseni inayofaa. Uliza nyaraka zinazohusika na namna uzito, usafi, makato na malipo yatakavyorekodiwa. Thibitisha utaratibu huo kabla ya kupeleka dhahabu, badala ya kutegemea jina la eneo pekee."
+      }
     ],
   },
   {
@@ -82,7 +100,7 @@ export const LOCATIONS_SW: LocationSw[] = [
     summary:
       'Chunya ni kitovu cha uwanja wa dhahabu wa Lupa, mojawapo ya maeneo ya zamani zaidi ya dhahabu Tanzania. Wachimbaji wadogo wa Makongolosi, Matundasi na Itumbi wanaendesha plant kamili zenye mashine za kuponda, kusaga, concentrator, matanki ya CIP na elution. Chunya ilikuwa soko la pili la madini kufunguliwa nchini.',
     jiolojia:
-      'Uwanja wa Lupa una ukubwa wa takribani kilomita za mraba 2,600. Dhahabu yake iko kwenye mipasuko ya miamba na mishipa ya quartz, pamoja na dhahabu ya mchanga iliyotokana nayo. Eneo limechimbwa tangu mwaka 1922, na miaka mingi ya kutumia zebaki imeacha marudio mengi yenye dhahabu. Ndiyo sababu uchenjuaji kwa vat na CIP umeenea sana.',
+      'Uwanja wa Lupa una dhahabu kwenye mipasuko ya miamba na mishipa ya quartz, pamoja na dhahabu ya mchanga iliyotokana nayo. Kwa marudio ya zamani, chunguza chanzo, historia ya uchakataji na uchafuzi pamoja na maudhui ya dhahabu. Mabaki yenye zebaki yasichukuliwe kama malighafi ya kawaida ya sianidi; mtaalamu aweke njia inayofaa kabla ya kupanga uchenjuaji.',
     usafirishaji: [
       'Takribani kilomita 830 kutoka Dar es Salaam hadi Mbeya kwa barabara kuu ya TANZAM, kisha kaskazini hadi Chunya na Makongolosi',
       'Reli ya TAZARA inafika Mbeya, inayofaa kwa mizigo mizito kama vipande vya matanki',
@@ -90,11 +108,20 @@ export const LOCATIONS_SW: LocationSw[] = [
       'Maeneo mengi ya plant hutumia jenereta kwa sababu umeme hauaminiki nje ya miji',
     ],
     manunuzi:
-      'Wachimbaji wengi wa Chunya tayari wana mashine za kusaga na concentrator. Hatua inayofuata ni matanki ya kuchenjua na plant ya elution ili kuokoa dhahabu iliyobaki kwenye mabaki na marudio ya zamani. Jenereta zenye uwezo wa kuendesha kinu na mota za matanki pia zinahitajika mara kwa mara.',
+      'Mwenye plant ya kusaga na gravity athibitishe kazi inayokwama kabla ya kununua mfumo wa uchenjuaji. Pima malighafi na mabaki, kisha linganisha njia ya kupata bidhaa ya mwisho pamoja na gharama, maji, umeme na utunzaji wa mabaki. Upanuzi utegemee majibu ya majaribio na miundombinu inayohitajika, badala ya kuchukulia matanki kuwa hatua ya lazima kwa kila plant.',
     faqs: [
-      { q: 'Vifaa vinafikaje Chunya?', a: 'Kwa barabara kutoka Dar es Salaam hadi Mbeya, takribani kilomita 830, kisha kaskazini hadi Chunya na Makongolosi. Mizigo mizito inaweza pia kusafirishwa kwa reli ya TAZARA hadi Mbeya. Ongeza muda wakati wa mvua.' },
-      { q: 'Nianze na nini kuongeza CIP kwenye plant yangu?', a: 'Pima mawe na mabaki yako kwanza, kisha hakikisha kinu chako kinasaga laini vya kutosha. Vitu vikuu ni matanki ya kuchenjua yenye skrini, njia ya kushughulikia kaboni, na elution yako au ya pamoja. Bwawa la mabaki lenye lining na vibali vya sianidi viwe tayari kabla ya kuanza.' },
-      { q: 'Nauza wapi dhahabu Chunya?', a: 'Kwenye soko la madini Chunya au vituo vya ununuzi vya Makongolosi, Matundasi, Itumbi, Sangambi, Godima, Igundu na Shoga. Tazama ukurasa wa soko la madini Chunya kwa bei ya leo.' },
+      {
+        "q": "Nipange nini ili vifaa vifike kwenye eneo la plant Chunya?",
+        "a": "Tuma eneo halisi, ukubwa na uzito wa mzigo, pamoja na hali ya barabara ya mwisho na sehemu ya kushushia vifaa. Linganisha njia zinazopatikana na majukumu ya kushughulikia mzigo hadi eneo lako. Wakati wa mvua, thibitisha hali ya njia ya kufikia eneo kabla ya kukubaliana tarehe ya kufikisha vifaa vizito."
+      },
+      {
+        "q": "Nianze na nini kabla ya kuongeza uchenjuaji kwenye plant yangu?",
+        "a": "Pima malighafi, mabaki na historia ya uchakataji wake, kisha mtaalamu atathmini mfumo mzima unaopendekezwa. Mabaki yenye zebaki yasichukuliwe kama malighafi ya kawaida ya sianidi. Wigo uonyeshe maandalizi, kuyeyusha dhahabu, kuishika na kuitoa kwenye kaboni, maji, umeme na mabaki, pamoja na vibali na majukumu ya kuendesha."
+      },
+      {
+        "q": "Nipangeje mauzo ya dhahabu Chunya?",
+        "a": "Thibitisha njia ya mauzo na leseni ya mnunuzi kwa Tume ya Madini au Afisa Madini Mkazi. Pata orodha ya nyaraka kwa aina yako ya shughuli na kubaliana upimaji, makato na muda wa malipo. Hifadhi ushahidi wa chanzo cha mzigo, assay na stakabadhi ili hesabu ya mauzo iweze kufuatiliwa."
+      }
     ],
   },
   {
@@ -109,7 +136,7 @@ export const LOCATIONS_SW: LocationSw[] = [
     jiolojia:
       'Mwanza iko kwenye ukanda wa mawe wa Sukumaland. Dhahabu iko hasa ndani ya mawe ya chuma yenye mikanda (BIF) na mishipa ya quartz inayokata miamba. Wachimbaji wengi wa Sengerema, Misungwi na Buchosa huchimba mashimo mafupi na njia za pembeni zinazofuata mishipa hiyo, jambo linaloamua aina ya vifaa wanavyohitaji.',
     usafirishaji: [
-      'Takribani kilomita 1,150 kutoka Dar es Salaam, kwa kawaida siku tatu hadi nne kwa lori',
+      'Usafiri wa barabara kutoka Dar es Salaam unahitaji njia na ratiba ya mzigo husika, pamoja na kutoa mzigo na kufikisha kwenye eneo halisi',
       'Reli ya Kati kupitia tawi la Tabora hadi Mwanza inafaa kwa mizigo mizito isiyo ya haraka',
       'Meli za Ziwa Victoria hufika Ukerewe, visiwa vingine na wilaya za pwani ya ziwa',
       'Uwanja wa ndege wa Mwanza kwa vipuri vya dharura',
@@ -117,9 +144,18 @@ export const LOCATIONS_SW: LocationSw[] = [
     manunuzi:
       'Wachimbaji wa Mwanza hununua zaidi plant ndogo za concentrator na vifaa vya mashimo kuliko plant kubwa. Mahitaji yanayojirudia ni winchi za tani moja na mbili, pampu za kutoa maji mashimoni wakati wa mvua, na concentrator na meza za kutingisha zinazochukua nafasi ya zebaki.',
     faqs: [
-      { q: 'Vifaa vinachukua muda gani kufika Mwanza?', a: 'Siku tatu hadi nne kwa lori baada ya mzigo kutoka bandari ya Dar es Salaam, umbali wa takribani kilomita 1,150. Kutoa mzigo bandarini mara nyingi huchukua muda mrefu kuliko safari ya barabarani.' },
-      { q: 'Vifaa vinaweza kufika visiwani?', a: 'Ndiyo. Meli za Ziwa Victoria kutoka Mwanza hufika Ukerewe na visiwa vingine, na mara nyingi ni nafuu kuliko barabara. Zinahitaji muda zaidi na mzigo ufungwe vizuri.' },
-      { q: 'Nianze na vifaa gani kwenye mgodi mdogo Mwanza?', a: 'Concentrator na winchi. Concentrator pamoja na meza ya kutingisha huondoa haja ya zebaki na mara nyingi hupata dhahabu zaidi. Winchi sahihi na pampu ya kutoa maji hutatua mambo mawili yanayosimamisha uzalishaji mara nyingi kwenye shimo fupi.' },
+      {
+        "q": "Vifaa vinachukua muda gani kufika kwenye eneo langu Mwanza?",
+        "a": "Omba ratiba ya mzigo wako inayoonyesha kutoa mzigo bandarini ikiwa kunahusika, usafiri na kufikisha kwenye eneo la plant. Ukubwa wa mzigo, upatikanaji wa lori, mvua na maandalizi ya kushusha vinaweza kubadilisha muda. Tarehe ya ufungaji itegemee hatua hizo zilizothibitishwa, badala ya idadi ya jumla ya siku za safari."
+      },
+      {
+        "q": "Vifaa vinaweza kufikishwa visiwani au kwenye maeneo ya ziwa?",
+        "a": "Usafiri wa ziwa unaweza kuwa chaguo ikiwa huduma inayofaa mzigo na eneo inapatikana. Thibitisha meli, kikomo cha mzigo, ratiba na vifaa vya kupakia na kushusha, pamoja na safari ya mwisho hadi plant. Linganisha wigo huo na njia nyingine; usichukulie kila safari ya ziwa kuwa nafuu zaidi."
+      },
+      {
+        "q": "Nianze na vifaa gani kwenye mgodi mdogo Mwanza?",
+        "a": "Anza na kazi inayokwama kwenye mgodi na majaribio ya malighafi. Kuponda, kusaga na kutenganisha kwa gravity kunaweza kufaa kwa dhahabu huru, lakini kupandisha mzigo, maji na usalama vinahitaji tathmini zake. Panga pia kusafisha concentrate na kupata bidhaa ya mwisho; concentrator pekee haithibitishi njia kamili bila zebaki."
+      }
     ],
   },
   {
@@ -142,9 +178,18 @@ export const LOCATIONS_SW: LocationSw[] = [
     manunuzi:
       'Vikundi vipya vya Nyamongo vinanunua plant za kwanza, si kuboresha. Hii inamaanisha seti kamili rahisi za concentrator zinazolingana na uzalishaji wa kikundi: mashine ya kuponda, kinu cha kusaga, concentrator na meza ya kutingisha, pamoja na pampu na vifaa vya usalama. Kuanza bila zebaki ni rahisi kuliko kubadilisha baadaye.',
     faqs: [
-      { q: 'Kikundi kipya cha Nyamongo kinunue nini kwanza?', a: 'Seti rahisi ya concentrator inayolingana na tani halisi za kikundi kwa siku: mashine ya kuponda, kinu, concentrator na meza ya kutingisha. Inapata dhahabu huru bila zebaki, ni rahisi kuendesha, na matanki ya CIP yanaweza kuongezwa baadaye.' },
-      { q: 'Plant moja inaweza kuhudumia vikundi kadhaa?', a: 'Ndiyo, na Nyamongo mara nyingi inafaa. Plant ya pamoja inaepusha kila kikundi kununua kinu chake, ilimradi mawe ya kila leseni yanapimwa na kuhesabiwa kando na makubaliano yameandikwa.' },
-      { q: 'Ni nafuu kuleta vifaa Tarime kupitia Mombasa?', a: 'Mara nyingine. Tarime iko karibu na mpaka wa Sirari, hivyo kwa baadhi ya mizigo njia ya Mombasa inastahili kulinganishwa na Dar es Salaam. Tunapima bei za njia zote mbili pale inapoleta tofauti.' },
+      {
+        "q": "Kikundi kipya cha Nyamongo kichague vifaa kwa msingi gani?",
+        "a": "Fafanua malighafi, tani zinazoweza kutolewa kwa muda endelevu, saa za kazi, maji na umeme kabla ya kuagiza. Majaribio yanaweza kuunga mkono mfumo wa gravity kwa dhahabu huru, pamoja na njia ya kusafisha concentrate. Vifaa vya shimo na usalama vitathminiwe kando, na upanuzi wa uchenjuaji utegemee ushahidi na bajeti yake."
+      },
+      {
+        "q": "Plant moja inaweza kuhudumia wenye leseni kadhaa?",
+        "a": "Inaweza kufaa baada ya kuthibitisha ruhusa zinazohusika na makubaliano ya maandishi. Eleza utunzaji, uzito, sampuli, gharama, ratiba na malipo ya kila mzigo kando. Kumbukumbu hizo husaidia kuzuia migogoro, lakini makubaliano pekee hayathibitishi kuwa shughuli ya kuchakata iliyoratibiwa imeidhinishwa."
+      },
+      {
+        "q": "Ni nafuu kuleta vifaa Tarime kupitia Mombasa?",
+        "a": "Linganisha bei za sasa kwa mzigo huo huo kupitia Mombasa na Dar es Salaam. Jumuisha gharama za bandari, transit, nyaraka za mpaka, lori, kushusha na kufikisha kwenye eneo lako. Njia yenye umbali mfupi kwenye ramani si lazima iwe na gharama ndogo au muda mfupi wa kufikisha."
+      }
     ],
   },
   {
@@ -167,9 +212,18 @@ export const LOCATIONS_SW: LocationSw[] = [
     manunuzi:
       'Wachimbaji wa dhahabu Shinyanga huchimba zaidi mishipa kwa mashimo mafupi na ya kati, hivyo manunuzi yanayojirudia ni winchi na pampu za kutoa maji, pamoja na seti ndogo za kusaga na concentrator. Kwa kuwa maeneo mengi hayana umeme wa gridi, jenereta sahihi mara nyingi hununuliwa pamoja na kinu.',
     faqs: [
-      { q: 'Kituo cha Kuchakata Madini Mwakitolyo ni nini?', a: 'Ni mpango wa Serikali wa kujenga kituo cha kuchakata madini Mwakitolyo, ili kuongeza thamani ya madini hapa nchini na kujenga ujuzi kwa vijana na wanawake. Wachimbaji wa karibu wanaweza kukitumia badala ya kujenga kila hatua ya uchakataji wenyewe.' },
-      { q: 'Mnauza vifaa vya kuchimba almasi?', a: 'Huduma yetu mkoani inalenga dhahabu: kusaga, concentrator, winchi na pampu. Kwa vifaa maalum vya kutenganisha almasi, wasiliana na msambazaji mtaalamu wa almasi.' },
-      { q: 'Jenereta ya ukubwa gani inafaa kwa kinu kidogo?', a: 'Chagua jenereta kulingana na umeme mwingi unaovutwa na mota kubwa zaidi wakati wa kuwasha, si umeme wa kawaida wa kufanya kazi. Mota ya kinu inaweza kuvuta mara kadhaa ya umeme wake wakati wa kuwasha, na jenereta ndogo hukatika au kuharibu mota.' },
+      {
+        "q": "Naweza kutegemea kituo cha Mwakitolyo kwenye mpango wangu wa uzalishaji?",
+        "a": "Thibitisha hali ya sasa ya kituo, huduma, aina ya malighafi inayopokelewa, gharama na uwezo unaopatikana kwa mwendeshaji na mamlaka husika. Tangazo la kujenga kituo halithibitishi kuwa huduma itapatikana kwenye tarehe zako. Tumia wigo uliothibitishwa kulinganisha huduma hiyo na mahitaji ya plant yako."
+      },
+      {
+        "q": "Mnauza vifaa maalumu vya kutenganisha almasi?",
+        "a": "Katalogi yetu kwa eneo hili inalenga uchakataji wa dhahabu, kupandisha mzigo na pampu. Mfumo wa kupata almasi unahitaji tathmini na vifaa vya mtaalamu kulingana na malighafi na njia ya recovery. Jadili wigo huo na msambazaji wa uchakataji wa almasi badala ya kuchukulia plant ya dhahabu kuwa mbadala unaofaa."
+      },
+      {
+        "q": "Nitumie taarifa gani kuchagua jenereta kwa kinu kidogo?",
+        "a": "Tuma orodha ya mizigo yote ya umeme, mpangilio wa kuendesha na kuwasha mota, mfumo wa starter na hali ya eneo. Mtaalamu wa umeme ahakiki mahitaji ya kuwasha na kuendesha dhidi ya ukadiriaji wa uwezo ya jenereta inayopendekezwa. Kipimo cha mota kubwa pekee hakithibitishi kuwa plant nzima itapata umeme wa kutosha."
+      }
     ],
   },
 ]

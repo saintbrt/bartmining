@@ -5,7 +5,8 @@ import { articlePublishedDate } from '@/lib/article-dates'
 import { ARTICLES } from '@/data/insights'
 import ArticleLayout from '@/components/insights/ArticleLayout'
 import JsonLd from '@/components/seo/JsonLd'
-import { SITE, articleSchema, breadcrumbSchema } from '@/lib/seo'
+import { SITE, articleSchema, breadcrumbSchema, faqSchema } from '@/lib/seo'
+import { getArticleFaqs } from '@/lib/article-faqs'
 import { authorForArticle } from '@/data/authors'
 
 export async function generateStaticParams() {
@@ -78,6 +79,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             { name: 'Insights', path: '/insights' },
             { name: article.title, path: `/insights/${article.slug}` },
           ]),
+          ...(getArticleFaqs(article.slug).length ? [faqSchema(getArticleFaqs(article.slug), 'en')] : []),
         ]}
       />
       <ArticleLayout

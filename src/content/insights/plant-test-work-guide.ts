@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Test work helps turn a gold occurrence into a processing decision. An assay establishes gold content in a sample, while metallurgical tests investigate how that gold can be recovered and what the process consumes. A high assay alone cannot size a mill, select leaching or establish an operating budget.</p>
 <p>This guide explains how to commission a useful programme before buying a plant. You should leave able to describe the feed, ask for tests that answer the design questions and request results that can support a supplier’s specification.</p>
 <h2 id="representative-sample">Start with a sample plan</h2>
@@ -15,6 +17,7 @@ const content = `<p>Test work helps turn a gold occurrence into a processing dec
 <h2 id="programme-budget">Scope cost and schedule rather than assume a package price</h2>
 <p>Get a written laboratory proposal stating sample requirements, tests, consumables, reporting, turnaround, transport and retained-sample arrangements. This guide publishes no universal testing price or duration because programme size and test sequence differ materially.</p>
 <p>Stage the work around decisions. An initial response may justify more detailed variability or pilot work, or reveal that a proposed route should be reconsidered. Reserve budget for interpretation and additional tests instead of treating the first quote as the complete development programme.</p>
+${renderArticleFaqs("plant-test-work-guide", "en")}
 <h2 id="conclusion">Use tests to write the plant brief</h2>
 <p>Collect representative material, commission tests tied to the design choices and obtain results that explain both performance and limitations. Then turn those results into feed, duty, utility and operating assumptions for the plant. Begin with a sample inventory and the specific question that must be resolved before equipment selection.</p>
 <h2 id="basis">Sources and assumptions</h2>

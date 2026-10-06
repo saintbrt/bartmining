@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>An assay report is useful when the sample represents the material of interest and the analytical method answers the right question. A precise number from a poorly collected sample can still lead to the wrong exploration or plant decision. The work begins before the sample reaches the laboratory.</p>
 <p>This guide helps you prepare an assay brief in Tanzania, choose appropriate methods and review the quality evidence. You should finish with a submission plan and an understanding of what the result establishes, rather than treat every gold number as a mine grade or recovery estimate.</p>
 <h2 id="sampling">Define what the sample represents</h2>
@@ -15,6 +17,7 @@ const content = `<p>An assay report is useful when the sample represents the mat
 <h2 id="interpretation-example">Interpret grade under a stated basis</h2>
 <p>Suppose, illustratively, a representative dry feed lot of 100 t averages 2 g/t gold. Its contained gold is 200 g. That does not mean 200 g will be sold: recovery, downstream losses, fineness and selling terms still matter. Conversely, one selected specimen at 20 g/t does not establish that the 100 t lot averages 20 g/t.</p>
 <p>Check units, sample identifiers, method codes, quality results and anomalies before using assays in a model. Investigate failed controls and retain the original and revised certificates so the decision can be traced.</p>
+${renderArticleFaqs("assay-laboratory-tanzania", "en")}
 <h2 id="conclusion">Commission analysis for a defined decision</h2>
 <p>Design representative sampling, specify preparation and methods, and review the quality evidence before applying the numbers. Your next step is a submission sheet linked to a field sampling plan and the question you need answered. For plant selection, follow assays with the relevant <a href="/insights/plant-test-work-guide">metallurgical tests</a>.</p>
 <h2 id="basis">Sources and assumptions</h2>

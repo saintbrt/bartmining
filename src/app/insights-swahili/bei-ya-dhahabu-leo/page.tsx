@@ -1,3 +1,4 @@
+import { SW_GOLD_FAQS as FAQS } from '@/data/service-faqs'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SITE, faqSchema, breadcrumbSchema } from '@/lib/seo'
@@ -45,28 +46,7 @@ const KARATS = [
   { k: '18K', purity: 18 / 24, note: 'Asilimia 75' },
 ]
 
-const FAQS = [
-  {
-    q: 'Kwa nini bei ya soko la madini ni chini kuliko bei ya dunia?',
-    a: 'Bei elekezi inayotolewa na Tume ya Madini kwa masoko ya madini na vituo vya ununuzi huzingatia makato kama mrabaha na ada ya ukaguzi. Kwa hiyo mchimbaji hupokea bei iliyo chini kidogo ya bei ya soko la dunia iliyobadilishwa kwa shilingi. Kwa mfano, tarehe 5 Septemba 2026 bei elekezi ilikuwa takribani TSh 341,008 kwa gramu kwenye masoko ya madini na TSh 333,430 kwenye vituo vya ununuzi.',
-  },
-  {
-    q: 'Mrabaha wa dhahabu Tanzania ni kiasi gani?',
-    a: 'Mrabaha wa kawaida wa dhahabu ni asilimia 6. Unapungua hadi asilimia 4 dhahabu ikiuzwa kwa Benki Kuu ya Tanzania, na asilimia 2 ikiuzwa kwa kiwanda cha kusafisha dhahabu nchini. Pia kuna ada ya ukaguzi ya asilimia 1 kwa mauzo mengi. Viwango hubadilika, hivyo thibitisha na Tume ya Madini.',
-  },
-  {
-    q: 'Bei hii inasasishwa mara ngapi?',
-    a: 'Ukurasa huu unasasisha bei ya dhahabu ya soko la dunia na kiwango cha kubadilisha dola kuwa shilingi kila saa. Bei ya soko hubadilika muda wote, hivyo tumia hii kama mwongozo na thibitisha bei ya siku kwenye soko la madini kabla ya kuuza.',
-  },
-  {
-    q: 'Nauza wapi dhahabu kihalali?',
-    a: 'Kwenye masoko ya madini na vituo vya ununuzi vilivyosajiliwa na Tume ya Madini, vilivyopo katika maeneo kama Geita, Mwanza, Chunya, Kahama, Shinyanga, Songwe, Mara na Kigoma, au kwa wafanyabiashara wenye leseni halali. Kuuza nje ya mfumo huu ni kinyume cha sheria.',
-  },
-  {
-    q: 'Gramu moja ya dhahabu ya karati 22 ni shilingi ngapi?',
-    a: 'Chukua bei ya gramu ya karati 24 na uzidishe kwa 0.917. Jedwali lililo juu ya ukurasa huu linaonyesha hesabu hiyo kwa bei ya leo. Bei halisi utakayolipwa pia hutegemea usafi uliopimwa na makato ya mnunuzi.',
-  },
-]
+
 
 export default async function GoldPriceTodayPage() {
   const q = await getGoldQuote(revalidate)

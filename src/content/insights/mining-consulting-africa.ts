@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Mining consulting is useful when a project faces a decision that its current evidence cannot settle confidently. That might be whether to drill a target, acquire a property, choose a recovery route or advance a study. A worthwhile engagement gives you a reviewable technical basis and a practical next action.</p>
 <p>This guide explains how to scope consulting for an East or Southern African project and assess the resulting work. It focuses on deliverables, independence and evidence, rather than treating a consultant’s title or report length as proof of quality.</p>
 <h2 id="assignment">State the decision before the service</h2>
@@ -18,6 +20,7 @@ const content = `<p>Mining consulting is useful when a project faces a decision 
 <h2 id="handover">Assess the conclusion and the work left</h2>
 <p>Ask whether the report answers the commissioned question, separates facts from assumptions and identifies material limitations. Findings should lead to a decision or a clearly scoped next investigation. Keep the supporting files so another reviewer can understand the basis.</p>
 <p>To discuss a Bart Mining assignment, prepare the location, project stage, available reports and decision required. A proposal should then define the relevant services and responsible people without presuming the same scope fits every mine.</p>
+${renderArticleFaqs("mining-consulting-africa", "en")}
 <h2 id="conclusion">Commission an answer you can assess</h2>
 <p>Define the decision, confirm competence and independence, and agree evidence-based deliverables. Review the findings against that purpose and retain the remaining uncertainties as actions. The next step is a concise assignment brief with the data available and the question that must be answered.</p>
 <h2 id="basis">Sources and scope</h2>

@@ -1,3 +1,4 @@
+import { SW_GENERATOR_RENTAL_FAQS as FAQS } from '@/data/service-faqs'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
@@ -42,18 +43,7 @@ const INCLUDED = [
   { t: 'Matengenezo wakati wa kukodi', d: 'Oili, filta na huduma za kawaida kwa ratiba, pamoja na msaada jenereta ikiharibika.' },
 ]
 
-const FAQS = [
-  { q: 'Mna jenereta za ukubwa gani za kukodi?', a: 'Tunakodisha jenereta kuanzia kVA 300 hadi kVA 2,500. Kwa mzigo mkubwa zaidi, jenereta mbili au zaidi hufanya kazi pamoja kama chanzo kimoja cha umeme.' },
-  { q: 'Nitajuaje ukubwa wa jenereta ninaohitaji?', a: 'Jumlisha mzigo wote, kisha angalia mota kubwa zaidi na jinsi inavyowashwa. Mota inayowashwa direct on line huvuta umeme mara sita hadi saba ya kawaida kwa sekunde chache, na mvuto huo mara nyingi ndio unaoamua ukubwa wa jenereta. Tumia kikokotoo kilicho kwenye ukurasa huu, kisha tutumie orodha ya mizigo tukuthibitishie.' },
-  { q: 'Nani analeta mafuta?', a: 'Mafuta yanaletwa na mteja anayetumia jenereta. Tuambie itafanya kazi saa ngapi kwa siku, tutakadiria matumizi ya mafuta ili upange jinsi ya kuyafikisha eneo la kazi.' },
-  { q: 'Muda wa chini wa kukodi ni upi?', a: 'Wiki moja kwa kazi za viwanda, migodi na ujenzi, na siku mbili kwa matukio (events).' },
-  { q: 'Bei ya kukodi jenereta ni kiasi gani?', a: 'Inategemea ukubwa, muda wa kukodi, eneo la kazi na saa ngapi kwa siku itafanya kazi. Hatuweki bei kwenye tovuti kwa sababu kila kazi ni tofauti. Tutumie ukubwa au orodha ya mizigo, eneo na tarehe kwa simu au WhatsApp, tutakupa bei kamili.' },
-  { q: 'Nini kimejumuishwa kwenye kukodi?', a: 'Kila ukodishaji unajumuisha kuleta na kurudisha jenereta, kuifunga na kuiwasha, mwendeshaji au fundi, na matengenezo kwa muda wote wa kukodi.' },
-  { q: 'Jenereta ni za wazi au ziko kwenye kontena?', a: 'Jenereta ndogo huja zikiwa wazi (open-frame). Jenereta kubwa huja ndani ya kontena, ambalo huzilinda dhidi ya vumbi na mvua, hupunguza kelele na hurahisisha ulinzi wake eneo la kazi.' },
-  { q: 'Kuna tofauti gani kati ya prime na standby?', a: 'Jenereta ya prime ndiyo chanzo kikuu cha umeme, inayofanya kazi saa nyingi kila siku, kama inavyohitajika kwenye mgodi au mtambo usio na umeme wa TANESCO. Standby ni ya akiba, inayowaka pale umeme wa gridi unapokatika. Kama jenereta itaendesha eneo lako kila siku, omba prime.' },
-  { q: 'Je, jenereta ya kukodi inaweza kuendesha ball mill au mashine ya kuponda mawe?', a: 'Ndiyo, ikiwa imechaguliwa kwa kuzingatia mvuto wa kuwasha mota. Soft starter au VFD kwenye mota kubwa zaidi mara nyingi hupunguza ukubwa wa jenereta unaohitajika kwa kiasi kikubwa kuliko gharama ya starter yenyewe.' },
-  { q: 'Mnaleta jenereta nje ya Dar es Salaam na Mwanza?', a: 'Ndiyo, popote Tanzania, ikiwemo Geita, Kahama, Shinyanga, Chunya na Mbeya. Tuambie eneo la kazi na hali ya barabara unapoomba bei.' },
-]
+
 
 export default function JeneretaZaKukodiPage() {
   return (

@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Gravity separation and cyanide leaching recover gold by different mechanisms. Gravity concentrates particles according to their physical behaviour, while leaching dissolves accessible gold into solution for later recovery. The useful question is how much each route can recover from your feed and whether the additional recovery justifies its complete cost.</p>
 <p>A project may suit gravity alone, a combined circuit or another treatment route. This guide shows how to compare those choices without assuming that all gold is liberated, that leaching solves every ore problem or that two recovery percentages can simply be added together.</p>
 <h2 id="gravity">What gravity needs from the feed</h2>
@@ -15,6 +17,7 @@ const content = `<p>Gravity separation and cyanide leaching recover gold by diff
 <h2 id="mercury">Consider a mercury-free route as a complete circuit</h2>
 <p>The <a href="https://www.epa.gov/international-cooperation/artisanal-and-small-scale-gold-mining-without-mercury">US EPA overview of mercury-free methods</a> describes concentration and other recovery options. A concentrator purchase should be paired with a tested cleanup and final-product route. Old residues with mercury need separate assessment before reprocessing.</p>
 <p>For any cyanide option, use specialist design, training and project-specific controls. The <a href="https://cyanidecode.org/about-the-cyanide-code/the-cyanide-code/">Cyanide Code</a> provides a management framework; this comparison is not a chemical operating recipe.</p>
+${renderArticleFaqs("gravity-vs-cyanide-gold-recovery", "en")}
 <h2 id="conclusion">Choose by incremental recoverable value</h2>
 <p>Test gravity and downstream recovery on representative material, reconcile the gold balance and compare the full cost of each viable option. The route that suits your project is the one supported by both process evidence and an operable budget. Start by preparing sample locations, feed quantities and the question the test programme must answer.</p>
 <h2 id="basis">Sources and example basis</h2>

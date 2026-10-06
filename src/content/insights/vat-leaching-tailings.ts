@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Old tailings, often called marudio, can retain gold, but a reprocessing project needs more than a promising assay. You must establish how much material is available, how it was previously treated and whether solution can reach the remaining gold. Those questions determine whether vat leaching is a credible option.</p>
 <p>This guide explains the assessment before building a vat site. Its purpose is to help you specify sampling and tests, calculate a batch’s potential output and budget the route to saleable gold. It does not provide a cyanide dosing or operating procedure.</p>
 <h2 id="material">Define the material and the right to treat it</h2>
@@ -15,6 +17,7 @@ const content = `<p>Old tailings, often called marudio, can retain gold, but a r
 <h2 id="readiness">Confirm approval and operating responsibilities</h2>
 <p>Have the relevant authorities confirm licensing, environmental and chemical requirements for the actual activity. Use the <a href="https://cyanidecode.org/about-the-cyanide-code/the-cyanide-code/">Cyanide Code</a> as a management reference where appropriate, together with specialist procedures, training and emergency planning.</p>
 <p>Assign responsibility for sampling, inventory, maintenance and operating decisions. Keep batch records linking incoming material to residue, solution, carbon and final settlement. This is how you distinguish lower feed grade from a process loss or delayed gold inventory.</p>
+${renderArticleFaqs("vat-leaching-tailings", "en")}
 <h2 id="conclusion">Prove the batch before building the site</h2>
 <p>Establish representative grade, material rights, contaminants and vat-specific process response, then cost the whole batch cycle and final-product route. If permeability or handling prevents reliable operation, compare another process before committing to construction. Your next step is a mapped tailings inventory and a test brief that answers those uncertainties.</p>
 <h2 id="basis">Sources and scope</h2>

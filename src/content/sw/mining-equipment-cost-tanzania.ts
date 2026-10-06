@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 import { CHUNYA_EXAMPLES, HARD_ROCK_PLANNING_REFERENCE, MONTHLY_OPERATING_EXAMPLES, totalCost, usd } from '@/data/plant-cost-examples'
 
 const [wash, starter, full] = CHUNYA_EXAMPLES
@@ -59,14 +61,7 @@ const content = `
 <p>Kisha omba pendekezo linalotenganisha vifaa, kufikisha, kodi, ujenzi, commissioning na majukumu ya mwenye mradi. Uliza jinsi uwezo na recovery vitakavyothibitishwa kwa malighafi yako, vipuri vilivyojumuishwa na mabadiliko yatakayohitajika malighafi ikitofautiana na sampuli. Linganisha wauzaji kwa kazi na wigo unaofanana.</p>
 <p>Panga muda pamoja na fedha. Pendekezo la sasa la washing la Chunya linakadiria wiki 16 hadi uzalishaji; plant za scrubber kwenye pendekezo la awali zinakadiria wiki 24 na 26.5. Hizi ni ratiba za mapendekezo zenye kazi zinazotegemeana, si ahadi ya muda wa kila mradi. Maandalizi ya eneo yanaweza kuendelea wakati vifaa vinatengenezwa na kusafirishwa, lakini maji, barabara na vibali lazima viwe tayari kwa commissioning.</p>
 
-<h2 id="maswali">Maswali wakati wa kupanga bajeti</h2>
-<h3>Naweza kuanza na washing na sluice, kisha kuongeza recovery?</h3>
-<p>Hiyo ndiyo njia iliyopendekezwa kwa awamu ya kwanza Chunya. Inaweza kufaa ikiwa malighafi ina dhahabu huru inayoweza kupatikana na mfumo unalingana na malighafi hiyo. Majaribio yaonyeshe kinachopotea kwenye sluice, na layout iruhusu kuongeza centrifugal concentrator au vifaa vya kusafisha concentrate. Upanuzi unahitaji bajeti yake; mfumo rahisi hautafaa kila eneo.</p>
-<h3>Jumla ya plant inajumuisha excavator na kufungua mgodi?</h3>
-<p>Bei za Chunya hapa zinahusu vifaa vya kuchakata na kazi za utekelezaji zilizoelezwa. Hazipangi gharama za biashara nzima ya uchimbaji. Panga uchimbaji, usafirishaji wa malighafi, haki za ardhi na madini, na mtaji wa kuendesha kando.</p>
-<h3>Nibadilishe USD kuwa shilingi kwa kiwango gani?</h3>
-<p>Kwa mpango wako wa fedha, tumia kiwango cha ubadilishaji na gharama za benki zinazohusika kwenye tarehe za malipo. Hapa tumeacha fedha kwenye sarafu ya pendekezo ili kiwango cha mfano kisichukuliwe kuwa kiwango cha sasa.</p>
-
+${renderArticleFaqs("bei-ya-vifaa-vya-uchimbaji", "sw", "Maswali wakati wa kupanga bajeti")}
 <h2 id="hitimisho">Panga fedha za safari kutoka malighafi hadi uzalishaji</h2>
 <p>Kwa changarawe ya alluvial, chunguza kuosha na gravity recovery kwanza. Kwa mawe magumu, thibitisha mahitaji ya kuponda na kusaga kabla ya kupanga bei, kisha ongeza uchenjuaji pale majaribio na uchumi vinaporuhusu. Maamuzi hayo yanaeleza gharama vizuri zaidi kuliko jina la mashine pekee.</p>
 <p>Mapendekezo ya Chunya yanatoa rejea ya vitendo: takribani ${usd(wash.total)} kwa washing na sluice pamoja na makadirio ya utekelezaji, na bajeti tofauti kwa mifumo yenye scrubber. Uamuzi wako wa kuwekeza bado unahitaji kodi, gharama za mwenye mradi na akiba ya kuendesha. Andaa eneo la mradi, matokeo ya sampuli, uwezo unaolengwa na taarifa za maji na umeme ili vipengele vinavyobaki viweze kupewa bei.</p>

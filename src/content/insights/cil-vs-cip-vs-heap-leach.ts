@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>CIP, CIL and heap leaching are different ways to organise gold dissolution and recovery from solution. Choosing between them requires evidence about the ore and a project budget that includes water, waste, power and the time until gold can be sold. A tank count or a headline recovery percentage cannot make that decision on its own.</p>
 <p>This comparison explains the process differences and the tests that make each option credible. The aim is to narrow your choices and prepare a test-work brief, rather than assume one route is the default for every Tanzanian deposit.</p>
 <h2 id="difference">Where leaching and adsorption happen</h2>
@@ -15,6 +17,7 @@ const content = `<p>CIP, CIL and heap leaching are different ways to organise go
 <h2 id="whole-plant">Budget the whole route</h2>
 <p>Include preparation, leaching, recovery from solution, elution where used, water recycling, residue treatment, containment, laboratory support and trained operators. The <a href="https://cyanidecode.org/about-the-cyanide-code/the-cyanide-code/">International Cyanide Management Code</a> is a management reference for cyanide supply and use; it does not replace local approvals or a site operating procedure.</p>
 <p>Request a process description, equipment list, utilities, capital scope and operating model for each shortlisted route. Our <a href="/insights/plant-test-work-guide">test-work guide</a> helps prepare the evidence, and the <a href="/insights/gold-plant-setup-cost">startup guide</a> shows where owner costs and working capital belong.</p>
+${renderArticleFaqs("cil-vs-cip-vs-heap-leach", "en")}
 <h2 id="conclusion">Select the route the evidence supports</h2>
 <p>Choose between CIP, CIL and heap leaching by comparing ore response, complete costs and cash timing under the same feed assumptions. Your next step is a representative test programme and a site assessment that resolve the main uncertainty for each option. Only then should a supplier turn the selected route into an equipment specification.</p>
 <h2 id="basis">Sources and assumptions</h2>

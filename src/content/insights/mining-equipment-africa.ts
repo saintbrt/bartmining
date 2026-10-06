@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Equipment procurement begins with the work the machine must perform and the conditions where it will operate. Across East and Southern Africa, transport, utilities, access and maintenance support can change an otherwise suitable catalogue choice. The useful comparison is a complete duty and delivered scope, not simply a brand or nominal capacity.</p>
 <p>This guide helps owners prepare that scope for exploration, processing and mine-support equipment. It shows how to turn a project requirement into supplier questions and avoid confusing equipment selection with proof that a mine will produce economically.</p>
 <h2 id="duties">Build a duty list for the project stage</h2>
@@ -17,6 +19,7 @@ const content = `<p>Equipment procurement begins with the work the machine must 
 <p>Also decide whether rental or used equipment suits the period and uncertainty. The <a href="/insights/equipment-rental-tanzania">rental guide</a> and <a href="/insights/used-mining-equipment-tanzania">used-equipment guide</a> provide comparison sequences for those options.</p>
 <h2 id="next-step">Prepare a quotation pack</h2>
 <p>Send the duty list, site brief, available test reports, required delivery scope and commissioning expectations together. Ask for currency, validity, delivery basis and exclusions. For a plant, include an owner’s budget and working cash using the <a href="/insights/gold-plant-setup-cost">startup-budget guide</a>.</p>
+${renderArticleFaqs("mining-equipment-africa", "en")}
 <h2 id="conclusion">Procure for a defined job</h2>
 <p>Select equipment from duty, evidence and site conditions, then compare complete offers and support arrangements. A clear quotation pack gives suppliers a common basis and makes omissions visible. Prepare that pack before using headline prices to decide what the project can afford.</p>
 <h2 id="basis">Sources and example basis</h2>

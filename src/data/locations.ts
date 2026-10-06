@@ -48,7 +48,7 @@ export const LOCATIONS: Location[] = [
     summary:
       'Mwanza is the commercial base of the Lake Victoria Goldfields and the natural staging point for equipment reaching Sengerema, Misungwi, Buchosa, Kwimba and Magu. As Tanzania’s second city it has the workshops, freight handling and skilled trades that outlying districts do not, which is why most equipment bound for the goldfields is consolidated, cleared or repaired here before it moves on.',
     logistics: [
-      'Roughly 1,150 km by road from the port of Dar es Salaam, typically three to four days for a standard truck',
+      'Road delivery from Dar es Salaam requires a consignment-specific route and schedule, including clearance and final site access',
       'Served by the Central Line railway via the Tabora to Mwanza branch, which suits heavy or non-urgent consignments',
       'Lake Victoria shipping reaches Bukoba, Musoma and the islands, and is often the practical route to lakeshore sites',
       'Mwanza Airport handles urgent spares and instrument shipments',
@@ -65,12 +65,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Mwanza buying is dominated by small gravity plants and shaft equipment rather than large process trains. Because most operations here work shallow shafts on vein and BIF gold, the recurring purchases are one and two tonne winches, dewatering pumps for shafts that flood in the wet season, and gravity recovery equipment that replaces mercury amalgamation.',
     faqs: [
-      { q: 'How long does delivery to Mwanza take from Dar es Salaam?', a: 'Three to four days by road for a standard truck once the consignment has cleared the port, over roughly 1,150 km. Clearance at Dar is usually the longer and less predictable part of the journey, so plan the schedule around clearance rather than around the road leg.' },
-      { q: 'Can equipment be delivered to islands and lakeshore sites?', a: 'Yes. Lake Victoria shipping from Mwanza reaches Ukerewe, the smaller islands and the lakeshore districts, and is frequently cheaper and easier than road for those destinations. It needs more lead time and the consignment must be packed for handling at both ends.' },
-      { q: 'What equipment do small mines around Mwanza usually need first?', a: 'A gravity circuit and a shaft winch, in that order of impact. A centrifugal concentrator with a shaking table removes any need for mercury and usually recovers more gold than amalgamation did. A correctly rated winch and a dewatering pump then address the two things that most often stop production on a shallow shaft.' },
-      { q: 'Is there support for repairs and spares in Mwanza?', a: 'Mwanza has the deepest concentration of workshops, fabricators and trades in the goldfields, which is a genuine advantage over siting equipment further out. We hold this in mind when specifying: equipment that can be serviced locally is worth more than marginally better equipment that cannot.' },
+      {
+        "q": "How long does delivery to Mwanza take from Dar es Salaam?",
+        "a": "Request a schedule for the actual consignment, separating port clearance, road transport and delivery to the site. Vehicle availability, load size, weather and unloading arrangements can change the timing. Confirm those stages in the offer rather than planning commissioning around a fixed number of driving days."
+      },
+      {
+        "q": "Can equipment be delivered to islands and lakeshore sites?",
+        "a": "Lake transport may be an option, but confirm the vessel, cargo limits, sailing schedule and handling facilities for the destination. Include packaging, loading, unloading and the final move to site in the comparison. The cheapest or most practical route depends on the consignment and available services."
+      },
+      {
+        "q": "What equipment should a small mine around Mwanza assess first?",
+        "a": "Start with the mine's operating constraints and representative feed tests. Crushing, milling and gravity recovery may suit free gold, while hoisting, water and safety duties need their own assessment. Plan concentrate cleanup and a final-product route; buying a concentrator does not establish complete mercury-free recovery."
+      },
+      {
+        "q": "How should local repairs and spares affect equipment selection?",
+        "a": "Confirm who can service the proposed machine, which parts are available and how long critical replacements take. Include maintenance access, documentation and initial spares in the scope. A workshop near Mwanza is useful only when it has the capability and parts required for your particular equipment."
+      }
     ],
-    updated: UPDATED,
+    updated: '2026-10-06',
   },
   {
     slug: 'geita',
@@ -97,7 +109,7 @@ export const LOCATIONS: Location[] = [
     ],
     buys: ['jaw-crusher', 'cone-crusher', 'hydraulic-excavator', 'centrifugal-gold-concentrator', 'modular-gold-plant', 'dump-truck'],
     buysNote:
-      'Geita ore is competent and abrasive, so comminution specification matters more here than in districts working softer oxide material. Undersized crushers and thin mill liners fail quickly on this ore. The district also has enough grade and tonnage in places to justify leach circuits, so Geita sees more CIL enquiries than anywhere else we supply.',
+      'Hard or abrasive feed makes crusher, mill and wear-part specification important. Define those duties from representative tests and the intended product size. Where leaching is being considered, test the additional recovery and compare the complete circuit cost rather than treating regional grade or the number of nearby plants as justification.',
     areas: [
       { name: 'Nyarugusu', note: 'One of the region’s longest-worked small-scale gold areas, south of Geita town, with shaft workings and dense processing activity that make it a steady market for mills, concentrators and dewatering pumps.' },
       { name: 'Mgusu', note: 'A long-established small-scale mining settlement in Geita District, working the same greenstone belt as the major mine, where abrasive ore puts crusher and mill wear parts at the top of the buying list.' },
@@ -106,12 +118,24 @@ export const LOCATIONS: Location[] = [
       { name: 'Nyang’hwale, Mbogwe and Chato', note: 'Outlying districts of Geita Region, each with a mineral buying station. Sites here are further from grid power and workshops, so generator sizing and spares holding matter more.' },
     ],
     faqs: [
-      { q: 'Why does equipment wear out faster in Geita?', a: 'The banded iron formation hosted ore in this belt is competent and abrasive. Jaw plates, mill liners and slurry pump wet ends all wear faster here than on softer oxide ore at the same tonnage. Specify manganese content on jaw plates and high-chrome or composite mill liners, and budget wear parts per tonne rather than per month.' },
-      { q: 'Is a CIL plant justified for a small mine near Geita?', a: 'Sometimes, and more often here than elsewhere in Tanzania, because grades in parts of the district support it. The test is whether the gold left in your gravity tailings pays for the leach circuit plus its compliance and labour overhead. Assay the gravity tailings before deciding, because on many operations gravity alone remains the better answer.' },
-      { q: 'How is equipment delivered to Geita?', a: 'Almost always through Dar es Salaam then by road via Mwanza, roughly 1,250 km in total. Abnormal loads need the Mwanza Gulf crossing planned in advance, along with route permits, so allow substantially more lead time for anything oversized such as a mill shell or an assembled tank.' },
-      { q: 'Does geophysics work well in the Geita area?', a: 'Magnetic surveying is particularly effective across this belt because the banded iron formation that hosts much of the gold is strongly magnetic, so the stratigraphy and the structures cutting it map clearly. Magnetics does not detect gold itself, but in this district it is an unusually good guide to where to drill.' },
+      {
+        "q": "Why might crusher and mill wear be high at a Geita site?",
+        "a": "Hard or abrasive feed can increase wear, but the rate also depends on the actual material, machine duty and operating conditions. Test representative ore and review wear records before specifying replacement materials. Track parts and cost against processed tonnes and operating hours rather than assuming one rate for the district."
+      },
+      {
+        "q": "How do I assess whether CIP or CIL is justified for my Geita mine?",
+        "a": "Test representative feed and any gravity tailings, then compare additional payable recovery with the complete circuit cost. Include utilities, residue management, approvals, staffing and the loaded-carbon route. A regional grade description or a tailings assay alone does not establish either process selection or profitability."
+      },
+      {
+        "q": "What should a delivery quotation to Geita include?",
+        "a": "Ask for the route, load dimensions, vehicle and any permits or special handling required. Confirm clearance, inland transport, unloading and access to the plant location as separate responsibilities. An oversized consignment needs a checked route and schedule rather than assumptions based on a standard truck delivery."
+      },
+      {
+        "q": "Can magnetic surveying identify gold directly in Geita?",
+        "a": "It measures magnetic responses that may help interpret rocks and structures. Its usefulness depends on the target and local contrasts, and an anomaly can have more than one explanation. Combine the interpretation with mapping and direct tests before choosing drill targets or assigning a grade."
+      }
     ],
-    updated: UPDATED,
+    updated: '2026-10-06',
   },
   {
     slug: 'kahama',
@@ -141,12 +165,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Kahama is the one district in the goldfields where underground equipment leads the enquiry list. Deeper shafts mean hoisting rather than hand winching, forced ventilation rather than natural airflow, staged dewatering rather than a single pump, and a genuine need for gas detection and self-rescuers. Equipment specified for a shallow Mwanza shaft is frequently unsafe here.',
     faqs: [
-      { q: 'What is the advantage of the Isaka dry port for equipment delivery?', a: 'Isaka is a rail and road transhipment point on the Central Line about 60 km from Kahama, so containers can move by rail from Dar es Salaam and be cleared or collected there instead of trucking the full 1,000 km. On heavy consignments this can reduce both cost and road damage risk, and it is worth pricing against straight road haulage every time.' },
-      { q: 'Why is underground equipment different around Kahama?', a: 'Because the shafts are deeper. Past roughly 60 m a hand or light winch is no longer adequate and hoisting duty begins, past roughly 80 m dewatering needs staging with intermediate sumps, and once workings are deep enough that natural ventilation fails, forced ventilation and gas detection stop being optional. Specifying shallow-shaft equipment for a deep working is a common and dangerous error.' },
-      { q: 'Do I need gas detection for a small underground operation?', a: 'If people go underground, yes. Oxygen deficiency, carbon monoxide after blasting and hydrogen sulphide in wet ground are all real hazards in this district, and none of them can be detected reliably without an instrument. A bump-tested four-gas monitor is among the cheapest pieces of equipment on any underground site and the one most likely to prevent a fatality.' },
-      { q: 'How quickly can equipment reach Kahama?', a: 'It has the shortest road leg of the three goldfield centres at roughly 1,000 km, typically two to three days by road once cleared, and rail via Isaka is available for heavier or less urgent loads. Haulage capacity is easy to source because Kahama sits on the main transit route towards Rwanda and Burundi.' },
+      {
+        "q": "How should I compare delivery through Isaka with direct road haulage?",
+        "a": "Obtain complete offers for the same load and destination. Compare available rail service, terminal handling, clearance responsibilities, onward trucking and the schedule alongside direct road transport. Isaka's position does not by itself guarantee lower cost or quicker delivery for a particular consignment."
+      },
+      {
+        "q": "Which factors determine underground equipment duty around Kahama?",
+        "a": "Use the actual shaft and working layout, loads, water inflow, occupied areas and operating activities. Hoisting, dewatering and ventilation must be assessed together by the responsible specialists. A fixed depth threshold or a neighbouring mine's equipment list cannot establish what is adequate for your site."
+      },
+      {
+        "q": "Does owning a gas detector establish that a working is safe?",
+        "a": "The detector must suit the assessed hazards and be used and maintained under the site's procedures. Its readings do not replace ventilation or authorise entry. Agree monitoring locations, instrument checks and the response to alarms or ventilation failure with the person responsible for underground safety."
+      },
+      {
+        "q": "How quickly can equipment reach Kahama?",
+        "a": "Confirm timing for the actual equipment and route, including any port clearance, terminal handling and site access. A standard road load and an oversized machine can require different preparation. Keep the proposed delivery date linked to vehicle availability and unloading readiness rather than using a general district estimate."
+      }
     ],
-    updated: UPDATED,
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances are approximate, and the page still
@@ -179,14 +215,26 @@ export const LOCATIONS: Location[] = [
     ],
     buys: ['leaching-tank', 'gold-elution-electrowinning-plant', 'ball-mill-gold-ore', 'centrifugal-gold-concentrator', 'jaw-crusher', 'diesel-generator-mining'],
     buysNote:
-      'Chunya buys further down the flowsheet than most districts. Many operators already have crushing and gravity equipment, and the next purchase is leach tanks and an elution plant so they can recover the gold their gravity circuit and historic tailings still hold. With power unreliable away from the main centres, generators sized for mills and agitators are a recurring need.',
+      'An operator with existing crushing and gravity equipment should establish the next constraint before buying a leach circuit. Test feed and residues, including previous treatment and contaminants, and assess the complete route to final gold. Mercury-bearing tailings need a separate specialist assessment and must not be treated as ordinary cyanide feed. Include utilities and managed residues in any proposed expansion.',
     faqs: [
-      { q: 'How is equipment delivered to Chunya?', a: 'By road from Dar es Salaam to Mbeya on the TANZAM highway, roughly 830 km, then north to Chunya and the Makongolosi area. Heavy loads can also move by TAZARA rail to Mbeya. Allow extra time in the rainy season, when roads to outlying plant sites can become impassable for heavy trucks.' },
-      { q: 'Why do so many Chunya miners run CIP tanks?', a: 'The Lupa Goldfield has been mined since the 1920s, and generations of mercury amalgamation left tailings that still hold gold. Tank and vat leaching recover that gold, and many operators also run fresh ore through a gravity circuit and then leach the tailings, which lifts overall recovery well above gravity alone.' },
-      { q: 'Is there somewhere to sell gold in Chunya?', a: 'Yes. Chunya has a government mineral market, part of the national network of mineral markets and buying centres run under the Mining Commission, where licensed miners can sell gold at published indicative prices.' },
-      { q: 'What should I buy first to add leaching to a gravity plant in Chunya?', a: 'Test your ore and tailings first, then check that your mill grinds fine enough for leaching. The main purchases are a train of agitated leaching tanks with interstage screens, a way to handle loaded carbon, and access to an elution plant, whether your own or a shared one. Lined tailings storage and cyanide permits must be in place before you start.' },
+      {
+        "q": "What should I plan for delivery to a Chunya plant site?",
+        "a": "Give the supplier the exact destination, load dimensions and the final access conditions. Compare available road and rail options through the southern corridor, including onward handling where needed. Check wet-season access and unloading before agreeing a schedule for heavy equipment."
+      },
+      {
+        "q": "Does recoverable gold in old tailings make them ready for CIP?",
+        "a": "Assess representative grade, previous treatment, contaminants and process response first. Mercury-bearing residues should not be treated as ordinary cyanide feed. A qualified specialist should establish a suitable route before chemical procurement, and the economic comparison must include the complete recovery and residue system."
+      },
+      {
+        "q": "How should I prepare to sell gold in Chunya?",
+        "a": "Confirm the current authorised market or buying route and the buyer's licence with the Mining Commission. Ask which documents apply to your seller category, and agree weighing, assay, deductions and payment timing. Keep the lot and settlement records together rather than relying on the headline indicative price."
+      },
+      {
+        "q": "What should I do before buying equipment to add leaching?",
+        "a": "Test the feed and tailings and have the proposed circuit reviewed as a whole. Include preparation, leaching and adsorption, loaded-carbon handling, elution or toll treatment, utilities and managed residues. Confirm the applicable approvals and operating responsibilities before treating a tank quotation as the complete project scope."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances approximate; add Bart Mining's own
@@ -217,12 +265,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'The newly licensed groups around Nyamongo are buying first plants, not upgrades. That means complete, simple gravity circuits sized for group production: a crusher, a ball mill, a centrifugal concentrator and a shaking table, with pumps and basic safety equipment for pit and shaft work. Getting the circuit mercury-free from day one is easier than converting later.',
     faqs: [
-      { q: 'Is it cheaper to deliver to Tarime through Mombasa?', a: 'Sometimes. Tarime is close to the Kenyan border at Sirari, so for some consignments the route through Mombasa is worth pricing against Dar es Salaam. The comparison depends on transit and clearance costs for that shipment, so we price both where it makes a difference.' },
-      { q: 'What should a newly licensed youth group in Nyamongo buy first?', a: 'A simple gravity circuit sized to the group’s real daily tonnage: crusher, ball mill, centrifugal concentrator and shaking table. It recovers free gold without mercury, is straightforward to operate and maintain, and can be extended with leach tanks later if the tailings justify it.' },
-      { q: 'Where can gold be sold in Mara Region?', a: 'Through the government mineral markets and licensed buying centres in Mara Region, which operate under the Mining Commission. Selling outside that network is illegal and risks confiscation.' },
-      { q: 'Can one plant serve several small licence holders?', a: 'Yes, and around Nyamongo it often makes sense. A shared processing plant avoids each group buying its own mill, as long as the ore from each licence is weighed, sampled and accounted for separately and the arrangement is agreed in writing.' },
+      {
+        "q": "Is delivery to Tarime through Mombasa cheaper than through Dar es Salaam?",
+        "a": "Compare current offers for the actual load rather than choosing from distance alone. Include port and transit costs, border documentation, vehicle availability, onward transport and site handling. The route with the shorter map distance may have a different total cost or delivery schedule."
+      },
+      {
+        "q": "What should a newly licensed group in Nyamongo buy first?",
+        "a": "Define the operating plan, representative feed, sustainable tonnage and site utilities before choosing machines. Tests may support a crushing, milling and gravity circuit for suitable free gold, with a planned cleanup and final-product route. Assess hoisting, water and safety separately, and budget later process additions only when evidence supports them."
+      },
+      {
+        "q": "How can I confirm a gold-selling route in Mara Region?",
+        "a": "Ask the Mining Commission or Resident Mines Officer about current authorised markets, buying centres and buyer licences for your seller category. Confirm the required documents and settlement process before delivery. Do not assume that a buyer's location or a personal introduction establishes permission to trade."
+      },
+      {
+        "q": "Can a shared plant process material from several licence holders?",
+        "a": "It may be workable after confirming the applicable processing permissions and written agreements. Define custody, separate weighing and sampling, charges, scheduling and settlement for each lot. Those controls help avoid disputes, but an agreement alone does not establish that the proposed activity is authorised."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances approximate; add Bart Mining's own
@@ -253,12 +313,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Shinyanga’s gold operators mostly work vein gold from shallow to medium shafts, so the recurring purchases are the shaft basics, winches and dewatering pumps, together with compact milling and gravity circuits. With many sites off-grid, a correctly sized generator is often bought with the mill rather than after it.',
     faqs: [
-      { q: 'What is the Mwakitolyo Mineral Processing Center?', a: 'A government initiative announced to establish a mineral processing centre at Mwakitolyo, aimed at adding value to minerals locally and building technical skills among young people and women across the value chain. Small-scale miners nearby may be able to use it rather than building every processing step themselves.' },
-      { q: 'Do you supply diamond mining equipment in Shinyanga?', a: 'Our catalogue and experience in the region are focused on gold: milling, gravity recovery, shaft and pumping equipment. For diamond recovery equipment such as dense media separation or X-ray sorting, speak to a specialist supplier.' },
-      { q: 'What size generator does a small gold mill need?', a: 'Size it for the starting current of the largest motor, not just its running load, plus everything else on site. A mill motor can draw several times its rated current at start-up, which is why generators sized only on running load trip or damage the motor.' },
-      { q: 'How long does delivery to Shinyanga take?', a: 'Two to three days by road for roughly 1,000 km once the consignment has cleared at Dar es Salaam. Rail on the Central Line and the Isaka dry port are alternatives for heavy loads.' },
+      {
+        "q": "Can I plan my production around access to the Mwakitolyo processing centre?",
+        "a": "Confirm the facility's current operating status, services, accepted feed, charges and capacity with its operator and the relevant authorities. An announcement does not establish availability for your production dates. Compare the confirmed service scope with your own plant requirements before relying on it in the schedule."
+      },
+      {
+        "q": "Do you supply diamond mining equipment in Shinyanga?",
+        "a": "Our catalogue for the region focuses on gold processing, lifting and pumping duties. A diamond recovery circuit needs specialist assessment and equipment appropriate to its feed and recovery requirements. Discuss that scope with a diamond-processing supplier rather than treating a gold plant as a suitable substitute."
+      },
+      {
+        "q": "What information is needed to size a generator for a small gold mill?",
+        "a": "Provide the complete load list, operating sequence, starting arrangements and site conditions. Have a qualified electrical designer check both starting and running duty against the proposed generator rating. The largest motor's nameplate alone does not establish a reliable supply for the whole plant."
+      },
+      {
+        "q": "How long does delivery to Shinyanga take?",
+        "a": "Request a consignment-specific schedule that includes clearance where relevant, transport availability, the chosen route and site unloading. Road and rail options may have different handling and timing requirements. Agree those stages before committing to an installation date rather than treating a driving-time estimate as the full lead time."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances approximate; add Bart Mining's own
@@ -288,12 +360,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Singida’s semi-mechanised operators break hard vein ore, so compressors for rock drilling and robust crushers feature more than in softer districts. Because water is scarce, gravity circuits need water recycling built in from the start, and generators are a standard part of most site purchases.',
     faqs: [
-      { q: 'How does water scarcity in Singida affect a gold plant?', a: 'Milling and gravity concentration use a lot of water. In a semi-arid district that means a settling pond or thickener to recycle water, storage to ride out dry months, and choosing equipment that does not waste water. Plan the water balance before sizing the plant, not after.' },
-      { q: 'Is Singida quicker to supply than the Lake Zone?', a: 'Yes. At roughly 700 km from Dar es Salaam via Dodoma, Singida is the closest of the goldfields we supply, typically a two-day road trip once cleared, compared with three to four days for Mwanza or Geita.' },
-      { q: 'What do small miners around Sekenke need most?', a: 'Rock breaking and milling equipment for hard vein ore, a compressor where rock drilling is used, a gravity circuit to recover free gold without mercury, and a generator sized for the mill’s starting load.' },
-      { q: 'Is there a gold mine operating in Singida?', a: 'Yes. The Singida Gold Mine in Ikungi District reached commercial production in 2023, alongside a long-established small-scale and semi-mechanised mining sector in the region.' },
+      {
+        "q": "How should a plant near Singida plan for limited water availability?",
+        "a": "Establish the source and permitted availability, process demand, return-water quality and seasonal conditions. Have the water balance and storage assessed with the proposed circuit rather than adding a pond after equipment selection. Recycling can help, but it needs a design suited to the process and residue streams."
+      },
+      {
+        "q": "Is a shorter road distance enough to promise quicker delivery to Singida?",
+        "a": "Distance is one input. Actual timing also depends on clearance, vehicle availability, load size, access and unloading. Ask for a schedule for the specific consignment and compare the same delivery scope. A general route comparison should not be used as a guaranteed mobilisation date."
+      },
+      {
+        "q": "What should a small miner near Sekenke include in an equipment brief?",
+        "a": "Describe the feed, mining method, sustainable tonnes, operating hours, water and power. Use tests to specify crushing, milling and recovery, and assess drilling, hoisting and safety duties separately where relevant. The brief should define each task rather than assume a standard district package fits every mine."
+      },
+      {
+        "q": "Does a nearby commercial mine establish the case for my plant?",
+        "a": "Its history may help frame regional geological questions, but your property needs its own rights, feed and process evidence. Keep the programme tied to the next decision on your site. A neighbouring operation's production or equipment does not establish your grade, recovery or viable plant size."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances approximate; add Bart Mining's own
@@ -323,12 +407,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Tabora’s small-scale sector is dominated by shaft mining and on-site milling, so the recurring purchases are compact crushing and milling sets, gravity concentrators to replace mercury, shaft winches and generators for sites away from the grid.',
     faqs: [
-      { q: 'What happened to the Golden Pride mine at Nzega?', a: 'Golden Pride, developed by Resolute Mining at Lusu, was the first modern commercial gold mine in Tanzania. It produced over 2.2 million ounces from 1998 until it ceased operations in 2013. Small-scale mining continues across the wider district.' },
-      { q: 'How is equipment delivered to Nzega and Igunga?', a: 'By road on the main Dar es Salaam to Mwanza route, roughly 900 km to Nzega. Heavy loads can use the Central Line railway to Tabora. Mwanza, about 200 km north, is the nearest centre with deep workshop and spares capacity.' },
-      { q: 'What should a small mine near Igunga buy first?', a: 'A milling set that grinds fine enough to liberate the gold, then a centrifugal concentrator and shaking table to recover it without mercury. On shaft operations, a correctly rated winch and a dewatering pump come next.' },
-      { q: 'Where can gold be sold in Tabora Region?', a: 'Through government mineral markets and licensed buying centres operating under the Mining Commission. Contact the Resident Mines Officer for current locations in Nzega, Igunga and Tabora.' },
+      {
+        "q": "Does the history of Golden Pride establish the value of another Nzega property?",
+        "a": "It is a regional mining reference, while a different property needs its own geological and process evidence. Confirm the rights, sample basis and continuity relevant to the target before planning a plant. Historical output from another operation cannot be transferred into your grade or revenue forecast."
+      },
+      {
+        "q": "What should I confirm for delivery to Nzega or Igunga?",
+        "a": "Provide the exact destination and access conditions and obtain a route and handling plan for the load. Compare available road or rail arrangements, including any final trucking, unloading and clearance responsibilities. Verify the service and schedule for the consignment rather than relying on distance alone."
+      },
+      {
+        "q": "What should a small mine near Igunga assess before buying a milling set?",
+        "a": "Test the material and define the preparation and product size needed for the selected recovery route. Check sustainable feed, power, water and maintenance alongside the mill's duty. Hoisting, dewatering and safety need their own site assessment, so a process package should not be treated as the complete mine."
+      },
+      {
+        "q": "How can I confirm a gold-selling location in Tabora Region?",
+        "a": "Ask the Resident Mines Officer or Mining Commission for the current authorised route near your site and verify the buyer's licence. Confirm the documents, assay, valuation, deductions and settlement before delivery. Keep those records with the lot's legal-origin evidence."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances approximate; add Bart Mining's own
@@ -358,12 +454,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Mara’s underground vein workings make hoisting, dewatering and safety equipment the first purchases, ahead of processing. Operators at old mine sites are working ground disturbed by previous mining, which makes certified winches, reliable pumps and gas detection essential rather than optional.',
     faqs: [
-      { q: 'Why was mining at Buhemba suspended?', a: 'The government suspended mining at Buhemba after a collapse trapped several small-scale miners. STAMICO surveyed the site so it could be mapped and handed over to licensed groups. It is a reminder that old mine ground needs proper assessment, ground support and safe hoisting.' },
-      { q: 'Can equipment reach Musoma by lake?', a: 'Yes. Lake Victoria shipping from Mwanza to Musoma port is a practical route for heavy or oversized loads, and often easier than road for equipment such as mill shells. It needs more lead time and packing for handling at both ports.' },
-      { q: 'What safety equipment does a small underground mine need?', a: 'At minimum: hard hats and cap lamps, a correctly rated winch that nobody rides, dewatering pumps, and a gas detector wherever people work beyond natural ventilation. Deeper workings also need forced ventilation and self-rescuers.' },
-      { q: 'Where can gold be sold in Mara Region?', a: 'Through the government mineral markets and licensed buying centres in Mara Region, operating under the Mining Commission. Contact the Resident Mines Officer for current locations.' },
+      {
+        "q": "What needs checking before work resumes in old mine workings?",
+        "a": "Confirm the current rights and site status and have the workings assessed by the responsible competent specialists. Ground stability, access, water, ventilation and hoisting require a coordinated plan. A history of mining at a location does not establish that the remaining workings are suitable for entry or renewed production."
+      },
+      {
+        "q": "Can equipment reach a Musoma site by lake?",
+        "a": "Lake transport may be an option if a suitable service and handling arrangement are available for the load. Confirm cargo limits, sailing dates, packing, both-end handling and the final move to site. Compare the complete scope and schedule with road haulage before selecting the route."
+      },
+      {
+        "q": "Can a short safety-equipment list establish that an underground mine is ready?",
+        "a": "Equipment is part of a site-specific safety system, not proof of readiness. Have the layout, ground, lifting, water and ventilation duties assessed, with suitable monitoring, emergency procedures, training and maintenance. A cargo winch must not be used to carry people; personnel hoisting needs an appropriately designed and approved system."
+      },
+      {
+        "q": "How do I confirm where to sell gold in Mara Region?",
+        "a": "Use the Mining Commission or Resident Mines Officer to confirm the current authorised market or buying route and the buyer's licence. Ask which documents apply to your seller category and how the lot will be valued and settled. Retain the origin, assay and payment records together."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances approximate; add Bart Mining's own
@@ -391,14 +499,26 @@ export const LOCATIONS: Location[] = [
     ],
     buys: ['ball-mill-gold-ore', 'centrifugal-gold-concentrator', 'leaching-tank', 'gold-elution-electrowinning-plant', 'shaking-table-gold', 'diesel-generator-mining'],
     buysNote:
-      'The biggest opportunity in Katavi is recovery, not tonnage. With vat leach plants averaging below 57 percent, finer grinding, gravity recovery ahead of leaching and agitated tank leaching can recover gold that is currently discarded. Ore with base metals needs testing before any cyanide circuit is sized.',
+      'For a vat operator, representative tests and a plant gold balance should establish whether preparation, solution flow or another duty limits recovery. Compare any proposed regrinding, gravity or agitated-leach option under its own measured response and complete cost. A result reported for other plants does not establish the performance or economics of a change at this site.',
     faqs: [
-      { q: 'Why is gold recovery low at Mpanda?', a: 'Research at the Ibindi, Katuma and Kapanda plants found average recovery below 57 percent with vat leaching. Likely contributors include coarse grinding that leaves gold locked in particles, base metals that consume cyanide, and the limits of percolation leaching. Test work on the ore identifies which apply.' },
-      { q: 'How can a vat leach operator at Ibindi improve recovery?', a: 'Test the ore and tailings, then consider regrinding, adding a centrifugal concentrator to catch free gold first, and moving to agitated tank leaching. Where base metals are present, the leach chemistry needs adjusting based on tests rather than guesswork.' },
-      { q: 'How is equipment delivered to Mpanda?', a: 'By road over more than 1,200 km, or by the Central Line railway on the branch to Mpanda for heavy loads. Plan for longer lead times than the Lake Zone, and bring critical spares with the equipment.' },
-      { q: 'Where is gold sold in Katavi?', a: 'At the government mineral markets in Mpanda Municipality and Karema, and licensed buying centres in the region.' },
+      {
+        "q": "Does a recovery figure reported for another Mpanda plant predict my result?",
+        "a": "It describes that study's samples and operating conditions. Your feed needs representative sampling and tests covering preparation, permeability and recovery to the final product. Establish where gold is leaving your circuit before using a regional figure to justify new equipment."
+      },
+      {
+        "q": "How should a vat operator assess a recovery improvement?",
+        "a": "Investigate feed, residues and the actual loss streams, then compare tested changes under a consistent gold balance. Regrinding, gravity recovery or a different leach arrangement may suit some material, but each needs its own cost and design assessment. Check previous treatment and contaminants before selecting a chemical route."
+      },
+      {
+        "q": "What belongs in an equipment delivery plan for Mpanda?",
+        "a": "Confirm the destination, available transport service, load limits and final access and unloading arrangements. Compare complete road and rail offers where practical, and schedule installation against the actual lead time. Include critical spares based on replacement availability rather than assuming support will arrive before production is interrupted."
+      },
+      {
+        "q": "How can I confirm a current gold-selling route in Katavi?",
+        "a": "Ask the Resident Mines Officer or Mining Commission about authorised markets and buying centres serving your site, including the relevant arrangements around Mpanda and Karema. Verify the buyer and required records before delivery. An indicative price does not establish the net settlement for your lot."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: road distances approximate; add Bart Mining's own
@@ -428,12 +548,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Handeni operators work both alluvial ground and hard silicified vein rock, so buying splits between gravity equipment for alluvial material and robust crushing, milling and compressed-air drilling for hard rock. Short delivery times mean equipment and spares can be sourced from Dar es Salaam as needed rather than stockpiled.',
     faqs: [
-      { q: 'How quickly can equipment reach Handeni?', a: 'Once cleared at Dar es Salaam, usually within a day by road over roughly 250 km. Equipment landed at Tanga port is closer still, about 110 km away. This makes Handeni the fastest goldfield in Tanzania to supply and support.' },
-      { q: 'Is Handeni ore hard on equipment?', a: 'The vein gold at Magambazi sits in strongly silicified rock, which is hard and abrasive. Specify quality jaw plates, mill liners and grinding media, and budget wear parts per tonne. Alluvial material is gentler but needs good gravity recovery for fine gold.' },
-      { q: 'When was gold discovered at Handeni?', a: 'Local people discovered gold in the Magambazi area in 2003, which triggered a rush of alluvial and hard-rock mining. Gold had been described in the area since the 1950s, but it was the 2003 discovery that made Handeni an active goldfield.' },
-      { q: 'Should I import through Tanga port instead of Dar es Salaam?', a: 'It is worth pricing for Handeni. Tanga is closer, but shipping line schedules and clearance options differ from Dar es Salaam, so compare the full landed cost and timing for each consignment.' },
+      {
+        "q": "How quickly can equipment reach a Handeni site?",
+        "a": "Request a schedule for the equipment and route actually proposed. Clearance, vehicle availability, load dimensions and final site access can matter as much as driving distance. Confirm those stages and unloading readiness before setting an installation date, even where the destination is relatively close to a port."
+      },
+      {
+        "q": "How should ore hardness affect equipment selection near Handeni?",
+        "a": "Use representative hardness and abrasion evidence to define crusher, mill and wear-part duties. Hard-rock feed and alluvial material can require different preparation, so do not select the package from the district name alone. Track wear against the material processed and operating conditions to refine the maintenance budget."
+      },
+      {
+        "q": "Does a district's discovery history prove that a new target contains economic gold?",
+        "a": "The history helps frame the regional model, but the target needs its own located samples, continuity evidence and process response. Keep selected specimens separate from representative production samples. Use staged tests to decide the next work rather than treating an earlier discovery as a plant justification."
+      },
+      {
+        "q": "Should I import through Tanga or Dar es Salaam for Handeni?",
+        "a": "Compare current shipment-specific offers covering shipping, port handling, clearance, inland transport and unloading. Confirm that the proposed services can handle the equipment on the required dates. The nearer port does not automatically provide the lower delivered cost or shorter total lead time."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     slug: 'dar-es-salaam',
@@ -461,12 +593,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Buyers who deal with us in Dar es Salaam are usually procuring complete plants or large packages for sites elsewhere, where consolidation, correct customs classification and a single landed price matter most. Combining a plant, generator, pumps and first-year spares in one shipment reduces both cost and the risk of one missing item stopping commissioning.',
     faqs: [
-      { q: 'How long does port clearance take at Dar es Salaam?', a: 'It varies with documentation, customs classification and port congestion. Clearance is usually the least predictable part of delivery, more so than the inland road journey, so correct paperwork before the goods ship is the single biggest factor in avoiding delays.' },
-      { q: 'What does it cost to land mining equipment in Tanzania?', a: 'As a planning figure, add roughly 25 to 45 percent to an ex-works price to cover freight, duty, VAT, port charges and inland transport to a Lake Zone site. Our landed cost guide breaks down each item.' },
-      { q: 'Can you consolidate equipment from several suppliers?', a: 'Yes, and it is often worth doing. A single consolidated shipment with one set of documents and one onward delivery is cheaper and less risky than several small consignments arriving at different times.' },
-      { q: 'Do you deliver outside the Lake Zone?', a: 'Yes. From Dar es Salaam we deliver to every goldfield covered on this site, including Chunya, Singida, Handeni, Mpanda, Tarime, Shinyanga and Tabora Region, as well as the Lake Zone centres of Mwanza, Geita and Kahama.' },
+      {
+        "q": "How should I plan for port clearance at Dar es Salaam?",
+        "a": "Confirm the documentation, classification, charges and responsibilities with the clearing specialist before shipment. Ask for the milestones and information needed to follow the consignment. Actual clearance depends on the shipment and current conditions, so a general lead-time estimate should not be treated as a guaranteed release date."
+      },
+      {
+        "q": "Can I use a fixed percentage of the equipment price as its landed cost?",
+        "a": "Build the budget from the actual scope: freight, insurance where applicable, confirmed taxes and fees, port handling, inland transport and unloading. Classification and delivery terms can change those amounts. Obtain itemised offers and the applicable treatment for the consignment instead of adding a universal percentage to an ex-works price."
+      },
+      {
+        "q": "Will consolidating equipment from several suppliers always save money?",
+        "a": "It may help when readiness dates, packing, documentation and load arrangements fit together. Compare storage, handling, shipping and the cost of waiting for a delayed item against separate deliveries. Confirm who coordinates each supplier so consolidation does not postpone the equipment needed to begin installation."
+      },
+      {
+        "q": "Do you arrange delivery beyond the Lake Zone?",
+        "a": "Discuss the actual project location and equipment with us so the quotation can define the route and delivery scope. Include load dimensions, access, unloading and the required schedule in the enquiry. A regional service listing is a starting point, while the written offer establishes the responsibilities for your shipment."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
   {
     // NOTE FOR REVIEW: add Bart Mining's own work in the district before
@@ -496,12 +640,24 @@ export const LOCATIONS: Location[] = [
     buysNote:
       'Mererani buys underground equipment almost exclusively. Deep shafts need proper hoisting, forced ventilation, compressed air for drilling and gas detection, and every miner underground should carry a self-rescuer. Processing equipment for gold is not relevant here; the value is in getting people and rock out of deep workings safely.',
     faqs: [
-      { q: 'Do you supply equipment for tanzanite mines?', a: 'Yes, the underground side: hoisting, ventilation, compressed air, dewatering, gas detection and personal safety equipment. We do not supply gemstone cutting or sorting equipment.' },
-      { q: 'Why is ventilation so important at Mererani?', a: 'Workings are deep and narrow, natural airflow is limited, and blasting and diesel equipment produce toxic gases. Without forced ventilation, oxygen levels fall and carbon monoxide builds up. A correctly sized fan and duct system, with gas detectors, is basic life-safety equipment at depth.' },
-      { q: 'What hoisting equipment suits a deep tanzanite shaft?', a: 'Beyond roughly 60 metres a light winch is no longer adequate. Deep shafts need a correctly rated mine winch or hoist with fail-safe braking, a rope with the proper safety factor, and a clear rule that goods winches never carry people unless certified for it.' },
-      { q: 'Is Mererani in Arusha or Manyara?', a: 'Mererani is in Simanjiro District, Manyara Region, but it is reached from Arusha, which is the commercial and gemstone trading centre for the area. Equipment for Mererani is usually delivered and supported through Arusha.' },
+      {
+        "q": "Which equipment duties do you cover for a tanzanite mine?",
+        "a": "Our catalogue covers underground lifting, ventilation, compressed air, dewatering and safety-related equipment. Define those duties from the actual workings with the responsible specialists. Gemstone cutting, sorting and recovery need a separate specialist scope; a gold-processing package is not a substitute."
+      },
+      {
+        "q": "Can a fan's motor rating establish adequate ventilation at Mererani?",
+        "a": "Selection needs the mine layout, occupied areas, contaminants, required airflow distribution and system resistance. A motor rating alone does not establish the conditions at the working face. Have the ventilation duty designed and measured, with monitoring and a documented response to power or airflow interruptions."
+      },
+      {
+        "q": "How should hoisting equipment be selected for a deep tanzanite shaft?",
+        "a": "Give the designer the shaft geometry, loads, duty cycle and whether the system is for material or personnel. Ropes, brakes, controls and supporting structures must be assessed together. A fixed depth threshold cannot establish suitability, and a material winch must not be used as a personnel hoist."
+      },
+      {
+        "q": "How should the final delivery to a Mererani site be planned?",
+        "a": "Confirm the exact destination, site entry arrangements, access and unloading requirements in the delivery scope. If transport is staged through Arusha, include the onward leg and who handles it. Check those practical conditions against the load and installation schedule rather than assuming proximity to a town establishes access."
+      }
     ],
-    updated: '2026-09-13',
+    updated: '2026-10-06',
   },
 ]
 

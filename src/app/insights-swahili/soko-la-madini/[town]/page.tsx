@@ -55,6 +55,8 @@ export default async function MarketPage({ params }: { params: Promise<{ town: s
         h1={`Soko la madini ${m.town}`}
         lead={m.summary}
         faqs={m.faqs}
+        conclusion={{ title: 'Thibitisha njia na hesabu ya mauzo', body: `Kabla ya kupeleka dhahabu ${m.town}, thibitisha mnunuzi na nyaraka zinazohusika, kisha kubaliana uzito, usafi, uthamini, makato na muda wa malipo. Hifadhi hesabu na stakabadhi pamoja na kumbukumbu za chanzo cha mzigo. Salio unaloweza kufuatilia ndilo la kutumia kwenye mpango wa fedha; bei elekezi pekee haiwezi kukamilisha hesabu ya mauzo.` }}
+        basis={<p>Tumia <a href="https://tumemadini.go.tz/statistics/list-of-mineral-markets/">orodha rasmi ya masoko ya madini</a> na <a href="https://www.tumemadini.go.tz/pages/licenseservice/">maelezo ya leseni ya Tume</a> kuthibitisha njia ya mauzo. <Link href="/insights-swahili/mrabaha-na-kodi-za-dhahabu">Mwongozo wa mrabaha na makato</Link> unaeleza namna ya kusoma masharti ya mauzo na vyanzo vyake. Majibu ya maswali haya hayachapishi bei, saa za kazi au makato kama taarifa iliyothibitishwa kwa kila mzigo.</p>}
         ctaTitle={`Vifaa vya uchimbaji hadi ${m.town}`}
         ctaBody={`Tunasambaza mashine za kusaga, concentrator, matanki ya CIP, plant za elution, winchi na vifaa vya usalama hadi ${m.town}, na bei tunayokupa inajumuisha usafirishaji.`}
       >
@@ -76,10 +78,11 @@ export default async function MarketPage({ params }: { params: Promise<{ town: s
           <p>Bei ya leo haipatikani kwa sasa. Tazama <Link href="/insights-swahili/bei-ya-dhahabu-leo">bei ya dhahabu leo</Link> baadaye.</p>
         )}
         <p>
-          Bei ya dunia iliyo juu imebadilishwa kuwa shilingi na inasasishwa kila saa. Bei
-          utakayolipwa sokoni ni bei elekezi ya Tume ya Madini, ambayo huwa chini kidogo
-          kwa sababu inazingatia mrabaha na ada, pamoja na usafi wa dhahabu yako
-          unaopimwa. Soma <Link href="/insights-swahili/mrabaha-na-kodi-za-dhahabu">mrabaha na kodi za dhahabu</Link>.
+          Bei ya dunia iliyo juu imebadilishwa kuwa shilingi. Angalia tarehe ya kila
+          takwimu: mfano wa bei elekezi ni wa tarehe iliyoandikwa, si bei ya leo.
+          Kiasi cha kulipwa kwa mzigo wako kinahitaji uzito, usafi, uthamini na
+          makato yanayohusika. Usitoe tena tozo iliyojumuishwa kwenye msingi wa bei
+          unaotumika. Soma <Link href="/insights-swahili/mrabaha-na-kodi-za-dhahabu">mrabaha na makato ya dhahabu</Link>.
         </p>
 
         <h2 id="kuhusu">Kuhusu Soko la {m.town}</h2>
@@ -95,7 +98,7 @@ export default async function MarketPage({ params }: { params: Promise<{ town: s
 
         <h2 id="jinsi">Jinsi ya Kuuza Dhahabu Sokoni</h2>
         <ol>
-          <li><strong>Beba kitambulisho</strong> na nakala ya leseni yako ya uchimbaji (PML) au nyaraka za chanzo halali cha dhahabu</li>
+          <li><strong>Thibitisha nyaraka za aina yako ya shughuli</strong> kwa Tume, ukiandaa kitambulisho, haki au leseni inayohusika na ushahidi wa chanzo halali cha mzigo</li>
           <li><strong>Dhahabu hupimwa uzito</strong> mbele yako</li>
           <li><strong>Usafi hupimwa</strong> ili kujua karati halisi</li>
           <li><strong>Bei hukubaliwa</strong> kulingana na bei elekezi ya siku na usafi uliopimwa</li>

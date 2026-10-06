@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Diamond exploration must answer more than whether a possible kimberlite body exists. A development decision needs evidence that the body contains diamonds, what the size and value distribution might be, and whether that material can be mined and processed economically. Those questions are resolved in stages.</p>
 <p>This guide explains a practical progression from target generation to sampling and evaluation in Botswana. It helps an owner understand what geophysics can identify and why representative diamond recovery and valuation remain separate tasks.</p>
 <h2 id="context">Use known operations as context</h2>
@@ -15,6 +17,7 @@ const content = `<p>Diamond exploration must answer more than whether a possible
 <h2 id="controls">Plan recovery security and traceability</h2>
 <p>Define sample custody, recovery-accounting controls, laboratory or pilot-plant audits and secure storage. Keep the chain from sampled material to recovered stones and valuation intact. Agree who witnesses key steps and how reconciliation and disputes will be handled.</p>
 <p>Confirm Botswana’s applicable exploration, sampling, environmental and diamond-trading requirements with qualified local advisers and authorities. A discovery-stage exploration scope should not be assumed to authorise bulk production or sale.</p>
+${renderArticleFaqs("diamond-mining-botswana", "en")}
 <h2 id="conclusion">Advance each diamond question separately</h2>
 <p>Use indirect methods to rank targets, direct work to establish bodies and specialist sampling to investigate grade and value. Keep recovery and custody records strong enough for the resulting evaluation. Your next step is a staged sampling brief stating which uncertainty each stage can actually resolve.</p>
 <h2 id="basis">Sources and assumptions</h2>

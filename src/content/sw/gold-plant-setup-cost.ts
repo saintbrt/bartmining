@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 import { CHUNYA_EXAMPLES, MONTHLY_OPERATING_EXAMPLES, totalCost, usd } from '@/data/plant-cost-examples'
 const [wash, starter, full] = CHUNYA_EXAMPLES
 const categories = ['Usafirishaji, bima, kutoa mzigo na kufikisha eneo', 'Wafungaji na kuinua vifaa', 'Makadirio ya ujenzi', 'Wahandisi na usimamizi wa mradi', 'Majaribio, ukaguzi na vibali', 'Commissioning na vipuri vya mwaka wa kwanza', 'Akiba ya dharura']
@@ -41,14 +43,7 @@ const content = `
 <p>Kabla ya kuagiza, kubalianeni hali ya malighafi ya majaribio, namna ya kuthibitisha uwezo na recovery, hitilafu zinazokubalika na mafunzo ya waendeshaji. Pendekezo la washing linahitaji zamu tatu mfululizo karibu na uwezo wa kubuniwa bila hitilafu muhimu kabla ya kusaini commissioning. Recovery bado ihakikiwe kwa sampuli zinazowakilisha mchakato na hesabu ya dhahabu inayoingia na kutoka, badala ya kudhani mashine inayozunguka imepata dhahabu.</p>
 <p>Kukabidhi kujumuisha maelekezo ya kuendesha, nyaraka za umeme na mchakato, mpango wa matengenezo, vipuri vinavyopendekezwa na orodha ya kazi iliyobaki. Plant iko tayari pale timu inaweza kuiendesha na kuitunza kwa hali zilizokubaliwa.</p>
 
-<h2 id="maswali">Maswali kabla ya kuanzisha plant</h2>
-<h3>Plant ya bei ya chini ndiyo bora kuanzia?</h3>
-<p>Inaweza kuwa bora ikiwa majaribio yanaunga mkono mfumo na mradi unaweza kutoa malighafi na maji yanayohitajika. Pendekezo la washing na sluice la Chunya ni njia maalumu ya awamu ya kwanza, yenye nafasi ya kuongeza recovery. Mfumo wa bei ya chini usioweza kushughulikia mfinyanzi au ukubwa wa dhahabu unaweza kuongeza gharama kwa kupoteza uzalishaji.</p>
-<h3>Nahitaji elution ninapoongeza CIP au CIL?</h3>
-<p>Unahitaji njia iliyopangwa ya kupata dhahabu kutoka kwenye kaboni iliyobeba dhahabu, iwe eneo lako au kupitia mtoa huduma anayefaa. Linganisha usafiri, ukubwa wa batch, ulinzi, malipo na muda wa kupata fedha kabla ya kuamua kumiliki vifaa. Njia hiyo iwe kwenye bajeti ya uchenjuaji tangu mwanzo.</p>
-<h3>Nitume nini ili kupata pendekezo la plant?</h3>
-<p>Tuma eneo, aina ya deposit na malighafi, sampuli au matokeo ya majaribio, kiasi cha malighafi unachoweza kutoa kwa muda endelevu, saa za kazi, chanzo cha maji na umeme. Eleza vifaa na miundombinu iliyopo pamoja na huduma unazotaka zijumuishwe. Hii inasaidia kupata bei ya kazi unayohitaji.</p>
-
+${renderArticleFaqs("gharama-ya-plant-ya-dhahabu", "sw", "Maswali kabla ya kuanzisha plant")}
 <h2 id="hitimisho">Bajeti ya kuanza ikufikishe kwenye plant unayoweza kuendesha</h2>
 <p>Chagua njia ya recovery kwa malighafi na matokeo ya majaribio, kisha panga vifaa, kufikisha, miundombinu na commissioning kama mradi mmoja. Ongeza gharama za mwenye mradi na akiba ya kuendesha kabla ya kuamua uwezo wako wa kuwekeza. Chunya inaonyesha tofauti hiyo kwa vitendo: vifaa vya ${usd(wash.equipment)} vinakuwa takribani ${usd(wash.total)} ukijumuisha utekelezaji uliopendekezwa, na biashara bado inahitaji fedha za kuendesha.</p>
 <p>Hatua inayofuata ni kuandaa taarifa za eneo na malighafi zinazoweza kusaidia usanifu na quotation yenye vipengele. Taarifa hizo zitatue maswali makubwa ya maji, recovery, umeme na upatikanaji wa malighafi, ili bajeti ikuongoze kwenye uamuzi wazi wa kufungua plant.</p>

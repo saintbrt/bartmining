@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Ukitaka kuanza uchimbaji mdogo, hatua ya kwanza ni kuthibitisha haki ya kufanya kazi kwenye eneo na aina ya leseni inayofaa shughuli zako. Kununua mashine au kukubaliana na mwenye ardhi pekee hakuthibitishi kwamba unaweza kuchimba madini hapo. Maandalizi mazuri huunganisha hali ya eneo, ustahiki wa mwombaji na mpango wa kazi kabla ya kutumia fedha nyingi.</p>
 <p>Mwongozo huu unakusaidia kuandaa maombi ya Primary Mining Licence, inayojulikana kama PML, na maswali ya kujadili na Afisa Madini Mkazi. Lengo ni uwe na taarifa na nyaraka zinazohitajika kwa eneo lako, badala ya kutegemea orodha ya jumla kana kwamba kila ombi lina hali sawa.</p>
 <h2 id="pml">PML inahusu shughuli gani?</h2>
@@ -16,6 +18,7 @@ const content = `<p>Ukitaka kuanza uchimbaji mdogo, hatua ya kwanza ni kuthibiti
 <h2 id="baada">Panga kazi baada ya leseni kutolewa</h2>
 <p>Tenganisha kupata leseni na kupata mradi ulio tayari kufanya kazi. Hakiki mipango ya uchimbaji, mazingira, usalama, jamii na masharti mengine yanayotumika. Kwa masuala ya mazingira, <a href="https://eia.nemc.or.tz/dev/web/home.eu">mfumo wa NEMC</a> unaeleza majukumu ya mwendelezaji wa mradi na mtaalamu aliyesajiliwa; mtaalamu akusaidie kuthibitisha njia inayofaa shughuli zako.</p>
 <p>Kwa mfano wa kupanga tu, mwombaji anayetarajia plant ya mawe magumu anapaswa kuthibitisha sampuli, maji, umeme na eneo la mabaki kabla ya kuweka oda ya crusher na ball mill. Leseni inaruhusu shughuli chini ya masharti yake, lakini haithibitishi kiasi cha madini, recovery au faida. Soma pia <a href="/insights-swahili/gharama-ya-plant-ya-dhahabu">bajeti ya kuanzisha plant</a>.</p>
+${renderArticleFaqs("jinsi-ya-kupata-leseni-ya-pml", "sw")}
 <h2 id="conclusion">Anza na eneo na masharti yaliyothibitishwa</h2>
 <p>Maombi mazuri ya PML yanaanza kwa kuthibitisha mwombaji na eneo, kisha kufuata utaratibu na nyaraka rasmi. Baada ya leseni, unahitaji bado kupanga approvals, usalama na uwezo wa mradi kujiendesha. Hatua yako inayofuata ni kupeleka ramani na maelezo ya shughuli kwa Afisa Madini Mkazi ili uthibitishe orodha inayohusu ombi lako.</p>
 <h2 id="basis">Vyanzo na wigo</h2>

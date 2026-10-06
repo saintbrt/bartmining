@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Moving away from mercury requires a recovery route that operators can run and measure. For suitable gold feed, gravity concentration can be part of that route, but buying a bowl or table does not by itself establish the final recovery or product quality. Preparation, cleanup, operator practice and a safe final-product route all matter.</p>
 <p>This guide helps a small mine plan and assess a mercury-free trial. It focuses on the evidence needed to select equipment and compare performance, rather than promising that every ore will reach a fixed recovery when mercury is removed.</p>
 <h2 id="starting-point">Understand the current process and residues</h2>
@@ -15,6 +17,7 @@ const content = `<p>Moving away from mercury requires a recovery route that oper
 <h2 id="implementation">Make the change manageable</h2>
 <ol><li>Establish a documented baseline and assess any legacy mercury contamination.</li><li>Trial preparation, separation and concentrate treatment on representative material.</li><li>Review the gold balance and operating cost with the process specialist.</li><li>Specify the complete circuit, utilities, residue handling and approvals.</li><li>Train operators and repeat the measurement during commissioning and routine operation.</li></ol>
 <p>If tests suggest additional treatment of gravity tailings, evaluate it as a separate investment. <a href="/insights/gravity-vs-cyanide-gold-recovery">Gravity and leaching</a> can complement each other, but hazardous chemical treatment requires its own design and operating capability.</p>
+${renderArticleFaqs("mercury-free-gold-recovery", "en")}
 <h2 id="conclusion">Replace mercury with a tested recovery system</h2>
 <p>Select a complete route from prepared feed to final product and verify it with a reconciled trial. Budget for cleanup, training and legacy contamination as well as the separator. Begin by mapping the current process and arranging representative samples so the change has a measurable technical and operating basis.</p>
 <h2 id="basis">Sources and assumptions</h2>

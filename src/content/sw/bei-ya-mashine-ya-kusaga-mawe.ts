@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Bei ya mashine ya kusaga mawe ina maana ukiijua kazi inayotarajiwa. Kinu cha kusaga malighafi kwa recovery ya gravity kinaweza kuhitaji duty tofauti na kinu kinachotayarisha mawe kwa leaching. Uwezo unaotajwa kwenye tangazo hauwezi kulinganishwa vizuri bila kujua aina ya mawe, ukubwa wa vipande na ulaini unaolengwa.</p>
 <p>Mwongozo huu unaonyesha namna ya kutofautisha crusher, hammer mill na ball mill, kuomba quotation yenye wigo wazi, na kuhesabu gharama za kuendesha. Hatuna bei ya sasa iliyohakikiwa ya modeli maalumu hapa; mifano ya fedha ni dhana za kupanga na si ofa ya mashine inayouzwa.</p>
 <h2 id="aina">Crusher na kinu zina majukumu tofauti</h2>
@@ -15,6 +17,7 @@ const content = `<p>Bei ya mashine ya kusaga mawe ina maana ukiijua kazi inayota
 <h2 id="gharama">Hesabu gharama kwa tani</h2>
 <p>Kwa mfano wa kupanga pekee, tuchukulie tani 780 kwa mwezi na matumizi ya umeme ya 25 kWh kwa tani kwa circuit ya kusaga. Nishati ni 780 × 25 = 19,500 kWh. Kwa bei iliyodhaniwa ya TSh 400 kwa kWh, gharama ya umeme ni TSh 7,800,000 kwa mwezi, au TSh 10,000 kwa tani. Bei hiyo si tariff ya sasa na matumizi si kipimo cha plant iliyofungwa.</p>
 <p>Ongeza media, liners, vilainishi, matengenezo na wafanyakazi ili kupata gharama ya circuit. Ukipima umeme wote wa plant, usiandike kiasi hicho kama matumizi ya kinu pekee. Hesabu tofauti itakusaidia kuelewa sehemu inayosababisha gharama.</p>
+${renderArticleFaqs("bei-ya-mashine-ya-kusaga-mawe", "sw")}
 <h2 id="conclusion">Chagua kinu kwa duty na gharama kamili</h2>
 <p>Thibitisha mawe, tani kwa saa na ulaini unaohitajika, kisha linganisha quotation zenye wigo unaofanana. Panga umeme na consumables pamoja na bei ya kununua. Hatua inayofuata ni kuandaa taarifa za sampuli, ratiba ya kazi na eneo la mradi ili supplier aeleze uteuzi na gharama kwa msingi unaopimika.</p>
 <h2 id="basis">Vyanzo na dhana za hesabu</h2>

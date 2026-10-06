@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A remote mine needs a power system that can start its equipment, support the production schedule and keep essential services available during interruptions. Adding motor ratings gives only part of that picture. Actual demand, starting conditions, fuel logistics and maintenance determine whether the system is operable and affordable.</p>
 <p>This guide helps an owner prepare a load assessment and compare diesel, grid and hybrid options with an electrical designer. It includes a fuel-cost example, while keeping equipment selection and protection settings within project-specific engineering.</p>
 <h2 id="load-list">Begin with the load list and schedule</h2>
@@ -15,6 +17,7 @@ const content = `<p>A remote mine needs a power system that can start its equipm
 <h2 id="site-system">Include distribution and operating readiness</h2>
 <p>Budget cables, switchgear, protection, earthing, control integration and commissioning alongside the source equipment. Fuel storage and handling, exhaust, access and fire controls belong in the site assessment. Installation needs qualified design and inspection, not improvised changes during startup.</p>
 <p>Agree the outage response and restart sequence with the operations team. Confirm who maintains the power equipment and which spares are critical. Our <a href="/insights/gold-plant-setup-cost">plant startup guide</a> includes utilities and owner works in the capital scope.</p>
+${renderArticleFaqs("off-grid-mine-power", "en")}
 <h2 id="conclusion">Design for starting, production and interruptions</h2>
 <p>Prepare a load list and hourly schedule, assess starting conditions and cost the complete supply system. Compare realistic operating cases rather than one nameplate or fuel factor. Your next step is a coordinated electrical brief that lets suppliers model the same duty and explain their selection.</p>
 <h2 id="basis">Sources and assumptions</h2>

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { SWAHILI_ARTICLES, type LibraryArticle } from '@/data/article-library'
 import { authorForArticle } from '@/data/authors'
-import { SITE, articleSchema, breadcrumbSchema } from '@/lib/seo'
+import { SITE, articleSchema, breadcrumbSchema, faqSchema } from '@/lib/seo'
+import { getArticleFaqs } from '@/lib/article-faqs'
 import { articlePublishedDate, articleDateLabel } from '@/lib/article-dates'
 import ArticleLayout from '@/components/insights/ArticleLayout'
 import JsonLd from '@/components/seo/JsonLd'
@@ -23,6 +24,7 @@ export default function SwInsight({ article, html }: { article: LibraryArticle; 
     <JsonLd data={[
       articleSchema({ ...article, language: 'sw', section: article.category, image: `${SITE.url}${article.image}`, datePublished: articlePublishedDate(article.date), dateModified: article.updatedDate, author }),
       breadcrumbSchema([{ name: 'Mwanzo', path: '/' }, { name: 'Kurasa kwa Kiswahili', path: '/insights-swahili' }, { name: article.title, path: article.path }]),
+      ...(getArticleFaqs(article.slug, 'sw').length ? [faqSchema(getArticleFaqs(article.slug, 'sw'), 'sw')] : []),
     ]} />
     <ArticleLayout
       lang="sw" title={article.title} description={article.description} category={article.category}

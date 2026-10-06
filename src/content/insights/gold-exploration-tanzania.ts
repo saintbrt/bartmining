@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A gold exploration programme in Tanzania should move from a geological idea to evidence for the next spending decision. Nearby mines and visible gold can help frame the idea, but neither establishes the grade, continuity or processing behaviour of your own property. A staged programme makes those uncertainties explicit.</p>
 <p>This guide explains how to organise regional research, field work and drilling into a usable project dataset. The aim is to rank targets and decide what to test next, rather than promise that an exploration licence or a high-grade specimen will lead to a producing mine.</p>
 <h2 id="regional-context">Use regional geology as the starting model</h2>
@@ -15,6 +17,7 @@ const content = `<p>A gold exploration programme in Tanzania should move from a 
 <h2 id="metallurgy">Include process evidence at the right stage</h2>
 <p>Gold content and recoverable gold are different. Preserve representative material for mineralogy, gravity, grinding or leach testing as the project develops. Keep different ore domains separate where combining them would conceal variation.</p>
 <p>If the owner is considering a plant, connect feed availability and test response to a preliminary operating model. An equipment purchase should follow that evidence, using the <a href="/insights/plant-test-work-guide">test-work guide</a> and <a href="/insights/gold-plant-setup-cost">startup-budget framework</a>.</p>
+${renderArticleFaqs("gold-exploration-tanzania", "en")}
 <h2 id="conclusion">Advance the target through evidence</h2>
 <p>Build a local geological model, collect controlled data and use each stage to decide whether the next programme is justified. Confirm rights and access alongside the technical work, and investigate process response before plant selection. Begin with a data inventory and a short brief identifying the uncertainty the first field programme must resolve.</p>
 <h2 id="basis">Sources and scope</h2>

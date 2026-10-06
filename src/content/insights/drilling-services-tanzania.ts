@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A drilling programme should test a geological question and provide samples suitable for the decision that follows. Paying for metres without specifying geometry, sample quality and data handling can leave a project with holes that are difficult to interpret. Method selection comes from the information needed, not simply the lowest rate.</p>
 <p>This guide explains how to brief drilling work in Tanzania and compare complete contractor scopes. It covers core and reverse-circulation methods, sample controls and the deliverables needed to turn drilling into a usable geological model.</p>
 <h2 id="method">Choose the sample type for the question</h2>
@@ -15,6 +17,7 @@ const content = `<p>A drilling programme should test a geological question and p
 <h2 id="deliverables">Agree how the results will be handed over</h2>
 <p>Require collar and downhole surveys, daily records, recoveries, geology, sample intervals, assay certificates, QA/QC review and a documented interpretation. Confirm data formats, coordinate systems and ownership of core, samples and records. The interpretation should distinguish observations from hypotheses.</p>
 <p>Update the model after each agreed stage. If the first holes contradict the target geometry, revising the programme can be more useful than continuing every planned metre unchanged.</p>
+${renderArticleFaqs("drilling-services-tanzania", "en")}
 <h2 id="conclusion">Buy a geological test with controlled data</h2>
 <p>Select the method from the sample requirement, design holes to test the target and compare complete costs. Arrange supervision and data controls before the rig arrives. The next step is a drilling brief stating what the campaign must answer and how the result will guide further spending.</p>
 <h2 id="basis">Sources and assumptions</h2>

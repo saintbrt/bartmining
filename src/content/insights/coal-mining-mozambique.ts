@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A coal project in Mozambique needs a credible product and a workable delivery route as well as geological tonnage. Seam continuity, mining conditions, preparation yield and buyer specification determine what can be sold. Transport and handling then determine whether the sale can cover the full cost.</p>
 <p>This guide explains how to connect coal exploration with quality testing and logistics, using Tete as a regional reference. The outcome should be a phased programme and a product basis, rather than an investment case built from a national resource headline.</p>
 <h2 id="regional-context">Start with local seam evidence</h2>
@@ -15,6 +17,7 @@ const content = `<p>A coal project in Mozambique needs a credible product and a 
 <h2 id="logistics">Verify the route to market</h2>
 <p>Request written transport and handling terms for the actual road, rail and port route, including capacity, minimum commitments and delays. Check stockpile, loading and product-quality controls along the route. Do not infer bookable freight capacity from the existence of a regional corridor.</p>
 <p><a href="https://www.usgs.gov/centers/national-minerals-information-center/mozambique">USGS’s Mozambique industry page</a> provides additional dated context. Current licences, land access, environmental work, safety requirements and export arrangements require local confirmation alongside the technical study.</p>
+${renderArticleFaqs("coal-mining-mozambique", "en")}
 <h2 id="conclusion">Explore for a deliverable coal product</h2>
 <p>Establish seam geometry, obtain representative quality and yield tests, and verify the complete route to the buyer. Advance the project using saleable product and delivered cost rather than raw tonnage alone. Prepare a drill-and-quality brief and an initial logistics enquiry before committing to a development case.</p>
 <h2 id="basis">Sources and assumptions</h2>

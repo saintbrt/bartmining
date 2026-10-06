@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>Used equipment can reduce the purchase outlay, but the saving matters only after the machine is matched to the job and brought into service. Condition, electrical compatibility, parts and transport can change the result substantially. A seller’s throughput claim describes a previous operating basis, not necessarily your ore or site.</p>
 <p>This guide sets out a buying sequence for a Tanzanian project and shows how to compare a used offer with a new one. The outcome should be a documented duty assessment, inspection and complete delivered budget before a deposit is paid.</p>
 <h2 id="duty">Check suitability before negotiating price</h2>
@@ -15,6 +17,7 @@ const content = `<p>Used equipment can reduce the purchase outlay, but the savin
 <h2 id="documents">Require identity, ownership and parts support</h2>
 <ul><li>Manufacturer, model, serial number and proof the seller can transfer ownership.</li><li>Drawings, manuals, service records and details of modifications.</li><li>Inspection findings and a list of unresolved defects.</li><li>Written parts availability, lead times and initial critical-spares scope.</li><li>Contract terms for condition, testing, delivery and remedies.</li></ul>
 <p>Where records are missing, price and manage the uncertainty explicitly. Do not describe undocumented operating hours or an untested repair as verified simply because the seller gave a confident explanation.</p>
+${renderArticleFaqs("used-mining-equipment-tanzania", "en")}
 <h2 id="conclusion">Buy the documented duty and condition</h2>
 <p>A worthwhile used purchase combines process suitability, verified condition and a supportable delivered cost. Start with the duty, inspect before commitment and compare repair and delay cases alongside the headline saving. The next step is an inspection brief and cost sheet that expose every unresolved item.</p>
 <h2 id="basis">Sources and assumptions</h2>

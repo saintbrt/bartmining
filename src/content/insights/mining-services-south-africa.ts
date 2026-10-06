@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 const content = `<p>A South African mining assignment needs a scope matched to the deposit and decision. An existing operation, a new exploration target and a proposed acquisition require different evidence, even within the same commodity. The technical work should connect geology, mining, processing and the obligations that govern the project.</p>
 <p>This guide helps an owner or investor choose the next service and define useful deliverables. It uses the gold and PGM sectors as context without assuming that every project shares the geometry or operating conditions of a famous mine.</p>
 <h2 id="context">Use industry context to frame local questions</h2>
@@ -15,6 +17,7 @@ const content = `<p>A South African mining assignment needs a scope matched to t
 <h2 id="environment">Bring environmental and closure work into the scope</h2>
 <p>Include water, waste, land, community and closure obligations in the project review. <a href="https://www.ifc.org/en/insights-reports/2012/ifc-performance-standard-1">IFC Performance Standard 1</a> is a management reference where applicable; it does not replace South African approvals. Have qualified local advisers confirm the rights, permissions and current obligations for the activity.</p>
 <p>Use a common project schedule and quantities across the disciplines. A plant recommendation that excludes unresolved water or waste constraints may not be implementable at the proposed cost.</p>
+${renderArticleFaqs("mining-services-south-africa", "en")}
 <h2 id="conclusion">Commission work around the actual constraint</h2>
 <p>Choose the service from the next decision, provide original evidence and agree accountable specialist deliverables. Review geology, operations and project obligations together when they affect the result. Prepare a brief stating the asset, data available, decision deadline and uncertainty the assignment must resolve.</p>
 <h2 id="basis">Sources and assumptions</h2>

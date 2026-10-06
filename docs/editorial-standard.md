@@ -30,6 +30,8 @@ Use this core sequence, with section names adapted to the subject. It is a logic
 
 FAQs are optional and should answer genuine remaining questions. They cannot replace the main explanation. Region lists and related links should not be the article’s final thought. Avoid repeating a sales pitch in the body and again in the contact block.
 
+For each FAQ, write a question a reader could ask after reading the article and give a direct, connected answer. Explain the decision or uncertainty and the information needed to resolve it. Avoid using generic sales questions to fill a section, repeating every heading, or promising a fixed price, delivery date, recovery or approval without a relevant basis. Put FAQs before the substantive conclusion and keep the answers consistent with the body and any counterpart. Plain-text FAQ copy for registered guides lives in `src/data/article-faqs.json`; `renderArticleFaqs` places it in the body and the same copy supplies language-correct structured data. Keep the visible and structured answers identical. An article without genuine remaining questions can omit the section.
+
 ## Write sentences that carry the explanation
 
 Use natural, connected language. A paragraph should develop one idea: describe the situation, explain the cause or consequence, and connect it to the project decision. Vary sentence length without using a series of clipped statements for effect.
@@ -103,3 +105,5 @@ Before considering an article complete, a reviewer should be able to answer yes 
 Run `node scripts/audit-editorial.mjs` to check both language inventories for narrative structure, references, source-basis sections, metadata, reading times, image files, related articles and linked section anchors. This is a structural check, not a substitute for reading or factual review. Run TypeScript checks and the production build after changes to shared rendering or data.
 
 Run `node scripts/audit-swahili-directory.mjs` after adding or moving Kiswahili pages. It checks the full directory, sitemap, images, migrated URLs and permanent redirects, and detects Kiswahili page templates outside the two directories. This discovery check complements the registered-article audit; neither certifies every page's editorial quality.
+
+Run `node scripts/audit-article-faqs.mjs` after editing guide FAQs. It includes registered English/Kiswahili articles, English supply guides, Kiswahili town/market guides and the connected price, rental and delivery pages. Check the rendered pages as well when FAQ rendering or structured data changes. Service and gold-price answers live in `src/data/service-faqs.ts`; English rental answers remain in `src/data/generator-rental.ts`.

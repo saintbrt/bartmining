@@ -1,3 +1,5 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
 import { CHUNYA_EXAMPLES, MONTHLY_OPERATING_EXAMPLES, totalCost, usd } from '@/data/plant-cost-examples'
 const [wash, starter, full] = CHUNYA_EXAMPLES
 const categories = ['Shipping, insurance, clearing and inland delivery', 'Installation crew and lifting', 'Civil works allowance', 'Engineering and project management', 'Testing, inspection and permits', 'Commissioning and first-year wear parts', 'Contingency']
@@ -41,14 +43,7 @@ const content = `
 <p>Before placing the order, agree the feed conditions for testing, the throughput demonstration, the recovery assessment, acceptable defects and operator training. The washing proposal calls for three consecutive shifts at or near the design rate without critical defects before commissioning sign-off. Recovery should still be assessed through representative sampling and reconciliation, rather than inferred from a machine running.</p>
 <p>Make handover include operating instructions, electrical and process documentation, a maintenance plan, recommended spares and a list of unresolved work. A plant is ready to operate when the team can run and maintain it under the agreed conditions.</p>
 
-<h2 id="questions">Questions before opening a plant</h2>
-<h3>Is the least expensive plant the best first stage?</h3>
-<p>It can be if testing supports the circuit and the project can supply the necessary feed and water. The Chunya washing-and-sluice proposal is a specific first-stage approach with later recovery additions in mind. A cheaper arrangement that cannot handle the clay or capture the relevant gold size may cost more through lost production.</p>
-<h3>Do I need an elution plant when I add CIP or CIL?</h3>
-<p>You need a defined route for recovering gold from loaded carbon, whether on site or through a suitable service arrangement. Compare transport, batch size, security, charges and cash timing before deciding to own the equipment. Include that route in the leach-plant budget from the start.</p>
-<h3>What should I send to request a plant proposal?</h3>
-<p>Send the site location, deposit and feed description, sample or test results, sustainable feed rate, planned hours, water-source details and power availability. State the equipment or infrastructure already on site and which services you want included. This helps the supplier quote the scope you actually need.</p>
-
+${renderArticleFaqs("gold-plant-setup-cost", "en", "Questions before opening a plant")}
 <h2 id="conclusion">A startup budget should finish with a plant you can operate</h2>
 <p>Choose the recovery route from the feed and test results, then fund the equipment, delivery, site infrastructure and commissioning as one project. Add the owner’s costs and a separate operating reserve before deciding whether the investment is affordable. The Chunya proposals make the distinction concrete: ${usd(wash.equipment)} of equipment becomes about ${usd(wash.total)} with the proposed execution scope, and the business still needs operating cash.</p>
 <p>The next step is a site and feed brief that can support detailed design and an itemised quotation. That brief should resolve the major unknowns in water, recovery, power and feed supply, so the budget leads to a clear decision about opening the plant.</p>
