@@ -67,9 +67,16 @@ export default function ContactForm() {
 
         <div className="cf-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
           <div>
+            <label style={labelStyle}>Phone number</label>
+            <input type="tel" name="phone" autoComplete="tel" placeholder="+255 7XX XXX XXX" style={fieldStyle} />
+          </div>
+          <div>
             <label style={labelStyle}>Organisation</label>
             <input type="text" name="org" placeholder="Company / government / fund" style={fieldStyle} />
           </div>
+        </div>
+
+        <div className="cf-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
           <div>
             <label style={labelStyle}>I am a&hellip;</label>
             <select name="type" style={fieldStyle}>
@@ -79,9 +86,6 @@ export default function ContactForm() {
               <option>Other</option>
             </select>
           </div>
-        </div>
-
-        <div className="cf-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
           <div>
             <label style={labelStyle}>Interested in</label>
             <select name="interest" style={fieldStyle}>
@@ -93,10 +97,11 @@ export default function ContactForm() {
               <option>Technical due diligence</option>
             </select>
           </div>
-          <div>
-            <label style={labelStyle}>Project location</label>
-            <input type="text" name="location" placeholder="Country / region" style={fieldStyle} />
-          </div>
+        </div>
+
+        <div style={{ marginBottom: 16 }}>
+          <label style={labelStyle}>Project location</label>
+          <input type="text" name="location" placeholder="Country / region" style={fieldStyle} />
         </div>
 
         <div style={{ marginBottom: 24 }}>

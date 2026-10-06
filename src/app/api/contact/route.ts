@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 const ENQUIRY_INBOX = 'allanbartinc@gmail.com'
 
 /** Upper bounds per field, so the form cannot be used to send huge payloads. */
-const LIMITS = { name: 120, email: 254, org: 160, type: 60, interest: 120, location: 160, message: 5000 } as const
+const LIMITS = { name: 120, email: 254, phone: 40, org: 160, type: 60, interest: 120, location: 160, message: 5000 } as const
 type Field = keyof typeof LIMITS
 
 /**
@@ -67,6 +67,7 @@ export async function POST(req: NextRequest) {
 
     const name = field(body, 'name')
     const email = field(body, 'email')
+    const phone = field(body, 'phone')
     const org = field(body, 'org')
     const type = field(body, 'type')
     const interest = field(body, 'interest')
@@ -85,6 +86,7 @@ export async function POST(req: NextRequest) {
     const e = {
       name: escapeHtml(name),
       email: escapeHtml(email),
+      phone: escapeHtml(phone),
       org: escapeHtml(org),
       type: escapeHtml(type),
       interest: escapeHtml(interest),
@@ -107,6 +109,7 @@ export async function POST(req: NextRequest) {
           <table style="width:100%;border-collapse:collapse;">
             ${row('Name', e.name, true)}
             ${row('Email', `<a href="mailto:${encodeURIComponent(email)}" style="color:#AE8A4C;">${e.email}</a>`)}
+            ${phone ? row('Phone', `<a href="tel:${encodeURIComponent(phone.replace(/[^\d+]/g, ''))}" style="color:#AE8A4C;">${e.phone}</a>`) : ''}
             ${org ? row('Organisation', e.org) : ''}
             ${type ? row('Client type', e.type) : ''}
             ${interest ? row('Interested in', e.interest) : ''}
