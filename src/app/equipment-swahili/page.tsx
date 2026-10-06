@@ -5,7 +5,7 @@ import Reveal from '@/components/ui/Reveal'
 import RegionsSection from '@/components/sections/RegionsSection'
 import CtaSection from '@/components/sections/CtaSection'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
-import { equipmentImageAlt, resolveEquipmentPhoto } from '@/lib/equipment-photos'
+import { equipmentImageAlt, equipmentImageCaption, resolveEquipmentPhoto } from '@/lib/equipment-photos'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue-sw'
 import { LOCATIONS_SW } from '@/data/locations-sw'
 import { SITE, SERVICE_AREAS, itemListSchema, breadcrumbSchema } from '@/lib/seo'
@@ -86,7 +86,7 @@ export default function EquipmentHub() {
                   fill style={{ objectFit: 'contain' }} sizes="(max-width: 860px) 100vw, 50vw"
                 />
               </div>
-              <p style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--ink-3)', marginTop: 12 }}>Mchoro wa mfano wa mtambo uliotengenezwa kwa AI; si picha ya mtambo wa mteja.</p>
+              <p style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--ink-3)', marginTop: 12 }}>{equipmentImageCaption('alluvial-gold-wash-plant', 'Mtambo wa kuosha dhahabu ya alluvial', 'sw')}</p>
             </Reveal>
             <Reveal delay={1}>
               <span className="eyebrow">Kwa nini uchague vifaa kupitia Bart Mining</span>

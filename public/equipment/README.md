@@ -5,8 +5,10 @@
 The English and Kiswahili catalogues share `src/data/equipment-imagery.json`.
 Each product selects an optimised WebP in `public/equipment/website/` before
 the legacy slug-named image. The manifest distinguishes a generated equipment
-illustration from a retained catalogue reference. This distinction supplies
-the product image captions and descriptive alt text in both languages.
+illustration from a retained catalogue reference for internal asset records.
+Public captions and alt text describe the machine using
+`src/data/equipment-image-copy.json` in both languages. Follow the strict
+public-copy rule in `docs/editorial-standard.md`; do not expose production-method labels.
 
 Cards retain their 4:3 slot. Product heroes use 16:9 on desktop and 4:3 on
 phones. Both use `contain` so a tall helmet, drill, tower or complete machine

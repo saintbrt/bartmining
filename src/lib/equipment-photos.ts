@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import imagery from '@/data/equipment-imagery.json'
+import imageCopy from '@/data/equipment-image-copy.json'
 
 /**
  * Build-time product imagery resolution, shared by both languages.
@@ -50,14 +51,16 @@ export function equipmentImageKind(slug: string): 'illustration' | 'reference' {
   return entry?.kind === 'illustration' ? 'illustration' : 'reference'
 }
 
-export function equipmentImageAlt(slug: string, name: string, language: 'en' | 'sw' = 'en'): string {
-  const illustration = equipmentImageKind(slug) === 'illustration'
-  return language === 'sw'
-    ? `${name}: ${illustration ? 'mchoro wa mfano wa kifaa' : 'picha ya rejea ya kifaa'}`
-    : `${name}: ${illustration ? 'equipment-class illustration' : 'catalogue reference image'}`
+export function equipmentImageCaption(slug: string, name: string, language: 'en' | 'sw' = 'en'): string {
+  const copy = (imageCopy as Record<string, { en: string; sw: string }>)[slug]
+  return copy?.[language] ?? name
 }
 
-/** Count of products with selected imagery, including disclosed illustrations. */
+export function equipmentImageAlt(slug: string, name: string, language: 'en' | 'sw' = 'en'): string {
+  return equipmentImageCaption(slug, name, language)
+}
+
+/** Count of products with selected imagery. */
 export function photoCoverage(slugs: string[]): { withPhoto: number; total: number } {
   return {
     withPhoto: slugs.filter(s => resolveEquipmentPhoto(s) !== null).length,

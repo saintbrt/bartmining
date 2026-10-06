@@ -1,0 +1,270 @@
+{
+  "checks": 16,
+  "errors": [],
+  "results": [
+    {
+      "route": "/equipment/1-ton-winch",
+      "width": 390,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+      "caption": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment/2-ton-winch",
+      "width": 390,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "A 2 tonne electric winch uses a motor-driven drum and wire rope for material handling.",
+      "caption": "A 2 tonne electric winch uses a motor-driven drum and wire rope for material handling.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment/5-ton-mine-winch",
+      "width": 390,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "A 5 tonne mine winch uses a powered drum, wire rope and braking system to handle mining loads.",
+      "caption": "A 5 tonne mine winch uses a powered drum, wire rope and braking system to handle mining loads.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment",
+      "width": 390,
+      "cards": [
+        {
+          "href": "/equipment/1-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/2-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/5-ton-mine-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/1-ton-winch",
+      "width": 390,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+      "caption": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili/2-ton-winch",
+      "width": 390,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "Winchi ya umeme ya tani 2 hutumia ngoma inayoendeshwa na mota pamoja na waya kusogeza mizigo.",
+      "caption": "Winchi ya umeme ya tani 2 hutumia ngoma inayoendeshwa na mota pamoja na waya kusogeza mizigo.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili/5-ton-mine-winch",
+      "width": 390,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "Winchi ya mgodini ya tani 5 hutumia ngoma yenye mota, waya na mfumo wa breki kushughulikia mizigo ya uchimbaji.",
+      "caption": "Winchi ya mgodini ya tani 5 hutumia ngoma yenye mota, waya na mfumo wa breki kushughulikia mizigo ya uchimbaji.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 390,
+      "cards": [
+        {
+          "href": "/equipment-swahili/1-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/2-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/5-ton-mine-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "route": "/equipment/1-ton-winch",
+      "width": 1440,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+      "caption": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment/2-ton-winch",
+      "width": 1440,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "A 2 tonne electric winch uses a motor-driven drum and wire rope for material handling.",
+      "caption": "A 2 tonne electric winch uses a motor-driven drum and wire rope for material handling.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment/5-ton-mine-winch",
+      "width": 1440,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "A 5 tonne mine winch uses a powered drum, wire rope and braking system to handle mining loads.",
+      "caption": "A 5 tonne mine winch uses a powered drum, wire rope and braking system to handle mining loads.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment",
+      "width": 1440,
+      "cards": [
+        {
+          "href": "/equipment/1-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/2-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/5-ton-mine-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/1-ton-winch",
+      "width": 1440,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+      "caption": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/1-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili/2-ton-winch",
+      "width": 1440,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "Winchi ya umeme ya tani 2 hutumia ngoma inayoendeshwa na mota pamoja na waya kusogeza mizigo.",
+      "caption": "Winchi ya umeme ya tani 2 hutumia ngoma inayoendeshwa na mota pamoja na waya kusogeza mizigo.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/2-ton-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili/5-ton-mine-winch",
+      "width": 1440,
+      "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+      "alt": "Winchi ya mgodini ya tani 5 hutumia ngoma yenye mota, waya na mfumo wa breki kushughulikia mizigo ya uchimbaji.",
+      "caption": "Winchi ya mgodini ya tani 5 hutumia ngoma yenye mota, waya na mfumo wa breki kushughulikia mizigo ya uchimbaji.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/5-ton-mine-winch-parallel-drive.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 1440,
+      "cards": [
+        {
+          "href": "/equipment-swahili/1-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/1-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/2-ton-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/2-ton-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/5-ton-mine-winch",
+          "src": "http://127.0.0.1:3103/_next/image?url=/equipment/website/5-ton-mine-winch-parallel-drive.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    }
+  ]
+}

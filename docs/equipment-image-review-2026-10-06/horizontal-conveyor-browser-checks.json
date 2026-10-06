@@ -1,0 +1,110 @@
+{
+  "checks": 8,
+  "errors": [],
+  "results": [
+    {
+      "route": "/equipment/belt-conveyor",
+      "width": 390,
+      "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+      "alt": "A belt conveyor moves material between crushers, screens, stockpiles and other stages of a processing plant.",
+      "caption": "A belt conveyor moves material between crushers, screens, stockpiles and other stages of a processing plant.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp"
+      ]
+    },
+    {
+      "route": "/equipment",
+      "width": 390,
+      "cards": [
+        {
+          "href": "/equipment/belt-conveyor",
+          "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/belt-conveyor",
+      "width": 390,
+      "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+      "alt": "Conveyor ya mkanda husafirisha malighafi kati ya mashine za kuponda, vichujio, malundo na hatua nyingine za mtambo.",
+      "caption": "Conveyor ya mkanda husafirisha malighafi kati ya mashine za kuponda, vichujio, malundo na hatua nyingine za mtambo.",
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 390,
+      "cards": [
+        {
+          "href": "/equipment-swahili/belt-conveyor",
+          "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "route": "/equipment/belt-conveyor",
+      "width": 1440,
+      "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+      "alt": "A belt conveyor moves material between crushers, screens, stockpiles and other stages of a processing plant.",
+      "caption": "A belt conveyor moves material between crushers, screens, stockpiles and other stages of a processing plant.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp"
+      ]
+    },
+    {
+      "route": "/equipment",
+      "width": 1440,
+      "cards": [
+        {
+          "href": "/equipment/belt-conveyor",
+          "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/belt-conveyor",
+      "width": 1440,
+      "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+      "alt": "Conveyor ya mkanda husafirisha malighafi kati ya mashine za kuponda, vichujio, malundo na hatua nyingine za mtambo.",
+      "caption": "Conveyor ya mkanda husafirisha malighafi kati ya mashine za kuponda, vichujio, malundo na hatua nyingine za mtambo.",
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false,
+      "og": "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp",
+      "productImage": [
+        "https://bartmining.com/equipment/website/belt-conveyor-horizontal.webp"
+      ]
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 1440,
+      "cards": [
+        {
+          "href": "/equipment-swahili/belt-conveyor",
+          "src": "http://127.0.0.1:3104/_next/image?url=/equipment/website/belt-conveyor-horizontal.webp&w=3840&q=85",
+          "loaded": true,
+          "fit": "contain"
+        }
+      ]
+    }
+  ]
+}

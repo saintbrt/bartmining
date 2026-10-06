@@ -114,10 +114,10 @@
   {
     "slug": "belt-conveyor",
     "kind": "illustration",
-    "src": "/equipment/website/belt-conveyor.webp",
+    "src": "/equipment/website/belt-conveyor-horizontal.webp",
     "width": 1448,
     "height": 1086,
-    "bytes": 110938
+    "bytes": 106012
   },
   {
     "slug": "hydrocyclone",
@@ -186,26 +186,26 @@
   {
     "slug": "1-ton-winch",
     "kind": "illustration",
-    "src": "/equipment/website/1-ton-winch.webp",
+    "src": "/equipment/website/1-ton-winch-parallel-drive.webp",
     "width": 1448,
     "height": 1086,
-    "bytes": 208634
+    "bytes": 224056
   },
   {
     "slug": "2-ton-winch",
     "kind": "illustration",
-    "src": "/equipment/website/2-ton-winch.webp",
+    "src": "/equipment/website/2-ton-winch-parallel-drive.webp",
     "width": 1448,
     "height": 1086,
-    "bytes": 220322
+    "bytes": 248126
   },
   {
     "slug": "5-ton-mine-winch",
     "kind": "illustration",
-    "src": "/equipment/website/5-ton-mine-winch.webp",
+    "src": "/equipment/website/5-ton-mine-winch-parallel-drive.webp",
     "width": 1448,
     "height": 1086,
-    "bytes": 253742
+    "bytes": 269612
   },
   {
     "slug": "mine-hoist-headframe",

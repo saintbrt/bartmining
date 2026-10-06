@@ -5,16 +5,30 @@ import sharp from 'sharp'
 import { loadSiteModule } from './lib/editorial-library.mjs'
 
 const { EQUIPMENT } = loadSiteModule('src/data/equipment-catalogue.ts')
-const { resolveEquipmentPhoto } = loadSiteModule('src/lib/equipment-photos.ts')
+const { resolveEquipmentPhoto, equipmentImageCaption, equipmentImageAlt } = loadSiteModule('src/lib/equipment-photos.ts')
+const { EQUIPMENT: SW_EQUIPMENT } = loadSiteModule('src/data/equipment-catalogue-sw.ts')
 const manifest = JSON.parse(fs.readFileSync('src/data/equipment-imagery.json', 'utf8'))
+const imageCopy = JSON.parse(fs.readFileSync('src/data/equipment-image-copy.json', 'utf8'))
 const prompts = JSON.parse(fs.readFileSync('docs/equipment-image-prompts-2026-10-06.json', 'utf8'))
 const before = JSON.parse(fs.readFileSync('docs/equipment-image-baseline-2026-10-06.json', 'utf8'))
 const replacements = new Set(prompts.entries.map(entry => entry.slug))
 const products = new Set(EQUIPMENT.map(item => item.slug))
 assert.equal(Object.keys(manifest).length, products.size)
+assert.equal(Object.keys(imageCopy).length, products.size)
 assert.equal(before.length, products.size)
 for (const slug of Object.keys(manifest)) assert(products.has(slug), `Orphan image: ${slug}`)
+for (const slug of Object.keys(imageCopy)) assert(products.has(slug), `Orphan image description: ${slug}`)
 for (const slug of replacements) assert(products.has(slug), `Orphan prompt: ${slug}`)
+
+// Public descriptions must cover every product in both languages and follow the editorial rule.
+for (const [language, catalogue] of [['en', EQUIPMENT], ['sw', SW_EQUIPMENT]]) {
+  for (const item of catalogue) {
+    assert(imageCopy[item.slug]?.[language]?.trim(), `Missing ${language} image description: ${item.slug}`)
+    for (const copy of [equipmentImageCaption(item.slug, item.name, language), equipmentImageAlt(item.slug, item.name, language)]) {
+      assert(!/\bAI\b|artificial intelligence|akili bandia/i.test(copy), `Production-method label in public image copy: ${item.slug}`)
+    }
+  }
+}
 
 const results = []
 for (const item of EQUIPMENT) {

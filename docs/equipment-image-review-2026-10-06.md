@@ -86,3 +86,53 @@ The production build passed with 221 generated pages, followed by TypeScript, th
 Review artifacts are in `docs/equipment-image-review-2026-10-06/`: five complete catalogue contact sheets, six production screenshots and `browser-checks.json`. The final asset measurements are in `docs/equipment-image-results-2026-10-06.json`; all generation prompts and selected paths are in the prompt file. Visual review addresses recognisability and framing, not certification of the equipment or model-specific engineering details.
 
 During the preliminary development check, waiting for off-screen lazy images and a navigation-idle condition stalled the screenshot runner. The final production check explicitly loaded the audited images and verified their decoded state; all 204 checks passed. Deployment should be verified separately after these changes are pushed to `main`.
+
+## Winch motor placement correction
+
+The user supplied a yellow industrial winch reference showing the motor alongside the drum. The three initial winch selections put the motor in line with the drum shaft. All three have been replaced with a layout that follows the supplied reference: the motor is on the front of the shared skid, its shaft is parallel to and offset from the drum shaft, and the side transmission connects them. Each replacement was visually inspected against that arrangement before selection.
+
+The selected files are `public/equipment/website/1-ton-winch-parallel-drive.webp`, `public/equipment/website/2-ton-winch-parallel-drive.webp` and `public/equipment/website/5-ton-mine-winch-parallel-drive.webp`. They are 1,448 × 1,086 pixels with the complete base and machine visible. New asset URLs avoid reusing cached copies of the previous layout; the shared manifest updates English/Kiswahili cards, product heroes, social previews and product structured data together. The earlier contact sheets and 204-check report record the original pass, before this correction.
+
+The replacement prompts are recorded in `docs/equipment-image-prompts-2026-10-06.json`, alongside the previous prompts. Public captions and alt text now describe each machine's function through `src/data/equipment-image-copy.json`, following the strict editorial rule.
+
+The production build, TypeScript and 50-image decoding/selection audit passed after the correction. A focused browser pass completed **16 checks**: all six winch product URLs and both directories at 390px and 1,440px. It verified replacement assets, full-image framing, machine descriptions, social-preview and product-schema images, and no horizontal overflow or JavaScript errors. Results are in `parallel-drive-browser-checks.json`; desktop English and mobile Kiswahili previews are in `parallel-drive-winch-en-1440.png` and `parallel-drive-winch-sw-390.png` within the review directory. Verify deployment separately after pushing these changes to `main`.
+
+## Vibrating feeder comparison with manufacturer references
+
+On 2026-10-06, compared the selected `public/equipment/website/vibrating-feeder.webp` visually with manufacturer images and descriptions. The image broadly resembles a vibrating **pan feeder**: an open steel tray with bolted wear plates, sidewalls, an open discharge end and coil-spring supports. Its solid tray is comparable to the [Metso PF Series pan feeder](https://www.metso.com/portfolio/pf-series/), which can feed a primary crusher or a separate scalper. It should not be rejected merely because it lacks grizzly bars; pan feeders are a real, separate configuration.
+
+| Feature in the current image | Comparison and finding |
+| --- | --- |
+| Solid tray with bolted wear plates and sidewalls | Consistent with the visible Metso PF pan-feeder reference. |
+| Coil springs between the moving body and support frame | Consistent with manufacturer feeder arrangements. |
+| Open discharge end | Appropriate for transferring material into downstream equipment. |
+| Solid floor extending to discharge | Shows a pan feeder. It does not show the spaced, tapered bars needed to illustrate grizzly scalping. |
+| Guarded side drive and blue drive housing | The internal vibration mechanism and connections cannot be established from this view. Drive arrangement varies by manufacturer; do not infer that a side-mounted motor is inherently wrong. |
+| Tall receiving hopper joined to the tray | Added assembly detail beyond the standalone Metso PF reference. Its presence does not establish an error, but the hopper/body relationship should follow a chosen supplier layout if a model-specific image is required. |
+
+[McLanahan's vibrating grizzly feeder](https://www.mclanahan.com/products/vibrating-grizzly-feeders) shows discharge bars with openings, and its explanation distinguishes the receiving pan from the grizzly section. [Metso's VF Series](https://www.metso.com/portfolio/vf-series/) provides a second grizzly reference. [MEKA's vibrating feeder page](https://www.mekaglobal.com/en/products/crushing-screening-plants/feeders/vibrating-feeder) describes paired vibration motors and alternative mounting positions; this is one drive approach rather than a universal requirement. The pictured MEKA MVF reference was also inspected, but its particular covered arrangement was not treated as the only valid pan-feeder shape.
+
+**Assessment:** the current image passes basic recognition as a pan-type vibrating feeder. The English H1, “Vibrating Feeder: Grizzly Feeders for Crushers,” emphasises a configuration the solid tray does not depict. For a hero specifically illustrating that grizzly configuration, use a solid receiving pan followed by clearly separated discharge bars. Alternatively, retain this image with a machine description that identifies the pan configuration, and illustrate the grizzly option separately. No replacement or public-page change was made during this comparison. Manufacturer reference downloads remain in `/private/tmp/bart-feeder-comparison/` for review and have not been added to website assets.
+
+## Belt conveyor comparison with the supplied reference
+
+On 2026-10-06, compared `public/equipment/website/belt-conveyor.webp` with the user's attached conveyor reference. This is a visual comparison of the two depicted arrangements, not confirmation of a particular supplier's design.
+
+| Detail | Supplied reference | Current website image |
+| --- | --- | --- |
+| Overall layout | Low, nearly horizontal conveyor on short supports. | Inclined conveyor on a tall truss frame, with progressively taller legs. |
+| Feed arrangement | Open carrying belt; no large receiving hopper shown. | Large hopper at the lower end. |
+| Belt and end-pulley presentation | The broad belt visibly wraps around the near-end pulley; the carrying surface is easy to follow. | End assemblies are shown, but the separate lower return run is harder to trace through the truss. |
+| Roller presentation | Repeated troughing-idler sets are exposed clearly beneath the belt. | Rollers and brackets are visible, but their arrangement is less clear beneath the dark belt and tall structure. |
+| Side fittings | Side cables, yellow switch housings and a control enclosure are visible. | Those reference-specific fittings are not shown. |
+| Framing | Complete low conveyor presented from above in three-quarter view. | Complete inclined conveyor, with the drive motor close to the right image edge. |
+
+**Assessment:** the website image depicts a different conveyor configuration and does not match the supplied reference. An inclined layout or an added hopper is not by itself proof of a mechanical error. The useful correction is to follow the reference's low horizontal arrangement and make the belt loop, end pulleys, troughing rollers and separate return path visually coherent. A replacement should show the complete frame and drive with clear margins, and include reference-specific side fittings only where their arrangement can be represented accurately. No replacement or public-page change was made during this comparison.
+
+### Conveyor replacement completed after approval
+
+The user approved the replacement after the comparison. The selected image is now `public/equipment/website/belt-conveyor-horizontal.webp`: a low horizontal conveyor with a visible end-pulley belt wrap, repeated troughing idlers, a separate lower return run, short frame supports, side control enclosure, switch housings and pull-cord cables. The tall inclined frame and receiving hopper have been removed. The complete unit was inspected against the supplied reference before selection. The source is 1,448 × 1,086 pixels; the optimised WebP is 106,012 bytes and was encoded without cropping or enlargement.
+
+The shared manifest selects this new asset URL for both English and Kiswahili product heroes, catalogue cards, related-equipment cards, social previews and product structured data. Public captions and alt text continue to describe the machine's purpose. The exact replacement prompt and previous prompt are recorded in `docs/equipment-image-prompts-2026-10-06.json`; the built-in image tool was used.
+
+The production build completed successfully with 221 generated pages, TypeScript passed, and the 50-image audit verified decoding, resolution and selection. The build emitted sandbox DNS warnings for unrelated live gold-price and exchange-rate feeds; this check does not verify those live feeds. A focused browser pass completed **8 checks**, covering both conveyor product pages and both catalogue directories at 390px and 1,440px, with correct image selection, machine descriptions, contain framing, social-preview and product-schema paths, and no horizontal overflow or JavaScript errors. Browser results are in `horizontal-conveyor-browser-checks.json`; inspected previews are `horizontal-conveyor-en-1440.png` and `horizontal-conveyor-sw-390.png` in the review directory. Verify deployment separately after pushing these changes to `main`.
