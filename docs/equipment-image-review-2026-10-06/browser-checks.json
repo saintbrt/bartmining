@@ -1,0 +1,1842 @@
+{
+  "productPages": 100,
+  "directories": 2,
+  "browserChecks": 204,
+  "viewports": [
+    390,
+    1440
+  ],
+  "errors": [],
+  "checks": [
+    "HTTP 200",
+    "selected prepared assets load",
+    "contain framing",
+    "correct responsive hero ratio",
+    "English/Kiswahili provenance captions and alt text",
+    "Open Graph and product schema images match",
+    "no horizontal page overflow",
+    "50 complete cards per catalogue"
+  ],
+  "results": [
+    {
+      "route": "/equipment/hydraulic-excavator",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/wheel-loader",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/dump-truck",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/bulldozer",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/motor-grader",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/backhoe-loader",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/vibratory-roller",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/tower-crane",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/concrete-mixer",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/cone-crusher",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/hammer-mill",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/wet-pan-mill",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/vibrating-screen",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/trommel-screen",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/belt-conveyor",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/hydrocyclone",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/filter-press",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/vibrating-feeder",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/pneumatic-rock-drill",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/lighting-tower",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/rotary-scrubber",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/sluice-box-gold-jig",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/alluvial-gold-wash-plant",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/1-ton-winch",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/2-ton-winch",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/5-ton-mine-winch",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mine-hoist-headframe",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/wire-rope-slings-lifting-tackle",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/centrifugal-gold-concentrator",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/gold-elution-electrowinning-plant",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/cil-cip-plant",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/leaching-tank",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/modular-gold-plant",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/ball-mill-gold-ore",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/jaw-crusher",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/shaking-table-gold",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/rc-drilling-rig",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/gold-metal-detector",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/slurry-pump",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/submersible-dewatering-pump",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mining-safety-helmet-cap-lamp",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/self-contained-self-rescuer",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/gas-detection-monitor",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/fall-arrest-harness",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mine-ventilation-fan",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mine-management-software",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/fleet-management-system",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/geological-modelling-software",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/diesel-generator-mining",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/air-compressor-mining",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment",
+      "width": 390,
+      "cards": 50
+    },
+    {
+      "route": "/equipment-swahili/hydraulic-excavator",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/wheel-loader",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/dump-truck",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/bulldozer",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/motor-grader",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/backhoe-loader",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/vibratory-roller",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/tower-crane",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/concrete-mixer",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/cone-crusher",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/hammer-mill",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/wet-pan-mill",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/vibrating-screen",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/trommel-screen",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/belt-conveyor",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/hydrocyclone",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/filter-press",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/vibrating-feeder",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/pneumatic-rock-drill",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/lighting-tower",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/rotary-scrubber",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/sluice-box-gold-jig",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/alluvial-gold-wash-plant",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/1-ton-winch",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/2-ton-winch",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/5-ton-mine-winch",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mine-hoist-headframe",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/wire-rope-slings-lifting-tackle",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/centrifugal-gold-concentrator",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/gold-elution-electrowinning-plant",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/cil-cip-plant",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/leaching-tank",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/modular-gold-plant",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/ball-mill-gold-ore",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/jaw-crusher",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/shaking-table-gold",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/rc-drilling-rig",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/gold-metal-detector",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/slurry-pump",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/submersible-dewatering-pump",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mining-safety-helmet-cap-lamp",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/self-contained-self-rescuer",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/gas-detection-monitor",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/fall-arrest-harness",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mine-ventilation-fan",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mine-management-software",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/fleet-management-system",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/geological-modelling-software",
+      "width": 390,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/diesel-generator-mining",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/air-compressor-mining",
+      "width": 390,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.3333333333333333,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 390,
+      "cards": 50
+    },
+    {
+      "route": "/equipment/hydraulic-excavator",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/wheel-loader",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/dump-truck",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/bulldozer",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/motor-grader",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/backhoe-loader",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/vibratory-roller",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/tower-crane",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/concrete-mixer",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/cone-crusher",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/hammer-mill",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/wet-pan-mill",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/vibrating-screen",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/trommel-screen",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/belt-conveyor",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/hydrocyclone",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/filter-press",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/vibrating-feeder",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/pneumatic-rock-drill",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/lighting-tower",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/rotary-scrubber",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/sluice-box-gold-jig",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/alluvial-gold-wash-plant",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/1-ton-winch",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/2-ton-winch",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/5-ton-mine-winch",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mine-hoist-headframe",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/wire-rope-slings-lifting-tackle",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/centrifugal-gold-concentrator",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/gold-elution-electrowinning-plant",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/cil-cip-plant",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/leaching-tank",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/modular-gold-plant",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/ball-mill-gold-ore",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/jaw-crusher",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/shaking-table-gold",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/rc-drilling-rig",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/gold-metal-detector",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/slurry-pump",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/submersible-dewatering-pump",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mining-safety-helmet-cap-lamp",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/self-contained-self-rescuer",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/gas-detection-monitor",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/fall-arrest-harness",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mine-ventilation-fan",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/mine-management-software",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/fleet-management-system",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/geological-modelling-software",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/diesel-generator-mining",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment/air-compressor-mining",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment",
+      "width": 1440,
+      "cards": 50
+    },
+    {
+      "route": "/equipment-swahili/hydraulic-excavator",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/wheel-loader",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/dump-truck",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/bulldozer",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/motor-grader",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/backhoe-loader",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/vibratory-roller",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/tower-crane",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/concrete-mixer",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/cone-crusher",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/hammer-mill",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/wet-pan-mill",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/vibrating-screen",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/trommel-screen",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/belt-conveyor",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/hydrocyclone",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/filter-press",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/vibrating-feeder",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/pneumatic-rock-drill",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/lighting-tower",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/rotary-scrubber",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/sluice-box-gold-jig",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/alluvial-gold-wash-plant",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/1-ton-winch",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/2-ton-winch",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/5-ton-mine-winch",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mine-hoist-headframe",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/wire-rope-slings-lifting-tackle",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/centrifugal-gold-concentrator",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/gold-elution-electrowinning-plant",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/cil-cip-plant",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/leaching-tank",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/modular-gold-plant",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/ball-mill-gold-ore",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/jaw-crusher",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/shaking-table-gold",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/rc-drilling-rig",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/gold-metal-detector",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/slurry-pump",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/submersible-dewatering-pump",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mining-safety-helmet-cap-lamp",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/self-contained-self-rescuer",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/gas-detection-monitor",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/fall-arrest-harness",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mine-ventilation-fan",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/mine-management-software",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/fleet-management-system",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/geological-modelling-software",
+      "width": 1440,
+      "kind": "illustration",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/diesel-generator-mining",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili/air-compressor-mining",
+      "width": 1440,
+      "kind": "reference",
+      "loaded": true,
+      "fit": "contain",
+      "ratio": 1.7777777777777777,
+      "overflow": false
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 1440,
+      "cards": 50
+    }
+  ]
+}

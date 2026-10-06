@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
+import EquipmentHero from '@/components/equipment/EquipmentHero'
 import Link from 'next/link'
 import { EQUIPMENT, EQUIPMENT_BY_SLUG } from '@/data/equipment-catalogue-sw'
 import { SITE, SERVICE_AREAS, productSchema, faqSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
 import ReadingProgress from '@/components/insights/ReadingProgress'
-import { resolveEquipmentPhoto } from '@/lib/equipment-photos'
+import { equipmentImageAlt, resolveEquipmentPhoto } from '@/lib/equipment-photos'
 import { LOCATIONS } from '@/data/locations'
 import { LOCATIONS_SW } from '@/data/locations-sw'
 import { EQUIPMENT_GUIDES } from '@/content/equipment/sw'
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!e) return {}
   const url = `${SITE.url}/equipment-swahili/${e.slug}`
   // Social cards need an absolute URL, and should show the real product
-  // photo where one has been uploaded rather than the stock fallback.
+  // image selected for the website rather than the stock fallback.
   const photo = resolveEquipmentPhoto(e.slug)
   const ogImage = photo ? `${SITE.url}${photo}` : e.image
   const en = `${SITE.url}/equipment/${e.slug}`
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url,
       title: e.title,
       description: e.description,
-      images: [{ url: ogImage, alt: e.imageAlt }],
+      images: [{ url: ogImage, alt: equipmentImageAlt(e.slug, e.name, 'sw') }],
     },
     twitter: { card: 'summary_large_image', title: e.title, description: e.description, images: [ogImage] },
   }
@@ -50,9 +50,8 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
   const item = EQUIPMENT_BY_SLUG.get(slug)
   if (!item) notFound()
 
-  // A real uploaded photo takes precedence over the stock imagery.
+  // Reviewed website imagery takes precedence over the stock fallback.
   const photo = resolveEquipmentPhoto(item.slug)
-  const heroSrc = photo ?? item.image
   // Relative paths are valid for next/image but not for structured data,
   // where crawlers require a resolvable absolute URL.
   const schemaImage = photo ? `${SITE.url}${photo}` : item.image
@@ -148,9 +147,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       </section>
 
       <div className="px-site">
-        <div style={{ position: 'relative', borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '21/9', border: '1px solid var(--line)' }}>
-          <Image src={heroSrc} alt={item.imageAlt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 860px) 100vw, 1240px" priority />
-        </div>
+        <EquipmentHero slug={item.slug} name={item.name} fallback={item.image} language="sw" />
       </div>
 
       <div className="px-site" style={{ paddingTop: 56, paddingBottom: 80 }}>

@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-06",
+  "purpose": "Replacement equipment-class illustrations for undersized or mismatched existing assets; remaining suitable references retained and reframed.",
+  "entries": [
+    {
+      "slug": "belt-conveyor",
+      "prompt": "Use case: product-mockup. Create one high resolution 2048 by 1536 landscape catalogue illustration for Bart Mining's belt conveyor equipment page. A single realistic industrial aggregate belt conveyor: long inclined black rubber belt with correctly spaced steel troughing idler rollers, guarded electric drive and head pulley, steel truss support legs and a loading hopper at the lower end. Show the entire standalone conveyor in three-quarter side view, fully inside the frame with generous clear margins on all sides. Neutral warm off-white studio background and floor, soft diffuse daylight, restrained steel grey structure with yellow safety guards, crisp realistic metal/rubber textures. Product occupies about 75 percent of frame width. No quarry panorama, snow, people, logos, watermarks, text, branding, specifications or unrelated machinery. This is a generic equipment-class illustration, not a documentary photo or exact model. It must fit a 4:3 catalogue card and a 16:9 product window without cropping the machine. Save this generated deliverable for the website; report its output file path.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/belt-conveyor.webp"
+    },
+    {
+      "slug": "cone-crusher",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A standalone cone crusher with a circular feed opening, substantial tapered crusher housing, hydraulic adjustment assembly and a compact steel base. The casing stays closed; no cutaway.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/cone-crusher.webp"
+    },
+    {
+      "slug": "vibrating-screen",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A standalone industrial double-deck vibrating screen, inclined rectangular screening body, visible side plates, springs and sturdy base frame. Show discharge ends and guarded vibration drive.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/vibrating-screen.webp"
+    },
+    {
+      "slug": "wet-pan-mill",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A gold-ore wet pan mill, round low steel pan containing two large upright grinding rollers on a central driven assembly. Clearly show the circular pan and paired rollers; no ball-mill drum.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/wet-pan-mill.webp"
+    },
+    {
+      "slug": "vibrating-feeder",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A standalone vibrating feeder with a rectangular steel feeding tray, sloped hopper entry, spring mounts, protected drive and support frame. Focus on the actual feeder, not an entire plant.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/vibrating-feeder.webp"
+    },
+    {
+      "slug": "hydrocyclone",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A compact bank of hydrocyclone separators: vertical cone-bottom cyclone bodies fed by a distribution manifold, tangential feed connections, overflow pipes on top and apex discharge below, mounted on a steel frame. No filter-press plates.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/hydrocyclone.webp"
+    },
+    {
+      "slug": "filter-press",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: An industrial recessed-plate filter press with a long horizontal row of square filter plates on side rails, hydraulic closing cylinder at one end and filtrate collection below, all mounted on a sturdy steel frame.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/filter-press.webp"
+    },
+    {
+      "slug": "trommel-screen",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A standalone mining trommel screen with cylindrical perforated rotating drum, feed hopper, drive rollers, guarded motor, support legs and separate discharge chutes. Show the entire drum clearly in three-quarter side view.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/trommel-screen.webp"
+    },
+    {
+      "slug": "lighting-tower",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A mobile industrial lighting tower with a small towable generator trailer, deployed stabilisers, telescopic vertical mast and a bank of four rectangular floodlights. Full mast and trailer visible, no text.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/lighting-tower.webp"
+    },
+    {
+      "slug": "sluice-box-gold-jig",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A gold-recovery sluice box: long shallow inclined metal channel, visible riffles and removable textured capture matting, feed distribution lip and simple adjustable support legs. No mineral jig, no people or gold nuggets.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/sluice-box-gold-jig.webp"
+    },
+    {
+      "slug": "alluvial-gold-wash-plant",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A compact generic alluvial gold wash plant concept, composed of a feed hopper, rotary washing drum with screened section, distribution and clearly visible sluice channels, supporting pumps and return-water tank. A coherent simplified equipment arrangement, no technical labels or precise engineering claim.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/alluvial-gold-wash-plant.webp"
+    },
+    {
+      "slug": "1-ton-winch",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A compact base-mounted electric wire-rope winch for material handling, industrial steel cable drum, electric motor, reduction gearbox, guarded drive, steel mounting base and wired pendant. Entire unit visible; not a vehicle bumper recovery winch.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/1-ton-winch.webp"
+    },
+    {
+      "slug": "2-ton-winch",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A medium-duty base-mounted industrial electric wire-rope winch, noticeably substantial rope drum, electric motor and geared drive mounted together on a robust rectangular skid with protected rotating interfaces. Single standalone unit; not an automotive winch.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/2-ton-winch.webp"
+    },
+    {
+      "slug": "5-ton-mine-winch",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A heavy-duty industrial mine material winch with a large horizontal steel wire-rope drum, geared motor drive and substantial brake housing mounted on a reinforced steel skid. Show industrial scale and credible machinery, no passenger cage or automotive recovery kit.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/5-ton-mine-winch.webp"
+    },
+    {
+      "slug": "wire-rope-slings-lifting-tackle",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A neatly arranged industrial lifting-tackle kit: steel wire-rope sling with spliced thimble eyes, a two-leg sling connected to a master link, forged bow shackles and a lifting hook, laid out individually so the components remain recognisable. No lifted load or capacity labels.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/wire-rope-slings-lifting-tackle.webp"
+    },
+    {
+      "slug": "gold-elution-electrowinning-plant",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A compact generic gold elution and electrowinning skid concept, vertical enclosed stainless process vessels, organised interconnecting pipework, a covered rectangular electrowinning cell, service platform with handrails and an unlabelled control cabinet. Keep vessel and cell shapes readable; no chemical recipes or engineering labels.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/gold-elution-electrowinning-plant.webp"
+    },
+    {
+      "slug": "leaching-tank",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A single standalone industrial cylindrical gold leaching tank, upright steel vessel with a top-mounted vertical agitator motor, access platform, stairs and complete handrails, inlet and outlet connections. The closed tank is the clear subject; no crowded whole-plant scene.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/leaching-tank.webp"
+    },
+    {
+      "slug": "modular-gold-plant",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A compact modular gold gravity-processing plant concept on connected steel skids: small feed hopper, compact grinding module, centrifugal recovery vessel, cleanup table and organised pump/pipework, complete access handrails. Clearly a modular processing installation rather than an elution-only skid; no exact throughput implication.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/modular-gold-plant.webp"
+    },
+    {
+      "slug": "ball-mill-gold-ore",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A standalone industrial horizontal ball mill for gold ore, cylindrical steel drum with bolted end flanges, trunnion supports and a protected geared motor drive on substantial steel base. Drum axis horizontal, all of the machine visible, no broadcast watermark.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/ball-mill-gold-ore.webp"
+    },
+    {
+      "slug": "gold-metal-detector",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A generic handheld gold-prospecting metal detector displayed as a product: circular search coil at the foot, long adjustable shaft, grip and control pod, arm cuff at the upper end. Entire detector visible diagonally, no operator, no brand or screen text.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/gold-metal-detector.webp"
+    },
+    {
+      "slug": "slurry-pump",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A standalone heavy-duty horizontal centrifugal slurry pump, substantial volute casing, axial suction inlet, upright discharge connection and electric motor joined on a steel base with protected coupling. Clearly visible pump and motor; no brand names.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/slurry-pump.webp"
+    },
+    {
+      "slug": "submersible-dewatering-pump",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A single industrial submersible mine-dewatering pump: upright metal cylindrical body, sturdy lifting handle, screened bottom intake, discharge pipe connection and coiled power cable. Full pump visible; no showroom of unrelated pumps.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/submersible-dewatering-pump.webp"
+    },
+    {
+      "slug": "mining-safety-helmet-cap-lamp",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A generic mining safety helmet with front-mounted cap lamp and a neatly arranged battery pack and connecting cable beside it. Crisp white helmet, robust lamp, complete cable connection, no manufacturer logos or certification badges.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/mining-safety-helmet-cap-lamp.webp"
+    },
+    {
+      "slug": "gas-detection-monitor",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A generic rugged handheld multi-gas monitor, protective rubber housing, simple unlabelled display, visible gas inlet apertures and control buttons, belt clip visible in three-quarter view. No live safety readings, numerical thresholds, brand or certification claims.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/gas-detection-monitor.webp"
+    },
+    {
+      "slug": "fall-arrest-harness",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A complete generic industrial full-body fall-arrest harness displayed on a neutral torso form, shoulder and leg straps, chest connection, buckles and attachment ring clearly visible, with its separate lanyard laid beside it. Clean readable arrangement, not a climbing waist belt; no safety certification claim.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/fall-arrest-harness.webp"
+    },
+    {
+      "slug": "geological-modelling-software",
+      "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A clean realistic computer display with a generic geological modelling concept: coloured semi-transparent three-dimensional subsurface layers, a simplified orebody shape and drillhole traces. Neutral desk and simple display, no vendor interface, readable text, real site coordinates or reserve claims.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/geological-modelling-software.webp"
+    },
+    {
+      "slug": "pneumatic-rock-drill",
+      "prompt": "Use case: product-mockup. Create a crisp high-resolution landscape 4:3 catalogue illustration of a generic underground pneumatic jackleg rock drill. Show a robust horizontal cylindrical pneumatic rock-drill body with rear handles and a long straight drill steel terminating in a small rock-drilling bit, supported by a recognisable adjustable inclined telescopic pusher leg with a foot. Include compact air/water hose connections and neatly curved hoses. Three-quarter view, entire drill steel, machine and inclined feed leg visible inside generous margins, neutral warm off-white studio background and soft diffuse lighting. Realistic steel surfaces, restrained dark grey body and small yellow industrial details. This is a generic equipment-class illustration, not an exact offered model or customer installation. Do not show a vertical road-breaking jackhammer, a construction worker, a branded device, text, logos, watermarks, measurements or capacity claims. Intended to fit a 4:3 card and a 16:9 contain-fit hero without cropping.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/pneumatic-rock-drill.webp"
+    }
+  ]
+}

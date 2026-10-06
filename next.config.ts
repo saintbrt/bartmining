@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
     '/api/admin/send': ['./node_modules/@sparticuz/chromium/bin/**'],
   },
   images: {
+    qualities: [75, 85],
     remotePatterns: [
       { protocol: 'https', hostname: 'images.pexels.com' },
       { protocol: 'https', hostname: 'images.unsplash.com' },

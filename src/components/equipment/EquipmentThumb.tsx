@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import type { EquipCategory } from '@/data/equipment-catalogue'
-import { resolveEquipmentPhoto } from '@/lib/equipment-photos'
+import { equipmentImageAlt, resolveEquipmentPhoto } from '@/lib/equipment-photos'
 
 /**
  * Product thumbnail for the catalogue grid.
@@ -97,7 +97,7 @@ export default function EquipmentThumb({
   if (photo) {
     return (
       <div className="eq-thumb">
-        <Image src={photo} alt={alt} fill sizes={sizes} priority={priority} style={{ objectFit: 'cover' }} />
+        <Image src={photo} alt={equipmentImageAlt(slug, alt, language)} fill sizes={sizes} quality={85} priority={priority} style={{ objectFit: 'contain', objectPosition: 'center' }} />
       </div>
     )
   }

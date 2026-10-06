@@ -1,8 +1,40 @@
 # Product photos
 
-Drop a photo here named after the product slug and redeploy. Nothing else
-needs changing: the catalogue page and the product page both pick it up
-automatically at build time.
+## Website-ready imagery
+
+The English and Kiswahili catalogues share `src/data/equipment-imagery.json`.
+Each product selects an optimised WebP in `public/equipment/website/` before
+the legacy slug-named image. The manifest distinguishes a generated equipment
+illustration from a retained catalogue reference. This distinction supplies
+the product image captions and descriptive alt text in both languages.
+
+Cards retain their 4:3 slot. Product heroes use 16:9 on desktop and 4:3 on
+phones. Both use `contain` so a tall helmet, drill, tower or complete machine
+is not cropped into a wide strip. Do not restore a blanket `cover` crop.
+
+For a new reviewed master, run:
+
+    node scripts/prepare-equipment-image.mjs /path/to/master.png product-slug
+
+The encoder preserves the full composition, converts to WebP and never
+enlarges the source pixels. Select the resulting path and correct `kind`
+in the manifest. Generated images are generic illustrations, not evidence
+of an exact offered model, a stocked unit or a customer's installation.
+
+The prompt set and baseline review are in `docs/equipment-image-prompts-2026-10-06.json`
+and `docs/equipment-image-review-2026-10-06.md`. Run
+`node scripts/audit-equipment-images.mjs` after changing the manifest or assets,
+then check cards and heroes on desktop and mobile in both languages.
+
+## Legacy sources and article references
+
+The instructions below describe the fallback files. Keep existing sources
+that are still referenced by articles; the website-ready image set uses
+separate paths and does not overwrite these shared article covers.
+
+For a product without a selected website-ready asset, a photo named after
+its slug is picked up as the fallback at build time. For an existing manifest
+entry, prepare the replacement master and update that entry instead.
 
     public/equipment/1-ton-winch.jpg        ->  /equipment/1-ton-winch
     public/equipment/slurry-pump.webp       ->  /equipment/slurry-pump
@@ -22,8 +54,9 @@ Files ending `-alt` are spare alternates that are not wired to anything. To
 use one, rename it over the live file of the same slug. Delete them freely
 if you don't want them.
 
-Several products can share one photo: just save the same image under each
-slug. The three winches currently do this.
+Avoid assigning the same image to materially different equipment classes.
+The old winch sources are duplicates; the website-ready winch illustrations
+are distinct industrial references and are selected by the manifest.
 
 ## Also used as article covers
 

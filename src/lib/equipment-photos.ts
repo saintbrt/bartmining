@@ -1,19 +1,14 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import imagery from '@/data/equipment-imagery.json'
 
 /**
- * Build-time product photo resolution.
- *
- * HOW TO ADD A REAL PHOTO
- * Drop the file into `public/equipment/` named after the product slug, then
- * redeploy. Nothing else to change:
- *
- *     public/equipment/1-ton-winch.jpg      -> /equipment/1-ton-winch
- *     public/equipment/slurry-pump.webp     -> /equipment/slurry-pump
- *
- * Any of .jpg .jpeg .png .webp .avif works; the first match in that order
- * wins. Where no file exists the card falls back to a drawn placeholder, so
- * the grid keeps its shape and never shows a broken image.
+ * Build-time product imagery resolution, shared by both languages.
+ * Reviewed website assets in equipment-imagery.json take precedence. Keep
+ * their illustration/reference provenance accurate when replacing a master.
+ * Legacy slug-named .jpg/.jpeg/.png/.webp/.avif files remain a fallback for
+ * products without a prepared asset. Cards without either show a category
+ * mark. See public/equipment/README.md for the preparation workflow.
  *
  * This runs during the static build, not in the browser, so the resolved
  * paths are baked into the generated HTML and cost nothing at request time.
@@ -37,10 +32,11 @@ function listPhotoFiles(): Set<string> {
 }
 
 /**
- * Returns the public path of a product photo, or null when none has been
- * uploaded yet.
+ * Returns the selected public image path, or null when none is available.
  */
 export function resolveEquipmentPhoto(slug: string): string | null {
+  const prepared = (imagery as Record<string, { src: string }>)[slug]
+  if (prepared && fs.existsSync(path.join(process.cwd(), 'public', prepared.src))) return prepared.src
   const files = listPhotoFiles()
   for (const ext of EXTENSIONS) {
     const filename = `${slug}${ext}`
@@ -49,7 +45,19 @@ export function resolveEquipmentPhoto(slug: string): string | null {
   return null
 }
 
-/** Count of products that have a real photo. Used by the build-time notice. */
+export function equipmentImageKind(slug: string): 'illustration' | 'reference' {
+  const entry = (imagery as Record<string, { kind: string }>)[slug]
+  return entry?.kind === 'illustration' ? 'illustration' : 'reference'
+}
+
+export function equipmentImageAlt(slug: string, name: string, language: 'en' | 'sw' = 'en'): string {
+  const illustration = equipmentImageKind(slug) === 'illustration'
+  return language === 'sw'
+    ? `${name}: ${illustration ? 'mchoro wa mfano wa kifaa' : 'picha ya rejea ya kifaa'}`
+    : `${name}: ${illustration ? 'equipment-class illustration' : 'catalogue reference image'}`
+}
+
+/** Count of products with selected imagery, including disclosed illustrations. */
 export function photoCoverage(slugs: string[]): { withPhoto: number; total: number } {
   return {
     withPhoto: slugs.filter(s => resolveEquipmentPhoto(s) !== null).length,

@@ -635,6 +635,17 @@ img { display: block; max-width: 100%; }
 .article-language { display: inline-block; color: var(--gold-deep); font-weight: 600; font-size: 15px; }
 .article-cover { margin: 0 auto; }
 .article-cover > div { position: relative; aspect-ratio: 21 / 9; border-radius: var(--r-lg); overflow: hidden; }
+
+/* Product references need their full silhouette, including tall equipment. */
+.equipment-hero { margin: 0; }
+.equipment-hero-frame {
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden;
+  border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--paper);
+}
+.equipment-hero figcaption {
+  max-width: 900px; margin: 12px 0 0; font-size: 13px; line-height: 1.6; color: var(--ink-3);
+}
+@media (max-width: 700px) { .equipment-hero-frame { aspect-ratio: 4 / 3; } }
 .article-cover figcaption { max-width: 80ch; margin-top: 12px; font-size: 14px; line-height: 1.6; color: var(--ink-3); }
 .article-body-wrap { padding-top: 44px; padding-bottom: 80px; }
 .article-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 56px; align-items: start; }

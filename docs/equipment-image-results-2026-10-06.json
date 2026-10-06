@@ -1,0 +1,402 @@
+[
+  {
+    "slug": "hydraulic-excavator",
+    "kind": "reference",
+    "src": "/equipment/website/hydraulic-excavator.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 522214
+  },
+  {
+    "slug": "wheel-loader",
+    "kind": "reference",
+    "src": "/equipment/website/wheel-loader.webp",
+    "width": 1600,
+    "height": 900,
+    "bytes": 383586
+  },
+  {
+    "slug": "dump-truck",
+    "kind": "reference",
+    "src": "/equipment/website/dump-truck.webp",
+    "width": 1920,
+    "height": 1280,
+    "bytes": 549042
+  },
+  {
+    "slug": "bulldozer",
+    "kind": "reference",
+    "src": "/equipment/website/bulldozer.webp",
+    "width": 1920,
+    "height": 1272,
+    "bytes": 1131738
+  },
+  {
+    "slug": "motor-grader",
+    "kind": "reference",
+    "src": "/equipment/website/motor-grader.webp",
+    "width": 1920,
+    "height": 846,
+    "bytes": 716076
+  },
+  {
+    "slug": "backhoe-loader",
+    "kind": "reference",
+    "src": "/equipment/website/backhoe-loader.webp",
+    "width": 1920,
+    "height": 928,
+    "bytes": 852058
+  },
+  {
+    "slug": "vibratory-roller",
+    "kind": "reference",
+    "src": "/equipment/website/vibratory-roller.webp",
+    "width": 1920,
+    "height": 1440,
+    "bytes": 1242672
+  },
+  {
+    "slug": "tower-crane",
+    "kind": "reference",
+    "src": "/equipment/website/tower-crane.webp",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 262694
+  },
+  {
+    "slug": "concrete-mixer",
+    "kind": "reference",
+    "src": "/equipment/website/concrete-mixer.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 495038
+  },
+  {
+    "slug": "cone-crusher",
+    "kind": "illustration",
+    "src": "/equipment/website/cone-crusher.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 199512
+  },
+  {
+    "slug": "hammer-mill",
+    "kind": "reference",
+    "src": "/equipment/website/hammer-mill.webp",
+    "width": 1800,
+    "height": 1800,
+    "bytes": 915748
+  },
+  {
+    "slug": "wet-pan-mill",
+    "kind": "illustration",
+    "src": "/equipment/website/wet-pan-mill.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 209874
+  },
+  {
+    "slug": "vibrating-screen",
+    "kind": "illustration",
+    "src": "/equipment/website/vibrating-screen.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 181416
+  },
+  {
+    "slug": "trommel-screen",
+    "kind": "illustration",
+    "src": "/equipment/website/trommel-screen.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 232484
+  },
+  {
+    "slug": "belt-conveyor",
+    "kind": "illustration",
+    "src": "/equipment/website/belt-conveyor.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 110938
+  },
+  {
+    "slug": "hydrocyclone",
+    "kind": "illustration",
+    "src": "/equipment/website/hydrocyclone.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 193024
+  },
+  {
+    "slug": "filter-press",
+    "kind": "illustration",
+    "src": "/equipment/website/filter-press.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 155676
+  },
+  {
+    "slug": "vibrating-feeder",
+    "kind": "illustration",
+    "src": "/equipment/website/vibrating-feeder.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 161216
+  },
+  {
+    "slug": "pneumatic-rock-drill",
+    "kind": "illustration",
+    "src": "/equipment/website/pneumatic-rock-drill.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 88834
+  },
+  {
+    "slug": "lighting-tower",
+    "kind": "illustration",
+    "src": "/equipment/website/lighting-tower.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 89622
+  },
+  {
+    "slug": "rotary-scrubber",
+    "kind": "reference",
+    "src": "/equipment/website/rotary-scrubber.webp",
+    "width": 2400,
+    "height": 1350,
+    "bytes": 409988
+  },
+  {
+    "slug": "sluice-box-gold-jig",
+    "kind": "illustration",
+    "src": "/equipment/website/sluice-box-gold-jig.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 158050
+  },
+  {
+    "slug": "alluvial-gold-wash-plant",
+    "kind": "illustration",
+    "src": "/equipment/website/alluvial-gold-wash-plant.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 225056
+  },
+  {
+    "slug": "1-ton-winch",
+    "kind": "illustration",
+    "src": "/equipment/website/1-ton-winch.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 208634
+  },
+  {
+    "slug": "2-ton-winch",
+    "kind": "illustration",
+    "src": "/equipment/website/2-ton-winch.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 220322
+  },
+  {
+    "slug": "5-ton-mine-winch",
+    "kind": "illustration",
+    "src": "/equipment/website/5-ton-mine-winch.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 253742
+  },
+  {
+    "slug": "mine-hoist-headframe",
+    "kind": "reference",
+    "src": "/equipment/website/mine-hoist-headframe.webp",
+    "width": 1502,
+    "height": 998,
+    "bytes": 414900
+  },
+  {
+    "slug": "wire-rope-slings-lifting-tackle",
+    "kind": "illustration",
+    "src": "/equipment/website/wire-rope-slings-lifting-tackle.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 163056
+  },
+  {
+    "slug": "centrifugal-gold-concentrator",
+    "kind": "reference",
+    "src": "/equipment/website/centrifugal-gold-concentrator.webp",
+    "width": 1500,
+    "height": 1500,
+    "bytes": 107574
+  },
+  {
+    "slug": "gold-elution-electrowinning-plant",
+    "kind": "illustration",
+    "src": "/equipment/website/gold-elution-electrowinning-plant.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 204406
+  },
+  {
+    "slug": "cil-cip-plant",
+    "kind": "reference",
+    "src": "/equipment/website/cil-cip-plant.webp",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 111054
+  },
+  {
+    "slug": "leaching-tank",
+    "kind": "illustration",
+    "src": "/equipment/website/leaching-tank.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 134506
+  },
+  {
+    "slug": "modular-gold-plant",
+    "kind": "illustration",
+    "src": "/equipment/website/modular-gold-plant.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 229060
+  },
+  {
+    "slug": "ball-mill-gold-ore",
+    "kind": "illustration",
+    "src": "/equipment/website/ball-mill-gold-ore.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 156916
+  },
+  {
+    "slug": "jaw-crusher",
+    "kind": "reference",
+    "src": "/equipment/website/jaw-crusher.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 183952
+  },
+  {
+    "slug": "shaking-table-gold",
+    "kind": "reference",
+    "src": "/equipment/website/shaking-table-gold.webp",
+    "width": 2400,
+    "height": 1800,
+    "bytes": 469622
+  },
+  {
+    "slug": "rc-drilling-rig",
+    "kind": "reference",
+    "src": "/equipment/website/rc-drilling-rig.webp",
+    "width": 1920,
+    "height": 826,
+    "bytes": 455242
+  },
+  {
+    "slug": "gold-metal-detector",
+    "kind": "illustration",
+    "src": "/equipment/website/gold-metal-detector.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 65944
+  },
+  {
+    "slug": "slurry-pump",
+    "kind": "illustration",
+    "src": "/equipment/website/slurry-pump.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 207118
+  },
+  {
+    "slug": "submersible-dewatering-pump",
+    "kind": "illustration",
+    "src": "/equipment/website/submersible-dewatering-pump.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 137470
+  },
+  {
+    "slug": "mining-safety-helmet-cap-lamp",
+    "kind": "illustration",
+    "src": "/equipment/website/mining-safety-helmet-cap-lamp.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 95690
+  },
+  {
+    "slug": "self-contained-self-rescuer",
+    "kind": "reference",
+    "src": "/equipment/website/self-contained-self-rescuer.webp",
+    "width": 1200,
+    "height": 1200,
+    "bytes": 68350
+  },
+  {
+    "slug": "gas-detection-monitor",
+    "kind": "illustration",
+    "src": "/equipment/website/gas-detection-monitor.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 124448
+  },
+  {
+    "slug": "fall-arrest-harness",
+    "kind": "illustration",
+    "src": "/equipment/website/fall-arrest-harness.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 197526
+  },
+  {
+    "slug": "mine-ventilation-fan",
+    "kind": "reference",
+    "src": "/equipment/website/mine-ventilation-fan.webp",
+    "width": 2000,
+    "height": 1500,
+    "bytes": 753766
+  },
+  {
+    "slug": "mine-management-software",
+    "kind": "reference",
+    "src": "/equipment/website/mine-management-software.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 211382
+  },
+  {
+    "slug": "fleet-management-system",
+    "kind": "reference",
+    "src": "/equipment/website/fleet-management-system.webp",
+    "width": 1590,
+    "height": 840,
+    "bytes": 699938
+  },
+  {
+    "slug": "geological-modelling-software",
+    "kind": "illustration",
+    "src": "/equipment/website/geological-modelling-software.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 186900
+  },
+  {
+    "slug": "diesel-generator-mining",
+    "kind": "reference",
+    "src": "/equipment/website/diesel-generator-mining.webp",
+    "width": 1280,
+    "height": 960,
+    "bytes": 239250
+  },
+  {
+    "slug": "air-compressor-mining",
+    "kind": "reference",
+    "src": "/equipment/website/air-compressor-mining.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 507976
+  }
+]

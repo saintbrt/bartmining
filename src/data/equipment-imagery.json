@@ -1,0 +1,202 @@
+{
+  "hydraulic-excavator": {
+    "src": "/equipment/website/hydraulic-excavator.webp",
+    "kind": "reference"
+  },
+  "wheel-loader": {
+    "src": "/equipment/website/wheel-loader.webp",
+    "kind": "reference"
+  },
+  "dump-truck": {
+    "src": "/equipment/website/dump-truck.webp",
+    "kind": "reference"
+  },
+  "bulldozer": {
+    "src": "/equipment/website/bulldozer.webp",
+    "kind": "reference"
+  },
+  "motor-grader": {
+    "src": "/equipment/website/motor-grader.webp",
+    "kind": "reference"
+  },
+  "backhoe-loader": {
+    "src": "/equipment/website/backhoe-loader.webp",
+    "kind": "reference"
+  },
+  "vibratory-roller": {
+    "src": "/equipment/website/vibratory-roller.webp",
+    "kind": "reference"
+  },
+  "tower-crane": {
+    "src": "/equipment/website/tower-crane.webp",
+    "kind": "reference"
+  },
+  "concrete-mixer": {
+    "src": "/equipment/website/concrete-mixer.webp",
+    "kind": "reference"
+  },
+  "cone-crusher": {
+    "src": "/equipment/website/cone-crusher.webp",
+    "kind": "illustration"
+  },
+  "hammer-mill": {
+    "src": "/equipment/website/hammer-mill.webp",
+    "kind": "reference"
+  },
+  "wet-pan-mill": {
+    "src": "/equipment/website/wet-pan-mill.webp",
+    "kind": "illustration"
+  },
+  "vibrating-screen": {
+    "src": "/equipment/website/vibrating-screen.webp",
+    "kind": "illustration"
+  },
+  "trommel-screen": {
+    "src": "/equipment/website/trommel-screen.webp",
+    "kind": "illustration"
+  },
+  "belt-conveyor": {
+    "src": "/equipment/website/belt-conveyor.webp",
+    "kind": "illustration"
+  },
+  "hydrocyclone": {
+    "src": "/equipment/website/hydrocyclone.webp",
+    "kind": "illustration"
+  },
+  "filter-press": {
+    "src": "/equipment/website/filter-press.webp",
+    "kind": "illustration"
+  },
+  "vibrating-feeder": {
+    "src": "/equipment/website/vibrating-feeder.webp",
+    "kind": "illustration"
+  },
+  "pneumatic-rock-drill": {
+    "src": "/equipment/website/pneumatic-rock-drill.webp",
+    "kind": "illustration"
+  },
+  "lighting-tower": {
+    "src": "/equipment/website/lighting-tower.webp",
+    "kind": "illustration"
+  },
+  "rotary-scrubber": {
+    "src": "/equipment/website/rotary-scrubber.webp",
+    "kind": "reference"
+  },
+  "sluice-box-gold-jig": {
+    "src": "/equipment/website/sluice-box-gold-jig.webp",
+    "kind": "illustration"
+  },
+  "alluvial-gold-wash-plant": {
+    "src": "/equipment/website/alluvial-gold-wash-plant.webp",
+    "kind": "illustration"
+  },
+  "1-ton-winch": {
+    "src": "/equipment/website/1-ton-winch.webp",
+    "kind": "illustration"
+  },
+  "2-ton-winch": {
+    "src": "/equipment/website/2-ton-winch.webp",
+    "kind": "illustration"
+  },
+  "5-ton-mine-winch": {
+    "src": "/equipment/website/5-ton-mine-winch.webp",
+    "kind": "illustration"
+  },
+  "mine-hoist-headframe": {
+    "src": "/equipment/website/mine-hoist-headframe.webp",
+    "kind": "reference"
+  },
+  "wire-rope-slings-lifting-tackle": {
+    "src": "/equipment/website/wire-rope-slings-lifting-tackle.webp",
+    "kind": "illustration"
+  },
+  "centrifugal-gold-concentrator": {
+    "src": "/equipment/website/centrifugal-gold-concentrator.webp",
+    "kind": "reference"
+  },
+  "gold-elution-electrowinning-plant": {
+    "src": "/equipment/website/gold-elution-electrowinning-plant.webp",
+    "kind": "illustration"
+  },
+  "cil-cip-plant": {
+    "src": "/equipment/website/cil-cip-plant.webp",
+    "kind": "reference"
+  },
+  "leaching-tank": {
+    "src": "/equipment/website/leaching-tank.webp",
+    "kind": "illustration"
+  },
+  "modular-gold-plant": {
+    "src": "/equipment/website/modular-gold-plant.webp",
+    "kind": "illustration"
+  },
+  "ball-mill-gold-ore": {
+    "src": "/equipment/website/ball-mill-gold-ore.webp",
+    "kind": "illustration"
+  },
+  "jaw-crusher": {
+    "src": "/equipment/website/jaw-crusher.webp",
+    "kind": "reference"
+  },
+  "shaking-table-gold": {
+    "src": "/equipment/website/shaking-table-gold.webp",
+    "kind": "reference"
+  },
+  "rc-drilling-rig": {
+    "src": "/equipment/website/rc-drilling-rig.webp",
+    "kind": "reference"
+  },
+  "gold-metal-detector": {
+    "src": "/equipment/website/gold-metal-detector.webp",
+    "kind": "illustration"
+  },
+  "slurry-pump": {
+    "src": "/equipment/website/slurry-pump.webp",
+    "kind": "illustration"
+  },
+  "submersible-dewatering-pump": {
+    "src": "/equipment/website/submersible-dewatering-pump.webp",
+    "kind": "illustration"
+  },
+  "mining-safety-helmet-cap-lamp": {
+    "src": "/equipment/website/mining-safety-helmet-cap-lamp.webp",
+    "kind": "illustration"
+  },
+  "self-contained-self-rescuer": {
+    "src": "/equipment/website/self-contained-self-rescuer.webp",
+    "kind": "reference"
+  },
+  "gas-detection-monitor": {
+    "src": "/equipment/website/gas-detection-monitor.webp",
+    "kind": "illustration"
+  },
+  "fall-arrest-harness": {
+    "src": "/equipment/website/fall-arrest-harness.webp",
+    "kind": "illustration"
+  },
+  "mine-ventilation-fan": {
+    "src": "/equipment/website/mine-ventilation-fan.webp",
+    "kind": "reference"
+  },
+  "mine-management-software": {
+    "src": "/equipment/website/mine-management-software.webp",
+    "kind": "reference"
+  },
+  "fleet-management-system": {
+    "src": "/equipment/website/fleet-management-system.webp",
+    "kind": "reference"
+  },
+  "geological-modelling-software": {
+    "src": "/equipment/website/geological-modelling-software.webp",
+    "kind": "illustration"
+  },
+  "diesel-generator-mining": {
+    "src": "/equipment/website/diesel-generator-mining.webp",
+    "kind": "reference"
+  },
+  "air-compressor-mining": {
+    "src": "/equipment/website/air-compressor-mining.webp",
+    "kind": "reference"
+  }
+}

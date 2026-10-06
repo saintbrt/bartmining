@@ -5,6 +5,7 @@ import Reveal from '@/components/ui/Reveal'
 import RegionsSection from '@/components/sections/RegionsSection'
 import CtaSection from '@/components/sections/CtaSection'
 import EquipmentThumb from '@/components/equipment/EquipmentThumb'
+import { equipmentImageAlt, resolveEquipmentPhoto } from '@/lib/equipment-photos'
 import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
 import { LOCATIONS } from '@/data/locations'
 import { SITE, SERVICE_AREAS, itemListSchema, breadcrumbSchema } from '@/lib/seo'
@@ -84,11 +85,12 @@ export default function EquipmentHub() {
             <Reveal>
               <div className="about-img">
                 <Image
-                  src="https://images.pexels.com/photos/2101137/pexels-photo-2101137.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Mining processing equipment on site"
-                  fill style={{ objectFit: 'cover' }} sizes="(max-width: 860px) 100vw, 50vw"
+                  src={resolveEquipmentPhoto('alluvial-gold-wash-plant')!}
+                  alt={equipmentImageAlt('alluvial-gold-wash-plant', 'Alluvial gold wash plant', 'en')}
+                  fill style={{ objectFit: 'contain' }} sizes="(max-width: 860px) 100vw, 50vw"
                 />
               </div>
+              <p style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--ink-3)', marginTop: 12 }}>AI-generated illustration of a wash-plant concept; not a customer installation.</p>
             </Reveal>
             <Reveal delay={1}>
               <span className="eyebrow">Why source through us</span>
@@ -133,7 +135,7 @@ export default function EquipmentHub() {
                     slug={item.slug}
                     alt={item.name}
                     category={item.category}
-                    sizes="(max-width: 640px) 50vw, (max-width: 1080px) 33vw, 25vw"
+                    sizes="(max-width: 860px) 50vw, (max-width: 1080px) 33vw, 310px"
                     priority={gi === 0 && i < 2}
                   />
                   <div className="eq-cardbody">
