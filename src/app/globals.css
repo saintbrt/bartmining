@@ -713,6 +713,25 @@ img { display: block; max-width: 100%; }
 .pc-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: inherit; animation: pc-ping 2s ease-out infinite; }
 @keyframes pc-ping { 0% { transform: scale(1); opacity: .7 } 100% { transform: scale(2.8); opacity: 0 } }
 
+/* Section: the large centred card that closes a page, sized like the old
+   end-of-page block. The button and the link sit side by side. */
+.pc-section { border-radius: 18px; }
+.pc.pc-section .pc-in { border-radius: 16px; padding: 64px 72px 56px; text-align: center; }
+.pc-section .pc-row { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+.pc-section .pc-eyebrow { justify-content: center; font-size: 12.5px; margin-bottom: 18px; }
+.pc-section .pc-title { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.15; margin: 0 auto; max-width: 22ch; }
+.pc-section .pc-body { font-size: 17px; line-height: 1.7; max-width: 560px; margin: 16px auto 0; }
+.pc-section .pc-act { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 28px; }
+.pc-section .pc-btn { order: 1; font-size: 15.5px; padding: 15px 26px; }
+.pc-section .pc-enq { order: 2; margin: 0; font-size: 15px; }
+.pc-section .pc-num { order: 3; flex-basis: 100%; margin: 0; }
+@media (max-width: 600px) {
+  .pc.pc-section .pc-in { padding: 44px 22px 40px; }
+  .pc-section .pc-act { gap: 14px; }
+  .pc-section .pc-btn { flex-basis: 100%; }
+  .pc-section .pc-enq { flex-basis: 100%; }
+}
+
 /* Dark card with a gold, amber and teal border turning around it */
 .pc { color: #F3EFE6; background: #15191B; }
 .pc::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: conic-gradient(from var(--pc-ang), #F5B83D, #FF7A45, #2DD4BF, #F5B83D 60%, #F5B83D); animation: pc-spin 6s linear infinite; }

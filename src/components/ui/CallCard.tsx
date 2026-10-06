@@ -5,9 +5,10 @@ import { CALL_CARD_UI, GREETING, type CallCardLang } from '@/data/call-cards'
 /* The site's call card: a dark card with a moving gold, amber and teal
    border, used on every page that asks the reader to get in touch.
      side    the vertical sidebar card (desktop only on equipment pages)
-     banner  the wide card at the end of an article or page (every screen) */
+     banner  the wide card at the end of an article or page (every screen)
+     section the large centred card closing a page (home, services, about...) */
 
-type Placement = 'side' | 'banner'
+type Placement = 'side' | 'banner' | 'section'
 interface LinkTarget { label: string; href: string }
 
 const WHATSAPP = '255759141705'
@@ -58,7 +59,7 @@ export default function CallCard({
               <a className="pc-btn" href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`} target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon />
                 <span>{ui.button}</span>
-                <span className="pc-arr" aria-hidden="true">&rarr;</span>
+                {placement !== 'side' && <span className="pc-arr" aria-hidden="true">&rarr;</span>}
               </a>
             )}
             <span className="pc-num">+255 759 141 705</span>

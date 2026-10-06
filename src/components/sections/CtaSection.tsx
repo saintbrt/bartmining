@@ -20,18 +20,16 @@ export default function CtaSection({ lang = 'en', eyebrow = "Let's talk", headin
   return (
     <section style={{ padding: '64px 0 96px', background: 'var(--bg)' }}>
       <div className="px-site">
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <CallCard
-            lang={lang}
-            placement="banner"
-            eyebrow={eyebrow}
-            title={heading}
-            body={body}
-            message={text ? stripGreeting(text) : undefined}
-            primary={wa ? undefined : { label: primaryLabel, href: primaryHref }}
-            secondary={secondaryLabel && secondaryHref ? { label: secondaryLabel, href: secondaryHref } : undefined}
-          />
-        </div>
+        <CallCard
+          lang={lang}
+          placement="section"
+          eyebrow={eyebrow}
+          title={heading}
+          body={body}
+          message={text ? stripGreeting(text) : undefined}
+          primary={wa ? undefined : { label: primaryLabel, href: primaryHref }}
+          secondary={secondaryLabel && secondaryHref ? { label: secondaryLabel, href: secondaryHref } : undefined}
+        />
       </div>
     </section>
   )
