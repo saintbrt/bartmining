@@ -1,0 +1,2339 @@
+{
+ "source": "makita.co.tz product listings, collected 2026-10-07; GA7020 and GA9020 removed as older generation; GA6010 corrected to 150 mm",
+ "products": [
+  {
+   "id": "combination-hammer-lxt",
+   "name": "Combination Hammer LXT",
+   "family": "rotary-combination-hammers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/combination-hammer-lxt.webp",
+   "models": [
+    {
+     "base": "DHR182",
+     "codes": [
+      "DHR182ZWJU"
+     ],
+     "spec": "18V LXT • SDS-PLUS • 18 mm • 1,7 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-lxt-dhr182zwju/"
+    },
+    {
+     "base": "DHR202",
+     "codes": [
+      "DHR202RFJ",
+      "DHR202RTJ"
+     ],
+     "spec": "18V LXT • SDS-PLUS • 20 mm • 1,9 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-lxt-dhr202rfj/"
+    },
+    {
+     "base": "DHR242",
+     "codes": [
+      "DHR242RFJ",
+      "DHR242RTJ",
+      "DHR242Z"
+     ],
+     "spec": "18V LXT • SDS-PLUS • 24 mm • 2,0 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-lxt-dhr242rfj/"
+    },
+    {
+     "base": "DHR263",
+     "codes": [
+      "DHR263RF2",
+      "DHR263Z"
+     ],
+     "spec": "36V (18Vx2) LXT • SDS-PLUS • 26 mm • 3,0 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-lxt-dhr263rf2/"
+    },
+    {
+     "base": "DHR280",
+     "codes": [
+      "DHR280PT2J",
+      "DHR280ZJ"
+     ],
+     "spec": "36V (18Vx2) LXT • SDS-PLUS • 28 mm • 3,2 J",
+     "difference": "Base model: anti-vibration (AVT), standard chuck",
+     "url": "https://makita.co.tz/product/combination-hammer-lxt-dhr280pt2j/"
+    },
+    {
+     "base": "DHR281",
+     "codes": [
+      "DHR281PT2J",
+      "DHR281ZJ"
+     ],
+     "spec": "36V (18Vx2) LXT • SDS-PLUS • 28 mm • 3,2 J",
+     "difference": "Adds quick-change chuck",
+     "url": "https://makita.co.tz/product/combination-hammer-lxt-dhr281pt2j/"
+    },
+    {
+     "base": "DHR283",
+     "codes": [
+      "DHR283ZJ"
+     ],
+     "spec": "36V (18Vx2) LXT • SDS-PLUS • 28 mm • 3,2 J",
+     "difference": "Quick-change chuck + AWS wireless dust-extractor start",
+     "url": "https://makita.co.tz/product/combination-hammer-lxt-dhr283zj/"
+    }
+   ]
+  },
+  {
+   "id": "combination-hammer-xgt",
+   "name": "Combination Hammer XGT",
+   "family": "rotary-combination-hammers",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/combination-hammer-xgt.webp",
+   "models": [
+    {
+     "base": "HR002G",
+     "codes": [
+      "HR002GM201",
+      "HR002GZ01"
+     ],
+     "spec": "40V MAX XGT • SDS-PLUS • 28 mm • 3,2 J",
+     "difference": "AVT + AFT + AWS wireless dust-extractor start",
+     "url": "https://makita.co.tz/product/combination-hammer-xgt-hr002gm201/"
+    },
+    {
+     "base": "HR003G",
+     "codes": [
+      "HR003GM201",
+      "HR003GZ01"
+     ],
+     "spec": "40V MAX XGT • SDS-PLUS • 28 mm • 3,2 J",
+     "difference": "AVT; kit includes dust extraction system",
+     "url": "https://makita.co.tz/product/combination-hammer-xgt-hr003gm201/"
+    },
+    {
+     "base": "HR007G",
+     "codes": [
+      "HR007GM201",
+      "HR007GZ",
+      "HR007GZ01"
+     ],
+     "spec": "40V MAX XGT • SDS–PLUS • 54 mm • 3,0 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-xgt-hr007gm201/"
+    },
+    {
+     "base": "HR008G",
+     "codes": [
+      "HR008GM201",
+      "HR008GZ01"
+     ],
+     "spec": "40V MAX XGT • SDS–PLUS • 30 mm • 3,9 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-xgt-hr008gm201/"
+    },
+    {
+     "base": "HR010G",
+     "codes": [
+      "HR010GD201",
+      "HR010GZ"
+     ],
+     "spec": "40V MAX XGT • SDS-PLUS • 20 mm • 2,0 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-xgt-hr010gd201/"
+    }
+   ]
+  },
+  {
+   "id": "combination-hammer",
+   "name": "Combination Hammer",
+   "family": "rotary-combination-hammers",
+   "platform": "Corded",
+   "image": "/equipment/makita/combination-hammer.webp",
+   "models": [
+    {
+     "base": "HR2475",
+     "codes": [
+      "HR2475"
+     ],
+     "spec": "780 W • SDS-Plus • 24 mm • 2,7 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-hr2475/"
+    },
+    {
+     "base": "HR2600",
+     "codes": [
+      "HR2600"
+     ],
+     "spec": "800 W • SDS-Plus • 26 mm • 2,9 J",
+     "difference": "2 modes (no chiselling)",
+     "url": "https://makita.co.tz/product/combination-hammer-hr2600/"
+    },
+    {
+     "base": "HR2611",
+     "codes": [
+      "HR2611F"
+     ],
+     "spec": "800 W • SDS-Plus • 26 mm • 2,9 J",
+     "difference": "3 modes + AVT + job light (older AVT model; check if still current)",
+     "url": "https://makita.co.tz/product/combination-hammer-hr2611f/"
+    },
+    {
+     "base": "HR2630",
+     "codes": [
+      "HR2630",
+      "HR2630T"
+     ],
+     "spec": "800 W • SDS-Plus • 26 mm • 2,9 J",
+     "difference": "3 modes (adds chiselling)",
+     "url": "https://makita.co.tz/product/combination-hammer-hr2630/"
+    },
+    {
+     "base": "HR2631",
+     "codes": [
+      "HR2631F",
+      "HR2631FT"
+     ],
+     "spec": "800 W • SDS-Plus • 26 mm • 2,9 J",
+     "difference": "3 modes + AVT + job light",
+     "url": "https://makita.co.tz/product/combination-hammer-hr2631f/"
+    },
+    {
+     "base": "HR2661",
+     "codes": [
+      "HR2661"
+     ],
+     "spec": "800 W • SDS-Plus • 26 mm • 2,9 J",
+     "difference": "AVT + built-in HEPA dust collection + quick-change chuck",
+     "url": "https://makita.co.tz/product/combination-hammer-hr2661/"
+    },
+    {
+     "base": "HR2810",
+     "codes": [
+      "HR2810"
+     ],
+     "spec": "800 W • SDS-Plus • 28 mm • 2,9 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-hr2810/"
+    },
+    {
+     "base": "HR3200",
+     "codes": [
+      "HR3200C"
+     ],
+     "spec": "850 W • SDS-Plus • 32 mm • 5,5 J",
+     "difference": "AVT + quick-change chuck",
+     "url": "https://makita.co.tz/product/combination-hammer-hr3200c/"
+    },
+    {
+     "base": "HR3210",
+     "codes": [
+      "HR3210C"
+     ],
+     "spec": "850 W • SDS-Plus • 32 mm • 5,5 J",
+     "difference": "Standard chuck, no AVT stated",
+     "url": "https://makita.co.tz/product/combination-hammer-hr3210c/"
+    },
+    {
+     "base": "HR3541",
+     "codes": [
+      "HR3541FC"
+     ],
+     "spec": "850 W • SDS-Max • 35 mm • 6,3 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/combination-hammer-hr3541fc/"
+    }
+   ]
+  },
+  {
+   "id": "demolition-hammer-xgt",
+   "name": "Demolition Hammer XGT",
+   "family": "demolition-hammers-breakers",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/demolition-hammer-xgt.webp",
+   "models": [
+    {
+     "base": "HM001G",
+     "codes": [
+      "HM001GM202",
+      "HM001GZ"
+     ],
+     "spec": "40V MAX XGT • SDS–MAX • 18 mm • 9,4 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/demolition-hammer-xgt-hm001gm202/"
+    },
+    {
+     "base": "HM002G",
+     "codes": [
+      "HM002GZ03"
+     ],
+     "spec": "80V MAX (40Vx2) XGT • SDS–MAX • 18 mm • 20.9 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/demolition-hammer-xgt-hm002gz03/"
+    }
+   ]
+  },
+  {
+   "id": "electric-breaker-xgt",
+   "name": "Electric Breaker XGT",
+   "family": "demolition-hammers-breakers",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/electric-breaker-xgt.webp",
+   "models": [
+    {
+     "base": "HM004G",
+     "codes": [
+      "HM004GZ01"
+     ],
+     "spec": "80V • 72.8J • 28.6mm • 870 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/electric-breaker-xgt-hm004g01/"
+    }
+   ]
+  },
+  {
+   "id": "demolition-hammer",
+   "name": "Demolition Hammer",
+   "family": "demolition-hammers-breakers",
+   "platform": "Corded",
+   "image": "/equipment/makita/demolition-hammer.webp",
+   "models": [
+    {
+     "base": "HM0810",
+     "codes": [
+      "HM0810T"
+     ],
+     "spec": "900 W • 17 mm • 7,6 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm0810t/"
+    },
+    {
+     "base": "HM0870",
+     "codes": [
+      "HM0870C"
+     ],
+     "spec": "1 100 W • SDS-MAX • 11,4 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm0870c/"
+    },
+    {
+     "base": "HM0871",
+     "codes": [
+      "HM0871C"
+     ],
+     "spec": "1 100 W • SDS-MAX • 11,6 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm0871c/"
+    },
+    {
+     "base": "HM1101",
+     "codes": [
+      "HM1101C"
+     ],
+     "spec": "1 300 W • SDS-Max • 17 J",
+     "difference": "Standard",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1101c/"
+    },
+    {
+     "base": "HM1111",
+     "codes": [
+      "HM1111C"
+     ],
+     "spec": "1 300 W • SDS-Max • 17 J",
+     "difference": "Adds AVT anti-vibration",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1111c/"
+    },
+    {
+     "base": "HM1201",
+     "codes": [
+      "HM1201"
+     ],
+     "spec": "1 130 W • 21 mm • 13 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1201/"
+    },
+    {
+     "base": "HM1203",
+     "codes": [
+      "HM1203C"
+     ],
+     "spec": "1 510 W • SDS-Max • 25,5 J",
+     "difference": "Standard",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1203c/"
+    },
+    {
+     "base": "HM1213",
+     "codes": [
+      "HM1213C"
+     ],
+     "spec": "1 510 W • SDS-Max • 25,5 J",
+     "difference": "Adds AVT anti-vibration",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1213c/"
+    },
+    {
+     "base": "HM1214",
+     "codes": [
+      "HM1214C"
+     ],
+     "spec": "1 510 W • SDS-Max • 26 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1214c/"
+    },
+    {
+     "base": "HM1307",
+     "codes": [
+      "HM1307C"
+     ],
+     "spec": "1 510 W • 30 mm • 33,8 J",
+     "difference": "Standard",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1307c/"
+    },
+    {
+     "base": "HM1317",
+     "codes": [
+      "HM1317C"
+     ],
+     "spec": "1 510 W • 30 mm • 33,8 J",
+     "difference": "Adds AVT anti-vibration",
+     "url": "https://makita.co.tz/product/demolition-hammer-hm1317c/"
+    }
+   ]
+  },
+  {
+   "id": "electric-breaker",
+   "name": "Electric Breaker",
+   "family": "demolition-hammers-breakers",
+   "platform": "Corded",
+   "image": "/equipment/makita/electric-breaker.webp",
+   "models": [
+    {
+     "base": "HM1511",
+     "codes": [
+      "HM1511"
+     ],
+     "spec": "1 850 W • 30 mm • 1 300 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/electric-breaker-hm1511/"
+    },
+    {
+     "base": "HM1802",
+     "codes": [
+      "HM1802"
+     ],
+     "spec": "2 000 W • 1 – 1/8″ • 71,4 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/electric-breaker-hm1802/"
+    },
+    {
+     "base": "HM1812",
+     "codes": [
+      "HM1812"
+     ],
+     "spec": "2 000 W • 1 – 1/8″ • 72,8 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/electric-breaker-hm1812/"
+    }
+   ]
+  },
+  {
+   "id": "power-cutter-lxt",
+   "name": "Power Cutter LXT",
+   "family": "power-cutters",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/power-cutter-lxt.webp",
+   "models": [
+    {
+     "base": "DCE090",
+     "codes": [
+      "DCE090P2X1",
+      "DCE090ZX1"
+     ],
+     "spec": "36V (18Vx2) LXT • 230 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-cutter-lxt-dce090p2x1/"
+    }
+   ]
+  },
+  {
+   "id": "power-cutter-xgt",
+   "name": "Power Cutter XGT",
+   "family": "power-cutters",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/power-cutter-xgt.webp",
+   "models": [
+    {
+     "base": "CE001G",
+     "codes": [
+      "CE001GZ"
+     ],
+     "spec": "80V MAX (40Vx2) XGT • BL • 355mm • Wet &",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-cutter-xgt-ce001gz/"
+    },
+    {
+     "base": "CE002G",
+     "codes": [
+      "CE002GZ"
+     ],
+     "spec": "80V MAX (40Vx2) XGT • BL • 355mm • Dry 80Vmax 355mm (14″)",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-cutter-xgt-ce002gz/"
+    }
+   ]
+  },
+  {
+   "id": "power-cutter",
+   "name": "Power Cutter",
+   "family": "power-cutters",
+   "platform": "Petrol",
+   "image": "/equipment/makita/power-cutter.webp",
+   "models": [
+    {
+     "base": "EK7301",
+     "codes": [
+      "EK7301WS"
+     ],
+     "spec": "73 cm3 • 3,8 kW • 355 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-cutter-ek7301ws/"
+    },
+    {
+     "base": "EK7651",
+     "codes": [
+      "EK7651HX1"
+     ],
+     "spec": "75 cm3 • 3,0 kW • 350 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-cutter-ek7651hx1/"
+    },
+    {
+     "base": "EK8100",
+     "codes": [
+      "EK8100WS"
+     ],
+     "spec": "81 cm³ • 4,2 kW • 400 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-cutter-ek8100ws/"
+    }
+   ]
+  },
+  {
+   "id": "power-scraper-lxt",
+   "name": "Power Scraper LXT",
+   "family": "concrete-planers-power-scrapers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/power-scraper-lxt.webp",
+   "models": [
+    {
+     "base": "DHK180",
+     "codes": [
+      "DHK180ZJ"
+     ],
+     "spec": "18V LXT • SDS-PLUS • 3.1 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-scraper-lxt-dhk180zj/"
+    }
+   ]
+  },
+  {
+   "id": "power-scraper",
+   "name": "Power Scraper",
+   "family": "concrete-planers-power-scrapers",
+   "platform": "Corded",
+   "image": "/equipment/makita/power-scraper.webp",
+   "models": [
+    {
+     "base": "HK1820",
+     "codes": [
+      "HK1820"
+     ],
+     "spec": "550 W • SDS-Plus • 3,9 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/power-scraper-hk1820/"
+    }
+   ]
+  },
+  {
+   "id": "rotary-hammer-lxt",
+   "name": "Rotary Hammer LXT",
+   "family": "rotary-combination-hammers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/rotary-hammer-lxt.webp",
+   "models": [
+    {
+     "base": "DHR171",
+     "codes": [
+      "DHR171RFJ",
+      "DHR171Z"
+     ],
+     "spec": "18V LXT • SDS-PLUS • 17 mm • 1,2 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-lxt-dhr171rfj/"
+    },
+    {
+     "base": "DHR183",
+     "codes": [
+      "DHR183RTWJ",
+      "DHR183Z"
+     ],
+     "spec": "18V LXT • SDS-PLUS • 18 mm • 1,7 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-lxt-dhr183rtwj/"
+    },
+    {
+     "base": "DHR400",
+     "codes": [
+      "DHR400ZKUN"
+     ],
+     "spec": "36V (18Vx2) LXT • SDS-MAX • 40 mm • 11,4 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-lxt-dhr400zkun/"
+    }
+   ]
+  },
+  {
+   "id": "rotary-hammer-xgt",
+   "name": "Rotary Hammer XGT",
+   "family": "rotary-combination-hammers",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/rotary-hammer-xgt.webp",
+   "models": [
+    {
+     "base": "HR005G",
+     "codes": [
+      "HR005GZ01"
+     ],
+     "spec": "40V MAX XGT • SDS-PLUS • 40 mm • 8,0 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-xgt-hr005gz01/"
+    },
+    {
+     "base": "HR006G",
+     "codes": [
+      "HR006GZ"
+     ],
+     "spec": "80V MAX (40Vx2) XGT • SDS–MAX • 52 mm • 21.4 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-xgt-hr006gz/"
+    }
+   ]
+  },
+  {
+   "id": "rotary-hammer",
+   "name": "Rotary Hammer",
+   "family": "rotary-combination-hammers",
+   "platform": "Corded",
+   "image": "/equipment/makita/rotary-hammer.webp",
+   "models": [
+    {
+     "base": "HR1841",
+     "codes": [
+      "HR1841FJ"
+     ],
+     "spec": "470 W • SDS-Plus • 18 mm • 1,4 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr1841fj/"
+    },
+    {
+     "base": "HR2010",
+     "codes": [
+      "HR2010"
+     ],
+     "spec": "600 W • SDS-Plus • 20 mm • 1,7 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr2010/"
+    },
+    {
+     "base": "HR2020",
+     "codes": [
+      "HR2020"
+     ],
+     "spec": "710 W • SDS-Plus • 20 mm • 2,2 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr2020/"
+    },
+    {
+     "base": "HR2630",
+     "codes": [
+      "HR2630X7"
+     ],
+     "spec": "800 W • SDS-PLUS • 26 mm • 2,4 J",
+     "difference": "3 modes (adds chiselling)",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr2630x7/"
+    },
+    {
+     "base": "HR2663",
+     "codes": [
+      "HR2663"
+     ],
+     "spec": "SDS-PLUS • 26 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hamme-sds-plus-hr2663/"
+    },
+    {
+     "base": "HR3011",
+     "codes": [
+      "HR3011FCWJ"
+     ],
+     "spec": "1050 W • SDS-Plus • 30 mm • 3,6 J",
+     "difference": "Standard SDS-PLUS chuck",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr3011fcwj/"
+    },
+    {
+     "base": "HR3012",
+     "codes": [
+      "HR3012FCWJ"
+     ],
+     "spec": "1050 W • SDS-Plus • 30 mm • 3,6 J",
+     "difference": "Adds quick-change chuck",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr3012fcwj/"
+    },
+    {
+     "base": "HR3540",
+     "codes": [
+      "HR3540C"
+     ],
+     "spec": "850 W • SDS-Max • 35 mm • 6,3 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr3540c/"
+    },
+    {
+     "base": "HR4001",
+     "codes": [
+      "HR4001C"
+     ],
+     "spec": "1 100 W • SDS-Max • 40 mm • 6,8 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr4001c/"
+    },
+    {
+     "base": "HR4003",
+     "codes": [
+      "HR4003C"
+     ],
+     "spec": "1 100 W • SDS-Max • 40 mm • 8,3 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr4003c/"
+    },
+    {
+     "base": "HR4013",
+     "codes": [
+      "HR4013C"
+     ],
+     "spec": "1 100 W • SDS-Max • 40 mm • 11,4 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr4013c/"
+    },
+    {
+     "base": "HR4030",
+     "codes": [
+      "HR4030C"
+     ],
+     "spec": "1 100 W • 40 mm • 9,2 J",
+     "difference": "",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr4030c/"
+    },
+    {
+     "base": "HR4501",
+     "codes": [
+      "HR4501C"
+     ],
+     "spec": "1 350 W • SDS-Max • 45 mm • 12.5 J",
+     "difference": "Standard",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr4501c/"
+    },
+    {
+     "base": "HR4511",
+     "codes": [
+      "HR4511C"
+     ],
+     "spec": "1 350 W • SDS-Max • 45 mm • 12.5 J",
+     "difference": "Adds AVT anti-vibration",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr4511c/"
+    },
+    {
+     "base": "HR5202",
+     "codes": [
+      "HR5202C"
+     ],
+     "spec": "1 510 W • SDS-Max • 52 mm • 21J",
+     "difference": "Standard",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr5202c/"
+    },
+    {
+     "base": "HR5212",
+     "codes": [
+      "HR5212C"
+     ],
+     "spec": "1 510 W • SDS-Max • 52 mm • 21J",
+     "difference": "Adds AVT anti-vibration",
+     "url": "https://makita.co.tz/product/rotary-hammer-hr5212c/"
+    }
+   ]
+  },
+  {
+   "id": "cutter-cxt",
+   "name": "Cutter CXT",
+   "family": "wall-chasers-tile-cutters",
+   "platform": "Cordless 12V CXT",
+   "image": "/equipment/makita/cutter-cxt.webp",
+   "models": [
+    {
+     "base": "CC301D",
+     "codes": [
+      "CC301DWAE",
+      "CC301DZ"
+     ],
+     "spec": "12V MAX • 1 600 min⁻¹ • 85 mm • 0,5 l",
+     "difference": "",
+     "url": "https://makita.co.tz/product/cutter-cxt-cc301dwae/"
+    }
+   ]
+  },
+  {
+   "id": "dustless-cutter-lxt",
+   "name": "Dustless Cutter LXT",
+   "family": "wall-chasers-tile-cutters",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/dustless-cutter-lxt.webp",
+   "models": [
+    {
+     "base": "DCC501",
+     "codes": [
+      "DCC501RTJ",
+      "DCC501ZJ"
+     ],
+     "spec": "18V LXT • 125 mm • BL • AWS",
+     "difference": "",
+     "url": "https://makita.co.tz/product/dustless-cutter-lxt-dcc501rtj/"
+    }
+   ]
+  },
+  {
+   "id": "tile-cutter",
+   "name": "Tile Cutter",
+   "family": "wall-chasers-tile-cutters",
+   "platform": "Corded",
+   "image": "/equipment/makita/tile-cutter.webp",
+   "models": [
+    {
+     "base": "4100",
+     "codes": [
+      "4100NH"
+     ],
+     "spec": "1 300 W • 110 mm • 13 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/tile-cutter-4100nh/"
+    }
+   ]
+  },
+  {
+   "id": "angle-cutter",
+   "name": "Angle Cutter",
+   "family": "wall-chasers-tile-cutters",
+   "platform": "Corded",
+   "image": "/equipment/makita/angle-cutter.webp",
+   "models": [
+    {
+     "base": "4112",
+     "codes": [
+      "4112HS"
+     ],
+     "spec": "2 400 W • 305 mm • 5 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-cutter-4112hs/"
+    }
+   ]
+  },
+  {
+   "id": "wall-chaser",
+   "name": "Wall Chaser",
+   "family": "wall-chasers-tile-cutters",
+   "platform": "Corded",
+   "image": "/equipment/makita/wall-chaser.webp",
+   "models": [
+    {
+     "base": "SG1251",
+     "codes": [
+      "SG1251J"
+     ],
+     "spec": "1 400 W • 125 mm • 6 – 30 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/wall-chaser-sg1251j/"
+    },
+    {
+     "base": "SG150",
+     "codes": [
+      "SG150"
+     ],
+     "spec": "1 800 W • 150 mm • 7 – 35 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/wall-chaser-sg150/"
+    }
+   ]
+  },
+  {
+   "id": "aluminium-groove-cutter",
+   "name": "Aluminium Groove Cutter",
+   "family": "metal-cutters-cut-off-saws",
+   "platform": "Corded",
+   "image": "/equipment/makita/aluminium-groove-cutter.webp",
+   "models": [
+    {
+     "base": "CA5000",
+     "codes": [
+      "CA5000XJ"
+     ],
+     "spec": "1 300 W • 118 mm • 2 200 – 6",
+     "difference": "",
+     "url": "https://makita.co.tz/product/aluminium-groove-cutter-ca5000xj/"
+    }
+   ]
+  },
+  {
+   "id": "angle-grinder-lxt",
+   "name": "Angle Grinder LXT",
+   "family": "angle-grinders",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/angle-grinder-lxt.webp",
+   "models": [
+    {
+     "base": "DGA452",
+     "codes": [
+      "DGA452RTJ",
+      "DGA452Z"
+     ],
+     "spec": "18V LXT • 115 mm • 11 000 min⁻¹",
+     "difference": "Brushed motor",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga452rtj/"
+    },
+    {
+     "base": "DGA454",
+     "codes": [
+      "DGA454RFJ",
+      "DGA454RTJ",
+      "DGA454Z"
+     ],
+     "spec": "18V LXT • 115 mm • 11 000 min⁻¹",
+     "difference": "Brushless motor",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga454rfj/"
+    },
+    {
+     "base": "DGA455",
+     "codes": [
+      "DGA455RFJ",
+      "DGA455RTJ"
+     ],
+     "spec": "18V LXT • 115 mm • 8 500 min⁻¹",
+     "difference": "Brushless, paddle switch (difference from DGA458 not stated)",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga455rfj/"
+    },
+    {
+     "base": "DGA456",
+     "codes": [
+      "DGA456Z"
+     ],
+     "spec": "18V LXT • 115 mm • 8 500 min⁻¹",
+     "difference": "Brushed motor",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga456z/"
+    },
+    {
+     "base": "DGA458",
+     "codes": [
+      "DGA458Z"
+     ],
+     "spec": "18V LXT • 115 mm • 8 500 min⁻¹",
+     "difference": "Brushless, paddle switch (difference from DGA455 not stated)",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga458z/"
+    },
+    {
+     "base": "DGA469",
+     "codes": [
+      "DGA469Z"
+     ],
+     "spec": "18V LXT • 115 mm • 3,000 – 8,500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga469z/"
+    },
+    {
+     "base": "DGA519",
+     "codes": [
+      "DGA519Z"
+     ],
+     "spec": "18V LXT • 125 mm • 3 000 – 8",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga519z/"
+    },
+    {
+     "base": "DGA700",
+     "codes": [
+      "DGA700ZK"
+     ],
+     "spec": "36V (18Vx2) LXT • 180 mm • 7 800 min⁻¹",
+     "difference": "Standard",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga700zk/"
+    },
+    {
+     "base": "DGA701",
+     "codes": [
+      "DGA701ZKU"
+     ],
+     "spec": "36V (18Vx2) LXT • 180 mm • 7 800 min⁻¹",
+     "difference": "Adds AWS wireless dust-extractor start",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga701zku/"
+    },
+    {
+     "base": "DGA900",
+     "codes": [
+      "DGA900ZK"
+     ],
+     "spec": "36V (18Vx2) LXT • 6 000 min⁻¹ • 230 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga900zk/"
+    },
+    {
+     "base": "DGA901",
+     "codes": [
+      "DGA901ZKU1"
+     ],
+     "spec": "36V (18Vx2) LXT • 230 mm • 6 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-lxt-dga901zku1/"
+    }
+   ]
+  },
+  {
+   "id": "angle-grinder-xgt",
+   "name": "Angle Grinder XGT",
+   "family": "angle-grinders",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/angle-grinder-xgt.webp",
+   "models": [
+    {
+     "base": "GA004G",
+     "codes": [
+      "GA004GM202",
+      "GA004GZ02"
+     ],
+     "spec": "40V MAX XGT • 115 mm • 8 500 min⁻¹",
+     "difference": "Standard: slide switch, AFT",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga004gm202/"
+    },
+    {
+     "base": "GA005G",
+     "codes": [
+      "GA005GM203",
+      "GA005GZ02"
+     ],
+     "spec": "40V MAX XGT • 125 mm • 8 500 min⁻¹",
+     "difference": "Standard: slide switch, AFT",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga005gm203/"
+    },
+    {
+     "base": "GA012G",
+     "codes": [
+      "GA012GM202",
+      "GA012GZ02"
+     ],
+     "spec": "40V MAX XGT • 115 mm • 8 500 min⁻¹",
+     "difference": "Adds electronic brake (listing contradicts itself on switch type)",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga012gm202/"
+    },
+    {
+     "base": "GA013G",
+     "codes": [
+      "GA013GM203",
+      "GA013GZ02"
+     ],
+     "spec": "40V MAX XGT • 125 mm • 8 500 min⁻¹",
+     "difference": "Paddle switch + electronic brake",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga013gm203/"
+    },
+    {
+     "base": "GA022G",
+     "codes": [
+      "GA022GM101",
+      "GA022GM202",
+      "GA022GZ02"
+     ],
+     "spec": "40V MAX XGT • 115 mm • 3 000 – 8",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga022gm101/"
+    },
+    {
+     "base": "GA023G",
+     "codes": [
+      "GA023GM203",
+      "GA023GZ02"
+     ],
+     "spec": "40V MAX XGT • 125 mm • 3 000 – 8",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga023gm203/"
+    },
+    {
+     "base": "GA028G",
+     "codes": [
+      "GA028GM101",
+      "GA028GM202",
+      "GA028GZ02"
+     ],
+     "spec": "40V MAX XGT • 115 mm • 8 500 min⁻¹",
+     "difference": "Brake + AWS + variable speed",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga028gm101/"
+    },
+    {
+     "base": "GA029G",
+     "codes": [
+      "GA029GM203",
+      "GA029GZ02"
+     ],
+     "spec": "40V MAX XGT • 125 mm • 8 500 min⁻¹",
+     "difference": "Paddle switch + brake + AWS + variable speed",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga029gm203/"
+    },
+    {
+     "base": "GA037G",
+     "codes": [
+      "GA037GM204",
+      "GA037GZ06"
+     ],
+     "spec": "40V MAX XGT • 180 mm • 7 800 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga037gm204/"
+    },
+    {
+     "base": "GA038G",
+     "codes": [
+      "GA038GM204",
+      "GA038GZ06"
+     ],
+     "spec": "40V MAX XGT • 230 mm • 6 600 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga038gm204/"
+    },
+    {
+     "base": "GA040G",
+     "codes": [
+      "GA040GM201",
+      "GA040GZ"
+     ],
+     "spec": "40V MAX XGT • 115 mm / 40V MAX XGT • 115 mm • 8 500 min⁻¹ • X-lock",
+     "difference": "Slide switch + AWS + X-LOCK",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga040gm201/"
+    },
+    {
+     "base": "GA041G",
+     "codes": [
+      "GA041GM201",
+      "GA041GZ"
+     ],
+     "spec": "40V MAX XGT • 125 mm • 8 500 min⁻¹ • X-lock",
+     "difference": "Slide switch + AWS + X-LOCK",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga041gm201/"
+    },
+    {
+     "base": "GA046G",
+     "codes": [
+      "GA046GM201",
+      "GA046GZ"
+     ],
+     "spec": "40V MAX XGT • 115 mm • 8 500 min⁻¹ • X-lock",
+     "difference": "Paddle switch + brake + anti-restart + X-LOCK",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga046gm201/"
+    },
+    {
+     "base": "GA047G",
+     "codes": [
+      "GA047GM201",
+      "GA047GZ"
+     ],
+     "spec": "40V MAX XGT • 125 mm • 8 500 min⁻¹ • X-lock",
+     "difference": "Paddle switch + brake + anti-restart + X-LOCK",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga047gm201/"
+    },
+    {
+     "base": "GA049G",
+     "codes": [
+      "GA049GT101",
+      "GA049GZ"
+     ],
+     "spec": "40V MAX XGT • 115 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga049gt101/"
+    },
+    {
+     "base": "GA050G",
+     "codes": [
+      "GA050GT101",
+      "GA050GZ"
+     ],
+     "spec": "40V MAX XGT • 125 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-xgt-ga050gt101/"
+    }
+   ]
+  },
+  {
+   "id": "angle-grinder",
+   "name": "Angle Grinder",
+   "family": "angle-grinders",
+   "platform": "Corded",
+   "image": "/equipment/makita/angle-grinder.webp",
+   "models": [
+    {
+     "base": "9015",
+     "codes": [
+      "9015B"
+     ],
+     "spec": "1 050 W • 125 mm • 10 000 min⁻¹",
+     "difference": "125 mm, large trigger switch",
+     "url": "https://makita.co.tz/product/angle-grinder-9015b/"
+    },
+    {
+     "base": "9553",
+     "codes": [
+      "9553HNG"
+     ],
+     "spec": "710 W • 100 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9553hng/"
+    },
+    {
+     "base": "9554",
+     "codes": [
+      "9554HNG"
+     ],
+     "spec": "710 W • 115 mm • 10 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9554hng/"
+    },
+    {
+     "base": "9555",
+     "codes": [
+      "9555HNG"
+     ],
+     "spec": "710 W • 125 mm • 10 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9555hng/"
+    },
+    {
+     "base": "9556",
+     "codes": [
+      "9556HNG",
+      "9556HPG"
+     ],
+     "spec": "840 W • 100 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9556hng/"
+    },
+    {
+     "base": "9557",
+     "codes": [
+      "9557HNG",
+      "9557HPG"
+     ],
+     "spec": "840 W • 115 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9557hng/"
+    },
+    {
+     "base": "9558",
+     "codes": [
+      "9558HNG",
+      "9558HPG"
+     ],
+     "spec": "840 W • 125 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9558hng/"
+    },
+    {
+     "base": "9561",
+     "codes": [
+      "9561CR"
+     ],
+     "spec": "1 200 W • 115 mm • 12 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9561cr/"
+    },
+    {
+     "base": "9562",
+     "codes": [
+      "9562CR"
+     ],
+     "spec": "1 200 W • 125 mm • 12 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-9562cr/"
+    },
+    {
+     "base": "GA4040",
+     "codes": [
+      "GA4040CZ",
+      "GA4040Z"
+     ],
+     "spec": "1 400 W • 100 mm • 11 000 min⁻¹ / 1 100 W • 100 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4040cz/"
+    },
+    {
+     "base": "GA4050",
+     "codes": [
+      "GA4050"
+     ],
+     "spec": "1 300 W • 100 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4050/"
+    },
+    {
+     "base": "GA4530",
+     "codes": [
+      "GA4530"
+     ],
+     "spec": "750 W • 115 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4530/"
+    },
+    {
+     "base": "GA4540",
+     "codes": [
+      "GA4540CZ",
+      "GA4540Z"
+     ],
+     "spec": "1 400 W • 115 mm • 11 000 min⁻¹ / 1 100 W • 115 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4540cz/"
+    },
+    {
+     "base": "GA4550",
+     "codes": [
+      "GA4550",
+      "GA4550R"
+     ],
+     "spec": "1 300 W • 115 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4550/"
+    },
+    {
+     "base": "GA4591",
+     "codes": [
+      "GA4591"
+     ],
+     "spec": "115 mm • 1 900 W • 11 500 min⁻¹",
+     "difference": "Slide switch (difference from GA4592 not stated)",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4591/"
+    },
+    {
+     "base": "GA4592",
+     "codes": [
+      "GA4592"
+     ],
+     "spec": "115 mm • 1 900 W • 11 500 min⁻¹",
+     "difference": "Slide switch (difference from GA4591 not stated)",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4592/"
+    },
+    {
+     "base": "GA4594",
+     "codes": [
+      "GA4594"
+     ],
+     "spec": "115 mm • 1 900 W • 11 500 min⁻¹",
+     "difference": "Paddle switch",
+     "url": "https://makita.co.tz/product/angle-grinder-ga4594/"
+    },
+    {
+     "base": "GA4595",
+     "codes": [
+      "GA4595"
+     ],
+     "spec": "1 900 W • 115 mm • 11 500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-115-mm-ga4595/"
+    },
+    {
+     "base": "GA5010",
+     "codes": [
+      "GA5010"
+     ],
+     "spec": "1 050 W • 125 mm • 12 000 min⁻¹",
+     "difference": "Standard trigger",
+     "url": "https://makita.co.tz/product/angle-grinder-ga5010/"
+    },
+    {
+     "base": "GA5011",
+     "codes": [
+      "GA5011"
+     ],
+     "spec": "1 050 W • 125 mm • 12 000 min⁻¹",
+     "difference": "Large trigger, slightly longer body",
+     "url": "https://makita.co.tz/product/angle-grinder-ga5011/"
+    },
+    {
+     "base": "GA5040",
+     "codes": [
+      "GA5040CZ",
+      "GA5040Z"
+     ],
+     "spec": "1 400 W • 125 mm • 11 000 min⁻¹ / 1 100 W • 125 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga5040cz/"
+    },
+    {
+     "base": "GA5050",
+     "codes": [
+      "GA5050",
+      "GA5050R"
+     ],
+     "spec": "1 300 W • 125 mm • 11 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga5050/"
+    },
+    {
+     "base": "GA5080",
+     "codes": [
+      "GA5080R"
+     ],
+     "spec": "1,400 W • 125 mm • 12,000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-x-lock-ga5080r/"
+    },
+    {
+     "base": "GA5091",
+     "codes": [
+      "GA5091"
+     ],
+     "spec": "1 900 W • 125 mm • 2 800 – 11",
+     "difference": "Slide switch, SJS II, AFT, brake, soft start",
+     "url": "https://makita.co.tz/product/angle-grinder-125-mm-ga5091/"
+    },
+    {
+     "base": "GA5092",
+     "codes": [
+      "GA5092"
+     ],
+     "spec": "1 900 W • 125 mm • 11 500 min⁻¹",
+     "difference": "Slide switch, adjustable speed",
+     "url": "https://makita.co.tz/product/angle-grinder-125-mm-ga5092/"
+    },
+    {
+     "base": "GA5094",
+     "codes": [
+      "GA5094"
+     ],
+     "spec": "1 900 W • 125 mm • 2 800 – 11",
+     "difference": "Paddle (safety) switch",
+     "url": "https://makita.co.tz/product/angle-grinder-125-mm-ga5094/"
+    },
+    {
+     "base": "GA5095",
+     "codes": [
+      "GA5095"
+     ],
+     "spec": "1 900 W • 125 mm • 11 500 min⁻¹",
+     "difference": "Paddle (safety) switch",
+     "url": "https://makita.co.tz/product/angle-grinder-125-mm-ga5095/"
+    },
+    {
+     "base": "GA6010",
+     "codes": [
+      "GA6010"
+     ],
+     "spec": "1 050 W • 150 mm • 10 000 min⁻¹",
+     "difference": "150 mm, paddle switch (corrected: makita.co.tz lists 125 mm)",
+     "url": "https://makita.co.tz/product/angle-grinder-ga6010/"
+    },
+    {
+     "base": "GA7040",
+     "codes": [
+      "GA7040S"
+     ],
+     "spec": "2 600 W • 180 mm • 8 500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga7040s/"
+    },
+    {
+     "base": "GA7050",
+     "codes": [
+      "GA7050"
+     ],
+     "spec": "2 000 W • 180 mm • 8 500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga7050/"
+    },
+    {
+     "base": "GA7062",
+     "codes": [
+      "GA7062"
+     ],
+     "spec": "2 200 W • 180 mm • 8 500 min⁻¹",
+     "difference": "Newer generation; anti-restart, D-handle",
+     "url": "https://makita.co.tz/product/angle-grinder-ga7062/"
+    },
+    {
+     "base": "GA7063",
+     "codes": [
+      "GA7063"
+     ],
+     "spec": "2 200 W • 180 mm • 8 500 min⁻¹",
+     "difference": "Newer generation",
+     "url": "https://makita.co.tz/product/angle-grinder-ga7063/"
+    },
+    {
+     "base": "GA7070",
+     "codes": [
+      "GA7070"
+     ],
+     "spec": "180 mm • 6 600 min⁻¹ • 2800 W",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga7070/"
+    },
+    {
+     "base": "GA7080",
+     "codes": [
+      "GA7080"
+     ],
+     "spec": "180 mm • 6600 min⁻¹ • 2700 W",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga7080/"
+    },
+    {
+     "base": "GA9030",
+     "codes": [
+      "GA9030"
+     ],
+     "spec": "2 400 W • 230 mm • 6 600 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga9030/"
+    },
+    {
+     "base": "GA9040",
+     "codes": [
+      "GA9040S"
+     ],
+     "spec": "2 600 W • 230 mm • 6 600 min⁻¹ 230",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga9040s/"
+    },
+    {
+     "base": "GA9062",
+     "codes": [
+      "GA9062"
+     ],
+     "spec": "2 200 W • 230 mm • 6 600 min⁻¹",
+     "difference": "Newer generation, 2 200 W",
+     "url": "https://makita.co.tz/product/angle-grinder-ga9062/"
+    },
+    {
+     "base": "GA9070",
+     "codes": [
+      "GA9070"
+     ],
+     "spec": "230 mm • 6 600 min⁻¹ • 2800 W",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga9070/"
+    },
+    {
+     "base": "GA9080",
+     "codes": [
+      "GA9080"
+     ],
+     "spec": "230 mm • 6600 min⁻¹ • 2700 W",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-grinder-ga9080/"
+    }
+   ]
+  },
+  {
+   "id": "angle-sander",
+   "name": "Angle Sander",
+   "family": "sanders-polishers",
+   "platform": "Corded",
+   "image": "/equipment/makita/angle-sander.webp",
+   "models": [
+    {
+     "base": "SA7000",
+     "codes": [
+      "SA7000C"
+     ],
+     "spec": "1 600 W • 180 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-sander-sa7000c/"
+    },
+    {
+     "base": "SA7021",
+     "codes": [
+      "SA7021"
+     ],
+     "spec": "2 200 W • 180 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/angle-sander-sa7021/"
+    }
+   ]
+  },
+  {
+   "id": "bench-grinder",
+   "name": "Bench Grinder",
+   "family": "die-straight-bench-grinders",
+   "platform": "Corded",
+   "image": "/equipment/makita/bench-grinder.webp",
+   "models": [
+    {
+     "base": "GB602",
+     "codes": [
+      "GB602"
+     ],
+     "spec": "250 W • 150 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/bench-grinder-gb602/"
+    },
+    {
+     "base": "GB801",
+     "codes": [
+      "GB801"
+     ],
+     "spec": "550 W • 205 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/bench-grinder-gb801/"
+    }
+   ]
+  },
+  {
+   "id": "concrete-planer",
+   "name": "Concrete Planer",
+   "family": "concrete-planers-power-scrapers",
+   "platform": "Corded",
+   "image": "/equipment/makita/concrete-planer.webp",
+   "models": [
+    {
+     "base": "PC5000",
+     "codes": [
+      "PC5000C"
+     ],
+     "spec": "1 400 W • 125 mm • 10 000 min⁻¹",
+     "difference": "Standard",
+     "url": "https://makita.co.tz/product/concrete-planer-pc5000c/"
+    },
+    {
+     "base": "PC5001",
+     "codes": [
+      "PC5001C"
+     ],
+     "spec": "1 400 W • 125 mm • 10 000 min⁻¹",
+     "difference": "Includes aluminium support",
+     "url": "https://makita.co.tz/product/concrete-planer-pc5001c/"
+    },
+    {
+     "base": "PC5010",
+     "codes": [
+      "PC5010C"
+     ],
+     "spec": "1400 W • 125 mm • 9000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/concrete-planer-pc5010c/"
+    }
+   ]
+  },
+  {
+   "id": "die-grinder-lxt",
+   "name": "Die Grinder LXT",
+   "family": "die-straight-bench-grinders",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/die-grinder-lxt.webp",
+   "models": [
+    {
+     "base": "DGD800",
+     "codes": [
+      "DGD800Z"
+     ],
+     "spec": "18V LXT • 26 000 min⁻¹ • 8 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/die-grinder-lxt-dgd800z/"
+    }
+   ]
+  },
+  {
+   "id": "die-grinder",
+   "name": "Die Grinder",
+   "family": "die-straight-bench-grinders",
+   "platform": "Corded",
+   "image": "/equipment/makita/die-grinder.webp",
+   "models": [
+    {
+     "base": "906",
+     "codes": [
+      "906H"
+     ],
+     "spec": "290 W • 6 mm • 25 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/die-grinder-906h/"
+    },
+    {
+     "base": "GD0600",
+     "codes": [
+      "GD0600"
+     ],
+     "spec": "400 W • 25 000 min⁻¹ • 6 mm",
+     "difference": "Paddle (dead-man) switch",
+     "url": "https://makita.co.tz/product/die-grinder-gd0600/"
+    },
+    {
+     "base": "GD0602",
+     "codes": [
+      "GD0602"
+     ],
+     "spec": "400 W • 25 000 min⁻¹ • 6 mm",
+     "difference": "Slide switch with lock-on",
+     "url": "https://makita.co.tz/product/die-grinder-gd0602/"
+    },
+    {
+     "base": "GD0603",
+     "codes": [
+      "GD0603"
+     ],
+     "spec": "240 W • 28 000 min⁻¹ • 6 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/die-grinder-gd0603/"
+    },
+    {
+     "base": "GD0800",
+     "codes": [
+      "GD0800C"
+     ],
+     "spec": "750 W • 7 000 – 28 000 min⁻¹ • 8 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/die-grinder-gd0800c/"
+    },
+    {
+     "base": "GD0801",
+     "codes": [
+      "GD0801C"
+     ],
+     "spec": "750 W • 7 000 – 29 000 min⁻¹ • 6 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/die-grinder-gd0801c/"
+    },
+    {
+     "base": "GD0810",
+     "codes": [
+      "GD0810C"
+     ],
+     "spec": "750 W • 1 800 – 7 000 min⁻¹ • 6 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/die-grinder-gd0810c/"
+    },
+    {
+     "base": "GD0811",
+     "codes": [
+      "GD0811C"
+     ],
+     "spec": "750 W • 1 800 – 7 000 min⁻¹ • 8 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/die-grinder-gd0811c/"
+    }
+   ]
+  },
+  {
+   "id": "disc-sander",
+   "name": "Disc Sander",
+   "family": "sanders-polishers",
+   "platform": "Corded",
+   "image": "/equipment/makita/disc-sander.webp",
+   "models": [
+    {
+     "base": "9218",
+     "codes": [
+      "9218SB"
+     ],
+     "spec": "570 W • 180 mm • 4 500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/disc-sander-9218sb/"
+    },
+    {
+     "base": "GV6010",
+     "codes": [
+      "GV6010"
+     ],
+     "spec": "440 W • 150 mm • 4 500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/disc-sander-gv6010/"
+    },
+    {
+     "base": "GV7000",
+     "codes": [
+      "GV7000C"
+     ],
+     "spec": "900 W • 180 mm • 0 – 4 700",
+     "difference": "",
+     "url": "https://makita.co.tz/product/disc-sander-gv7000c/"
+    }
+   ]
+  },
+  {
+   "id": "hole-puncher-lxt",
+   "name": "Hole Puncher LXT",
+   "family": "shears-nibblers-punchers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/hole-puncher-lxt.webp",
+   "models": [
+    {
+     "base": "DPP200",
+     "codes": [
+      "DPP200ZK"
+     ],
+     "spec": "18V LXT • Ø 6-20 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/hole-puncher-lxt-dpp200zk/"
+    }
+   ]
+  },
+  {
+   "id": "metal-cutter-lxt",
+   "name": "Metal Cutter LXT",
+   "family": "metal-cutters-cut-off-saws",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/metal-cutter-lxt.webp",
+   "models": [
+    {
+     "base": "DCS553",
+     "codes": [
+      "DCS553Z"
+     ],
+     "spec": "18V LXT • 150 mm • 4 200 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-cutter-lxt-dcs553z/"
+    }
+   ]
+  },
+  {
+   "id": "compact-cut-off-lxt",
+   "name": "Compact Cut-off LXT",
+   "family": "metal-cutters-cut-off-saws",
+   "platform": "Cordless 18V LXT",
+   "image": null,
+   "models": [
+    {
+     "base": "DMC300",
+     "codes": [
+      "DMC300RTJ",
+      "DMC300Z"
+     ],
+     "spec": "18V LXT • 76 mm • 20 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/compact-cut-off-lxt-dmc300rtj/"
+    }
+   ]
+  },
+  {
+   "id": "metal-cutter-xgt",
+   "name": "Metal Cutter XGT",
+   "family": "metal-cutters-cut-off-saws",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/metal-cutter-xgt.webp",
+   "models": [
+    {
+     "base": "CS002G",
+     "codes": [
+      "CS002GZ"
+     ],
+     "spec": "40V MAX XGT • BL Motor • 185mm • XPT • AFT",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-cutter-xgt-cs002gz/"
+    }
+   ]
+  },
+  {
+   "id": "metal-cutter",
+   "name": "Metal Cutter",
+   "family": "metal-cutters-cut-off-saws",
+   "platform": "Corded",
+   "image": "/equipment/makita/metal-cutter.webp",
+   "models": [
+    {
+     "base": "4131",
+     "codes": [
+      "4131"
+     ],
+     "spec": "1 100 W • 185 mm • 3 500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-cutter-4131/"
+    }
+   ]
+  },
+  {
+   "id": "metal-cutting-saw",
+   "name": "Metal Cutting Saw",
+   "family": "metal-cutters-cut-off-saws",
+   "platform": "Corded",
+   "image": "/equipment/makita/metal-cutting-saw.webp",
+   "models": [
+    {
+     "base": "LC1230",
+     "codes": [
+      "LC1230N"
+     ],
+     "spec": "1 750 W • 305 mm • 1 300 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-cutting-saw-lc1230n/"
+    }
+   ]
+  },
+  {
+   "id": "nibbler-lxt",
+   "name": "Nibbler LXT",
+   "family": "shears-nibblers-punchers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/nibbler-lxt.webp",
+   "models": [
+    {
+     "base": "DJN161",
+     "codes": [
+      "DJN161RFE"
+     ],
+     "spec": "18V LXT • 1 900 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/nibbler-lxt-djn161rfe/"
+    }
+   ]
+  },
+  {
+   "id": "nibbler",
+   "name": "Nibbler",
+   "family": "shears-nibblers-punchers",
+   "platform": "Corded",
+   "image": "/equipment/makita/nibbler.webp",
+   "models": [
+    {
+     "base": "JN1601",
+     "codes": [
+      "JN1601"
+     ],
+     "spec": "550 W • 2 200 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/nibbler-jn1601/"
+    },
+    {
+     "base": "JN3201",
+     "codes": [
+      "JN3201"
+     ],
+     "spec": "710 W • 1 300 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/nibbler-jn3201/"
+    }
+   ]
+  },
+  {
+   "id": "sander-polisher-cxt",
+   "name": "Sander Polisher CXT",
+   "family": "sanders-polishers",
+   "platform": "Cordless 12V CXT",
+   "image": "/equipment/makita/sander-polisher-cxt.webp",
+   "models": [
+    {
+     "base": "PV301D",
+     "codes": [
+      "PV301DZ"
+     ],
+     "spec": "12V MAX • BL • XPT",
+     "difference": "",
+     "url": "https://makita.co.tz/product/sander-polisher-cxt-12v-pv301dz/"
+    }
+   ]
+  },
+  {
+   "id": "random-orbit-polisher-lxt",
+   "name": "Random Orbit Polisher LXT",
+   "family": "sanders-polishers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/random-orbit-polisher-lxt.webp",
+   "models": [
+    {
+     "base": "DPO600",
+     "codes": [
+      "DPO600RTE",
+      "DPO600Z"
+     ],
+     "spec": "18V LXT • 780 min⁻¹ • 150 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/random-orbit-polisher-lxt-dpo600rte/"
+    }
+   ]
+  },
+  {
+   "id": "sander-polisher-lxt",
+   "name": "Sander Polisher LXT",
+   "family": "sanders-polishers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/sander-polisher-lxt.webp",
+   "models": [
+    {
+     "base": "DPV300",
+     "codes": [
+      "DPV300RTJ",
+      "DPV300Z"
+     ],
+     "spec": "18V LXT • BL • XPT",
+     "difference": "",
+     "url": "https://makita.co.tz/product/sander-polisher-lxt-dpv300rtj/"
+    }
+   ]
+  },
+  {
+   "id": "polisher-xgt",
+   "name": "Polisher XGT",
+   "family": "sanders-polishers",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/polisher-xgt.webp",
+   "models": [
+    {
+     "base": "PV001G",
+     "codes": [
+      "PV001GM101",
+      "PV001GZ"
+     ],
+     "spec": "40V MAX XGT • 180 mm • 0 – 2 200",
+     "difference": "",
+     "url": "https://makita.co.tz/product/polisher-xgt-pv001gm101/"
+    }
+   ]
+  },
+  {
+   "id": "sander-polisher",
+   "name": "Sander Polisher",
+   "family": "sanders-polishers",
+   "platform": "Corded",
+   "image": "/equipment/makita/sander-polisher.webp",
+   "models": [
+    {
+     "base": "9207",
+     "codes": [
+      "9207SPB"
+     ],
+     "spec": "700 W • 180 mm • 2 000 / 3",
+     "difference": "",
+     "url": "https://makita.co.tz/product/sander-polisher-9207spb/"
+    }
+   ]
+  },
+  {
+   "id": "polisher",
+   "name": "Polisher",
+   "family": "sanders-polishers",
+   "platform": "Corded",
+   "image": "/equipment/makita/polisher.webp",
+   "models": [
+    {
+     "base": "9237",
+     "codes": [
+      "9237CB"
+     ],
+     "spec": "1 200 W • 180 mm • 0 – 3 200",
+     "difference": "",
+     "url": "https://makita.co.tz/product/polisher-9237cb/"
+    },
+    {
+     "base": "PO6000",
+     "codes": [
+      "PO6000C"
+     ],
+     "spec": "900 W • 150 mm • 0 – 780 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/polisher-po6000c/"
+    },
+    {
+     "base": "PV7000",
+     "codes": [
+      "PV7000C"
+     ],
+     "spec": "900 W • 180 mm • 600 – 2 100",
+     "difference": "",
+     "url": "https://makita.co.tz/product/polisher-pv7000c/"
+    }
+   ]
+  },
+  {
+   "id": "portable-band-saw-lxt",
+   "name": "Portable Band Saw LXT",
+   "family": "portable-band-saws",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/portable-band-saw-lxt.webp",
+   "models": [
+    {
+     "base": "DPB180",
+     "codes": [
+      "DPB180Z"
+     ],
+     "spec": "18V LXT • 120 mm • 1,4 – 2,7 m/s",
+     "difference": "",
+     "url": "https://makita.co.tz/product/portable-band-saw-lxt-dpb180z/"
+    },
+    {
+     "base": "DPB183",
+     "codes": [
+      "DPB183Z"
+     ],
+     "spec": "18V LXT • 66 mm • 0 – 3.2 m/s",
+     "difference": "",
+     "url": "https://makita.co.tz/product/portable-band-saw-lxt-dpb183z/"
+    }
+   ]
+  },
+  {
+   "id": "portable-band-saw-xgt",
+   "name": "Portable Band Saw XGT",
+   "family": "portable-band-saws",
+   "platform": "Cordless 40V XGT",
+   "image": "/equipment/makita/portable-band-saw-xgt.webp",
+   "models": [
+    {
+     "base": "PB002G",
+     "codes": [
+      "PB002GM201",
+      "PB002GZ"
+     ],
+     "spec": "40V MAX XGT • 127 mm • 0 – 3,2 m/s",
+     "difference": "",
+     "url": "https://makita.co.tz/product/portable-bandsaw-xgt-pb002gm201/"
+    }
+   ]
+  },
+  {
+   "id": "portable-band-saw",
+   "name": "Portable Band Saw",
+   "family": "portable-band-saws",
+   "platform": "Corded",
+   "image": "/equipment/makita/portable-band-saw.webp",
+   "models": [
+    {
+     "base": "2107",
+     "codes": [
+      "2107FK"
+     ],
+     "spec": "710 W • 120 mm • 1 – 1,7 m/s",
+     "difference": "",
+     "url": "https://makita.co.tz/product/portable-band-saw-2107fk/"
+    }
+   ]
+  },
+  {
+   "id": "portable-cut-off",
+   "name": "Portable Cut-off",
+   "family": "metal-cutters-cut-off-saws",
+   "platform": "Corded",
+   "image": "/equipment/makita/portable-cut-off.webp",
+   "models": [
+    {
+     "base": "2414",
+     "codes": [
+      "2414",
+      "2414B"
+     ],
+     "spec": "1 450 W • 355 mm • 3 800 min⁻¹ / 220V: 2 000 W • 127V: 1 650 W • 355 mm • 3 800 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/portable-cut-off-2414/"
+    },
+    {
+     "base": "2416",
+     "codes": [
+      "2416S"
+     ],
+     "spec": "1 430 W • 405 mm • 2 300 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/portable-cut-off-2416s/"
+    },
+    {
+     "base": "LW1400",
+     "codes": [
+      "LW1400"
+     ],
+     "spec": "2 200 W • 355 mm • 3 800 min⁻¹",
+     "difference": "Tool-less wheel change and guide adjustment",
+     "url": "https://makita.co.tz/product/portable-cut-off-lw1400/"
+    },
+    {
+     "base": "LW1401",
+     "codes": [
+      "LW1401"
+     ],
+     "spec": "2 200 W • 355 mm • 3 800 min⁻¹",
+     "difference": "Basic version; wrench for wheel changes",
+     "url": "https://makita.co.tz/product/portable-cut-off-lw1401/"
+    }
+   ]
+  },
+  {
+   "id": "metal-shear-lxt",
+   "name": "Metal Shear LXT",
+   "family": "shears-nibblers-punchers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/metal-shear-lxt.webp",
+   "models": [
+    {
+     "base": "DJS101",
+     "codes": [
+      "DJS101RTJ",
+      "DJS101Z"
+     ],
+     "spec": "18V LXT • 4 300 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-shear-lxt-djs101rtj/"
+    },
+    {
+     "base": "DJS131",
+     "codes": [
+      "DJS131Z"
+     ],
+     "spec": "18V LXT • 1.3 mm (Offset) • BL",
+     "difference": "",
+     "url": "https://makita.co.tz/product/cordless-metal-shear-lxt-djs131z/"
+    },
+    {
+     "base": "DJS200",
+     "codes": [
+      "DJS200Z"
+     ],
+     "spec": "18V LXT • 2.0 mm • BL",
+     "difference": "",
+     "url": "https://makita.co.tz/product/cordless-metal-shear-lxt-djs200z/"
+    }
+   ]
+  },
+  {
+   "id": "cement-shear-lxt",
+   "name": "Cement Shear LXT",
+   "family": "shears-nibblers-punchers",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/cement-shear-lxt.webp",
+   "models": [
+    {
+     "base": "DJS800",
+     "codes": [
+      "DJS800Z"
+     ],
+     "spec": "18V LXT • 13 mm • BL",
+     "difference": "",
+     "url": "https://makita.co.tz/product/cordless-cement-shear-lxt-djs800z/"
+    }
+   ]
+  },
+  {
+   "id": "metal-shear",
+   "name": "Metal Shear",
+   "family": "shears-nibblers-punchers",
+   "platform": "Corded",
+   "image": "/equipment/makita/metal-shear.webp",
+   "models": [
+    {
+     "base": "JS1601",
+     "codes": [
+      "JS1601"
+     ],
+     "spec": "380 W • 4 500 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-shear-js1601/"
+    },
+    {
+     "base": "JS1602",
+     "codes": [
+      "JS1602"
+     ],
+     "spec": "380 W • 4 000 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-shear-js1602/"
+    },
+    {
+     "base": "JS3201",
+     "codes": [
+      "JS3201"
+     ],
+     "spec": "710 W • 1 600 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/metal-shear-js3201/"
+    }
+   ]
+  },
+  {
+   "id": "steel-rod-cutter-lxt",
+   "name": "Steel Rod Cutter LXT",
+   "family": "rod-cutters",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/steel-rod-cutter-lxt.webp",
+   "models": [
+    {
+     "base": "DSC163",
+     "codes": [
+      "DSC163ZK"
+     ],
+     "spec": "18V LXT • 3 – 16 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/steel-rod-cutter-lxt-dsc163zk/"
+    },
+    {
+     "base": "DSC251",
+     "codes": [
+      "DSC251ZK"
+     ],
+     "spec": "18V LXT • 10 – 25 mm • 2 200 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/steel-rod-cutter-lxt-dsc251zk/"
+    }
+   ]
+  },
+  {
+   "id": "straight-grinder",
+   "name": "Straight Grinder",
+   "family": "die-straight-bench-grinders",
+   "platform": "Corded",
+   "image": "/equipment/makita/straight-grinder.webp",
+   "models": [
+    {
+     "base": "GS5000",
+     "codes": [
+      "GS5000"
+     ],
+     "spec": "750 W • 125 mm • 5 600 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/straight-grinder-gs5000/"
+    },
+    {
+     "base": "GS6000",
+     "codes": [
+      "GS6000"
+     ],
+     "spec": "750 W • 150 mm • 5 600 min⁻¹",
+     "difference": "",
+     "url": "https://makita.co.tz/product/straight-grinder-gs6000/"
+    }
+   ]
+  },
+  {
+   "id": "threaded-rod-cutter-cxt",
+   "name": "Threaded Rod Cutter CXT",
+   "family": "rod-cutters",
+   "platform": "Cordless 12V CXT",
+   "image": "/equipment/makita/threaded-rod-cutter-cxt.webp",
+   "models": [
+    {
+     "base": "SC103D",
+     "codes": [
+      "SC103DZJ"
+     ],
+     "spec": "12V MAX • M6 – M10 mm",
+     "difference": "",
+     "url": "https://makita.co.tz/product/threaded-rod-cutter-cxt-sc103dzj/"
+    }
+   ]
+  },
+  {
+   "id": "threaded-rod-cutter-lxt",
+   "name": "Threaded Rod Cutter LXT",
+   "family": "rod-cutters",
+   "platform": "Cordless 18V LXT",
+   "image": "/equipment/makita/threaded-rod-cutter-lxt.webp",
+   "models": [
+    {
+     "base": "DSC102",
+     "codes": [
+      "DSC102ZJ"
+     ],
+     "spec": "18V LXT • M6 – M10",
+     "difference": "",
+     "url": "https://makita.co.tz/product/threaded-rod-cutter-lxt-dsc102zj/"
+    }
+   ]
+  }
+ ]
+}

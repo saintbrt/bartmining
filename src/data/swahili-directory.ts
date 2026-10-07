@@ -43,7 +43,7 @@ export const SWAHILI_DIRECTORY: HubEntry[] = [
   {
     path: '/equipment-swahili', language: 'sw',
     title: 'Katalogi kamili ya vifaa kwa Kiswahili',
-    description: 'Fungua maelezo ya vifaa 53, yakiwemo crushers, ball mills, flotation, pampu, winchi na vifaa vya usalama, pamoja na vipimo, matumizi na matengenezo.',
+    description: 'Fungua maelezo ya vifaa 65, yakiwemo crushers, ball mills, flotation, pampu, winchi, zana za Makita na vifaa vya usalama, pamoja na vipimo, matumizi na matengenezo.',
     category: 'Katalogi ya vifaa', tags: ['catalogue', 'vifaa', 'equipment', 'crusher', 'ball mill', 'pampu', 'winchi'],
     image: resolveEquipmentPhoto('ball-mill-gold-ore')!, imageAlt: 'Ball mill kutoka kwenye katalogi ya Bart Mining',
   },

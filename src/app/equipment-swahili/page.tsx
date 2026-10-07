@@ -121,6 +121,7 @@ export default function EquipmentHub() {
 
       {/* Catalogue */}
       <div className="px-site" style={{ paddingBottom: 72 }}>
+        <p style={{ margin: '0 0 22px', fontSize: 16, color: 'var(--ink-2)' }}>Zana za Makita za kazi za zege na za chuma zinapatikana kupitia Bart Mining kwa ushirikiano na Makita Tanzania. <Link href="/equipment-swahili/makita" style={{ color: 'var(--gold)', fontWeight: 600 }}>Tazama zana za Makita &rarr;</Link></p>
         <EquipmentFilters
           categories={groups.map(g => ({ id: g.category, label: g.label }))}
           labels={{ search: 'Tafuta vifaa', searchPlaceholder: 'Tafuta kwa jina au matumizi, mf. pampu, winchi, dhahabu', all: 'Vifaa vyote', gold: 'Urejeshaji wa dhahabu', smallScale: 'Hutumika sana na wachimbaji wadogo (PML)', showing: 'Vinaonyeshwa {n} kati ya {total}', none: 'Hakuna kifaa kinacholingana na vichujio hivi.', reset: 'Ondoa vichujio' }}

@@ -124,6 +124,7 @@ export default function EquipmentHub() {
 
       {/* Catalogue */}
       <div className="px-site" style={{ paddingBottom: 72 }}>
+        <p style={{ margin: '0 0 22px', fontSize: 16, color: 'var(--ink-2)' }}>Makita concrete-work and metal-work tools are available through Bart Mining in partnership with Makita Tanzania. <Link href="/equipment/makita" style={{ color: 'var(--gold)', fontWeight: 600 }}>Browse Makita power tools &rarr;</Link></p>
         <EquipmentFilters
           categories={groups.map(g => ({ id: g.category, label: g.label }))}
           labels={{ search: 'Find equipment', searchPlaceholder: 'Search by name or use, e.g. pump, winch, gold', all: 'All equipment', gold: 'Gold recovery', smallScale: 'Common on small-scale (PML) sites', showing: 'Showing {n} of {total} items', none: 'No equipment matches these filters.', reset: 'Clear filters' }}

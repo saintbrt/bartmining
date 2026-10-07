@@ -128,6 +128,8 @@ export interface ProductSchemaInput {
   category: string
   specs: { label: string; value: string }[]
   applications: readonly string[]
+  /** Manufacturer brand; products we specify ourselves carry the Bart Mining brand. */
+  brand?: string
 }
 
 /**
@@ -149,8 +151,8 @@ export function productSchema(p: ProductSchemaInput): Json {
     description: p.description,
     image: [p.image],
     category: p.category,
-    brand: { '@type': 'Brand', name: SITE.name },
-    manufacturer: { '@id': `${SITE.url}/#organization` },
+    brand: { '@type': 'Brand', name: p.brand ?? SITE.name },
+    manufacturer: p.brand ? { '@type': 'Organization', name: p.brand } : { '@id': `${SITE.url}/#organization` },
     additionalProperty: p.specs.map(s => ({
       '@type': 'PropertyValue',
       name: s.label,

@@ -210,5 +210,53 @@
   "spiral-classifier": {
     "src": "/equipment/website/spiral-classifier.webp",
     "kind": "illustration"
+  },
+  "makita-rotary-combination-hammers": {
+    "src": "/equipment/website/makita-rotary-combination-hammers.webp",
+    "kind": "reference"
+  },
+  "makita-demolition-hammers-breakers": {
+    "src": "/equipment/website/makita-demolition-hammers-breakers.webp",
+    "kind": "reference"
+  },
+  "makita-power-cutters": {
+    "src": "/equipment/website/makita-power-cutters.webp",
+    "kind": "reference"
+  },
+  "makita-wall-chasers-tile-cutters": {
+    "src": "/equipment/website/makita-wall-chasers-tile-cutters.webp",
+    "kind": "reference"
+  },
+  "makita-concrete-planers-power-scrapers": {
+    "src": "/equipment/website/makita-concrete-planers-power-scrapers.webp",
+    "kind": "reference"
+  },
+  "makita-angle-grinders": {
+    "src": "/equipment/website/makita-angle-grinders.webp",
+    "kind": "reference"
+  },
+  "makita-die-straight-bench-grinders": {
+    "src": "/equipment/website/makita-die-straight-bench-grinders.webp",
+    "kind": "reference"
+  },
+  "makita-sanders-polishers": {
+    "src": "/equipment/website/makita-sanders-polishers.webp",
+    "kind": "reference"
+  },
+  "makita-metal-cutters-cut-off-saws": {
+    "src": "/equipment/website/makita-metal-cutters-cut-off-saws.webp",
+    "kind": "reference"
+  },
+  "makita-portable-band-saws": {
+    "src": "/equipment/website/makita-portable-band-saws.webp",
+    "kind": "reference"
+  },
+  "makita-shears-nibblers-punchers": {
+    "src": "/equipment/website/makita-shears-nibblers-punchers.webp",
+    "kind": "reference"
+  },
+  "makita-rod-cutters": {
+    "src": "/equipment/website/makita-rod-cutters.webp",
+    "kind": "reference"
   }
 }

@@ -14,10 +14,11 @@
  */
 
 import { EXTRA_EQUIPMENT } from './equipment-extra'
+import { MAKITA_EQUIPMENT } from './makita/families'
 
 export type EquipCategory =
   | 'earthmoving' | 'hoisting' | 'processing' | 'minerals' | 'exploration'
-  | 'pumping' | 'safety' | 'software' | 'power'
+  | 'pumping' | 'safety' | 'software' | 'power' | 'concrete-tools' | 'metalwork-tools'
 
 export interface SpecRow { label: string; value: string }
 export interface MaintenanceRow { interval: string; task: string }
@@ -48,6 +49,8 @@ export interface Equipment {
   maintenance: MaintenanceRow[]
   faqs: Faq[]
   related: string[]
+  /** Manufacturer brand for structured data; defaults to Bart Mining. */
+  brand?: string
   image: string
   imageAlt: string
   updated: string
@@ -59,6 +62,8 @@ export const CATEGORY_LABELS: Record<EquipCategory, string> = {
   hoisting: 'Hoisting & Lifting',
   processing: 'Gold Processing & Recovery',
   minerals: 'Critical & Base Minerals Processing',
+  'concrete-tools': 'Concrete & Demolition Power Tools',
+  'metalwork-tools': 'Metalworking Power Tools',
   exploration: 'Exploration & Drilling',
   pumping: 'Pumps & Dewatering',
   safety: 'Mine Safety Equipment',
@@ -93,6 +98,7 @@ const UPDATED = '2026-08-09'
 
 export const EQUIPMENT: Equipment[] = [
   ...EXTRA_EQUIPMENT,
+  ...MAKITA_EQUIPMENT,
 
   // ─────────────────────────── HOISTING & LIFTING ───────────────────────────
   {
@@ -1594,7 +1600,7 @@ export const EQUIPMENT: Equipment[] = [
 export const EQUIPMENT_BY_SLUG = new Map(EQUIPMENT.map(e => [e.slug, e]))
 
 export function equipmentByCategory(): { category: EquipCategory; label: string; items: Equipment[] }[] {
-  const order: EquipCategory[] = ['earthmoving', 'hoisting', 'processing', 'minerals', 'exploration', 'pumping', 'safety', 'software', 'power']
+  const order: EquipCategory[] = ['earthmoving', 'hoisting', 'processing', 'minerals', 'exploration', 'pumping', 'safety', 'software', 'power', 'concrete-tools', 'metalwork-tools']
   return order.map(category => ({
     category,
     label: CATEGORY_LABELS[category],

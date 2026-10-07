@@ -9,6 +9,7 @@ import { sections as scsr } from './self-contained-self-rescuer'
 import { sections as rockDrill } from './pneumatic-rock-drill'
 import { sections as filterPress } from './filter-press'
 import { sections as generator } from './diesel-generator-mining'
+import { MAKITA_GUIDES_SW } from '../makita'
 
 export const EQUIPMENT_GUIDES: Record<string, GuideSection[]> = {
   'gold-elution-electrowinning-plant': elution,
@@ -23,4 +24,5 @@ export const EQUIPMENT_GUIDES: Record<string, GuideSection[]> = {
   'pneumatic-rock-drill': rockDrill,
   'filter-press': filterPress,
   'diesel-generator-mining': generator,
+  ...MAKITA_GUIDES_SW,
 }

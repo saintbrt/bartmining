@@ -1,0 +1,301 @@
+<title>Makita Directory Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: single reading column; structure first (categories → family pages), then the full model explorer, then SEO and build steps. Bart Mining site tokens with Makita teal as a secondary marker. */
+:root {
+  --bg: #F4F6F6; --surface: #FFFFFF; --ink: #14181A; --ink-2: #444C50; --ink-3: #6B7478; --line: #D4DBDE;
+  --gold: #7A5F2F; --gold-soft: #EFE7D8; --teal: #00707A; --teal-soft: #DDEFF0;
+  --f-display: 'Sora', 'Segoe UI', system-ui, sans-serif; --f-body: 'Manrope', 'Segoe UI', system-ui, sans-serif; --f-mono: 'Space Mono', ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111416; --surface: #181C1E; --ink: #E9EDEE; --ink-2: #B9C1C4; --ink-3: #8C969A; --line: #2C3337;
+  --gold: #D2B57A; --gold-soft: #2C2619; --teal: #5FC7CF; --teal-soft: #12292B; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111416; --surface: #181C1E; --ink: #E9EDEE; --ink-2: #B9C1C4; --ink-3: #8C969A; --line: #2C3337;
+  --gold: #D2B57A; --gold-soft: #2C2619; --teal: #5FC7CF; --teal-soft: #12292B; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.6 var(--f-body); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; padding-block: 0 80px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 700; }
+h2 { font-size: 22px; font-weight: 600; }
+h3 { font-size: 16px; font-weight: 600; }
+p { margin: 0; max-width: 70ch; }
+a { color: var(--teal); }
+code { font-family: var(--f-mono); font-size: .85em; }
+.eyebrow { font: 700 11px/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.muted { color: var(--ink-3); }
+header.top { padding-block: 40px 20px; display: grid; gap: 14px; }
+.lede { font-size: 17px; color: var(--ink-2); }
+nav.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); margin-inline: -20px; padding: 10px 20px; overflow-x: auto; }
+nav.bar ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; white-space: nowrap; }
+nav.bar a { display: block; padding: 6px 10px; border-radius: 4px; font: 600 13px/1 var(--f-body); color: var(--ink-2); text-decoration: none; }
+nav.bar a:hover, nav.bar a:focus-visible { background: var(--surface); color: var(--ink); outline: none; }
+section { padding-block: 36px 8px; display: grid; gap: 16px; scroll-margin-top: 56px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; display: grid; gap: 4px; }
+.stat b { font: 700 28px/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--ink-3); }
+.cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.cat { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.cat .id { font: 700 12px/1 var(--f-mono); color: var(--teal); }
+.cat ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; color: var(--ink-2); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+th { font: 700 11px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); background: var(--bg); position: sticky; top: 0; }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; text-align: right; }
+td code { white-space: nowrap; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 99px; font: 700 11px/1.6 var(--f-mono); white-space: nowrap; }
+.p-corded { background: var(--gold-soft); color: var(--gold); }
+.p-lxt, .p-xgt, .p-cxt { background: var(--teal-soft); color: var(--teal); }
+.p-petrol { background: var(--bg); color: var(--ink-2); border: 1px solid var(--line); }
+.bar-row { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--line); min-width: 90px; }
+.bar-row i { display: block; height: 100%; }
+.explorer-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+.explorer-controls label { display: grid; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.explorer-controls input, .explorer-controls select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); min-width: 0; }
+.explorer-controls input { width: min(260px, 100%); }
+.explorer-controls :focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
+#count { font-size: 13px; color: var(--ink-3); }
+.explorer .table-wrap { max-height: 560px; }
+ol.steps, ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 8px; max-width: 75ch; }
+.note { font-size: 13.5px; color: var(--ink-2); border-left: 3px solid var(--gold); padding: 8px 12px; background: var(--surface); max-width: 75ch; }
+.template { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.template div { border: 1px dashed var(--line); border-radius: 6px; padding: 12px 14px; font-size: 14px; color: var(--ink-2); background: var(--surface); }
+.template b { display: block; color: var(--ink); font-family: var(--f-display); font-weight: 600; margin-bottom: 4px; }
+.ladder { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; }
+.ladder .step { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; display: grid; }
+.ladder .step b { font: 700 22px/1.1 var(--f-display); font-variant-numeric: tabular-nums; }
+.ladder .step span { font-size: 12.5px; color: var(--ink-3); }
+.ladder .arrow { color: var(--gold); font-weight: 700; }
+.groups { display: grid; gap: 14px; }
+.fam-head { font: 700 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: 10px; }
+.group { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; min-width: 0; }
+.group-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.group-head h3 { font-size: 15.5px; }
+.group-head span { font-size: 13px; color: var(--ink-3); }
+.group table td:first-child { white-space: nowrap; }
+.variants { font-family: var(--f-mono); font-size: 12px; color: var(--ink-3); }
+footer { padding-top: 40px; font-size: 13px; color: var(--ink-3); }
+</style>
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">Bart Mining × Makita Tanzania · Batch 1 · 7 October 2026</span>
+    <h1>Makita Directory Plan</h1>
+    <p class="lede">How the Makita concrete-work and metal-work tools join the bartmining.com equipment directory: two new categories and twelve tool-family pages in English and Kiswahili. Each Makita product name, such as "Combination Hammer LXT", appears once, with all its sizes and kit options listed under it. 257 Makita listings, less 2 older models removed, become 255 models under 55 main products, and every model number still appears for buyers who search by model.</p>
+    <p class="muted">Source: makita.co.tz product categories <a href="https://makita.co.tz/product-category/tools/concrete-work-tools/">Concrete Work Tools</a> and <a href="https://makita.co.tz/product-category/tools/metal-work-tools/">Metal Work Tools</a>, collected 7 October 2026. Data file: <code>docs/makita/makita-batch-1-models-2026-10-07.csv</code>.</p>
+  </header>
+
+  <nav class="bar" aria-label="Sections">
+    <ul>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#review">Data check</a></li>
+      <li><a href="#categories">New categories</a></li>
+      <li><a href="#families">Family pages</a></li>
+      <li><a href="#template">Page template</a></li>
+      <li><a href="#explorer">Products</a></li>
+      <li><a href="#seo">SEO</a></li>
+      <li><a href="#build">Build steps</a></li>
+      <li><a href="#confirm">To confirm</a></li>
+    </ul>
+  </nav>
+
+  <section id="summary">
+    <span class="eyebrow">Summary</span>
+    <div class="stats" id="stats"></div>
+    <p class="note">The equipment pages show <strong>main products</strong>, named as Makita names them: for example <strong>Combination Hammer</strong> (corded), <strong>Combination Hammer LXT</strong> (18V cordless) and <strong>Combination Hammer XGT</strong> (40V cordless). Every size and kit option sits inside that product as a row in its table: <code>DHR242</code> with its options <code>DHR242Z</code> (body only), <code>DHR242RFJ</code> and <code>DHR242RTJ</code> (with batteries and case). We write one description per main product, not per model. Makita's spelling variants are tidied (for example "Angel Grinder LXT" and "Angle Grinder, 115 mm" both go under Angle Grinder LXT or Angle Grinder).</p>
+    <div class="ladder" id="ladder"></div>
+  </section>
+
+  <section id="review">
+    <span class="eyebrow">Data check</span>
+    <h2>Why some models share the same specs</h2>
+    <p>They are not duplicates. In <strong>27 cases</strong>, <strong>63 different models</strong> share one headline spec line because Makita sells feature variants of the same tool. The difference is a feature the headline does not show, so each of these models now carries a short <em>What's different</em> note in its product table below.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Difference</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Anti-vibration (AVT) added</td><td><code>HM1101C</code> → <code>HM1111C</code>, <code>HM1307C</code> → <code>HM1317C</code>, <code>HR4501C</code> → <code>HR4511C</code></td></tr>
+        <tr><td>Quick-change chuck</td><td><code>HR3011FCWJ</code> → <code>HR3012FCWJ</code>, <code>DHR280</code> → <code>DHR281</code></td></tr>
+        <tr><td>Wireless dust-extractor start (AWS)</td><td><code>DGA700</code> → <code>DGA701</code>, <code>DHR281</code> → <code>DHR283</code>, <code>HR003G</code> → <code>HR002G</code></td></tr>
+        <tr><td>Modes and dust collection</td><td><code>HR2600</code> 2 modes · <code>HR2630</code> 3 modes · <code>HR2631F</code> + AVT · <code>HR2661</code> + HEPA dust collection</td></tr>
+        <tr><td>Brushed or brushless motor</td><td><code>DGA452</code> brushed vs <code>DGA454</code> brushless</td></tr>
+        <tr><td>Paddle or slide switch, brake</td><td><code>GD0600</code> / <code>GD0602</code>, <code>GA5094</code> / <code>GA5091</code>, <code>GA046G</code> / <code>GA040G</code></td></tr>
+        <tr><td>Convenience features or kit</td><td><code>LW1400</code> tool-less wheel change vs <code>LW1401</code>; <code>PC5001C</code> includes an aluminium support</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cats">
+      <article class="cat"><span class="id">Errors on makita.co.tz</span><ul><li><code>GA6010</code> is listed as 125 mm; Makita's own description and other Makita markets say <strong>150 mm</strong>. <strong>Corrected in our data.</strong></li><li><code>GA9020</code> was listed as 2 200 W; it is a 2 000 W model. Removed as an older model (see next card).</li><li>Smaller: <code>GA012G</code> title and text disagree on switch type; <code>HR3200C</code> spec says 5,5 J, text says 5,1 J.</li></ul></article>
+      <article class="cat"><span class="id">Older generation · removed</span><ul><li><strong>Removed 7 October:</strong> <code>GA7020</code> (180 mm) and <code>GA9020</code> (230 mm), confirmed older generation. Their replacements <code>GA7062</code>, <code>GA7063</code> and <code>GA9062</code> stay.</li><li><code>HR2611F</code> looks like the older AVT hammer beside <code>HR2631F</code>, but this is not confirmed, so it stays until Makita answers.</li></ul></article>
+      <article class="cat"><span class="id">Not explained</span><ul><li><code>GA4591</code> vs <code>GA4592</code>: same power, size and switch.</li><li><code>DGA455</code> vs <code>DGA458</code>: both brushless with paddle switch.</li><li>Ask Makita Tanzania; meanwhile list as "variant, confirm with us".</li></ul></article>
+    </div>
+    <p class="muted">Full review with sources: <code>docs/makita/makita-batch-1-same-spec-review-2026-10-07.md</code>.</p>
+  </section>
+
+  <section id="categories">
+    <span class="eyebrow">Directory structure</span>
+    <h2>Two new categories in /equipment</h2>
+    <p class="muted">They sit beside the existing categories, with their own filter buttons, in both <code>/equipment</code> and <code>/equipment-swahili</code>. A brand hub at <code>/equipment/makita</code> links all twelve family pages.</p>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <section id="families">
+    <span class="eyebrow">Family pages</span>
+    <h2>Twelve pages, grouped from 25 Makita sub-categories</h2>
+    <p class="muted">Small Makita sub-categories are combined so no page is thin. Rotary and combination hammers share one page, because buyers choose them the same way (SDS-PLUS or SDS-MAX, corded or cordless). Concrete Planer moves from Makita's metal-work list to concrete tools, and Makita's two "Portable Cut-off" sub-categories are merged.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Page</th><th>Proposed URL</th><th>Main products on the page</th><th>Models</th><th>Power mix</th><th>Use on mine and plant sites</th><th>Main searches</th></tr></thead>
+      <tbody id="family-rows"></tbody>
+    </table></div>
+    <p class="muted">Power mix colours: gold = corded, teal = cordless (12V CXT, 18V LXT, 40V XGT), grey = petrol.</p>
+  </section>
+
+  <section id="template">
+    <span class="eyebrow">Page template</span>
+    <h2>What each family page contains</h2>
+    <p class="muted">Uses the existing equipment page layout and editorial standard, so the pages look and read like the rest of the catalogue.</p>
+    <div class="template">
+      <div><b>Answer-first summary</b>What the tool does and where it is used on a mine, plant or workshop, in two or three sentences.</div>
+      <div><b>How to choose</b>Corded or cordless, battery platform (CXT 12V, LXT 18V, XGT 40V), size and power, with a short worked example.</div>
+      <div><b>Main products</b>One block per main product (for example "Combination Hammer LXT"), with a short description and a table listing every size and option: model, kit codes and key spec.</div>
+      <div><b>Site use and safety</b>Dust, vibration, guards, PPE and how the tool fits plant construction and maintenance.</div>
+      <div><b>Maintenance</b>Brushes, guards, discs and bits, battery care, with the interval table used on other equipment pages.</div>
+      <div><b>FAQs and enquiry</b>Three or four real buyer questions, then what to send for a quotation (model, quantity, site, delivery).</div>
+    </div>
+  </section>
+
+  <section id="explorer" class="explorer">
+    <span class="eyebrow">Batch 1 data</span>
+    <h2>All main products</h2>
+    <p class="muted">Each card is one main product as it would appear on a family page. Rows are its sizes and versions; the codes under each model are its kit options (body only, or with batteries and case).</p>
+    <div class="explorer-controls">
+      <label for="q">Search product, model or spec<input id="q" type="search" placeholder="e.g. Combination Hammer LXT, GA5040, 230 mm"></label>
+      <label for="fam">Family page<select id="fam"><option value="">All families</option></select></label>
+      <label for="pow">Power source<select id="pow"><option value="">All power sources</option></select></label>
+      <span id="count" aria-live="polite"></span>
+    </div>
+    <div class="groups" id="groups"></div>
+  </section>
+
+  <section id="seo">
+    <span class="eyebrow">Search</span>
+    <h2>How the directory earns search traffic</h2>
+    <ul class="plain">
+      <li><strong>Titles and URLs carry the brand and the tool:</strong> "Makita Rotary Hammers in Tanzania: SDS-PLUS and SDS-MAX models", <code>/equipment/makita-rotary-hammers</code>. Brand-plus-tool searches are the highest-intent queries for a dealer.</li>
+      <li><strong>Every model number is on a page</strong> in plain text, so searches such as "GA5040Z" or "HR2611F" can land on the family page.</li>
+      <li><strong>Kiswahili mirrors</strong> at <code>/equipment-swahili/makita-…</code> with local terms (for example "mashine ya kuvunja zege", "grinder ya kukata chuma"), checked by a native reviewer.</li>
+      <li><strong>Structured data:</strong> <code>ItemList</code> of models on each family page, <code>Product</code> with <code>brand: Makita</code> and the model number for each listed model, and <code>BreadcrumbList</code>. No price or stock claims unless confirmed.</li>
+      <li><strong>Internal links:</strong> from relevant mining pages (demolition hammers from plant-construction guides, grinders and cutters from the workshop and maintenance content, rod cutters from foundation work) and from the district supply pages.</li>
+      <li><strong>Measure:</strong> add a "Makita" topic to the monthly Search Console review and watch impressions for brand, tool and model queries. Build individual model pages only where model queries appear.</li>
+    </ul>
+  </section>
+
+  <section id="build">
+    <span class="eyebrow">Delivery</span>
+    <h2>Build steps</h2>
+    <ol class="steps">
+      <li>Confirm the items in <a href="#confirm">To confirm</a> with Makita Tanzania and Allan.</li>
+      <li>Add the two categories (<code>concrete-tools</code>, <code>metalwork-tools</code>) to the equipment catalogue, filters and category marks, in both languages.</li>
+      <li>Load the product data (<code>docs/makita/makita-batch-1-models-2026-10-07.csv</code>, column <code>main_product</code>) into a typed data file (<code>src/data/makita/</code>), so the product tables are generated, not typed by hand.</li>
+      <li>Write 12 family pages, 55 main-product descriptions and the <code>/equipment/makita</code> hub in English, following the editorial standard; Bartholomew checks technical claims.</li>
+      <li>Write the Kiswahili versions and send them for native review (Codex check plus a human reviewer).</li>
+      <li>Add images: Makita product photography where the partnership allows it, otherwise our own illustrations; record provenance as for other products.</li>
+      <li>Add structured data, sitemap entries and internal links; run the editorial, FAQ, Kiswahili-directory and image audits and a production build.</li>
+      <li>Publish, request indexing, and draft carousel posts for the launch.</li>
+    </ol>
+  </section>
+
+  <section id="confirm">
+    <span class="eyebrow">Before building</span>
+    <h2>To confirm with Makita Tanzania</h2>
+    <ul class="plain">
+      <li>Wording of the relationship we may publish (for example "authorised Makita partner") and any brand-use rules for the name and logo.</li>
+      <li>Permission to use Makita product images and specification text on bartmining.com.</li>
+      <li>Confirm the GA6010 size correction (150 mm), whether HR2611F is still supplied, and what separates GA4591 / GA4592 and DGA455 / DGA458. GA7020 and GA9020 have been removed as older models.</li>
+      <li>Whether every batch-1 model is available through us, or only a selection, and how stock and lead times work.</li>
+      <li>Whether prices are published or always quoted, and who handles warranty and service in Tanzania.</li>
+      <li>Battery and charger kits: which kit codes (for example the <code>…Z</code> body-only and <code>…M201</code> kit variants) we offer.</li>
+      <li>Whether family pages should link to makita.co.tz product pages or keep the enquiry on bartmining.com.</li>
+    </ul>
+  </section>
+
+  <footer>Prepared for Allan Bartholomew and the Bart Mining team. Model names, numbers and spec lines are as listed on makita.co.tz on 7 October 2026; check them again before publishing.</footer>
+</div>
+<script>
+// [family, mainProduct, platform, [[baseModel, kitCodes[], spec, makitaUrl, whatsDifferent], ...]]
+const PRODUCTS = [["rotary-combination-hammers","Combination Hammer LXT","Cordless 18V LXT",[["DHR182",["DHR182ZWJU"],"18V LXT • SDS-PLUS • 18 mm • 1,7 J","https://makita.co.tz/product/combination-hammer-lxt-dhr182zwju/",""],["DHR202",["DHR202RFJ","DHR202RTJ"],"18V LXT • SDS-PLUS • 20 mm • 1,9 J","https://makita.co.tz/product/combination-hammer-lxt-dhr202rfj/",""],["DHR242",["DHR242RFJ","DHR242RTJ","DHR242Z"],"18V LXT • SDS-PLUS • 24 mm • 2,0 J","https://makita.co.tz/product/combination-hammer-lxt-dhr242rfj/",""],["DHR263",["DHR263RF2","DHR263Z"],"36V (18Vx2) LXT • SDS-PLUS • 26 mm • 3,0 J","https://makita.co.tz/product/combination-hammer-lxt-dhr263rf2/",""],["DHR280",["DHR280PT2J","DHR280ZJ"],"36V (18Vx2) LXT • SDS-PLUS • 28 mm • 3,2 J","https://makita.co.tz/product/combination-hammer-lxt-dhr280pt2j/","Base model: anti-vibration (AVT), standard chuck"],["DHR281",["DHR281PT2J","DHR281ZJ"],"36V (18Vx2) LXT • SDS-PLUS • 28 mm • 3,2 J","https://makita.co.tz/product/combination-hammer-lxt-dhr281pt2j/","Adds quick-change chuck"],["DHR283",["DHR283ZJ"],"36V (18Vx2) LXT • SDS-PLUS • 28 mm • 3,2 J","https://makita.co.tz/product/combination-hammer-lxt-dhr283zj/","Quick-change chuck + AWS wireless dust-extractor start"]]],["rotary-combination-hammers","Combination Hammer XGT","Cordless 40V XGT",[["HR002G",["HR002GM201","HR002GZ01"],"40V MAX XGT • SDS-PLUS • 28 mm • 3,2 J","https://makita.co.tz/product/combination-hammer-xgt-hr002gm201/","AVT + AFT + AWS wireless dust-extractor start"],["HR003G",["HR003GM201","HR003GZ01"],"40V MAX XGT • SDS-PLUS • 28 mm • 3,2 J","https://makita.co.tz/product/combination-hammer-xgt-hr003gm201/","AVT; kit includes dust extraction system"],["HR007G",["HR007GM201","HR007GZ","HR007GZ01"],"40V MAX XGT • SDS–PLUS • 54 mm • 3,0 J","https://makita.co.tz/product/combination-hammer-xgt-hr007gm201/",""],["HR008G",["HR008GM201","HR008GZ01"],"40V MAX XGT • SDS–PLUS • 30 mm • 3,9 J","https://makita.co.tz/product/combination-hammer-xgt-hr008gm201/",""],["HR010G",["HR010GD201","HR010GZ"],"40V MAX XGT • SDS-PLUS • 20 mm • 2,0 J","https://makita.co.tz/product/combination-hammer-xgt-hr010gd201/",""]]],["rotary-combination-hammers","Combination Hammer","Corded",[["HR2475",["HR2475"],"780 W • SDS-Plus • 24 mm • 2,7 J","https://makita.co.tz/product/combination-hammer-hr2475/",""],["HR2600",["HR2600"],"800 W • SDS-Plus • 26 mm • 2,9 J","https://makita.co.tz/product/combination-hammer-hr2600/","2 modes (no chiselling)"],["HR2611",["HR2611F"],"800 W • SDS-Plus • 26 mm • 2,9 J","https://makita.co.tz/product/combination-hammer-hr2611f/","3 modes + AVT + job light (older AVT model; check if still current)"],["HR2630",["HR2630","HR2630T"],"800 W • SDS-Plus • 26 mm • 2,9 J","https://makita.co.tz/product/combination-hammer-hr2630/","3 modes (adds chiselling)"],["HR2631",["HR2631F","HR2631FT"],"800 W • SDS-Plus • 26 mm • 2,9 J","https://makita.co.tz/product/combination-hammer-hr2631f/","3 modes + AVT + job light"],["HR2661",["HR2661"],"800 W • SDS-Plus • 26 mm • 2,9 J","https://makita.co.tz/product/combination-hammer-hr2661/","AVT + built-in HEPA dust collection + quick-change chuck"],["HR2810",["HR2810"],"800 W • SDS-Plus • 28 mm • 2,9 J","https://makita.co.tz/product/combination-hammer-hr2810/",""],["HR3200",["HR3200C"],"850 W • SDS-Plus • 32 mm • 5,5 J","https://makita.co.tz/product/combination-hammer-hr3200c/","AVT + quick-change chuck"],["HR3210",["HR3210C"],"850 W • SDS-Plus • 32 mm • 5,5 J","https://makita.co.tz/product/combination-hammer-hr3210c/","Standard chuck, no AVT stated"],["HR3541",["HR3541FC"],"850 W • SDS-Max • 35 mm • 6,3 J","https://makita.co.tz/product/combination-hammer-hr3541fc/",""]]],["demolition-hammers-breakers","Demolition Hammer XGT","Cordless 40V XGT",[["HM001G",["HM001GM202","HM001GZ"],"40V MAX XGT • SDS–MAX • 18 mm • 9,4 J","https://makita.co.tz/product/demolition-hammer-xgt-hm001gm202/",""],["HM002G",["HM002GZ03"],"80V MAX (40Vx2) XGT • SDS–MAX • 18 mm • 20.9 J","https://makita.co.tz/product/demolition-hammer-xgt-hm002gz03/",""]]],["demolition-hammers-breakers","Electric Breaker XGT","Cordless 40V XGT",[["HM004G",["HM004GZ01"],"80V • 72.8J • 28.6mm • 870 min⁻¹","https://makita.co.tz/product/electric-breaker-xgt-hm004g01/",""]]],["demolition-hammers-breakers","Demolition Hammer","Corded",[["HM0810",["HM0810T"],"900 W • 17 mm • 7,6 J","https://makita.co.tz/product/demolition-hammer-hm0810t/",""],["HM0870",["HM0870C"],"1 100 W • SDS-MAX • 11,4 J","https://makita.co.tz/product/demolition-hammer-hm0870c/",""],["HM0871",["HM0871C"],"1 100 W • SDS-MAX • 11,6 J","https://makita.co.tz/product/demolition-hammer-hm0871c/",""],["HM1101",["HM1101C"],"1 300 W • SDS-Max • 17 J","https://makita.co.tz/product/demolition-hammer-hm1101c/","Standard"],["HM1111",["HM1111C"],"1 300 W • SDS-Max • 17 J","https://makita.co.tz/product/demolition-hammer-hm1111c/","Adds AVT anti-vibration"],["HM1201",["HM1201"],"1 130 W • 21 mm • 13 J","https://makita.co.tz/product/demolition-hammer-hm1201/",""],["HM1203",["HM1203C"],"1 510 W • SDS-Max • 25,5 J","https://makita.co.tz/product/demolition-hammer-hm1203c/","Standard"],["HM1213",["HM1213C"],"1 510 W • SDS-Max • 25,5 J","https://makita.co.tz/product/demolition-hammer-hm1213c/","Adds AVT anti-vibration"],["HM1214",["HM1214C"],"1 510 W • SDS-Max • 26 J","https://makita.co.tz/product/demolition-hammer-hm1214c/",""],["HM1307",["HM1307C"],"1 510 W • 30 mm • 33,8 J","https://makita.co.tz/product/demolition-hammer-hm1307c/","Standard"],["HM1317",["HM1317C"],"1 510 W • 30 mm • 33,8 J","https://makita.co.tz/product/demolition-hammer-hm1317c/","Adds AVT anti-vibration"]]],["demolition-hammers-breakers","Electric Breaker","Corded",[["HM1511",["HM1511"],"1 850 W • 30 mm • 1 300 minˉ¹","https://makita.co.tz/product/electric-breaker-hm1511/",""],["HM1802",["HM1802"],"2 000 W • 1 – 1/8″ • 71,4 J","https://makita.co.tz/product/electric-breaker-hm1802/",""],["HM1812",["HM1812"],"2 000 W • 1 – 1/8″ • 72,8 J","https://makita.co.tz/product/electric-breaker-hm1812/",""]]],["power-cutters","Power Cutter LXT","Cordless 18V LXT",[["DCE090",["DCE090P2X1","DCE090ZX1"],"36V (18Vx2) LXT • 230 mm","https://makita.co.tz/product/power-cutter-lxt-dce090p2x1/",""]]],["power-cutters","Power Cutter XGT","Cordless 40V XGT",[["CE001G",["CE001GZ"],"80V MAX (40Vx2) XGT • BL • 355mm • Wet &","https://makita.co.tz/product/power-cutter-xgt-ce001gz/",""],["CE002G",["CE002GZ"],"80V MAX (40Vx2) XGT • BL • 355mm • Dry 80Vmax 355mm (14″)","https://makita.co.tz/product/power-cutter-xgt-ce002gz/",""]]],["power-cutters","Power Cutter","Petrol",[["EK7301",["EK7301WS"],"73 cm3 • 3,8 kW • 355 mm","https://makita.co.tz/product/power-cutter-ek7301ws/",""],["EK7651",["EK7651HX1"],"75 cm3 • 3,0 kW • 350 mm","https://makita.co.tz/product/power-cutter-ek7651hx1/",""],["EK8100",["EK8100WS"],"81 cm³ • 4,2 kW • 400 mm","https://makita.co.tz/product/power-cutter-ek8100ws/",""]]],["concrete-planers-power-scrapers","Power Scraper LXT","Cordless 18V LXT",[["DHK180",["DHK180ZJ"],"18V LXT • SDS-PLUS • 3.1 J","https://makita.co.tz/product/power-scraper-lxt-dhk180zj/",""]]],["concrete-planers-power-scrapers","Power Scraper","Corded",[["HK1820",["HK1820"],"550 W • SDS-Plus • 3,9 J","https://makita.co.tz/product/power-scraper-hk1820/",""]]],["rotary-combination-hammers","Rotary Hammer LXT","Cordless 18V LXT",[["DHR171",["DHR171RFJ","DHR171Z"],"18V LXT • SDS-PLUS • 17 mm • 1,2 J","https://makita.co.tz/product/rotary-hammer-lxt-dhr171rfj/",""],["DHR183",["DHR183RTWJ","DHR183Z"],"18V LXT • SDS-PLUS • 18 mm • 1,7 J","https://makita.co.tz/product/rotary-hammer-lxt-dhr183rtwj/",""],["DHR400",["DHR400ZKUN"],"36V (18Vx2) LXT • SDS-MAX • 40 mm • 11,4 J","https://makita.co.tz/product/rotary-hammer-lxt-dhr400zkun/",""]]],["rotary-combination-hammers","Rotary Hammer XGT","Cordless 40V XGT",[["HR005G",["HR005GZ01"],"40V MAX XGT • SDS-PLUS • 40 mm • 8,0 J","https://makita.co.tz/product/rotary-hammer-xgt-hr005gz01/",""],["HR006G",["HR006GZ"],"80V MAX (40Vx2) XGT • SDS–MAX • 52 mm • 21.4 J","https://makita.co.tz/product/rotary-hammer-xgt-hr006gz/",""]]],["rotary-combination-hammers","Rotary Hammer","Corded",[["HR1841",["HR1841FJ"],"470 W • SDS-Plus • 18 mm • 1,4 J","https://makita.co.tz/product/rotary-hammer-hr1841fj/",""],["HR2010",["HR2010"],"600 W • SDS-Plus • 20 mm • 1,7 J","https://makita.co.tz/product/rotary-hammer-hr2010/",""],["HR2020",["HR2020"],"710 W • SDS-Plus • 20 mm • 2,2 J","https://makita.co.tz/product/rotary-hammer-hr2020/",""],["HR2630",["HR2630X7"],"800 W • SDS-PLUS • 26 mm • 2,4 J","https://makita.co.tz/product/rotary-hammer-hr2630x7/","3 modes (adds chiselling)"],["HR2663",["HR2663"],"SDS-PLUS • 26 mm","https://makita.co.tz/product/rotary-hamme-sds-plus-hr2663/",""],["HR3011",["HR3011FCWJ"],"1050 W • SDS-Plus • 30 mm • 3,6 J","https://makita.co.tz/product/rotary-hammer-hr3011fcwj/","Standard SDS-PLUS chuck"],["HR3012",["HR3012FCWJ"],"1050 W • SDS-Plus • 30 mm • 3,6 J","https://makita.co.tz/product/rotary-hammer-hr3012fcwj/","Adds quick-change chuck"],["HR3540",["HR3540C"],"850 W • SDS-Max • 35 mm • 6,3 J","https://makita.co.tz/product/rotary-hammer-hr3540c/",""],["HR4001",["HR4001C"],"1 100 W • SDS-Max • 40 mm • 6,8 J","https://makita.co.tz/product/rotary-hammer-hr4001c/",""],["HR4003",["HR4003C"],"1 100 W • SDS-Max • 40 mm • 8,3 J","https://makita.co.tz/product/rotary-hammer-hr4003c/",""],["HR4013",["HR4013C"],"1 100 W • SDS-Max • 40 mm • 11,4 J","https://makita.co.tz/product/rotary-hammer-hr4013c/",""],["HR4030",["HR4030C"],"1 100 W • 40 mm • 9,2 J","https://makita.co.tz/product/rotary-hammer-hr4030c/",""],["HR4501",["HR4501C"],"1 350 W • SDS-Max • 45 mm • 12.5 J","https://makita.co.tz/product/rotary-hammer-hr4501c/","Standard"],["HR4511",["HR4511C"],"1 350 W • SDS-Max • 45 mm • 12.5 J","https://makita.co.tz/product/rotary-hammer-hr4511c/","Adds AVT anti-vibration"],["HR5202",["HR5202C"],"1 510 W • SDS-Max • 52 mm • 21J","https://makita.co.tz/product/rotary-hammer-hr5202c/","Standard"],["HR5212",["HR5212C"],"1 510 W • SDS-Max • 52 mm • 21J","https://makita.co.tz/product/rotary-hammer-hr5212c/","Adds AVT anti-vibration"]]],["wall-chasers-tile-cutters","Cutter CXT","Cordless 12V CXT",[["CC301D",["CC301DWAE","CC301DZ"],"12V MAX • 1 600 min⁻¹ • 85 mm • 0,5 l","https://makita.co.tz/product/cutter-cxt-cc301dwae/",""]]],["wall-chasers-tile-cutters","Dustless Cutter LXT","Cordless 18V LXT",[["DCC501",["DCC501RTJ","DCC501ZJ"],"18V LXT • 125 mm • BL • AWS","https://makita.co.tz/product/dustless-cutter-lxt-dcc501rtj/",""]]],["wall-chasers-tile-cutters","Tile Cutter","Corded",[["4100",["4100NH"],"1 300 W • 110 mm • 13 000 min⁻¹","https://makita.co.tz/product/tile-cutter-4100nh/",""]]],["wall-chasers-tile-cutters","Angle Cutter","Corded",[["4112",["4112HS"],"2 400 W • 305 mm • 5 000 min⁻¹","https://makita.co.tz/product/angle-cutter-4112hs/",""]]],["wall-chasers-tile-cutters","Wall Chaser","Corded",[["SG1251",["SG1251J"],"1 400 W • 125 mm • 6 – 30 mm","https://makita.co.tz/product/wall-chaser-sg1251j/",""],["SG150",["SG150"],"1 800 W • 150 mm • 7 – 35 mm","https://makita.co.tz/product/wall-chaser-sg150/",""]]],["metal-cutters-cut-off-saws","Aluminium Groove Cutter","Corded",[["CA5000",["CA5000XJ"],"1 300 W • 118 mm • 2 200 – 6","https://makita.co.tz/product/aluminium-groove-cutter-ca5000xj/",""]]],["angle-grinders","Angle Grinder LXT","Cordless 18V LXT",[["DGA452",["DGA452RTJ","DGA452Z"],"18V LXT • 115 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga452rtj/","Brushed motor"],["DGA454",["DGA454RFJ","DGA454RTJ","DGA454Z"],"18V LXT • 115 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga454rfj/","Brushless motor"],["DGA455",["DGA455RFJ","DGA455RTJ"],"18V LXT • 115 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga455rfj/","Brushless, paddle switch (difference from DGA458 not stated)"],["DGA456",["DGA456Z"],"18V LXT • 115 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga456z/","Brushed motor"],["DGA458",["DGA458Z"],"18V LXT • 115 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga458z/","Brushless, paddle switch (difference from DGA455 not stated)"],["DGA469",["DGA469Z"],"18V LXT • 115 mm • 3,000 – 8,500 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga469z/",""],["DGA519",["DGA519Z"],"18V LXT • 125 mm • 3 000 – 8","https://makita.co.tz/product/angle-grinder-lxt-dga519z/",""],["DGA700",["DGA700ZK"],"36V (18Vx2) LXT • 180 mm • 7 800 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga700zk/","Standard"],["DGA701",["DGA701ZKU"],"36V (18Vx2) LXT • 180 mm • 7 800 min⁻¹","https://makita.co.tz/product/angle-grinder-lxt-dga701zku/","Adds AWS wireless dust-extractor start"],["DGA900",["DGA900ZK"],"36V (18Vx2) LXT • 6 000 minˉ¹ • 230 mm","https://makita.co.tz/product/angle-grinder-lxt-dga900zk/",""],["DGA901",["DGA901ZKU1"],"36V (18Vx2) LXT • 230 mm • 6 000 min-1","https://makita.co.tz/product/angle-grinder-lxt-dga901zku1/",""]]],["angle-grinders","Angle Grinder XGT","Cordless 40V XGT",[["GA004G",["GA004GM202","GA004GZ02"],"40V MAX XGT • 115 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga004gm202/","Standard: slide switch, AFT"],["GA005G",["GA005GM203","GA005GZ02"],"40V MAX XGT • 125 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga005gm203/","Standard: slide switch, AFT"],["GA012G",["GA012GM202","GA012GZ02"],"40V MAX XGT • 115 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga012gm202/","Adds electronic brake (listing contradicts itself on switch type)"],["GA013G",["GA013GM203","GA013GZ02"],"40V MAX XGT • 125 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga013gm203/","Paddle switch + electronic brake"],["GA022G",["GA022GM101","GA022GM202","GA022GZ02"],"40V MAX XGT • 115 mm • 3 000 – 8","https://makita.co.tz/product/angle-grinder-xgt-ga022gm101/",""],["GA023G",["GA023GM203","GA023GZ02"],"40V MAX XGT • 125 mm • 3 000 – 8","https://makita.co.tz/product/angle-grinder-xgt-ga023gm203/",""],["GA028G",["GA028GM101","GA028GM202","GA028GZ02"],"40V MAX XGT • 115 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga028gm101/","Brake + AWS + variable speed"],["GA029G",["GA029GM203","GA029GZ02"],"40V MAX XGT • 125 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga029gm203/","Paddle switch + brake + AWS + variable speed"],["GA037G",["GA037GM204","GA037GZ06"],"40V MAX XGT • 180 mm • 7 800 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga037gm204/",""],["GA038G",["GA038GM204","GA038GZ06"],"40V MAX XGT • 230 mm • 6 600 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga038gm204/",""],["GA040G",["GA040GM201","GA040GZ"],"40V MAX XGT • 115 mm / 40V MAX XGT • 115 mm • 8 500 min⁻¹ • X-lock","https://makita.co.tz/product/angle-grinder-xgt-ga040gm201/","Slide switch + AWS + X-LOCK"],["GA041G",["GA041GM201","GA041GZ"],"40V MAX XGT • 125 mm • 8 500 min⁻¹ • X-lock","https://makita.co.tz/product/angle-grinder-xgt-ga041gm201/","Slide switch + AWS + X-LOCK"],["GA046G",["GA046GM201","GA046GZ"],"40V MAX XGT • 115 mm • 8 500 min⁻¹ • X-lock","https://makita.co.tz/product/angle-grinder-xgt-ga046gm201/","Paddle switch + brake + anti-restart + X-LOCK"],["GA047G",["GA047GM201","GA047GZ"],"40V MAX XGT • 125 mm • 8 500 min⁻¹ • X-lock","https://makita.co.tz/product/angle-grinder-xgt-ga047gm201/","Paddle switch + brake + anti-restart + X-LOCK"],["GA049G",["GA049GT101","GA049GZ"],"40V MAX XGT • 115 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga049gt101/",""],["GA050G",["GA050GT101","GA050GZ"],"40V MAX XGT • 125 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-xgt-ga050gt101/",""]]],["angle-grinders","Angle Grinder","Corded",[["9015",["9015B"],"1 050 W • 125 mm • 10 000 minˉ¹","https://makita.co.tz/product/angle-grinder-9015b/","125 mm, large trigger switch"],["9553",["9553HNG"],"710 W • 100 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-9553hng/",""],["9554",["9554HNG"],"710 W • 115 mm • 10 000 min⁻¹","https://makita.co.tz/product/angle-grinder-9554hng/",""],["9555",["9555HNG"],"710 W • 125 mm • 10 000 min⁻¹","https://makita.co.tz/product/angle-grinder-9555hng/",""],["9556",["9556HNG","9556HPG"],"840 W • 100 mm • 11 000 minˉ¹","https://makita.co.tz/product/angle-grinder-9556hng/",""],["9557",["9557HNG","9557HPG"],"840 W • 115 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-9557hng/",""],["9558",["9558HNG","9558HPG"],"840 W • 125 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-9558hng/",""],["9561",["9561CR"],"1 200 W • 115 mm • 12 000 min⁻¹","https://makita.co.tz/product/angle-grinder-9561cr/",""],["9562",["9562CR"],"1 200 W • 125 mm • 12 000 min⁻¹","https://makita.co.tz/product/angle-grinder-9562cr/",""],["GA4040",["GA4040CZ","GA4040Z"],"1 400 W • 100 mm • 11 000 min⁻¹ / 1 100 W • 100 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-ga4040cz/",""],["GA4050",["GA4050"],"1 300 W • 100 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-ga4050/",""],["GA4530",["GA4530"],"750 W • 115 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-ga4530/",""],["GA4540",["GA4540CZ","GA4540Z"],"1 400 W • 115 mm • 11 000 min⁻¹ / 1 100 W • 115 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-ga4540cz/",""],["GA4550",["GA4550","GA4550R"],"1 300 W • 115 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-ga4550/",""],["GA4591",["GA4591"],"115 mm • 1 900 W • 11 500 minˉ¹","https://makita.co.tz/product/angle-grinder-ga4591/","Slide switch (difference from GA4592 not stated)"],["GA4592",["GA4592"],"115 mm • 1 900 W • 11 500 minˉ¹","https://makita.co.tz/product/angle-grinder-ga4592/","Slide switch (difference from GA4591 not stated)"],["GA4594",["GA4594"],"115 mm • 1 900 W • 11 500 minˉ¹","https://makita.co.tz/product/angle-grinder-ga4594/","Paddle switch"],["GA4595",["GA4595"],"1 900 W • 115 mm • 11 500 min⁻¹","https://makita.co.tz/product/angle-grinder-115-mm-ga4595/",""],["GA5010",["GA5010"],"1 050 W • 125 mm • 12 000 minˉ¹","https://makita.co.tz/product/angle-grinder-ga5010/","Standard trigger"],["GA5011",["GA5011"],"1 050 W • 125 mm • 12 000 minˉ¹","https://makita.co.tz/product/angle-grinder-ga5011/","Large trigger, slightly longer body"],["GA5040",["GA5040CZ","GA5040Z"],"1 400 W • 125 mm • 11 000 min⁻¹ / 1 100 W • 125 mm • 11 000 minˉ¹","https://makita.co.tz/product/angle-grinder-ga5040cz/",""],["GA5050",["GA5050","GA5050R"],"1 300 W • 125 mm • 11 000 min⁻¹","https://makita.co.tz/product/angle-grinder-ga5050/",""],["GA5080",["GA5080R"],"1,400 W • 125 mm • 12,000 min⁻¹","https://makita.co.tz/product/angle-grinder-x-lock-ga5080r/",""],["GA5091",["GA5091"],"1 900 W • 125 mm • 2 800 – 11","https://makita.co.tz/product/angle-grinder-125-mm-ga5091/","Slide switch, SJS II, AFT, brake, soft start"],["GA5092",["GA5092"],"1 900 W • 125 mm • 11 500 min⁻¹","https://makita.co.tz/product/angle-grinder-125-mm-ga5092/","Slide switch, adjustable speed"],["GA5094",["GA5094"],"1 900 W • 125 mm • 2 800 – 11","https://makita.co.tz/product/angle-grinder-125-mm-ga5094/","Paddle (safety) switch"],["GA5095",["GA5095"],"1 900 W • 125 mm • 11 500 min⁻¹","https://makita.co.tz/product/angle-grinder-125-mm-ga5095/","Paddle (safety) switch"],["GA6010",["GA6010"],"1 050 W • 150 mm • 10 000 min⁻¹","https://makita.co.tz/product/angle-grinder-ga6010/","150 mm, paddle switch (corrected: makita.co.tz lists 125 mm)"],["GA7040",["GA7040S"],"2 600 W • 180 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-ga7040s/",""],["GA7050",["GA7050"],"2 000 W • 180 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-ga7050/",""],["GA7062",["GA7062"],"2 200 W • 180 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-ga7062/","Newer generation; anti-restart, D-handle"],["GA7063",["GA7063"],"2 200 W • 180 mm • 8 500 min⁻¹","https://makita.co.tz/product/angle-grinder-ga7063/","Newer generation"],["GA7070",["GA7070"],"180 mm • 6 600 min⁻¹ • 2800 W","https://makita.co.tz/product/angle-grinder-ga7070/",""],["GA7080",["GA7080"],"180 mm • 6600 min⁻¹ • 2700 W","https://makita.co.tz/product/angle-grinder-ga7080/",""],["GA9030",["GA9030"],"2 400 W • 230 mm • 6 600 min⁻¹","https://makita.co.tz/product/angle-grinder-ga9030/",""],["GA9040",["GA9040S"],"2 600 W • 230 mm • 6 600 minˉ¹ 230","https://makita.co.tz/product/angle-grinder-ga9040s/",""],["GA9062",["GA9062"],"2 200 W • 230 mm • 6 600 min⁻¹","https://makita.co.tz/product/angle-grinder-ga9062/","Newer generation, 2 200 W"],["GA9070",["GA9070"],"230 mm • 6 600 min⁻¹ • 2800 W","https://makita.co.tz/product/angle-grinder-ga9070/",""],["GA9080",["GA9080"],"230 mm • 6600 min⁻¹ • 2700 W","https://makita.co.tz/product/angle-grinder-ga9080/",""]]],["sanders-polishers","Angle Sander","Corded",[["SA7000",["SA7000C"],"1 600 W • 180 mm","https://makita.co.tz/product/angle-sander-sa7000c/",""],["SA7021",["SA7021"],"2 200 W • 180 mm","https://makita.co.tz/product/angle-sander-sa7021/",""]]],["die-straight-bench-grinders","Bench Grinder","Corded",[["GB602",["GB602"],"250 W • 150 mm","https://makita.co.tz/product/bench-grinder-gb602/",""],["GB801",["GB801"],"550 W • 205 mm","https://makita.co.tz/product/bench-grinder-gb801/",""]]],["concrete-planers-power-scrapers","Concrete Planer","Corded",[["PC5000",["PC5000C"],"1 400 W • 125 mm • 10 000 min⁻¹","https://makita.co.tz/product/concrete-planer-pc5000c/","Standard"],["PC5001",["PC5001C"],"1 400 W • 125 mm • 10 000 min⁻¹","https://makita.co.tz/product/concrete-planer-pc5001c/","Includes aluminium support"],["PC5010",["PC5010C"],"• 1400 W • 125 mm • 9000 min⁻¹ 125mm AC","https://makita.co.tz/product/concrete-planer-pc5010c/",""]]],["die-straight-bench-grinders","Die Grinder LXT","Cordless 18V LXT",[["DGD800",["DGD800Z"],"18V LXT • 26 000 min⁻¹ • 8 mm","https://makita.co.tz/product/die-grinder-lxt-dgd800z/",""]]],["die-straight-bench-grinders","Die Grinder","Corded",[["906",["906H"],"290 W • 6 mm • 25 000 minˉ¹","https://makita.co.tz/product/die-grinder-906h/",""],["GD0600",["GD0600"],"400 W • 25 000 min⁻¹ • 6 mm","https://makita.co.tz/product/die-grinder-gd0600/","Paddle (dead-man) switch"],["GD0602",["GD0602"],"400 W • 25 000 min⁻¹ • 6 mm","https://makita.co.tz/product/die-grinder-gd0602/","Slide switch with lock-on"],["GD0603",["GD0603"],"240 W • 28 000 min⁻¹ • 6 mm","https://makita.co.tz/product/die-grinder-gd0603/",""],["GD0800",["GD0800C"],"750 W • 7 000 – 28 000 min⁻¹ • 8 mm","https://makita.co.tz/product/die-grinder-gd0800c/",""],["GD0801",["GD0801C"],"750 W • 7 000 – 29 000 min⁻¹ • 6 mm","https://makita.co.tz/product/die-grinder-gd0801c/",""],["GD0810",["GD0810C"],"750 W • 1 800 – 7 000 min⁻¹ • 6 mm","https://makita.co.tz/product/die-grinder-gd0810c/",""],["GD0811",["GD0811C"],"750 W • 1 800 – 7 000 min⁻¹ • 8 mm","https://makita.co.tz/product/die-grinder-gd0811c/",""]]],["sanders-polishers","Disc Sander","Corded",[["9218",["9218SB"],"570 W • 180 mm • 4 500 minˉ¹","https://makita.co.tz/product/disc-sander-9218sb/",""],["GV6010",["GV6010"],"440 W • 150 mm • 4 500 minˉ¹","https://makita.co.tz/product/disc-sander-gv6010/",""],["GV7000",["GV7000C"],"900 W • 180 mm • 0 – 4 700","https://makita.co.tz/product/disc-sander-gv7000c/",""]]],["shears-nibblers-punchers","Hole Puncher LXT","Cordless 18V LXT",[["DPP200",["DPP200ZK"],"18V LXT • Ø 6-20 mm","https://makita.co.tz/product/hole-puncher-lxt-dpp200zk/",""]]],["metal-cutters-cut-off-saws","Metal Cutter LXT","Cordless 18V LXT",[["DCS553",["DCS553Z"],"18V LXT • 150 mm • 4 200 min⁻¹","https://makita.co.tz/product/metal-cutter-lxt-dcs553z/",""]]],["metal-cutters-cut-off-saws","Compact Cut-off LXT","Cordless 18V LXT",[["DMC300",["DMC300RTJ","DMC300Z"],"18V LXT • 76 mm • 20 000 min⁻¹","https://makita.co.tz/product/compact-cut-off-lxt-dmc300rtj/",""]]],["metal-cutters-cut-off-saws","Metal Cutter XGT","Cordless 40V XGT",[["CS002G",["CS002GZ"],"40V MAX XGT • BL Motor • 185mm • XPT • AFT","https://makita.co.tz/product/metal-cutter-xgt-cs002gz/",""]]],["metal-cutters-cut-off-saws","Metal Cutter","Corded",[["4131",["4131"],"1 100 W • 185 mm • 3 500 min⁻¹","https://makita.co.tz/product/metal-cutter-4131/",""]]],["metal-cutters-cut-off-saws","Metal Cutting Saw","Corded",[["LC1230",["LC1230N"],"1 750 W • 305 mm • 1 300 min⁻¹","https://makita.co.tz/product/metal-cutting-saw-lc1230n/",""]]],["shears-nibblers-punchers","Nibbler LXT","Cordless 18V LXT",[["DJN161",["DJN161RFE"],"18V LXT • 1 900 min⁻¹","https://makita.co.tz/product/nibbler-lxt-djn161rfe/",""]]],["shears-nibblers-punchers","Nibbler","Corded",[["JN1601",["JN1601"],"550 W • 2 200 min⁻¹","https://makita.co.tz/product/nibbler-jn1601/",""],["JN3201",["JN3201"],"710 W • 1 300 min⁻¹","https://makita.co.tz/product/nibbler-jn3201/",""]]],["sanders-polishers","Sander Polisher CXT","Cordless 12V CXT",[["PV301D",["PV301DZ"],"12V MAX •BL • XPT","https://makita.co.tz/product/sander-polisher-cxt-12v-pv301dz/",""]]],["sanders-polishers","Random Orbit Polisher LXT","Cordless 18V LXT",[["DPO600",["DPO600RTE","DPO600Z"],"18V LXT • 780 min⁻¹ • 150 mm","https://makita.co.tz/product/random-orbit-polisher-lxt-dpo600rte/",""]]],["sanders-polishers","Sander Polisher LXT","Cordless 18V LXT",[["DPV300",["DPV300RTJ","DPV300Z"],"•18V LXT •BL • XPT","https://makita.co.tz/product/sander-polisher-lxt-dpv300rtj/",""]]],["sanders-polishers","Polisher XGT","Cordless 40V XGT",[["PV001G",["PV001GM101","PV001GZ"],"40V MAX XGT • 180 mm • 0 – 2 200","https://makita.co.tz/product/polisher-xgt-pv001gm101/",""]]],["sanders-polishers","Sander Polisher","Corded",[["9207",["9207SPB"],"700 W • 180 mm • 2 000 / 3","https://makita.co.tz/product/sander-polisher-9207spb/",""]]],["sanders-polishers","Polisher","Corded",[["9237",["9237CB"],"1 200 W • 180 mm • 0 – 3 200","https://makita.co.tz/product/polisher-9237cb/",""],["PO6000",["PO6000C"],"900 W • 150 mm • 0 – 780 min⁻¹","https://makita.co.tz/product/polisher-po6000c/",""],["PV7000",["PV7000C"],"900 W • 180 mm • 600 – 2 100","https://makita.co.tz/product/polisher-pv7000c/",""]]],["portable-band-saws","Portable Band Saw LXT","Cordless 18V LXT",[["DPB180",["DPB180Z"],"18V LXT • 120 mm • 1,4 – 2,7 m/s","https://makita.co.tz/product/portable-band-saw-lxt-dpb180z/",""],["DPB183",["DPB183Z"],"18V LXT • 66 mm • 0 – 3.2 m/s","https://makita.co.tz/product/portable-band-saw-lxt-dpb183z/",""]]],["portable-band-saws","Portable Band Saw XGT","Cordless 40V XGT",[["PB002G",["PB002GM201","PB002GZ"],"40V MAX XGT • 127 mm • 0 – 3,2 m/s","https://makita.co.tz/product/portable-bandsaw-xgt-pb002gm201/",""]]],["portable-band-saws","Portable Band Saw","Corded",[["2107",["2107FK"],"710 W • 120 mm • 1 – 1,7 m/s","https://makita.co.tz/product/portable-band-saw-2107fk/",""]]],["metal-cutters-cut-off-saws","Portable Cut-off","Corded",[["2414",["2414","2414B"],"1 450 W • 355 mm • 3 800 min⁻¹ A / 220V: 2 000 W • 127V: 1 650 W • 355 mm • 3 800 minˉ¹","https://makita.co.tz/product/portable-cut-off-2414/",""],["2416",["2416S"],"1 430 W • 405 mm • 2 300 min⁻¹","https://makita.co.tz/product/portable-cut-off-2416s/",""],["LW1400",["LW1400"],"2 200 W • 355 mm • 3 800 min⁻¹","https://makita.co.tz/product/portable-cut-off-lw1400/","Tool-less wheel change and guide adjustment"],["LW1401",["LW1401"],"2 200 W • 355 mm • 3 800 min⁻¹","https://makita.co.tz/product/portable-cut-off-lw1401/","Basic version; wrench for wheel changes"]]],["shears-nibblers-punchers","Metal Shear LXT","Cordless 18V LXT",[["DJS101",["DJS101RTJ","DJS101Z"],"18V LXT • 4 300 min-1 / 18V LXT • 4 300 min⁻¹","https://makita.co.tz/product/metal-shear-lxt-djs101rtj/",""],["DJS131",["DJS131Z"],"18V LXT • 1.3 mm (Offset) • BL","https://makita.co.tz/product/cordless-metal-shear-lxt-djs131z/",""],["DJS200",["DJS200Z"],"18V LXT • 2.0 mm • BL","https://makita.co.tz/product/cordless-metal-shear-lxt-djs200z/",""]]],["shears-nibblers-punchers","Cement Shear LXT","Cordless 18V LXT",[["DJS800",["DJS800Z"],"18V LXT • 13 mm • BL","https://makita.co.tz/product/cordless-cement-shear-lxt-djs800z/",""]]],["shears-nibblers-punchers","Metal Shear","Corded",[["JS1601",["JS1601"],"380 W • 4 500 min⁻¹ A","https://makita.co.tz/product/metal-shear-js1601/",""],["JS1602",["JS1602"],"380 W • 4 000 min⁻¹","https://makita.co.tz/product/metal-shear-js1602/",""],["JS3201",["JS3201"],"710 W • 1 600 min⁻¹","https://makita.co.tz/product/metal-shear-js3201/",""]]],["rod-cutters","Steel Rod Cutter LXT","Cordless 18V LXT",[["DSC163",["DSC163ZK"],"18V LXT • 3 – 16 mm","https://makita.co.tz/product/steel-rod-cutter-lxt-dsc163zk/",""],["DSC251",["DSC251ZK"],"18V LXT • 10 – 25 mm • 2 200 min⁻¹","https://makita.co.tz/product/steel-rod-cutter-lxt-dsc251zk/",""]]],["die-straight-bench-grinders","Straight Grinder","Corded",[["GS5000",["GS5000"],"750 W • 125 mm • 5 600 min⁻¹","https://makita.co.tz/product/straight-grinder-gs5000/",""],["GS6000",["GS6000"],"750 W • 150 mm • 5 600 min⁻¹","https://makita.co.tz/product/straight-grinder-gs6000/",""]]],["rod-cutters","Threaded Rod Cutter CXT","Cordless 12V CXT",[["SC103D",["SC103DZJ"],"12V MAX • M6 – M10 mm","https://makita.co.tz/product/threaded-rod-cutter-cxt-sc103dzj/",""]]],["rod-cutters","Threaded Rod Cutter LXT","Cordless 18V LXT",[["DSC102",["DSC102ZJ"],"18V LXT • M6 – M10","https://makita.co.tz/product/threaded-rod-cutter-lxt-dsc102zj/",""]]]];
+const LISTINGS = 257, REMOVED = 2;
+const CATS = {
+  concrete: { id: 'concrete-tools', name: 'Concrete & Demolition Power Tools', sw: 'Zana za umeme za zege na kuvunja', note: 'Drilling anchors and fixings, breaking concrete and rock, cutting, chasing and surface preparation for plant construction and site works.' },
+  metal: { id: 'metalwork-tools', name: 'Metalworking Power Tools', sw: 'Zana za umeme za kufanyia kazi chuma', note: 'Cutting, grinding, shaping and finishing steel in the plant workshop: maintenance, fabrication, liners, guards and structures.' },
+};
+const FAMILIES = [
+  ['concrete','rotary-combination-hammers','Rotary & Combination Hammers','Drilling holes for anchors, cable trays and machine foundations; light chiselling in concrete and masonry','makita rotary hammer, SDS-MAX rotary hammer Tanzania, combination hammer'],
+  ['concrete','demolition-hammers-breakers','Demolition Hammers & Breakers','Breaking concrete, removing old foundations, light rock breaking and chute cleaning','demolition hammer Tanzania, electric breaker, mashine ya kuvunja zege'],
+  ['concrete','power-cutters','Power Cutters','Cutting concrete, steel pipe and rebar on site; petrol models work where there is no power','petrol power cutter, concrete cutter Tanzania'],
+  ['concrete','wall-chasers-tile-cutters','Wall Chasers & Tile Cutters','Cutting channels for cable and conduit in plant buildings and offices; tile and stone cutting','wall chaser, tile cutter makita'],
+  ['concrete','concrete-planers-power-scrapers','Concrete Planers & Power Scrapers','Levelling concrete pads and removing scale or tiles before equipment installation','concrete planer, power scraper'],
+  ['metal','angle-grinders','Angle Grinders','Cutting and grinding steel in maintenance work: liners, chutes, guards, welding preparation','makita angle grinder price Tanzania, 230 mm grinder, grinder ya kukata chuma'],
+  ['metal','die-straight-bench-grinders','Die, Straight & Bench Grinders','Precision grinding, deburring and sharpening drill steels and tools in the workshop','die grinder, bench grinder'],
+  ['metal','sanders-polishers','Sanders & Polishers','Surface preparation before painting steelwork and finishing fabricated parts','disc sander, polisher makita'],
+  ['metal','metal-cutters-cut-off-saws','Metal Cutters & Cut-off Saws','Straight cutting of steel sections, pipe and profiles for repairs and fabrication','cut-off saw, metal cutter Tanzania'],
+  ['metal','portable-band-saws','Portable Band Saws','Spark-free cutting of pipe, bar and bolts where sparks are a hazard','portable band saw, cordless band saw'],
+  ['metal','shears-nibblers-punchers','Shears, Nibblers & Hole Punchers','Cutting and punching sheet metal for guards, covers, ducting and cladding','metal shear, nibbler'],
+  ['metal','rod-cutters','Rod Cutters','Cutting rebar and threaded rod for foundations, supports and hangers','rebar cutter, threaded rod cutter'],
+];
+const famName = Object.fromEntries(FAMILIES.map(f => [f[1], f[2]]));
+const PK = p => p.includes('CXT') ? 'cxt' : p.includes('LXT') ? 'lxt' : p.includes('XGT') ? 'xgt' : p.includes('Petrol') ? 'petrol' : 'corded';
+const PSHORT = { corded: 'Corded', lxt: '18V LXT', xgt: '40V XGT', cxt: '12V CXT', petrol: 'Petrol' };
+const PCOLOR = { corded: 'var(--gold)', lxt: 'var(--teal)', xgt: 'var(--teal)', cxt: 'var(--teal)', petrol: 'var(--ink-3)' };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const $ = s => document.querySelector(s);
+const famOf = id => FAMILIES.find(f => f[1] === id);
+const nCodes = p => p[3].reduce((n, l) => n + l[1].length, 0);
+
+$('#stats').innerHTML = [
+  [LISTINGS, 'Makita listings collected'], [LISTINGS - REMOVED, 'models kept (2 older removed)'], [PRODUCTS.length, 'main products to describe'], [FAMILIES.length, 'family pages'], [2, 'new categories'],
+].map(([n, l]) => `<div class="stat"><b>${n}</b><span>${esc(l)}</span></div>`).join('');
+$('#ladder').innerHTML = [[LISTINGS, 'Makita listings'], [LISTINGS - REMOVED, 'models kept'], [PRODUCTS.length, 'main products'], [FAMILIES.length, 'pages'], [2, 'categories']]
+  .map(([n, l], i) => `${i ? '<span class="arrow" aria-hidden="true">→</span>' : ''}<div class="step"><b>${n}</b><span>${l}</span></div>`).join('');
+
+$('#cats').innerHTML = Object.entries(CATS).map(([k, c]) => {
+  const fams = FAMILIES.filter(f => f[0] === k);
+  const ps = PRODUCTS.filter(p => famOf(p[0])[0] === k);
+  return `<article class="cat"><span class="id">${esc(c.id)}</span><h3>${esc(c.name)}</h3><p class="muted" style="font-size:13.5px">Kiswahili: ${esc(c.sw)}</p><p style="font-size:14px;color:var(--ink-2)">${esc(c.note)}</p><ul>${fams.map(f => `<li>${esc(f[2])}</li>`).join('')}</ul><p class="muted" style="font-size:13px">${fams.length} pages · ${ps.length} main products · ${ps.reduce((n, p) => n + nCodes(p), 0)} model codes</p></article>`;
+}).join('');
+
+$('#family-rows').innerHTML = FAMILIES.map(f => {
+  const ps = PRODUCTS.filter(p => p[0] === f[1]);
+  const mix = {}; ps.forEach(p => { const k = PK(p[2]); mix[k] = (mix[k] || 0) + nCodes(p); });
+  const total = ps.reduce((n, p) => n + nCodes(p), 0);
+  const bar = Object.entries(mix).map(([k, n]) => `<i style="width:${(n / total) * 100}%;background:${PCOLOR[k]}" title="${PSHORT[k]}: ${n}"></i>`).join('');
+  const label = Object.entries(mix).map(([k, n]) => `${PSHORT[k]} ${n}`).join(' · ');
+  return `<tr><td><strong>${esc(f[2])}</strong></td><td><code>/equipment/makita-${esc(f[1])}</code></td><td>${ps.map(p => esc(p[1])).join('<br>')}</td><td class="num">${total}</td><td><div class="bar-row">${bar}</div><span class="muted" style="font-size:12px">${label}</span></td><td>${esc(f[3])}</td><td class="muted">${esc(f[4])}</td></tr>`;
+}).join('');
+
+const famSel = $('#fam'), powSel = $('#pow');
+FAMILIES.forEach(f => famSel.insertAdjacentHTML('beforeend', `<option value="${f[1]}">${esc(f[2])}</option>`));
+Object.keys(PSHORT).forEach(k => powSel.insertAdjacentHTML('beforeend', `<option value="${k}">${PSHORT[k]}</option>`));
+function render() {
+  const q = $('#q').value.toLowerCase().trim(); const fam = famSel.value; const pow = powSel.value;
+  const ps = PRODUCTS.filter(p => (!fam || p[0] === fam) && (!pow || PK(p[2]) === pow))
+    .map(p => {
+      if (!q || p[1].toLowerCase().includes(q)) return p;
+      const ls = p[3].filter(l => (l[0] + ' ' + l[1].join(' ') + ' ' + l[2] + ' ' + (l[4] || '')).toLowerCase().includes(q));
+      return ls.length ? [p[0], p[1], p[2], ls] : null;
+    }).filter(Boolean);
+  $('#count').textContent = `${ps.length} main products · ${ps.reduce((n, p) => n + nCodes(p), 0)} model codes`;
+  let html = '', lastFam = '';
+  for (const p of ps) {
+    if (p[0] !== lastFam) { lastFam = p[0]; html += `<div class="fam-head">${esc(famName[lastFam])}</div>`; }
+    const k = PK(p[2]);
+    html += `<article class="group"><div class="group-head"><h3>${esc(p[1])} <span class="pill p-${k}" style="vertical-align:2px">${PSHORT[k]}</span></h3><span>${p[3].length} size${p[3].length > 1 ? 's' : ''} or version${p[3].length > 1 ? 's' : ''} · ${nCodes(p)} model code${nCodes(p) > 1 ? 's' : ''}</span></div><div class="table-wrap" style="border:0;border-radius:0"><table><thead><tr><th>Model</th><th>Options (kit codes)</th><th>Key spec</th>${p[3].some(l => l[4]) ? '<th>What\'s different</th>' : ''}</tr></thead><tbody>${p[3].map(l => `<tr><td><a href="${esc(l[3])}"><code>${esc(l[0])}</code></a></td><td class="variants">${l[1].map(esc).join(' · ')}</td><td>${esc(l[2])}</td>${p[3].some(x => x[4]) ? `<td>${esc(l[4] || '')}</td>` : ''}</tr>`).join('')}</tbody></table></div></article>`;
+  }
+  $('#groups').innerHTML = html || '<p class="muted">No products match these filters.</p>';
+}
+['input', 'change'].forEach(ev => { $('#q').addEventListener(ev, render); famSel.addEventListener(ev, render); powSel.addEventListener(ev, render); });
+render();
+</script>

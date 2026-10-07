@@ -49,6 +49,22 @@ function CategoryMark({ category }: { category: EquipCategory }) {
           <path d="M36 22h7v8" />
         </g>
       )
+    case 'concrete-tools': // hammer drill with bit
+      return (
+        <g {...STROKE}>
+          <rect x="10" y="18" width="20" height="12" rx="3" />
+          <path d="M14 30v10h7l2-10" />
+          <path d="M30 22h10" /><path d="M40 20v4l4-2z" />
+        </g>
+      )
+    case 'metalwork-tools': // angle grinder with disc
+      return (
+        <g {...STROKE}>
+          <rect x="8" y="20" width="22" height="9" rx="4" />
+          <circle cx="36" cy="30" r="8" /><circle cx="36" cy="30" r="2" />
+          <path d="M30 24h4" />
+        </g>
+      )
     case 'exploration': // drill mast over strata
       return (
         <g {...STROKE}>

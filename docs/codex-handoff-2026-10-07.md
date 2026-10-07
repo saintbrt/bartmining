@@ -175,3 +175,21 @@ cd tools/social-carousel && npm run typecheck
 ```
 
 All passed on 7 October 2026 before this handoff (46 English and 13 Kiswahili guides, 307 FAQ answers, 53 product images, 245 static pages).
+
+---
+
+## 6. Makita directory (added 7 October 2026, later the same day)
+
+Built locally, not committed. Relationship wording approved by the owner: "available through Bart Mining in partnership with Makita Tanzania".
+
+**Kiswahili to review (all marked or covered by `NOTE FOR REVIEW`):**
+- `src/data/makita/products.ts` — `sw` description of each of the 55 main products.
+- `src/data/equipment-catalogue-sw.json` — the 12 entries whose keys start with `makita-` (name, h1, title, description, summary, specs, applications, maintenance, FAQs).
+- `src/content/equipment/makita.ts` — the `T.sw` strings (platform guide and table labels).
+- `src/components/equipment/MakitaHub.tsx` — `TEXT.sw` (hub page `/equipment-swahili/makita`).
+- `src/data/equipment-image-copy.json` — `sw` captions for the 12 `makita-` entries.
+- `src/data/equipment-catalogue-sw.ts` — category labels `concrete-tools` and `metalwork-tools`.
+
+**Images:** product photos are Makita's own images from makita.co.tz, used under the partnership. Files: `public/equipment/makita/<product>.webp` (54) and `public/equipment/website/makita-<family>.webp` (12 family heroes). Provenance: `docs/makita/makita-image-sources-2026-10-07.json`. No image exists for Compact Cut-off LXT (DMC300).
+
+**Data:** `src/data/makita/catalogue.json` (55 main products, 255 models), generated from `docs/makita/makita-batch-1-models-2026-10-07.csv`.

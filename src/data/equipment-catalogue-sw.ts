@@ -26,6 +26,8 @@ export const CATEGORY_LABELS_SW: Record<EquipCategory, string> = {
   hoisting: 'Vifaa vya kuinua na kupandisha mizigo',
   processing: 'Uchakataji na utenganishaji wa dhahabu',
   minerals: 'Uchakataji wa madini muhimu na metali za msingi',
+  'concrete-tools': 'Zana za umeme za zege na kuvunja',
+  'metalwork-tools': 'Zana za umeme za kufanyia kazi chuma',
   exploration: 'Utafiti wa madini na uchimbaji wa sampuli',
   pumping: 'Pampu na utoaji wa maji',
   safety: 'Vifaa vya usalama migodini',

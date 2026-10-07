@@ -82,6 +82,7 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
       category: item.categoryLabel,
       specs: item.specs,
       applications: item.applications,
+      brand: item.brand,
     }),
     faqSchema(item.faqs),
     breadcrumbSchema([

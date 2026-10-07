@@ -1,0 +1,353 @@
+{
+ "date": "2026-10-07",
+ "source": "makita.co.tz product images, used under the Bart Mining partnership with Makita Tanzania (owner-approved)",
+ "productImages": {
+  "combination-hammer-lxt": {
+   "file": "public/equipment/makita/combination-hammer-lxt.webp",
+   "makitaModel": "DHR263RF2",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DHR263ZJ_C2L0.jpg"
+  },
+  "combination-hammer-xgt": {
+   "file": "public/equipment/makita/combination-hammer-xgt.webp",
+   "makitaModel": "HR002GM201",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HR002GM201_C2L0.jpg"
+  },
+  "combination-hammer": {
+   "file": "public/equipment/makita/combination-hammer.webp",
+   "makitaModel": "HR2475",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HR2475_C2L0.jpg"
+  },
+  "demolition-hammer-xgt": {
+   "file": "public/equipment/makita/demolition-hammer-xgt.webp",
+   "makitaModel": "HM001GM202",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HM001GM202_C2L0.jpg"
+  },
+  "electric-breaker-xgt": {
+   "file": "public/equipment/makita/electric-breaker-xgt.webp",
+   "makitaModel": "HM004GZ01",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HM004G_C2L0.jpg"
+  },
+  "demolition-hammer": {
+   "file": "public/equipment/makita/demolition-hammer.webp",
+   "makitaModel": "HM0871C",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HM0871C_C2L0-scaled.jpg"
+  },
+  "electric-breaker": {
+   "file": "public/equipment/makita/electric-breaker.webp",
+   "makitaModel": "HM1511",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HM1511_C2L0.jpg"
+  },
+  "power-cutter-lxt": {
+   "file": "public/equipment/makita/power-cutter-lxt.webp",
+   "makitaModel": "DCE090P2X1",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DCE090Z_C2L0.jpg"
+  },
+  "power-cutter-xgt": {
+   "file": "public/equipment/makita/power-cutter-xgt.webp",
+   "makitaModel": "CE001GZ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/CE001GZ_C2L0.jpg"
+  },
+  "power-cutter": {
+   "file": "public/equipment/makita/power-cutter.webp",
+   "makitaModel": "EK7301WS",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/EK7301WS_C2L0.jpg"
+  },
+  "power-scraper-lxt": {
+   "file": "public/equipment/makita/power-scraper-lxt.webp",
+   "makitaModel": "DHK180ZJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DHK180ZJ_C2L0.jpg"
+  },
+  "power-scraper": {
+   "file": "public/equipment/makita/power-scraper.webp",
+   "makitaModel": "HK1820",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HK1820_C2L0-scaled.jpg"
+  },
+  "rotary-hammer-lxt": {
+   "file": "public/equipment/makita/rotary-hammer-lxt.webp",
+   "makitaModel": "DHR171RFJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DHR171RFJ_C2L0.jpg"
+  },
+  "rotary-hammer-xgt": {
+   "file": "public/equipment/makita/rotary-hammer-xgt.webp",
+   "makitaModel": "HR005GZ01",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HR005GZ01_C2L0.jpg"
+  },
+  "rotary-hammer": {
+   "file": "public/equipment/makita/rotary-hammer.webp",
+   "makitaModel": "HR1841FJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HR1841FJ_C2L0.jpg"
+  },
+  "cutter-cxt": {
+   "file": "public/equipment/makita/cutter-cxt.webp",
+   "makitaModel": "CC301DWAE",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/CC301DSAE_C2L0.jpg"
+  },
+  "dustless-cutter-lxt": {
+   "file": "public/equipment/makita/dustless-cutter-lxt.webp",
+   "makitaModel": "DCC501RTJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DCC501ZJ_C2L0-1.jpg"
+  },
+  "tile-cutter": {
+   "file": "public/equipment/makita/tile-cutter.webp",
+   "makitaModel": "4100NH",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/4100NH_C2L0.jpg"
+  },
+  "angle-cutter": {
+   "file": "public/equipment/makita/angle-cutter.webp",
+   "makitaModel": "4112HS",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/4112HS_C2L0.jpg"
+  },
+  "wall-chaser": {
+   "file": "public/equipment/makita/wall-chaser.webp",
+   "makitaModel": "SG150",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/SG150_C2L0.jpg"
+  },
+  "aluminium-groove-cutter": {
+   "file": "public/equipment/makita/aluminium-groove-cutter.webp",
+   "makitaModel": "CA5000XJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/CA5000XJ_C2L0-1.jpg"
+  },
+  "angle-grinder-lxt": {
+   "file": "public/equipment/makita/angle-grinder-lxt.webp",
+   "makitaModel": "DGA452RTJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DGA452RTJ_C2L0-1-scaled.jpg"
+  },
+  "angle-grinder-xgt": {
+   "file": "public/equipment/makita/angle-grinder-xgt.webp",
+   "makitaModel": "GA004GM202",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/GA004GM101_C2L0.jpg"
+  },
+  "angle-grinder": {
+   "file": "public/equipment/makita/angle-grinder.webp",
+   "makitaModel": "9015B",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/9015B_C2L0-1-scaled.jpg"
+  },
+  "angle-sander": {
+   "file": "public/equipment/makita/angle-sander.webp",
+   "makitaModel": "SA7000C",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/SA7000C_C2L0-1-scaled.jpg"
+  },
+  "bench-grinder": {
+   "file": "public/equipment/makita/bench-grinder.webp",
+   "makitaModel": "GB602",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/GB602_C2L0-1.jpg"
+  },
+  "concrete-planer": {
+   "file": "public/equipment/makita/concrete-planer.webp",
+   "makitaModel": "PC5000C",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/PC5000C_C2L0.jpg"
+  },
+  "die-grinder-lxt": {
+   "file": "public/equipment/makita/die-grinder-lxt.webp",
+   "makitaModel": "DGD800Z",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DGD800Z_C2L0-scaled.jpg"
+  },
+  "die-grinder": {
+   "file": "public/equipment/makita/die-grinder.webp",
+   "makitaModel": "906H",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/906H_C2L0-scaled.jpg"
+  },
+  "disc-sander": {
+   "file": "public/equipment/makita/disc-sander.webp",
+   "makitaModel": "9218SB",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/9218SB_C2L0-scaled.jpg"
+  },
+  "hole-puncher-lxt": {
+   "file": "public/equipment/makita/hole-puncher-lxt.webp",
+   "makitaModel": "DPP200ZK",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DPP200ZK_C2L0.jpg"
+  },
+  "metal-cutter-lxt": {
+   "file": "public/equipment/makita/metal-cutter-lxt.webp",
+   "makitaModel": "DCS553Z",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DCS553Z_C2L0.jpg"
+  },
+  "metal-cutter-xgt": {
+   "file": "public/equipment/makita/metal-cutter-xgt.webp",
+   "makitaModel": "CS002GZ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/CS002GZ_C2L0.jpg"
+  },
+  "metal-cutter": {
+   "file": "public/equipment/makita/metal-cutter.webp",
+   "makitaModel": "4131",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/4131_C2L0.jpg"
+  },
+  "metal-cutting-saw": {
+   "file": "public/equipment/makita/metal-cutting-saw.webp",
+   "makitaModel": "LC1230N",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/LC1230N_C2L0.jpg"
+  },
+  "nibbler-lxt": {
+   "file": "public/equipment/makita/nibbler-lxt.webp",
+   "makitaModel": "DJN161RFE",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DJN161RFE_C2L0.jpg"
+  },
+  "nibbler": {
+   "file": "public/equipment/makita/nibbler.webp",
+   "makitaModel": "JN1601",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/JN1601_C2L0.jpg"
+  },
+  "sander-polisher-cxt": {
+   "file": "public/equipment/makita/sander-polisher-cxt.webp",
+   "makitaModel": "PV301DZ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/PV301DZ_C2L0.jpg"
+  },
+  "random-orbit-polisher-lxt": {
+   "file": "public/equipment/makita/random-orbit-polisher-lxt.webp",
+   "makitaModel": "DPO600Z",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DPO600Z_C2L0.jpg"
+  },
+  "sander-polisher-lxt": {
+   "file": "public/equipment/makita/sander-polisher-lxt.webp",
+   "makitaModel": "DPV300RTJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DPV300RTJ_C2L0.jpg"
+  },
+  "polisher-xgt": {
+   "file": "public/equipment/makita/polisher-xgt.webp",
+   "makitaModel": "PV001GZ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/PV001GZ_C2L0.jpg"
+  },
+  "sander-polisher": {
+   "file": "public/equipment/makita/sander-polisher.webp",
+   "makitaModel": "9207SPB",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/9207SPB_C2L0.jpg"
+  },
+  "polisher": {
+   "file": "public/equipment/makita/polisher.webp",
+   "makitaModel": "9237CB",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/9237CB_C2L0.jpg"
+  },
+  "portable-band-saw-lxt": {
+   "file": "public/equipment/makita/portable-band-saw-lxt.webp",
+   "makitaModel": "DPB180Z",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DPB180Z_C2L0.jpg"
+  },
+  "portable-band-saw-xgt": {
+   "file": "public/equipment/makita/portable-band-saw-xgt.webp",
+   "makitaModel": "PB002GZ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/PB002GZ_C2L0.jpg"
+  },
+  "portable-band-saw": {
+   "file": "public/equipment/makita/portable-band-saw.webp",
+   "makitaModel": "2107FK",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/2107FK_C2L0.jpg"
+  },
+  "portable-cut-off": {
+   "file": "public/equipment/makita/portable-cut-off.webp",
+   "makitaModel": "2414",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/2414_C2L0.jpg"
+  },
+  "metal-shear-lxt": {
+   "file": "public/equipment/makita/metal-shear-lxt.webp",
+   "makitaModel": "DJS101RTJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DJS101RTJ_C2L0-scaled.jpg"
+  },
+  "cement-shear-lxt": {
+   "file": "public/equipment/makita/cement-shear-lxt.webp",
+   "makitaModel": "DJS800Z",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DJS800Z_C2L0-scaled.jpg"
+  },
+  "metal-shear": {
+   "file": "public/equipment/makita/metal-shear.webp",
+   "makitaModel": "JS1601",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/JS1601_C2L0.jpg"
+  },
+  "steel-rod-cutter-lxt": {
+   "file": "public/equipment/makita/steel-rod-cutter-lxt.webp",
+   "makitaModel": "DSC163ZK",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DSC163ZK_C2L0.jpg"
+  },
+  "straight-grinder": {
+   "file": "public/equipment/makita/straight-grinder.webp",
+   "makitaModel": "GS5000",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/GS5000_C2L0.jpg"
+  },
+  "threaded-rod-cutter-cxt": {
+   "file": "public/equipment/makita/threaded-rod-cutter-cxt.webp",
+   "makitaModel": "SC103DZJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/SC103DZJ_C2L0.jpg"
+  },
+  "threaded-rod-cutter-lxt": {
+   "file": "public/equipment/makita/threaded-rod-cutter-lxt.webp",
+   "makitaModel": "DSC102ZJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DSC102ZJ_C2L0-scaled.jpg"
+  }
+ },
+ "familyHeroes": {
+  "makita-rotary-combination-hammers": {
+   "file": "public/equipment/website/makita-rotary-combination-hammers.webp",
+   "fromProduct": "combination-hammer-xgt",
+   "makitaModel": "HR002GM201",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HR002GM201_C2L0.jpg"
+  },
+  "makita-demolition-hammers-breakers": {
+   "file": "public/equipment/website/makita-demolition-hammers-breakers.webp",
+   "fromProduct": "electric-breaker",
+   "makitaModel": "HM1511",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/HM1511_C2L0.jpg"
+  },
+  "makita-power-cutters": {
+   "file": "public/equipment/website/makita-power-cutters.webp",
+   "fromProduct": "power-cutter",
+   "makitaModel": "EK7301WS",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/EK7301WS_C2L0.jpg"
+  },
+  "makita-wall-chasers-tile-cutters": {
+   "file": "public/equipment/website/makita-wall-chasers-tile-cutters.webp",
+   "fromProduct": "tile-cutter",
+   "makitaModel": "4100NH",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/4100NH_C2L0.jpg"
+  },
+  "makita-concrete-planers-power-scrapers": {
+   "file": "public/equipment/website/makita-concrete-planers-power-scrapers.webp",
+   "fromProduct": "concrete-planer",
+   "makitaModel": "PC5000C",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/PC5000C_C2L0.jpg"
+  },
+  "makita-angle-grinders": {
+   "file": "public/equipment/website/makita-angle-grinders.webp",
+   "fromProduct": "angle-grinder-xgt",
+   "makitaModel": "GA004GM202",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/GA004GM101_C2L0.jpg"
+  },
+  "makita-die-straight-bench-grinders": {
+   "file": "public/equipment/website/makita-die-straight-bench-grinders.webp",
+   "fromProduct": "die-grinder",
+   "makitaModel": "906H",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/906H_C2L0-scaled.jpg"
+  },
+  "makita-sanders-polishers": {
+   "file": "public/equipment/website/makita-sanders-polishers.webp",
+   "fromProduct": "polisher-xgt",
+   "makitaModel": "PV001GZ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/PV001GZ_C2L0.jpg"
+  },
+  "makita-metal-cutters-cut-off-saws": {
+   "file": "public/equipment/website/makita-metal-cutters-cut-off-saws.webp",
+   "fromProduct": "portable-cut-off",
+   "makitaModel": "2414",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/2414_C2L0.jpg"
+  },
+  "makita-portable-band-saws": {
+   "file": "public/equipment/website/makita-portable-band-saws.webp",
+   "fromProduct": "portable-band-saw-xgt",
+   "makitaModel": "PB002GZ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/PB002GZ_C2L0.jpg"
+  },
+  "makita-shears-nibblers-punchers": {
+   "file": "public/equipment/website/makita-shears-nibblers-punchers.webp",
+   "fromProduct": "metal-shear-lxt",
+   "makitaModel": "DJS101RTJ",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DJS101RTJ_C2L0-scaled.jpg"
+  },
+  "makita-rod-cutters": {
+   "file": "public/equipment/website/makita-rod-cutters.webp",
+   "fromProduct": "steel-rod-cutter-lxt",
+   "makitaModel": "DSC163ZK",
+   "sourceUrl": "https://makita.co.tz/wp-content/uploads/DSC163ZK_C2L0.jpg"
+  }
+ },
+ "noImage": [
+  "compact-cut-off-lxt (DMC300: no image on makita.co.tz)"
+ ]
+}
