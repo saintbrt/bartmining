@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import CtaSection from '@/components/sections/CtaSection'
 import LeachTankCalculator from '@/components/tools/LeachTankCalculator'
+import LeachTankPlantIllustration from '@/components/tools/LeachTankPlantIllustration'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE, breadcrumbSchema } from '@/lib/seo'
 
@@ -58,6 +59,7 @@ export default function KikokotooPage() {
           <p style={{ marginTop: 16, fontSize: 15 }} lang="en">
             Reading in English? <Link href="/tools/leach-tank-calculator" style={{ color: 'var(--gold)', fontWeight: 600 }}>Use the calculator in English</Link>
           </p>
+          <LeachTankPlantIllustration lang="sw" />
         </div>
       </section>
 
@@ -106,7 +108,6 @@ export default function KikokotooPage() {
       />
 
       <style>{`
-        .tool-prose { max-width: 760px; }
         .tool-prose h2 { font-size: clamp(22px, 2.6vw, 28px); margin: 28px 0 12px; }
         .tool-prose h2:first-child { margin-top: 0; }
         .tool-prose p { color: var(--ink-2); font-size: 17px; line-height: 1.7; }

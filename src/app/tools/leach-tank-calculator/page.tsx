@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 import CtaSection from '@/components/sections/CtaSection'
 import LeachTankCalculator from '@/components/tools/LeachTankCalculator'
+import LeachTankPlantIllustration from '@/components/tools/LeachTankPlantIllustration'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE, breadcrumbSchema } from '@/lib/seo'
 
@@ -58,6 +59,7 @@ export default function LeachTankCalculatorPage() {
           <p style={{ marginTop: 16, fontSize: 15 }} lang="sw">
             Unasoma Kiswahili? <Link href="/insights-swahili/kikokotoo-cha-tanki-la-leaching" style={{ color: 'var(--gold)', fontWeight: 600 }}>Tumia kikokotoo kwa Kiswahili</Link>
           </p>
+          <LeachTankPlantIllustration />
         </div>
       </section>
 
@@ -106,7 +108,6 @@ export default function LeachTankCalculatorPage() {
       />
 
       <style>{`
-        .tool-prose { max-width: 760px; }
         .tool-prose h2 { font-size: clamp(22px, 2.6vw, 28px); margin: 28px 0 12px; }
         .tool-prose h2:first-child { margin-top: 0; }
         .tool-prose p { color: var(--ink-2); font-size: 17px; line-height: 1.7; }

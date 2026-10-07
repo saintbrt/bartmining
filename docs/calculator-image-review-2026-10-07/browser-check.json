@@ -1,0 +1,251 @@
+{
+  "checks": [
+    {
+      "route": "/tools/leach-tank-calculator",
+      "width": 1920,
+      "top": {
+        "left": 340,
+        "right": 1580,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "calculator": {
+        "left": 340,
+        "right": 1580,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "lower": {
+        "left": 340,
+        "right": 1580,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "illustrationFrame": {
+        "left": 372,
+        "right": 1548,
+        "width": 1176,
+        "paddingLeft": "0px",
+        "paddingRight": "0px"
+      },
+      "overflow": false,
+      "image": {
+        "src": "http://127.0.0.1:3002/_next/image?url=%2Ftools%2Fcil-cip-tank-train.webp&w=3840&q=85",
+        "alt": "Six agitated gold-processing tanks connected by pipes, with overhead motors, an access walkway and slurry pumps",
+        "width": 1176,
+        "height": 882,
+        "fit": "contain"
+      },
+      "caption": "Agitated tanks in a gold-processing circuit. The calculator estimates their working volume; tank dimensions, agitators and the number of stages need a process design based on your test results."
+    },
+    {
+      "route": "/insights-swahili/kikokotoo-cha-tanki-la-leaching",
+      "width": 1920,
+      "top": {
+        "left": 340,
+        "right": 1580,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "calculator": {
+        "left": 340,
+        "right": 1580,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "lower": {
+        "left": 340,
+        "right": 1580,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "illustrationFrame": {
+        "left": 372,
+        "right": 1548,
+        "width": 1176,
+        "paddingLeft": "0px",
+        "paddingRight": "0px"
+      },
+      "overflow": false,
+      "image": {
+        "src": "http://127.0.0.1:3002/_next/image?url=%2Ftools%2Fcil-cip-tank-train.webp&w=3840&q=85",
+        "alt": "Matanki sita ya kuchakata dhahabu yenye vichanganyio, mabomba yanayoyaunganisha, mota za juu, njia ya kufikia matanki na pampu za tope",
+        "width": 1176,
+        "height": 882,
+        "fit": "contain"
+      },
+      "caption": "Matanki yenye vichanganyio kwenye mzunguko wa kuchakata dhahabu. Kikokotoo hukadiria ujazo wa kazi; vipimo vya matanki, vichanganyio na idadi ya hatua vinahitaji usanifu wa mchakato kutokana na matokeo ya majaribio yako."
+    },
+    {
+      "route": "/tools/leach-tank-calculator",
+      "width": 1440,
+      "top": {
+        "left": 100,
+        "right": 1340,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "calculator": {
+        "left": 100,
+        "right": 1340,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "lower": {
+        "left": 100,
+        "right": 1340,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "illustrationFrame": {
+        "left": 132,
+        "right": 1308,
+        "width": 1176,
+        "paddingLeft": "0px",
+        "paddingRight": "0px"
+      },
+      "overflow": false,
+      "image": {
+        "src": "http://127.0.0.1:3002/_next/image?url=%2Ftools%2Fcil-cip-tank-train.webp&w=3840&q=85",
+        "alt": "Six agitated gold-processing tanks connected by pipes, with overhead motors, an access walkway and slurry pumps",
+        "width": 1176,
+        "height": 882,
+        "fit": "contain"
+      },
+      "caption": "Agitated tanks in a gold-processing circuit. The calculator estimates their working volume; tank dimensions, agitators and the number of stages need a process design based on your test results."
+    },
+    {
+      "route": "/insights-swahili/kikokotoo-cha-tanki-la-leaching",
+      "width": 1440,
+      "top": {
+        "left": 100,
+        "right": 1340,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "calculator": {
+        "left": 100,
+        "right": 1340,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "lower": {
+        "left": 100,
+        "right": 1340,
+        "width": 1240,
+        "paddingLeft": "32px",
+        "paddingRight": "32px"
+      },
+      "illustrationFrame": {
+        "left": 132,
+        "right": 1308,
+        "width": 1176,
+        "paddingLeft": "0px",
+        "paddingRight": "0px"
+      },
+      "overflow": false,
+      "image": {
+        "src": "http://127.0.0.1:3002/_next/image?url=%2Ftools%2Fcil-cip-tank-train.webp&w=3840&q=85",
+        "alt": "Matanki sita ya kuchakata dhahabu yenye vichanganyio, mabomba yanayoyaunganisha, mota za juu, njia ya kufikia matanki na pampu za tope",
+        "width": 1176,
+        "height": 882,
+        "fit": "contain"
+      },
+      "caption": "Matanki yenye vichanganyio kwenye mzunguko wa kuchakata dhahabu. Kikokotoo hukadiria ujazo wa kazi; vipimo vya matanki, vichanganyio na idadi ya hatua vinahitaji usanifu wa mchakato kutokana na matokeo ya majaribio yako."
+    },
+    {
+      "route": "/tools/leach-tank-calculator",
+      "width": 390,
+      "top": {
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "paddingLeft": "20px",
+        "paddingRight": "20px"
+      },
+      "calculator": {
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "paddingLeft": "20px",
+        "paddingRight": "20px"
+      },
+      "lower": {
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "paddingLeft": "20px",
+        "paddingRight": "20px"
+      },
+      "illustrationFrame": {
+        "left": 20,
+        "right": 370,
+        "width": 350,
+        "paddingLeft": "0px",
+        "paddingRight": "0px"
+      },
+      "overflow": false,
+      "image": {
+        "src": "http://127.0.0.1:3002/_next/image?url=%2Ftools%2Fcil-cip-tank-train.webp&w=3840&q=85",
+        "alt": "Six agitated gold-processing tanks connected by pipes, with overhead motors, an access walkway and slurry pumps",
+        "width": 350,
+        "height": 262,
+        "fit": "contain"
+      },
+      "caption": "Agitated tanks in a gold-processing circuit. The calculator estimates their working volume; tank dimensions, agitators and the number of stages need a process design based on your test results."
+    },
+    {
+      "route": "/insights-swahili/kikokotoo-cha-tanki-la-leaching",
+      "width": 390,
+      "top": {
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "paddingLeft": "20px",
+        "paddingRight": "20px"
+      },
+      "calculator": {
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "paddingLeft": "20px",
+        "paddingRight": "20px"
+      },
+      "lower": {
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "paddingLeft": "20px",
+        "paddingRight": "20px"
+      },
+      "illustrationFrame": {
+        "left": 20,
+        "right": 370,
+        "width": 350,
+        "paddingLeft": "0px",
+        "paddingRight": "0px"
+      },
+      "overflow": false,
+      "image": {
+        "src": "http://127.0.0.1:3002/_next/image?url=%2Ftools%2Fcil-cip-tank-train.webp&w=3840&q=85",
+        "alt": "Matanki sita ya kuchakata dhahabu yenye vichanganyio, mabomba yanayoyaunganisha, mota za juu, njia ya kufikia matanki na pampu za tope",
+        "width": 350,
+        "height": 262,
+        "fit": "contain"
+      },
+      "caption": "Matanki yenye vichanganyio kwenye mzunguko wa kuchakata dhahabu. Kikokotoo hukadiria ujazo wa kazi; vipimo vya matanki, vichanganyio na idadi ya hatua vinahitaji usanifu wa mchakato kutokana na matokeo ya majaribio yako."
+    }
+  ],
+  "errors": []
+}

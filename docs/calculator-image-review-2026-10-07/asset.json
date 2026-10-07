@@ -1,0 +1,11 @@
+{
+  "asset": "/tools/cil-cip-tank-train.webp",
+  "width": 1448,
+  "height": 1086,
+  "bytes": 256790,
+  "sha256": "69305c26699a5b64bf5c3f4bcd1010d10b27d32e11c32f91207598c860840e1e",
+  "references": [
+    "https://www.metso.com/portfolio/oktop-cil-reactor/",
+    "https://www.metso.com/portfolio/gold-cyanide-leaching-process/"
+  ]
+}
