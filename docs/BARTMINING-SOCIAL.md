@@ -142,7 +142,7 @@ Full-bleed needs ~1080 × 1350. Current files:
 | `centrifugal-gold-concentrator.jpg` | 1500 × 1500 | Full bleed ✅ |
 | `cil-cip-plant.jpg` | 1600 × 1000 | Borderline → step 2 |
 | `gold-elution-electrowinning-plant.jpg` | 1100 × 760 | Too small → step 2 |
-| `alluvial-gold-wash-plant.jpg` | **600 × 450** | Too small → step 2 (needed for 01, 04 covers) |
+| `equipment/website/alluvial-gold-wash-plant-v2.webp` | **1448 × 1086** | Replaced on 7 Oct 2026; retired image keys resolve to this illustration |
 | `trommel-screen.jpg` | **573 × 377** | Too small → step 2 |
 | `sluice-box-gold-jig.webp` | **550 × 550** | Too small → step 2 |
 | `team/allan-bartholomew.jpg` | **600 × 682** | `light-card` portrait only (no substitute allowed) |

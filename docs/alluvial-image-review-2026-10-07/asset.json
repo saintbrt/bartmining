@@ -1,0 +1,23 @@
+{
+  "asset": "/equipment/website/alluvial-gold-wash-plant-v2.webp",
+  "width": 1448,
+  "height": 1086,
+  "bytes": 258012,
+  "sha256": "0668161b7b74bfce61675aa80d8843fdf5d8b435356f79d367b43e5dcb1a19fe",
+  "retired": [
+    {
+      "path": "public/equipment/alluvial-gold-wash-plant.jpg",
+      "bytes": 58399,
+      "sha256": "50990e435c258abaabccadcd885f5f73fbeff9b16befb1aecd2af92f70f0b8a3"
+    },
+    {
+      "path": "public/equipment/website/alluvial-gold-wash-plant.webp",
+      "bytes": 225056,
+      "sha256": "68dd23e4571990004acd76c96190c2b748975e2f956aa191675ce1e3195824fc"
+    }
+  ],
+  "references": [
+    "https://www.msi-mining.com/t5.html",
+    "https://www.msi-mining.com/t8.html"
+  ]
+}

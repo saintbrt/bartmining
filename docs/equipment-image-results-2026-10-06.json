@@ -178,10 +178,34 @@
   {
     "slug": "alluvial-gold-wash-plant",
     "kind": "illustration",
-    "src": "/equipment/website/alluvial-gold-wash-plant.webp",
+    "src": "/equipment/website/alluvial-gold-wash-plant-v2.webp",
     "width": 1448,
     "height": 1086,
-    "bytes": 225056
+    "bytes": 258012
+  },
+  {
+    "slug": "flotation-cell",
+    "kind": "illustration",
+    "src": "/equipment/website/flotation-cell.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 158430
+  },
+  {
+    "slug": "magnetic-separator",
+    "kind": "illustration",
+    "src": "/equipment/website/magnetic-separator.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 152992
+  },
+  {
+    "slug": "spiral-classifier",
+    "kind": "illustration",
+    "src": "/equipment/website/spiral-classifier.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 134232
   },
   {
     "slug": "1-ton-winch",

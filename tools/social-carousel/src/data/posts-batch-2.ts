@@ -139,12 +139,12 @@ export const POSTS_BATCH_2: Post[] = [
 
   {
     id: 'IG-25',
-    title: 'Battery Minerals in Tanzania',
+    title: 'Nickel and graphite projects are advancing in Tanzania',
     pillar: 'news',
     status: 'review',
     signOff: 'bartholomew',
     slides: [
-      { id: 'cover', template: 'photo-overlay', eyebrow: 'Tanzania News · 2026', headline: 'Tanzania’s Battery Mineral Projects', sub: 'Nickel and graphite projects are advancing alongside gold, adding demand for equipment, services and skilled workers.', image: 'social/news-battery-1.png', imageAlt: 'Sulphide-bearing drill cores and a separate graphite-rich rock specimen.', note: 'Sources: TanzaniaInvest; Mining Weekly; Crux Investor.', crop },
+      { id: 'cover', template: 'photo-overlay', eyebrow: 'Tanzania News · 2026', headline: 'Nickel and graphite projects are advancing in Tanzania', sub: 'Nickel and graphite projects are advancing alongside gold, adding demand for equipment, services and skilled workers.', image: 'social/news-battery-1.png', imageAlt: 'Sulphide-bearing drill cores and a separate graphite-rich rock specimen.', note: 'Sources: TanzaniaInvest; Mining Weekly; Crux Investor.', crop },
       { id: 'kabanga', template: 'stat', eyebrow: 'Kabanga nickel', stat: 'USD 942m', headline: 'Kabanga’s Investment Decision', sub: 'The project is estimated to cost about USD 942 million. Its final investment decision was expected in late 2026, although recent reports point to early 2027.', image: 'social/news-battery-2.png', imageAlt: 'Level concrete equipment pads and prepared utility connections at a generic site.', note: 'FID timing conflicts between sources (late 2026 vs Q1 2027). Re-check before posting.', crop },
       { id: 'refinery', template: 'cover-dark', eyebrow: 'Local refining', headline: 'A Planned Refinery at Kahama', sub: 'The development plan includes a hydrometallurgical refinery at Kahama to produce battery-grade nickel, copper and cobalt, staged after concentrate production begins.', image: 'social/news-battery-3.png', imageAlt: 'Conceptual process vessels, pumps, pipes and access platforms inside a refinery hall.', note: 'Source: TanzaniaInvest; Mining Weekly.', crop },
       { id: 'graphite', template: 'cover-dark', eyebrow: 'Mahenge graphite', headline: 'Early Works at Mahenge Graphite', sub: 'Black Rock Mining’s early works at the Mahenge graphite project in Ulanga were scheduled to finish by mid-2026, ahead of a final investment decision.', image: 'social/news-battery-4.png', imageAlt: 'A dark graphite-rich specimen beside a dish of loose graphite flakes.', note: 'Source: TanzaniaInvest. Check whether works completed.', crop },

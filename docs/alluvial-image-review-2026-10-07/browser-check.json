@@ -1,0 +1,276 @@
+{
+  "checks": [
+    {
+      "route": "/insights/water-recycling-gold-plant",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin sluices, water tank and pump",
+          "width": 935,
+          "height": 701,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/insights-swahili/kurejesha-maji-kwenye-mtambo",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice, tanki la maji na pampu",
+          "width": 935,
+          "height": 701,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/insights/mining-equipment-cost-tanzania",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin sluices, water tank and pump",
+          "width": 935,
+          "height": 701,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/insights-swahili/bei-ya-vifaa-vya-uchimbaji",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice, tanki la maji na pampu",
+          "width": 935,
+          "height": 701,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/equipment/alluvial-gold-wash-plant",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "An alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin recovery sluices, water tank and pump for washing and gravity separation.",
+          "width": 1176,
+          "height": 882,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    },
+    {
+      "route": "/equipment-swahili/alluvial-gold-wash-plant",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice ya kutenganisha dhahabu, tanki la maji na pampu kwa kuosha na kutenganisha kwa tofauti za uzito.",
+          "width": 1176,
+          "height": 882,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    },
+    {
+      "route": "/equipment",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "An alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin recovery sluices, water tank and pump for washing and gravity separation.",
+          "width": 720,
+          "height": 539,
+          "fit": "contain"
+        },
+        {
+          "alt": "An alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin recovery sluices, water tank and pump for washing and gravity separation.",
+          "width": 310,
+          "height": 232,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 1440,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice ya kutenganisha dhahabu, tanki la maji na pampu kwa kuosha na kutenganisha kwa tofauti za uzito.",
+          "width": 720,
+          "height": 539,
+          "fit": "contain"
+        },
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice ya kutenganisha dhahabu, tanki la maji na pampu kwa kuosha na kutenganisha kwa tofauti za uzito.",
+          "width": 310,
+          "height": 232,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    },
+    {
+      "route": "/insights/water-recycling-gold-plant",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin sluices, water tank and pump",
+          "width": 390,
+          "height": 292,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/insights-swahili/kurejesha-maji-kwenye-mtambo",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice, tanki la maji na pampu",
+          "width": 390,
+          "height": 292,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/insights/mining-equipment-cost-tanzania",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin sluices, water tank and pump",
+          "width": 390,
+          "height": 292,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/insights-swahili/bei-ya-vifaa-vya-uchimbaji",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice, tanki la maji na pampu",
+          "width": 390,
+          "height": 292,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": "contain"
+    },
+    {
+      "route": "/equipment/alluvial-gold-wash-plant",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "An alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin recovery sluices, water tank and pump for washing and gravity separation.",
+          "width": 326,
+          "height": 244,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    },
+    {
+      "route": "/equipment-swahili/alluvial-gold-wash-plant",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice ya kutenganisha dhahabu, tanki la maji na pampu kwa kuosha na kutenganisha kwa tofauti za uzito.",
+          "width": 326,
+          "height": 244,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    },
+    {
+      "route": "/equipment",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "An alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin recovery sluices, water tank and pump for washing and gravity separation.",
+          "width": 390,
+          "height": 292,
+          "fit": "contain"
+        },
+        {
+          "alt": "An alluvial gold wash plant with a feed hopper, spray-equipped trommel, twin recovery sluices, water tank and pump for washing and gravity separation.",
+          "width": 195,
+          "height": 146,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 390,
+      "overflow": false,
+      "replacementImages": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice ya kutenganisha dhahabu, tanki la maji na pampu kwa kuosha na kutenganisha kwa tofauti za uzito.",
+          "width": 390,
+          "height": 292,
+          "fit": "contain"
+        },
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice ya kutenganisha dhahabu, tanki la maji na pampu kwa kuosha na kutenganisha kwa tofauti za uzito.",
+          "width": 195,
+          "height": 146,
+          "fit": "contain"
+        }
+      ],
+      "retiredImages": 0,
+      "coverFit": null
+    }
+  ],
+  "social": {
+    "current": "/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/website/alluvial-gold-wash-plant-v2.webp",
+    "oldJpg": "/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/website/alluvial-gold-wash-plant-v2.webp",
+    "oldWebp": "/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/website/alluvial-gold-wash-plant-v2.webp",
+    "listed": true
+  },
+  "imageStatus": 200,
+  "errors": []
+}

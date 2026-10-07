@@ -365,7 +365,7 @@ Explain kW versus kVA, prime versus standby, simultaneous running load, motor-st
 
 The planned carousel is **How a gold wash plant works in seven steps**. Derive its sequence from the reviewed main guide, not the unreviewed snapshot. Each slide should explain one process change in a complete, natural sentence, with a diagram crop or an appropriate illustration. Finish with the project inputs needed to discuss a plant. Use `tools/social-carousel` only after checking its current working content; those files include separate ongoing work.
 
-Available catalogue references include `public/equipment/rotary-scrubber.jpeg`, `trommel-screen.jpg`, `centrifugal-gold-concentrator.jpg`, `sluice-box-gold-jig.webp`, `shaking-table-gold.jpg` and `alluvial-gold-wash-plant.jpg`. File existence is not evidence of image rights, suitability, resolution or the proposed model. Check those properties before selection, caption references accurately and provide meaningful alt text. Prefer the existing code-native flow for process explanations; no new image generation is needed to assemble these briefs.
+Available catalogue references include `public/equipment/rotary-scrubber.jpeg`, `trommel-screen.jpg`, `centrifugal-gold-concentrator.jpg`, `sluice-box-gold-jig.webp`, `shaking-table-gold.jpg` and `public/equipment/website/alluvial-gold-wash-plant-v2.webp`. File existence is not evidence of image rights, suitability, resolution or the proposed model. Check those properties before selection, caption references accurately and provide meaningful alt text. Prefer the existing code-native flow for process explanations; no new image generation is needed to assemble these briefs.
 
 ### Language, linking and implementation
 

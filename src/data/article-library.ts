@@ -15,8 +15,8 @@ export const SWAHILI_ARTICLES: LibraryArticle[] = [
     cta: { title: 'Andaa bajeti ya plant yako', body: 'Tutumie eneo, taarifa za malighafi, matokeo ya sampuli na majaribio, uwezo unaolengwa na taarifa za maji na umeme. Tutajadili wigo wa vifaa, kufikisha na kazi za eneo.' },
     category: 'Gharama · Tanzania', tags: ['cost', 'equipment', 'gold', 'processing', 'tanzania', 'bei', 'gharama', 'vifaa'],
     date: 'August 2026', updated: 'October 2026', updatedDate: '2026-10-05', readTime: 'Dakika 12 za kusoma',
-    image: '/equipment/alluvial-gold-wash-plant.jpg', imageAlt: 'Vifaa vya kuosha na kutenganisha dhahabu ya alluvial kwenye katalogi ya Bart Mining',
-    imageCaption: 'Picha ya rejea kutoka kwenye katalogi; si picha ya plant iliyofungwa Chunya.',
+    image: '/equipment/website/alluvial-gold-wash-plant-v2.webp', imageAlt: 'Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice, tanki la maji na pampu',
+    imageCaption: 'Mtambo wenye trommel, mifereji ya sluice, tanki la maji na pampu unaonyesha kuosha na kutenganisha kwa tofauti za uzito. Wigo wa pendekezo la Chunya umeelezwa kwenye makala.',
     related: ['gharama-ya-plant-ya-dhahabu', 'bei-ya-mashine-ya-kusaga-mawe'],
   },
   {
@@ -101,8 +101,8 @@ export const SWAHILI_ARTICLES: LibraryArticle[] = [
     cta: { title: 'Panga hesabu ya maji ya mtambo wako', body: 'Tueleze hatua za mtambo na saa za kazi, matumizi ya maji uliyopima, chanzo cha maji wakati wa kiangazi, ardhi ya mabwawa na kama malighafi ina udongo mwingi wa mfinyanzi.' },
     category: 'Uchakataji · Maji', tags: ['processing', 'environment', 'water', 'tanzania', 'maji', 'mabwawa'],
     date: 'October 2026', updated: 'October 2026', updatedDate: '2026-10-07', readTime: 'Dakika 6 za kusoma',
-    image: '/equipment/alluvial-gold-wash-plant.jpg', imageAlt: 'Mtambo wa kuosha dhahabu ya alluvial wenye vifaa vya kuchuja na kuosha',
-    imageCaption: 'Picha ya rejea kutoka kwenye katalogi; mfano wa maji unatumia mtiririko na viwango vya kurejesha vya kudhaniwa.',
+    image: '/equipment/website/alluvial-gold-wash-plant-v2.webp', imageAlt: 'Mtambo wa dhahabu ya alluvial wenye hopper, trommel ya kunyunyizia maji, mifereji miwili ya sluice, tanki la maji na pampu',
+    imageCaption: 'Mtambo wenye trommel, mifereji ya sluice, tanki la maji na pampu; mabwawa ya kutuliza au thickener ni hatua tofauti. Mfano wa hesabu ya maji unatumia mtiririko na viwango vya kurejesha vya kudhaniwa.',
     related: ['gharama-ya-plant-ya-dhahabu', 'kinu-cha-dhahabu-pan-mill-au-ball-mill'],
   },
   {

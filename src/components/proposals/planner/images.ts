@@ -11,7 +11,7 @@ const EQUIPMENT = [
   '2-ton-winch.jpg',
   '5-ton-mine-winch.jpg',
   'air-compressor-mining.jpg',
-  'alluvial-gold-wash-plant.jpg',
+  'website/alluvial-gold-wash-plant-v2.webp',
   'backhoe-loader.jpg',
   'ball-mill-gold-ore-alt.jpg',
   'ball-mill-gold-ore.jpg',
@@ -90,6 +90,8 @@ export const IMAGES: Record<string, string> = Object.fromEntries([
 /** Planner keys carry the original extension (social/x.png); match on the name alone. */
 export function imageUrl(key: string | undefined): string | undefined {
   if (!key) return undefined
+  // Imported proposals can still carry the retired image key.
+  if (key === 'equipment/alluvial-gold-wash-plant.jpg') return IMAGES['equipment/website/alluvial-gold-wash-plant-v2.webp']
   if (IMAGES[key]) return IMAGES[key]
   const m = /^social\/(.+)\.\w+$/.exec(key)
   return m ? IMAGES[`social/${m[1]}`] : undefined
@@ -98,4 +100,4 @@ export function imageUrl(key: string | undefined): string | undefined {
 export const IMAGE_KEYS = Object.keys(IMAGES).sort()
 
 export const imageLabel = (key: string) =>
-  key.replace(/^(social|equipment)\//, '').replace(/\.\w+$/, '').replace(/-/g, ' ')
+  key.replace(/^(social|equipment\/website|equipment)\//, '').replace(/\.\w+$/, '').replace(/-/g, ' ')
