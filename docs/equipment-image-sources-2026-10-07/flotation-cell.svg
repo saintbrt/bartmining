@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7F8F8"/><stop offset="1" stop-color="#E9EDEE"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5D676C"/><stop offset=".5" stop-color="#8A959A"/><stop offset="1" stop-color="#4E575B"/></linearGradient>
+<linearGradient id="pulp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E6A62"/><stop offset="1" stop-color="#4A4741"/></linearGradient>
+<radialGradient id="bub" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#C9CED0"/><stop offset="1" stop-color="#8E979B"/></radialGradient>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A6C36"/></marker>
+</defs>
+<rect width="1600" height="1200" fill="url(#bg)"/>
+<rect x="0" y="1010" width="1600" height="190" fill="#D9DFE1"/>
+<g id="cell">
+<rect x="220" y="430" width="320" height="560" fill="url(#steel)" stroke="#2B3134" stroke-width="6"/>
+<rect x="560" y="430" width="320" height="560" fill="url(#steel)" stroke="#2B3134" stroke-width="6"/>
+<rect x="900" y="430" width="320" height="560" fill="url(#steel)" stroke="#2B3134" stroke-width="6"/>
+<rect x="585" y="470" width="270" height="490" fill="url(#pulp)" stroke="#2B3134" stroke-width="4"/>
+<rect x="585" y="470" width="270" height="70" fill="#E4E6E3"/>
+<g fill="url(#bub)" stroke="#7B8487" stroke-width="2">
+<circle cx="612" cy="505" r="22"/><circle cx="652" cy="495" r="25"/><circle cx="695" cy="508" r="20"/><circle cx="735" cy="497" r="26"/><circle cx="778" cy="507" r="21"/><circle cx="818" cy="497" r="23"/><circle cx="845" cy="510" r="14"/>
+<circle cx="632" cy="530" r="13"/><circle cx="715" cy="532" r="14"/><circle cx="800" cy="531" r="13"/>
+</g>
+<g fill="#D7DCDD" opacity=".9"><circle cx="650" cy="620" r="9"/><circle cx="700" cy="590" r="7"/><circle cx="770" cy="640" r="10"/><circle cx="810" cy="600" r="7"/><circle cx="640" cy="700" r="8"/><circle cx="820" cy="690" r="9"/><circle cx="700" cy="680" r="6"/></g>
+<rect x="712" y="300" width="16" height="560" fill="#2B3134"/>
+<rect x="665" y="850" width="110" height="34" rx="6" fill="#1E2326"/>
+<path d="M650 884 h140 l-20 40 h-100z" fill="#3A4245"/>
+<g fill="#2F5C7A" stroke="#1E2326" stroke-width="4"><rect x="330" y="300" width="100" height="90" rx="10"/><rect x="670" y="300" width="100" height="90" rx="10"/><rect x="1010" y="300" width="100" height="90" rx="10"/></g>
+<g fill="#1E2326"><rect x="372" y="390" width="16" height="40"/><rect x="712" y="390" width="16" height="40"/><rect x="1052" y="390" width="16" height="40"/></g>
+<path d="M200 430 h1020 v38 h-1020z" fill="#3F474B"/>
+<path d="M1220 430 h120 l-30 120 h-90z" fill="#3F474B" stroke="#2B3134" stroke-width="4"/>
+<rect x="90" y="600" width="130" height="150" fill="#5D676C" stroke="#2B3134" stroke-width="5"/>
+<rect x="1220" y="780" width="130" height="180" fill="#5D676C" stroke="#2B3134" stroke-width="5"/>
+<g fill="#2B3134"><rect x="240" y="990" width="22" height="30"/><rect x="500" y="990" width="22" height="30"/><rect x="920" y="990" width="22" height="30"/><rect x="1180" y="990" width="22" height="30"/></g>
+</g>
+<g stroke="#8A6C36" stroke-width="8" fill="none" marker-end="url(#ar)">
+<path d="M30 675 H86"/><path d="M1350 870 H1420"/><path d="M1300 560 V630"/><path d="M720 790 V650" stroke-dasharray="14 10"/>
+</g>
+<g font-family="Helvetica, Arial, sans-serif" fill="#14181A" font-size="38" font-weight="600">
+<text x="90" y="575">Feed</text>
+<text x="1430" y="882">Tailings</text>
+<text x="1240" y="680">Concentrate</text>
+<text x="560" y="250">Froth flotation cell bank</text>
+</g>
+<g font-family="Helvetica, Arial, sans-serif" fill="#444C50" font-size="30">
+<text x="300" y="1080">Air bubbles carry mineral particles into the froth;</text>
+<text x="300" y="1122">the froth overflows to the concentrate launder.</text>
+</g>
+</svg>

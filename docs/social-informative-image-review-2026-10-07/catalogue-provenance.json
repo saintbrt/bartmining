@@ -1,0 +1,118 @@
+[
+  {
+    "libraryKey": "social/explainer-elution-1.webp",
+    "source": "docs/equipment-image-prompts-2026-10-06.json",
+    "slug": "gold-elution-electrowinning-plant",
+    "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A compact generic gold elution and electrowinning skid concept, vertical enclosed stainless process vessels, organised interconnecting pipework, a covered rectangular electrowinning cell, service platform with handrails and an unlabelled control cabinet. Keep vessel and cell shapes readable; no chemical recipes or engineering labels.",
+    "tool": "built-in image_gen",
+    "status": "generated",
+    "asset": "/equipment/website/gold-elution-electrowinning-plant.webp",
+    "width": 1448,
+    "height": 1086,
+    "assignments": [
+      {
+        "post": "IG-31",
+        "slide": "cover"
+      }
+    ],
+    "changes": "Identical catalogue illustration copied into the social library; carousel framing only.",
+    "originalLibraryKey": "equipment/website/gold-elution-electrowinning-plant.webp"
+  },
+  {
+    "libraryKey": "social/product-wetmill-1.webp",
+    "source": "docs/equipment-image-prompts-2026-10-06.json",
+    "slug": "wet-pan-mill",
+    "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A gold-ore wet pan mill, round low steel pan containing two large upright grinding rollers on a central driven assembly. Clearly show the circular pan and paired rollers; no ball-mill drum.",
+    "tool": "built-in image_gen",
+    "status": "generated",
+    "asset": "/equipment/website/wet-pan-mill.webp",
+    "width": 1448,
+    "height": 1086,
+    "assignments": [
+      {
+        "post": "IG-34",
+        "slide": "cover"
+      }
+    ],
+    "changes": "Identical catalogue illustration copied into the social library; carousel framing only.",
+    "originalLibraryKey": "equipment/website/wet-pan-mill.webp"
+  },
+  {
+    "libraryKey": "social/product-dewatering-1.webp",
+    "source": "docs/equipment-image-prompts-2026-10-06.json",
+    "slug": "submersible-dewatering-pump",
+    "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A single industrial submersible mine-dewatering pump: upright metal cylindrical body, sturdy lifting handle, screened bottom intake, discharge pipe connection and coiled power cable. Full pump visible; no showroom of unrelated pumps.",
+    "tool": "built-in image_gen",
+    "status": "generated",
+    "asset": "/equipment/website/submersible-dewatering-pump.webp",
+    "width": 1448,
+    "height": 1086,
+    "assignments": [
+      {
+        "post": "IG-36",
+        "slide": "cover"
+      }
+    ],
+    "changes": "Identical catalogue illustration copied into the social library; carousel framing only.",
+    "originalLibraryKey": "equipment/website/submersible-dewatering-pump.webp"
+  },
+  {
+    "libraryKey": "social/product-winch-1.webp",
+    "source": "docs/equipment-image-prompts-2026-10-06.json",
+    "slug": "5-ton-mine-winch",
+    "prompt": "Use case: precise-object-edit. Asset type: Bart Mining equipment catalogue image. Input images: Image 1 is the user's yellow industrial winch reference and is authoritative for the drivetrain layout; Images 2, 3, 4 are respectively the existing 1 tonne, 2 tonne, and 5 tonne website images. Correct the target winch to match the reference's offset parallel-shaft arrangement. Put the electric motor on the FRONT portion of the SAME rectangular base, running alongside the rope drum which sits BEHIND it. The motor's long shaft axis must be PARALLEL to the drum's shaft axis, but clearly OFFSET from it, never coaxial or in a straight line at the end of the drum. A gearbox at one side connects the motor shaft to the drum shaft, with credible bearings, couplings, brake and protected transmission. Both motor and drum are visible side by side in a front three-quarter view, just as in the user's yellow reference. Keep the target's grey steel base, blue motor, restrained yellow safety guards, clean warm off-white studio floor/background and realistic industrial materials. Keep the entire machine and mounting base centred in a landscape 4:3 composition with at least 10 percent clear margins on every side; nothing cropped. No people, logos, labels, lettering, watermarks, capacities printed on the machine or unrelated objects. Do not add a motor hanging past the drum end. This is the user's requested replacement of incorrect winch geometry. Edit Image 4, the heavier 5 tonne mine material winch. Keep a reinforced skid, larger drum and substantial braking/gear drive, visually distinct from the smaller units. Relocate the motor from the far-right inline position to the front, parallel beside the drum.",
+    "tool": "built-in image_gen",
+    "status": "generated",
+    "asset": "/equipment/website/5-ton-mine-winch-parallel-drive.webp",
+    "previousPrompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A heavy-duty industrial mine material winch with a large horizontal steel wire-rope drum, geared motor drive and substantial brake housing mounted on a reinforced steel skid. Show industrial scale and credible machinery, no passenger cage or automotive recovery kit.",
+    "revision": "Corrected motor placement against the user-supplied parallel-drive winch reference on 2026-10-06.",
+    "width": 1448,
+    "height": 1086,
+    "assignments": [
+      {
+        "post": "IG-37",
+        "slide": "cover"
+      }
+    ],
+    "changes": "Identical catalogue illustration copied into the social library; carousel framing only.",
+    "originalLibraryKey": "equipment/website/5-ton-mine-winch-parallel-drive.webp"
+  },
+  {
+    "libraryKey": "social/product-gas-1.webp",
+    "source": "docs/equipment-image-prompts-2026-10-06.json",
+    "slug": "gas-detection-monitor",
+    "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A generic rugged handheld multi-gas monitor, protective rubber housing, simple unlabelled display, visible gas inlet apertures and control buttons, belt clip visible in three-quarter view. No live safety readings, numerical thresholds, brand or certification claims.",
+    "tool": "built-in image_gen",
+    "status": "generated",
+    "asset": "/equipment/website/gas-detection-monitor.webp",
+    "width": 1448,
+    "height": 1086,
+    "assignments": [
+      {
+        "post": "IG-39",
+        "slide": "cover"
+      }
+    ],
+    "changes": "Identical catalogue illustration copied into the social library; carousel framing only.",
+    "originalLibraryKey": "equipment/website/gas-detection-monitor.webp"
+  },
+  {
+    "libraryKey": "social/product-sluice-1.webp",
+    "source": "docs/equipment-image-prompts-2026-10-06.json",
+    "slug": "sluice-box-gold-jig",
+    "prompt": "Use case: product-mockup. Create one crisp high-resolution landscape 4:3 equipment catalogue illustration for Bart Mining. Generic equipment-class reference, not a real customer installation or exact supplied model. Neutral warm off-white studio background and floor, soft diffuse light, realistic industrial materials and believable construction. Three-quarter view. Show the entire subject centred with at least 10 percent clear margins, including its top and base; no edge clipping. Intended to fit a 4:3 card and a 16:9 contain-fit hero. Restrained grey/steel finishes with modest industrial yellow or blue accents where appropriate. No people, logos, watermarks, slogans, labels, dimensions or specification claims. Subject: A gold-recovery sluice box: long shallow inclined metal channel, visible riffles and removable textured capture matting, feed distribution lip and simple adjustable support legs. No mineral jig, no people or gold nuggets.",
+    "tool": "built-in image_gen",
+    "status": "generated",
+    "asset": "/equipment/website/sluice-box-gold-jig.webp",
+    "width": 1448,
+    "height": 1086,
+    "assignments": [
+      {
+        "post": "IG-40",
+        "slide": "cover"
+      }
+    ],
+    "changes": "Identical catalogue illustration copied into the social library; carousel framing only.",
+    "originalLibraryKey": "equipment/website/sluice-box-gold-jig.webp"
+  }
+]

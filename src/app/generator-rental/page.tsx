@@ -85,7 +85,7 @@ export default function GeneratorRentalPage() {
         </div>
       </section>
 
-      <section className="sec-gap" style={{ background: 'var(--paper)' }}>
+      <section id="generator-size-calculator" className="sec-gap" style={{ background: 'var(--paper)' }}>
         <div className="px-site">
           <Reveal className="sec-head">
             <span className="eyebrow">Sizing calculator</span>

@@ -10,6 +10,8 @@ import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue'
 import { LOCATIONS } from '@/data/locations'
 import { SITE, SERVICE_AREAS, itemListSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
+import EquipmentFilters from '@/components/equipment/EquipmentFilters'
+import { GOLD_SPECIFIC, SMALL_SCALE } from '@/data/equipment-facets'
 
 /**
  * Single catalogue section for everything Bart Mining supplies.
@@ -122,15 +124,20 @@ export default function EquipmentHub() {
 
       {/* Catalogue */}
       <div className="px-site" style={{ paddingBottom: 72 }}>
+        <EquipmentFilters
+          categories={groups.map(g => ({ id: g.category, label: g.label }))}
+          labels={{ search: 'Find equipment', searchPlaceholder: 'Search by name or use, e.g. pump, winch, gold', all: 'All equipment', gold: 'Gold recovery', smallScale: 'Common on small-scale (PML) sites', showing: 'Showing {n} of {total} items', none: 'No equipment matches these filters.', reset: 'Clear filters' }}
+        />
+        <div id="eq-catalogue">
         {groups.map((group, gi) => (
-          <section key={group.category} style={{ marginTop: gi === 0 ? 8 : 56 }}>
+          <section key={group.category} data-eq-group style={{ marginTop: gi === 0 ? 8 : 56 }}>
             <div className="eq-grouphead">
               <h2>{group.label}</h2>
               <span>{group.items.length} {group.items.length === 1 ? 'item' : 'items'}</span>
             </div>
             <div className="eq-grid">
               {group.items.map((item, i) => (
-                <Link key={item.slug} href={`/equipment/${item.slug}`} className="eq-card">
+                <Link key={item.slug} href={`/equipment/${item.slug}`} className="eq-card" data-eq-card data-category={item.category} data-gold={GOLD_SPECIFIC.has(item.slug) ? '1' : '0'} data-small={SMALL_SCALE.has(item.slug) ? '1' : '0'} data-text={`${item.name} ${item.description} ${item.searchTerms.join(' ')}`.toLowerCase()}>
                   <EquipmentThumb
                     slug={item.slug}
                     alt={item.name}
@@ -148,6 +155,7 @@ export default function EquipmentHub() {
             </div>
           </section>
         ))}
+        </div>
 
         <section style={{ marginTop: 56 }}>
           <div className="eq-grouphead"><h2>Supply by district</h2></div>

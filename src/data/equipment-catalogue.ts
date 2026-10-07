@@ -16,7 +16,7 @@
 import { EXTRA_EQUIPMENT } from './equipment-extra'
 
 export type EquipCategory =
-  | 'earthmoving' | 'hoisting' | 'processing' | 'exploration'
+  | 'earthmoving' | 'hoisting' | 'processing' | 'minerals' | 'exploration'
   | 'pumping' | 'safety' | 'software' | 'power'
 
 export interface SpecRow { label: string; value: string }
@@ -58,6 +58,7 @@ export const CATEGORY_LABELS: Record<EquipCategory, string> = {
   earthmoving: 'Earthmoving & Construction',
   hoisting: 'Hoisting & Lifting',
   processing: 'Gold Processing & Recovery',
+  minerals: 'Critical & Base Minerals Processing',
   exploration: 'Exploration & Drilling',
   pumping: 'Pumps & Dewatering',
   safety: 'Mine Safety Equipment',
@@ -256,7 +257,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'Single drum or double drum?', a: 'Single drum is simpler and cheaper and suits a single conveyance with a counterweight or none. Double drum allows two conveyances in balance, roughly halving energy per tonne hoisted and doubling cycle throughput, at higher capital cost and more complex control. Below about 150 m and 100 t/day, single drum usually wins.' },
       { q: 'What rope safety factor applies to a 5 ton mine winch?', a: 'Goods hoisting is commonly designed to 5:1 minimum against rope minimum breaking load. Personnel hoisting requires substantially higher, typically 8:1 or more, with the exact figure set by the applicable mining regulation. Rope must then be discarded on ISO 4309 criteria regardless of remaining calculated margin.' },
     ],
-    related: ['2-ton-winch', 'mine-hoist-headframe', 'wire-rope-slings-lifting-tackle'],
+    related: ['2-ton-winch', 'mine-hoist-headframe', 'wire-rope-slings-lifting-tackle', 'submersible-dewatering-pump'],
     image: IMG.hoist,
     imageAlt: 'Double drum mine hoisting winch in a winder house',
     updated: UPDATED,
@@ -587,7 +588,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'Should tanks be bolted or welded?', a: 'For remote Tanzanian sites, bolted panel tanks are often the better choice because they ship flat in containers and are assembled on site. Welded tanks need fabrication on site or oversized road transport. Both work if the lining and sealing are done properly.' },
       { q: 'Can I use leaching tanks with an existing vat leach site?', a: 'Yes. Operators commonly add a regrind mill and a short tank train to treat material that vats leach poorly. The fine gold locked in particles only dissolves after grinding, which is why agitated leaching often recovers gold that vats leave behind.' },
     ],
-    related: ['cil-cip-plant', 'gold-elution-electrowinning-plant', 'slurry-pump'],
+    related: ['cil-cip-plant', 'gold-elution-electrowinning-plant', 'slurry-pump', 'gas-detection-monitor'],
     image: IMG.plant,
     imageAlt: 'Row of agitated gold leaching tanks at a CIL plant',
     updated: '2026-10-05',
@@ -805,7 +806,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'How do I adjust a shaking table?', a: 'Three controls interact: deck slope, stroke length and wash water. Increase slope or water to push more material to tailings and raise concentrate grade; reduce them to raise recovery at lower grade. Change one variable at a time and let the deck stabilise for several minutes before judging.' },
       { q: 'Can a shaking table replace mercury?', a: 'Yes, for the final concentration step. Combined with a centrifugal concentrator upstream, a table produces a concentrate clean enough to smelt directly, removing any need for amalgamation. This pairing is the standard mercury-free route for small-scale operations.' },
     ],
-    related: ['centrifugal-gold-concentrator', 'wet-pan-mill', 'trommel-screen'],
+    related: ['centrifugal-gold-concentrator', 'wet-pan-mill', 'trommel-screen', 'cil-cip-plant'],
     image: IMG.gold,
     imageAlt: 'Gold concentrating shaking table with riffled deck',
     updated: UPDATED,
@@ -1028,7 +1029,7 @@ export const EQUIPMENT: Equipment[] = [
       { q: 'What does milky oil in the seal chamber mean?', a: 'Water has passed the outer mechanical seal. The inner seal is still protecting the motor, but it is now the only barrier. Change the oil and seals at that point. Continuing to run reliably ends in a burnt-out motor and a much larger bill.' },
       { q: 'Can a submersible pump handle muddy water with sand?', a: 'Yes within limits, but sand accelerates wear enormously. For persistently sandy water, specify a high-chrome wet end and an agitator model designed for slurry, and accept a shorter service interval. A standard clean-water submersible in sandy sump duty may last only weeks.' },
     ],
-    related: ['slurry-pump', 'diesel-generator-mining', 'mine-ventilation-fan'],
+    related: ['slurry-pump', 'diesel-generator-mining', 'mine-ventilation-fan', '5-ton-mine-winch'],
     image: IMG.water,
     imageAlt: 'Submersible dewatering pump lowered into a mine sump',
     updated: UPDATED,
@@ -1593,7 +1594,7 @@ export const EQUIPMENT: Equipment[] = [
 export const EQUIPMENT_BY_SLUG = new Map(EQUIPMENT.map(e => [e.slug, e]))
 
 export function equipmentByCategory(): { category: EquipCategory; label: string; items: Equipment[] }[] {
-  const order: EquipCategory[] = ['earthmoving', 'hoisting', 'processing', 'exploration', 'pumping', 'safety', 'software', 'power']
+  const order: EquipCategory[] = ['earthmoving', 'hoisting', 'processing', 'minerals', 'exploration', 'pumping', 'safety', 'software', 'power']
   return order.map(category => ({
     category,
     label: CATEGORY_LABELS[category],

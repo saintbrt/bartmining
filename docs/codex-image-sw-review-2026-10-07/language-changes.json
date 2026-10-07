@@ -1,0 +1,102 @@
+[
+  {
+    "file": "src/content/sw/wet-pan-mill-vs-ball-mill.ts",
+    "replacements": 10
+  },
+  {
+    "file": "src/content/sw/mine-winch-headframe-sizing.ts",
+    "replacements": 8
+  },
+  {
+    "file": "src/content/sw/shaft-dewatering-staged-pumping.ts",
+    "replacements": 7
+  },
+  {
+    "file": "src/content/sw/water-recycling-gold-plant.ts",
+    "replacements": 15
+  },
+  {
+    "file": "src/content/sw/copper-ore-processing-tanzania.ts",
+    "replacements": 6
+  },
+  {
+    "file": "src/content/sw/flotation-graphite-copper.ts",
+    "replacements": 11
+  },
+  {
+    "file": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "replacements": 7
+  },
+  {
+    "file": "src/content/sw/magnetic-vs-gravity-separation.ts",
+    "replacements": 7
+  },
+  {
+    "file": "src/content/equipment/sw/leaching-tank.ts",
+    "replacements": 7
+  },
+  {
+    "file": "src/content/equipment/sw/self-contained-self-rescuer.ts",
+    "replacements": 3
+  },
+  {
+    "file": "src/content/equipment/sw/filter-press.ts",
+    "replacements": 4
+  },
+  {
+    "file": "src/content/equipment/sw/winch-selection.ts",
+    "replacements": 2
+  },
+  {
+    "file": "src/content/equipment/sw/pneumatic-rock-drill.ts",
+    "replacements": 4
+  },
+  {
+    "file": "src/content/equipment/sw/diesel-generator-mining.ts",
+    "replacements": 2
+  },
+  {
+    "file": "src/content/equipment/sw/centrifugal-gold-concentrator.ts",
+    "replacements": 4
+  },
+  {
+    "file": "src/app/insights-swahili/kikokotoo-cha-tanki-la-leaching/page.tsx",
+    "replacements": 5
+  },
+  {
+    "file": "src/components/tools/LeachTankCalculator.tsx",
+    "replacements": 4
+  },
+  {
+    "file": "src/data/article-library.ts",
+    "replacements": 9
+  },
+  {
+    "file": "src/data/insights.ts",
+    "replacements": 4
+  },
+  {
+    "file": "src/data/article-faqs.json",
+    "scope": "target entries only"
+  },
+  {
+    "file": "src/data/equipment-catalogue-sw.json",
+    "scope": "target entries only"
+  },
+  {
+    "file": "src/content/sw/wet-pan-mill-vs-ball-mill.ts",
+    "followUp": "Condensed opening and liberation/tonnage labels while preserving material guidance and the existing reading-time value."
+  },
+  {
+    "file": "src/data/equipment-image-copy.json",
+    "scope": "Three new Kiswahili captions; original JSON formatting retained."
+  },
+  {
+    "file": "tools/social-carousel/src/data/posts-batch-2.ts",
+    "scope": "Two image descriptions updated for the blank notebook and supported magnet; copy, numerical claims and review status retained."
+  },
+  {
+    "file": "src/components/insights/ArticleLayout.tsx",
+    "scope": "Contain catalogue illustration covers using the imagery manifest; affects four paired guide pages in the current inventory."
+  }
+]

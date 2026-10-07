@@ -448,5 +448,32 @@
     "width": 1600,
     "height": 1200,
     "bytes": 391514
+  },
+  {
+    "slug": "flotation-cell",
+    "name": "Froth Flotation Cell",
+    "category": "minerals",
+    "src": null,
+    "width": null,
+    "height": null,
+    "bytes": null
+  },
+  {
+    "slug": "magnetic-separator",
+    "name": "Magnetic Separator",
+    "category": "minerals",
+    "src": null,
+    "width": null,
+    "height": null,
+    "bytes": null
+  },
+  {
+    "slug": "spiral-classifier",
+    "name": "Spiral Classifier",
+    "category": "minerals",
+    "src": null,
+    "width": null,
+    "height": null,
+    "bytes": null
   }
 ]

@@ -198,6 +198,33 @@
       "tool": "built-in image_gen",
       "status": "generated",
       "asset": "/equipment/website/pneumatic-rock-drill.webp"
+    },
+    {
+      "slug": "flotation-cell",
+      "prompt": "Use case: product-mockup. Create one high resolution 2048 by 1536 landscape catalogue illustration for Bart Mining's froth flotation cell equipment page. A single industrial bank of three mechanical froth flotation cells in a row: rectangular steel tanks on short legs, an electric drive motor and belt guard on top of each cell driving a vertical impeller shaft, a continuous froth launder along the front lip with grey-white mineral froth overflowing into it, a feed box at the left end and a tailings box at the right end, steel walkway handrail along the top. Show the whole bank in three-quarter front view, fully inside the frame with generous clear margins. Neutral warm off-white studio background and floor, soft diffuse daylight, restrained steel grey tanks with yellow safety guards, blue motors, crisp realistic metal textures. Product occupies about 75 percent of frame width. No people, logos, watermarks, text, labels, branding, specifications or unrelated machinery. This is a generic equipment-class illustration, not a documentary photo or exact model. It must fit a 4:3 catalogue card and a 16:9 product window without cropping the machine.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/flotation-cell.webp",
+      "previousPrompt": "Code-drawn technical schematic (SVG, no image model): three-cell froth flotation bank with cut-away middle cell, impeller, froth and launders. Labelled process flows in the site palette. Source: docs/equipment-image-sources-2026-10-07/flotation-cell.svg.",
+      "revision": "2026-10-07: replaced code-drawn schematic with a reviewed generic catalogue illustration; schematic source retained."
+    },
+    {
+      "slug": "magnetic-separator",
+      "prompt": "Use case: product-mockup. Create one high resolution 2048 by 1536 landscape catalogue illustration for Bart Mining's magnetic separator equipment page. A single wet low-intensity drum magnetic separator: a horizontal stainless steel drum about one metre in diameter mounted over a steel slurry tank, a feed box along the top of the tank, an electric gear motor driving the drum at one end, two product outlets under the tank (magnetic and non-magnetic), on a steel support frame with short legs. A thin band of dark magnetic material adheres to the drum surface. Show the whole machine in three-quarter side view, fully inside the frame with generous clear margins. Neutral warm off-white studio background and floor, soft diffuse daylight, steel grey frame, blue tank, crisp realistic metal textures. Product occupies about 75 percent of frame width. No people, logos, watermarks, text, labels, branding, specifications or unrelated machinery. This is a generic equipment-class illustration, not a documentary photo or exact model. It must fit a 4:3 catalogue card and a 16:9 product window without cropping the machine.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/magnetic-separator.webp",
+      "previousPrompt": "Code-drawn technical schematic (SVG, no image model): wet drum magnetic separator with tank, drive, feed box and product outlets. Labelled process flows in the site palette. Source: docs/equipment-image-sources-2026-10-07/magnetic-separator.svg.",
+      "revision": "2026-10-07: replaced code-drawn schematic with a reviewed generic catalogue illustration; schematic source retained."
+    },
+    {
+      "slug": "spiral-classifier",
+      "prompt": "Use case: product-mockup. Create one high resolution 2048 by 1536 landscape catalogue illustration for Bart Mining's spiral classifier equipment page. A single high-weir spiral (screw) classifier: a long open steel trough inclined at about 15 degrees, a large rotating steel screw spiral visible along the trough, a pool of grey slurry at the lower end with an overflow weir and discharge box, a gearbox and electric motor drive with a spiral lifting device at the upper end, a sand discharge chute at the top end, steel support legs. Show the whole classifier in three-quarter side view, fully inside the frame with generous clear margins. Neutral warm off-white studio background and floor, soft diffuse daylight, steel grey structure, yellow safety guards, blue motor, crisp realistic metal textures. Product occupies about 80 percent of frame width. No ball mill, people, logos, watermarks, text, labels, branding, specifications or unrelated machinery. This is a generic equipment-class illustration, not a documentary photo or exact model. It must fit a 4:3 catalogue card and a 16:9 product window without cropping the machine.",
+      "tool": "built-in image_gen",
+      "status": "generated",
+      "asset": "/equipment/website/spiral-classifier.webp",
+      "previousPrompt": "Code-drawn technical schematic (SVG, no image model): inclined spiral classifier with pool, spiral flights, drive and product outlets. Labelled process flows in the site palette. Source: docs/equipment-image-sources-2026-10-07/spiral-classifier.svg.",
+      "revision": "2026-10-07: replaced code-drawn schematic with a reviewed generic catalogue illustration; schematic source retained."
     }
   ]
 }

@@ -1,0 +1,116 @@
+[
+  {
+    "file": "src/data/article-faqs.json",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/data/insights.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/data/article-library.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/data/equipment-image-copy.json",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/data/equipment-catalogue-sw.json",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/components/tools/LeachTankCalculator.tsx",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/water-recycling-gold-plant.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/shaft-dewatering-staged-pumping.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/wet-pan-mill-vs-ball-mill.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/flotation-graphite-copper.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/mine-winch-headframe-sizing.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/magnetic-vs-gravity-separation.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/sw/copper-ore-processing-tanzania.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/equipment/sw/diesel-generator-mining.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/equipment/sw/winch-selection.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/equipment/sw/filter-press.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/equipment/sw/leaching-tank.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/equipment/sw/pneumatic-rock-drill.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/equipment/sw/centrifugal-gold-concentrator.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/content/equipment/sw/self-contained-self-rescuer.ts",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/app/insights-swahili/kikokotoo-cha-tanki-la-leaching/page.tsx",
+    "numbersPreserved": true,
+    "scope": "target copy only; anchors and links preserved where applicable"
+  },
+  {
+    "file": "src/components/insights/ArticleLayout.tsx",
+    "scope": "Shared cover framing; current affected routes limited to flotation and magnetic-separation guides in English/Kiswahili."
+  }
+]

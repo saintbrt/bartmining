@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7F8F8"/><stop offset="1" stop-color="#E9EDEE"/></linearGradient>
+<linearGradient id="drum" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C4CBCE"/><stop offset=".5" stop-color="#F1F3F3"/><stop offset="1" stop-color="#8E979B"/></linearGradient>
+<linearGradient id="tank" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2F5C7A"/><stop offset=".5" stop-color="#3E7598"/><stop offset="1" stop-color="#284F69"/></linearGradient>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A6C36"/></marker>
+</defs>
+<rect width="1600" height="1200" fill="url(#bg)"/>
+<rect x="0" y="1010" width="1600" height="190" fill="#D9DFE1"/>
+<!-- frame -->
+<g fill="#2B3134"><rect x="300" y="760" width="30" height="260"/><rect x="1270" y="760" width="30" height="260"/><rect x="300" y="740" width="1000" height="34"/></g>
+<!-- tank -->
+<path d="M360 560 h880 v180 l-160 160 h-560 l-160 -160z" fill="url(#tank)" stroke="#1E2326" stroke-width="6"/>
+<!-- drum end view drawn as long cylinder -->
+<rect x="400" y="330" width="800" height="300" rx="150" fill="url(#drum)" stroke="#2B3134" stroke-width="6"/>
+<ellipse cx="1200" cy="480" rx="60" ry="150" fill="#B6BEC1" stroke="#2B3134" stroke-width="6"/>
+<!-- magnet arc inside (dashed) -->
+<path d="M520 560 Q 800 660 1080 560" stroke="#8A6C36" stroke-width="10" fill="none" stroke-dasharray="26 14"/>
+<!-- magnetic particles on drum -->
+<g fill="#1E2326"><circle cx="560" cy="600" r="7"/><circle cx="610" cy="612" r="6"/><circle cx="660" cy="620" r="8"/><circle cx="720" cy="626" r="6"/><circle cx="780" cy="628" r="7"/><circle cx="840" cy="626" r="6"/><circle cx="900" cy="620" r="8"/><circle cx="960" cy="612" r="6"/><circle cx="1010" cy="600" r="7"/></g>
+<!-- drive motor -->
+<rect x="1270" y="420" width="150" height="120" rx="12" fill="#2F5C7A" stroke="#1E2326" stroke-width="5"/>
+<rect x="1255" y="465" width="20" height="30" fill="#1E2326"/>
+<!-- feed box -->
+<path d="M240 380 h170 v120 l-60 60 h-110z" fill="#5D676C" stroke="#2B3134" stroke-width="5"/>
+<!-- outlets -->
+<rect x="560" y="900" width="120" height="110" fill="#3F474B" stroke="#2B3134" stroke-width="5"/>
+<rect x="920" y="900" width="120" height="110" fill="#3F474B" stroke="#2B3134" stroke-width="5"/>
+<g stroke="#8A6C36" stroke-width="8" fill="none" marker-end="url(#ar)">
+<path d="M150 440 H240"/><path d="M620 1010 V1080"/><path d="M980 1010 V1080"/>
+</g>
+<g font-family="Helvetica, Arial, sans-serif" fill="#14181A" font-size="38" font-weight="600">
+<text x="120" y="390">Feed</text>
+<text x="470" y="1130">Non-magnetic</text>
+<text x="880" y="1130">Magnetic</text>
+<text x="520" y="250">Wet drum magnetic separator</text>
+</g>
+<g font-family="Helvetica, Arial, sans-serif" fill="#444C50" font-size="28">
+<text x="560" y="720" fill="#FFFFFF">Fixed magnet holds magnetic particles</text>
+<text x="1270" y="580">Drum drive</text>
+</g>
+</svg>

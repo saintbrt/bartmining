@@ -1,0 +1,8 @@
+{
+  "file": "product-winch-2.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone portrait 4:5 social-carousel photograph-style illustration, at least 1080 by 1350 pixels. Reference-guided close three-quarter mechanical view of the stationary mine winch, focusing on the drum-end brake disc or flange and a mechanically plausible mounted caliper or band-brake actuator. Retain the blue electric motor alongside the wire-rope drum: parallel offset horizontal shafts connected by a side gearbox on the same steel skid. No coaxial motor behind drum, no implied certification of dual brakes, no personnel, suspended loads, readable labels or fictional capacities. Composition: the subject remains clear in the upper 50–55 percent with a calm lower area for a separately rendered headline. Natural industrial materials and lighting, restrained colour, no collage, border, logo, watermark or text. Generic equipment or setting, not evidence of a real Bart Mining installation, stocked unit or offered model.",
+  "alt": "A stationary winch drum-end braking assembly with its motor alongside the drum.",
+  "reference": "public/equipment/website/5-ton-mine-winch-parallel-drive.webp",
+  "originalFile": "mine-winch-brake-inspection.png"
+}

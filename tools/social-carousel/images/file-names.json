@@ -1,0 +1,952 @@
+{
+  "posts": {
+    "IG-19": {
+      "prefix": "news-gold"
+    },
+    "IG-20": {
+      "prefix": "news-kenya"
+    },
+    "IG-21": {
+      "prefix": "news-youth"
+    },
+    "IG-22": {
+      "prefix": "news-tanzania"
+    },
+    "IG-23": {
+      "prefix": "news-csr"
+    },
+    "IG-24": {
+      "prefix": "news-uganda"
+    },
+    "IG-25": {
+      "prefix": "news-battery"
+    },
+    "IG-26": {
+      "prefix": "explainer-ore"
+    },
+    "IG-27": {
+      "prefix": "explainer-assay"
+    },
+    "IG-28": {
+      "prefix": "explainer-tailings"
+    },
+    "IG-29": {
+      "prefix": "explainer-used-equipment"
+    },
+    "IG-30": {
+      "prefix": "explainer-power"
+    },
+    "IG-31": {
+      "prefix": "explainer-elution"
+    },
+    "IG-32": {
+      "prefix": "explainer-rental"
+    },
+    "IG-33": {
+      "prefix": "product-shaking"
+    },
+    "IG-34": {
+      "prefix": "product-wetmill"
+    },
+    "IG-35": {
+      "prefix": "product-leaching"
+    },
+    "IG-36": {
+      "prefix": "product-dewatering"
+    },
+    "IG-37": {
+      "prefix": "product-winch"
+    },
+    "IG-38": {
+      "prefix": "product-compressor"
+    },
+    "IG-39": {
+      "prefix": "product-gas"
+    },
+    "IG-40": {
+      "prefix": "product-sluice"
+    }
+  },
+  "images": [
+    {
+      "post": "IG-19",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/gold-bars-market-update.png",
+      "key": "social/news-gold-1.png",
+      "file": "news-gold-1.png",
+      "exportFile": "news-gold-1.png",
+      "keptOriginal": false,
+      "sha256": "da9dfc751a51b801e54a2b39835530be04d2c3a78a690af6b37bf04e790566a2"
+    },
+    {
+      "post": "IG-19",
+      "slide": "month",
+      "number": 2,
+      "previousKey": "social/gold-weighing-assay-bench.png",
+      "key": "social/news-gold-2.png",
+      "file": "news-gold-2.png",
+      "exportFile": "news-gold-2.png",
+      "keptOriginal": false,
+      "sha256": "d618e581ac32c85351570532a643696408f50e04a79ef51c2323b44f02fe847d"
+    },
+    {
+      "post": "IG-19",
+      "slide": "budget",
+      "number": 3,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/news-gold-3.png",
+      "file": "news-gold-3.png",
+      "exportFile": "news-gold-3.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-19",
+      "slide": "recovery",
+      "number": 4,
+      "previousKey": "social/fine-tailings-sediment.png",
+      "key": "social/news-gold-4.png",
+      "file": "news-gold-4.png",
+      "exportFile": "news-gold-4.png",
+      "keptOriginal": true,
+      "sha256": "83fda4125a1da45485f50bacb192fa205a94adf4ff71ff57f00127f91a23b247"
+    },
+    {
+      "post": "IG-20",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/gold-refinery-pour.png",
+      "key": "social/news-kenya-1.png",
+      "file": "news-kenya-1.png",
+      "exportFile": "news-kenya-1.png",
+      "keptOriginal": false,
+      "sha256": "54d99a603ad3cd05298cee25ac3ab0c1f4f7e073ef5ee8d8e5cb5eb293614919"
+    },
+    {
+      "post": "IG-20",
+      "slide": "output",
+      "number": 2,
+      "previousKey": "social/gold-weighing-assay-bench.png",
+      "key": "social/news-kenya-2.png",
+      "file": "news-kenya-2.png",
+      "exportFile": "news-kenya-2.png",
+      "keptOriginal": false,
+      "sha256": "d618e581ac32c85351570532a643696408f50e04a79ef51c2323b44f02fe847d"
+    },
+    {
+      "post": "IG-20",
+      "slide": "refineries",
+      "number": 3,
+      "previousKey": "social/hydrometallurgical-refinery-concept.png",
+      "key": "social/news-kenya-3.png",
+      "file": "news-kenya-3.png",
+      "exportFile": "news-kenya-3.png",
+      "keptOriginal": false,
+      "sha256": "5ac650bb1b982d98ceccb6e6f0cc0a231a38a0d9b5ad3cd750dac58255f02891"
+    },
+    {
+      "post": "IG-20",
+      "slide": "records",
+      "number": 4,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/news-kenya-4.png",
+      "file": "news-kenya-4.png",
+      "exportFile": "news-kenya-4.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-21",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/young-miners-survey-equipment.png",
+      "key": "social/news-youth-1.png",
+      "file": "news-youth-1.png",
+      "exportFile": "news-youth-1.png",
+      "keptOriginal": false,
+      "sha256": "e3f2d575769a82a0df4ee1ce4e11f6a78cb5f92847cae47b6704dd7fce53bf6d"
+    },
+    {
+      "post": "IG-21",
+      "slide": "regions",
+      "number": 2,
+      "previousKey": "social/tanzania-regions-map.png",
+      "key": "social/news-youth-2.png",
+      "file": "news-youth-2.png",
+      "exportFile": "news-youth-2.png",
+      "keptOriginal": false,
+      "sha256": "869bf8eae265ebccc9c3887f0a3634a7f735913dc36cede812f4f9e8c1b51d79"
+    },
+    {
+      "post": "IG-21",
+      "slide": "finance",
+      "number": 3,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/news-youth-3.png",
+      "file": "news-youth-3.png",
+      "exportFile": "news-youth-3.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-21",
+      "slide": "test",
+      "number": 4,
+      "previousKey": "social/ore-sample-selection.jpg",
+      "key": "social/news-youth-4.jpg",
+      "file": "news-youth-4.jpg",
+      "exportFile": "news-youth-4.png",
+      "keptOriginal": true,
+      "sha256": "106e7424b97f7b1f6f679405cb141027a020809af803b22ef6aaba816e0f17b8"
+    },
+    {
+      "post": "IG-21",
+      "slide": "file",
+      "number": 5,
+      "previousKey": "social/geology-study-desk.jpg",
+      "key": "social/news-youth-5.jpg",
+      "file": "news-youth-5.jpg",
+      "exportFile": "news-youth-5.png",
+      "keptOriginal": true,
+      "sha256": "88820b84ff626d74c3687fd515fbc91667aacc29741610ea485f8af07662704a"
+    },
+    {
+      "post": "IG-22",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/gold-dore-bars.png",
+      "key": "social/news-tanzania-1.png",
+      "file": "news-tanzania-1.png",
+      "exportFile": "news-tanzania-1.png",
+      "keptOriginal": false,
+      "sha256": "cdff3e85bca210dc616a62bcd37d48e14103a1e476fc7192447c8f587b3a7a8b"
+    },
+    {
+      "post": "IG-22",
+      "slide": "refineries",
+      "number": 2,
+      "previousKey": "social/gold-weighing-assay-bench.png",
+      "key": "social/news-tanzania-2.png",
+      "file": "news-tanzania-2.png",
+      "exportFile": "news-tanzania-2.png",
+      "keptOriginal": false,
+      "sha256": "d618e581ac32c85351570532a643696408f50e04a79ef51c2323b44f02fe847d"
+    },
+    {
+      "post": "IG-22",
+      "slide": "bot",
+      "number": 3,
+      "previousKey": "social/gold-bars-market-update.png",
+      "key": "social/news-tanzania-3.png",
+      "file": "news-tanzania-3.png",
+      "exportFile": "news-tanzania-3.png",
+      "keptOriginal": false,
+      "sha256": "da9dfc751a51b801e54a2b39835530be04d2c3a78a690af6b37bf04e790566a2"
+    },
+    {
+      "post": "IG-22",
+      "slide": "terms",
+      "number": 4,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/news-tanzania-4.png",
+      "file": "news-tanzania-4.png",
+      "exportFile": "news-tanzania-4.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-23",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/mining-csr-review-desk.png",
+      "key": "social/news-csr-1.png",
+      "file": "news-csr-1.png",
+      "exportFile": "news-csr-1.png",
+      "keptOriginal": false,
+      "sha256": "baeeb2f6a2ca18c07d69632bd2252dd0b57492a12e39a447e1266bb57342d925"
+    },
+    {
+      "post": "IG-23",
+      "slide": "split",
+      "number": 2,
+      "previousKey": "social/former-csr-allocation.png",
+      "key": "social/news-csr-2.png",
+      "file": "news-csr-2.png",
+      "exportFile": "news-csr-2.png",
+      "keptOriginal": false,
+      "sha256": "f13eb7d5bc4d0b55a5521a0c10a5ac904afc8690eb88827dc4f995db1c3b7f0a"
+    },
+    {
+      "post": "IG-23",
+      "slide": "reason",
+      "number": 3,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/news-csr-3.png",
+      "file": "news-csr-3.png",
+      "exportFile": "news-csr-3.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-23",
+      "slide": "next",
+      "number": 4,
+      "previousKey": "social/community-consultation-table.png",
+      "key": "social/news-csr-4.png",
+      "file": "news-csr-4.png",
+      "exportFile": "news-csr-4.png",
+      "keptOriginal": false,
+      "sha256": "ed52e91b0dac065b54f039f3e32bc3c99cd5f343a0b1ba7e32f530d9b979bc33"
+    },
+    {
+      "post": "IG-24",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/artisanal-gold-panning-kit.png",
+      "key": "social/news-uganda-1.png",
+      "file": "news-uganda-1.png",
+      "exportFile": "news-uganda-1.png",
+      "keptOriginal": false,
+      "sha256": "acd7de871d9541823323d03b6cb81c4a34c27e40dcb229a63df34157d046dcd8"
+    },
+    {
+      "post": "IG-24",
+      "slide": "partners",
+      "number": 2,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/news-uganda-2.png",
+      "file": "news-uganda-2.png",
+      "exportFile": "news-uganda-2.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-24",
+      "slide": "scale",
+      "number": 3,
+      "previousKey": "social/standalone-gravity-sluice.png",
+      "key": "social/news-uganda-3.png",
+      "file": "news-uganda-3.png",
+      "exportFile": "news-uganda-3.png",
+      "keptOriginal": true,
+      "sha256": "80e4a6f4fcc4bbc2befd202c94ca83558b5c79944b3baf00e8a4c1625a4765cd"
+    },
+    {
+      "post": "IG-24",
+      "slide": "together",
+      "number": 4,
+      "previousKey": "social/small-gravity-plant.png",
+      "key": "social/news-uganda-4.png",
+      "file": "news-uganda-4.png",
+      "exportFile": "news-uganda-4.png",
+      "keptOriginal": true,
+      "sha256": "e9ea396c84be33153ede18c6c7e63e045e6aa8a683dbc111bceebac360336968"
+    },
+    {
+      "post": "IG-25",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/nickel-ore-core-samples.png",
+      "key": "social/news-battery-1.png",
+      "file": "news-battery-1.png",
+      "exportFile": "news-battery-1.png",
+      "keptOriginal": false,
+      "sha256": "999c35091ccdf8dfdc80aaaa6a4a7a1f15bc1fe612888ef1de750ea8efe86429"
+    },
+    {
+      "post": "IG-25",
+      "slide": "kabanga",
+      "number": 2,
+      "previousKey": "social/prepared-equipment-foundations.png",
+      "key": "social/news-battery-2.png",
+      "file": "news-battery-2.png",
+      "exportFile": "news-battery-2.png",
+      "keptOriginal": true,
+      "sha256": "a0d8e98f5083955f6d336d5cae9903975515d953259c9ccd2f1b57fc88ae7d47"
+    },
+    {
+      "post": "IG-25",
+      "slide": "refinery",
+      "number": 3,
+      "previousKey": "social/hydrometallurgical-refinery-concept.png",
+      "key": "social/news-battery-3.png",
+      "file": "news-battery-3.png",
+      "exportFile": "news-battery-3.png",
+      "keptOriginal": false,
+      "sha256": "5ac650bb1b982d98ceccb6e6f0cc0a231a38a0d9b5ad3cd750dac58255f02891"
+    },
+    {
+      "post": "IG-25",
+      "slide": "graphite",
+      "number": 4,
+      "previousKey": "social/graphite-flakes-closeup.png",
+      "key": "social/news-battery-4.png",
+      "file": "news-battery-4.png",
+      "exportFile": "news-battery-4.png",
+      "keptOriginal": false,
+      "sha256": "6bc2769b6ef4ffcee7efce5880808172297f4dc5338519effd109f84d0e53407"
+    },
+    {
+      "post": "IG-25",
+      "slide": "suppliers",
+      "number": 5,
+      "previousKey": "social/earthmoving-equipment-site.png",
+      "key": "social/news-battery-5.png",
+      "file": "news-battery-5.png",
+      "exportFile": "news-battery-5.png",
+      "keptOriginal": false,
+      "sha256": "00589fde2163380b69e3f86bc7664af4f2442c17001d416ce344cc78423c8e6e"
+    },
+    {
+      "post": "IG-26",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/metallurgical-test-lab.png",
+      "key": "social/explainer-ore-1.png",
+      "file": "explainer-ore-1.png",
+      "exportFile": "explainer-ore-1.png",
+      "keptOriginal": false,
+      "sha256": "6c4b9bc84417b1fa747738eb1f471a57b21c773b9b1b1c0a0059cc2c5f30411e"
+    },
+    {
+      "post": "IG-26",
+      "slide": "sample",
+      "number": 2,
+      "previousKey": "social/ore-sample-bags-labelled.png",
+      "key": "social/explainer-ore-2.png",
+      "file": "explainer-ore-2.png",
+      "exportFile": "explainer-ore-2.png",
+      "keptOriginal": false,
+      "sha256": "672a2c2dd4527bedef5709799c7693a4a0e5db976c390e3ab8104e7a38b85596"
+    },
+    {
+      "post": "IG-26",
+      "slide": "tests",
+      "number": 3,
+      "previousKey": "social/bottle-roll-leach-test.png",
+      "key": "social/explainer-ore-3.png",
+      "file": "explainer-ore-3.png",
+      "exportFile": "explainer-ore-3.png",
+      "keptOriginal": false,
+      "sha256": "a8c6ba75c5f796e5748a7b6dafa1f0eb4ca750d679ac2d6c552d0497f27e6b1e"
+    },
+    {
+      "post": "IG-26",
+      "slide": "compare",
+      "number": 4,
+      "previousKey": "social/test-results-comparison.png",
+      "key": "social/explainer-ore-4.png",
+      "file": "explainer-ore-4.png",
+      "exportFile": "explainer-ore-4.png",
+      "keptOriginal": false,
+      "sha256": "02ca93aa7bb8a115cf97bc83a2baaf62037e0521ea713e5dc76030b82e072e93"
+    },
+    {
+      "post": "IG-26",
+      "slide": "brief",
+      "number": 5,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/explainer-ore-5.png",
+      "file": "explainer-ore-5.png",
+      "exportFile": "explainer-ore-5.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-27",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/fire-assay-crucibles.png",
+      "key": "social/explainer-assay-1.png",
+      "file": "explainer-assay-1.png",
+      "exportFile": "explainer-assay-1.png",
+      "keptOriginal": false,
+      "sha256": "499228dfee35fcbdc7451208ce123df2d6fb0f1b2946002fc5514938d39d198f"
+    },
+    {
+      "post": "IG-27",
+      "slide": "record",
+      "number": 2,
+      "previousKey": "social/young-miners-survey-equipment.png",
+      "key": "social/explainer-assay-2.png",
+      "file": "explainer-assay-2.png",
+      "exportFile": "explainer-assay-2.png",
+      "keptOriginal": false,
+      "sha256": "e3f2d575769a82a0df4ee1ce4e11f6a78cb5f92847cae47b6704dd7fce53bf6d"
+    },
+    {
+      "post": "IG-27",
+      "slide": "method",
+      "number": 3,
+      "previousKey": "social/assay-furnace-loading.png",
+      "key": "social/explainer-assay-3.png",
+      "file": "explainer-assay-3.png",
+      "exportFile": "explainer-assay-3.png",
+      "keptOriginal": false,
+      "sha256": "39bd50f619a8d9b60081f37c538b5cae4b435604c57f22626847ffa905506c65"
+    },
+    {
+      "post": "IG-27",
+      "slide": "qaqc",
+      "number": 4,
+      "previousKey": "social/assay-qaqc-standards.png",
+      "key": "social/explainer-assay-4.png",
+      "file": "explainer-assay-4.png",
+      "exportFile": "explainer-assay-4.png",
+      "keptOriginal": false,
+      "sha256": "4bdb69c47f5bdd998e7d001a62c11499ae206fdc6f290844c6efb2379d6952ce"
+    },
+    {
+      "post": "IG-27",
+      "slide": "grade",
+      "number": 5,
+      "previousKey": "social/ore-stockpile-grade.png",
+      "key": "social/explainer-assay-5.png",
+      "file": "explainer-assay-5.png",
+      "exportFile": "explainer-assay-5.png",
+      "keptOriginal": false,
+      "sha256": "5dad2d63c6ecf12e42fff009560c4e17f1f8757d9409b3d253981a39e9c3317e"
+    },
+    {
+      "post": "IG-28",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/old-tailings-heap.png",
+      "key": "social/explainer-tailings-1.png",
+      "file": "explainer-tailings-1.png",
+      "exportFile": "explainer-tailings-1.png",
+      "keptOriginal": false,
+      "sha256": "89bf84a4ff63109a8fcc72b3cfccfd810952e7b93716d458bbacf7fac2ad5afb"
+    },
+    {
+      "post": "IG-28",
+      "slide": "rights",
+      "number": 2,
+      "previousKey": "social/young-miners-survey-equipment.png",
+      "key": "social/explainer-tailings-2.png",
+      "file": "explainer-tailings-2.png",
+      "exportFile": "explainer-tailings-2.png",
+      "keptOriginal": false,
+      "sha256": "e3f2d575769a82a0df4ee1ce4e11f6a78cb5f92847cae47b6704dd7fce53bf6d"
+    },
+    {
+      "post": "IG-28",
+      "slide": "mercury",
+      "number": 3,
+      "previousKey": "social/tailings-contaminant-sampling.png",
+      "key": "social/explainer-tailings-3.png",
+      "file": "explainer-tailings-3.png",
+      "exportFile": "explainer-tailings-3.png",
+      "keptOriginal": false,
+      "sha256": "0c4e0143720b6557c30527f3df12bd78203eba56c82ddb415d8fc798385e2a29"
+    },
+    {
+      "post": "IG-28",
+      "slide": "flow",
+      "number": 4,
+      "previousKey": "social/lined-leach-vat.png",
+      "key": "social/explainer-tailings-4.png",
+      "file": "explainer-tailings-4.png",
+      "exportFile": "explainer-tailings-4.png",
+      "keptOriginal": false,
+      "sha256": "471ca3025777eaffafe1abac68bbb1ceb583b0af62fe3588ebe4bdb41841243b"
+    },
+    {
+      "post": "IG-28",
+      "slide": "batch",
+      "number": 5,
+      "previousKey": "social/earthmoving-equipment-site.png",
+      "key": "social/explainer-tailings-5.png",
+      "file": "explainer-tailings-5.png",
+      "exportFile": "explainer-tailings-5.png",
+      "keptOriginal": false,
+      "sha256": "00589fde2163380b69e3f86bc7664af4f2442c17001d416ce344cc78423c8e6e"
+    },
+    {
+      "post": "IG-29",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/used-equipment-yard.png",
+      "key": "social/explainer-used-equipment-1.png",
+      "file": "explainer-used-equipment-1.png",
+      "exportFile": "explainer-used-equipment-1.png",
+      "keptOriginal": false,
+      "sha256": "8891d47f9988056f32804e5287c87c330eaa0fc6908ce562dd251299117bf653"
+    },
+    {
+      "post": "IG-29",
+      "slide": "duty",
+      "number": 2,
+      "previousKey": "social/ball-mill-geevor.jpg",
+      "key": "social/explainer-used-equipment-2.jpg",
+      "file": "explainer-used-equipment-2.jpg",
+      "exportFile": "explainer-used-equipment-2.png",
+      "keptOriginal": false,
+      "sha256": "b11f3e83aa145e7c0a0724021da5d23d67c8acfcb602cd993a74b275f54996fe"
+    },
+    {
+      "post": "IG-29",
+      "slide": "inspect",
+      "number": 3,
+      "previousKey": "social/equipment-inspection-bearings.png",
+      "key": "social/explainer-used-equipment-3.png",
+      "file": "explainer-used-equipment-3.png",
+      "exportFile": "explainer-used-equipment-3.png",
+      "keptOriginal": false,
+      "sha256": "60415affee22607714a4a8c02c69ece00725df96d859286f46089406686b75ab"
+    },
+    {
+      "post": "IG-29",
+      "slide": "electrical",
+      "number": 4,
+      "previousKey": "social/control-panel-inspection.png",
+      "key": "social/explainer-used-equipment-4.png",
+      "file": "explainer-used-equipment-4.png",
+      "exportFile": "explainer-used-equipment-4.png",
+      "keptOriginal": false,
+      "sha256": "6dad9241ec304c05886a87918c3de0cba3c01e1b709ffb4b05ddc80cd7aa848a"
+    },
+    {
+      "post": "IG-29",
+      "slide": "cost",
+      "number": 5,
+      "previousKey": "social/used-equipment-cost-example.png",
+      "key": "social/explainer-used-equipment-5.png",
+      "file": "explainer-used-equipment-5.png",
+      "exportFile": "explainer-used-equipment-5.png",
+      "keptOriginal": false,
+      "sha256": "c7a83ccf5f79c263350cb2becfb684bb589a7e20f7d014b0da5bcd6224766597"
+    },
+    {
+      "post": "IG-30",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/generator-plant-night.png",
+      "key": "social/explainer-power-1.png",
+      "file": "explainer-power-1.png",
+      "exportFile": "explainer-power-1.png",
+      "keptOriginal": false,
+      "sha256": "82d32964e39eb6699f2f918bbae646376a3d9dc0a81553e7cbfa409023f4b7ea"
+    },
+    {
+      "post": "IG-30",
+      "slide": "load",
+      "number": 2,
+      "previousKey": "social/electrical-load-list.png",
+      "key": "social/explainer-power-2.png",
+      "file": "explainer-power-2.png",
+      "exportFile": "explainer-power-2.png",
+      "keptOriginal": false,
+      "sha256": "d7cfd4068ea3283accbd528be8e7c1332e62a01ecbbe80d7c653f9666ae445a8"
+    },
+    {
+      "post": "IG-30",
+      "slide": "start",
+      "number": 3,
+      "previousKey": "social/control-panel-inspection.png",
+      "key": "social/explainer-power-3.png",
+      "file": "explainer-power-3.png",
+      "exportFile": "explainer-power-3.png",
+      "keptOriginal": false,
+      "sha256": "6dad9241ec304c05886a87918c3de0cba3c01e1b709ffb4b05ddc80cd7aa848a"
+    },
+    {
+      "post": "IG-30",
+      "slide": "fuel",
+      "number": 4,
+      "previousKey": "social/diesel-fuel-storage.png",
+      "key": "social/explainer-power-4.png",
+      "file": "explainer-power-4.png",
+      "exportFile": "explainer-power-4.png",
+      "keptOriginal": false,
+      "sha256": "7c5e60668e6f492a4d7cdd58bb40f67c8a672066af31b952123191c31a8f9aec"
+    },
+    {
+      "post": "IG-30",
+      "slide": "options",
+      "number": 5,
+      "previousKey": "social/solar-diesel-hybrid.png",
+      "key": "social/explainer-power-5.png",
+      "file": "explainer-power-5.png",
+      "exportFile": "explainer-power-5.png",
+      "keptOriginal": false,
+      "sha256": "90cdbf6dc0555d92ccc1fd21a38007f06b4f50b828b79bca886e62d227fe8f1c"
+    },
+    {
+      "post": "IG-31",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "equipment/website/gold-elution-electrowinning-plant.webp",
+      "key": "social/explainer-elution-1.webp",
+      "file": "explainer-elution-1.webp",
+      "exportFile": "explainer-elution-1.png",
+      "keptOriginal": true,
+      "sha256": "9e6721467828d1daa9f86fb50dd3ef754f609993361fca0c951a6f9136759d33"
+    },
+    {
+      "post": "IG-31",
+      "slide": "scope",
+      "number": 2,
+      "previousKey": "social/electrowinning-cells.png",
+      "key": "social/explainer-elution-2.png",
+      "file": "explainer-elution-2.png",
+      "exportFile": "explainer-elution-2.png",
+      "keptOriginal": false,
+      "sha256": "e47329e0535ee1245968bdfc4f4e9a59725bc5e4ccfdeeb53d9e8d35c0e31969"
+    },
+    {
+      "post": "IG-31",
+      "slide": "carbon",
+      "number": 3,
+      "previousKey": "social/loaded-carbon-material.png",
+      "key": "social/explainer-elution-3.png",
+      "file": "explainer-elution-3.png",
+      "exportFile": "explainer-elution-3.png",
+      "keptOriginal": false,
+      "sha256": "58ccf7d831f41843bacfd31e19e2a88b23dfac8db8f913fd6332a5508470c7c3"
+    },
+    {
+      "post": "IG-31",
+      "slide": "budget",
+      "number": 4,
+      "previousKey": "social/prepared-equipment-foundations.png",
+      "key": "social/explainer-elution-4.png",
+      "file": "explainer-elution-4.png",
+      "exportFile": "explainer-elution-4.png",
+      "keptOriginal": true,
+      "sha256": "a0d8e98f5083955f6d336d5cae9903975515d953259c9ccd2f1b57fc88ae7d47"
+    },
+    {
+      "post": "IG-31",
+      "slide": "toll",
+      "number": 5,
+      "previousKey": "social/carbon-custody-containers.png",
+      "key": "social/explainer-elution-5.png",
+      "file": "explainer-elution-5.png",
+      "exportFile": "explainer-elution-5.png",
+      "keptOriginal": false,
+      "sha256": "df295618f57637ac2cabf053cb58de9bd7d3c180d39de369574e8bd5966c6118"
+    },
+    {
+      "post": "IG-32",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/rental-excavator-site.png",
+      "key": "social/explainer-rental-1.png",
+      "file": "explainer-rental-1.png",
+      "exportFile": "explainer-rental-1.png",
+      "keptOriginal": false,
+      "sha256": "3f9ac45b2e29954903903dbee8306be2980a92c54ca60b3dce5c421287d1c6b8"
+    },
+    {
+      "post": "IG-32",
+      "slide": "job",
+      "number": 2,
+      "previousKey": "social/mining-project-planning-desk.png",
+      "key": "social/explainer-rental-2.png",
+      "file": "explainer-rental-2.png",
+      "exportFile": "explainer-rental-2.png",
+      "keptOriginal": false,
+      "sha256": "c3bcd7bdd48171b96cd5c068224e20c24211208445837da8d732bb633bcc379a"
+    },
+    {
+      "post": "IG-32",
+      "slide": "hire",
+      "number": 3,
+      "previousKey": "social/machine-handover-records.png",
+      "key": "social/explainer-rental-3.png",
+      "file": "explainer-rental-3.png",
+      "exportFile": "explainer-rental-3.png",
+      "keptOriginal": false,
+      "sha256": "aaae299f40e2887094b10351a1c49bc3d03ab578114aa768763df39d7451f39e"
+    },
+    {
+      "post": "IG-32",
+      "slide": "compare",
+      "number": 4,
+      "previousKey": "social/rental-ownership-comparison.png",
+      "key": "social/explainer-rental-4.png",
+      "file": "explainer-rental-4.png",
+      "exportFile": "explainer-rental-4.png",
+      "keptOriginal": false,
+      "sha256": "7d7d0ea40295b4c291470e1096c4178064552c46fbd6b54aa8fc27015089c661"
+    },
+    {
+      "post": "IG-33",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/shaking-table-deck-riffles.png",
+      "key": "social/product-shaking-1.png",
+      "file": "product-shaking-1.png",
+      "exportFile": "product-shaking-1.png",
+      "keptOriginal": false,
+      "sha256": "187e03343fa971f77271bdcb555465b43996cc8662ea8d8128bc58e5a9e23474"
+    },
+    {
+      "post": "IG-33",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/shaking-table-adjustment.png",
+      "key": "social/product-shaking-2.png",
+      "file": "product-shaking-2.png",
+      "exportFile": "product-shaking-2.png",
+      "keptOriginal": false,
+      "sha256": "9e165fa06d7da8e6f7a663b624f81376d4559e420cd9be470d1c8ab446b90e18"
+    },
+    {
+      "post": "IG-34",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "equipment/website/wet-pan-mill.webp",
+      "key": "social/product-wetmill-1.webp",
+      "file": "product-wetmill-1.webp",
+      "exportFile": "product-wetmill-1.png",
+      "keptOriginal": true,
+      "sha256": "d39a1e5dbc2dde08ab170923ef47be3d016f62cf3045790a9ef6656e6e9713be"
+    },
+    {
+      "post": "IG-34",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/wet-pan-mill-rollers.png",
+      "key": "social/product-wetmill-2.png",
+      "file": "product-wetmill-2.png",
+      "exportFile": "product-wetmill-2.png",
+      "keptOriginal": false,
+      "sha256": "3b0dce167a888d4e33e9e76939b19c5a975a0fba5ed0ff05f34f1930e08f65cf"
+    },
+    {
+      "post": "IG-35",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/leaching-tank-train.png",
+      "key": "social/product-leaching-1.png",
+      "file": "product-leaching-1.png",
+      "exportFile": "product-leaching-1.png",
+      "keptOriginal": false,
+      "sha256": "d9950bb8056a1f5146c5d858b51dc4d9db5b6103359292a85cf8c61af10dddc3"
+    },
+    {
+      "post": "IG-35",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/leaching-tank-agitator.png",
+      "key": "social/product-leaching-2.png",
+      "file": "product-leaching-2.png",
+      "exportFile": "product-leaching-2.png",
+      "keptOriginal": false,
+      "sha256": "fbbf388da50cea7a7dc7c1e84eda3708dad27e37bd70955c2d200725912c07a2"
+    },
+    {
+      "post": "IG-36",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "equipment/website/submersible-dewatering-pump.webp",
+      "key": "social/product-dewatering-1.webp",
+      "file": "product-dewatering-1.webp",
+      "exportFile": "product-dewatering-1.png",
+      "keptOriginal": true,
+      "sha256": "b963a475fb67e3a56a8be9f40b7984fe2bbf23bb8a07504b4296a3ece1f591a2"
+    },
+    {
+      "post": "IG-36",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/dewatering-pump-staging.png",
+      "key": "social/product-dewatering-2.png",
+      "file": "product-dewatering-2.png",
+      "exportFile": "product-dewatering-2.png",
+      "keptOriginal": false,
+      "sha256": "a8261c9a06485116d64a9d0347299db882aa93f740727360b5b07e0bdcc4ef88"
+    },
+    {
+      "post": "IG-37",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "equipment/website/5-ton-mine-winch-parallel-drive.webp",
+      "key": "social/product-winch-1.webp",
+      "file": "product-winch-1.webp",
+      "exportFile": "product-winch-1.png",
+      "keptOriginal": true,
+      "sha256": "7a52c483e1686d90724670edc5832222d0677415ef6a84fb178fc4b7814843e3"
+    },
+    {
+      "post": "IG-37",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/mine-winch-brake-inspection.png",
+      "key": "social/product-winch-2.png",
+      "file": "product-winch-2.png",
+      "exportFile": "product-winch-2.png",
+      "keptOriginal": false,
+      "sha256": "d55f1db86b93126b2d982bccf2063311b4d11aa190ee201ebd997ef810aca884"
+    },
+    {
+      "post": "IG-38",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "social/mining-compressor-cover.png",
+      "key": "social/product-compressor-1.png",
+      "file": "product-compressor-1.png",
+      "exportFile": "product-compressor-1.png",
+      "keptOriginal": false,
+      "sha256": "0fe0c5f9ffaa5862129d2214effd106a6231a962ac1ded1e21d6aa1907458e20"
+    },
+    {
+      "post": "IG-38",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/compressor-air-line-leaks.png",
+      "key": "social/product-compressor-2.png",
+      "file": "product-compressor-2.png",
+      "exportFile": "product-compressor-2.png",
+      "keptOriginal": false,
+      "sha256": "82ae2d83a42d670e7eccc03dfea61769c941238cc868befb1a0aafd7a84903c6"
+    },
+    {
+      "post": "IG-39",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "equipment/website/gas-detection-monitor.webp",
+      "key": "social/product-gas-1.webp",
+      "file": "product-gas-1.webp",
+      "exportFile": "product-gas-1.png",
+      "keptOriginal": true,
+      "sha256": "3722c2866e039488a0c3fa1a84625c690edc0a1d5e8efcc9ebab40a047d51295"
+    },
+    {
+      "post": "IG-39",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/gas-detector-bump-test.png",
+      "key": "social/product-gas-2.png",
+      "file": "product-gas-2.png",
+      "exportFile": "product-gas-2.png",
+      "keptOriginal": false,
+      "sha256": "ecefd5ead459bc3293feecfa9bbddae1e75f69486d5627f02b330f75b7bb78e7"
+    },
+    {
+      "post": "IG-40",
+      "slide": "cover",
+      "number": 1,
+      "previousKey": "equipment/website/sluice-box-gold-jig.webp",
+      "key": "social/product-sluice-1.webp",
+      "file": "product-sluice-1.webp",
+      "exportFile": "product-sluice-1.png",
+      "keptOriginal": true,
+      "sha256": "06ea07a8ae90835e7d6ea602fa4d8931f5c9dcfa88044c2937969750b3288c93"
+    },
+    {
+      "post": "IG-40",
+      "slide": "selection",
+      "number": 2,
+      "previousKey": "social/sluice-riffle-water-flow.png",
+      "key": "social/product-sluice-2.png",
+      "file": "product-sluice-2.png",
+      "exportFile": "product-sluice-2.png",
+      "keptOriginal": false,
+      "sha256": "51e86a29c4730614274bbd3cfcf287abb76716590827d6285a84bcc0dcb4ee8a"
+    }
+  ]
+}

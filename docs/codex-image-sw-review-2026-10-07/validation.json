@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-07",
+  "status": "passed",
+  "checks": [
+    {
+      "command": "npx tsc --noEmit -p .",
+      "result": "passed"
+    },
+    {
+      "command": "node scripts/audit-editorial.mjs",
+      "result": "passed",
+      "englishGuides": 46,
+      "kiswahiliGuides": 13
+    },
+    {
+      "command": "node scripts/audit-article-faqs.mjs",
+      "result": "passed",
+      "answers": 307
+    },
+    {
+      "command": "node scripts/audit-swahili-directory.mjs",
+      "result": "passed",
+      "directoryEntries": 29,
+      "migrations": 19,
+      "productURLs": 53
+    },
+    {
+      "command": "node scripts/audit-equipment-images.mjs",
+      "result": "passed",
+      "images": 53,
+      "illustrations": 30,
+      "retainedReferences": 23
+    },
+    {
+      "command": "npx next build",
+      "result": "passed",
+      "staticPages": 245,
+      "note": "Live gold-price and exchange-rate hosts unavailable in the restricted build environment; existing fallback used."
+    },
+    {
+      "command": "npm run typecheck (tools/social-carousel)",
+      "result": "passed"
+    },
+    {
+      "command": "npm run build (tools/social-carousel)",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "nativeKiswahiliSignOff": "pending",
+  "technicalSignOff": "Existing review requirements retained",
+  "commitPushDeployment": "None",
+  "browser": {
+    "websiteRoutes": 40,
+    "viewports": [
+      1440,
+      390
+    ],
+    "websiteChecks": 80,
+    "carouselSlides": 35,
+    "downloadedSlides": 5,
+    "exportSize": [
+      1080,
+      1350
+    ]
+  }
+}

@@ -336,13 +336,13 @@ The largest impression source. Consulting searches worldwide ("mining technical 
 - [x] Recovery-by-size bands and installation guidance accepted (approved by Allan, 2026-09-15)
 
 ### D.6 Self-contained self-rescuer / SCSR (71 impressions, position 21–34)
-- [ ] Put "SCSR" in the H1, and explain SCSR vs filter self-rescuer
-- [ ] Duration ratings (30 / 60 min), training, storage, inspection
+- [~] Put "SCSR" in the H1, and explain SCSR vs filter self-rescuer (H1 already had it; guide section added 2026-10-07, built locally)
+- [~] Duration ratings (30 / 60 min), training, storage, inspection (guide sections, built locally 2026-10-07)
 - [ ] Tanzania safety compliance note
 
 ### D.7 Winch cluster (1-ton pos 5, 2-ton pos 6, 5-ton pos 10–38)
 - [ ] Already top 10. Improve **CTR**: titles with load + shaft depth + "price Tanzania"
-- [ ] Comparison table on each page linking to the other two
+- [~] Comparison table on each page linking to the other two (shared section, built locally 2026-10-07)
 - [x] ~~Real photo on each~~ (photo policy)
 
 ### D.8 RC drilling rig (59 impressions, position 39)
@@ -418,7 +418,7 @@ Each tool gets its own page with an explanation, a worked example, and a Swahili
 - [ ] **Gold value calculator:** grams + karat → TSh value today (live price)
 - [ ] **Royalty calculator:** sale value → 6% royalty + 1% inspection fee + take-home
 - [ ] **Karat / purity converter:** karat ↔ % ↔ price per gram
-- [ ] **CIP/CIL plant sizing calculator:** tonnes per day → tank volume, residence time, carbon inventory (supports D.3)
+- [~] **CIP/CIL plant sizing calculator:** tonnes per day → tank volume, residence time, carbon inventory (supports D.3). Tank volume built locally 2026-10-07 at `/tools/leach-tank-calculator` + SW; carbon inventory not included
 - [ ] **Elution batch calculator:** carbon tonnes → cycle time, eluant volume (supports D.2)
 - [ ] **Generator sizing for mining equipment:** list equipment → kVA needed
 - [ ] Each tool linked from the homepage, relevant equipment pages and the gold price page

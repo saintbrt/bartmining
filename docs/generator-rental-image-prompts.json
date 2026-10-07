@@ -1,0 +1,133 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-03",
+  "note": "Generated originals approximately 1448x1086; hero/town exports resampled to 1600x1200, bands to 1200x900.",
+  "images": [
+    {
+      "file": "public/generator-rental/town-dar-es-salaam.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A large 20-foot containerised diesel generator with exhaust stack and side ventilation powering a building construction site in a warm coastal city. Concrete frame, tower crane, palm trees and humid bright daylight. Neatly routed power cables to a blank distribution cabinet. No identifiable skyline."
+    },
+    {
+      "file": "public/generator-rental/town-mwanza.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A large containerised diesel generator with exhaust and vents at an industrial processing site near a large lake. Rounded granite boulders in the background typical of Lake Victoria shore, generic industrial structures, natural daylight."
+    },
+    {
+      "file": "public/generator-rental/town-geita.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A containerised diesel generator supplying a gold processing plant with ball mill, tanks and conveyors amid green rolling hills and red laterite soil."
+    },
+    {
+      "file": "public/generator-rental/town-arusha.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A containerised diesel generator providing standby power at a fictional hotel or lodge, green gardens, plain lodge architecture and a large generic mountain softly in the far background, no recognisable hotel or mountain landmark."
+    },
+    {
+      "file": "public/generator-rental/town-dodoma.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A containerised diesel generator powering a large building construction site in dry open central plateau landscape, tower crane and concrete frame, sparse vegetation and pale sky."
+    },
+    {
+      "file": "public/generator-rental/town-mbeya.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A containerised diesel generator beside a gold processing plant in highland country: green hills, misty generic mountains, red earth, mill and processing tanks behind."
+    },
+    {
+      "file": "public/generator-rental/town-morogoro.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A containerised diesel generator at an agro-processing plant or sugar estate, fields and generic mountains behind, unmarked industrial sheds, red laterite ground."
+    },
+    {
+      "file": "public/generator-rental/town-tanga.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A containerised diesel generator at a coastal industrial site with warehouses, coconut palms, flat coastal land and natural humid coastal light."
+    },
+    {
+      "file": "public/generator-rental/town-kahama.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. Exactly two large containerised diesel generators side by side running synchronised beside a gold processing plant with leach tanks. Neatly routed cables to a shared blank synchronising cabinet, red soil."
+    },
+    {
+      "file": "public/generator-rental/town-mtwara.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A containerised diesel generator supplying an industrial construction site in southern coastal Tanzania, flat land, cashew trees, bright natural light, generic industrial structures."
+    },
+    {
+      "file": "public/generator-rental/band-300-500.jpg",
+      "dimensions": [
+        1200,
+        900
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Edit the reference generator rental photograph: replace the exposed open-frame engine and flimsy steel skid on loose blocks with a professionally installed fully enclosed containerised diesel generator around 400 kVA beside a small alluvial wash plant in a fictional East African setting. Entire engine and alternator enclosed inside a clean muted off-white industrial container-style acoustic enclosure, closed service doors, substantial side ventilation grilles and properly supported vertical exhaust. Generator mounted securely and evenly on a continuous level reinforced concrete plinth, visible mounting plates and anchor bolts, proper service clearance, neatly routed protected power cables to a plain distribution cabinet. Clean tidy installation, no loose blocks, no makeshift supports, no exposed engine. Preserve natural daylight, red laterite surroundings and wash plant context; believable scale, documentary photography, restrained colours, no CGI look. Landscape 4:3, entire generator and concrete base within central 80% with generous margins for website cropping. Absolutely no people, logos, badges, brand names, readable text, numbers, signs or watermarks; no identifiable real location."
+    },
+    {
+      "file": "public/generator-rental/band-500-1000.jpg",
+      "dimensions": [
+        1200,
+        900
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. One single large 20-foot containerised diesel generator around 800 kVA with exhaust stack and side vents beside a crushing and milling circuit on red laterite soil."
+    },
+    {
+      "file": "public/generator-rental/band-1000-2500.jpg",
+      "dimensions": [
+        1200,
+        900
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. Three large containerised diesel generators in a row connected with neatly routed cables to a blank synchronising panel at a large processing plant. Tanks, conveyors, red laterite ground and green hills behind."
+    },
+    {
+      "file": "public/generator-rental/generator-rental-hero.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "quality": 85,
+      "prompt": "Use case: photorealistic-natural. Asset: generator rental website photograph. Generate a single landscape 4:3 high-resolution image, at least 1600 x 1200. Realistic documentary photography, natural daylight, believable industrial scale and clean equipment with subtle wear. Fictional East African setting, no identifiable place or landmark. Muted grey/off-white/dark green equipment, restrained colours. Subject completely within central 80% with margins for mobile cropping. Absolutely no people, faces, silhouettes, logos, badges, brands, readable text, lettering, numbers, signs or watermarks. No glossy advertising, illustration or CGI look. A large 20-foot containerised diesel generator with exhaust stack and side vents installed on a mine or processing site in Tanzania. Red earth, processing plant and conveyor softly in background, clear morning light. Cables running neatly to a blank distribution panel."
+    }
+  ]
+}

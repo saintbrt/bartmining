@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7F8F8"/><stop offset="1" stop-color="#E9EDEE"/></linearGradient>
+<linearGradient id="trough" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A959A"/><stop offset="1" stop-color="#4E575B"/></linearGradient>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8A6C36"/></marker>
+</defs>
+<rect width="1600" height="1200" fill="url(#bg)"/>
+<rect x="0" y="1010" width="1600" height="190" fill="#D9DFE1"/>
+<!-- inclined trough -->
+<g transform="rotate(-16 800 700)">
+<rect x="180" y="600" width="1240" height="190" fill="url(#trough)" stroke="#2B3134" stroke-width="6"/>
+<!-- pool -->
+<rect x="184" y="640" width="520" height="146" fill="#6E6A62" opacity=".85"/>
+<!-- spiral shaft and flights -->
+<rect x="200" y="688" width="1220" height="18" fill="#1E2326"/>
+<g fill="none" stroke="#C9CED0" stroke-width="12">
+<path d="M240 620 q30 80 0 160"/><path d="M340 620 q30 80 0 160"/><path d="M440 620 q30 80 0 160"/><path d="M540 620 q30 80 0 160"/><path d="M640 620 q30 80 0 160"/><path d="M740 620 q30 80 0 160"/><path d="M840 620 q30 80 0 160"/><path d="M940 620 q30 80 0 160"/><path d="M1040 620 q30 80 0 160"/><path d="M1140 620 q30 80 0 160"/><path d="M1240 620 q30 80 0 160"/>
+</g>
+<!-- drive at top end -->
+<rect x="1400" y="620" width="130" height="140" rx="10" fill="#2F5C7A" stroke="#1E2326" stroke-width="5"/>
+<!-- lifting gear -->
+<rect x="160" y="520" width="60" height="80" fill="#3F474B"/>
+</g>
+<!-- supports -->
+<g fill="#2B3134"><rect x="300" y="850" width="26" height="170"/><rect x="760" y="720" width="26" height="300"/><rect x="1220" y="590" width="26" height="430"/></g>
+<!-- overflow weir box -->
+<rect x="120" y="860" width="160" height="110" fill="#5D676C" stroke="#2B3134" stroke-width="5"/>
+<!-- sand discharge -->
+<path d="M1330 500 h120 l-40 90 h-60z" fill="#3F474B" stroke="#2B3134" stroke-width="5"/>
+<g stroke="#8A6C36" stroke-width="8" fill="none" marker-end="url(#ar)">
+<path d="M560 520 V620"/><path d="M200 970 V1050"/><path d="M1390 590 V830"/>
+</g>
+<g font-family="Helvetica, Arial, sans-serif" fill="#14181A" font-size="38" font-weight="600">
+<text x="440" y="500">Mill discharge</text>
+<text x="80" y="1100">Fine overflow</text>
+<text x="1290" y="880">Coarse sands</text>
+<text x="1290" y="922">back to mill</text>
+<text x="540" y="250">Spiral (screw) classifier</text>
+</g>
+<g font-family="Helvetica, Arial, sans-serif" fill="#444C50" font-size="28">
+<text x="760" y="440">Rotating spiral rakes settled sand uphill</text>
+</g>
+</svg>

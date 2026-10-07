@@ -1,0 +1,11 @@
+{
+  "kind": "social",
+  "post": "IG-42",
+  "file": "headframe-sheave-wheel.png",
+  "subject": "Looking up at a large sheave wheel with wire rope at the top of a steel headframe against a clear sky",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone social carousel illustration. Realistic editorial illustration, East African small-scale mining context, natural daylight, muted earth tones with steel grey and a touch of warm gold, no people's faces, no logos, no text, no watermarks, no brand names, portrait 4:5. Subject: Looking up at a large sheave wheel with wire rope at the top of a steel headframe against a clear sky.  Composition: keep the complete primary subject clear in the upper two thirds, with a quiet simple lower third for separately rendered headline text. Requested portrait 4:5, native at least 1080 by 1350, ideally 2160 by 2700. Generic illustrative setting, not a real Bart Mining site or offered model. No people, hands, faces, readable text, numbers, logos, brand names, collage, frames or watermark. Never invent assay results, dimensions, grades, capacity or safety certification.",
+  "destination": "/Users/mac/Documents/GitHub/bartmining/tools/social-carousel/images/headframe-sheave-wheel.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "masterSource": "/Users/mac/.codex/generated_images/01a115cb-0da9-7322-8066-1341e6190f18/exec-70bacf3b-e038-42a5-b16d-5f8bc5de4a92.png",
+  "references": []
+}

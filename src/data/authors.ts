@@ -45,9 +45,9 @@ export const AUTHORS: Record<AuthorId, Author> = {
   'allan-bartholomew': {
     id: 'allan-bartholomew',
     name: 'Allan Bartholomew',
-    jobTitle: 'Head of Business Development',
-    credential: 'Head of Business Development',
-    bio: 'Allan leads business development at Bart Mining: equipment sourcing and supply, landed-cost and procurement planning, and client relationships with mining operators across Tanzania. He studied mechanical engineering at Özyeğin University in Istanbul.',
+    jobTitle: 'Head of Business Development and Partnerships',
+    credential: 'Head of Business Development and Partnerships',
+    bio: 'Allan leads business development and partnerships at Bart Mining: equipment sourcing and supply, landed-cost and procurement planning, and client relationships with mining operators across Tanzania. He also coordinates equipment delivery logistics and repair and maintenance operations. With extensive experience supporting projects across Tanzania, he is committed to working tirelessly to meet client needs and exceed expectations. He studied mechanical engineering at Özyeğin University in Istanbul.',
     image: '/team/allan-bartholomew.jpg',
     initials: 'AB',
     knowsAbout: [

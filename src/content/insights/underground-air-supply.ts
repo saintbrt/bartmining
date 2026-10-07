@@ -17,6 +17,7 @@ const content = `<p>An enquiry for underground “air supply” can mean ventila
 <h2 id="readiness">Plan inspection, monitoring and interruptions</h2>
 <p>Have qualified personnel assess electrical supply, fan and compressor installation, pressure systems, guarding, isolation and maintenance. Agree what happens if ventilation or power fails and who can authorise work or re-entry. A gas detector or compressed-air line does not replace a functioning ventilation system.</p>
 <p>Include surveys, calibration where relevant, training and critical spares in the operating budget. Keep records linked to the current layout so an expanding working does not continue under an obsolete equipment brief.</p>
+<p>For equipment references, see our pages on <a href="/equipment/mine-ventilation-fan">mine ventilation fans</a>, <a href="/equipment/air-compressor-mining">mining air compressors</a>, <a href="/equipment/gas-detection-monitor">multi-gas detection monitors</a> and <a href="/equipment/self-contained-self-rescuer">self-contained self-rescuers</a>. Each page lists the information to send when you request a quotation.</p>
 ${renderArticleFaqs("underground-air-supply", "en")}
 <h2 id="conclusion">Specify each air system for its purpose</h2>
 <p>Separate environmental ventilation from tool air, provide the layout and equipment data, and have the complete distribution duties assessed. The next step is a site survey and design brief with documented measurement and failure-response responsibilities. Choose fans and compressors only after that basis is established.</p>

@@ -1,0 +1,8 @@
+{
+  "file": "product-wetmill-2.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone portrait 4:5 social-carousel photograph-style illustration, at least 1080 by 1350 pixels. Reference-guided close elevated three-quarter view of the wet pan mill: two heavy vertical cylindrical steel wheels rolling on their circumferential edges around the horizontal floor of one circular pan. Opposed wheel axles on a central cross arm driven around a vertical central shaft, drive below the pan. Preserve this mechanical arrangement exactly; wheels are upright, not horizontal discs. Stationary isolated machine, realistic worn steel, no mercury, gold coating or people. Composition: the subject remains clear in the upper 50–55 percent with a calm lower area for a separately rendered headline. Natural industrial materials and lighting, restrained colour, no collage, border, logo, watermark or text. Generic equipment or setting, not evidence of a real Bart Mining installation, stocked unit or offered model.",
+  "alt": "Two upright steel rollers on a central cross arm inside a circular wet pan mill.",
+  "reference": "public/equipment/website/wet-pan-mill.webp",
+  "originalFile": "wet-pan-mill-rollers.png"
+}

@@ -1,0 +1,123 @@
+[
+  {
+    "where": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "original": "kupitia mkusanyiko yanaoweza kuzalisha",
+    "suggestion": "kupitia mkusanyiko unaoweza kuuzalisha",
+    "reason": "Agreement error: mkusanyiko is singular, so the relative must be unaoweza, not yanaoweza."
+  },
+  {
+    "where": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "original": "kiasi cha usafiri bidhaa inahitaji",
+    "suggestion": "kiasi cha usafiri ambacho bidhaa inahitaji",
+    "reason": "Broken noun phrase; missing relative marker makes the clause unreadable."
+  },
+  {
+    "where": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "original": "Tanzania, mradi wa nickel wa Kabanga unapanga",
+    "suggestion": "Nchini Tanzania, mradi wa nickel wa Kabanga unapanga",
+    "reason": "Dangling topic comma; reads as a broken sentence rather than a location adverbial."
+  },
+  {
+    "where": "magnetic-separator",
+    "original": "Kuondoa vyuma vilivyopotea kabla ya crusher na vinu",
+    "suggestion": "Kuondoa vyuma vya kigeni kabla ya crusher na vinu",
+    "reason": "vilivyopotea means lost/misplaced metal; tramp iron is foreign/stray metal (vyuma vya kigeni)."
+  },
+  {
+    "where": "src/content/sw/flotation-graphite-copper.ts",
+    "original": "hukaushwa na kuchujwa, mara nyingi kwenye filter press",
+    "suggestion": "huchujwa na kunyeshwa maji, mara nyingi kwenye filter press",
+    "reason": "Wrong process and order: a filter press dewaters/filters; kukaushwa means drying, and the order is reversed."
+  },
+  {
+    "where": "magnetic-separator",
+    "original": "kutenganisha ilmenite na rutile na zircon",
+    "suggestion": "kutenganisha ilmenite kutoka rutile na zircon",
+    "reason": "Current wording lists three products side by side; magnetics separate ilmenite from non-magnetic rutile and zircon."
+  },
+  {
+    "where": "src/content/sw/flotation-graphite-copper.ts",
+    "original": "jinsi ya kuyatofautisha na kuuza madini kwa mchakataji kunahusisha nini",
+    "suggestion": "jinsi ya kuyatofautisha na nini kinahusika katika kuuza madini kwa mchakataji",
+    "reason": "Parallel structure is broken and confuses “how to distinguish” with “what selling involves”."
+  },
+  {
+    "where": "spiral-classifier",
+    "original": "birika lililoinama",
+    "suggestion": "tanki lililoinama",
+    "reason": "birika means kettle/boiler; a Tanzanian reader will misread the classifier trough/tank."
+  },
+  {
+    "where": "spiral-classifier",
+    "original": "kupandishwa kwenye birika na skrubu",
+    "suggestion": "kupandishwa kwenye tanki na skrubu",
+    "reason": "Same wrong word: classifier tank is tanki, not birika."
+  },
+  {
+    "where": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "original": "majaribio ya kimiminika kizito na DMS na flotation",
+    "suggestion": "majaribio ya DMS (kimiminika kizito) na flotation",
+    "reason": "DMS and kimiminika kizito are the same method; listing both looks like two different tests."
+  },
+  {
+    "where": "src/content/sw/flotation-graphite-copper.ts",
+    "original": "viwango vya kaboni vya kati ya 90 na zaidi kwa asilimia",
+    "suggestion": "viwango vya kaboni vya asilimia 90 na zaidi",
+    "reason": "kati ya 90 na zaidi is unnatural and unclear; grade is stated as 90% and above."
+  },
+  {
+    "where": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "original": "mchanganyiko unaohitajika na madini",
+    "suggestion": "mchanganyiko unaohitajika kulingana na madini",
+    "reason": "unaohitajika na madini is ambiguous (needed and ore / needed by ore); means the mix required for that ore."
+  },
+  {
+    "where": "flotation-cell",
+    "original": "Za kimakanika zinazojinyonyea hewa",
+    "suggestion": "Za kimakanika zinazojivuta hewa",
+    "reason": "jinyonyea is unnatural; self-aspirated cells are described as kujivuta hewa."
+  },
+  {
+    "where": "src/content/sw/flotation-graphite-copper.ts",
+    "original": "kabla msambazaji yeyote hajaweza kutoa bei",
+    "suggestion": "kabla msambazaji yeyote aweze kutoa bei",
+    "reason": "hajaweza misfits the “before anyone can” sense; subjunctive aweze is the natural form after kabla."
+  },
+  {
+    "where": "flotation-cell",
+    "original": "Hupanuliwa kutoka kasi ya flotation ya maabara na msanifu",
+    "suggestion": "Hupanuliwa na msanifu kutoka kasi ya flotation ya maabara",
+    "reason": "Word order makes it read as “from lab rate and the designer” instead of scaled up by the designer."
+  },
+  {
+    "where": "src/content/sw/magnetic-vs-gravity-separation.ts",
+    "original": "Vifaa vya gravity hupanga chembe kwa uzito wake",
+    "suggestion": "Vifaa vya gravity hupanga chembe kwa msongamano wake",
+    "reason": "Gravity separation sorts by density; uzito conflicts with the article’s own msongamano explanation."
+  },
+  {
+    "where": "spiral-classifier",
+    "original": "ndani ya birika lililoinama",
+    "suggestion": "ndani ya tanki lililoinama",
+    "reason": "Same birika error in the product summary."
+  },
+  {
+    "where": "utenganishaji-wa-sumaku-au-gravity",
+    "original": "skrubu ndani ya birika lililoinama",
+    "suggestion": "skrubu ndani ya tanki lililoinama",
+    "reason": "FAQ repeats birika for the classifier tank; use tanki for consistency and clarity."
+  },
+  {
+    "where": "src/content/sw/lithium-nickel-processing-guide.ts",
+    "original": "kiwango cha shimo la kuchimba",
+    "suggestion": "kiwango cha madini yanayochimbwa",
+    "reason": "shimo la kuchimba is a calque of pit grade and sounds odd; readers expect grade of mined ore."
+  },
+  {
+    "where": "flotation-ya-graphite-na-shaba",
+    "original": "Kwa vitendo hapana",
+    "suggestion": "Kwa praktiki hapana",
+    "reason": "Optional: kwa vitendo is understandable, but kwa praktisi/praktiki is the usual mining-register equivalent of “in practice.”"
+  }
+]
+

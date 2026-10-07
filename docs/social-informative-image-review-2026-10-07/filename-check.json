@@ -1,0 +1,53 @@
+{
+  "mappedImages": 80,
+  "savedBrowserEdits": [
+    {
+      "post": "IG-19",
+      "sub": "Saved filename migration check IG-19",
+      "image": "social/news-gold-1.png",
+      "ranges": [
+        1.2,
+        33,
+        25
+      ]
+    },
+    {
+      "post": "IG-26",
+      "sub": "Saved filename migration check IG-26",
+      "image": "social/explainer-ore-1.png",
+      "ranges": [
+        1.2,
+        33,
+        25
+      ]
+    },
+    {
+      "post": "IG-20",
+      "sub": "President William Ruto announced on 15 September 2026 that gold will need to be processed locally and exported through approved government channels.",
+      "image": "social/news-kenya-1.png",
+      "ranges": [
+        1,
+        50,
+        50
+      ]
+    }
+  ],
+  "earlierNamesPreserved": true,
+  "exports": [
+    {
+      "file": "product-wetmill-1.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "file": "product-wetmill-2.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "file": "product-wetmill-3.png",
+      "width": 1080,
+      "height": 1350
+    }
+  ]
+}

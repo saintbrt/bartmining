@@ -1,0 +1,2658 @@
+{
+  "routes": 40,
+  "viewports": [
+    1440,
+    390
+  ],
+  "checks": [
+    {
+      "route": "/insights-swahili/kinu-cha-dhahabu-pan-mill-au-ball-mill",
+      "width": 1440,
+      "status": 200,
+      "h1": "Kinu cha dhahabu: wet pan mill au ball mill kwa tani zako",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa tani 20 ni hesabu ya dhana, si mtambo uliofungwa."
+      ],
+      "images": [
+        {
+          "alt": "Wet pan mill yenye magurudumu mazito kwenye sinia la kusagia",
+          "width": 1240,
+          "height": 930
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/ukubwa-wa-winchi-na-headframe",
+      "width": 1440,
+      "status": 200,
+      "h1": "Jinsi ya kupanga ukubwa wa winchi na headframe ya shimo lako",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa shimo la mita 100 unatumia takwimu za dhana, si usanifu uliothibitishwa."
+      ],
+      "images": [
+        {
+          "alt": "Winchi ya umeme ya mgodi yenye ngoma ya waya na mota",
+          "width": 1240,
+          "height": 826
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/kutoa-maji-shimoni",
+      "width": 1440,
+      "status": 200,
+      "h1": "Kutoa maji kwenye shimo refu: pampu za hatua zinavyofanya kazi",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa mita 150 unatumia maji na msuguano wa kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Pampu ya kuzamishwa ya kutoa maji shimoni",
+          "width": 1240,
+          "height": 880
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/kurejesha-maji-kwenye-mtambo",
+      "width": 1440,
+      "status": 200,
+      "h1": "Kurejesha maji kwenye mtambo wa dhahabu: hesabu, mabwawa na thickener",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa maji unatumia mtiririko na viwango vya kurejesha vya kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Mtambo wa kuosha dhahabu ya alluvial wenye vifaa vya kuchuja na kuosha",
+          "width": 387,
+          "height": 290
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/kuchakata-madini-ya-shaba",
+      "width": 1440,
+      "status": 200,
+      "h1": "Madini ya shaba Tanzania: kuuza kwa mchakataji au kuchakata eneo lako",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea ya kuponda madini kutoka kwenye katalogi; haionyeshi mtambo wa shaba wa Chunya."
+      ],
+      "images": [
+        {
+          "alt": "Jaw crusher ikiponda madini kwa ajili ya uchakataji",
+          "width": 992,
+          "height": 661
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/flotation-ya-graphite-na-shaba",
+      "width": 1440,
+      "status": 200,
+      "h1": "Flotation ya graphite na shaba: mnunuzi anapaswa kubainisha nini",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Seli za flotation zenye vichanganyio na mfereji wa povu; mifano ya mkusanyiko inatumia viwango na urejeshaji wa kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Mfululizo wa seli za flotation wenye mota za juu na povu linalomwagika kwenye mfereji wa concentrate",
+          "width": 935,
+          "height": 701
+        }
+      ],
+      "screenshot": "website/_insights-swahili_flotation-ya-graphite-na-shaba-1440.png"
+    },
+    {
+      "route": "/insights-swahili/kuchakata-lithium-na-nickel",
+      "width": 1440,
+      "status": 200,
+      "h1": "Kuchakata madini ya lithium na nickel: muhtasari kwa kampuni ndogo Afrika Mashariki",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea ya uchimbaji kutoka kwenye katalogi; haionyeshi mradi wa lithium au nickel."
+      ],
+      "images": [
+        {
+          "alt": "Mtambo wa kuchimba RC unaotumika kuchukua sampuli za utafiti",
+          "width": 1240,
+          "height": 533
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/utenganishaji-wa-sumaku-au-gravity",
+      "width": 1440,
+      "status": 200,
+      "h1": "Utenganishaji wa sumaku au gravity kwa madini mazito",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Kitenganishi cha sumaku cha drum ya majimaji; mfano wa mchanga mweusi unatumia sehemu ya magnetite ya kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Kitenganishi cha sumaku cha drum yenye mlalo juu ya tanki la tope na njia mbili za bidhaa",
+          "width": 935,
+          "height": 701
+        }
+      ],
+      "screenshot": "website/_insights-swahili_utenganishaji-wa-sumaku-au-gravity-1440.png"
+    },
+    {
+      "route": "/insights/flotation-graphite-copper",
+      "width": 1440,
+      "status": 200,
+      "h1": "Flotation for graphite and copper ore: what a buyer needs to specify",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "A bank of mechanical flotation cells with agitators and a froth launder; the concentrate examples in this guide use assumed grades and recoveries."
+      ],
+      "images": [
+        {
+          "alt": "A bank of flotation cells with overhead drives and froth overflowing into the front launder",
+          "width": 935,
+          "height": 701
+        }
+      ],
+      "screenshot": "website/_insights_flotation-graphite-copper-1440.png"
+    },
+    {
+      "route": "/insights/lithium-nickel-processing-guide",
+      "width": 1440,
+      "status": 200,
+      "h1": "Processing lithium and nickel ore: an overview for East African juniors",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue drilling reference; it does not show a lithium or nickel project."
+      ],
+      "images": [
+        {
+          "alt": "Reverse circulation drilling rig used for exploration sampling",
+          "width": 1240,
+          "height": 533
+        }
+      ]
+    },
+    {
+      "route": "/insights/magnetic-vs-gravity-separation",
+      "width": 1440,
+      "status": 200,
+      "h1": "Magnetic separation or gravity concentration for heavy minerals",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "A wet drum magnetic separator with a slurry tank and product outlets; the black-sand example uses an assumed magnetite share."
+      ],
+      "images": [
+        {
+          "alt": "A horizontal wet drum magnetic separator above a slurry tank with two product outlets",
+          "width": 935,
+          "height": 701
+        }
+      ],
+      "screenshot": "website/_insights_magnetic-vs-gravity-separation-1440.png"
+    },
+    {
+      "route": "/insights/water-recycling-gold-plant",
+      "width": 1440,
+      "status": 200,
+      "h1": "Water recycling for a gold plant: balance, ponds and thickeners",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the wash-plant water example uses assumed flows and recycling rates."
+      ],
+      "images": [
+        {
+          "alt": "Alluvial gold wash plant with screening and washing equipment",
+          "width": 387,
+          "height": 290
+        }
+      ]
+    },
+    {
+      "route": "/insights/copper-ore-processing-tanzania",
+      "width": 1440,
+      "status": 200,
+      "h1": "Copper ore in Tanzania: selling to a processor or processing on site",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference for ore crushing; it does not show the Chunya copper plant."
+      ],
+      "images": [
+        {
+          "alt": "Jaw crusher reducing ore for processing",
+          "width": 992,
+          "height": 661
+        }
+      ]
+    },
+    {
+      "route": "/insights/wet-pan-mill-vs-ball-mill",
+      "width": 1440,
+      "status": 200,
+      "h1": "Wet pan mill or ball mill: choosing a gold mill for your tonnage",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the 20-tonne example in this guide is an assumed calculation, not an installed plant."
+      ],
+      "images": [
+        {
+          "alt": "Wet pan mill with heavy rollers in a circular grinding pan",
+          "width": 1240,
+          "height": 930
+        }
+      ]
+    },
+    {
+      "route": "/insights/mine-winch-headframe-sizing",
+      "width": 1440,
+      "status": 200,
+      "h1": "How to size a mine winch and headframe for your shaft",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the 100-metre shaft example uses assumed figures, not a certified design."
+      ],
+      "images": [
+        {
+          "alt": "Electric mine winch with rope drum and motor",
+          "width": 1240,
+          "height": 826
+        }
+      ]
+    },
+    {
+      "route": "/insights/shaft-dewatering-staged-pumping",
+      "width": 1440,
+      "status": 200,
+      "h1": "Dewatering a deep shaft: staged pumping explained",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the 150-metre example uses assumed inflow and friction figures."
+      ],
+      "images": [
+        {
+          "alt": "Submersible dewatering pump for mine shaft water removal",
+          "width": 1240,
+          "height": 880
+        }
+      ]
+    },
+    {
+      "route": "/equipment/flotation-cell",
+      "width": 1440,
+      "status": 200,
+      "h1": "Froth Flotation Cells for Copper, Graphite and Sulphide Ores",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A bank of froth flotation cells: air bubbles carry mineral particles into the froth, which overflows to the concentrate launder while tailings leave the last cell."
+      ],
+      "images": [
+        {
+          "alt": "A bank of froth flotation cells: air bubbles carry mineral particles into the froth, which overflows to the concentrate launder while tailings leave the last cell.",
+          "width": 1176,
+          "height": 882
+        }
+      ],
+      "screenshot": "website/_equipment_flotation-cell-1440.png"
+    },
+    {
+      "route": "/equipment-swahili/flotation-cell",
+      "width": 1440,
+      "status": 200,
+      "h1": "Seli za froth flotation kwa shaba, graphite na madini ya sulphide",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Mfululizo wa seli za flotation: viputo vya hewa hubeba chembe za madini kwenye povu, linalomwagika kwenye mfereji wa madini yaliyokolezwa (concentrate) huku mabaki yakitoka kwenye seli ya mwisho."
+      ],
+      "images": [
+        {
+          "alt": "Mfululizo wa seli za flotation: viputo vya hewa hubeba chembe za madini kwenye povu, linalomwagika kwenye mfereji wa madini yaliyokolezwa (concentrate) huku mabaki yakitoka kwenye seli ya mwisho.",
+          "width": 1176,
+          "height": 882
+        }
+      ],
+      "screenshot": "website/_equipment-swahili_flotation-cell-1440.png"
+    },
+    {
+      "route": "/equipment/magnetic-separator",
+      "width": 1440,
+      "status": 200,
+      "h1": "Magnetic Separators: Low and High Intensity for Mineral Processing",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A wet drum magnetic separator: a fixed magnet inside the rotating drum holds magnetic particles and carries them away from the non-magnetic stream."
+      ],
+      "images": [
+        {
+          "alt": "A wet drum magnetic separator: a fixed magnet inside the rotating drum holds magnetic particles and carries them away from the non-magnetic stream.",
+          "width": 1176,
+          "height": 882
+        }
+      ],
+      "screenshot": "website/_equipment_magnetic-separator-1440.png"
+    },
+    {
+      "route": "/equipment-swahili/magnetic-separator",
+      "width": 1440,
+      "status": 200,
+      "h1": "Vitenganishi vya sumaku: nguvu ndogo na kubwa kwa uchakataji wa madini",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Kitenganishi cha sumaku cha drum ya majimaji: sumaku isiyosogea ndani ya drum inayozunguka hushika chembe zinazovutwa na sumaku na kuzitenganisha na mkondo wa chembe zisizovutwa nayo."
+      ],
+      "images": [
+        {
+          "alt": "Kitenganishi cha sumaku cha drum ya majimaji: sumaku isiyosogea ndani ya drum inayozunguka hushika chembe zinazovutwa na sumaku na kuzitenganisha na mkondo wa chembe zisizovutwa nayo.",
+          "width": 1176,
+          "height": 882
+        }
+      ],
+      "screenshot": "website/_equipment-swahili_magnetic-separator-1440.png"
+    },
+    {
+      "route": "/equipment/spiral-classifier",
+      "width": 1440,
+      "status": 200,
+      "h1": "Spiral Classifier: Closing the Grinding Circuit",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A spiral classifier: fine material overflows at the low end while the rotating spiral rakes settled sand up the inclined trough and back to the mill."
+      ],
+      "images": [
+        {
+          "alt": "A spiral classifier: fine material overflows at the low end while the rotating spiral rakes settled sand up the inclined trough and back to the mill.",
+          "width": 1176,
+          "height": 882
+        }
+      ],
+      "screenshot": "website/_equipment_spiral-classifier-1440.png"
+    },
+    {
+      "route": "/equipment-swahili/spiral-classifier",
+      "width": 1440,
+      "status": 200,
+      "h1": "Spiral classifier: kufunga mzunguko wa kusaga",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Spiral classifier: chembe laini humwagika upande wa chini huku skrubu inayozunguka ikipandisha mchanga uliotulia kwenye mfereji wa chuma ulio na mteremko na kuurudisha kinuni."
+      ],
+      "images": [
+        {
+          "alt": "Spiral classifier: chembe laini humwagika upande wa chini huku skrubu inayozunguka ikipandisha mchanga uliotulia kwenye mfereji wa chuma ulio na mteremko na kuurudisha kinuni.",
+          "width": 1176,
+          "height": 882
+        }
+      ],
+      "screenshot": "website/_equipment-swahili_spiral-classifier-1440.png"
+    },
+    {
+      "route": "/equipment/leaching-tank",
+      "width": 1440,
+      "status": 200,
+      "h1": "Gold Leaching Tank: Agitation Tank Sizes and Specifications",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "An agitated leaching tank keeps slurry and reagents mixed during the gold-dissolution stage."
+      ],
+      "images": [
+        {
+          "alt": "An agitated leaching tank keeps slurry and reagents mixed during the gold-dissolution stage.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/leaching-tank",
+      "width": 1440,
+      "status": 200,
+      "h1": "Leaching tank: ujazo, kuchanganya na muda wa tope",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Tanki la leaching lenye kichanganyio huweka tope na kemikali zikichanganyika wakati wa kuyeyusha dhahabu."
+      ],
+      "images": [
+        {
+          "alt": "Tanki la leaching lenye kichanganyio huweka tope na kemikali zikichanganyika wakati wa kuyeyusha dhahabu.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment/1-ton-winch",
+      "width": 1440,
+      "status": 200,
+      "h1": "1 Ton Winch: Specifications, Uses and Maintenance",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment."
+      ],
+      "images": [
+        {
+          "alt": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/1-ton-winch",
+      "width": 1440,
+      "status": 200,
+      "h1": "Winchi ya tani 1: mzigo, waya na kazi ya kupandisha madini",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa."
+      ],
+      "images": [
+        {
+          "alt": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment/self-contained-self-rescuer",
+      "width": 1440,
+      "status": 200,
+      "h1": "SCSR Self-Contained Self-Rescuers: Duration, Standards and Deployment",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A self-contained self-rescuer provides a breathing supply for emergency escape from an unsafe atmosphere."
+      ],
+      "images": [
+        {
+          "alt": "A self-contained self-rescuer provides a breathing supply for emergency escape from an unsafe atmosphere.",
+          "width": 1176,
+          "height": 1176
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/self-contained-self-rescuer",
+      "width": 1440,
+      "status": 200,
+      "h1": "SCSR: hewa ya kutoroka, muda na mafunzo ya matumizi",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Kifaa cha kujinusuru cha SCSR hutoa hewa ya kupumua kwa kuondoka kwa dharura kwenye mazingira yenye hewa isiyo salama."
+      ],
+      "images": [
+        {
+          "alt": "Kifaa cha kujinusuru cha SCSR hutoa hewa ya kupumua kwa kuondoka kwa dharura kwenye mazingira yenye hewa isiyo salama.",
+          "width": 1176,
+          "height": 1176
+        }
+      ]
+    },
+    {
+      "route": "/equipment/pneumatic-rock-drill",
+      "width": 1440,
+      "status": 200,
+      "h1": "Pneumatic Rock Drill: Jackleg Specs, Air and Steel",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A pneumatic jackleg drill uses compressed air to drill rock, supported by an adjustable pusher leg."
+      ],
+      "images": [
+        {
+          "alt": "A pneumatic jackleg drill uses compressed air to drill rock, supported by an adjustable pusher leg.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/pneumatic-rock-drill",
+      "width": 1440,
+      "status": 200,
+      "h1": "Rock drill ya hewa: mashimo, compressor na aina ya kazi",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Jackleg hutumia hewa iliyobanwa kuchimba mawe, huku mguu wake unaorekebishwa ukiishikilia na kuisukuma."
+      ],
+      "images": [
+        {
+          "alt": "Jackleg hutumia hewa iliyobanwa kuchimba mawe, huku mguu wake unaorekebishwa ukiishikilia na kuisukuma.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment/filter-press",
+      "width": 1440,
+      "status": 200,
+      "h1": "Filter Press: Tailings Dewatering and Concentrate Filtration",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A filter press removes water from slurry through filter cloths, leaving solids as a filter cake."
+      ],
+      "images": [
+        {
+          "alt": "A filter press removes water from slurry through filter cloths, leaving solids as a filter cake.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/filter-press",
+      "width": 1440,
+      "status": 200,
+      "h1": "Filter press: maji yanayorejeshwa na unyevu wa mabaki",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Filter press huondoa maji kwenye tope kupitia vitambaa vya kuchuja na kuacha yabisi kama keki ya uchujaji."
+      ],
+      "images": [
+        {
+          "alt": "Filter press huondoa maji kwenye tope kupitia vitambaa vya kuchuja na kuacha yabisi kama keki ya uchujaji.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment/diesel-generator-mining",
+      "width": 1440,
+      "status": 200,
+      "h1": "Diesel Generators for Mine Sites: Sizing and Fuel Planning",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A diesel generator combines a diesel engine and an alternator to supply electrical power to mining equipment."
+      ],
+      "images": [
+        {
+          "alt": "A diesel generator combines a diesel engine and an alternator to supply electrical power to mining equipment.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/diesel-generator-mining",
+      "width": 1440,
+      "status": 200,
+      "h1": "Jenereta ya mgodi: kVA, kuanzisha mota na matumizi ya mafuta",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Jenereta ya dizeli huunganisha injini ya dizeli na alternator kuzalisha umeme kwa vifaa vya uchimbaji."
+      ],
+      "images": [
+        {
+          "alt": "Jenereta ya dizeli huunganisha injini ya dizeli na alternator kuzalisha umeme kwa vifaa vya uchimbaji.",
+          "width": 1176,
+          "height": 882
+        }
+      ]
+    },
+    {
+      "route": "/equipment/centrifugal-gold-concentrator",
+      "width": 1440,
+      "status": 200,
+      "h1": "Centrifugal Concentrator for Gold Recovery: Specs and Sizing",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A centrifugal gold concentrator uses a spinning bowl and water to separate heavy gold particles from slurry.",
+        "Scroll the diagram sideways to read all the labels.Cross-section of a centrifugal concentrator bowl. Concentrate builds up in the rings during a cycle and is flushed out when the bowl stops (batch units) or bled off continuously (continuous units)."
+      ],
+      "images": [
+        {
+          "alt": "A centrifugal gold concentrator uses a spinning bowl and water to separate heavy gold particles from slurry.",
+          "width": 1176,
+          "height": 1176
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/centrifugal-gold-concentrator",
+      "width": 1440,
+      "status": 200,
+      "h1": "Centrifugal concentrator: kutenganisha dhahabu huru bila zebaki",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Concentrator ya centrifugal hutumia bakuli linalozunguka na maji kutenganisha chembe nzito za dhahabu kutoka kwenye tope.",
+        "Sogeza mchoro pembeni ili kusoma maelezo yote.Mchoro wa dhana wa sehemu ya bakuli. Mkusanyiko hushikwa kwenye pete na hutolewa bakuli linaposimama kwa batch au kwa utoaji unaoendelea, kulingana na modeli."
+      ],
+      "images": [
+        {
+          "alt": "Concentrator ya centrifugal hutumia bakuli linalozunguka na maji kutenganisha chembe nzito za dhahabu kutoka kwenye tope.",
+          "width": 1176,
+          "height": 1176
+        }
+      ]
+    },
+    {
+      "route": "/equipment",
+      "width": 1440,
+      "status": 200,
+      "h1": "Machinery, plant and safety equipment",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [
+        {
+          "alt": "An alluvial gold wash plant combines washing, screening and gravity separation to process gold-bearing gravel.",
+          "width": 720,
+          "height": 539
+        },
+        {
+          "alt": "A hydraulic excavator uses its boom and bucket to dig material and load haul trucks.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A wheel loader scoops loose material from stockpiles and loads it into trucks or feed hoppers.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "A dump truck carries ore, waste rock and construction material in a tipping body.",
+          "width": 310,
+          "height": 206
+        },
+        {
+          "alt": "A bulldozer pushes and spreads material with its front blade during site preparation and road work.",
+          "width": 310,
+          "height": 205
+        },
+        {
+          "alt": "A motor grader shapes road surfaces and drainage slopes with an adjustable blade.",
+          "width": 310,
+          "height": 136
+        },
+        {
+          "alt": "A backhoe loader combines a front loading bucket with a rear digging arm for trenching and site work.",
+          "width": 310,
+          "height": 150
+        },
+        {
+          "alt": "A vibratory roller compacts road and foundation material through drum weight and vibration.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A tower crane lifts construction loads along its jib, with lifting capacity depending on the load radius.",
+          "width": 310,
+          "height": 206
+        },
+        {
+          "alt": "A concrete mixer truck keeps concrete mixed in a rotating drum while transporting it to the work site.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A 2 tonne electric winch uses a motor-driven drum and wire rope for material handling.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A 5 tonne mine winch uses a powered drum, wire rope and braking system to handle mining loads.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A mine hoist and headframe guide and control the rope used to move loads through a shaft.",
+          "width": 310,
+          "height": 205
+        },
+        {
+          "alt": "Wire ropes, slings and lifting tackle connect a load to the lifting equipment for its planned duty.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A cone crusher reduces rock between a moving cone and a fixed liner, commonly after primary crushing.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A hammer mill breaks material with rotating hammers and controls the discharge size through a screen.",
+          "width": 310,
+          "height": 310
+        },
+        {
+          "alt": "A wet pan mill grinds ore with heavy rollers moving around a pan containing water and feed material.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A vibrating screen separates material into size fractions as it moves across screened decks.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A trommel screen separates gravel by size as material passes through a rotating perforated drum.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A belt conveyor moves material between crushers, screens, stockpiles and other stages of a processing plant.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A hydrocyclone classifies particles in slurry, separating a finer overflow from a coarser underflow.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A filter press removes water from slurry through filter cloths, leaving solids as a filter cake.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A vibrating feeder delivers material from a hopper to a crusher at a controlled feed rate.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A rotary scrubber washes gravel in a rotating drum to break up clay before screening and recovery.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "Sluices and jigs separate heavier gold particles from washed gravel using water flow and gravity.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "An alluvial gold wash plant combines washing, screening and gravity separation to process gold-bearing gravel.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A centrifugal gold concentrator uses a spinning bowl and water to separate heavy gold particles from slurry.",
+          "width": 310,
+          "height": 310
+        },
+        {
+          "alt": "An elution and electrowinning plant removes gold from loaded carbon and recovers it from solution onto electrodes.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "CIL and CIP plants use leaching tanks and activated carbon to dissolve gold and collect it for recovery.",
+          "width": 310,
+          "height": 193
+        },
+        {
+          "alt": "An agitated leaching tank keeps slurry and reagents mixed during the gold-dissolution stage.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A modular gold plant groups processing equipment into sections that can be transported and assembled on site.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A ball mill grinds crushed ore in a rotating drum containing steel grinding balls.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A jaw crusher breaks large rock between a fixed jaw and a moving jaw before further processing.",
+          "width": 310,
+          "height": 206
+        },
+        {
+          "alt": "A gold shaking table separates heavy particles on a moving deck using water flow and gravity.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A bank of froth flotation cells: air bubbles carry mineral particles into the froth, which overflows to the concentrate launder while tailings leave the last cell.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A wet drum magnetic separator: a fixed magnet inside the rotating drum holds magnetic particles and carries them away from the non-magnetic stream.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A spiral classifier: fine material overflows at the low end while the rotating spiral rakes settled sand up the inclined trough and back to the mill.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A pneumatic jackleg drill uses compressed air to drill rock, supported by an adjustable pusher leg.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "An RC drilling rig uses compressed air and dual-wall drill rods to bring rock-chip samples to the surface.",
+          "width": 310,
+          "height": 133
+        },
+        {
+          "alt": "A gold prospecting metal detector uses a search coil to locate metal targets in the ground.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A slurry pump transfers water containing solid particles between stages of a processing plant.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A submersible dewatering pump operates below the water surface to drain sumps, shafts and work areas.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A mining helmet with a cap lamp combines head protection with lighting for underground work.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A self-contained self-rescuer provides a breathing supply for emergency escape from an unsafe atmosphere.",
+          "width": 310,
+          "height": 310
+        },
+        {
+          "alt": "A multi-gas monitor measures selected gases and oxygen levels when assessing mine or confined-space conditions.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A full-body harness connects a worker to an appropriate fall-protection system when working at height.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A mine ventilation fan moves air through ducts or mine passages to support underground ventilation.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Mine management software brings production, shift and operating records together for planning and reporting.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "A fleet management system tracks vehicle movements and operating records to help manage haulage.",
+          "width": 310,
+          "height": 163
+        },
+        {
+          "alt": "Geological modelling software organises exploration data and builds models of geological structures and mineralisation.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A lighting tower raises floodlights above the work area to illuminate night operations.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A diesel generator combines a diesel engine and an alternator to supply electrical power to mining equipment.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "A mining air compressor supplies compressed air for pneumatic drills and other air-powered equipment.",
+          "width": 310,
+          "height": 232
+        }
+      ],
+      "newCards": [
+        {
+          "href": "/equipment/flotation-cell",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/magnetic-separator",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/spiral-classifier",
+          "fit": "contain"
+        }
+      ],
+      "screenshot": "website/equipment-1440.png"
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 1440,
+      "status": 200,
+      "h1": "Mitambo na vifaa vya uchimbaji, uchakataji na usalama",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial huunganisha kuosha, kuchuja na kutenganisha kwa tofauti za uzito ili kuchakata changarawe yenye dhahabu.",
+          "width": 720,
+          "height": 539
+        },
+        {
+          "alt": "Excavator ya haidroliki hutumia mkono na ndoo yake kuchimba malighafi na kupakia malori.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Wheel loader huchota malighafi iliyolundikwa na kuipakia kwenye malori au hopper za kulishia mitambo.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "Lori la kutipa hubeba madini, mawe ya mabaki na vifaa vya ujenzi kwenye sehemu ya mizigo inayoinuliwa kumwaga.",
+          "width": 310,
+          "height": 206
+        },
+        {
+          "alt": "Bulldozer husukuma na kusambaza malighafi kwa bapa lake la mbele wakati wa kuandaa eneo na kujenga barabara.",
+          "width": 310,
+          "height": 205
+        },
+        {
+          "alt": "Motor grader husawazisha barabara na kutengeneza mteremko wa kupitisha maji kwa bapa linalorekebishwa.",
+          "width": 310,
+          "height": 136
+        },
+        {
+          "alt": "Backhoe loader ina ndoo ya kupakia mbele na mkono wa kuchimba nyuma kwa mitaro na kazi za eneo.",
+          "width": 310,
+          "height": 150
+        },
+        {
+          "alt": "Rola ya mtetemo hushindilia malighafi ya barabara na misingi kwa uzito na mtetemo wa ngoma yake.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Kreni ya mnara huinua mizigo ya ujenzi kwa mkono wake, huku uwezo wa kuinua ukitegemea umbali wa mzigo kutoka kwenye mnara.",
+          "width": 310,
+          "height": 206
+        },
+        {
+          "alt": "Lori la kuchanganya zege huzungusha ngoma yake ili zege liendelee kuchanganyika wakati wa kusafirishwa eneo la kazi.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Winchi ya umeme ya tani 2 hutumia ngoma inayoendeshwa na mota pamoja na waya kusogeza mizigo.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Winchi ya mgodini ya tani 5 hutumia ngoma yenye mota, waya na mfumo wa breki kushughulikia mizigo ya uchimbaji.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Hoist na mnara wa shimo huongoza na kudhibiti waya unaotumika kupandisha na kushusha mizigo shimoni.",
+          "width": 310,
+          "height": 205
+        },
+        {
+          "alt": "Waya, mikanda ya kuinulia na viungio huunganisha mzigo na kifaa cha kuinua kulingana na kazi iliyopangwa.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Cone crusher hupunguza ukubwa wa mawe kati ya koni inayosogea na liner iliyotulia, kwa kawaida baada ya hatua ya kwanza ya kuponda.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Hammer mill huvunja malighafi kwa nyundo zinazozunguka na kudhibiti ukubwa unaotoka kupitia kichujio.",
+          "width": 310,
+          "height": 310
+        },
+        {
+          "alt": "Wet pan mill husaga madini kwa rola nzito zinazozunguka ndani ya beseni lenye maji na malighafi.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Kichujio cha mtetemo hutenganisha malighafi kwa ukubwa inapopita juu ya tabaka zenye matundu ya kuchuja.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Trommel hutenganisha changarawe kwa ukubwa wakati malighafi inapita ndani ya ngoma inayozunguka yenye matundu.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Conveyor ya mkanda husafirisha malighafi kati ya mashine za kuponda, vichujio, malundo na hatua nyingine za mtambo.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Hydrocyclone hutenganisha chembe kwenye tope, ikitoa chembe laini juu na kundi kubwa zaidi chini.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Filter press huondoa maji kwenye tope kupitia vitambaa vya kuchuja na kuacha yabisi kama keki ya uchujaji.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Feeder ya mtetemo hupeleka malighafi kutoka hopper hadi mashine ya kuponda kwa kiwango kinachodhibitiwa.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Rotary scrubber huosha changarawe ndani ya ngoma inayozunguka ili kuvunja udongo kabla ya kuchuja na kutenganisha dhahabu.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "Sluice na jig hutenganisha chembe nzito za dhahabu kutoka changarawe iliyooshwa kwa mtiririko wa maji na tofauti za uzito.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial huunganisha kuosha, kuchuja na kutenganisha kwa tofauti za uzito ili kuchakata changarawe yenye dhahabu.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Concentrator ya centrifugal hutumia bakuli linalozunguka na maji kutenganisha chembe nzito za dhahabu kutoka kwenye tope.",
+          "width": 310,
+          "height": 310
+        },
+        {
+          "alt": "Mtambo wa elution na electrowinning huondoa dhahabu kwenye kaboni iliyoibeba na kuikusanya kutoka kwenye myeyusho kwenye elektrodi.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Mitambo ya CIL na CIP hutumia matanki ya leaching na kaboni iliyoamilishwa kuyeyusha dhahabu na kuikusanya kwa hatua ya kuitoa.",
+          "width": 310,
+          "height": 193
+        },
+        {
+          "alt": "Tanki la leaching lenye kichanganyio huweka tope na kemikali zikichanganyika wakati wa kuyeyusha dhahabu.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Mtambo wa dhahabu wa moduli huweka vifaa vya kuchakata katika sehemu zinazoweza kusafirishwa na kuunganishwa eneo la kazi.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Ball mill husaga madini yaliyopondwa ndani ya ngoma inayozunguka yenye mipira ya chuma ya kusagia.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Jaw crusher huvunja mawe makubwa kati ya taya iliyotulia na taya inayosogea kabla ya hatua nyingine za kuchakata.",
+          "width": 310,
+          "height": 206
+        },
+        {
+          "alt": "Meza ya kutenganisha dhahabu hutenganisha chembe nzito kwenye uso unaosogea kwa mtiririko wa maji na tofauti za uzito.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Mfululizo wa seli za flotation: viputo vya hewa hubeba chembe za madini kwenye povu, linalomwagika kwenye mfereji wa madini yaliyokolezwa (concentrate) huku mabaki yakitoka kwenye seli ya mwisho.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Kitenganishi cha sumaku cha drum ya majimaji: sumaku isiyosogea ndani ya drum inayozunguka hushika chembe zinazovutwa na sumaku na kuzitenganisha na mkondo wa chembe zisizovutwa nayo.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Spiral classifier: chembe laini humwagika upande wa chini huku skrubu inayozunguka ikipandisha mchanga uliotulia kwenye mfereji wa chuma ulio na mteremko na kuurudisha kinuni.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Jackleg hutumia hewa iliyobanwa kuchimba mawe, huku mguu wake unaorekebishwa ukiishikilia na kuisukuma.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Rig ya RC hutumia hewa iliyobanwa na mabomba yenye njia mbili kuleta sampuli za vipande vya mawe juu ya ardhi.",
+          "width": 310,
+          "height": 133
+        },
+        {
+          "alt": "Kigunduzi cha metali cha kutafuta dhahabu hutumia koili kutambua metali iliyo ardhini.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Pampu ya tope husafirisha maji yenye chembe za yabisi kati ya hatua za mtambo wa kuchakata.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Pampu ya kuzamishwa hufanya kazi chini ya maji kuyatoa kwenye mashimo ya kukusanyia, mashimo ya uchimbaji na maeneo ya kazi.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Kofia ya usalama yenye taa huunganisha kinga ya kichwa na mwanga kwa kazi chini ya ardhi.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Kifaa cha kujinusuru cha SCSR hutoa hewa ya kupumua kwa kuondoka kwa dharura kwenye mazingira yenye hewa isiyo salama.",
+          "width": 310,
+          "height": 310
+        },
+        {
+          "alt": "Kipima gesi nyingi hupima gesi zilizochaguliwa na kiwango cha oksijeni wakati wa kutathmini hali ya mgodi au sehemu iliyofungwa.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Harness ya mwili mzima humuunganisha mfanyakazi na mfumo unaofaa wa kujikinga na kuanguka anapofanya kazi sehemu ya juu.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Feni ya mgodini husukuma hewa kupitia mabomba au njia za mgodi kusaidia uingizaji na utoaji wa hewa chini ya ardhi.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Programu ya usimamizi wa mgodi hukusanya taarifa za uzalishaji, zamu na uendeshaji kwa kupanga kazi na kutoa ripoti.",
+          "width": 310,
+          "height": 174
+        },
+        {
+          "alt": "Mfumo wa usimamizi wa magari hufuatilia mienendo na taarifa za uendeshaji ili kusaidia kusimamia usafirishaji wa mizigo.",
+          "width": 310,
+          "height": 163
+        },
+        {
+          "alt": "Programu ya uundaji wa modeli za jiolojia hupanga data za utafiti na kuunda modeli za miundo ya ardhi na madini.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Mnara wa taa huinua taa juu ya eneo la kazi ili kuangaza shughuli za usiku.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Jenereta ya dizeli huunganisha injini ya dizeli na alternator kuzalisha umeme kwa vifaa vya uchimbaji.",
+          "width": 310,
+          "height": 232
+        },
+        {
+          "alt": "Compressor ya mgodini hutoa hewa iliyobanwa kwa mashine za kuchimba na vifaa vingine vinavyoendeshwa kwa hewa.",
+          "width": 310,
+          "height": 232
+        }
+      ],
+      "newCards": [
+        {
+          "href": "/equipment-swahili/flotation-cell",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/magnetic-separator",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/spiral-classifier",
+          "fit": "contain"
+        }
+      ],
+      "screenshot": "website/equipment-swahili-1440.png"
+    },
+    {
+      "route": "/tools/leach-tank-calculator",
+      "width": 1440,
+      "status": 200,
+      "h1": "Leach Tank Volume Calculator for CIL and CIP Plants",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [],
+      "calculator": {
+        "defaultWorks": true,
+        "inputUpdates": true,
+        "invalidHoursRejected": true
+      },
+      "screenshot": "website/_tools_leach-tank-calculator-1440.png"
+    },
+    {
+      "route": "/insights-swahili/kikokotoo-cha-tanki-la-leaching",
+      "width": 1440,
+      "status": 200,
+      "h1": "Kikokotoo cha ujazo wa tanki la leaching (CIL na CIP)",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [],
+      "calculator": {
+        "defaultWorks": true,
+        "inputUpdates": true,
+        "invalidHoursRejected": true
+      },
+      "screenshot": "website/_insights-swahili_kikokotoo-cha-tanki-la-leaching-1440.png"
+    },
+    {
+      "route": "/insights-swahili/kinu-cha-dhahabu-pan-mill-au-ball-mill",
+      "width": 390,
+      "status": 200,
+      "h1": "Kinu cha dhahabu: wet pan mill au ball mill kwa tani zako",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa tani 20 ni hesabu ya dhana, si mtambo uliofungwa."
+      ],
+      "images": [
+        {
+          "alt": "Wet pan mill yenye magurudumu mazito kwenye sinia la kusagia",
+          "width": 390,
+          "height": 292
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/ukubwa-wa-winchi-na-headframe",
+      "width": 390,
+      "status": 200,
+      "h1": "Jinsi ya kupanga ukubwa wa winchi na headframe ya shimo lako",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa shimo la mita 100 unatumia takwimu za dhana, si usanifu uliothibitishwa."
+      ],
+      "images": [
+        {
+          "alt": "Winchi ya umeme ya mgodi yenye ngoma ya waya na mota",
+          "width": 390,
+          "height": 260
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/kutoa-maji-shimoni",
+      "width": 390,
+      "status": 200,
+      "h1": "Kutoa maji kwenye shimo refu: pampu za hatua zinavyofanya kazi",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa mita 150 unatumia maji na msuguano wa kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Pampu ya kuzamishwa ya kutoa maji shimoni",
+          "width": 390,
+          "height": 277
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/kurejesha-maji-kwenye-mtambo",
+      "width": 390,
+      "status": 200,
+      "h1": "Kurejesha maji kwenye mtambo wa dhahabu: hesabu, mabwawa na thickener",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea kutoka kwenye katalogi; mfano wa maji unatumia mtiririko na viwango vya kurejesha vya kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Mtambo wa kuosha dhahabu ya alluvial wenye vifaa vya kuchuja na kuosha",
+          "width": 365,
+          "height": 274
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/kuchakata-madini-ya-shaba",
+      "width": 390,
+      "status": 200,
+      "h1": "Madini ya shaba Tanzania: kuuza kwa mchakataji au kuchakata eneo lako",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea ya kuponda madini kutoka kwenye katalogi; haionyeshi mtambo wa shaba wa Chunya."
+      ],
+      "images": [
+        {
+          "alt": "Jaw crusher ikiponda madini kwa ajili ya uchakataji",
+          "width": 390,
+          "height": 260
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/flotation-ya-graphite-na-shaba",
+      "width": 390,
+      "status": 200,
+      "h1": "Flotation ya graphite na shaba: mnunuzi anapaswa kubainisha nini",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Seli za flotation zenye vichanganyio na mfereji wa povu; mifano ya mkusanyiko inatumia viwango na urejeshaji wa kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Mfululizo wa seli za flotation wenye mota za juu na povu linalomwagika kwenye mfereji wa concentrate",
+          "width": 390,
+          "height": 292
+        }
+      ],
+      "screenshot": "website/_insights-swahili_flotation-ya-graphite-na-shaba-390.png"
+    },
+    {
+      "route": "/insights-swahili/kuchakata-lithium-na-nickel",
+      "width": 390,
+      "status": 200,
+      "h1": "Kuchakata madini ya lithium na nickel: muhtasari kwa kampuni ndogo Afrika Mashariki",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Picha ya rejea ya uchimbaji kutoka kwenye katalogi; haionyeshi mradi wa lithium au nickel."
+      ],
+      "images": [
+        {
+          "alt": "Mtambo wa kuchimba RC unaotumika kuchukua sampuli za utafiti",
+          "width": 390,
+          "height": 167
+        }
+      ]
+    },
+    {
+      "route": "/insights-swahili/utenganishaji-wa-sumaku-au-gravity",
+      "width": 390,
+      "status": 200,
+      "h1": "Utenganishaji wa sumaku au gravity kwa madini mazito",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Kitenganishi cha sumaku cha drum ya majimaji; mfano wa mchanga mweusi unatumia sehemu ya magnetite ya kudhaniwa."
+      ],
+      "images": [
+        {
+          "alt": "Kitenganishi cha sumaku cha drum yenye mlalo juu ya tanki la tope na njia mbili za bidhaa",
+          "width": 390,
+          "height": 292
+        }
+      ],
+      "screenshot": "website/_insights-swahili_utenganishaji-wa-sumaku-au-gravity-390.png"
+    },
+    {
+      "route": "/insights/flotation-graphite-copper",
+      "width": 390,
+      "status": 200,
+      "h1": "Flotation for graphite and copper ore: what a buyer needs to specify",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "A bank of mechanical flotation cells with agitators and a froth launder; the concentrate examples in this guide use assumed grades and recoveries."
+      ],
+      "images": [
+        {
+          "alt": "A bank of flotation cells with overhead drives and froth overflowing into the front launder",
+          "width": 390,
+          "height": 292
+        }
+      ],
+      "screenshot": "website/_insights_flotation-graphite-copper-390.png"
+    },
+    {
+      "route": "/insights/lithium-nickel-processing-guide",
+      "width": 390,
+      "status": 200,
+      "h1": "Processing lithium and nickel ore: an overview for East African juniors",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue drilling reference; it does not show a lithium or nickel project."
+      ],
+      "images": [
+        {
+          "alt": "Reverse circulation drilling rig used for exploration sampling",
+          "width": 390,
+          "height": 167
+        }
+      ]
+    },
+    {
+      "route": "/insights/magnetic-vs-gravity-separation",
+      "width": 390,
+      "status": 200,
+      "h1": "Magnetic separation or gravity concentration for heavy minerals",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "A wet drum magnetic separator with a slurry tank and product outlets; the black-sand example uses an assumed magnetite share."
+      ],
+      "images": [
+        {
+          "alt": "A horizontal wet drum magnetic separator above a slurry tank with two product outlets",
+          "width": 390,
+          "height": 292
+        }
+      ],
+      "screenshot": "website/_insights_magnetic-vs-gravity-separation-390.png"
+    },
+    {
+      "route": "/insights/water-recycling-gold-plant",
+      "width": 390,
+      "status": 200,
+      "h1": "Water recycling for a gold plant: balance, ponds and thickeners",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the wash-plant water example uses assumed flows and recycling rates."
+      ],
+      "images": [
+        {
+          "alt": "Alluvial gold wash plant with screening and washing equipment",
+          "width": 365,
+          "height": 274
+        }
+      ]
+    },
+    {
+      "route": "/insights/copper-ore-processing-tanzania",
+      "width": 390,
+      "status": 200,
+      "h1": "Copper ore in Tanzania: selling to a processor or processing on site",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference for ore crushing; it does not show the Chunya copper plant."
+      ],
+      "images": [
+        {
+          "alt": "Jaw crusher reducing ore for processing",
+          "width": 390,
+          "height": 260
+        }
+      ]
+    },
+    {
+      "route": "/insights/wet-pan-mill-vs-ball-mill",
+      "width": 390,
+      "status": 200,
+      "h1": "Wet pan mill or ball mill: choosing a gold mill for your tonnage",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the 20-tonne example in this guide is an assumed calculation, not an installed plant."
+      ],
+      "images": [
+        {
+          "alt": "Wet pan mill with heavy rollers in a circular grinding pan",
+          "width": 390,
+          "height": 292
+        }
+      ]
+    },
+    {
+      "route": "/insights/mine-winch-headframe-sizing",
+      "width": 390,
+      "status": 200,
+      "h1": "How to size a mine winch and headframe for your shaft",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the 100-metre shaft example uses assumed figures, not a certified design."
+      ],
+      "images": [
+        {
+          "alt": "Electric mine winch with rope drum and motor",
+          "width": 390,
+          "height": 260
+        }
+      ]
+    },
+    {
+      "route": "/insights/shaft-dewatering-staged-pumping",
+      "width": 390,
+      "status": 200,
+      "h1": "Dewatering a deep shaft: staged pumping explained",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [
+        "Catalogue equipment reference; the 150-metre example uses assumed inflow and friction figures."
+      ],
+      "images": [
+        {
+          "alt": "Submersible dewatering pump for mine shaft water removal",
+          "width": 390,
+          "height": 277
+        }
+      ]
+    },
+    {
+      "route": "/equipment/flotation-cell",
+      "width": 390,
+      "status": 200,
+      "h1": "Froth Flotation Cells for Copper, Graphite and Sulphide Ores",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A bank of froth flotation cells: air bubbles carry mineral particles into the froth, which overflows to the concentrate launder while tailings leave the last cell."
+      ],
+      "images": [
+        {
+          "alt": "A bank of froth flotation cells: air bubbles carry mineral particles into the froth, which overflows to the concentrate launder while tailings leave the last cell.",
+          "width": 326,
+          "height": 244
+        }
+      ],
+      "screenshot": "website/_equipment_flotation-cell-390.png"
+    },
+    {
+      "route": "/equipment-swahili/flotation-cell",
+      "width": 390,
+      "status": 200,
+      "h1": "Seli za froth flotation kwa shaba, graphite na madini ya sulphide",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Mfululizo wa seli za flotation: viputo vya hewa hubeba chembe za madini kwenye povu, linalomwagika kwenye mfereji wa madini yaliyokolezwa (concentrate) huku mabaki yakitoka kwenye seli ya mwisho."
+      ],
+      "images": [
+        {
+          "alt": "Mfululizo wa seli za flotation: viputo vya hewa hubeba chembe za madini kwenye povu, linalomwagika kwenye mfereji wa madini yaliyokolezwa (concentrate) huku mabaki yakitoka kwenye seli ya mwisho.",
+          "width": 326,
+          "height": 244
+        }
+      ],
+      "screenshot": "website/_equipment-swahili_flotation-cell-390.png"
+    },
+    {
+      "route": "/equipment/magnetic-separator",
+      "width": 390,
+      "status": 200,
+      "h1": "Magnetic Separators: Low and High Intensity for Mineral Processing",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A wet drum magnetic separator: a fixed magnet inside the rotating drum holds magnetic particles and carries them away from the non-magnetic stream."
+      ],
+      "images": [
+        {
+          "alt": "A wet drum magnetic separator: a fixed magnet inside the rotating drum holds magnetic particles and carries them away from the non-magnetic stream.",
+          "width": 326,
+          "height": 244
+        }
+      ],
+      "screenshot": "website/_equipment_magnetic-separator-390.png"
+    },
+    {
+      "route": "/equipment-swahili/magnetic-separator",
+      "width": 390,
+      "status": 200,
+      "h1": "Vitenganishi vya sumaku: nguvu ndogo na kubwa kwa uchakataji wa madini",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Kitenganishi cha sumaku cha drum ya majimaji: sumaku isiyosogea ndani ya drum inayozunguka hushika chembe zinazovutwa na sumaku na kuzitenganisha na mkondo wa chembe zisizovutwa nayo."
+      ],
+      "images": [
+        {
+          "alt": "Kitenganishi cha sumaku cha drum ya majimaji: sumaku isiyosogea ndani ya drum inayozunguka hushika chembe zinazovutwa na sumaku na kuzitenganisha na mkondo wa chembe zisizovutwa nayo.",
+          "width": 326,
+          "height": 244
+        }
+      ],
+      "screenshot": "website/_equipment-swahili_magnetic-separator-390.png"
+    },
+    {
+      "route": "/equipment/spiral-classifier",
+      "width": 390,
+      "status": 200,
+      "h1": "Spiral Classifier: Closing the Grinding Circuit",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A spiral classifier: fine material overflows at the low end while the rotating spiral rakes settled sand up the inclined trough and back to the mill."
+      ],
+      "images": [
+        {
+          "alt": "A spiral classifier: fine material overflows at the low end while the rotating spiral rakes settled sand up the inclined trough and back to the mill.",
+          "width": 326,
+          "height": 244
+        }
+      ],
+      "screenshot": "website/_equipment_spiral-classifier-390.png"
+    },
+    {
+      "route": "/equipment-swahili/spiral-classifier",
+      "width": 390,
+      "status": 200,
+      "h1": "Spiral classifier: kufunga mzunguko wa kusaga",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Spiral classifier: chembe laini humwagika upande wa chini huku skrubu inayozunguka ikipandisha mchanga uliotulia kwenye mfereji wa chuma ulio na mteremko na kuurudisha kinuni."
+      ],
+      "images": [
+        {
+          "alt": "Spiral classifier: chembe laini humwagika upande wa chini huku skrubu inayozunguka ikipandisha mchanga uliotulia kwenye mfereji wa chuma ulio na mteremko na kuurudisha kinuni.",
+          "width": 326,
+          "height": 244
+        }
+      ],
+      "screenshot": "website/_equipment-swahili_spiral-classifier-390.png"
+    },
+    {
+      "route": "/equipment/leaching-tank",
+      "width": 390,
+      "status": 200,
+      "h1": "Gold Leaching Tank: Agitation Tank Sizes and Specifications",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "An agitated leaching tank keeps slurry and reagents mixed during the gold-dissolution stage."
+      ],
+      "images": [
+        {
+          "alt": "An agitated leaching tank keeps slurry and reagents mixed during the gold-dissolution stage.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/leaching-tank",
+      "width": 390,
+      "status": 200,
+      "h1": "Leaching tank: ujazo, kuchanganya na muda wa tope",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Tanki la leaching lenye kichanganyio huweka tope na kemikali zikichanganyika wakati wa kuyeyusha dhahabu."
+      ],
+      "images": [
+        {
+          "alt": "Tanki la leaching lenye kichanganyio huweka tope na kemikali zikichanganyika wakati wa kuyeyusha dhahabu.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment/1-ton-winch",
+      "width": 390,
+      "status": 200,
+      "h1": "1 Ton Winch: Specifications, Uses and Maintenance",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment."
+      ],
+      "images": [
+        {
+          "alt": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/1-ton-winch",
+      "width": 390,
+      "status": 200,
+      "h1": "Winchi ya tani 1: mzigo, waya na kazi ya kupandisha madini",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa."
+      ],
+      "images": [
+        {
+          "alt": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment/self-contained-self-rescuer",
+      "width": 390,
+      "status": 200,
+      "h1": "SCSR Self-Contained Self-Rescuers: Duration, Standards and Deployment",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A self-contained self-rescuer provides a breathing supply for emergency escape from an unsafe atmosphere."
+      ],
+      "images": [
+        {
+          "alt": "A self-contained self-rescuer provides a breathing supply for emergency escape from an unsafe atmosphere.",
+          "width": 326,
+          "height": 326
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/self-contained-self-rescuer",
+      "width": 390,
+      "status": 200,
+      "h1": "SCSR: hewa ya kutoroka, muda na mafunzo ya matumizi",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Kifaa cha kujinusuru cha SCSR hutoa hewa ya kupumua kwa kuondoka kwa dharura kwenye mazingira yenye hewa isiyo salama."
+      ],
+      "images": [
+        {
+          "alt": "Kifaa cha kujinusuru cha SCSR hutoa hewa ya kupumua kwa kuondoka kwa dharura kwenye mazingira yenye hewa isiyo salama.",
+          "width": 326,
+          "height": 326
+        }
+      ]
+    },
+    {
+      "route": "/equipment/pneumatic-rock-drill",
+      "width": 390,
+      "status": 200,
+      "h1": "Pneumatic Rock Drill: Jackleg Specs, Air and Steel",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A pneumatic jackleg drill uses compressed air to drill rock, supported by an adjustable pusher leg."
+      ],
+      "images": [
+        {
+          "alt": "A pneumatic jackleg drill uses compressed air to drill rock, supported by an adjustable pusher leg.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/pneumatic-rock-drill",
+      "width": 390,
+      "status": 200,
+      "h1": "Rock drill ya hewa: mashimo, compressor na aina ya kazi",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Jackleg hutumia hewa iliyobanwa kuchimba mawe, huku mguu wake unaorekebishwa ukiishikilia na kuisukuma."
+      ],
+      "images": [
+        {
+          "alt": "Jackleg hutumia hewa iliyobanwa kuchimba mawe, huku mguu wake unaorekebishwa ukiishikilia na kuisukuma.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment/filter-press",
+      "width": 390,
+      "status": 200,
+      "h1": "Filter Press: Tailings Dewatering and Concentrate Filtration",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A filter press removes water from slurry through filter cloths, leaving solids as a filter cake."
+      ],
+      "images": [
+        {
+          "alt": "A filter press removes water from slurry through filter cloths, leaving solids as a filter cake.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/filter-press",
+      "width": 390,
+      "status": 200,
+      "h1": "Filter press: maji yanayorejeshwa na unyevu wa mabaki",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Filter press huondoa maji kwenye tope kupitia vitambaa vya kuchuja na kuacha yabisi kama keki ya uchujaji."
+      ],
+      "images": [
+        {
+          "alt": "Filter press huondoa maji kwenye tope kupitia vitambaa vya kuchuja na kuacha yabisi kama keki ya uchujaji.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment/diesel-generator-mining",
+      "width": 390,
+      "status": 200,
+      "h1": "Diesel Generators for Mine Sites: Sizing and Fuel Planning",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A diesel generator combines a diesel engine and an alternator to supply electrical power to mining equipment."
+      ],
+      "images": [
+        {
+          "alt": "A diesel generator combines a diesel engine and an alternator to supply electrical power to mining equipment.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/diesel-generator-mining",
+      "width": 390,
+      "status": 200,
+      "h1": "Jenereta ya mgodi: kVA, kuanzisha mota na matumizi ya mafuta",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Jenereta ya dizeli huunganisha injini ya dizeli na alternator kuzalisha umeme kwa vifaa vya uchimbaji."
+      ],
+      "images": [
+        {
+          "alt": "Jenereta ya dizeli huunganisha injini ya dizeli na alternator kuzalisha umeme kwa vifaa vya uchimbaji.",
+          "width": 326,
+          "height": 244
+        }
+      ]
+    },
+    {
+      "route": "/equipment/centrifugal-gold-concentrator",
+      "width": 390,
+      "status": 200,
+      "h1": "Centrifugal Concentrator for Gold Recovery: Specs and Sizing",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "A centrifugal gold concentrator uses a spinning bowl and water to separate heavy gold particles from slurry.",
+        "Scroll the diagram sideways to read all the labels.Cross-section of a centrifugal concentrator bowl. Concentrate builds up in the rings during a cycle and is flushed out when the bowl stops (batch units) or bled off continuously (continuous units)."
+      ],
+      "images": [
+        {
+          "alt": "A centrifugal gold concentrator uses a spinning bowl and water to separate heavy gold particles from slurry.",
+          "width": 326,
+          "height": 326
+        }
+      ]
+    },
+    {
+      "route": "/equipment-swahili/centrifugal-gold-concentrator",
+      "width": 390,
+      "status": 200,
+      "h1": "Centrifugal concentrator: kutenganisha dhahabu huru bila zebaki",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": "contain",
+      "captions": [
+        "Concentrator ya centrifugal hutumia bakuli linalozunguka na maji kutenganisha chembe nzito za dhahabu kutoka kwenye tope.",
+        "Sogeza mchoro pembeni ili kusoma maelezo yote.Mchoro wa dhana wa sehemu ya bakuli. Mkusanyiko hushikwa kwenye pete na hutolewa bakuli linaposimama kwa batch au kwa utoaji unaoendelea, kulingana na modeli."
+      ],
+      "images": [
+        {
+          "alt": "Concentrator ya centrifugal hutumia bakuli linalozunguka na maji kutenganisha chembe nzito za dhahabu kutoka kwenye tope.",
+          "width": 326,
+          "height": 326
+        }
+      ]
+    },
+    {
+      "route": "/equipment",
+      "width": 390,
+      "status": 200,
+      "h1": "Machinery, plant and safety equipment",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [
+        {
+          "alt": "An alluvial gold wash plant combines washing, screening and gravity separation to process gold-bearing gravel.",
+          "width": 390,
+          "height": 292
+        },
+        {
+          "alt": "A hydraulic excavator uses its boom and bucket to dig material and load haul trucks.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A wheel loader scoops loose material from stockpiles and loads it into trucks or feed hoppers.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "A dump truck carries ore, waste rock and construction material in a tipping body.",
+          "width": 195,
+          "height": 130
+        },
+        {
+          "alt": "A bulldozer pushes and spreads material with its front blade during site preparation and road work.",
+          "width": 195,
+          "height": 129
+        },
+        {
+          "alt": "A motor grader shapes road surfaces and drainage slopes with an adjustable blade.",
+          "width": 195,
+          "height": 86
+        },
+        {
+          "alt": "A backhoe loader combines a front loading bucket with a rear digging arm for trenching and site work.",
+          "width": 195,
+          "height": 94
+        },
+        {
+          "alt": "A vibratory roller compacts road and foundation material through drum weight and vibration.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A tower crane lifts construction loads along its jib, with lifting capacity depending on the load radius.",
+          "width": 195,
+          "height": 130
+        },
+        {
+          "alt": "A concrete mixer truck keeps concrete mixed in a rotating drum while transporting it to the work site.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "A 1 tonne electric winch winds wire rope onto a powered drum to pull material and equipment.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A 2 tonne electric winch uses a motor-driven drum and wire rope for material handling.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A 5 tonne mine winch uses a powered drum, wire rope and braking system to handle mining loads.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A mine hoist and headframe guide and control the rope used to move loads through a shaft.",
+          "width": 195,
+          "height": 129
+        },
+        {
+          "alt": "Wire ropes, slings and lifting tackle connect a load to the lifting equipment for its planned duty.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A cone crusher reduces rock between a moving cone and a fixed liner, commonly after primary crushing.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A hammer mill breaks material with rotating hammers and controls the discharge size through a screen.",
+          "width": 195,
+          "height": 195
+        },
+        {
+          "alt": "A wet pan mill grinds ore with heavy rollers moving around a pan containing water and feed material.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A vibrating screen separates material into size fractions as it moves across screened decks.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A trommel screen separates gravel by size as material passes through a rotating perforated drum.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A belt conveyor moves material between crushers, screens, stockpiles and other stages of a processing plant.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A hydrocyclone classifies particles in slurry, separating a finer overflow from a coarser underflow.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A filter press removes water from slurry through filter cloths, leaving solids as a filter cake.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A vibrating feeder delivers material from a hopper to a crusher at a controlled feed rate.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A rotary scrubber washes gravel in a rotating drum to break up clay before screening and recovery.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "Sluices and jigs separate heavier gold particles from washed gravel using water flow and gravity.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "An alluvial gold wash plant combines washing, screening and gravity separation to process gold-bearing gravel.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A centrifugal gold concentrator uses a spinning bowl and water to separate heavy gold particles from slurry.",
+          "width": 195,
+          "height": 195
+        },
+        {
+          "alt": "An elution and electrowinning plant removes gold from loaded carbon and recovers it from solution onto electrodes.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "CIL and CIP plants use leaching tanks and activated carbon to dissolve gold and collect it for recovery.",
+          "width": 195,
+          "height": 121
+        },
+        {
+          "alt": "An agitated leaching tank keeps slurry and reagents mixed during the gold-dissolution stage.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A modular gold plant groups processing equipment into sections that can be transported and assembled on site.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A ball mill grinds crushed ore in a rotating drum containing steel grinding balls.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A jaw crusher breaks large rock between a fixed jaw and a moving jaw before further processing.",
+          "width": 195,
+          "height": 130
+        },
+        {
+          "alt": "A gold shaking table separates heavy particles on a moving deck using water flow and gravity.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A bank of froth flotation cells: air bubbles carry mineral particles into the froth, which overflows to the concentrate launder while tailings leave the last cell.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A wet drum magnetic separator: a fixed magnet inside the rotating drum holds magnetic particles and carries them away from the non-magnetic stream.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A spiral classifier: fine material overflows at the low end while the rotating spiral rakes settled sand up the inclined trough and back to the mill.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A pneumatic jackleg drill uses compressed air to drill rock, supported by an adjustable pusher leg.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "An RC drilling rig uses compressed air and dual-wall drill rods to bring rock-chip samples to the surface.",
+          "width": 195,
+          "height": 83
+        },
+        {
+          "alt": "A gold prospecting metal detector uses a search coil to locate metal targets in the ground.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A slurry pump transfers water containing solid particles between stages of a processing plant.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A submersible dewatering pump operates below the water surface to drain sumps, shafts and work areas.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A mining helmet with a cap lamp combines head protection with lighting for underground work.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A self-contained self-rescuer provides a breathing supply for emergency escape from an unsafe atmosphere.",
+          "width": 195,
+          "height": 195
+        },
+        {
+          "alt": "A multi-gas monitor measures selected gases and oxygen levels when assessing mine or confined-space conditions.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A full-body harness connects a worker to an appropriate fall-protection system when working at height.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A mine ventilation fan moves air through ducts or mine passages to support underground ventilation.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Mine management software brings production, shift and operating records together for planning and reporting.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "A fleet management system tracks vehicle movements and operating records to help manage haulage.",
+          "width": 195,
+          "height": 102
+        },
+        {
+          "alt": "Geological modelling software organises exploration data and builds models of geological structures and mineralisation.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A lighting tower raises floodlights above the work area to illuminate night operations.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A diesel generator combines a diesel engine and an alternator to supply electrical power to mining equipment.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "A mining air compressor supplies compressed air for pneumatic drills and other air-powered equipment.",
+          "width": 195,
+          "height": 146
+        }
+      ],
+      "newCards": [
+        {
+          "href": "/equipment/flotation-cell",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/magnetic-separator",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment/spiral-classifier",
+          "fit": "contain"
+        }
+      ],
+      "screenshot": "website/equipment-390.png"
+    },
+    {
+      "route": "/equipment-swahili",
+      "width": 390,
+      "status": 200,
+      "h1": "Mitambo na vifaa vya uchimbaji, uchakataji na usalama",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial huunganisha kuosha, kuchuja na kutenganisha kwa tofauti za uzito ili kuchakata changarawe yenye dhahabu.",
+          "width": 390,
+          "height": 292
+        },
+        {
+          "alt": "Excavator ya haidroliki hutumia mkono na ndoo yake kuchimba malighafi na kupakia malori.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Wheel loader huchota malighafi iliyolundikwa na kuipakia kwenye malori au hopper za kulishia mitambo.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "Lori la kutipa hubeba madini, mawe ya mabaki na vifaa vya ujenzi kwenye sehemu ya mizigo inayoinuliwa kumwaga.",
+          "width": 195,
+          "height": 130
+        },
+        {
+          "alt": "Bulldozer husukuma na kusambaza malighafi kwa bapa lake la mbele wakati wa kuandaa eneo na kujenga barabara.",
+          "width": 195,
+          "height": 129
+        },
+        {
+          "alt": "Motor grader husawazisha barabara na kutengeneza mteremko wa kupitisha maji kwa bapa linalorekebishwa.",
+          "width": 195,
+          "height": 86
+        },
+        {
+          "alt": "Backhoe loader ina ndoo ya kupakia mbele na mkono wa kuchimba nyuma kwa mitaro na kazi za eneo.",
+          "width": 195,
+          "height": 94
+        },
+        {
+          "alt": "Rola ya mtetemo hushindilia malighafi ya barabara na misingi kwa uzito na mtetemo wa ngoma yake.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Kreni ya mnara huinua mizigo ya ujenzi kwa mkono wake, huku uwezo wa kuinua ukitegemea umbali wa mzigo kutoka kwenye mnara.",
+          "width": 195,
+          "height": 130
+        },
+        {
+          "alt": "Lori la kuchanganya zege huzungusha ngoma yake ili zege liendelee kuchanganyika wakati wa kusafirishwa eneo la kazi.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "Winchi ya umeme ya tani 1 hukusanya waya kwenye ngoma yenye mota ili kuvuta malighafi na vifaa.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Winchi ya umeme ya tani 2 hutumia ngoma inayoendeshwa na mota pamoja na waya kusogeza mizigo.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Winchi ya mgodini ya tani 5 hutumia ngoma yenye mota, waya na mfumo wa breki kushughulikia mizigo ya uchimbaji.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Hoist na mnara wa shimo huongoza na kudhibiti waya unaotumika kupandisha na kushusha mizigo shimoni.",
+          "width": 195,
+          "height": 129
+        },
+        {
+          "alt": "Waya, mikanda ya kuinulia na viungio huunganisha mzigo na kifaa cha kuinua kulingana na kazi iliyopangwa.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Cone crusher hupunguza ukubwa wa mawe kati ya koni inayosogea na liner iliyotulia, kwa kawaida baada ya hatua ya kwanza ya kuponda.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Hammer mill huvunja malighafi kwa nyundo zinazozunguka na kudhibiti ukubwa unaotoka kupitia kichujio.",
+          "width": 195,
+          "height": 195
+        },
+        {
+          "alt": "Wet pan mill husaga madini kwa rola nzito zinazozunguka ndani ya beseni lenye maji na malighafi.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Kichujio cha mtetemo hutenganisha malighafi kwa ukubwa inapopita juu ya tabaka zenye matundu ya kuchuja.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Trommel hutenganisha changarawe kwa ukubwa wakati malighafi inapita ndani ya ngoma inayozunguka yenye matundu.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Conveyor ya mkanda husafirisha malighafi kati ya mashine za kuponda, vichujio, malundo na hatua nyingine za mtambo.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Hydrocyclone hutenganisha chembe kwenye tope, ikitoa chembe laini juu na kundi kubwa zaidi chini.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Filter press huondoa maji kwenye tope kupitia vitambaa vya kuchuja na kuacha yabisi kama keki ya uchujaji.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Feeder ya mtetemo hupeleka malighafi kutoka hopper hadi mashine ya kuponda kwa kiwango kinachodhibitiwa.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Rotary scrubber huosha changarawe ndani ya ngoma inayozunguka ili kuvunja udongo kabla ya kuchuja na kutenganisha dhahabu.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "Sluice na jig hutenganisha chembe nzito za dhahabu kutoka changarawe iliyooshwa kwa mtiririko wa maji na tofauti za uzito.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Mtambo wa dhahabu ya alluvial huunganisha kuosha, kuchuja na kutenganisha kwa tofauti za uzito ili kuchakata changarawe yenye dhahabu.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Concentrator ya centrifugal hutumia bakuli linalozunguka na maji kutenganisha chembe nzito za dhahabu kutoka kwenye tope.",
+          "width": 195,
+          "height": 195
+        },
+        {
+          "alt": "Mtambo wa elution na electrowinning huondoa dhahabu kwenye kaboni iliyoibeba na kuikusanya kutoka kwenye myeyusho kwenye elektrodi.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Mitambo ya CIL na CIP hutumia matanki ya leaching na kaboni iliyoamilishwa kuyeyusha dhahabu na kuikusanya kwa hatua ya kuitoa.",
+          "width": 195,
+          "height": 121
+        },
+        {
+          "alt": "Tanki la leaching lenye kichanganyio huweka tope na kemikali zikichanganyika wakati wa kuyeyusha dhahabu.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Mtambo wa dhahabu wa moduli huweka vifaa vya kuchakata katika sehemu zinazoweza kusafirishwa na kuunganishwa eneo la kazi.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Ball mill husaga madini yaliyopondwa ndani ya ngoma inayozunguka yenye mipira ya chuma ya kusagia.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Jaw crusher huvunja mawe makubwa kati ya taya iliyotulia na taya inayosogea kabla ya hatua nyingine za kuchakata.",
+          "width": 195,
+          "height": 130
+        },
+        {
+          "alt": "Meza ya kutenganisha dhahabu hutenganisha chembe nzito kwenye uso unaosogea kwa mtiririko wa maji na tofauti za uzito.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Mfululizo wa seli za flotation: viputo vya hewa hubeba chembe za madini kwenye povu, linalomwagika kwenye mfereji wa madini yaliyokolezwa (concentrate) huku mabaki yakitoka kwenye seli ya mwisho.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Kitenganishi cha sumaku cha drum ya majimaji: sumaku isiyosogea ndani ya drum inayozunguka hushika chembe zinazovutwa na sumaku na kuzitenganisha na mkondo wa chembe zisizovutwa nayo.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Spiral classifier: chembe laini humwagika upande wa chini huku skrubu inayozunguka ikipandisha mchanga uliotulia kwenye mfereji wa chuma ulio na mteremko na kuurudisha kinuni.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Jackleg hutumia hewa iliyobanwa kuchimba mawe, huku mguu wake unaorekebishwa ukiishikilia na kuisukuma.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Rig ya RC hutumia hewa iliyobanwa na mabomba yenye njia mbili kuleta sampuli za vipande vya mawe juu ya ardhi.",
+          "width": 195,
+          "height": 83
+        },
+        {
+          "alt": "Kigunduzi cha metali cha kutafuta dhahabu hutumia koili kutambua metali iliyo ardhini.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Pampu ya tope husafirisha maji yenye chembe za yabisi kati ya hatua za mtambo wa kuchakata.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Pampu ya kuzamishwa hufanya kazi chini ya maji kuyatoa kwenye mashimo ya kukusanyia, mashimo ya uchimbaji na maeneo ya kazi.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Kofia ya usalama yenye taa huunganisha kinga ya kichwa na mwanga kwa kazi chini ya ardhi.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Kifaa cha kujinusuru cha SCSR hutoa hewa ya kupumua kwa kuondoka kwa dharura kwenye mazingira yenye hewa isiyo salama.",
+          "width": 195,
+          "height": 195
+        },
+        {
+          "alt": "Kipima gesi nyingi hupima gesi zilizochaguliwa na kiwango cha oksijeni wakati wa kutathmini hali ya mgodi au sehemu iliyofungwa.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Harness ya mwili mzima humuunganisha mfanyakazi na mfumo unaofaa wa kujikinga na kuanguka anapofanya kazi sehemu ya juu.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Feni ya mgodini husukuma hewa kupitia mabomba au njia za mgodi kusaidia uingizaji na utoaji wa hewa chini ya ardhi.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Programu ya usimamizi wa mgodi hukusanya taarifa za uzalishaji, zamu na uendeshaji kwa kupanga kazi na kutoa ripoti.",
+          "width": 195,
+          "height": 109
+        },
+        {
+          "alt": "Mfumo wa usimamizi wa magari hufuatilia mienendo na taarifa za uendeshaji ili kusaidia kusimamia usafirishaji wa mizigo.",
+          "width": 195,
+          "height": 102
+        },
+        {
+          "alt": "Programu ya uundaji wa modeli za jiolojia hupanga data za utafiti na kuunda modeli za miundo ya ardhi na madini.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Mnara wa taa huinua taa juu ya eneo la kazi ili kuangaza shughuli za usiku.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Jenereta ya dizeli huunganisha injini ya dizeli na alternator kuzalisha umeme kwa vifaa vya uchimbaji.",
+          "width": 195,
+          "height": 146
+        },
+        {
+          "alt": "Compressor ya mgodini hutoa hewa iliyobanwa kwa mashine za kuchimba na vifaa vingine vinavyoendeshwa kwa hewa.",
+          "width": 195,
+          "height": 146
+        }
+      ],
+      "newCards": [
+        {
+          "href": "/equipment-swahili/flotation-cell",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/magnetic-separator",
+          "fit": "contain"
+        },
+        {
+          "href": "/equipment-swahili/spiral-classifier",
+          "fit": "contain"
+        }
+      ],
+      "screenshot": "website/equipment-swahili-390.png"
+    },
+    {
+      "route": "/tools/leach-tank-calculator",
+      "width": 390,
+      "status": 200,
+      "h1": "Leach Tank Volume Calculator for CIL and CIP Plants",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [],
+      "calculator": {
+        "defaultWorks": true,
+        "inputUpdates": true,
+        "invalidHoursRejected": true
+      },
+      "screenshot": "website/_tools_leach-tank-calculator-390.png"
+    },
+    {
+      "route": "/insights-swahili/kikokotoo-cha-tanki-la-leaching",
+      "width": 390,
+      "status": 200,
+      "h1": "Kikokotoo cha ujazo wa tanki la leaching (CIL na CIP)",
+      "overflow": false,
+      "missingFragments": [],
+      "heroFit": null,
+      "captions": [],
+      "images": [],
+      "calculator": {
+        "defaultWorks": true,
+        "inputUpdates": true,
+        "invalidHoursRejected": true
+      },
+      "screenshot": "website/_insights-swahili_kikokotoo-cha-tanki-la-leaching-390.png"
+    }
+  ],
+  "pageErrors": []
+}

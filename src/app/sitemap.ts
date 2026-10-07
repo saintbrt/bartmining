@@ -39,6 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/delivery-shipping`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE.url}/equipment-swahili`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/insights-swahili/bei-ya-dhahabu-leo`, lastModified: now, changeFrequency: 'daily', priority: 0.85 },
+    { url: `${SITE.url}/tools/leach-tank-calculator`, lastModified: new Date('2026-10-07'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE.url}/insights-swahili/kikokotoo-cha-tanki-la-leaching`, lastModified: new Date('2026-10-07'), changeFrequency: 'monthly', priority: 0.75 },
   ]
 
   const marketPages: MetadataRoute.Sitemap = MARKETS.map(m => ({

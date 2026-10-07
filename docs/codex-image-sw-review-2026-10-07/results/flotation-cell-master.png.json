@@ -1,0 +1,9 @@
+{
+  "kind": "equipment",
+  "file": "flotation-cell-master.png",
+  "slug": "flotation-cell",
+  "prompt": "Use case: product-mockup. Create one high resolution 2048 by 1536 landscape catalogue illustration for Bart Mining's froth flotation cell equipment page. A single industrial bank of three mechanical froth flotation cells in a row: rectangular steel tanks on short legs, an electric drive motor and belt guard on top of each cell driving a vertical impeller shaft, a continuous froth launder along the front lip with grey-white mineral froth overflowing into it, a feed box at the left end and a tailings box at the right end, steel walkway handrail along the top. Show the whole bank in three-quarter front view, fully inside the frame with generous clear margins. Neutral warm off-white studio background and floor, soft diffuse daylight, restrained steel grey tanks with yellow safety guards, blue motors, crisp realistic metal textures. Product occupies about 75 percent of frame width. No people, logos, watermarks, text, labels, branding, specifications or unrelated machinery. This is a generic equipment-class illustration, not a documentary photo or exact model. It must fit a 4:3 catalogue card and a 16:9 product window without cropping the machine.",
+  "destination": "/Users/mac/Documents/GitHub/bartmining/docs/codex-image-sw-review-2026-10-07/flotation-cell-master.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "masterSource": "/Users/mac/.codex/generated_images/01a115cb-0da9-7322-8066-1341e6190f18/exec-eef3cca9-ee7f-4e80-8d23-91f1d79d6bfb.png"
+}

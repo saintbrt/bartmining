@@ -198,5 +198,17 @@
   "air-compressor-mining": {
     "src": "/equipment/website/air-compressor-mining.webp",
     "kind": "reference"
+  },
+  "flotation-cell": {
+    "src": "/equipment/website/flotation-cell.webp",
+    "kind": "illustration"
+  },
+  "magnetic-separator": {
+    "src": "/equipment/website/magnetic-separator.webp",
+    "kind": "illustration"
+  },
+  "spiral-classifier": {
+    "src": "/equipment/website/spiral-classifier.webp",
+    "kind": "illustration"
   }
 }

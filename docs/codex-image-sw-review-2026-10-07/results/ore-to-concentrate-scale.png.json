@@ -1,0 +1,10 @@
+{
+  "kind": "social",
+  "post": "IG-46",
+  "file": "ore-to-concentrate-scale.png",
+  "subject": "A very large ore stockpile beside a much smaller neat pile of concentrate, showing the difference in scale, processing yard",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone social carousel illustration. Realistic editorial illustration, East African small-scale mining context, natural daylight, muted earth tones with steel grey and a touch of warm gold, no people's faces, no logos, no text, no watermarks, no brand names, portrait 4:5. Subject: A very large ore stockpile beside a much smaller neat pile of concentrate, showing the difference in scale, processing yard. A conceptual qualitative comparison, not a measured mass balance or stated ratio. Composition: keep the complete primary subject clear in the upper two thirds, with a quiet simple lower third for separately rendered headline text. Requested portrait 4:5, native at least 1080 by 1350, ideally 2160 by 2700. Generic illustrative setting, not a real Bart Mining site or offered model. No people, hands, faces, readable text, numbers, logos, brand names, collage, frames or watermark. Never invent assay results, dimensions, grades, capacity or safety certification.",
+  "destination": "/Users/mac/Documents/GitHub/bartmining/tools/social-carousel/images/ore-to-concentrate-scale.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "masterSource": "/Users/mac/.codex/generated_images/01a115cb-0da9-7322-8066-1341e6190f18/exec-94c53092-915e-4eef-a91b-4bfde68ba515.png"
+}

@@ -1,0 +1,33 @@
+import { renderArticleFaqs } from '@/lib/article-faqs'
+
+const content = `<p>Water is one of the main reasons small underground gold mines stop working, especially in the rains. A shaft that floods overnight loses shifts, damages equipment and can trap ore that took months to develop. Keeping it dry depends on knowing how much water comes in, lifting it the full height to surface and keeping the pumps running when power or a single machine fails. Beyond a certain depth, the reliable way to do that is to pump in stages rather than in one long lift.</p>
+<p>This guide explains how to estimate inflow, calculate the total head a pump must overcome and decide when to stage pumps with intermediate sumps. A worked example for a 150-metre shaft shows the arithmetic. You should finish able to brief a pump supplier and plan the power and standby the system needs.</p>
+<h2 id="inflow">Measure how much water comes in</h2>
+<p>The starting point is the inflow rate. The simplest field method is to stop pumping for a measured period and record how fast the water rises in a sump of known size. If a sump measuring 2 by 2 metres rises 0.5 metres in an hour, the inflow is about 2 cubic metres per hour. Repeat the measurement in the dry season and the wet season, because inflow can rise sharply after heavy rain, and design for the wet-season peak with a margin.</p>
+<p>Keep a simple log of pumping hours and sump levels. It shows whether inflow is growing as the shaft deepens and gives the supplier real figures instead of guesses.</p>
+<h2 id="total-head">Calculate the total head, not just the depth</h2>
+<p>A pump must lift water the vertical height from the sump to the discharge point and also overcome friction in the pipe or hose. Friction is routinely underestimated: a long, narrow hose can add more resistance than the shaft depth itself. The supplier calculates it from the flow, pipe size, length and fittings, so give them the full pipe route. Size the pump on total head, which is the vertical lift plus friction, at the required flow.</p>
+<p>A <a href="/equipment/submersible-dewatering-pump">submersible dewatering pump</a> sits in the water it removes, which avoids the priming and suction problems that stop surface pumps in a flooding shaft. Mining submersibles cover roughly 5–500 cubic metres per hour against 10–120 metres of head per stage, depending on the model.</p>
+<h2 id="staging">Decide when to stage the pumps</h2>
+<p>Beyond about 80 metres, pumping in series with intermediate sumps is usually more reliable than one long lift. The lower pump lifts water to a sump part-way up the shaft, and a second pump lifts it from there to surface. Each pump works against a smaller head, smaller and more easily handled units can be used, and a failure floods one stage rather than the whole shaft.</p>
+<p>Staging needs space for each intermediate sump, power and cabling to each pump and a way for the operators to see that both stages are running. Sumps should hold enough water to give the crew time to respond when a pump trips.</p>
+<h2 id="worked-example">A worked example for a 150-metre shaft</h2>
+<p>Assume a shaft is 150 metres deep and wet-season inflow has been measured at about 10 cubic metres per hour. Doubling that for a design margin gives a design flow of 20 cubic metres per hour. Assume the supplier estimates 15 metres of pipe friction for a single lift, giving a total head of 165 metres. That is beyond the 120 metres a single mining submersible stage typically handles, so the design uses two stages with an intermediate sump at about 75 metres.</p>
+<p>Each stage then lifts about 75 metres, plus an assumed 8 metres of friction, for a total head of about 83 metres. The water power for one stage is the flow multiplied by the head and by gravity: 20 cubic metres per hour is about 0.0056 cubic metres per second, and 1,000 kg/m³ × 9.81 m/s² × 0.0056 m³/s × 83 m comes to about 4.5 kW. At an assumed overall pump efficiency of 50%, each motor would need roughly 9 kW. These numbers show the method; the supplier’s pump curve and friction calculation decide the actual selection.</p>
+<h2 id="power-standby">Plan power, standby and maintenance</h2>
+<p>Dewatering is an essential load. If the pumps stop during the rains, the shaft can flood in hours, so plan for standby. That can mean a spare pump at each stage, a generator sized to restart the pumps after a grid failure, or both. Our <a href="/insights/off-grid-mine-power">off-grid power guide</a> explains how to include essential loads and motor starting in a generator assessment.</p>
+<p>Sand and silt shorten pump life quickly. A high-chrome wet end and a strainer that is cleaned each shift help, and the seal-chamber oil should be checked monthly; milky oil means water has passed the outer seal and the pump needs service before the motor is damaged. Carry out a full service and electrical test before each rainy season. For mud-heavy water, a <a href="/equipment/slurry-pump">slurry pump</a> may be a better choice for part of the duty.</p>
+<h2 id="next-steps">Information to prepare for a pump quotation</h2>
+<ol>
+<li>Measured inflow in the dry and wet seasons, and how it was measured.</li>
+<li>Shaft depth now and planned depth, with the location of any possible intermediate sump.</li>
+<li>Pipe or hose route, diameter and length from each sump to discharge.</li>
+<li>How much sand or mud the water carries.</li>
+<li>Power supply at each stage and the standby arrangement you have now.</li>
+</ol>
+${renderArticleFaqs("shaft-dewatering-staged-pumping", "en")}
+<h2 id="conclusion">Design dewatering for the wet-season peak</h2>
+<p>A reliable dewatering system starts from measured inflow, is sized on total head rather than depth and uses staged pumps once a single lift becomes too high. It includes standby pumps and power for the season when it is needed most. Begin by measuring inflow in your sump and recording the pipe route, then ask a supplier to select pumps for each stage against those figures.</p>
+<h2 id="basis">Sources and assumptions</h2>
+<p>Pump flow and head ranges, the 80-metre staging guide and the maintenance points match our <a href="/equipment/submersible-dewatering-pump">submersible dewatering pump page</a>, reviewed on 7 October 2026. The water-power formula is standard hydraulics; the <a href="https://www.engineeringtoolbox.com/pumps-power-d_505.html">Engineering ToolBox pump power reference</a> shows the same calculation. The 150-metre example uses assumed inflow, friction and efficiency figures to show the method and is not a design for any shaft.</p>`
+export default content

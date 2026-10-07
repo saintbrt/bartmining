@@ -120,4 +120,21 @@ ${bowl}
 <li><strong>Secure the concentrate.</strong> Lock the concentrate outlet and control who flushes the bowl. Concentrate is the most valuable, most easily stolen material in the plant.</li>
 </ul>`,
   },
+  {
+    id: 'batch-vs-continuous',
+    title: 'Batch or Continuous Discharge: Which Concentrator Type?',
+    html: `<p>Centrifugal concentrators come in two discharge types, and the difference matters more than the brand. A <strong>batch</strong> unit collects concentrate in its rings for a set cycle, then stops, flushes the rings and restarts. A <strong>continuous</strong> unit lets concentrate out through valves while it keeps running, so it never stops to flush.</p>
+<div class="eq-tablewrap"><table class="eq-table">
+<thead><tr><th></th><th>Batch discharge</th><th>Continuous discharge</th></tr></thead>
+<tbody>
+<tr><td>How concentrate leaves</td><td>Flushed from the rings at the end of each cycle</td><td>Bled out continuously through valves</td></tr>
+<tr><td>Concentrate mass</td><td>Very small and high grade</td><td>Larger and lower grade; the amount can be adjusted</td></tr>
+<tr><td>Best suited to</td><td>Free gold in feed with few other heavy minerals</td><td>Feed rich in sulphides or other heavy minerals, or where a bigger concentrate is wanted for further treatment</td></tr>
+<tr><td>Next step for the concentrate</td><td>Usually a shaking table, then smelting</td><td>Often further upgrading or a separate treatment route</td></tr>
+<tr><td>Operating point to watch</td><td>Cycle length; heavy minerals can fill the rings early</td><td>Valve settings and the steady flow of concentrate</td></tr>
+</tbody>
+</table></div>
+<p>For most small gold operations treating free-milling ore, a batch unit is the usual choice: it produces a small, rich concentrate that a <a href="/equipment/shaking-table-gold">shaking table</a> can clean for smelting, and concentrate leaves the machine only at defined times, which makes it easier to secure. A continuous unit becomes worth considering when the ore carries a lot of pyrite, magnetite or other heavy minerals that would fill a batch unit’s rings within minutes, or when a larger concentrate is needed for a separate treatment step.</p>
+<p>To decide, ask the laboratory for a gravity test that reports how much heavy mineral the feed contains as well as how much gold reports to the concentrate. Then tell the supplier the tonnes per hour of solids, the feed size after screening and what will happen to the concentrate, so they can recommend the discharge type and bowl size together.</p>`,
+  },
 ]

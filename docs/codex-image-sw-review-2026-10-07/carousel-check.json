@@ -1,0 +1,313 @@
+{
+  "viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "posts": 7,
+  "slides": 35,
+  "contentImages": 28,
+  "sharedCTA": 7,
+  "checks": [
+    {
+      "post": "IG-41",
+      "slide": "cover",
+      "image": "social/pan-mill-vs-ball-mill.png",
+      "alt": "A wet pan mill and a ball mill side by side at a small processing site.",
+      "issues": [],
+      "preview": "slides/IG-41-1.png"
+    },
+    {
+      "post": "IG-41",
+      "slide": "grind",
+      "image": "social/grind-size-sieve-test.png",
+      "alt": "Laboratory sieves holding ground ore of different sizes.",
+      "issues": [],
+      "preview": "slides/IG-41-2.png"
+    },
+    {
+      "post": "IG-41",
+      "slide": "tonnage",
+      "image": "social/row-of-pan-mills.png",
+      "alt": "Several wet pan mills arranged in a row at a processing shed.",
+      "issues": [],
+      "preview": "slides/IG-41-3.png"
+    },
+    {
+      "post": "IG-41",
+      "slide": "example",
+      "image": "social/mill-duty-calculation.png",
+      "alt": "A blank planning notebook, calculator and pencil beside crushed ore.",
+      "issues": [],
+      "preview": "slides/IG-41-4.png"
+    },
+    {
+      "post": "IG-41",
+      "slide": "cta",
+      "image": "social/bart-mining-final.jpeg",
+      "issues": [],
+      "preview": "slides/IG-41-5.png"
+    },
+    {
+      "post": "IG-42",
+      "slide": "cover",
+      "image": "social/shaft-headframe-winch.png",
+      "alt": "A steel headframe over a small mine shaft with a winch house beside it.",
+      "issues": [],
+      "preview": "slides/IG-42-1.png"
+    },
+    {
+      "post": "IG-42",
+      "slide": "load",
+      "image": "social/kibble-loaded-ore.png",
+      "alt": "A steel kibble loaded with ore at the bottom of a shaft.",
+      "issues": [],
+      "preview": "slides/IG-42-2.png"
+    },
+    {
+      "post": "IG-42",
+      "slide": "trips",
+      "image": "social/winch-drum-rope.png",
+      "alt": "Wire rope wound on a winch drum.",
+      "issues": [],
+      "preview": "slides/IG-42-3.png"
+    },
+    {
+      "post": "IG-42",
+      "slide": "sheave",
+      "image": "social/headframe-sheave-wheel.png",
+      "alt": "A sheave wheel at the top of a steel headframe.",
+      "issues": [],
+      "preview": "slides/IG-42-4.png"
+    },
+    {
+      "post": "IG-42",
+      "slide": "cta",
+      "image": "social/bart-mining-final.jpeg",
+      "issues": [],
+      "preview": "slides/IG-42-5.png"
+    },
+    {
+      "post": "IG-43",
+      "slide": "cover",
+      "image": "social/flooded-shaft-sump.png",
+      "alt": "A water-filled sump at the bottom of a timbered mine shaft.",
+      "issues": [],
+      "preview": "slides/IG-43-1.png"
+    },
+    {
+      "post": "IG-43",
+      "slide": "inflow",
+      "image": "social/sump-level-measurement.png",
+      "alt": "A measuring staff standing in a mine sump.",
+      "issues": [],
+      "preview": "slides/IG-43-2.png"
+    },
+    {
+      "post": "IG-43",
+      "slide": "head",
+      "image": "social/pump-hose-shaft.png",
+      "alt": "A discharge hose running up the side of a mine shaft.",
+      "issues": [],
+      "preview": "slides/IG-43-3.png"
+    },
+    {
+      "post": "IG-43",
+      "slide": "stages",
+      "image": "social/intermediate-sump-pump.png",
+      "alt": "A submersible pump in an intermediate sump part-way up a shaft.",
+      "issues": [],
+      "preview": "slides/IG-43-4.png"
+    },
+    {
+      "post": "IG-43",
+      "slide": "cta",
+      "image": "social/bart-mining-final.jpeg",
+      "issues": [],
+      "preview": "slides/IG-43-5.png"
+    },
+    {
+      "post": "IG-44",
+      "slide": "cover",
+      "image": "social/copper-oxide-ore.png",
+      "alt": "Green copper oxide ore samples on a sorting table.",
+      "issues": [],
+      "preview": "slides/IG-44-1.png"
+    },
+    {
+      "post": "IG-44",
+      "slide": "plant",
+      "image": "social/copper-ore-stockpile.png",
+      "alt": "A stockpile of crushed copper ore at a processing yard.",
+      "issues": [],
+      "preview": "slides/IG-44-2.png"
+    },
+    {
+      "post": "IG-44",
+      "slide": "types",
+      "image": "social/copper-sulphide-sample.png",
+      "alt": "A metallic copper sulphide ore sample beside a hand lens.",
+      "issues": [],
+      "preview": "slides/IG-44-3.png"
+    },
+    {
+      "post": "IG-44",
+      "slide": "value",
+      "image": "social/ore-truck-weighbridge.png",
+      "alt": "A loaded ore truck on a weighbridge.",
+      "issues": [],
+      "preview": "slides/IG-44-4.png"
+    },
+    {
+      "post": "IG-44",
+      "slide": "cta",
+      "image": "social/bart-mining-final.jpeg",
+      "issues": [],
+      "preview": "slides/IG-44-5.png"
+    },
+    {
+      "post": "IG-45",
+      "slide": "cover",
+      "image": "social/flotation-froth-cells.png",
+      "alt": "Mineral-laden froth overflowing from a bank of flotation cells.",
+      "issues": [],
+      "preview": "slides/IG-45-1.png"
+    },
+    {
+      "post": "IG-45",
+      "slide": "copper",
+      "image": "social/copper-sulphide-concentrate.png",
+      "alt": "A sample of dark copper sulphide concentrate in a laboratory tray.",
+      "issues": [],
+      "preview": "slides/IG-45-2.png"
+    },
+    {
+      "post": "IG-45",
+      "slide": "graphite",
+      "image": "social/graphite-flakes-tray.png",
+      "alt": "Silvery graphite flakes spread on a sample tray.",
+      "issues": [],
+      "preview": "slides/IG-45-3.png"
+    },
+    {
+      "post": "IG-45",
+      "slide": "example",
+      "image": "social/concentrate-bags-store.png",
+      "alt": "Bagged mineral concentrate stacked in a store.",
+      "issues": [],
+      "preview": "slides/IG-45-4.png"
+    },
+    {
+      "post": "IG-45",
+      "slide": "cta",
+      "image": "social/bart-mining-final.jpeg",
+      "issues": [],
+      "preview": "slides/IG-45-5.png"
+    },
+    {
+      "post": "IG-46",
+      "slide": "cover",
+      "image": "social/pegmatite-core-samples.png",
+      "alt": "Pale pegmatite drill core laid out in core trays.",
+      "issues": [],
+      "preview": "slides/IG-46-1.png"
+    },
+    {
+      "post": "IG-46",
+      "slide": "lithium",
+      "image": "social/spodumene-crystals.png",
+      "alt": "Pale green spodumene crystals in a rock sample.",
+      "issues": [],
+      "preview": "slides/IG-46-2.png"
+    },
+    {
+      "post": "IG-46",
+      "slide": "nickel",
+      "image": "social/nickel-concentrate-sample.png",
+      "alt": "A sample of nickel sulphide concentrate beside a hand lens.",
+      "issues": [],
+      "preview": "slides/IG-46-3.png"
+    },
+    {
+      "post": "IG-46",
+      "slide": "example",
+      "image": "social/ore-to-concentrate-scale.png",
+      "alt": "A large ore stockpile beside a small pile of concentrate.",
+      "issues": [],
+      "preview": "slides/IG-46-4.png"
+    },
+    {
+      "post": "IG-46",
+      "slide": "cta",
+      "image": "social/bart-mining-final.jpeg",
+      "issues": [],
+      "preview": "slides/IG-46-5.png"
+    },
+    {
+      "post": "IG-47",
+      "slide": "cover",
+      "image": "social/heavy-mineral-sand.png",
+      "alt": "Dark heavy mineral sand on a beach with lighter sand around it.",
+      "issues": [],
+      "preview": "slides/IG-47-1.png"
+    },
+    {
+      "post": "IG-47",
+      "slide": "gravity",
+      "image": "social/gravity-spirals-plant.png",
+      "alt": "A bank of gravity spiral concentrators processing sand.",
+      "issues": [],
+      "preview": "slides/IG-47-2.png"
+    },
+    {
+      "post": "IG-47",
+      "slide": "magnetic",
+      "image": "social/drum-magnet-separator.png",
+      "alt": "A drum magnetic separator with dark magnetic material on the drum.",
+      "issues": [],
+      "preview": "slides/IG-47-3.png"
+    },
+    {
+      "post": "IG-47",
+      "slide": "gold",
+      "image": "social/black-sand-magnet.png",
+      "alt": "A small magnet held above a pan, lifting black sand while gold-coloured specks remain.",
+      "issues": [],
+      "preview": "slides/IG-47-4.png"
+    },
+    {
+      "post": "IG-47",
+      "slide": "cta",
+      "image": "social/bart-mining-final.jpeg",
+      "issues": [],
+      "preview": "slides/IG-47-5.png"
+    }
+  ],
+  "exports": [
+    {
+      "file": "IG-47_slide-01.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "file": "IG-47_slide-02.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "file": "IG-47_slide-03.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "file": "IG-47_slide-04.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "file": "IG-47_slide-05.png",
+      "width": 1080,
+      "height": 1350
+    }
+  ],
+  "pageErrors": []
+}

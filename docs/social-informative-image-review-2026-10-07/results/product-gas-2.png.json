@@ -1,0 +1,8 @@
+{
+  "file": "product-gas-2.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone portrait 4:5 social-carousel photograph-style illustration, at least 1080 by 1350 pixels. Reference-guided portable four-gas detector on an unoccupied clean test bench, generic black-and-yellow rugged housing with blank dark screen. A correctly fitted calibration cap covers its sensor inlets and connects through a short hose to a small test-gas cylinder with matching regulator; closed setup, not visibly dispensing gas. No readable concentrations, safe-status reading, brands, people or operating instructions. Composition: the subject remains clear in the upper 50–55 percent with a calm lower area for a separately rendered headline. Natural industrial materials and lighting, restrained colour, no collage, border, logo, watermark or text. Generic equipment or setting, not evidence of a real Bart Mining installation, stocked unit or offered model.",
+  "alt": "A portable gas monitor with a sensor test cap, hose and regulated test-gas cylinder.",
+  "reference": "public/equipment/website/gas-detection-monitor.webp",
+  "originalFile": "gas-detector-bump-test.png"
+}

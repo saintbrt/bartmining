@@ -1,0 +1,18 @@
+{
+  "tool": "Built-in image_gen",
+  "date": "2026-10-02",
+  "assets": [
+    {
+      "file": "concentrator-feed-preparation.png",
+      "prompt": "Editorial photographic illustration, portrait 4:5. Close three-quarter view of a compact wet mineral screening deck ahead of centrifugal gold recovery, stainless steel fine mesh, grey screened ore and shallow wash water, small feed hopper, guards and spray manifold. Generic industrial shed. No people, logos, text, watermarks, visible gold or mercury. Realistic mechanically plausible equipment. Distinct from a large quarry vibrating screen. Equipment fills central frame, soft daylight, illustrative generic setup not an actual company site."
+    },
+    {
+      "file": "concentrator-clean-water-supply.png",
+      "prompt": "Editorial photographic illustration, portrait 4:5. Close view of a clean-water supply assembly in a mining workshop: small blue water pump, inline strainer, pressure regulator, round analog gauge with indistinct markings, orderly steel piping and a translucent clean water storage tank behind. Mechanically plausible plumbing, dry clean floor. No people, logos, legible text, watermark, gold or mercury. Central equipment composed for a framed social carousel photo, soft daylight, generic illustration not actual company operations."
+    },
+    {
+      "file": "concentrator-bowl-selection.png",
+      "prompt": "Editorial photographic illustration, portrait 4:5. A standalone unbranded stainless-steel centrifugal mineral concentrator bowl resting securely on a service bench, visible circular internal riffles and fluidisation holes, workshop background softly blurred. Static unpowered service component, mechanically plausible tapered bowl construction, no implausible floating parts. No people, logos, text, watermark, visible gold or mercury. Detail view of the internal bowl, distinct from an installed complete concentrator, central composition, generic illustration not actual company equipment."
+    }
+  ]
+}

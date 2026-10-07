@@ -1,0 +1,23 @@
+[
+  {
+    "file": "news-battery-4.png",
+    "subject": "A close-up of a natural dark grey graphite-rich rock specimen and a small ceramic dish of loose graphite flakes on a neutral mineral examination bench, realistic platy flakes with muted metallic sheen, geological textures, macro material study. No branding or labels.",
+    "prompt": "Use case: photorealistic-natural. Asset type: portrait 4:5 Instagram background, at least 1080 x 1350 pixels. One image, no collage. A close-up of a natural dark grey graphite-rich rock specimen and a small ceramic dish of loose graphite flakes on a neutral mineral examination bench, realistic platy flakes with muted metallic sheen, geological textures, macro material study. No branding or labels. Principal objects in upper 50 percent, lower half calm and visually quiet for a headline added separately. Natural light and credible materials, no watermark or text. Conceptual editorial illustration.",
+    "source": "Built-in image_gen, 2026-10-07",
+    "originalFile": "graphite-flakes-closeup.png"
+  },
+  {
+    "file": "news-kenya-3.png",
+    "subject": "A conceptual unoccupied hydrometallurgical processing area: covered industrial hall with stainless steel process vessels, connected pipes with flanged joints, modest pump skids, supported access platforms with guardrails and enclosed control cabinet. Generic realistic plant arrangement, not a detailed engineering design or a specific refinery. No smokestacks, furnace, logos or workers.",
+    "prompt": "Use case: photorealistic-natural. Asset type: portrait 4:5 Instagram background, at least 1080 x 1350 pixels. One image, no collage. A conceptual unoccupied hydrometallurgical processing area: covered industrial hall with stainless steel process vessels, connected pipes with flanged joints, modest pump skids, supported access platforms with guardrails and enclosed control cabinet. Generic realistic plant arrangement, not a detailed engineering design or a specific refinery. No smokestacks, furnace, logos or workers. Principal objects in upper 50 percent, lower half calm and visually quiet for a headline added separately. Natural light and credible materials, no watermark or text. Conceptual editorial illustration.",
+    "source": "Built-in image_gen, 2026-10-07",
+    "originalFile": "hydrometallurgical-refinery-concept.png"
+  },
+  {
+    "file": "news-battery-5.png",
+    "subject": "A generic yellow tracked excavator and a yellow wheel loader parked at rest on a prepared flat reddish earth work area. Excavator hydraulic cylinders attach correctly to boom stick and bucket, crawler tracks and realistic cab. Loader separate lift arms and bucket. No logos, people or identifiable real construction site.",
+    "prompt": "Use case: photorealistic-natural. Asset type: portrait 4:5 Instagram background, at least 1080 x 1350 pixels. One image, no collage. A generic yellow tracked excavator and a yellow wheel loader parked at rest on a prepared flat reddish earth work area. Excavator hydraulic cylinders attach correctly to boom stick and bucket, crawler tracks and realistic cab. Loader separate lift arms and bucket. No logos, people or identifiable real construction site. Principal objects in upper 50 percent, lower half calm and visually quiet for a headline added separately. Natural light and credible materials, no watermark or text. Conceptual editorial illustration.",
+    "source": "Built-in image_gen, 2026-10-07",
+    "originalFile": "earthmoving-equipment-site.png"
+  }
+]

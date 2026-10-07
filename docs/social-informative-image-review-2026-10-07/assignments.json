@@ -1,0 +1,302 @@
+[
+  {
+    "post": "IG-26",
+    "slide": "cover",
+    "image": "social/explainer-ore-1.png",
+    "previousKey": "social/metallurgical-test-lab.png"
+  },
+  {
+    "post": "IG-26",
+    "slide": "sample",
+    "image": "social/explainer-ore-2.png",
+    "previousKey": "social/ore-sample-bags-labelled.png"
+  },
+  {
+    "post": "IG-26",
+    "slide": "tests",
+    "image": "social/explainer-ore-3.png",
+    "previousKey": "social/bottle-roll-leach-test.png"
+  },
+  {
+    "post": "IG-26",
+    "slide": "compare",
+    "image": "social/explainer-ore-4.png",
+    "previousKey": "social/test-results-comparison.png"
+  },
+  {
+    "post": "IG-26",
+    "slide": "brief",
+    "image": "social/explainer-ore-5.png",
+    "previousKey": "social/mining-project-planning-desk.png"
+  },
+  {
+    "post": "IG-27",
+    "slide": "cover",
+    "image": "social/explainer-assay-1.png",
+    "previousKey": "social/fire-assay-crucibles.png"
+  },
+  {
+    "post": "IG-27",
+    "slide": "record",
+    "image": "social/explainer-assay-2.png",
+    "previousKey": "social/young-miners-survey-equipment.png"
+  },
+  {
+    "post": "IG-27",
+    "slide": "method",
+    "image": "social/explainer-assay-3.png",
+    "previousKey": "social/assay-furnace-loading.png"
+  },
+  {
+    "post": "IG-27",
+    "slide": "qaqc",
+    "image": "social/explainer-assay-4.png",
+    "previousKey": "social/assay-qaqc-standards.png"
+  },
+  {
+    "post": "IG-27",
+    "slide": "grade",
+    "image": "social/explainer-assay-5.png",
+    "previousKey": "social/ore-stockpile-grade.png"
+  },
+  {
+    "post": "IG-28",
+    "slide": "cover",
+    "image": "social/explainer-tailings-1.png",
+    "previousKey": "social/old-tailings-heap.png"
+  },
+  {
+    "post": "IG-28",
+    "slide": "rights",
+    "image": "social/explainer-tailings-2.png",
+    "previousKey": "social/young-miners-survey-equipment.png"
+  },
+  {
+    "post": "IG-28",
+    "slide": "mercury",
+    "image": "social/explainer-tailings-3.png",
+    "previousKey": "social/tailings-contaminant-sampling.png"
+  },
+  {
+    "post": "IG-28",
+    "slide": "flow",
+    "image": "social/explainer-tailings-4.png",
+    "previousKey": "social/lined-leach-vat.png"
+  },
+  {
+    "post": "IG-28",
+    "slide": "batch",
+    "image": "social/explainer-tailings-5.png",
+    "previousKey": "social/earthmoving-equipment-site.png"
+  },
+  {
+    "post": "IG-29",
+    "slide": "cover",
+    "image": "social/explainer-used-equipment-1.png",
+    "previousKey": "social/used-equipment-yard.png"
+  },
+  {
+    "post": "IG-29",
+    "slide": "duty",
+    "image": "social/explainer-used-equipment-2.jpg",
+    "previousKey": "social/ball-mill-geevor.jpg"
+  },
+  {
+    "post": "IG-29",
+    "slide": "inspect",
+    "image": "social/explainer-used-equipment-3.png",
+    "previousKey": "social/equipment-inspection-bearings.png"
+  },
+  {
+    "post": "IG-29",
+    "slide": "electrical",
+    "image": "social/explainer-used-equipment-4.png",
+    "previousKey": "social/control-panel-inspection.png"
+  },
+  {
+    "post": "IG-29",
+    "slide": "cost",
+    "image": "social/explainer-used-equipment-5.png",
+    "previousKey": "social/used-equipment-cost-example.png"
+  },
+  {
+    "post": "IG-30",
+    "slide": "cover",
+    "image": "social/explainer-power-1.png",
+    "previousKey": "social/generator-plant-night.png"
+  },
+  {
+    "post": "IG-30",
+    "slide": "load",
+    "image": "social/explainer-power-2.png",
+    "previousKey": "social/electrical-load-list.png"
+  },
+  {
+    "post": "IG-30",
+    "slide": "start",
+    "image": "social/explainer-power-3.png",
+    "previousKey": "social/control-panel-inspection.png"
+  },
+  {
+    "post": "IG-30",
+    "slide": "fuel",
+    "image": "social/explainer-power-4.png",
+    "previousKey": "social/diesel-fuel-storage.png"
+  },
+  {
+    "post": "IG-30",
+    "slide": "options",
+    "image": "social/explainer-power-5.png",
+    "previousKey": "social/solar-diesel-hybrid.png"
+  },
+  {
+    "post": "IG-31",
+    "slide": "cover",
+    "image": "social/explainer-elution-1.webp",
+    "previousKey": "equipment/website/gold-elution-electrowinning-plant.webp"
+  },
+  {
+    "post": "IG-31",
+    "slide": "scope",
+    "image": "social/explainer-elution-2.png",
+    "previousKey": "social/electrowinning-cells.png"
+  },
+  {
+    "post": "IG-31",
+    "slide": "carbon",
+    "image": "social/explainer-elution-3.png",
+    "previousKey": "social/loaded-carbon-material.png"
+  },
+  {
+    "post": "IG-31",
+    "slide": "budget",
+    "image": "social/explainer-elution-4.png",
+    "previousKey": "social/prepared-equipment-foundations.png"
+  },
+  {
+    "post": "IG-31",
+    "slide": "toll",
+    "image": "social/explainer-elution-5.png",
+    "previousKey": "social/carbon-custody-containers.png"
+  },
+  {
+    "post": "IG-32",
+    "slide": "cover",
+    "image": "social/explainer-rental-1.png",
+    "previousKey": "social/rental-excavator-site.png"
+  },
+  {
+    "post": "IG-32",
+    "slide": "job",
+    "image": "social/explainer-rental-2.png",
+    "previousKey": "social/mining-project-planning-desk.png"
+  },
+  {
+    "post": "IG-32",
+    "slide": "hire",
+    "image": "social/explainer-rental-3.png",
+    "previousKey": "social/machine-handover-records.png"
+  },
+  {
+    "post": "IG-32",
+    "slide": "compare",
+    "image": "social/explainer-rental-4.png",
+    "previousKey": "social/rental-ownership-comparison.png"
+  },
+  {
+    "post": "IG-33",
+    "slide": "cover",
+    "image": "social/product-shaking-1.png",
+    "previousKey": "social/shaking-table-deck-riffles.png"
+  },
+  {
+    "post": "IG-33",
+    "slide": "selection",
+    "image": "social/product-shaking-2.png",
+    "previousKey": "social/shaking-table-adjustment.png"
+  },
+  {
+    "post": "IG-34",
+    "slide": "cover",
+    "image": "social/product-wetmill-1.webp",
+    "previousKey": "equipment/website/wet-pan-mill.webp"
+  },
+  {
+    "post": "IG-34",
+    "slide": "selection",
+    "image": "social/product-wetmill-2.png",
+    "previousKey": "social/wet-pan-mill-rollers.png"
+  },
+  {
+    "post": "IG-35",
+    "slide": "cover",
+    "image": "social/product-leaching-1.png",
+    "previousKey": "social/leaching-tank-train.png"
+  },
+  {
+    "post": "IG-35",
+    "slide": "selection",
+    "image": "social/product-leaching-2.png",
+    "previousKey": "social/leaching-tank-agitator.png"
+  },
+  {
+    "post": "IG-36",
+    "slide": "cover",
+    "image": "social/product-dewatering-1.webp",
+    "previousKey": "equipment/website/submersible-dewatering-pump.webp"
+  },
+  {
+    "post": "IG-36",
+    "slide": "selection",
+    "image": "social/product-dewatering-2.png",
+    "previousKey": "social/dewatering-pump-staging.png"
+  },
+  {
+    "post": "IG-37",
+    "slide": "cover",
+    "image": "social/product-winch-1.webp",
+    "previousKey": "equipment/website/5-ton-mine-winch-parallel-drive.webp"
+  },
+  {
+    "post": "IG-37",
+    "slide": "selection",
+    "image": "social/product-winch-2.png",
+    "previousKey": "social/mine-winch-brake-inspection.png"
+  },
+  {
+    "post": "IG-38",
+    "slide": "cover",
+    "image": "social/product-compressor-1.png",
+    "previousKey": "social/mining-compressor-cover.png"
+  },
+  {
+    "post": "IG-38",
+    "slide": "selection",
+    "image": "social/product-compressor-2.png",
+    "previousKey": "social/compressor-air-line-leaks.png"
+  },
+  {
+    "post": "IG-39",
+    "slide": "cover",
+    "image": "social/product-gas-1.webp",
+    "previousKey": "equipment/website/gas-detection-monitor.webp"
+  },
+  {
+    "post": "IG-39",
+    "slide": "selection",
+    "image": "social/product-gas-2.png",
+    "previousKey": "social/gas-detector-bump-test.png"
+  },
+  {
+    "post": "IG-40",
+    "slide": "cover",
+    "image": "social/product-sluice-1.webp",
+    "previousKey": "equipment/website/sluice-box-gold-jig.webp"
+  },
+  {
+    "post": "IG-40",
+    "slide": "selection",
+    "image": "social/product-sluice-2.png",
+    "previousKey": "social/sluice-riffle-water-flow.png"
+  }
+]

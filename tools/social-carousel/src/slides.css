@@ -1,0 +1,168 @@
+/* Slide canvas. Measured from "Aspire Insta - Old.png" at 1080 × 1350.
+   All sizes are canvas pixels; the preview scales the whole slide with a
+   transform so export always captures it at native size. */
+
+.slide {
+  --ink: #000000;
+  --ink-2: #000000;
+  --paper: #FFFFFF;
+  --line: #D4DBDE;
+  --gold: #8A6C36;
+  --gold-2: #B9995C; /* gold on dark grounds, as on the site */
+
+  position: relative;
+  width: 1080px;
+  height: 1350px;
+  overflow: hidden;
+  font-family: 'Manrope', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* Reset anything inherited from the editor (thumbnails sit inside buttons). */
+  text-align: left;
+  line-height: normal;
+  letter-spacing: normal;
+  white-space: normal;
+}
+
+.slide-dark  { background: var(--ink); color: #fff; }
+.slide-light { background: var(--paper); color: var(--ink); }
+
+.slide-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 56%,
+    rgba(0, 0, 0, .7) 66%,
+    rgba(0, 0, 0, .95) 76%,
+    var(--ink) 83%);
+}
+
+/* Bottom shading begins at 56% of the canvas, raised by 10 percentage
+   points; a soft black text shadow adds contrast on bright images. */
+.slide-dark .slide-text { text-shadow: 0 1px 14px rgba(0, 0, 0, .45); }
+
+/* Text sits bottom-left; it grows upwards as lines are added. */
+.slide-text {
+  position: absolute;
+  left: 110px;
+  right: 110px;
+  bottom: 130px;
+}
+
+.slide-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  margin-bottom: 18px;
+}
+.slide-light .slide-eyebrow { color: var(--gold); }
+
+.slide-headline {
+  margin: 0;
+  font-family: 'Sora', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+
+.slide-sub {
+  margin: 20px 0 0;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, .8);
+}
+.slide-light .slide-sub { color: var(--ink-2); }
+
+/* light-card */
+.card {
+  position: absolute;
+  top: 110px;
+  left: 110px;
+  right: 110px;
+  height: 750px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 4px;
+}
+.card-photo { position: relative; width: 100%; height: 100%; }
+
+/* cover-dark */
+.mark {
+  position: absolute;
+  top: 110px;
+  left: 110px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 1;
+  letter-spacing: .04em;
+  color: var(--gold-2);
+  padding-bottom: 28px;
+  border-bottom: 2px solid var(--gold-2);
+}
+
+/* stat: small white figure in a white hairline box */
+.stat {
+  display: inline-block;
+  font-family: 'Sora', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: #fff;
+  padding: 18px 26px;
+  background: rgba(0, 0, 0, .9);
+  /* 1 px is the thinnest line a 1080 px export can hold, so the lighter
+     tint is what makes the hairline read half as heavy. */
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 3px;
+  margin-bottom: 32px;
+}
+
+/* cta */
+.contact {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  row-gap: 18px;
+  margin: 56px 0 0;
+  align-items: baseline;
+}
+.contact dt {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+.contact dd { margin: 0; font-size: 32px; font-weight: 600; }
+.slide-light .contact dt { color: var(--gold); }
+
+/* Missing image: obvious on purpose, so it never gets posted by accident. */
+.photo-missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #000000;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  text-align: center;
+}
+.photo-missing span { font-size: 28px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-2); }
+.photo-missing code { font-size: 22px; opacity: .8; }
+.slide-photo.photo-missing { padding-bottom: 420px; } /* keep the label above the gradient */

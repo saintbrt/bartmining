@@ -1,0 +1,23 @@
+[
+  {
+    "file": "news-gold-2.png",
+    "subject": "A gold settlement and assay workbench, rough cast gold bar on a compact laboratory weighing scale, separate small specimen dish of tiny natural gold grains, tweezers and sealed sample containers. The scale display is blank, no readable measurement or purity claims.",
+    "prompt": "Use case: photorealistic-natural. Asset type: portrait 4:5 Instagram background, at least 1080 x 1350 pixels. One image, no collage. A gold settlement and assay workbench, rough cast gold bar on a compact laboratory weighing scale, separate small specimen dish of tiny natural gold grains, tweezers and sealed sample containers. The scale display is blank, no readable measurement or purity claims. Principal objects in upper 50 percent, lower half calm and visually quiet for a headline added separately. Natural light and credible materials, no watermark or text. Conceptual editorial illustration.",
+    "source": "Built-in image_gen, 2026-10-07",
+    "originalFile": "gold-weighing-assay-bench.png"
+  },
+  {
+    "file": "news-gold-3.png",
+    "subject": "A tidy unoccupied project budgeting desk with calculator, closed laptop, clipboard with plain sheets, sample bag with a small rock specimen, geological hammer and closed blank-spined project binder. No legible figures, graphs, contracts, certificates or text.",
+    "prompt": "Use case: photorealistic-natural. Asset type: portrait 4:5 Instagram background, at least 1080 x 1350 pixels. One image, no collage. A tidy unoccupied project budgeting desk with calculator, closed laptop, clipboard with plain sheets, sample bag with a small rock specimen, geological hammer and closed blank-spined project binder. No legible figures, graphs, contracts, certificates or text. Principal objects in upper 50 percent, lower half calm and visually quiet for a headline added separately. Natural light and credible materials, no watermark or text. Conceptual editorial illustration.",
+    "source": "Built-in image_gen, 2026-10-07",
+    "originalFile": "mining-project-planning-desk.png"
+  },
+  {
+    "file": "news-csr-4.png",
+    "subject": "A generic unoccupied community project planning room in a rural East African setting, simple wooden table with six empty chairs, plain notebooks and pencils arranged around the table, open window showing dry greenery. No people, logos, signage, portraits or flags. Illustrate preparation for consultation, not a real meeting.",
+    "prompt": "Use case: photorealistic-natural. Asset type: portrait 4:5 Instagram background, at least 1080 x 1350 pixels. One image, no collage. A generic unoccupied community project planning room in a rural East African setting, simple wooden table with six empty chairs, plain notebooks and pencils arranged around the table, open window showing dry greenery. No people, logos, signage, portraits or flags. Illustrate preparation for consultation, not a real meeting. Principal objects in upper 50 percent, lower half calm and visually quiet for a headline added separately. Natural light and credible materials, no watermark or text. Conceptual editorial illustration.",
+    "source": "Built-in image_gen, 2026-10-07",
+    "originalFile": "community-consultation-table.png"
+  }
+]

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Author } from '@/data/authors'
+import equipmentImagery from '@/data/equipment-imagery.json'
 import ReadingProgress from './ReadingProgress'
 import CallCard from '@/components/ui/CallCard'
 import TableOfContents from './TableOfContents'
@@ -30,6 +31,7 @@ interface Props {
 /** One reading experience for English insights and Kiswahili guides. */
 export default function ArticleLayout({ lang = 'en', title, description, category, image, imageAlt = '', imageCaption, author, authorCredential, dateLabel, readTime, alternate, crumbs, html, children, related = [], cta }: Props) {
   const sw = lang === 'sw'
+  const equipmentCover = Object.values(equipmentImagery).some(asset => asset.src === image && asset.kind === 'illustration')
   const prepared = html !== undefined ? prepareArticleHtml(html) : prepareArticleNodes(children)
   const trail = crumbs ?? [{ name: sw ? 'Mwanzo' : 'Home', href: '/' }, { name: sw ? 'Makala' : 'Insights', href: sw ? '/insights-swahili' : '/insights' }, { name: category }]
   const action = cta ?? {
@@ -57,7 +59,7 @@ export default function ArticleLayout({ lang = 'en', title, description, categor
       </div>
       {alternate && <Link className="article-language" href={alternate.href} hrefLang={alternate.lang} lang={alternate.lang}>{alternate.label} →</Link>}
     </div></section>
-    {image && <figure className="px-site article-cover"><div><Image src={image} alt={imageAlt} fill sizes="(max-width: 900px) 100vw, 1240px" priority style={{ objectFit: 'cover' }} /></div>{imageCaption && <figcaption>{imageCaption}</figcaption>}</figure>}
+    {image && <figure className="px-site article-cover"><div><Image src={image} alt={imageAlt} fill sizes="(max-width: 900px) 100vw, 1240px" priority style={{ objectFit: equipmentCover ? 'contain' : 'cover' }} /></div>{imageCaption && <figcaption>{imageCaption}</figcaption>}</figure>}
     <div className="px-site article-body-wrap"><div className="article-layout">
       <article>
         {prepared.headings.length > 0 && <details className="article-mobile-contents"><summary>{sw ? 'Yaliyomo kwenye makala' : 'In this article'}</summary><TableOfContents headings={prepared.headings} lang={lang} /></details>}

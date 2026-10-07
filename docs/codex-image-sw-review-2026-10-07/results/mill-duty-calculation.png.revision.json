@@ -1,0 +1,7 @@
+{
+  "file": "mill-duty-calculation.png",
+  "prompt": "Use case: precise-object-edit. Input image is edit target. Remove ALL writing, arithmetic, digits and pencil marks from BOTH notebook pages, leaving clean blank ruled pages. Preserve the notebook, pencil, calculator with empty display, heap of crushed ore, wooden table, muted earth-tone editorial illustration, daylight, portrait 4:5 composition and quiet lower third exactly. Do not add new objects, people, labels, logos or text. The image illustrates planning before calculations are recorded, not any numerical result. Output at least 1080 by 1350.",
+  "masterSource": "/Users/mac/.codex/generated_images/01a115cb-0da9-7322-8066-1341e6190f18/exec-e9777185-5950-4222-ad2a-93a7c42a2ecd.png",
+  "tool": "built-in image_gen",
+  "revision": "Targeted accuracy correction after visual review."
+}

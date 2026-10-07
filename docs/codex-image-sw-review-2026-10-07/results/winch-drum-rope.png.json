@@ -1,0 +1,13 @@
+{
+  "kind": "social",
+  "post": "IG-42",
+  "file": "winch-drum-rope.png",
+  "subject": "Close-up of steel wire rope neatly wound in layers on an electric winch drum, motor and brake housing partly visible",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone social carousel illustration. Realistic editorial illustration, East African small-scale mining context, natural daylight, muted earth tones with steel grey and a touch of warm gold, no people's faces, no logos, no text, no watermarks, no brand names, portrait 4:5. Subject: Close-up of steel wire rope neatly wound in layers on an electric winch drum, motor and brake housing partly visible. Preserve the parallel-drive arrangement: the blue motor sits alongside the rope drum with offset parallel shafts linked through a side gearbox on a common base. Show a stationary machine with coherent wound wire rope, not separate floating strands. Composition: keep the complete primary subject clear in the upper two thirds, with a quiet simple lower third for separately rendered headline text. Requested portrait 4:5, native at least 1080 by 1350, ideally 2160 by 2700. Generic illustrative setting, not a real Bart Mining site or offered model. No people, hands, faces, readable text, numbers, logos, brand names, collage, frames or watermark. Never invent assay results, dimensions, grades, capacity or safety certification.",
+  "destination": "/Users/mac/Documents/GitHub/bartmining/tools/social-carousel/images/winch-drum-rope.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "masterSource": "/Users/mac/.codex/generated_images/01a115cb-0da9-7322-8066-1341e6190f18/exec-e5b43c6d-a7b6-4b03-8cd6-981ef5ceebc4.png",
+  "references": [
+    "/Users/mac/Documents/GitHub/bartmining/public/equipment/website/5-ton-mine-winch-parallel-drive.webp"
+  ]
+}

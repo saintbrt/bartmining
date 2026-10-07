@@ -88,4 +88,21 @@ export const sections: GuideSection[] = [
 <li><strong>Mkusanyiko:</strong> dhibiti njia ya kutoa, watu wanaohusika na kumbukumbu za kila batch.</li>
 </ul><p>Uchaguzi mzuri unaunganisha majaribio ya madini, kiasi halisi cha mkondo na huduma za eneo. Andaa taarifa hizo kabla ya kuomba modeli na nukuu ya bei.</p>`,
   },
+  {
+    id: 'batch-vs-continuous',
+    title: 'Utoaji kwa vipindi (batch) au mfululizo (continuous): aina ipi ya concentrator?',
+    html: `<p>Centrifugal concentrators zina aina mbili za kutoa mkusanyiko, na tofauti hiyo ni muhimu kuliko jina la mtengenezaji. Mashine ya <strong>utoaji kwa vipindi (batch)</strong> hukusanya mkusanyiko kwenye pete zake kwa mzunguko uliopangwa, kisha husimama, huosha pete na kuanza tena. Mashine ya <strong>utoaji mfululizo (continuous)</strong> hutoa mkusanyiko kupitia valvu ikiendelea kufanya kazi, kwa hiyo haisimami kuosha.</p>
+<div class="eq-tablewrap"><table class="eq-table">
+<thead><tr><th></th><th>Batch</th><th>Continuous</th></tr></thead>
+<tbody>
+<tr><td>Jinsi mkusanyiko unavyotoka</td><td>Huoshwa kutoka kwenye pete mwishoni mwa kila mzunguko</td><td>Hutoka mfululizo kupitia valvu</td></tr>
+<tr><td>Kiasi cha mkusanyiko</td><td>Kidogo sana na chenye kiwango kikubwa cha madini yenye thamani</td><td>Kikubwa zaidi na chenye kiwango cha chini; kiasi kinaweza kurekebishwa</td></tr>
+<tr><td>Inafaa zaidi kwa</td><td>Dhahabu huru kwenye malighafi yenye madini mengine mazito machache</td><td>Malighafi yenye sulphide nyingi au madini mengine mazito, au pale mkusanyiko mkubwa unahitajika kwa uchakataji zaidi</td></tr>
+<tr><td>Hatua inayofuata</td><td>Kwa kawaida shaking table, kisha kuyeyusha</td><td>Mara nyingi kusafisha zaidi au njia tofauti ya uchakataji</td></tr>
+<tr><td>Cha kufuatilia</td><td>Urefu wa mzunguko; madini mazito yanaweza kujaza pete mapema</td><td>Mipangilio ya valvu na mtiririko thabiti wa mkusanyiko</td></tr>
+</tbody>
+</table></div>
+<p>Kwa migodi midogo mingi inayochakata madini ya dhahabu huru, mashine ya batch ndiyo chaguo la kawaida: hutoa mkusanyiko mdogo wenye dhahabu nyingi ambao <a href="/equipment-swahili/shaking-table-gold">shaking table</a> inaweza kuusafisha kwa kuyeyusha, na mkusanyiko hutoka kwenye mashine kwa nyakati zilizopangwa tu, jambo linalorahisisha ulinzi. Mashine ya continuous inafaa kufikiriwa pale madini yana pyrite, magnetite au madini mengine mazito mengi ambayo yangejaza pete za batch ndani ya dakika chache, au pale mkusanyiko mkubwa unahitajika kwa hatua tofauti ya uchakataji.</p>
+<p>Ili kuamua, omba maabara ifanye jaribio la gravity linaloonyesha kiasi cha madini mazito kwenye malighafi pamoja na kiasi cha dhahabu kinachoingia kwenye mkusanyiko. Kisha mweleze msambazaji tani kwa saa za yabisi, ukubwa wa malighafi baada ya kuchuja na mkusanyiko utapelekwa wapi, ili apendekeze aina ya utoaji na ukubwa wa bakuli pamoja.</p>`,
+  },
 ]

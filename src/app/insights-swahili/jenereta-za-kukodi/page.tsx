@@ -107,7 +107,7 @@ export default function JeneretaZaKukodiPage() {
           </div>
         </section>
 
-        <section className="sec-gap" style={{ background: 'var(--paper)' }}>
+        <section id="kikokotoo-cha-jenereta" className="sec-gap" style={{ background: 'var(--paper)' }}>
           <div className="px-site">
             <Reveal className="sec-head">
               <span className="eyebrow">Kikokotoo</span>

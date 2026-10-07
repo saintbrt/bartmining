@@ -40,6 +40,8 @@ const nextConfig: NextConfig = {
       { source: '/equipment/portable-xrf-analyser', destination: '/equipment', permanent: true },
       { source: '/equipment/magnetometer-geophysical-survey', destination: '/equipment', permanent: true },
       { source: '/equipment/borehole-water-pump', destination: '/equipment', permanent: true },
+      // A misspelled external link to the 5 tonne winch appears in Search Console.
+      { source: '/equipment/5-tin-mine-winch', destination: '/equipment/5-ton-mine-winch', permanent: true },
     ]
   },
   webpack: (config, { isServer }) => {

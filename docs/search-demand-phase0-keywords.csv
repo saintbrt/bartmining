@@ -1,0 +1,86 @@
+cluster,query,language,source,existing_page,proposed_action,trends_interest,kp_avg_monthly_searches,kp_competition,gsc_impressions_3m,gsc_position,verdict,notes
+mercury-free,mercury free gold recovery,en,gemini,/insights/mercury-free-gold-recovery,strengthen,,,,0,,,
+mercury-free,mercury free gold processing equipment,en,gemini,/insights/mercury-free-gold-recovery,strengthen,,,,0,,,
+mercury-free,centrifugal gold concentrator price,en,gsc-sep,/equipment/centrifugal-gold-concentrator,strengthen,,,,86,66.0,,GSC: no price query; gravity cluster total (13 queries)
+mercury-free,knelson concentrator,en,gemini,/equipment/centrifugal-gold-concentrator,new 2.4 (generic batch vs continuous),,,,0,,,
+mercury-free,falcon concentrator,en,gemini,/equipment/centrifugal-gold-concentrator,new 2.4 (generic batch vs continuous),,,,0,,,
+mercury-free,shaking table gold,en,gsc-sep,/equipment/shaking-table-gold,strengthen,,,,16,69.5,,"GSC: ""shaking table gold"" 2, ""shaking tables"" 10, plus 4 variants"
+mercury-free,kuchenjua dhahabu bila zebaki,sw,gemini,none,new SW page or section,,,,0,,,
+mercury-free,mashine ya kuchenjua dhahabu,sw,gemini,/vifaa-vya-uchimbaji,strengthen,,,,0,,,
+cil-cip,cip plant,en,gsc-sep,/equipment/cil-cip-plant,strengthen,,,,65,77.9,,GSC: exact match
+cil-cip,cil plant cost,en,gemini,/insights/gold-plant-setup-cost,strengthen,,,,0,,,"GSC: ""cil plant"" 4 pos 86; no cost query"
+cil-cip,small scale cil plant,en,gemini,/equipment/cil-cip-plant,new 2.5,,,,0,,,
+cil-cip,50 tpd cil plant,en,gemini,/insights/gold-plant-setup-cost,strengthen (50 TPD example),,,,0,,,
+cil-cip,difference between cil and cip,en,gsc-sep,/insights/cil-vs-cip-vs-heap-leach,strengthen,,,,4,63.8,,"GSC: 2 variants: ""difference between cip and cil"" pos 47, ""...cil and cip"" pos 80.5"
+cil-cip,gold leaching tank,en,gemini,/equipment/leaching-tank,strengthen,,,,31,45.8,,"GSC: ""gold cip tank maintenance"" 30 pos 45"
+cil-cip,bei ya cil plant,sw,gemini,/insights-swahili/gharama-ya-plant-ya-dhahabu,strengthen,,,,0,,,
+cil-cip,gharama ya plant ya dhahabu,sw,gemini,/insights-swahili/gharama-ya-plant-ya-dhahabu,strengthen,,,,0,,,
+elution,gold elution plant,en,gsc-sep,/equipment/gold-elution-electrowinning-plant,strengthen,,,,8,15.8,,"GSC: ""elution plant"" pos 15.75; ""gold elution process"" 56 at pos 80"
+elution,elution plant cost,en,gemini,/insights/gold-elution-plant-price,strengthen,,,,0,,,"GSC: no cost query; elution cluster 104 impr, AARL/Zadra variants pos 26-63"
+elution,gold toll processing tanzania,en,gemini,/insights/gold-elution-plant-price,strengthen,,,,0,,,
+elution,containerized elution plant,en,gemini,/equipment/gold-elution-electrowinning-plant,strengthen,,,,0,,,
+grinding,wet pan mill,en,gemini,/equipment/wet-pan-mill,new 2.1,,,,0,,,
+grinding,wet pan mill vs ball mill,en,gemini,none,new 2.1,,,,0,,,
+grinding,ball mill for gold,en,gemini,/equipment/ball-mill-gold-ore,strengthen,,,,0,,,
+grinding,what size ball mill do i need,en,gemini,/equipment/ball-mill-gold-ore,strengthen (FAQ),,,,0,,,
+grinding,hammer mill vs wet pan mill,en,gemini,/equipment/hammer-mill,new 2.1,,,,0,,,
+grinding,kinu cha dhahabu,sw,gemini,/insights-swahili/bei-ya-mashine-ya-kusaga-mawe,strengthen,,,,0,,,
+grinding,bei ya ball mill,sw,gemini,/insights-swahili/bei-ya-mashine-ya-kusaga-mawe,strengthen,,,,0,,,
+modular,modular gold plant,en,gemini,/equipment/modular-gold-plant,strengthen,,,,7,21.1,,"GSC: ""modular gold processing plant design"" 6 pos 24, ""...plant"" 1 pos 5"
+modular,portable gold wash plant,en,gemini,/equipment/alluvial-gold-wash-plant,strengthen,,,,0,,,
+modular,gold wash plant,en,content-plan,/alluvial,strengthen,,,,0,,,
+modular,skid mounted generator mining,en,gemini,/equipment/diesel-generator-mining,strengthen,,,,0,,,
+underground,mine winch,en,gsc-sep,/equipment/5-ton-mine-winch,new 2.2,,,,11,63.1,,"GSC: ""mining winch"" 10, ""winch mining"" 1; winch pages themselves rank 5-9"
+underground,5 ton mine winch,en,gsc-sep,/equipment/5-ton-mine-winch,new 2.2,,,,0,,,"GSC: no query; /equipment/5-ton-mine-winch page 84 impr, pos 9-28"
+underground,mine hoist headframe,en,gemini,/equipment/mine-hoist-headframe,new 2.2,,,,0,,,
+underground,mine shaft dewatering pump,en,gemini,/equipment/submersible-dewatering-pump,new 2.3,,,,8,62.0,,"GSC: ""sump dewatering"" 4, ""dewatering sump pump"" 1, others"
+underground,submersible slurry pump deep shaft,en,gemini,/equipment/slurry-pump,new 2.3,,,,0,,,
+underground,mine ventilation fan,en,gemini,/equipment/mine-ventilation-fan,strengthen,,,,0,,,
+underground,multi gas detector mining,en,gemini,/equipment/gas-detection-monitor,strengthen,,,,0,,,
+underground,scsr self rescuer,en,gsc-sep,/equipment/self-contained-self-rescuer,strengthen,,,,30,37.1,,"GSC: ""scsr"" 18 pos 30 plus 5 self-rescuer variants"
+underground,cap lamp mining,en,gemini,/equipment/mining-safety-helmet-cap-lamp,strengthen,,,,0,,,
+power,mining generator size,en,gemini,/insights/off-grid-mine-power,strengthen,,,,6,92.7,,"GSC: generator queries, all pos 86-99"
+power,generator rental tanzania,en,content-plan,/generator-rental,strengthen,,,,0,,,
+power,solar diesel hybrid mine,en,gemini,/insights/off-grid-mine-power,new 3.2,,,,0,,,
+power,tanesco connection cost mine,en,gemini,none,new 3.1,,,,0,,,
+power,mining air compressor,en,gemini,/equipment/air-compressor-mining,strengthen,,,,0,,,
+power,electric vs pneumatic rock drill,en,gemini,/equipment/pneumatic-rock-drill,new 3.3,,,,0,,,
+power,jenereta za kukodi,sw,content-plan,/insights-swahili/jenereta-za-kukodi,strengthen,,,,0,,,
+tailings,gold tailings reprocessing,en,gemini,/insights/vat-leaching-tailings,strengthen,,,,0,,,
+tailings,vat leaching gold,en,gemini,/insights/vat-leaching-tailings,strengthen,,,,0,,,
+tailings,filter press mining,en,gemini,/equipment/filter-press,new 4.1,,,,0,,,
+tailings,dry stack tailings,en,gemini,/equipment/filter-press,new 4.1,,,,0,,,
+tailings,cyanide detoxification gold plant,en,gemini,none,new 4.3,,,,0,,,
+tailings,water recycling gold wash plant,en,gemini,none,new 4.2,,,,0,,,
+finance,mining equipment financing tanzania,en,gemini,/insights/small-miner-financing,strengthen,,,,0,,,
+finance,mining equipment leasing,en,gemini,/insights/equipment-rental-tanzania,strengthen,,,,0,,,
+finance,mining equipment rental tanzania,en,gemini,/insights/equipment-rental-tanzania,strengthen,,,,0,,,
+finance,mkopo wa vifaa vya uchimbaji,sw,gemini,none,new SW section,,,,0,,,
+regulation,how to sell gold to bank of tanzania,en,gemini,/insights/selling-gold-tanzania,strengthen,,,,0,,,
+regulation,mining commission compliance,en,gemini,/insights/mining-commission-compliance-2026,strengthen,,,,0,,,
+regulation,leseni ya uchimbaji mdogo,sw,gemini,/insights-swahili/jinsi-ya-kupata-leseni-ya-pml,strengthen,,,,0,,,
+regulation,mrabaha wa dhahabu,sw,gemini,/insights-swahili/mrabaha-na-kodi-za-dhahabu,strengthen,,,,0,,,
+regulation,bei ya dhahabu leo,sw,content-plan,/insights-swahili/bei-ya-dhahabu-leo,strengthen,,,,0,,,
+critical-minerals,copper processing plant tanzania,en,gemini,none,new (D10),,,,0,,,
+critical-minerals,copper leaching cementation,en,research,none,new (D10),,,,0,,,
+critical-minerals,graphite processing plant,en,gemini,none,new 5.1 (D10),,,,0,,,
+critical-minerals,froth flotation machine,en,gemini,none,new 5.1 (D10),,,,0,,,
+critical-minerals,magnetic separator mining,en,gemini,none,new 5.3 (D10),,,,0,,,
+critical-minerals,lithium processing plant,en,gemini,none,new 5.2 (D10),,,,0,,,
+exploration,rc drilling rig,en,gsc-sep,/equipment/rc-drilling-rig,strengthen,,,,24,66.2,,"GSC: ""rc drilling rig specifications"" 17 pos 56"
+exploration,gold metal detector,en,gsc-sep,/equipment/gold-metal-detector,strengthen,,,,266,47.1,,"GSC: VLF/PI detector cluster: vlf gold detector 114, pi gold detector 107"
+exploration,gold assay laboratory tanzania,en,gemini,/insights/assay-laboratory-tanzania,strengthen,,,,0,,,
+exploration,mining consulting,en,gsc-sep,/insights/mining-consulting-africa,strengthen,,,,479,65.4,,"GSC: consulting cluster: mining technical consulting 78, technical mining advisory 68"
+metal-detectors,vlf gold detector,en,gsc,/equipment/gold-metal-detector,strengthen (SEO checklist D.4),,,,114,48.4,,"GSC: found in export, not in original list"
+metal-detectors,pi gold detector,en,gsc,/equipment/gold-metal-detector,strengthen (SEO checklist D.4),,,,107,47.3,,"GSC: found in export, not in original list"
+metal-detectors,pulse induction vs vlf,en,gsc,/equipment/gold-metal-detector,explainer (SEO checklist E),,,,2,16.5,,"GSC: found in export, not in original list"
+consulting,mining technical consulting,en,gsc,/insights/mining-consulting-africa,strengthen (SEO checklist D.1),,,,78,72.9,,"GSC: found in export, not in original list"
+consulting,resource estimation consultants,en,gsc,/insights/mining-consulting-africa,strengthen (SEO checklist D.1),,,,35,35.7,,"GSC: found in export, not in original list"
+consulting,mineral exploration service providers,en,gsc,/insights/mining-consulting-africa,strengthen (SEO checklist D.1),,,,38,45.8,,"GSC: found in export, not in original list"
+elution,gold elution process,en,gsc,/equipment/gold-elution-electrowinning-plant,strengthen (SEO checklist D.2),,,,56,79.8,,"GSC: found in export, not in original list"
+elution,aarl elution method,en,gsc,/equipment/gold-elution-electrowinning-plant,strengthen (SEO checklist D.2),,,,8,26.3,,"GSC: found in export, not in original list"
+elution,illusion plant for gold,en,gsc,/equipment/gold-elution-electrowinning-plant,misspelling already ranks,,,,4,11.0,,"GSC: found in export, not in original list"
+cil-cip,cip plant design,en,gsc,/equipment/cil-cip-plant,strengthen (SEO checklist D.3),,,,32,68.0,,"GSC: found in export, not in original list"
+regulation,bei ya dhahabu leo geita,sw,gsc,/insights-swahili/bei-ya-dhahabu-leo,strengthen (SEO checklist F.3),,,,3,9.7,,"GSC: found in export, not in original list"
+regulation,soko la dhahabu geita,sw,gsc,/soko-la-madini/geita,strengthen,,,,2,9.5,,"GSC: found in export, not in original list"
+earthmoving,dump truck,en,gsc,/equipment/dump-truck,strengthen,,,,7,31.6,,"GSC: found in export, not in original list"

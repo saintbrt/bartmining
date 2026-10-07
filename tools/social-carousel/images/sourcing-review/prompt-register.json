@@ -1,0 +1,179 @@
+{
+  "tool": "Built-in image_gen",
+  "date": "2026-10-02",
+  "assets": [
+    {
+      "post": "IG-11",
+      "slide": "clay",
+      "file": "alluvial-wet-clay.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Macro editorial photograph of wet ochre clay lumps mixed with darker river sand and rounded screened gravel on a shallow steel sample tray beside a muddy bank. Strong textural detail showing sticky clay, overcast rainy light. No glitter, visible gold claims or people. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-11",
+      "slide": "two-mm",
+      "file": "alluvial-fine-screen.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Close three-quarter view of an unbranded fine wet-screening deck in a small mineral-processing plant. Show a realistically uniform fine woven metal mesh clamped into a rectangular frame, wet dark mineral slurry, modest spray bar above. Apertures consistently small, but no numeric size labels or rulers. Show screen construction clearly, not a centrifugal bowl or drum. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-07",
+      "slide": "sourcing",
+      "file": "mining-equipment-dispatch.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Unbranded compact hydrocyclone cluster on a steel skid with a slurry feed manifold and small industrial electric pump, prepared for dispatch in a clean anonymous supplier workshop. Mechanically plausible cast metal equipment, blue steel skid, three-quarter eye-level view. No people, warehouse signs or paperwork. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-07",
+      "slide": "landed-cost",
+      "file": "machinery-export-crates.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Two robust wooden export crates with steel straps on reinforced pallets in an anonymous warehouse loading bay. One crate partially open showing a well secured industrial motor assembly with realistic protective packing. Equipment procurement and freight planning scene, warm side light, no people, logos, shipping labels or invented prices. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-12",
+      "slide": "times",
+      "file": "generator-delivery-truck.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Unbranded cab-over flatbed cargo truck carrying two compact enclosed diesel generator sets secured on pallets with four credible rated tie-down straps each. Parked on level gravel access road in an anonymous rural industrial landscape, full truck and cargo visible three-quarter view. Green and grey generator enclosures, realistic dimensions and axle loads. No people, logos, writing or licence plate text. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-12",
+      "slide": "support",
+      "file": "packed-mining-spare-parts.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Organised mining spare parts ready for delivery in an open wooden shipping crate: two heavy-duty bearings in protective packaging, pump wear liners and several sealed blank grease cartridges, restrained with foam supports and timber braces. Close view in a clean anonymous dispatch bay, no machinery bench, no people, no labels, no logos. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-10",
+      "slide": "b1",
+      "file": "small-gravity-plant.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Wide three-quarter view of a small generic gravity mineral-processing installation: compact feed hopper, modest trommel drum, a sluice with clear riffles and a separate shaking table on solid level supports, plus contained water collection and pipework. Dry anonymous industrial gravel yard, daylight. Believable distinct individual machines, no magical connections, no people, no gold bars, no mercury. Illustrative circuit only, no price or capacity labels. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-10",
+      "slide": "b2",
+      "file": "gravity-and-leach-plant.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. High-angle view of a generic medium-sized mineral-processing installation showing a covered compact milling/gravity area and a separate series of four steel cylindrical agitated leach tanks with central top-mounted drives, guard-railed maintenance walkway and believable pipework. Distinct from a larger tank farm. Neutral daylight, anonymous site, no people or brands. Conceptual equipment illustration only; do not imply a real installation, numerical capacity or price. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-10",
+      "slide": "b3",
+      "file": "large-agitated-tank-plant.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Elevated view of a larger generic mineral-processing tank installation with eight cylindrical agitated steel tanks in two orderly rows, central top-mounted agitator drives, guard-railed access platforms, pump sumps and plausible pipe manifolds. Located on concrete bunds in an anonymous dry industrial landscape, warm afternoon light. A visually distinct broad tank farm, no people or logos, no text or capacity labels. Conceptual illustration, not a real company plant. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-02",
+      "slide": "cip",
+      "file": "carbon-adsorption-tanks.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Close elevated view of a separate downstream carbon adsorption section of a generic mineral-processing plant. Three cylindrical agitated tanks with central motor gearboxes on top, steel access bridge with guardrails, a compact interstage screen housing and plausible slurry transfer pipes. Industrial engineering photorealism, quiet grey and pale green palette. No people or visible brands. Do not render words, fake measurements, chemical instructions or capacities. Illustrative adsorption equipment, not a definitive process flow diagram. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-09",
+      "slide": "s2",
+      "file": "fine-tailings-sediment.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Macro photograph of fine dark mineral sediment and wet grey-brown slurry settling in a shallow stainless sample tray. Modest natural granular variation and damp texture, anonymous mineral laboratory context, side light. No glittering gold, visible mercury, chemical apparatus, hands, people, labels or writing. Illustrative fine tailings material only, not assay results. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-09",
+      "slide": "s3",
+      "file": "centrifugal-concentrator-installation.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. A generic unbranded centrifugal mineral concentrator installed on a sturdy steel frame in an anonymous small processing building. Vertical conical rotating bowl enclosed in a simple cylindrical protective housing, overhead feed chute, lower discharge pipe, electric motor with fully guarded drive, visible clean-water supply pipe. Distinct standalone gold gravity machine. Realistic engineering, natural light, no people, no logos, no invented rating plates, no dramatic glowing gold. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-09",
+      "slide": "s5",
+      "file": "gravity-concentrate-circuit.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Wide three-quarter view of a different generic gravity concentrate-cleaning setup in a tidy anonymous industrial shed: compact mineral jig with two rectangular cells and guarded mechanical drive, discharge channels leading to a small concentrate collection tray, practical water supply and contained return sump. Believable mineral processing equipment, muted industrial colours, daylight, no people, no brands, no mercury or chemical containers. Illustration only, no numeric performance claims. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-06",
+      "slide": "cil",
+      "file": "skid-mounted-processing-module.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Unbranded skid-mounted mineral-processing module prepared on a reinforced concrete yard: compact rectangular steel frame carrying two small agitated vessels, a mineral slurry pump and restrained pipework, with practical forklift access and lifting eyes. Engineering product photograph, orange skid and stainless vessels, side angle. No complete modular gold-plant render, no people, no logos, no words or capacities. Generic illustrative processing module. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-13",
+      "slide": "selection",
+      "file": "ball-mill-grinding-media.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Macro industrial product photograph of a shallow steel bin holding forged steel grinding balls of several physically plausible diameters, some smooth new balls and some naturally worn surfaces. Nearby a curved cast-steel mill liner with raised lifter bars. Materials and scale realistic, anonymous mill workshop, soft side light, no bearings mistaken for balls, no decorative chrome spheres. No people, logos or text. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-14",
+      "slide": "selection",
+      "file": "jaw-crusher-feed-opening.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Close-up industrial photograph looking obliquely into the feed opening of an unbranded stationary jaw crusher. Clearly show two opposing corrugated manganese-steel jaw plates, one fixed and one movable, wider opening at top and narrowing crushing chamber downwards. Coarse angular rock near the lip; machine stationary for inspection. Realistic crusher construction, no impossible interlocking teeth, no exposed moving hands, no people or words. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-15",
+      "slide": "selection",
+      "file": "cone-crusher-wear-liners.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Industrial product photograph of one matched pair of cone crusher wear components resting securely on timber pallets: a heavy conical manganese-steel mantle and larger annular concave liner. Distinct complementary dimensions and realistic thick cast steel, textured worn surfaces, anonymous workshop floor. Side three-quarter view. No complete crusher repeated, no people, logos, writing, no decorative cones or turbine parts. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-16",
+      "slide": "selection",
+      "file": "hammer-mill-rotor-screen.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Industrial photograph of a stationary hammer-mill rotor removed for inspection beside its removable perforated discharge screen. A steel shaft carrying evenly spaced discs with believable pin-mounted swinging rectangular steel hammers, guarded workshop display on sturdy supports. Perforated curved steel screen nearby. Realistic mineral crushing components, no knife blades or food mill, no people, no logos, no text. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-17",
+      "slide": "selection",
+      "file": "vibrating-screen-panels.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Industrial close-up photograph of three replaceable vibrating-screen panels laid on a workshop support rack. Show a robust woven steel mesh panel and two reinforced polyurethane screen panels with consistent square openings of different visible sizes, with some dry coarse and fine rock samples in adjacent plain metal trays. Realistic mine screen construction, no roller machinery, no people, no writing, no logos. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-18",
+      "slide": "selection",
+      "file": "slurry-pump-wear-liners.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Industrial product photograph of slurry-pump wear components removed for inspection on a clean concrete workshop surface: a rubber-lined volute liner, front throatbush and matching high-chrome closed impeller with realistic radial vanes. Physically complementary dimensions, different from a complete blue pump on a maintenance bench. Warm side light, no people, no logos, no words. Mineral slurry pumping parts, not automotive equipment. Composition: portrait 4:5 aspect ratio, subject fully readable in the upper two thirds with a quiet darker lower third suitable for a text overlay. Prefer high resolution 3072x3840 if supported; do not add borders or a text overlay. Image should have natural texture, believable machinery and clean editorial photography, not dramatic fantasy. No watermarks. This is a generic AI-generated illustration, never presented as a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-11",
+      "slide": "cover",
+      "file": "river-sluice-processing.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. A fictional adult gold prospector wearing work boots and plain work clothing crouches on a stable gravel bank beside a shallow stream, feeding a small scoop of screened sediment into a correctly inclined portable aluminium sluice box. Clear water flows downhill through the riffled box over dark ribbed matting, discharge collected in a small sediment tray beside the bank. Overcast post-rain light and damp terrain, medium-distance three-quarter view, person in upper third and sluice clearly visible. Generic anonymous setting; no real person resemblance, no visible gold nuggets, no mercury, no logos, no writing. Do not add a mechanical shaker directly in the stream. Portrait 4:5 aspect ratio, prefer 3072x3840 if supported. Keep scene and subject readable in upper two thirds, quiet lower third for text overlay. No actual text overlay, no border, no watermark. Generic AI illustration, not a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-06",
+      "slide": "elution",
+      "file": "prepared-equipment-foundations.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. Anonymous rural industrial site ready for processing module installation: three level rectangular concrete equipment pads with correctly spaced anchor bolts, conduit stub-ups, capped clean-water pipe connections and compacted gravel access for unloading. No installed plant, no people, no brand signs, no words. Warm overcast daylight, oblique ground-level view, credible civil works. Portrait 4:5 aspect ratio, prefer 3072x3840 if supported. Keep scene and subject readable in upper two thirds, quiet lower third for text overlay. No actual text overlay, no border, no watermark. Generic AI illustration, not a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    },
+    {
+      "post": "IG-09",
+      "slide": "cover",
+      "file": "standalone-gravity-sluice.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: one standalone mining social-carousel image. A distinct stationary gold gravity sluice setup in an anonymous small processing shed: aluminium rectangular sluice with steel riffles over dark recovery matting, simple elevated screened-feed hopper, modest clear-water hose and collection sump. No person, no river backdrop, no pump illustration repeated. Natural industrial daylight, believable gravity slope and supports. No glittering gold, no mercury, no chemical bottles, no words or branding. Portrait 4:5 aspect ratio, prefer 3072x3840 if supported. Keep scene and subject readable in upper two thirds, quiet lower third for text overlay. No actual text overlay, no border, no watermark. Generic AI illustration, not a real Bart Mining operation.",
+      "status": "generated; visually reviewed; technical approval pending"
+    }
+  ],
+  "riverRevision": {
+    "file": "river-sluice-processing-v2.png",
+    "prompt": "Edit this generated mining illustration for a Tanzanian audience. Keep the portrait 4:5 framing, realistic aluminium sluice with riffles and black matting, gravel bank, modest screened sediment feeding action, stable supports and collection tray. Replace the alpine conifers and mountain backdrop with a generic low-elevation East African riverbank with broadleaf vegetation and gently rolling hills, humid overcast post-rain light. Replace the fictional prospector with a different fictional adult East African man wearing plain work clothes and boots, without resembling any real person. No brands, no text, no watermarks, no actual Bart Mining site implication, no glowing gold or mercury. Natural editorial photographic texture, clearly visible equipment. This is an AI illustration of river gold processing.",
+    "replaces": "river-sluice-processing.png",
+    "reason": "Replace alpine background with a generic East African river setting."
+  },
+  "drill": {
+    "post": "IG-08",
+    "slide": "career",
+    "file": "exploration-core-drill.png",
+    "prompt": "Use case: photorealistic-natural. Create one standalone portrait 4:5 mining editorial illustration. A generic unbranded compact tracked diamond-core exploration drilling rig with a tall vertical mast, rotary head, realistic hydraulic hoses, guarded hydraulic power unit and a rack of straight drill rods beside it. Parked on a level exploration pad in an anonymous gently rolling East African savannah landscape with low scrub, overcast daylight. Machine takes upper two thirds, quiet soil foreground below for text. No people, no faces, no brands, no writing, no watermarks. Credible exploration equipment rather than a crane or excavator. Do not claim a real project or any numerical performance. Prefer 3072x3840 if supported. AI-generated generic equipment illustration, not a Bart Mining site."
+  }
+}

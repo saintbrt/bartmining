@@ -1,0 +1,124 @@
+{
+  "equipment/rotary-scrubber.jpeg": {
+    "width": 3968,
+    "height": 2232,
+    "posts": [
+      "IG-11",
+      "IG-11"
+    ]
+  },
+  "equipment/centrifugal-gold-concentrator.jpg": {
+    "width": 1500,
+    "height": 1500,
+    "posts": [
+      "IG-11",
+      "IG-05",
+      "IG-03",
+      "IG-09"
+    ]
+  },
+  "equipment/submersible-dewatering-pump.jpg": {
+    "width": 2560,
+    "height": 1819,
+    "posts": [
+      "IG-11"
+    ]
+  },
+  "team/allan-bartholomew.jpg": {
+    "width": 600,
+    "height": 682,
+    "posts": [
+      "IG-07"
+    ]
+  },
+  "equipment/shaking-table-gold.jpg": {
+    "width": 4032,
+    "height": 3024,
+    "posts": [
+      "IG-03",
+      "IG-09",
+      "IG-09"
+    ]
+  },
+  "equipment/leaching-tank.jpg": {
+    "width": 1920,
+    "height": 1440,
+    "posts": [
+      "IG-03",
+      "IG-02"
+    ]
+  },
+  "social/lake-zone-route-map.png": {
+    "width": 4000,
+    "height": 3350,
+    "posts": [
+      "IG-12"
+    ]
+  },
+  "equipment/modular-gold-plant.jpg": {
+    "width": 2000,
+    "height": 1381,
+    "posts": [
+      "IG-10",
+      "IG-06",
+      "IG-06"
+    ]
+  },
+  "social/exploration-core-trays.jpg": {
+    "width": 3648,
+    "height": 2736,
+    "posts": [
+      "IG-08"
+    ]
+  },
+  "equipment/cil-cip-plant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "posts": [
+      "IG-02",
+      "IG-06"
+    ]
+  },
+  "social/ball-mill-geevor.jpg": {
+    "width": 4112,
+    "height": 2848,
+    "posts": [
+      "IG-13"
+    ]
+  },
+  "equipment/jaw-crusher.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "posts": [
+      "IG-14"
+    ]
+  },
+  "social/cone-crusher-hp400.jpg": {
+    "width": 1813,
+    "height": 1664,
+    "posts": [
+      "IG-15"
+    ]
+  },
+  "equipment/hammer-mill.jpg": {
+    "width": 1920,
+    "height": 1920,
+    "posts": [
+      "IG-16"
+    ]
+  },
+  "social/vibrating-screen-stock.jpg": {
+    "width": 4896,
+    "height": 3264,
+    "posts": [
+      "IG-17"
+    ]
+  },
+  "equipment/slurry-pump.webp": {
+    "width": 750,
+    "height": 562,
+    "posts": [
+      "IG-18"
+    ]
+  }
+}

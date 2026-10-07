@@ -1,0 +1,58 @@
+[
+  {
+    "id": "IG-05",
+    "sub": "A centrifugal concentrator spins slurry in a bowl to separate free gold from lighter material. Screened feed and clean water help the unit work effectively.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  },
+  {
+    "id": "IG-06",
+    "sub": "A modular gold plant combines processing stages in units that can be transported and connected on site. Its layout needs to suit your ore tests and site conditions.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  },
+  {
+    "id": "IG-13",
+    "sub": "A ball mill uses tumbling steel balls to grind crushed ore and release gold from the surrounding rock. The required grind and ore hardness guide the choice of mill.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  },
+  {
+    "id": "IG-14",
+    "sub": "A jaw crusher compresses rock between fixed and moving plates to reduce its size. This prepares the material for the next crushing or grinding stage in your plant.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  },
+  {
+    "id": "IG-15",
+    "sub": "A cone crusher reduces rock after primary crushing to prepare finer feed for milling. Its discharge setting needs to suit the next processing stage in your plant.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  },
+  {
+    "id": "IG-16",
+    "sub": "A hammer mill uses swinging hammers to break ore by impact. A discharge screen controls the size of material leaving the mill before it moves to the next stage.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  },
+  {
+    "id": "IG-17",
+    "sub": "A vibrating screen separates rock by size as smaller particles pass through its panels. Larger material moves to the next stage or returns for further crushing.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  },
+  {
+    "id": "IG-18",
+    "sub": "A slurry pump moves water mixed with solids, such as mill discharge and tailings. Its components need to suit the abrasive material and required flow in your plant.",
+    "lines": 3,
+    "headlineLines": 2,
+    "overlap": false
+  }
+]

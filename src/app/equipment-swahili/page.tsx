@@ -10,6 +10,8 @@ import { EQUIPMENT, equipmentByCategory } from '@/data/equipment-catalogue-sw'
 import { LOCATIONS_SW } from '@/data/locations-sw'
 import { SITE, SERVICE_AREAS, itemListSchema, breadcrumbSchema } from '@/lib/seo'
 import JsonLd from '@/components/seo/JsonLd'
+import EquipmentFilters from '@/components/equipment/EquipmentFilters'
+import { GOLD_SPECIFIC, SMALL_SCALE } from '@/data/equipment-facets'
 
 /** Kiswahili copy of the English directory, preserving its catalogue format. */
 
@@ -119,15 +121,20 @@ export default function EquipmentHub() {
 
       {/* Catalogue */}
       <div className="px-site" style={{ paddingBottom: 72 }}>
+        <EquipmentFilters
+          categories={groups.map(g => ({ id: g.category, label: g.label }))}
+          labels={{ search: 'Tafuta vifaa', searchPlaceholder: 'Tafuta kwa jina au matumizi, mf. pampu, winchi, dhahabu', all: 'Vifaa vyote', gold: 'Urejeshaji wa dhahabu', smallScale: 'Hutumika sana na wachimbaji wadogo (PML)', showing: 'Vinaonyeshwa {n} kati ya {total}', none: 'Hakuna kifaa kinacholingana na vichujio hivi.', reset: 'Ondoa vichujio' }}
+        />
+        <div id="eq-catalogue">
         {groups.map((group, gi) => (
-          <section key={group.category} style={{ marginTop: gi === 0 ? 8 : 56 }}>
+          <section key={group.category} data-eq-group style={{ marginTop: gi === 0 ? 8 : 56 }}>
             <div className="eq-grouphead">
               <h2>{group.label}</h2>
               <span>{group.items.length} vifaa</span>
             </div>
             <div className="eq-grid">
               {group.items.map((item, i) => (
-                <Link key={item.slug} href={`/equipment-swahili/${item.slug}`} className="eq-card">
+                <Link key={item.slug} href={`/equipment-swahili/${item.slug}`} className="eq-card" data-eq-card data-category={item.category} data-gold={GOLD_SPECIFIC.has(item.slug) ? '1' : '0'} data-small={SMALL_SCALE.has(item.slug) ? '1' : '0'} data-text={`${item.name} ${item.description} ${item.searchTerms.join(' ')}`.toLowerCase()}>
                   <EquipmentThumb
                     slug={item.slug}
                     language="sw"
@@ -146,6 +153,7 @@ export default function EquipmentHub() {
             </div>
           </section>
         ))}
+        </div>
 
         <section style={{ marginTop: 56 }}>
           <div className="eq-grouphead"><h2>Usambazaji kwa maeneo</h2></div>

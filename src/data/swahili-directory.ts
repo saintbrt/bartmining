@@ -21,6 +21,13 @@ export const SWAHILI_DIRECTORY: HubEntry[] = [
     category: 'Huduma za umeme', tags: ['services', 'jenereta', 'umeme', 'kukodi'],
     image: resolveEquipmentPhoto('diesel-generator-mining')!, imageAlt: 'Jenereta ya dizeli kutoka kwenye katalogi ya Bart Mining',
   },
+  {
+    path: '/insights-swahili/kikokotoo-cha-tanki-la-leaching', language: 'sw',
+    title: 'Kikokotoo cha ujazo wa tanki la leaching',
+    description: 'Kokotoa mtiririko wa tope, ujazo wa kazi na ujazo wa kila tanki kwa mtambo mdogo wa CIL au CIP kutokana na tani kwa siku na muda wa leaching.',
+    category: 'Vikokotoo', tags: ['tools', 'processing', 'cil', 'cip', 'kikokotoo', 'tanki'],
+    image: resolveEquipmentPhoto('leaching-tank')!, imageAlt: 'Tanki la leaching kutoka kwenye katalogi ya Bart Mining',
+  },
   ...LOCATIONS_SW.map(l => ({
     path: `/insights-swahili/vifaa-vya-uchimbaji/${l.slug}`, language: 'sw' as const,
     title: `Vifaa vya uchimbaji ${l.town}`, description: l.description,
@@ -36,7 +43,7 @@ export const SWAHILI_DIRECTORY: HubEntry[] = [
   {
     path: '/equipment-swahili', language: 'sw',
     title: 'Katalogi kamili ya vifaa kwa Kiswahili',
-    description: 'Fungua maelezo ya vifaa 50, yakiwemo crushers, ball mills, pampu, winchi na vifaa vya usalama, pamoja na vipimo, matumizi na matengenezo.',
+    description: 'Fungua maelezo ya vifaa 53, yakiwemo crushers, ball mills, flotation, pampu, winchi na vifaa vya usalama, pamoja na vipimo, matumizi na matengenezo.',
     category: 'Katalogi ya vifaa', tags: ['catalogue', 'vifaa', 'equipment', 'crusher', 'ball mill', 'pampu', 'winchi'],
     image: resolveEquipmentPhoto('ball-mill-gold-ore')!, imageAlt: 'Ball mill kutoka kwenye katalogi ya Bart Mining',
   },

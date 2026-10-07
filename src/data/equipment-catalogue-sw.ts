@@ -13,6 +13,10 @@ interface Translation {
   maintenance: string[][]
   faqs: string[][]
   imageAlt: string
+  /** Optional <title> override built around common Kiswahili search wording. */
+  title?: string
+  /** Optional Kiswahili search phrases added ahead of the English terms. */
+  searchTerms?: string[]
 }
 
 const content: Record<string, Translation> = translations
@@ -21,6 +25,7 @@ export const CATEGORY_LABELS_SW: Record<EquipCategory, string> = {
   earthmoving: 'Mitambo ya kuchimba na ujenzi',
   hoisting: 'Vifaa vya kuinua na kupandisha mizigo',
   processing: 'Uchakataji na utenganishaji wa dhahabu',
+  minerals: 'Uchakataji wa madini muhimu na metali za msingi',
   exploration: 'Utafiti wa madini na uchimbaji wa sampuli',
   pumping: 'Pampu na utoaji wa maji',
   safety: 'Vifaa vya usalama migodini',
@@ -35,11 +40,11 @@ export const EQUIPMENT: Equipment[] = ENGLISH_EQUIPMENT.map(original => {
     ...original,
     name: sw.name,
     h1: sw.h1,
-    title: `${sw.name} | Tanzania`,
+    title: sw.title ?? `${sw.name} | Tanzania`,
     description: sw.description,
     summary: sw.summary,
     categoryLabel: CATEGORY_LABELS_SW[original.category],
-    searchTerms: [sw.name, sw.h1, ...original.searchTerms],
+    searchTerms: [sw.name, sw.h1, ...(sw.searchTerms ?? []), ...original.searchTerms],
     specs: sw.specs.map(([label, value]) => ({ label, value })),
     applications: sw.applications,
     maintenance: sw.maintenance.map(([interval, task]) => ({ interval, task })),

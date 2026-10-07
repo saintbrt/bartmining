@@ -1,0 +1,1808 @@
+[
+  {
+    "headline": "How to Process Alluvial Gold During the Rains",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 625.390625,
+      "w": 430,
+      "h": 115.390625,
+      "b": 740.78125
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/river-sluice-processing-v2.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-11",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Clay Can Trap Gold During the Rainy Season",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 603.390625,
+      "w": 430,
+      "h": 137.390625,
+      "b": 740.78125
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/alluvial-wet-clay.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-11",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Scrubbing Releases Gold Trapped in Clay",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 603.390625,
+      "w": 430,
+      "h": 137.390625,
+      "b": 740.78125
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/rotary-scrubber.jpeg",
+        "w": 3968,
+        "h": 2232
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-11",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "This Concentrator Setup Needs Feed Below 2 mm",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 532.390625,
+      "w": 430,
+      "h": 208.390625,
+      "b": 740.78125
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/alluvial-fine-screen.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-11",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Ore Tests Help You Estimate Gold Recovery",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 514.1953125,
+      "w": 430,
+      "h": 226.5859375,
+      "b": 740.78125
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/shaking-table-gold.jpg",
+        "w": 4032,
+        "h": 3024
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-11",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Site Preparation Helps You Manage Heavy Rain",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 433.390625,
+      "w": 430,
+      "h": 137.390625,
+      "b": 570.78125
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/submersible-dewatering-pump.jpg",
+        "w": 2560,
+        "h": 1819
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-11",
+    "slide": 6,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Prepare Your Wash Plant for the Rains",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 433.390625,
+      "w": 430,
+      "h": 137.390625,
+      "b": 570.78125
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-11",
+    "slide": 7,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Meet Allan Bartholomew",
+    "lines": 1,
+    "text": {
+      "x": 640,
+      "y": 471.109375,
+      "w": 430,
+      "h": 139.28125,
+      "b": 610.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 55.390625,
+      "w": 430,
+      "h": 360,
+      "b": 415.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/team/allan-bartholomew.jpg",
+        "w": 600,
+        "h": 682
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-07",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Allan Helps You Source Mining Equipment",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 473,
+      "w": 430,
+      "h": 137.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/mining-equipment-dispatch.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-07",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Allan Helps You Plan Equipment Costs",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 473,
+      "w": 430,
+      "h": 137.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/machinery-export-crates.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-07",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Allan Coordinates Equipment Delivery",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 473,
+      "w": 430,
+      "h": 137.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/equipment-delivery-generated.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-07",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Allan Coordinates Repairs and Maintenance",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 473,
+      "w": 430,
+      "h": 137.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/pump-maintenance-generated.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-07",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Your Equipment Needs with Allan",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 415.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 571.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-07",
+    "slide": 6,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Centrifugal Concentrator Recovers Free Gold",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/centrifugal-gold-concentrator.jpg",
+        "w": 1500,
+        "h": 1500
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-05",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "The Feed Needs Screening Before Recovery",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/concentrator-feed-preparation.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-05",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Clean Water Keeps the Bowl Working",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/concentrator-clean-water-supply.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-05",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Ore Tests Guide the Unit You Need",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/concentrator-bowl-selection.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-05",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss a Concentrator for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-05",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Mining Equipment Delivery to the Lake Zone",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/excavator-transport.jpg",
+        "w": 3816,
+        "h": 2362
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-12",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Delivery Can Start from Dar es Salaam or Mwanza",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/lake-zone-route-map.png",
+        "w": 4000,
+        "h": 3350
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-12",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Delivery Time Depends on the Route and Cargo",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/generator-delivery-truck.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-12",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Insurance and Parts Need to Be Agreed",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/packed-mining-spare-parts.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-12",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Request a Delivery Quote for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-12",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "What Does a Gold Plant Cost in Tanzania?",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 565.8046875,
+      "w": 430,
+      "h": 133.5859375,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/gold-plant-sunrise.jpg",
+        "w": 3072,
+        "h": 2304
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-10",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Equipment for a Gravity-Only Plant",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 472.8046875,
+      "w": 430,
+      "h": 226.5859375,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/small-gravity-plant.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-10",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Equipment for Gravity Recovery and CIL",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 472.8046875,
+      "w": 430,
+      "h": 226.5859375,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/gravity-and-leach-plant.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-10",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Equipment for a Larger CIL Plant",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 472.8046875,
+      "w": 430,
+      "h": 226.5859375,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/large-agitated-tank-plant.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-10",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Freight and Import Costs Add to the Price",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 472.8046875,
+      "w": 430,
+      "h": 226.5859375,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/freight-port.jpg",
+        "w": 5568,
+        "h": 3712
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-10",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss the Full Cost of Your Gold Plant",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 434,
+      "w": 430,
+      "h": 137.390625,
+      "b": 571.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-10",
+    "slide": 6,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Meet Our Founder, Bartholomew Ambrose",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-08",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "His Experience Includes Resolute and Barrick",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/exploration-core-drill.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-08",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "His Work Has Taken Him Across Four Continents",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/exploration-core-trays.jpg",
+        "w": 3648,
+        "h": 2736
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-08",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Bartholomew Leads Our Technical Consulting",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/geology-study-desk.jpg",
+        "w": 3552,
+        "h": 4736
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-08",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Your Mining Project with Us",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-08",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "How Do CIL, CIP and Heap Leaching Differ?",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 602,
+      "w": 430,
+      "h": 115.390625,
+      "b": 717.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/leaching-tank.jpg",
+        "w": 1920,
+        "h": 1440
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-02",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "CIL Leaches Gold and Collects It in the Same Tanks",
+    "lines": 3,
+    "text": {
+      "x": 640,
+      "y": 545.5,
+      "w": 430,
+      "h": 171.890625,
+      "b": 717.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 162.390625,
+      "w": 430,
+      "h": 360,
+      "b": 522.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/cil-agitated-tank-illustration.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-02",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "CIP Collects Gold After the Leaching Stage",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 580,
+      "w": 430,
+      "h": 137.390625,
+      "b": 717.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/carbon-adsorption-tanks.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-02",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Heap Leaching Treats Ore on a Lined Pad",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 561.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 717.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/heap-leach-colorado.jpg",
+        "w": 3008,
+        "h": 1574
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-02",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Ore Tests Help You Choose the Process",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 580,
+      "w": 430,
+      "h": 137.390625,
+      "b": 717.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/ore-sample-selection.jpg",
+        "w": 6000,
+        "h": 4000
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-02",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss the Right Process for Your Ore",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 434,
+      "w": 430,
+      "h": 137.390625,
+      "b": 571.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-02",
+    "slide": 6,
+    "warning": "No issues"
+  },
+  {
+    "headline": "How to Recover Gold Without Mercury",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 495,
+      "w": 430,
+      "h": 115.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/standalone-gravity-sluice.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-09",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Mercury Can Leave Fine Gold in the Tailings",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 473,
+      "w": 430,
+      "h": 137.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/fine-tailings-sediment.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-09",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Concentrator Recovers Gold Free from Rock",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 473,
+      "w": 430,
+      "h": 137.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/centrifugal-concentrator-installation.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-09",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Concentrate Cleaning Comes Before Smelting",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 473,
+      "w": 430,
+      "h": 137.390625,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/shaking-tables-geevor.jpg",
+        "w": 3264,
+        "h": 2448
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-09",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Gravity Circuit Needs No Mercury",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 383.8046875,
+      "w": 430,
+      "h": 226.5859375,
+      "b": 610.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/gravity-concentrate-circuit.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-09",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Mercury-Free Gold Recovery",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 434,
+      "w": 430,
+      "h": 137.390625,
+      "b": 571.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-09",
+    "slide": 6,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Modular Plant Needs a Prepared Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/modular-gold-plant.jpg",
+        "w": 2000,
+        "h": 1381
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-06",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Ore Tests Determine the Modules You Need",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/skid-mounted-processing-module.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-06",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "The Site Needs to Be Ready for Installation",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/prepared-equipment-foundations.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-06",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Site Costs Form Part of the Plant Budget",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/diesel-generator-mining.jpg",
+        "w": 1280,
+        "h": 960
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-06",
+    "slide": 4,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss a Modular Plant for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-06",
+    "slide": 5,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Ball Mill Grinds Ore to Release Gold",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/ball-mill-geevor.jpg",
+        "w": 4112,
+        "h": 2848
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-13",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Ore Hardness Determines the Mill You Need",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/ball-mill-grinding-media.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-13",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Ball Mills for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-13",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Jaw Crusher Reduces Large Rock for Processing",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/jaw-crusher.jpg",
+        "w": 1536,
+        "h": 1024
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-14",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Feed Size Determines the Crusher Opening",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/jaw-crusher-feed-opening.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-14",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Jaw Crushers for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-14",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Cone Crusher Prepares Finer Feed for Milling",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/cone-crusher-hp400.jpg",
+        "w": 1813,
+        "h": 1664
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-15",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "The Mill Feed Determines the Crusher Setting",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/cone-crusher-wear-liners.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-15",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Cone Crushers for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-15",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Hammer Mill Crushes Ore by Impact",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/hammer-mill.jpg",
+        "w": 1920,
+        "h": 1920
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-16",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Ore Conditions Affect Hammer and Screen Wear",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/hammer-mill-rotor-screen.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-16",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Hammer Mills for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-16",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Vibrating Screen Separates Rock by Size",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/vibrating-screen-stock.jpg",
+        "w": 4896,
+        "h": 3264
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-17",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Screen Selection Depends on the Required Product",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/vibrating-screen-panels.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-17",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Vibrating Screens for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-17",
+    "slide": 3,
+    "warning": "No issues"
+  },
+  {
+    "headline": "A Slurry Pump Moves Water Mixed with Solids",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/@fs/Users/mac/Documents/GitHub/bartmining/public/equipment/slurry-pump.webp",
+        "w": 750,
+        "h": 562
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-18",
+    "slide": 1,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Pump Selection Depends on the Slurry and Route",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 543.8046875,
+      "w": 430,
+      "h": 155.5859375,
+      "b": 699.390625
+    },
+    "card": {
+      "x": 640,
+      "y": 144.390625,
+      "w": 430,
+      "h": 360,
+      "b": 504.390625
+    },
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/slurry-pump-wear-liners.png",
+        "w": 1122,
+        "h": 1402
+      }
+    ],
+    "missing": false,
+    "cardOverlap": false,
+    "post": "IG-18",
+    "slide": 2,
+    "warning": "No issues"
+  },
+  {
+    "headline": "Discuss Slurry Pumps for Your Site",
+    "lines": 2,
+    "text": {
+      "x": 640,
+      "y": 562,
+      "w": 430,
+      "h": 137.390625,
+      "b": 699.390625
+    },
+    "card": null,
+    "images": [
+      {
+        "src": "http://127.0.0.1:5180/images/bart-mining-final.jpeg",
+        "w": 2000,
+        "h": 1333
+      }
+    ],
+    "missing": false,
+    "cardOverlap": null,
+    "post": "IG-18",
+    "slide": 3,
+    "warning": "No issues"
+  }
+]

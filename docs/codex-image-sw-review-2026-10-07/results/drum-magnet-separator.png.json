@@ -1,0 +1,10 @@
+{
+  "kind": "social",
+  "post": "IG-47",
+  "file": "drum-magnet-separator.png",
+  "subject": "A drum magnetic separator with a band of black magnetic sand clinging to the rotating drum",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone social carousel illustration. Realistic editorial illustration, East African small-scale mining context, natural daylight, muted earth tones with steel grey and a touch of warm gold, no people's faces, no logos, no text, no watermarks, no brand names, portrait 4:5. Subject: A drum magnetic separator with a band of black magnetic sand clinging to the rotating drum. A single wet drum separator, horizontal stainless drum partly immersed in a slurry tank on a frame, side-mounted gearmotor and separate discharge routes. No free-floating drum or suspended magnet. Composition: keep the complete primary subject clear in the upper two thirds, with a quiet simple lower third for separately rendered headline text. Requested portrait 4:5, native at least 1080 by 1350, ideally 2160 by 2700. Generic illustrative setting, not a real Bart Mining site or offered model. No people, hands, faces, readable text, numbers, logos, brand names, collage, frames or watermark. Never invent assay results, dimensions, grades, capacity or safety certification.",
+  "destination": "/Users/mac/Documents/GitHub/bartmining/tools/social-carousel/images/drum-magnet-separator.png",
+  "source": "Built-in image_gen, 2026-10-07",
+  "masterSource": "/Users/mac/.codex/generated_images/01a115cb-0da9-7322-8066-1341e6190f18/exec-c2bd6858-59e1-4293-8491-804459ef72fa.png"
+}

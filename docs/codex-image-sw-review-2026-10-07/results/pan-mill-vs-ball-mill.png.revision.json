@@ -1,0 +1,7 @@
+{
+  "file": "pan-mill-vs-ball-mill.png",
+  "prompt": "Use case: precise-object-edit. Input image is the edit target. Correct only the spatial separation and framing: wet pan mill with its own vertical central drive and two upright heavy rollers in a circular pan, and an entirely independent horizontal ball mill on a different concrete pad. Pull camera back so BOTH complete machines including all motors fit with clear margins inside this portrait 4:5 frame. Leave a clearly visible open aisle of at least a metre between the machines; absolutely no shaft, pipe, coupling, bearing, chute or crossbeam connecting them. The ball mill trunnion ends at its own bearing support. Preserve the realistic editorial illustration style, open-sided East African shed, daylight, muted earth tones, neutral steel and blue motors. Keep lower third simple ground for the social slide text overlay. No people, no text, no branding. Output at least 1080 by 1350.",
+  "masterSource": "/Users/mac/.codex/generated_images/01a115cb-0da9-7322-8066-1341e6190f18/exec-92d9bca9-25a8-4757-94ba-3f531edcd071.png",
+  "tool": "built-in image_gen",
+  "revision": "Targeted accuracy correction after visual review."
+}

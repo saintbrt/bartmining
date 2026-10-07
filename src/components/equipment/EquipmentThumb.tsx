@@ -40,6 +40,15 @@ function CategoryMark({ category }: { category: EquipCategory }) {
           <path d="M35 24h8v14" />
         </g>
       )
+    case 'minerals': // flotation cell with froth bubbles
+      return (
+        <g {...STROKE}>
+          <path d="M12 20h24v16a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z" />
+          <line x1="24" y1="10" x2="24" y2="34" />
+          <circle cx="17" cy="16" r="2.5" /><circle cx="23" cy="14" r="2" /><circle cx="30" cy="16" r="2.5" />
+          <path d="M36 22h7v8" />
+        </g>
+      )
     case 'exploration': // drill mast over strata
       return (
         <g {...STROKE}>
