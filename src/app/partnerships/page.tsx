@@ -180,7 +180,7 @@ export default function PartnershipsPage() {
             <Reveal delay={1}>
               <span className="eyebrow">Why Bart Mining</span>
               <p style={{ fontFamily: 'var(--font-sora)', fontSize: 'clamp(22px,2.8vw,32px)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.2, marginTop: 18, color: 'var(--ink)' }}>
-                This is the ground we work on every day
+                Our experience in the field is the reason our partners win
               </p>
               <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 22, lineHeight: 1.7 }}>
                 We have spent decades building, advising and managing mining projects in the region, and supplying the machines they run on. We know the buyers, the towns, the port and the offices, so your products start with a network rather than a cold introduction.
