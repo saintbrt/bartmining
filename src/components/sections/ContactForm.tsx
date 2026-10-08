@@ -96,6 +96,7 @@ export default function ContactForm() {
               <option>Machinery &amp; Processing Plants</option>
               <option>Safety Equipment &amp; Gear</option>
               <option>Technical due diligence</option>
+              <option>Supplier partnership</option>
             </select>
           </div>
         </div>
