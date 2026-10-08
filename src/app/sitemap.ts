@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/privacy`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/terms`, lastModified: new Date('2026-09-15'), changeFrequency: 'yearly', priority: 0.2 },
     { url: `${SITE.url}/delivery-shipping`, lastModified: new Date('2026-09-18'), changeFrequency: 'monthly', priority: 0.75 },
-    { url: `${SITE.url}/partnerships`, lastModified: new Date('2026-10-08'), changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${SITE.url}/partner`, lastModified: new Date('2026-10-08'), changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE.url}/equipment-swahili`, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/equipment/makita`, lastModified: new Date('2026-10-07'), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE.url}/equipment-swahili/makita`, lastModified: new Date('2026-10-07'), changeFrequency: 'monthly', priority: 0.75 },

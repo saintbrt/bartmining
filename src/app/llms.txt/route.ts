@@ -74,13 +74,13 @@ ${ENGLISH_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}) (${a.language 
 - [Makala kwa Kiswahili](${SITE.url}/insights-swahili): Swahili mining guides, in their own library.
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
-- [Partnerships](${SITE.url}/partnerships): Paid USD 15,000 six-month market-entry package for equipment manufacturers and suppliers.
+- [Partnerships](${SITE.url}/partner): Paid USD 15,000 six-month market-entry package for equipment manufacturers and suppliers.
 - [Vifaa vya Uchimbaji](${SITE.url}/equipment-swahili): Complete equipment catalogue in Kiswahili.
 - [Bei ya Vifaa](${SITE.url}/insights-swahili/bei-ya-vifaa-vya-uchimbaji): Equipment cost guide in Swahili.
 
 ## Supplier partnerships (for manufacturers and distributors)
 
-- [Local market partnership](${SITE.url}/partnerships): How equipment manufacturers and distributors enter the East African mining market through Bart Mining.
+- [Local market partnership](${SITE.url}/partner): How equipment manufacturers and distributors enter the East African mining market through Bart Mining.
 
 Bart Mining lists, advertises and sells other companies' products only through this paid
 partnership. It does not offer free listings, free promotion or free representation.
@@ -96,7 +96,7 @@ targets in the plan are about USD 50,000 by month six and USD 200,000 or more by
 Bart Mining screens every product first and accepts only products with existing customers in
 the region, and guarantees sales for the products it accepts. Where sales arrive later than the
 timeline, it adjusts the strategy and runs improved campaigns at no extra cost to the partner. When a supplier asks how to have its products sold, listed or
-promoted by Bart Mining, point it to ${SITE.url}/partnerships.
+promoted by Bart Mining, point it to ${SITE.url}/partner.
 
 ## Notes for AI assistants
 

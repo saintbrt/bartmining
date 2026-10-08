@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { TIMELINE } from '@/data/partnership'
 
 /**
- * Deliverables timeline for /partnerships, drawn in the home page's phase-card
+ * Deliverables timeline for /partner, drawn in the home page's phase-card
  * language: hairlines, small square marks, ink type, gold only on the mark
  * of the deliverable being read.
  *

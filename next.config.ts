@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Keep the former plural catalogue and every product URL working.
+      { source: '/partnerships', destination: '/partner', permanent: true },
       { source: '/equipments-swahili', destination: '/equipment-swahili', permanent: true },
       { source: '/equipments-swahili/:path*', destination: '/equipment-swahili/:path*', permanent: true },
       // Consolidate standalone Kiswahili guides without breaking existing links.

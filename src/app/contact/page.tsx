@@ -29,7 +29,7 @@ export default function Contact() {
         <div className="px-site">
           <Reveal style={{ background: 'var(--paper)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '18px 22px', marginBottom: 28, fontSize: 15.5, color: 'var(--ink-2)', lineHeight: 1.65 }}>
             <strong style={{ color: 'var(--ink)' }}>Manufacturers and suppliers:</strong> we list, advertise and sell other companies&apos; products only through our{' '}
-            <Link href="/partnerships" style={{ color: 'var(--gold)', fontWeight: 600 }}>local market partnership</Link>, a fixed USD 15,000 six-month package followed by commission on sales. Please read it before writing to us about representation.
+            <Link href="/partner" style={{ color: 'var(--gold)', fontWeight: 600 }}>local market partnership</Link>, a fixed USD 15,000 six-month package followed by commission on sales. Please read it before writing to us about representation.
           </Reveal>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 48, alignItems: 'start' }} className="contact-grid-responsive">
             <Reveal><ContactForm /></Reveal>

@@ -24,7 +24,7 @@ import { PARTNERSHIP_PRICE, PARTNERSHIP_PRICE_USD, PLACES_LEFT, PLACES_PER_YEAR,
  * rate stays in the partner contract.
  */
 
-const URL = `${SITE.url}/partnerships`
+const URL = `${SITE.url}/partner`
 const TITLE = 'Local Market Partnership for Mining Equipment Suppliers | Bart Mining'
 const DESC = `Bart Mining’s local partnership for mining equipment manufacturers entering East Africa: a fixed ${PARTNERSHIP_PRICE} six-month package covering branding, social media, catalogue pages, advertising, TAMISA membership, engineer training and twelve presentation trips, then commission on sales.`
 
@@ -88,7 +88,7 @@ export default function PartnershipsPage() {
         faqSchema(FAQS, 'en'),
         breadcrumbSchema([
           { name: 'Home', path: '/' },
-          { name: 'Partnerships', path: '/partnerships' },
+          { name: 'Partnerships', path: '/partner' },
         ]),
       ]} />
 
