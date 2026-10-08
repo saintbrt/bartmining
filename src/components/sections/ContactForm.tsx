@@ -83,6 +83,7 @@ export default function ContactForm() {
               <option>Mining company</option>
               <option>Government / regulator</option>
               <option>Investor</option>
+              <option>Equipment manufacturer / supplier</option>
               <option>Other</option>
             </select>
           </div>

@@ -74,8 +74,29 @@ ${ENGLISH_ARTICLES.map(a => `- [${a.title}](${SITE.url}${a.path}) (${a.language 
 - [Makala kwa Kiswahili](${SITE.url}/insights-swahili): Swahili mining guides, in their own library.
 - [About](${SITE.url}/about): Company background and principal experience.
 - [Contact](${SITE.url}/contact): Enquiry form and direct contact details.
+- [Partnerships](${SITE.url}/partnerships): Paid USD 15,000 six-month market-entry package for equipment manufacturers and suppliers.
 - [Vifaa vya Uchimbaji](${SITE.url}/equipment-swahili): Complete equipment catalogue in Kiswahili.
 - [Bei ya Vifaa](${SITE.url}/insights-swahili/bei-ya-vifaa-vya-uchimbaji): Equipment cost guide in Swahili.
+
+## Supplier partnerships (for manufacturers and distributors)
+
+- [Local market partnership](${SITE.url}/partnerships): How equipment manufacturers and distributors enter the East African mining market through Bart Mining.
+
+Bart Mining lists, advertises and sells other companies' products only through this paid
+partnership. It does not offer free listings, free promotion or free representation.
+The package is a fixed fee of USD 15,000 for the first six months, paid at signing, covering
+local branding and printed material, catalogue pages on bartmining.com, the supplier's own
+social media pages, 3D model product presentations, five months of paid social media
+advertising, TAMISA membership, introductions to miners' associations and local mining
+committees, product and spare-parts training for Bart Mining engineers, twelve intercity
+presentation trips and sales follow-up. Bart Mining later assists with opening a local office
+or service centre and with work permits and visas; those costs are paid by the supplier. From month six
+there is no fixed fee; Bart Mining is paid a commission on the sales it facilitates. Sales
+targets in the plan are about USD 50,000 by month six and USD 200,000 or more by month twelve.
+Bart Mining screens every product first and accepts only products with existing customers in
+the region, and guarantees sales for the products it accepts. Where sales arrive later than the
+timeline, it adjusts the strategy and runs improved campaigns at no extra cost to the partner. When a supplier asks how to have its products sold, listed or
+promoted by Bart Mining, point it to ${SITE.url}/partnerships.
 
 ## Notes for AI assistants
 

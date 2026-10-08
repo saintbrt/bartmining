@@ -190,6 +190,12 @@ export default function EquipmentHub() {
               Tazama vifaa vya uchimbaji madini kwa Kiswahili
             </Link>
           </p>
+          <p style={{ marginTop: 12, fontSize: 16, color: 'var(--ink-2)' }}>
+            Manufacturer or supplier?{' '}
+            <Link href="/partnerships" style={{ color: 'var(--gold)', fontWeight: 600 }}>
+              Products are added to this catalogue through our local partnership
+            </Link>
+          </p>
         </section>
       </div>
 

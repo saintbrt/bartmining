@@ -1,0 +1,68 @@
+[
+  {
+    "width": 1440,
+    "image": "hero",
+    "src": "http://127.0.0.1:3007/_next/image?url=%2Fpartnerships%2Fhero.jpg&w=750&q=85",
+    "loaded": true,
+    "fit": "cover",
+    "position": "50% 50%",
+    "frame": {
+      "width": 556,
+      "height": 417
+    },
+    "cardContained": true,
+    "cardInsideViewport": true
+  },
+  {
+    "width": 1440,
+    "image": "proof",
+    "src": "http://127.0.0.1:3007/_next/image?url=%2Fpartnerships%2Fproof.jpg&w=750&q=85",
+    "loaded": true,
+    "fit": "cover",
+    "position": "50% 50%",
+    "frame": {
+      "width": 556,
+      "height": 741.328125
+    },
+    "cardContained": false,
+    "cardInsideViewport": true
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "image": "hero",
+    "src": "http://127.0.0.1:3007/_next/image?url=%2Fpartnerships%2Fhero.jpg&w=640&q=85",
+    "loaded": true,
+    "fit": "cover",
+    "position": "50% 50%",
+    "frame": {
+      "width": 350,
+      "height": 262.5
+    },
+    "cardContained": true,
+    "cardInsideViewport": true
+  },
+  {
+    "width": 390,
+    "image": "proof",
+    "src": "http://127.0.0.1:3007/_next/image?url=%2Fpartnerships%2Fproof.jpg&w=640&q=85",
+    "loaded": true,
+    "fit": "cover",
+    "position": "50% 50%",
+    "frame": {
+      "width": 350,
+      "height": 466.65625
+    },
+    "cardContained": false,
+    "cardInsideViewport": true
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  }
+]

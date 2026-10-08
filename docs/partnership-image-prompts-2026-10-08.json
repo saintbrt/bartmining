@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-08",
+  "mode": "built-in image_gen",
+  "scope": "Approved hero and an existing equipment image from the gravity social post connected to the partnerships page; page and related partnership links prepared for the user-requested Git push.",
+  "hero": {
+    "output": "public/partnerships/hero.jpg",
+    "source": "/Users/mac/.codex/generated_images/01a11b10-170b-7442-b7b4-d9f59d114c38/exec-7f90f9f5-8b36-4967-878c-0699a707ab3b.png",
+    "reference": "https://images.pexels.com/photos/17320062/pexels-photo-17320062.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "reference_dimensions": [
+      2400,
+      1597
+    ],
+    "native_dimensions": [
+      1536,
+      1024
+    ],
+    "exported_dimensions": [
+      3072,
+      2048
+    ],
+    "export": "sips JPEG quality 95, upscaled preserving the approximately 3:2 reference framing",
+    "generation_prompt": "Use case: precise-object-edit\nAsset type: higher-quality regeneration of the existing partnerships hero.\nInput image 1 is the edit target and authoritative composition reference: the original photograph of a yellow tracked mobile crusher working in a dusty quarry, with its discharge conveyor extending to the left over a grey aggregate stockpile.\nRegenerate THIS SAME IMAGE at the highest available fidelity and native resolution; target 3072 × 2048 pixels or higher in the same approximately 3:2 landscape aspect ratio.\nPreserve the exact camera angle, crop, object placement, scale, perspective and mechanical arrangement: yellow tracked mobile crusher centred, engine/radiator housing centrally visible, crusher hopper on the right, one supported discharge conveyor reaching up-left and dropping grey crushed rock onto the left stockpile, crawler tracks below, dusty open foreground at lower right, background tree line and pale blue cloudy sky.\nPreserve the reference photograph's colours, natural daylight, exposure and atmospheric dust. Improve only fine photographic detail and fidelity: realistic sharp aggregate textures, coherent conveyor belt and rollers, track shoes, bolts, wire-mesh safety guards, radiator louvres, weathered painted metal and subtle material texture. Keep naturally soft atmospheric areas soft. Produce photographic detail without oversharpened halos, waxy surfaces, painterly texture or unnatural HDR.\nDo not redesign or rearrange the equipment, replace the scene, add a ball mill, add any other machines or people, or change the lighting or colour palette. Keep lower-right overlay space. Omit readable brand markings, text and watermarks.",
+    "instruction": "User identified the original mobile-crusher stock photograph as the approved hero. Regenerate its quality while preserving its scene and composition.",
+    "limitation": "The tool returned 1536 × 1024 despite the 3072 × 2048 native request. Export dimensions are upscaled; improved photographic texture is not a claim of higher native resolution."
+  },
+  "proof": {
+    "output": "public/partnerships/proof.jpg",
+    "source": "tools/social-carousel/images/gravity-spirals-plant.png",
+    "post": "IG-47",
+    "slide": "gravity",
+    "source_register": "tools/social-carousel/images/sources.json",
+    "instruction": "User requested mining-material/equipment imagery from the gravity post in tools.",
+    "native_dimensions": [
+      1122,
+      1402
+    ],
+    "exported_dimensions": [
+      1122,
+      1402
+    ],
+    "export": "sips JPEG quality 95, no resizing; page applies centred object-fit cover in its 3:4 frame",
+    "provenance": "Existing Bart Mining generated illustration from 2026-10-07; reused without regeneration, with no claims of a photographed installation."
+  },
+  "usage": "Illustrative scene. Does not document an actual Bart Mining installation, customer, staff member or specific offered machine model. Keep provenance in internal records; no provenance labels were added to the site.",
+  "hero_before_mobile_crusher_revision": {
+    "output": "public/partnerships/hero.jpg",
+    "source": "/Users/mac/.codex/generated_images/01a11b10-170b-7442-b7b4-d9f59d114c38/exec-fab60216-531c-465e-b0c4-261e60d51c1e.png",
+    "native_dimensions": [
+      1448,
+      1086
+    ],
+    "exported_dimensions": [
+      2400,
+      1800
+    ],
+    "export": "sips JPEG quality 88, upscaled preserving the 4:3 aspect ratio",
+    "generation_prompt": "Use case: photorealistic-natural\nAsset type: partnerships page hero photograph, landscape 4:3, at least 2400 × 1800 pixels.\nPrimary request: Photorealistic editorial photograph of a newly installed gold processing plant at a mine site in Tanzania. In the centre and left of the frame, a modern jaw crusher feeds a conveyor belt that runs up into a horizontal ball mill. Both sit on clean concrete foundations, with steel walkways, handrails and neatly routed pipework. The machinery is painted in muted grey with small safety-yellow details, and is clean and well maintained. Red laterite ground, a small ore stockpile beside the crusher, and dry acacia bushland and low hills in the soft-focus background. Clear mid-morning daylight from the left, soft natural shadows, true-to-life colour, slightly cool white balance. Shot from a low three-quarter angle with a 35mm lens and sharp detail on bolts, belts and steelwork. Keep the bottom-right corner calm (open ground or sky) for a text overlay. No people, no text, no logos, no brand names, no numbers on the machines, no watermark.\nMechanical constraints: Show an unambiguous continuous feed path: the crusher bottom discharge chute drops onto the low end of a supported inclined belt conveyor; the conveyor head discharges into a stationary feed chute entering the mill at its axial feed trunnion, never into the solid cylindrical shell. The ball mill cylinder is horizontal, supported at both ends on substantial trunnion bearing pedestals on concrete, with a plausible side-mounted electric motor and gearbox driving a guarded pinion and girth gear. Crusher motor and guarded belt drive sit beside the crusher. Conveyor has real idlers, return belt, head pulley drive, and supported legs. All connections physically credible; retain clear lower-right negative space.",
+    "correction_prompts": [
+      "Use case: precise-object-edit. Correct only the jaw crusher outlet and its connection to the belt conveyor in this photograph. Currently a front-facing discharge chute drops crushed ore onto the ground. Replace that outlet with one continuous enclosed grey steel chute from beneath the crusher, bending rear-right and terminating directly over the conveyor's low tail loading point, so ALL crusher discharge lands on the conveyor belt and the visible ore can travel up to the existing ball mill feed chute. Remove the pile of discharged crushed rock immediately below that outlet, restore clean ground there, and retain the separate ore stockpile at the far left. Enclose the crusher motor-to-flywheel V-belt run in a plausible perforated safety-yellow guard. Preserve the ball mill, its axial feed connection, conveyor head, all other equipment, people-free Tanzanian landscape, cool natural daylight, camera angle, 4:3 framing, and open lower-right ground. No text, logos or watermarks. Output at least 2400 by 1800 pixels if supported.",
+      "Use case: precise-object-edit. Fix the single crusher-to-conveyor connection. The large enclosed grey diagonal chute currently projects FORWARD toward the viewer, ending lower than the conveyor and disconnected from it. REMOVE that entire projecting chute. Instead show a SHORT VERTICAL grey rectangular discharge chute directly UNDER THE CRUSHER, behind its right-hand side support, dropping directly onto the existing belt's LOW LEFT TAIL at the foot of the incline. The belt must extend leftwards beneath the crusher so it catches crushed material directly below the crusher body. Do not put a new outlet on the front of the crusher or anywhere below the receiving belt. The chute's lower mouth must be above, and overlapping, the receiving belt loading point; ore must visibly be received by that belt. Keep the outlet geometry simple and physically connected. Preserve the newly added yellow perforated belt-drive guard, clean ground, distant left stockpile, existing conveyor head and feed chute into the mill, horizontal ball mill and drives, blue sky, cool natural daylight, 4:3 framing and calm bottom-right foreground. No text or logos.",
+      "Use case: precise-object-edit. Rebuild the crusher discharge and the LOWER HALF of the inclined conveyor as one mechanically coherent feed assembly. The current image incorrectly has an extra short belt going down-right from the crusher, disconnected from the main belt. REMOVE THAT EXTRA SHORT BELT COMPLETELY. There must be ONE SINGLE CONTINUOUS STRAIGHT conveyor belt from beneath the crusher to the mill at upper-right. Extend the existing main inclined belt DOWN AND LEFT along the SAME STRAIGHT SLOPE until its low tail pulley sits directly under the crusher's bottom outlet, in the recessed space between the crusher foundation blocks. Raise the crusher outlet if necessary so the short vertical discharge chute has its lower lip immediately ABOVE the main belt loading point. Show crushed ore falling a short distance vertically from that chute onto this single belt; it then travels up the same continuous incline to the existing mill feed chute. There must be no other belt or front-facing chute, and no crushed ore discharged to the ground. Keep crusher, motor, perforated yellow drive guard, stockpile at far left, mill, conveyor upper-half, supports, landscape, cool daylight, camera, landscape 4:3 and open lower-right foreground unchanged. No text, logos, watermarks."
+    ]
+  },
+  "proof_before_gravity_post_revision": {
+    "output": "public/partnerships/proof.jpg",
+    "generation_prompt": "Use case: photorealistic-natural\nAsset type: partnerships page \"Why Bart Mining\" photograph, portrait 3:4, at least 1800 × 2400 pixels.\nPrimary request: Photorealistic editorial photograph inside an open-sided gold processing shed at a Tanzanian mine. A Tanzanian engineer in plain navy coveralls, a white hard hat and safety glasses stands beside a centrifugal gold concentrator. He explains the machine to two local small-scale miners in work clothes and hard hats, pointing at the control panel. The machine and the engineer's explanation are the clear subject, with faces in natural three-quarter view and engaged, not posing for the camera. Steel frame structure, a conveyor and tanks softly out of focus behind them. Bright natural daylight through the open side, true-to-life colour, slightly cool white balance, shallow depth of field. Keep the bottom-right area simple (floor or machine base) for a quote overlay. No logos or writing on clothing or machines, no brand names, no watermark.\nMechanical constraints: The concentrator is a recognizable industrial enclosed vertical-axis centrifugal bowl machine, with cylindrical/conical housing on a sturdy bolted steel support frame, a central top feed inlet pipe, realistic water inlet and lower discharge pipework, and a guarded motor/drive mounted at the base. Control cabinet beside the machine has simple unlabelled physical buttons and indicator lights, no letters or numbers or writing. Keep all three people and pointing hand anatomically natural and separated from moving parts.",
+    "source": "/Users/mac/.codex/generated_images/01a11b10-170b-7442-b7b4-d9f59d114c38/exec-dd92664a-45cc-42ce-b6b0-67d1ee39eaf6.png",
+    "native_dimensions": [
+      1086,
+      1448
+    ],
+    "exported_dimensions": [
+      1800,
+      2400
+    ],
+    "export": "sips JPEG quality 88, upscaled preserving the 3:4 aspect ratio"
+  }
+}

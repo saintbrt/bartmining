@@ -54,3 +54,30 @@ export const SW_GENERATOR_RENTAL_FAQS: { q: string; a: string }[] = [
   { q: 'Je, jenereta ya kukodi inaweza kuendesha ball mill au mashine ya kuponda mawe?', a: 'Inaweza ikiwa mfumo umechaguliwa na kuhakikiwa kwa mizigo ya kuwasha na kuendesha pamoja na vifaa vingine vya plant. Soft starter au VFD inaweza kubadilisha mahitaji ya kuwasha, lakini uchaguzi na gharama zake zihesabiwe kwa mota na mfumo halisi. Tuma orodha ya mizigo na starters kabla ya kuthibitisha ukubwa.' },
   { q: 'Mnaleta jenereta nje ya Dar es Salaam na Mwanza?', a: 'Ndiyo, popote Tanzania, ikiwemo Geita, Kahama, Shinyanga, Chunya na Mbeya. Tuambie eneo la kazi na hali ya barabara unapoomba bei.' },
 ]
+
+export const PARTNERSHIP_FAQS: { q: string; a: string }[] = [
+  {
+    q: 'Do you guarantee sales?',
+    a: 'Yes. That is why every application is screened first. We only accept products that already have customers in the region, and if we turn a product down it is because we cannot guarantee its market. Sometimes sales arrive later than the timeline on this page. When that happens we adjust the strategy, replan and launch stronger campaigns at no extra cost to you, and each monthly report shows exactly where the sales stand.',
+  },
+  {
+    q: 'Why does the partnership take at least three months to set up?',
+    a: 'The first three months build what sales depend on. Product pages and Kiswahili material must be prepared, import and registration steps confirmed, landed prices agreed and the first introductions made to miners and supplier associations. Advertising before those foundations are ready usually produces enquiries that cannot be converted into orders.',
+  },
+  {
+    q: 'Are advertising and travel charged separately?',
+    a: 'No. The fixed USD 15,000 fee for the first six months already includes five months of advertising, TAMISA membership and twelve intercity trips for meetings and product presentations. Advertising results are reported from the platforms each month. From month six there is no fixed fee, and we are paid a commission on each deal we facilitate. Only the duties, freight and clearing charges for each shipment of goods are quoted separately, because they depend on the actual consignment.',
+  },
+  {
+    q: 'Do you help with taxes and government requirements?',
+    a: 'We help you understand and complete the registration, import documentation and product approvals that apply to your goods, and we deal with the relevant offices through an established local company. The aim is to pay what is lawfully due, on time and with correct documents, which avoids the penalties and disputed assessments that often affect unrepresented foreign suppliers. We do not arrange informal payments.',
+  },
+  {
+    q: 'Will you list or promote our products without the partnership?',
+    a: 'No. Listing products in our catalogue, advertising them, presenting them to miners and following up buyers all take real time and money, so we offer them only within the partnership. The six-month package costs a fixed USD 15,000, and after that we work on commission. If you would like to judge the fit first, send your product details and we will give an initial view of the market before you sign.',
+  },
+  {
+    q: 'Which companies are a good fit?',
+    a: 'The partnership suits manufacturers and distributors with a product that East African miners already need, the ability to supply stock within a predictable lead time, and a willingness to price for the local market and support warranty and spare parts. It also requires a decision-maker who can respond quickly during the first year.',
+  },
+]

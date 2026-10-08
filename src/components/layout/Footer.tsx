@@ -47,6 +47,7 @@ export default function Footer() {
               { href: '/equipment', label: 'Equipment' },
               { href: '/delivery-shipping', label: 'Delivery & Shipping' },
               { href: '/generator-rental', label: 'Generator Rental' },
+              { href: '/partnerships', label: 'Partnerships' },
               { href: '/sustainability', label: 'Sustainability' },
               { href: '/insights', label: 'Insights' },
               { href: '/contact', label: 'Contact' },
