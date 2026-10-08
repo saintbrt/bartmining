@@ -88,3 +88,18 @@ export const INCLUDED = [
   'Sales, quotations, clearing and delivery handled',
   'Six monthly progress reports',
 ]
+
+/**
+ * Buyer demand in Tanzania, from Google Trends exports (country: Tanzania,
+ * downloaded 8 Oct 2026). Values are Google's relative search interest and
+ * period growth for related queries, not search counts. Keep the source note
+ * beside these figures wherever they are shown.
+ */
+export const DEMAND_SOURCE = 'Google Trends, Tanzania. Related searches for gold (Oct 2021–Oct 2026) and for ball mills, alluvial gold and mining (2004–Oct 2026), downloaded 8 October 2026. Figures show relative interest and growth over each period, not numbers of searches.'
+
+export const DEMAND = [
+  { k: 'Machines', v: 'Ball mills', q: 'ball mill machine · ball mill price · ball mill for sale · jaw crusher', d: 'The leading equipment searches are buyers looking for machines and prices, with crushers close behind.' },
+  { k: 'Alluvial gold', v: 'Top query', q: 'alluvial gold · alluvial mining · alluvial gold mining', d: 'Alluvial gold is the leading search in its group, pointing to steady demand for wash plants, trommels and concentrators.' },
+  { k: 'Gold price', v: '+110%', q: 'gold price in tanzania · gold price today +120%', d: 'Far more Tanzanians follow the gold price than five years ago, a sign of how many people are working gold.' },
+  { k: 'New mines', v: '+1,300%', q: 'nyanzaga gold mine · geita gold +190%', d: 'Searches for newer projects and established goldfields are climbing as activity spreads to new areas.' },
+]

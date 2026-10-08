@@ -253,6 +253,12 @@ export default async function EquipmentPage({ params }: { params: Promise<{ slug
               requirement.
             </div>
 
+            <p style={{ fontSize: 15, color: 'var(--ink-2)' }}>
+              Manufacturer or supplier of this equipment? Bart Mining sells machinery like
+              the {item.name.toLowerCase()} to buyers across Tanzania through its{' '}
+              <Link href="/partner" style={{ color: 'var(--gold)', fontWeight: 600 }}>local market partnership</Link>.
+            </p>
+
             {references[item.slug] && (
               <p style={{ fontSize: 14, color: 'var(--ink-3)' }}>
                 Safety and scope references:{' '}

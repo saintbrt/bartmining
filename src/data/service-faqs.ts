@@ -57,6 +57,18 @@ export const SW_GENERATOR_RENTAL_FAQS: { q: string; a: string }[] = [
 
 export const PARTNERSHIP_FAQS: { q: string; a: string }[] = [
   {
+    q: 'How do I sell mining equipment in Tanzania?',
+    a: 'Most mining equipment in Tanzania is sold through a local presence: material in Kiswahili and English, visits to mining towns, product demonstrations, correct import registration and clearing, and engineers who can support the machine after delivery. A local partner provides that presence without you opening an office first. Bart Mining’s partnership covers all of it for a fixed USD 15,000 over six months, followed by commission only.',
+  },
+  {
+    q: 'Do I need a local distributor to sell mining machinery in Tanzania?',
+    a: 'You can sell directly, but most buyers want to deal with a company they can meet, that holds spare parts and that handles clearing and delivery for them. A local distributor or partner closes that gap and usually shortens the time to the first order. The registrations and approvals your particular products need are confirmed during the first phase of the partnership.',
+  },
+  {
+    q: 'Which mining machines are in demand in Tanzania?',
+    a: 'Google Trends data for Tanzania shows ball mills as the leading equipment search, followed by ball mill prices, ball mills for sale and jaw crushers. Alluvial gold mining is also among the most searched topics, and interest in the gold price has more than doubled in five years. Processing equipment for small and medium gold operations, from crushers and mills to wash plants and concentrators, is the strongest fit.',
+  },
+  {
     q: 'Do you guarantee sales?',
     a: 'Yes. That is why every application is screened first. We only accept products that already have customers in the region, and if we turn a product down it is because we cannot guarantee its market. Sometimes sales arrive later than the timeline on this page. When that happens we adjust the strategy, replan and launch stronger campaigns at no extra cost to you, and each monthly report shows exactly where the sales stand.',
   },

@@ -7,7 +7,7 @@ import CtaSection from '@/components/sections/CtaSection'
 import PartnershipTimeline from '@/components/sections/PartnershipTimeline'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE, faqSchema, breadcrumbSchema } from '@/lib/seo'
-import { PARTNERSHIP_PRICE, PARTNERSHIP_PRICE_USD, PLACES_LEFT, PLACES_PER_YEAR, PARTNERSHIP_IMAGES as IMG, INCLUDED } from '@/data/partnership'
+import { PARTNERSHIP_PRICE, PARTNERSHIP_PRICE_USD, PLACES_LEFT, PLACES_PER_YEAR, PARTNERSHIP_IMAGES as IMG, INCLUDED, DEMAND, DEMAND_SOURCE } from '@/data/partnership'
 
 /**
  * Local market partnership for mining equipment manufacturers.
@@ -25,8 +25,8 @@ import { PARTNERSHIP_PRICE, PARTNERSHIP_PRICE_USD, PLACES_LEFT, PLACES_PER_YEAR,
  */
 
 const URL = `${SITE.url}/partner`
-const TITLE = 'Local Market Partnership for Mining Equipment Suppliers | Bart Mining'
-const DESC = `Bart Mining’s local partnership for mining equipment manufacturers entering East Africa: a fixed ${PARTNERSHIP_PRICE} six-month package covering branding, social media, catalogue pages, advertising, TAMISA membership, engineer training and twelve presentation trips, then commission on sales.`
+const TITLE = 'Mining Equipment Distributor & Local Partner in Tanzania | Bart Mining'
+const DESC = `Sell your mining equipment in Tanzania and East Africa through Bart Mining, a local distribution partner for machinery manufacturers: a fixed ${PARTNERSHIP_PRICE} six-month package covering branding, social media, catalogue pages, advertising, TAMISA membership, engineer training and twelve presentation trips, then commission on sales.`
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -96,8 +96,11 @@ export default function PartnershipsPage() {
       <section className="hero" style={{ position: 'relative', padding: '168px 0 90px', overflow: 'hidden' }}>
         <div className="px-site" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
           <div>
+            <Reveal>
+              <span className="eyebrow">Mining equipment distribution partner in Tanzania</span>
+            </Reveal>
             <Reveal delay={1}>
-              <h1 style={{ fontSize: 'clamp(34px,4.4vw,56px)' }}>
+              <h1 style={{ fontSize: 'clamp(34px,4.4vw,56px)', marginTop: 18 }}>
                 Don&apos;t leave your sales to chance
               </h1>
             </Reveal>
@@ -167,8 +170,34 @@ export default function PartnershipsPage() {
         </div>
       </section>
 
-      {/* Proof: same layout as the home founder section */}
+      {/* Buyer demand: evidence for the manufacturer, and the search terms buyers use */}
       <section className="sec-gap" style={{ background: 'var(--paper)' }}>
+        <div className="px-site">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Market demand</span>
+            <h2>What Tanzanian buyers search for</h2>
+            <p>Mining equipment buyers in Tanzania search for machines, prices and gold. Bart Mining publishes the equipment guides, price tools and gold price pages they read, so your products appear where that demand already is.</p>
+          </Reveal>
+          <div className="pt-grid-4">
+            {DEMAND.map((x, i) => (
+              <Reveal key={x.k} delay={i}>
+                <div style={{ ...card, padding: '24px 20px' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--gold-deep)' }}>{x.k}</div>
+                  <div style={{ ...statNum, marginTop: 12 }}>{x.v}</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.04em', color: 'var(--ink-3)', lineHeight: 1.6, marginTop: 8 }}>{x.q}</div>
+                  <p style={{ fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.6, marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--line-2)' }}>{x.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal>
+            <p style={{ color: 'var(--ink-3)', fontSize: 14, lineHeight: 1.6, marginTop: 22, maxWidth: 760 }}>Source: {DEMAND_SOURCE}</p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Proof: same layout as the home founder section */}
+      <section className="sec-gap" style={{ background: 'var(--bg)' }}>
         <div className="px-site">
           <div className="split2">
             <div className="founder-img" style={{ aspectRatio: '3/4' }}>
@@ -200,7 +229,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* The solution */}
-      <section className="sec-gap" style={{ background: 'var(--bg)' }}>
+      <section className="sec-gap" style={{ background: 'var(--paper)' }}>
         <div className="px-site">
           <Reveal className="sec-head">
             <span className="eyebrow">The solution</span>
@@ -222,7 +251,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Deliverables */}
-      <section className="sec-gap" id="deliverables" style={{ background: 'var(--paper)' }}>
+      <section className="sec-gap" id="deliverables" style={{ background: 'var(--bg)' }}>
         <div className="px-site">
           <Reveal className="sec-head">
             <span className="eyebrow">Deliverables</span>
@@ -234,7 +263,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Targets */}
-      <section className="sec-gap" style={{ background: 'var(--bg)' }}>
+      <section className="sec-gap" style={{ background: 'var(--paper)' }}>
         <div className="px-site">
           <Reveal className="sec-head">
             <span className="eyebrow">Sales targets</span>
@@ -256,7 +285,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Offer */}
-      <section className="sec-gap" id="apply" style={{ background: 'var(--paper)' }}>
+      <section className="sec-gap" id="apply" style={{ background: 'var(--bg)' }}>
         <div className="px-site">
           <div className="split2" style={{ alignItems: 'start' }}>
             <Reveal>
@@ -294,6 +323,37 @@ export default function PartnershipsPage() {
                 <div style={{ paddingTop: 16, borderTop: '1px solid var(--line-2)', fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '.06em', color: 'var(--ink-3)', lineHeight: 1.6 }}>
                   Import duties, freight and clearing are charged per shipment
                 </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* For Chinese manufacturers: a short summary of the offer */}
+      <section className="sec-gap" lang="zh-CN" style={{ background: 'var(--paper)' }}>
+        <div className="px-site">
+          <div className="split2" style={{ alignItems: 'start' }}>
+            <Reveal>
+              <span className="eyebrow">中文简介</span>
+              <h2 style={{ fontSize: 'clamp(26px,3vw,36px)', marginTop: 16, letterSpacing: '-0.01em', lineHeight: 1.3 }}>面向中国矿山设备制造商</h2>
+              <p style={{ color: 'var(--ink-2)', fontSize: 17, marginTop: 18, lineHeight: 1.8 }}>
+                Bart Mining 是一家总部位于坦桑尼亚达累斯萨拉姆的矿业咨询与设备供应公司。作为您在东非的本地合作伙伴，我们负责品牌本地化、广告推广、客户拜访、产品演示、清关与交付，帮助您的矿山设备进入坦桑尼亚及东非市场。
+              </p>
+            </Reveal>
+            <Reveal delay={1}>
+              <div style={{ ...card, padding: '28px 24px' }}>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  {[
+                    `前六个月固定费用 ${PARTNERSHIP_PRICE_USD.toLocaleString('en-US')} 美元，签约时支付，包含全部推广、广告与差旅费用`,
+                    '第七个月起不再收取固定费用，仅按成交销售额收取佣金',
+                    `每年仅接受 ${PLACES_PER_YEAR} 家合作伙伴，目前剩余 ${PLACES_LEFT} 个名额`,
+                    '联系方式：WhatsApp +255 759 141 705（可使用英文沟通）',
+                  ].map(x => (
+                    <li key={x} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 16, color: 'var(--ink-2)', lineHeight: 1.7 }}>
+                      <span style={{ color: 'var(--gold)', flexShrink: 0 }}>&#8250;</span>{x}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           </div>
