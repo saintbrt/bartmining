@@ -14,8 +14,8 @@ export const PLACES_LEFT = 4
 
 /** Page images; internal source and review notes live in docs/partnership-image-review-2026-10-08.md. */
 export const PARTNERSHIP_IMAGES = {
-  hero: { src: '/partnerships/hero.jpg', alt: 'Tracked mobile crusher processing rock beside a stockpile' },
-  proof: { src: '/partnerships/proof.jpg', alt: 'A bank of spiral concentrators separating minerals from sand and water' },
+  hero: { src: '/partner/hero.jpg', alt: 'Tracked mobile crusher processing rock beside a stockpile' },
+  proof: { src: '/partner/proof.jpg', alt: 'A bank of spiral concentrators separating minerals from sand and water' },
 } as const
 
 export type TimelineItem = { t: string; d: string }
